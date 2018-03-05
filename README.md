@@ -1,0 +1,2 @@
+# docs
+LiaScript documentation course
