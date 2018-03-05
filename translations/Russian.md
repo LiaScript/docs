@@ -13,8 +13,6 @@ translation: English   ../README.md
 translation: Français  French.md
 translation: Русский   Russian.md
 
-base: ../
-
 -->
 
 # Lia-Script **Русский**
