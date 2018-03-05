@@ -8,10 +8,10 @@ narrator: Deutsch Female
 
 comment:  Russian dummy version.
 
-translation: Deutsch   translations/German.md
-translation: English   README.md
-translation: Français  translations/French.md
-translation: Русский   translations/Russian.md
+translation: Deutsch   German.md
+translation: English   ../README.md
+translation: Français  French.md
+translation: Русский   Russian.md
 
 base: ../
 
