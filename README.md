@@ -229,8 +229,8 @@ defined by two exclamation marks.
     to get an overview on how a YouTube link has to be formatted to add a starting
     and/or end point, autoplay, subtitles, and other options.
 
-  - relative path: `!![movie](vid/curta.mp4)`
-  - !![movie](vid/curta.mp4)<!-- width="60%" -->
+  - relative path: `!![movie](vid/math.mp4)`
+  - !![movie](vid/math.mp4)<!-- width="60%" -->
 
 ### Styling
 
