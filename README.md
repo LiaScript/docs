@@ -209,17 +209,28 @@ typical brackets and parenthesis notation.
 Images are marked with a starting exclamation mark before the link, movies are
 defined by two exclamation marks.
 
-* Image-notation: `![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)`
+* Image-notation:
 
-  ![image](images/load.gif)
+  - url: `![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)`
 
-* Movie-notation: `!![movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)`
+  - ![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)
 
-  !![movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)
+  - relative path: `![image](img/lenna.jpg)`
 
-  See also http://www.google.com/support/youtube/bin/answer.py?hl=en&answer=56107
-  to get an overview on how a YouTube link has to be formatted to add a starting
-  and/or end point, autoplay, subtitles, and other options.
+  - ![image](img/lenna.jpg)
+
+* Movie-notation:
+
+  - YouTube: `!![movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)`
+
+  - !![movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)
+
+  - See also http://www.google.com/support/youtube/bin/answer.py?hl=en&answer=56107
+    to get an overview on how a YouTube link has to be formatted to add a starting
+    and/or end point, autoplay, subtitles, and other options.
+
+  - relative path: `!![movie](vid/math.mp4)`
+  - !![movie](vid/math.mp4)
 
 ### Styling
 
@@ -299,9 +310,9 @@ style = "width: 100px;
          filter: blur(5px);"
 -->
 
-`:-) <!-- class = "animated infinite bounce" -->` --> :-) <!-- class = "animated infinite bounce" -->
+`:-) <!-- class = "animated infinite bounce" -->` ==> :-) <!-- class = "animated infinite bounce" -->
 
-`[google](www.google.de) <!-- style = "color: red;" -->` --> [google](www.google.de) <!-- style = "color: red;" -->
+`[google](www.google.de) <!-- style = "color: red;" -->` ==> [google](www.google.de) <!-- style = "color: red;" -->
 
 ================================================================================
 
