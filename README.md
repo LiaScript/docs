@@ -12,9 +12,9 @@ comment:  This is a very simple comment.
 script:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
           https://felixhao28.github.io/JSCPP/dist/JSCPP.es5.min.js
 
-translation: Deutsch  translation/German.md
-translation: Français translation/French.md
-translation: Русский  translation/Russian.md
+translation: Deutsch  translations/German.md
+translation: Français translations/French.md
+translation: Русский  translations/Russian.md
 
 
 -->

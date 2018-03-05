@@ -9,10 +9,10 @@ narrator: Deutsch Female
 comment:  Russian dummy version.
 
 
-translation: Deutsch  https://liascript.github.io/?https://raw.githubusercontent.com/liaScript/docs/master/translation/German.md
-translation: English  https://liascript.github.io/?https://raw.githubusercontent.com/liaScript/docs/master/README.md
-translation: Français https://liascript.github.io/?https://raw.githubusercontent.com/liaScript/docs/master/translation/French.md
-translation: Русский  https://liascript.github.io/?https://raw.githubusercontent.com/liaScript/docs/master/translation/Russian.md
+translation: Deutsch   translations/German.md
+translation: English   README.md
+translation: Français  translations/French.md
+translation: Русский   translations/Russian.md
 
 base: ../
 
