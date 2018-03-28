@@ -26,7 +26,7 @@ With Lia, we try to implement an extended Markdown format that should enable
 everyone to create, share, adapt, translate or correct and extend online courses
 without the need of being a web-developer.
 
-See the online rendered version at: https://liascript.github.io
+See the online rendered version at: https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md
 
                                     --{{0}}--
 Click on the (ear) button at the navigation bar to switch between spoken and
@@ -130,7 +130,7 @@ through or the application of superscript. If you, for example, superscript
 superscript you can get even smaller.
 
                                        {{1}}
-================================================================================
+********************************************************************************
 
 \~\~underline\~\~ -> ~~underline~~
 
@@ -138,7 +138,7 @@ superscript you can get even smaller.
 
 \^superscript\^ -> ^superscript^ ^^superscript^^ ^^^superscript^^^
 
-================================================================================
+********************************************************************************
 
 
 #### Combinations
@@ -230,7 +230,7 @@ defined by two exclamation marks.
     and/or end point, autoplay, subtitles, and other options.
 
   - relative path: `!![movie](vid/math.mp4)`
-  - !![movie](vid/math.mp4)<!-- width="60%" -->
+  - !![movie](vid/math.mp4) <!-- width="60%" -->
 
 ### Styling
 
@@ -286,7 +286,7 @@ The same technique can also be applied to style and format movies and other inli
 elements, such as links, words, symbols, or code...
 
                                        {{1}}
-================================================================================
+********************************************************************************
 
 !![movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
 style = "width: 100px; height: 60px;"
@@ -314,7 +314,7 @@ style = "width: 100px;
 
 `[google](www.google.de) <!-- style = "color: red;" -->` ==> [google](www.google.de) <!-- style = "color: red;" -->
 
-================================================================================
+********************************************************************************
 
 #### Block-Styling
 
@@ -460,7 +460,7 @@ Next to simple paragraphs also any other block element can be included ...
 
 
                                      {{1}}
-================================================================================
+********************************************************************************
 
 ``` markdown
 > <!-- style="font-size: 18px; font-style: italic; width: 500px; margin: 5.25em 0;" -->
@@ -480,7 +480,7 @@ Result:
 > | ** col 2 is **    | centered      |   $12 |
 > | * zebra stripes * | are neat      |    $1 |
 
-================================================================================
+********************************************************************************
 
 ### HTML
 
@@ -559,9 +559,9 @@ LiaScript effects, you can build even more sophisticated courses.
 
 ## Math-Mode
 
-{{0}}{{ via KaTex http://katex.org }}
+{{0}} via KaTex http://katex.org
 
-{{1}}{{ Inline math-mode `$ \frac{a}{\sum{b+i}} $` -> $ \frac{a}{\sum{b+i}} $ }}
+{{1}} Inline math-mode `$ \frac{a}{\sum{b+i}} $` -> $ \frac{a}{\sum{b+i}} $
 
                                         {{2}}
 Multi-line math-mode can be applied by double dollars `$$ formula $$`
@@ -1015,18 +1015,18 @@ Markdown-format:
     [[super]]
     [[?]] hint 1
     [[?]] hint 2
-    =====================================================================
+    ***********************************************************************
 
                                 {{1}}
 You are right, super was the correct answer again
 
-* {{2}}{{super}} as an effect
+* {2}{super} as an effect
 * $\sum x + 3$
 * terra
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)
 
-    =====================================================================
+    ***********************************************************************
 ```
 
 A quiz with hints and a revealed result.
@@ -1034,18 +1034,18 @@ A quiz with hints and a revealed result.
     [[super]]
     [[?]] hint 1
     [[?]] hint 2
-    =====================================================================
+    ***********************************************************************
 
                                     {{1}}
 You are right, super was the correct answer again
 
-* {{2}}{{super}} as an effect
+* {2}{super} as an effect
 * $\sum x + 3$
 * terra
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)
 
-    =====================================================================
+    ***********************************************************************
 
 ## Effects
 
@@ -1072,15 +1072,15 @@ effects can be combined, due to the usage of equal numbers):
 
 ``` markdown
 * no effect here
-* but in this line {{1}}{{show *** first ***}}
-* as well as this one {{1-2}}{{show *** first ***}}, which contains two effects
-  {{2}}{{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)}}
+* but in this line {1}{show *** first ***}
+* as well as this one {1-2}{show *** first ***}, which contains two effects
+  {2}{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)}
 ```
 
 * no effect here
-* but in this line {{1}}{{show *** first ***}}
-* as well as this one {{1-2}}{{show *** first ***}}, which contains two effects
-  {{2}}{{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)}}
+* but in this line {1}{show *** first ***}
+* as well as this one {1-2}{show *** first ***}, which contains two effects
+  {2}{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)}
 
 
 ### Animations
@@ -1094,16 +1094,16 @@ as it is done within the examples.
 See https://daneden.github.io/animate.css for more animation effects.
 
 ``` markdown
-* {{0}}{{ *bounce* }} <!-- class = "animated infinite bounce" style = "animation-delay: 5s;" -->
-* {{1-2}}{{zoomIn}} <!-- class = "animated zoomIn" -->
-* {{2-3}}{{zoomOut}} <!-- class = "animated zoomOut" -->
-* {{3}}{{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)}} <!-- class = "animated rubberBand" -->
+* {0}{ *bounce* } <!-- class = "animated infinite bounce" style = "animation-delay: 5s;" -->
+* {1-2}{zoomIn} <!-- class = "animated zoomIn" -->
+* {2-3}{zoomOut} <!-- class = "animated zoomOut" -->
+* {3}{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)} <!-- class = "animated rubberBand" -->
 ```
 
-* {{0}}{{ *bounce* }} <!-- class = "animated infinite bounce" style = "animation-delay: 5s;" -->
-* {{1-2}}{{zoomIn}} <!-- class = "animated zoomIn" -->
-* {{2-3}}{{zoomOut}} <!-- class = "animated zoomOut" -->
-* {{3}}{{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)}} <!-- class = "animated rubberBand" -->
+* {0}{ *bounce* } <!-- class = "animated infinite bounce" style = "animation-delay: 5s;" -->
+* {1-2}{zoomIn} <!-- class = "animated zoomIn" -->
+* {2-3}{zoomOut} <!-- class = "animated zoomOut" -->
+* {3}{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)} <!-- class = "animated rubberBand" -->
 
 ### Block Effects
 
@@ -1122,32 +1122,32 @@ you can see from the examples below, an effect can also contain further effects.
 This is an example for a *single* block effect.
 
                                {{2-4}}
-================================================================================
+********************************************************************************
 
-This is an example for a ... wait a second {{3 rubberBand}}{{**multi**}} ...
+This is an example for a ... wait a second {3 rubberBand}{**multi**} ...
 block effect.
 
 * alpha
 * beta
 * gamma
 
-================================================================================
+********************************************************************************
 ```
 
                                   {{1-3}}
 This is an example for a *single* block effect.
 
                                   {{2-4}}
-================================================================================
+********************************************************************************
 
-This is an example for a ... wait a second {{3}}{{**multi**}} ...
+This is an example for a ... wait a second {3}{**multi**} ...
 block effect.
 
 * alpha
 * beta
 * gamma
 
-================================================================================
+********************************************************************************
 
                                 --{{4}}--
 You can put spaces before the definition of a block effect, to prevent github
@@ -1477,39 +1477,39 @@ Result:
 ## Contributors and Credit
 
 
-{{1}}{{<h1> André Dietrich  </h1>}} <!-- class = "animated fadeInUpBig" -->
+{1}{<h1> André Dietrich  </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{1}}--
 Programming paradigm experimenter and creator of liaScript and SelectScript...
 
 
 
-{{2}}{{<h1> Sebastian Zug   </h1>}} <!-- class = "animated fadeInUpBig" -->
+{2}{<h1> Sebastian Zug   </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{2}}--
 The mind in the dark and the man behind the eLab-project ...
 
 
 
-{{3}}{{<h1> Fin Christensen </h1>}} <!-- class = "animated fadeInUpBig" -->
+{3}{<h1> Fin Christensen </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{3}}--
 CSS and Web development enthusiast, outstanding git user ...
 
 
-{{4}}{{<h1> Martin Koppehel </h1>}} <!-- class = "animated fadeInUpBig" -->
+{4}{<h1> Martin Koppehel </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{4}}--
 Hardware-architect and fully Fullstack developer ...
 
 
-{{5}}{{<h1> Leon Wehmeier   </h1>}}<!-- class = "animated fadeInUpBig" -->
+{5}{<h1> Leon Wehmeier   </h1>}<!-- class = "animated fadeInUpBig" -->
 
 --{{5}}--
 Coordinator and embedded development guru ...
 
 
-{{6}}{{<h1> Karl Fessel     </h1>}} <!-- class = "animated fadeInUpBig" -->
+{6}{<h1> Karl Fessel     </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{6}}--
 Embedded systems developer, creator or arduinoview, and Markdown evangelist ...
