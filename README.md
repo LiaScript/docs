@@ -3,7 +3,7 @@
 author:   Andre Dietrich
 email:    andre.dietrich@ovgu.de
 version:  1.0.0
-language: en_US
+language: en
 narrator: US English Female
 
 comment:  This is a very simple comment.
@@ -72,7 +72,7 @@ email:    dietrich[at]ivs.cs.uni-magdeburg.de
 
 version:  1.0.0
 
-language: en_US
+language: en
 
 narrator: US English Female
 
