@@ -221,16 +221,16 @@ defined by two exclamation marks.
 
 * Movie-notation:
 
-  - YouTube: `!![movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)`
+  - YouTube: `!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)`
 
-  - !![movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)
+  - !?[movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)
 
   - See also http://www.google.com/support/youtube/bin/answer.py?hl=en&answer=56107
     to get an overview on how a YouTube link has to be formatted to add a starting
     and/or end point, autoplay, subtitles, and other options.
 
-  - relative path: `!![movie](vid/math.mp4)`
-  - !![movie](vid/math.mp4) <!-- width="60%" -->
+  - relative path: `!?[movie](vid/math.mp4)`
+  - !?[movie](vid/math.mp4) <!-- width="60%" -->
 
 ### Styling
 
@@ -288,22 +288,22 @@ elements, such as links, words, symbols, or code...
                                        {{1}}
 ********************************************************************************
 
-!![movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
+!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
 style = "width: 100px; height: 60px;"
 -->
-!![movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
+!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
 style = "width: 120px; height: 70px;"
 -->
-!![movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
+!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
 style = "width: 140px; height: 80px;"
 -->
-!![movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
+!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
 style = "width: 120px;
          height: 70px;
          -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
          filter: grayscale(100%);"
 -->
-!![movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
+!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
 style = "width: 100px;
          height: 60px;
          -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
