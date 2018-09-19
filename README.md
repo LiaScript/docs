@@ -80,6 +80,9 @@ script:   javascript resourse url
 
 script:   another javascript resourse url
 
+link:     some css stuff
+          and some more css
+
 -->
 ```
 
@@ -182,7 +185,7 @@ support in the future.
 
                                        {{1}}
 `:-)` :-), `;-)` ;-), `:-D` :-D, `:-O` :-O, `:-(` :-(, `:-|` :-|,
-`:-/` :-/, `:-P` :-P, `:-*` :-*, `:')` :'), `:'(` :'(
+`:-/` :-/, `:-P` :-P, `:-*` :-, `:')` :'), `:'(` :'(
 
 ### References
 
@@ -315,6 +318,7 @@ style = "width: 100px;
 `[google](www.google.de) <!-- style = "color: red;" -->` ==> [google](www.google.de) <!-- style = "color: red;" -->
 
 ********************************************************************************
+
 
 #### Block-Styling
 
@@ -515,7 +519,7 @@ In contrast to common Markdown-Parsers it is also possible to include and
 execute javascript code. If you combine it with your HTML elements, you are free
 to integrate whatever you want.
 
-``` markdown
+``` html
 <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 <div class="ct-chart ct-golden-section" id="chart"></div>
 <script>
@@ -556,6 +560,24 @@ Note, you have to include all required JavaScirpt-resourses in the initial
 comment after the script definition. And by combining this feature with
 LiaScript effects, you can build even more sophisticated courses.
 
+## Footnotes
+
+    --{{0}}--
+There are two types of footnotes, either inline or divided ones (into two
+parts). The the footnotbody is only showed in textbook mode, or if you click
+on the marker.
+
+1. Inline Footnote[^1](explanation in one line) => `[^1](explanation in one line)`
+2. Divided into a marker[^2] => `[^2]`, that can appeare every where and an
+   explanation at the bottom of a section.
+
+   ```md
+   [^2]: This is an explanation, than
+         can consist of multiple blocks.
+   ```
+
+[^2]: This is an explanation, than
+      can consist of multiple blocks.
 
 ## Math-Mode
 
@@ -655,7 +677,7 @@ edit it and to change the output ...
 
 Double-click on the code to switch to edit mode and double-click to get out:
 
-```
+``` javascript
 var i=0;
 var j=0;
 var result = 0;
@@ -679,7 +701,7 @@ also for drawing.
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 
-```javascript
+``` javascript
 // Initialize a Line chart in the container with the ID chart1
 new Chartist.Line('#chart1', {
   labels: [1, 2, 3, 4],
@@ -706,7 +728,7 @@ script:   https://cdn.rawgit.com/davidedc/Algebrite/master/dist/algebrite.bundle
 
 An example of a Computer-Algebra-System (Algebrit), see xxx for more examples:
 
-```javascript
+``` javascript
 x + x
 ```
 <script> Algebrite.run(`@input`) </script>
