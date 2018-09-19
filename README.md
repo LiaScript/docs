@@ -1386,6 +1386,158 @@ Markdown-format:
          0                           2
 
 
+## ASCII-Art #2
+
+Well, thanks to the great project [SvgBob](https://github.com/ivanceras/svgbob)
+the newest version of LiaScript also has support for some basic ASCII art
+drawings (not everything is supported yet). Simply use 4 or more backtics to
+enclose your artwork and draw whatever you want. And as with any other element,
+you can add some styling within HTML comments at the head of this element.
+
+The following examples are taken from the examples on the SvgBob project site.
+
+
+If you want to use a drawing tool for this, visit the online editor at:
+
+https://ivanceras.github.io/svgbob-editor/
+
+### Graphs
+
+<!-- style="display: block; margin-left: auto; margin-right: auto; max-width: 315px;" -->
+```````````````````````````````````````````````````````````````````````
+                           .--->  F
+  A       B     C   D     /
+  *-------*-----*---*----*----->  E
+           \            ^ \
+            v          /   '--->  G
+             B --> C -'
+```````````````````````````````````````````````````````````````````````
+
+<!-- style="display: block; margin-left: auto; margin-right: auto; max-width: 315px;" -->
+``````````````````````````````````````````````````````````````````````
++------+   +-----+   +-----+   +-----+
+|      |   |     |   |     |   |     |
+| Foo  +-->| Bar +---+ Baz |<--+ Moo |
+|      |   |     |   |     |   |     |
++------+   +-----+   +--+--+   +-----+
+              ^         |
+              |         V
+.-------------+-----------------------.
+| Hello here and there and everywhere |
+'-------------------------------------'
+```````````````````````````````````````````````````````````````````````
+
+### Diagrams
+
+
+```````````````````````````````````````````````````````````````````````
+    E +-------------------------*--+     E |                         o
+    D |-------------------*--*--|--*     D |                   o  o  |  o
+    C |-------------*--*  |  |  |  |     C |             o  o  |  |  |  |
+    B |-------*--*  |  |  |  |  |  |     B |       o  o  |  |  |  |  |  |
+    A +-*--*--+--+--+--+--+--+--+--+     A +-o--o--|--|--|--|--|--|--|--|
+        5 10 15 20 25 30 35 40 45 50         5 10 15 20 25 30 35 40 45 50
+
+
+
+  85.67 ┤                                       ╭╮
+  78.20 ┤                                       ││                  ╭╮
+  70.73 ┤                                       ││  ╭╮ ╭╮ ╭╮   ╭╮  ╭╯╰─╮
+  63.27 ┤                        ╭╮         ╭─╮ ││ ╭╯╰╮│╰─╯╰╮╭╮│╰──╯   │╭
+  55.80 ┤   ╭╮                 ╭╮││╭╮ ╭╮╭╮  │ ╰─╯╰─╯  ││    ││││       ╰╯
+  48.33 ┤   │╰╮      ╭──╮      │││││╰╮│╰╯│  │         ╰╯    ╰╯╰╯
+  40.87 ┤╭╮ │ ╰╮╭╮  ╭╯  ╰─╮╭╮╭─╯╰╯╰╯ ╰╯  ╰──╯
+  33.40 ┤││ │  ╰╯╰╮╭╯     ││╰╯
+  25.93 ┤││╭╯     ╰╯      ╰╯
+  18.47 ┼╯││
+  11.00 ┤ ╰╯
+        └───────────┴───────────┴───────────┴───────────┴───────────┴────
+      2011        2012        2013        2014        2015        2016
+```````````````````````````````````````````````````````````````````````
+
+### UML
+
+
+``````````````````````````````
+ ____[]
+| ___ |
+||   ||  device
+||___||  loads
+| ooo |----------------------------------------------------------.
+| ooo |    |                          |                          |
+| ooo |    |                          |                          |
+'_____'    |                          |                          |
+           |                          |                          |
+           v                          v                          v
+ .-------------------.  .---------------------------.  .-------------------.
+ | Loadable module C |  |     Loadable module A     |  | Loadable module B |
+ '-------------------'  |---------------------------|  |   (instrumented)  |
+           |            |         .-----.           |  '-------------------'
+           '------------+-------->| A.o |           |             |
+               calls    |         '-----'           |             |
+                        |    .------------------.   |             |
+                        |   / A.instrumented.o /<---+-------------'
+                        |  '------------------'     |    calls
+                        '---------------------------'
+``````````````````````````````
+
+`````````````````````````````
+                                          .--> Base::Class::Derived_A
+                                         /
+                                        .----> Base::Class::Derived_B
+        Something -------.             /         \\
+                         \\           /           \\---> Base::Class::Derived
+       Something::else    \\         /             \\
+            \\             \\       /               '--> Base::Class::Derived
+             \\             \\     /
+              \\             \\   .-----------> Base::Class::Derived_C
+               \\             \\ /
+                '------ Base::Class
+                        /  \\ \\ \\
+                       '    \\ \\ \\
+                       |     \\ \\ \\
+                       .      \\ \\ '--- The::Latest
+                      /|       \\ \\      \\
+  With::Some::fantasy  '        \\ \\      '---- The::Latest::Greatest
+                      /|         \\ \\
+          More::Stuff  '          \\ '- I::Am::Running::Out::Of::Ideas
+                      /|           \\
+          More::Stuff  '            \\
+                      /              '--- Last::One
+          More::Stuff
+`````````````````````````````
+
+
+### Chemical Structures
+
+``````````````````````````````
+   ----- O
+          \
+           \________
+           /        \
+          /        \ \
+         /            \____________ N
+         \            /
+          \        / /
+           \________/
+``````````````````````````````
+
+
+``````````````````````````````
+       HO
+        \       
+         \      
+          \____________
+          /------------ O     
+         /
+   _____/        
+ H2N
+``````````````````````````````
+
+
+
+
+
 ## Surveys
 
                              --{{0}}--
