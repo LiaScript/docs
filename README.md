@@ -821,7 +821,7 @@ int main() {
 ```
 <script>
   var output = "";
-  JSCPP.run(`@input`, "", {stdio: {write: s => { output += s.replace(/\n/g, "<br>");}}});
+  JSCPP.run(`@input`, "", {stdio: {write: s => { output += s }}});
   output;
 </script>
 
@@ -940,7 +940,7 @@ var rslt = "";
 var goal = parser(lexer(`@input`)).parseTerm();
 
 for (var item of window.prolog_db.query(goal)) {
-    rslt += "Yes: " + item + "<br>";
+    rslt += "Yes: " + item + "\n";
 }
 
 if (rslt === "") {
