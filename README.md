@@ -1889,51 +1889,34 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMWMMMMMMMWMWWWWMMWMMWWWWMMWWWWWWWWWWWWMWWWMMWMWWMMMMWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 `````````
 
+## Macros
+
+Todo, description of the currently applied macro-syntax.
 
 ## Future Work
 
 * Better integration with github/gitlab and the versioning of courses
-* Free Integration of JavaScript and Elm resources
 * Automagically analyzed surveys
 * Integration of WebGl and a 3D navigation
-* Inline function-plotter
+* Better Inline function-plotter
 
 ## Contributors and Credit
 
 
-{1}{<h1> André Dietrich  </h1>} <!-- class = "animated fadeInUpBig" -->
+{1}{<h1> André Dietrich </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{1}}--
 Programming paradigm experimenter and creator of liaScript and SelectScript...
 
 
 
-{2}{<h1> Sebastian Zug   </h1>} <!-- class = "animated fadeInUpBig" -->
+{2}{<h1> Sebastian Zug  </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{2}}--
 The mind in the dark and the man behind the eLab-project ...
 
 
-
-{3}{<h1> Fin Christensen </h1>} <!-- class = "animated fadeInUpBig" -->
+{3}{<h1> Karl Fessel    </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{3}}--
-CSS and Web development enthusiast, outstanding git user ...
-
-
-{4}{<h1> Martin Koppehel </h1>} <!-- class = "animated fadeInUpBig" -->
-
---{{4}}--
-Hardware-architect and fully Fullstack developer ...
-
-
-{5}{<h1> Leon Wehmeier   </h1>}<!-- class = "animated fadeInUpBig" -->
-
---{{5}}--
-Coordinator and embedded development guru ...
-
-
-{6}{<h1> Karl Fessel     </h1>} <!-- class = "animated fadeInUpBig" -->
-
---{{6}}--
 Embedded systems developer, creator or arduinoview, and Markdown evangelist ...
