@@ -671,11 +671,17 @@ required resources to the initial comment with keyword `script`.
 
 2. Add a trailing script-tag to your code: `<script>@input</script>`
 
+3. A project with multiple files can be realized with `@input(0)`, `@input(1)`, ...,`@input(n)`.
+
 
                                      --{{1}}--
 And add an additional script tag to the end of your language definition with an
-big X in braces. This element is afterwards substituted with your code and
+`@input` macro. This element is afterwards substituted with your code and
 executed. We provide some basic examples within the following section.
+
+                                    --{{2}}--
+Use the `@input` macro as a parameterized function in projects. The number
+defines the the file, starting from 0.
 
 
 
@@ -706,6 +712,37 @@ for(i = 0; i<1000; i++) {
 result;
 ```
 @eval
+
+#### Projects
+
+                --{{0}}--
+Mutliple different code snippets can be combined to form a larger project. It
+requires to wo write them in a row. You can give them names, if you add a second
+parameter after the highlighting definition. Add a `+` or `-` to the front of
+your filename, in order to indicate, if it should be visible by default or not.
+
+``` js     -EvalScript.js
+let who = data.first_name + " " + data.last_name;
+
+if(data.online) {
+  who + " is online"; }
+else {
+  who + " is NOT online"; }
+```
+``` json    +Data.json
+{
+  "first_name" :  "Sammy",
+  "last_name"  :  "Shark",
+  "online"     :  true
+}
+```
+<script>
+  // insert the JSON dataset into the local variable data
+  let data = @input(1);
+
+  // eval the script that uses this dataset
+  eval(`@input(0)`);
+</script>
 
 
 
@@ -741,7 +778,7 @@ script:   https://cdn.rawgit.com/davidedc/Algebrite/master/dist/algebrite.bundle
 -->
 
 
-An example of a Computer-Algebra-System (Algebrit), see xxx for more examples:
+An example of a Computer-Algebra-System (Algebrit), see http://algebrite.org for more examples:
 
 ``` javascript
 x + x
@@ -797,11 +834,8 @@ update msg model =
 
 
 #### C++
-<!--
-script:   https://interactivepython.org/runestone/static/thinkcspy/_static/skulpt.min.js
-          https://interactivepython.org/runestone/static/thinkcspy/_static/skulpt-stdlib.js
--->
-Teaching other language-basics is also possible, for this example we applied xxx
+
+Teaching other language-basics is also possible, for this example we applied [JSCPP](https://github.com/felixhao28/JSCPP)
 to run simple C++ programs:
 
 ```cpp
@@ -824,43 +858,6 @@ int main() {
   JSCPP.run(`@input`, "", {stdio: {write: s => { output += s }}});
   output;
 </script>
-
-#### Python
-
-Running a Python-program with xxx:
-
-```python
-def hello(i):
-  for _ in range(i):
-    print "Hello World"
-
-hello(12)
-```
-<script>
-var output = "";
-
-function builtinRead(x) {
-    if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-            throw "File not found: '" + x + "'";
-    return Sk.builtinFiles["files"][x];
-}
-
-Sk.pre = "output";
-Sk.configure({output: e => {output += e;}, read: builtinRead});
-
-var myPromise = Sk.misceval.asyncToPromise(function() {
-   return Sk.importMainWithBody("<stdin>", false, `@input`, true);
-});
-myPromise.then(function(mod) {
-   console.log('success');
-},
-   function(err) {
-   console.log(err.toString());
-});
-output;
-</script>
-
-
 
 #### Prolog
 <!--
@@ -949,6 +946,12 @@ if (rslt === "") {
    rslt;
 }
 </script>
+
+### More Examples
+
+We provide a list of templates with more examples that can be used to start developing your own courses. See:
+
+https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md
 
 ## Quizzes
 
