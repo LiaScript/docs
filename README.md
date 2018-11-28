@@ -65,9 +65,15 @@ LiaScript.
 previewer that, if it was toggled, updates the view on your course each time you
 save your document.
 
+
+![previewer](https://raw.githubusercontent.com/andre-dietrich/liascript-preview/master/preview.gif)<!-- style="width: 100%" -->
+
 [liascript-snippets](https://atom.io/packages/liascript-snippets): If you start
 typing "lia" in your document you switch on a fuzzy search, that contains a lot
 of LiaScript help, examples, and snippets.
+
+![snippets](https://raw.githubusercontent.com/andre-dietrich/liascript-snippets/master/preview.gif)<!-- style="width: 100%" -->
+
 
 ## *Markdown*-Syntax
 
