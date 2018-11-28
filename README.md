@@ -233,9 +233,6 @@ combine both marks `!?`. Defining ressources this way shows at least the links
 correctly in other Markdown parsers or on github.
 
 
-                                    --{{1}}--
-Links
-
 **Image-notation: `![alt-text](image-url "some info")`**
 
 - url: `![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg "a picture of a lion")`
