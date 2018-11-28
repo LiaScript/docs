@@ -12,6 +12,8 @@ comment:  This is a very simple comment.
 script:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
           https://felixhao28.github.io/JSCPP/dist/JSCPP.es5.min.js
 
+link: https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
+
 translation: Deutsch  translations/German.md
 translation: Français translations/French.md
 translation: Русский  translations/Russian.md
@@ -211,7 +213,8 @@ The next section shows how external resources can be integrated.
                                      --{{0}}--
 There are two ways of adding links to a Markdown document, either by inlining
 the url directly or you can name it, as shown in listing 2, by applying the
-typical brackets and parenthesis notation.
+typical brackets and parenthesis notation, the optional info is put in double
+quotes at the end of the url.
 
 
 1. example of an url-link -> http://goo.gl/fGXNvu
@@ -219,36 +222,45 @@ typical brackets and parenthesis notation.
    text-formatting can be applied also (`*** http://goo.gl/fGXNvu ***`) ->
    *** http://goo.gl/fGXNvu ***
 
-2. naming the link (`[title](http://goo.gl/fGXNvu)`) -> [title](http://goo.gl/fGXNvu)
+2. naming the link (`[title](http://goo.gl/fGXNvu "optional info")`) -> [title](http://goo.gl/fGXNvu "click Me")
 
 #### Images and Movies
 
                                     --{{0}}--
-Images are marked with a starting exclamation mark before the link, movies are
-defined by two exclamation marks.
+Images are marked with a starting exclamation mark before the link, audio by a
+starting question mark and movies are made of images and sound, that is why you
+combine both marks `!?`. Defining ressources this way shows at least the links
+correctly in other Markdown parsers or on github.
 
-* Image-notation:
 
-  - url: `![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)`
+                                    --{{1}}--
+Links
 
-  - ![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)
+**Image-notation: `![alt-text](image-url "some info")`**
 
-  - relative path: `![image](img/lenna.jpg)`
+- url: `![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg "a picture of a lion")`
+- ![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg "a picture of a lion")
+- relative path: `![image](img/lenna.jpg)`
+- ![image](img/lenna.jpg "beautiful Lenna")
 
-  - ![image](img/lenna.jpg)
+---
 
-* Movie-notation:
+**Audio-notation: `?[alt-text](audio-url "some info")`**
 
-  - YouTube: `!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)`
+- `?[a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")``
+- ?[a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")
 
-  - !?[movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)
+---
 
-  - See also http://www.google.com/support/youtube/bin/answer.py?hl=en&answer=56107
+**Movie-notation: `!?[alt-text](movie-url)`**
+
+- YouTube: `!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)`
+- !?[movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)
+- See also http://www.google.com/support/youtube/bin/answer.py?hl=en&answer=56107
     to get an overview on how a YouTube link has to be formatted to add a starting
     and/or end point, autoplay, subtitles, and other options.
-
-  - relative path: `!?[movie](vid/math.mp4)`
-  - !?[movie](vid/math.mp4) <!-- width="60%" -->
+- relative path: `!?[movie](vid/math.mp4)`
+- !?[movie](vid/math.mp4) <!-- width="60%" -->
 
 ### Styling
 
@@ -535,7 +547,6 @@ execute javascript code. If you combine it with your HTML elements, you are free
 to integrate whatever you want.
 
 ``` html
-<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 <div class="ct-chart ct-golden-section" id="chart"></div>
 <script>
     // Initialize a Line chart in the container with the ID chart
@@ -545,8 +556,6 @@ to integrate whatever you want.
     });
 </script>
 ```
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 
 
                                    {{0-1}}
