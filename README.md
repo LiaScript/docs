@@ -9,10 +9,13 @@ narrator: US English Female
 comment:  This is a very simple comment.
           Multiline is also okay.
 
+
 script:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
           https://felixhao28.github.io/JSCPP/dist/JSCPP.es5.min.js
 
 link: https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
+
+link: https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css
 
 translation: Deutsch  translations/German.md
 translation: Français translations/French.md
@@ -28,7 +31,8 @@ With Lia, we try to implement an extended Markdown format that should enable
 everyone to create, share, adapt, translate or correct and extend online courses
 without the need of being a web-developer.
 
-See the online rendered version at: https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md
+See the online rendered version at:
+https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md
 
                                     --{{0}}--
 Click on the (ear) button at the navigation bar to switch between spoken and
@@ -208,7 +212,7 @@ support in the future.
 
                                        {{1}}
 `:-)` :-), `;-)` ;-), `:-D` :-D, `:-O` :-O, `:-(` :-(, `:-|` :-|,
-`:-/` :-/, `:-P` :-P, `:-*` :-, `:')` :'), `:'(` :'(
+`:-/` :-/, `:-P` :-P, `:-*` :-*, `:')` :'), `:'(` :'(
 
 ### References
 
@@ -542,6 +546,8 @@ Test **bold** and <b> HTML bold</b> works also inline
   <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
 
+
+
 #### HTML & JavaScirpt
 
                                  --{{0}}--
@@ -645,15 +651,17 @@ lines with three back-ticks \`\`\` and an identifier for the language. See a
 complete list of examples and how to write language names at the
 [highlight.js demo page](http://softwaremaniacs.org/media/soft/highlight/test.html).
 
-\`\`\` `language (python, c, javascript, ...)`
+````` markdown
+```language <- (python, c, javascript, ...)  +OptionalTitle
 
 code ...
 
-\`\`\`
+```
+`````
 
 C example:
 
-``` c
+``` c Sample.cpp
 #include "test.h"
 
 int main () {
@@ -909,27 +917,27 @@ nextTo(A, B, list(_, _, A, B, _)).
 nextTo(A, B, list(_, _, _, A, B)).
 
 puzzle(Houses) :-
-    exists(house(red, english, _, _, _), Houses),
-    exists(house(_, spaniard, _, _, dog), Houses),
-    exists(house(green, _, coffee, _, _), Houses),
-    exists(house(_, ukrainian, tea, _, _), Houses),
-    rightOf(house(green, _, _, _, _), house(ivory, _, _, _, _), Houses),
-    exists(house(_, _, _, oldgold, snails), Houses),
-    exists(house(yellow, _, _, kools, _), Houses),
-    middle(house(_, _, milk, _, _), Houses),
-    first(house(_, norwegian, _, _, _), Houses),
-    nextTo(house(_, _, _, chesterfield, _), house(_, _, _, _, fox), Houses),
-    nextTo(house(_, _, _, kools, _),house(_, _, _, _, horse), Houses),
-    exists(house(_, _, orangejuice, luckystike, _), Houses),
-    exists(house(_, japanese, _, parliament, _), Houses),
-    nextTo(house(_, norwegian, _, _, _), house(blue, _, _, _, _), Houses),
-    exists(house(_, _, water, _, _), Houses),
-    exists(house(_, _, _, _, zebra), Houses).
+  exists(house(red, english, _, _, _), Houses),
+  exists(house(_, spaniard, _, _, dog), Houses),
+  exists(house(green, _, coffee, _, _), Houses),
+  exists(house(_, ukrainian, tea, _, _), Houses),
+  rightOf(house(green, _, _, _, _), house(ivory, _, _, _, _), Houses),
+  exists(house(_, _, _, oldgold, snails), Houses),
+  exists(house(yellow, _, _, kools, _), Houses),
+  middle(house(_, _, milk, _, _), Houses),
+  first(house(_, norwegian, _, _, _), Houses),
+  nextTo(house(_, _, _, chesterfield, _), house(_, _, _, _, fox), Houses),
+  nextTo(house(_, _, _, kools, _),house(_, _, _, _, horse), Houses),
+  exists(house(_, _, orangejuice, luckystike, _), Houses),
+  exists(house(_, japanese, _, parliament, _), Houses),
+  nextTo(house(_, norwegian, _, _, _), house(blue, _, _, _, _), Houses),
+  exists(house(_, _, water, _, _), Houses),
+  exists(house(_, _, _, _, zebra), Houses).
 
 solution(WaterDrinker, ZebraOwner) :-
-    puzzle(Houses),
-    exists(house(_, WaterDrinker, water, _, _), Houses),
-    exists(house(_, ZebraOwner, _, _, zebra), Houses).
+  puzzle(Houses),
+  exists(house(_, WaterDrinker, water, _, _), Houses),
+  exists(house(_, ZebraOwner, _, _, zebra), Houses).
 ```
 <script>
 var rules = parser(lexer(`@input`)).parseRules();
@@ -994,9 +1002,9 @@ again.
 Markdown-format:
 
 ``` markdown
-    [( )] Wrong
-    [(X)] This is the **correct** answer
-    [( )] This is ~~wrong~~ too!
+[( )] Wrong
+[(X)] This is the **correct** answer
+[( )] This is ~~wrong~~ too!
 ```
 
 Only one element can be selected!
@@ -1014,10 +1022,10 @@ which are used to mark the correct answer option. In contrast to single choice
 quizzes, there can be multiple selected choices or no one, which is also allowed.
 
 ``` markdown
-    [[ ]] Do not touch!
-    [[X]] Select this one ...
-    [[X]] ... and this one too!
-    [[ ]] also not correct ...
+[[ ]] Do not touch!
+[[X]] Select this one ...
+[[X]] ... and this one too!
+[[ ]] also not correct ...
 ```
 
 Multiple of them can be selected, or all, or none of them ...
@@ -1036,11 +1044,11 @@ order by clicking onto the question mark.
 Markdown-format:
 
 ``` markdown
-    [[super]]
-    [[?]] another word for awesome
-    [[?]] not great or mega
-    [[?]] hopefully not that bad
-    [[?]] there are no hints left
+[[super]]
+[[?]] another word for awesome
+[[?]] not great or mega
+[[?]] hopefully not that bad
+[[?]] there are no hints left
 ```
 
 A text input with additional hints:
@@ -1064,10 +1072,10 @@ therefor the next section).
 Markdown-format:
 
 ``` markdown
-    [[super]]
-    [[?]] hint 1
-    [[?]] hint 2
-    ***********************************************************************
+[[super]]
+[[?]] hint 1
+[[?]] hint 2
+***********************************************************************
 
                                 {{1}}
 You are right, super was the correct answer again
@@ -1078,7 +1086,7 @@ You are right, super was the correct answer again
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)
 
-    ***********************************************************************
+***********************************************************************
 ```
 
 A quiz with hints and a revealed result.
@@ -1440,10 +1448,10 @@ case numbers within parenthesis are used to define some kind of variable
 identifier. That is why they do not have to be in order.
 
 ```markdown
-    [(1)] option 1
-    [(2)] option 2
-    [(3)] option 3
-    [(0)] option 0
+[(1)] option 1
+[(2)] option 2
+[(3)] option 3
+[(0)] option 0
 ```
 
 You can only select one option:
@@ -1462,18 +1470,18 @@ a number in double square brackets. But, and this is also possible for all other
 kinds of surveys you can define some kind of variable name with a starting colon.
 
 ```markdown
-    [[:red]]         is it red
-    [[:green]]       green
-    [[:blue]]        or blue
-    [[:dark purple]] no one likes purple ( last chance ;-) )
+[[red]]         is it red
+[[green]]       green
+[[blue]]        or blue
+[[dark purple]] no one likes purple ( last chance ;-) )
 ```
 
 Select some of your favored colors!
 
-    [[:red]]         is it red
-    [[:green]]       green
-    [[:blue]]        or blue
-    [[:dark purple]] no one likes purple ( last chance ;-) )
+    [[red]]         is it red
+    [[green]]       green
+    [[blue]]        or blue
+    [[dark purple]] no one likes purple ( last chance ;-) )
 
 ### Single Choice Matrix
 
@@ -1484,16 +1492,16 @@ also used by the trailing rows.
 Markdown-format:
 
 ```markdown
-    [(:totally)(:agree)(:unsure)(:maybe not)(:disagree)]
-    [                                                  ] liaScript is great?
-    [                                                  ] I would use it to make online **courses**?
-    [                                                  ] I would use it for online **surveys**?
+[(totally)(agree)(unsure)(maybe not)(disagree)]
+[                                             ] liaScript is great?
+[                                             ] I would use it to make online **courses**?
+[                                             ] I would use it for online **surveys**?
 ```
 
-    [(:totally)(:agree)(:unsure)(:maybe not)(:disagree)]
-    [                                                  ] liaScript is great?
-    [                                                  ] I would use it to make online **courses**?
-    [                                                  ] I would use it for online **surveys**?
+    [(totally)(agree)(unsure)(maybe not)(disagree)]
+    [                                             ] liaScript is great?
+    [                                             ] I would use it to make online **courses**?
+    [                                             ] I would use it for online **surveys**?
 
 ### Multi Choice Matrix
 
@@ -1503,10 +1511,10 @@ I guess, multi-choice blocks are self-explanatory...
 Markdown-format:
 
 ```markdown
-    [[1][2][3][4][5][6][7]]
-    [                     ] question 1 ?
-    [                     ] question 2 ?
-    [                     ] question 3 ?
+[[1][2][3][4][5][6][7]]
+[                     ] question 1 ?
+[                     ] question 2 ?
+[                     ] question 3 ?
 ```
 
 Result:
@@ -1536,17 +1544,17 @@ https://ivanceras.github.io/svgbob-editor/
 ### Graphs
 
 <!-- style="display: block; margin-left: auto; margin-right: auto; max-width: 315px;" -->
-```````````````````````````````````````````````````````````````````````
+``` ascii
                            .--->  F
   A       B     C   D     /
   *-------*-----*---*----*----->  E
            \            ^ \
             v          /   '--->  G
              B --> C -'
-```````````````````````````````````````````````````````````````````````
+```
 
 <!-- style="display: block; margin-left: auto; margin-right: auto; max-width: 315px;" -->
-``````````````````````````````````````````````````````````````````````
+```    ascii
   +------+   +-----+   +-----+   +-----+
   |      |   |     |   |     |   |     |
   | Foo  +-->| Bar +---+ Baz |<--+ Moo |
@@ -1557,12 +1565,12 @@ https://ivanceras.github.io/svgbob-editor/
   .-------------+-----------------------.
   | Hello here and there and everywhere |
   '-------------------------------------'
-```````````````````````````````````````````````````````````````````````
+```
 
 ### Diagrams
 
 
-```````````````````````````````````````````````````````````````````````
+``` ascii
   E +-------------------------*--+     E |                         o
   D |-------------------*--*--|--*     D |                   o  o  |  o
   C |-------------*--*  |  |  |  |     C |             o  o  |  |  |  |
@@ -1584,12 +1592,12 @@ https://ivanceras.github.io/svgbob-editor/
   11.00 ┤ ╰╯
         └───────────┴───────────┴───────────┴───────────┴───────────┴────
       2011        2012        2013        2014        2015        2016
-```````````````````````````````````````````````````````````````````````
+```
 
 ### UML
 
 
-``````````````````````````````
+```` ascii
    ____[]
   | ___ |
   ||   ||  device
@@ -1610,9 +1618,9 @@ https://ivanceras.github.io/svgbob-editor/
                           |   / A.instrumented.o /<---+-------------'
                           |  '------------------'     |    calls
                           '---------------------------'
-``````````````````````````````
+````
 
-`````````````````````````````
+```` ascii
                                           .--> Base::Class::Derived_A
                                          /
                                         .----> Base::Class::Derived_B
@@ -1636,12 +1644,12 @@ https://ivanceras.github.io/svgbob-editor/
           More::Stuff  '            \\
                       /              '--- Last::One
           More::Stuff
-`````````````````````````````
+````
 
 
 ### Chemical Structures
 
-``````````````````````````````
+```` ascii
    ----- O
           \
            \________
@@ -1651,9 +1659,9 @@ https://ivanceras.github.io/svgbob-editor/
          \            /
           \        / /
            \________/
-``````````````````````````````
+````
 
-``````````````````````````````
+```` ascii
        HO
         \       
          \      
@@ -1662,13 +1670,13 @@ https://ivanceras.github.io/svgbob-editor/
          /
    _____/        
  H2N
-``````````````````````````````
+````
 
 
 ### Geometrical Shapes
 
 
-````````````````````````````
+```` ascii
   +------+.      +------+       +------+       +------+      .+------+
   |`.    | `.    |\     |\      |      |      /|     /|    .' |    .'|
   |  `+--+---+   | +----+-+     +------+     +-+----+ |   +---+--+'  |
@@ -1676,10 +1684,10 @@ https://ivanceras.github.io/svgbob-editor/
   +---+--+.  |   +-+----+ |     +------+     | +----+-+   |  .+--+---+
    `. |    `.|    \|     \|     |      |     |/     |/    |.'    | .'
      `+------+     +------+     +------+     +------+     +------+'
-````````````````````````````
+````
 
 
-``````````````
+```` ascii
   ____  ____  ____  ____                      ______________________
  /\   \/\   \/\   \/\   \                    /\                     \
 /  \___\ \___\ \___\ \___\                  /  \    _________________\
@@ -1694,10 +1702,10 @@ https://ivanceras.github.io/svgbob-editor/
          /  \___\                                   \    /   /
          \  /   /                                    \  /   /
           \/___/                                      \/___/
-``````````````````
+````
 
 
-````````````````````````````
+```` ascii
                    _______
                   / _____ \
             _____/ /     \ \_____
@@ -1721,10 +1729,10 @@ https://ivanceras.github.io/svgbob-editor/
            \_____ \       / _____/
                  \ \_____/ /
                   \_______/
-````````````````````````````
+````
 
 
-````````````````````````````
+```` ascii
   .----------------------------------------------------------------------.
   |_.-._.-._.-._.-._.-._.-.    _.-._.-._.-.    _.-._.-._.-._.-._.-._.-._.|
   |_.-._.-._.-._.-._.-._. .::db .-._.-._. .::db .-._.-._.-._.-._.-._.-._.|
@@ -1756,7 +1764,7 @@ https://ivanceras.github.io/svgbob-editor/
   |_.-._.-._.-._.-._.-._.- \  Y88P _.-._.- \  Y88P _.-._.-._.-._.-._.-._.|
   |_.-._.-._.-._.-._.-._.-. \__YP ._.-._.-. \__YP ._.-._.-._.-._.-._.-._.|
   `----------------------------------------------------------------------'
-````````````````````````````
+````
 
 
 
