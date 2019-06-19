@@ -1289,7 +1289,7 @@ to solve the most common tasks.
 Markdown-format:
 
 ```markdown
-                                      diagram titel
+                                      diagram title
     1.5 |           *
         |
       y |        *      *
@@ -1305,7 +1305,7 @@ Markdown-format:
 
 Result:
 
-                            diagram titel
+                            diagram title
     1.5 |           *
         |
       y |        *      *
