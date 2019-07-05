@@ -234,6 +234,12 @@ quotes at the end of the url.
 
 2. naming the link (`[title](http://goo.gl/fGXNvu "optional info")`) -> [title](http://goo.gl/fGXNvu "click Me")
 
+3. For internal navigation you can refer to the slide number or to title with
+   with a starting `#`
+
+   * `[next slide](#11)` -> [next slide](#11)
+   * `[next slide](#images-and-movies)` -> [next slide](#images-and-movies)
+
 #### Images and Movies
 
                                     --{{0}}--
