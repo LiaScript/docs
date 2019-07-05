@@ -2,7 +2,7 @@
 
 author:   Andre Dietrich
 email:    andre.dietrich@ovgu.de
-version:  1.0.0
+version:  2.0.0
 language: en
 narrator: US English Female
 
@@ -240,7 +240,11 @@ quotes at the end of the url.
 Images are marked with a starting exclamation mark before the link, audio by a
 starting question mark and movies are made of images and sound, that is why you
 combine both marks `!?`. Defining ressources this way shows at least the links
-correctly in other Markdown parsers or on github.
+correctly in other Markdown parsers or on github. There is baked-in support for
+[YouTube](https://YouTube.com), [Soundcloud](https://Soundcloud.com),
+[Vimeo](https://Vimeo.com) and [TeacherTube](https://TeacherTube.com), which
+means that you only have to include the link and the resource will be embedded
+appropriately.
 
 
 **Image-notation: `![alt-text](image-url "some info")`**
@@ -254,15 +258,17 @@ correctly in other Markdown parsers or on github.
 
 **Audio-notation: `?[alt-text](audio-url "some info")`**
 
-- `?[a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")``
+- `?[a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")`
 - ?[a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")
+- `?[soundcloud](https://soundcloud.com/glennmorrison/beethoven-moonlight-sonata "just add the link")`
+- ?[a horse](https://soundcloud.com/glennmorrison/beethoven-moonlight-sonata "just add the link")
 
 ---
 
 **Movie-notation: `!?[alt-text](movie-url)`**
 
-- YouTube: `!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)`
-- !?[movie](https://www.youtube.com/embed/XsNk5aOpqUc?&autoplay=1)
+- YouTube: `!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)`
+- !?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)
 - See also http://www.google.com/support/youtube/bin/answer.py?hl=en&answer=56107
     to get an overview on how a YouTube link has to be formatted to add a starting
     and/or end point, autoplay, subtitles, and other options.
@@ -325,22 +331,22 @@ elements, such as links, words, symbols, or code...
                                        {{1}}
 ********************************************************************************
 
-!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
+!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
 style = "width: 100px; height: 60px;"
 -->
-!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
+!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
 style = "width: 120px; height: 70px;"
 -->
-!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
+!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
 style = "width: 140px; height: 80px;"
 -->
-!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
+!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
 style = "width: 120px;
          height: 70px;
          -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
          filter: grayscale(100%);"
 -->
-!?[movie](https://www.youtube.com/embed/XsNk5aOpqUc)<!--
+!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
 style = "width: 100px;
          height: 60px;
          -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
@@ -1007,7 +1013,8 @@ Markdown-format:
 [( )] This is ~~wrong~~ too!
 ```
 
-Only one element can be selected!
+Only one element can be selected, but if you want to, you can also have multiple
+correct answers!
 
     [( )] Wrong
     [(X)] This is the **correct** answer
@@ -1034,6 +1041,29 @@ Multiple of them can be selected, or all, or none of them ...
     [[X]] Select this one ...
     [[X]] ... and this one too!
     [[ ]] also not correct ...
+
+
+### Matrix
+
+If you want to, you can combine single-choice and multiple-choice quizzes within
+one larger matrix. A header is required and different elements have to be
+separated by using parentheses or brackets.
+
+``` markdown
+[[:-)] (:-]) [$a^2$]]
+[ [X]   [ ]    [X]  ]       a multiple-choice row
+[ [ ]   [X]    [ ]  ]       a second one
+[ ( )   ( )    (X)  ]       now it is single-choice
+[ ( )   (X)    ( )   (X) ]  more or less options are fine too
+```
+
+The rest is self-explaining...
+
+    [[:-)] (:-]) [$a^2$]]
+    [ [X]   [ ]    [X]  ]       a multiple-choice row
+    [ [ ]   [X]    [ ]  ]       a second one
+    [ ( )   ( )    (X)  ]       now it is single-choice
+    [ ( )   (X)    ( )   (X) ]  more or less options are fine too
 
 ### Hints
 
