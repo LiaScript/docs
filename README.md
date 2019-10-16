@@ -425,9 +425,10 @@ Result:
 
                                  --{{0}}--
 Ordered list start with a number and a dot. As you can see from the example, the
-number does not count at the moment, the generated list will always count by the
-order of appearance. And it is also possible to mix lists with other lists and
-elements freely.
+numbering is important, n contrast to the github flavored Markdown. This way you
+can separate lists, add something in between, make use of animations and
+effects. And it is also possible to mix lists with other lists and elements
+freely.
 
 Markdown-format:
 
