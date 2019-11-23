@@ -2,12 +2,16 @@
 
 author:   Andre Dietrich
 email:    andre.dietrich@ovgu.de
-version:  2.0.0
+version:  2.0.2
 language: en
 narrator: US English Female
 
-comment:  This is a very simple comment.
-          Multiline is also okay.
+logo:     https://liascript.github.io/img/bg-showcase-1.jpg
+
+comment:  This document shall provide an entire compendium and course on the
+          development of Open-courSes with [LiaScript](https://LiaScript.github.io).
+          As the language and the systems grows, also this document will be updated.
+          Feel free to fork or copy it, translations are very welcome...
 
 
 script:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
