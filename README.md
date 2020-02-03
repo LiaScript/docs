@@ -540,28 +540,50 @@ Result:
 ### HTML
 
 You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
+Mixing HTML with Markdown is also possible, but it should be used with caution,
+since it is mixing two different styles of parsing.
 
 ```HTML
 Test **bold** and <b> HTML bold</b> works also inline
 
+<details>
+
+<summary>$ f(a,b,c) = (a^2+b^2+c^2)^3 $</summary>
+
+<p>
+Here is the source data that is discussed in the article ...
+</p>
+
 <dl>
   <dt style="color: red">Definition list</dt>
   <dd>Is something people use sometimes.</dd>
 
   <dt><b>Markdown in HTML</b></dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+  <dd>Does _work_ **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
+
+</details>
 ```
 
 Test **bold** and <b> HTML bold</b> works also inline
 
+<details>
+
+<summary>$ f(a,b,c) = (a^2+b^2+c^2)^3 $</summary>
+
+<p>
+Here is the source data that is discussed in the article ...
+</p>
+
 <dl>
   <dt style="color: red">Definition list</dt>
   <dd>Is something people use sometimes.</dd>
 
   <dt><b>Markdown in HTML</b></dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+  <dd>Does _work_ **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
+
+</details>
 
 
 
@@ -610,6 +632,37 @@ Note, you have to include all required JavaScirpt-resourses in the initial
 comment after the script definition. And by combining this feature with
 LiaScript effects, you can build even more sophisticated courses.
 
+
+### HTML Hiding Content
+
+There might be use cases where you either want to show some parts only within
+the HTML world and others only withing the LiaScript world. As it was shortly
+introduced in the section about styling, you can add comments to the start of
+every block to add additional attributes. These attributes can be used a trigger
+to hide or show content.
+
+``` markdown
+<!-- style="display:block" -->
+<div style="display:none">
+
+only visible in LiaScript
+
+</div>
+
+-----------------------------------------------
+
+<!-- style="display:none" -->
+<div style="display:block" width="200px">
+
+Not visible in LiaScript, but everywhere else
+
+</div>
+```
+
+The attributes within the comment overwrite the attributes within the block,
+thus, if there would be more stuff within style, this will be overwritten, but
+other attributes like `width` wont...
+
 ## Footnotes
 
     --{{0}}--
@@ -628,6 +681,7 @@ on the marker.
 
 [^2]: This is an explanation, than
       can consist of multiple blocks.
+
 
 ## Math-Mode
 
