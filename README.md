@@ -1,10 +1,10 @@
 <!--
 
-author:   Andre Dietrich
-email:    andre.dietrich@ovgu.de
-version:  2.0.3
+author:   André Dietrich
+email:    LiaScript@web.de
+version:  3.0.0
 language: en
-narrator: US English Female
+narrator: US English Male
 
 logo:     https://liascript.github.io/img/bg-showcase-1.jpg
 
@@ -12,7 +12,6 @@ comment:  This document shall provide an entire compendium and course on the
           development of Open-courSes with [LiaScript](https://LiaScript.github.io).
           As the language and the systems grows, also this document will be updated.
           Feel free to fork or copy it, translations are very welcome...
-
 
 script:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
           https://felixhao28.github.io/JSCPP/dist/JSCPP.es5.min.js
@@ -99,9 +98,9 @@ Initial LIA-comment-tag for basic definitions:
 
 author:   Andre Dietrich
 
-email:    dietrich[at]ivs.cs.uni-magdeburg.de
+email:    LiaScript@web.de
 
-version:  1.0.0
+version:  0.0.1
 
 language: en
 
@@ -116,6 +115,7 @@ link:     some css stuff
 
 -->
 ```
+
 
 ### Structuring
 
@@ -583,6 +583,8 @@ Here is the source data that is discussed in the article ...
   <dd>Does _work_ **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
 
+!?[alt-text](https://www.youtube.com/watch?v=g4q55nTnO54)
+
 </details>
 
 
@@ -777,11 +779,6 @@ defines the the file, starting from 0.
 
 
 #### JavaScript
-<!--
-@eval
-<script>@input</script>
-@end
--->
 
                                     --{{0}}--
 Click on the run-button to execute the script or double-click on the code to
@@ -802,15 +799,46 @@ for(i = 0; i<1000; i++) {
 // the last statement defines the return statement
 result;
 ```
-@eval
+<script>@input</script>
 
 #### Projects
 
                 --{{0}}--
-Mutliple different code snippets can be combined to form a larger project. It
-requires to wo write them in a row. You can give them names, if you add a second
+Multiple different code snippets can be combined to form a larger project. It
+requires to write them in a row. You can give them names, if you add a second
 parameter after the highlighting definition. Add a `+` or `-` to the front of
 your filename, in order to indicate, if it should be visible by default or not.
+
+                --{{1}}--
+As mentioned earlier the `@input` macro gets substituted by the input of the
+editor and you can pass a number to indicate which macro should be substituted
+by which code block (`@input(0)` is equivalent to `@input`).
+
+```` markdown
+``` js     -EvalScript.js
+let who = data.first_name + " " + data.last_name;
+
+if(data.online) {
+  who + " is online"; }
+else {
+  who + " is NOT online"; }
+```
+``` json    +Data.json
+{
+  "first_name" :  "Sammy",
+  "last_name"  :  "Shark",
+  "online"     :  true
+}
+```
+<script>
+  // insert the JSON dataset into the local variable data
+  let data = @input(1);
+
+  // eval the script that uses this dataset
+  eval(`@input(0)`);
+</script>
+
+````
 
 ``` js     -EvalScript.js
 let who = data.first_name + " " + data.last_name;
@@ -836,8 +864,238 @@ else {
 </script>
 
 
+#### Communication
 
-#### JavaScript Chartist
+> If you want to write Markdown, you can skip this section, if you want to learn
+> more about creating editable code for various different languages and purposes
+> you will have to read this.
+>
+> Check out https://github.com/LiaTemplates to see more sophisticated examples.
+
+The easiest way to execute some code, is simply to add a script-tag to the end
+of your code-block. But, sometimes an execution takes longer or requires to
+execute some asynchronous code. For this purpose, LiaScript offers a simple
+event system that will be explained in more detail. For simplicity the entire
+code block will contain all JavaScript code that can be edited and executed.
+This can be placed afterwards below the code block.
+
+
+To every executed peace of code a `send` module is associated, that is intended
+to handle all required communication with that specific code-block or project
+and the outer world. Thus, every `send` module is module does only exists in
+this particular scope.
+
+To start with, there is a `log` method, which can be used to send different
+types of outputs directly to the console. But, you can of course also use the
+`console.log` functions that do quite the same. Nevertheless, `send.log` gives
+you a little more power when you start to create your own LiaScript libraries
+and you have to handle multiple outputs.
+
+``` js
+/* send.log(type, sep, content)
+*
+* params:
+*  - type: one of the follow strings "debug", "info", "warn", "error"
+*  - sep: a string like separator, mostly for newlines "\n"...
+*  - content : represents a list of list
+*/
+
+console.debug("these are short hands for send.log('debug' ... ")
+console.warn("warn")
+console.log("info")
+console.error("and red for errors")
+
+"fin"
+```
+<script>@input</script>
+
+
+As you may have noticed, the last statement of an executed code-block does also
+define the `return` statement. However, there are some results that are treated
+differently. These are strings that start with `"LIA: "`. The string  
+`"LIA: stop"` for example, is used to tell the system to simply stop the
+execution, without any further output.
+
+``` js
+33*33
+
+"LIA: stop" // if you remove this string the result of the
+            // calculation will be visible in the shell
+```
+<script>@input</script>
+
+If the execution of your code may take longer, include some asynchronous calls
+or you need to call an external service, you can tell this by finishing with the
+statement `"LIA: wait"`, which will show arrows that loop forever or until they
+receive a `"LIA: stop"` signal.
+
+``` js
+setTimeout(function(){
+  console.warn("end of execution")
+
+  send.lia("some other ouput")
+
+  send.lia("LIA: stop") // this stops the execution
+}, 3000)
+
+
+"LIA: wait" // wait until you you send a stop
+```
+<script>@input</script>
+
+You might probably wonder, why there is a need for `send.lia`, if you could also
+pipe output to the console by using `send.log` or the shorthand `console.log`.
+As it will be described in the section about error handling, `send.lia` gives
+you more control, not only over the shell but also over the editor, see section
+[Error Handling](#Error-Handling).
+
+The code example below, depicts how the terminal can be exposed, following the
+previous logic, we only have to define `"LIA: terminal"` as the last statement
+in order to switch on the terminal mode, that will be active until the user
+clicks on the stop button, formerly known as the execute button, or a
+`"LIA: stop"` is send from the script, or the browser gets refreshed.
+
+In order to handle the `input` and the `stop` events from the terminal in the
+JavaScript world, we have to define handles, as it is done in the code below.
+Simply add a function, that evaluates or sends your terminal inputs to a foreign
+server or a websocket, or ... whatever you want ... And use the stop handle to
+close a connection or do some other stuff, if the user clicks onto the stop
+button.
+
+``` js
+send.handle("input", input => {
+  try{
+    console.log(eval(input))
+  } catch (e) {
+    console.error(e);
+  }
+})
+
+send.handle("stop", e => { alert("execution stopped") })
+
+function close(){
+  send.lia("LIA: stop")
+}
+
+"LIA: terminal" // execute the code and
+```
+<script>@input</script>
+
+A little side note, there is also a function called `console.clear`, that does
+what it says it clears the console, but it is not a realized by `send.log`,
+instead this is a shortcut for `send.lia("LIA: clear")`. These were all
+
+`"LIA: ..."` commands, the next section you will learn how to use the custom
+built in event system to get even more stuff done.
+
+##### Ping Pong
+
+All previous functions were executed only within the scope of a single
+code-block, but sometimes it is necessary to connect with other external events.
+For this purpose, the `send` object also contains two further generic functions,
+these are `register` and `dispatch`. Simply use a unique identifier to name an
+event, which is followed by a callback-function that does whatever you want.
+Both callbacks are defined in local scope, but by using `register` and
+`dispatch` you can send messages to any code-block. The example below also
+delivers the messages successfully, if both code-blocks would be defined on
+different slides.
+
+
+``` js
+send.register("ping", function(e){
+  console.warn("ping", e)
+})
+
+send.handle("input", input => {
+  send.dispatch("pong", input)
+})
+
+"LIA: terminal" // execute the code and
+```
+<script>@input</script>
+
+
+
+``` js
+send.register("pong", function(e){
+  console.warn("pong", e)
+})
+
+send.handle("input", input => {
+  send.dispatch("ping", input)
+})
+
+"LIA: terminal" // execute the code and
+```
+<script>@input</script>
+
+
+Adding such script-tags to the end of every code-block can be very tedious and
+cumbersome. Your Markdown will contain a lot of not necessary copy & paste code.
+To reduce this, LiaScript offers the possibility to define custom macros, and
+even more, you can directly import macros from other courses. Section
+[Macros](#Macros) is used to describe this issue in more.
+
+
+##### Error Handling
+
+As mentioned earlier, `send.lia` can do more then just passing messages to the
+terminal output. The editor that is currently used by LiaScript is [ace](todo),
+which allows to mark lines with warnings and errors. Since there is no name
+associated to a file (like with the `@input(0)` macro). You have to use a list
+of lists,  which contain all necessary information that you want to pass to the
+editor. The list element is associated with the code-block, starting from top to
+bottom.
+
+``` js
+send.lia( "ups, something went wrong",
+  [[{ row : 1,
+      column : 1,
+      text : "insert your error info here",
+      type : "error"
+    },
+    {
+      row : 2,
+      column : 1,
+      text : "some general warnings about this line",
+      type : "warning"
+    }
+  ]],
+  false); // use true if the output should appear in "info" mode
+
+"LIA: stop";
+```
+<script>@input</script>
+
+
+If this seems to complicated, you can also throw and error by using `LiaError`.
+The second parameter is used to define the number of code-blocks you use and
+then the only thing you require, is to add as much detailed information, which
+is similar to the previous example.
+
+
+``` js
+// create a new error with an error message that is
+// connected to only one code-block, if you have more,
+// increase the number ...
+var error = new LiaError("ups something went wrong", 1);
+
+error.add_detail(0, // <- associated code-block
+  "insert your error info here",
+  "error", 1, 1);
+
+error.add_detail(0, // <- associated code-block
+  "some general warnings about this line",
+  "warning", 2, 1);
+
+
+throw(error);
+```
+<script>@input</script>
+
+#### Examples
+
+##### JavaScript Chartist
 
 A drawing example, for demonstrating that any javascript library can be used,
 also for drawing.
@@ -863,7 +1121,7 @@ new Chartist.Bar('#chart2', {
 <div class="ct-chart ct-golden-section" id="chart2"></div>
 
 
-#### Computer-Algebra
+##### Computer-Algebra
 <!--
 script:   https://cdn.rawgit.com/davidedc/Algebrite/master/dist/algebrite.bundle-for-browser.js
 -->
@@ -889,7 +1147,7 @@ defint(f,t,0,2*pi)
 
 
 
-#### Elm
+##### Elm
 
 ```elm
 -- Read more about this program in the official Elm guide:
@@ -924,7 +1182,7 @@ update msg model =
 ```
 
 
-#### C++
+##### C++
 
 Teaching other language-basics is also possible, for this example we applied [JSCPP](https://github.com/felixhao28/JSCPP)
 to run simple C++ programs:
@@ -950,7 +1208,7 @@ int main() {
   output;
 </script>
 
-#### Prolog
+##### Prolog
 <!--
 script:   https://curiosity-driven.github.io/prolog-interpreter/parser.js
           https://curiosity-driven.github.io/prolog-interpreter/interpreter.js
@@ -1038,9 +1296,10 @@ if (rslt === "") {
 }
 </script>
 
-### More Examples
+#### More
 
-We provide a list of templates with more examples that can be used to start developing your own courses. See:
+We provide a list of templates with more examples that can be used to start
+developing your own courses. See:
 
 https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md
 
@@ -2006,7 +2265,659 @@ MMMMMMMMMMMMMMMMMMMMMWMMMMMMMWMWWWWMMWMMWWWWMMWWWWWWWWWWWWMWWWMMWMWWMMMMWWMMMMMM
 
 ## Macros
 
-Todo, description of the currently applied macro-syntax.
+Macros are an easy way in LiaScript to hide reoccurring or tedious tasks. In
+essence, they define a simple textsubstitution-system that can be parameterized
+and also imported from other courses. Actually, everything that starts with an
+`@`-symbol can be replaced by something that has been defined in the main-header
+or sub-header of your document.
+
+By now, you will have seen or changed macros like `author`, `logo`, or `comment`,
+but you can do even more.
+
+``` markdown
+<!--
+author: someone who wants to create something new
+
+email: your contact-information
+-->
+
+# Main Title
+```
+
+
+### Single Line
+
+There are actually two types of macros, single line macros and block macros.
+While the first one only returns a single line, the latter one preserves your
+custom indentation. This single line macros start with a macro-name, which is
+followed by a colon. The name has to start with a word-character. The starting
+`@`-symbol is optional, but I would suggest to use it for custom macros and to
+increase readability.
+
+``` markdown
+<!--
+author: someone who wants to create something new
+
+@Single.line: you can add as much content as you
+  want to your single-line macro!
+
+  The only thing that is important, is to use
+     indentation.
+
+     Not __matter__ how [much](#12) it is.
+
+-->
+
+# Main Title
+
+@Single.line  <-- this will be replaced at compile-time by: v
+
+you can add as much content as you want to your single-line macro! The only thing that is important, is to use indentation. Not __matter__ how [much](#12) it is.
+
+@author <-- by: someone who wants to create something new
+```
+
+By the way, macros are case-sensitive, thus there is a difference between
+`@author` and `@Author`.
+
+### Blocks
+
+Block-macros are not followed by an colon and are parsed until they reach the
+`@end` symbol. Every macro can also be used to define Markdown content, HTML,
+CSS, or even JavaScirpt.
+
+``` md
+<!--
+@smile: ;-)
+
+@block
+this type of macro preserves the structure.
+
+<h1>
+@smile and you can also use macros, that
+define other macros
+</h2>
+
+| Header 1   | Header 2   | Header 3   |
+| :--------- | :--------- | :--------- |
+| Item 1     | Item 2     | Item 3     |
+
+<script>alert("hello world")</script>
+@end
+-->
+
+# Main Title
+
+@block
+```
+
+
+### Comments
+
+Commenting macros out or simply adding additional "personal" information to
+to a section happens with two additional `@@` for single-line, and three `@@@`s
+to comment blocks...
+
+``` md
+<!--
+@@comment: this is a single line macro
+  that has been commented out
+
+@@ if you prefer it, comment blocks can
+@@ be defined like this
+@@ ...
+
+@@@block-comments
+
+start with three @s and go until the
+parser reaches ...
+
+@end
+-->
+```
+
+### Overwriting Macros
+
+Actually every section can define its own set of macros, that only exist in that
+in that single section. Only the initial main-header at the start of a document
+defines a set of global macros. This might be useful, if you want to switch the
+voice of the narrator, authorship, etc.
+
+
+``` markdown
+<!--
+...
+narrator: US English Female
+
+-->
+
+# Main Title
+
+....
+
+### Some other section
+<!--
+author: another author for this section
+...
+narrator: Australian Male
+
+-->
+
+
+```
+
+### Passing Parameters
+
+It is also possible to pass parameters to macros, which looks like calling a
+function in most common programming languages. Simply call a macro with
+parentheses and put into everything, that you want to place within the macro,
+where something is placed is simply defined by an `@ + a number`, thus `@0`,
+`@1`, .., `@n`. Like most programming languages start counting at `0`, also in
+LiaScript `@0` defines the first parameter.
+
+``` markdown
+<!--
+@highlight: <b style="color: red">@0</b>
+-->
+
+@highlight(I want this text to be read and bold)
+
+```
+
+
+The following example shows, how multiple parameters can be passed to a macro,
+they are simply separated by commas. The main problem which appears is that, if
+you want to pass a string that contains commas, then this string has to be
+placed in backticks. As also depicted, a macro can also call/substitute another
+macro, which might be extremely useful if you have defined a very complex macro.
+You can define more "simple" macros, that call the "complex" one by setting some
+some default values, see therefor section [uid](#uid).
+
+``` markdown
+<!--
+@highlight: <b style="color: red">@0</b>
+
+@red_and_green:
+  @highlight(@0) <i style="color: green">@1</i>
+-->
+
+@red_and_green(red,`simply, simply, green`)
+```
+
+
+Last but not least, in order to go on with the basic Markdown syntax, it is also
+possible to pass multi-line parameters. How would you do this? Of course simply
+by using a common Markdown code-block with three backtics.
+
+````` markdown
+@red_and_green(red,```please to not use
+this in production...
+
+* it is better to write Markdown
+* directly
+```)
+`````
+
+As mentioned in the code, try to avoid this, since it generates ugly Markdown
+code on GitHub or on any other Markdown-interpreter/editor. But you can also use
+a code-block, which contains information about syntax highlighting and a macro,
+that defines the title. The part within the code-block is then simply passed to
+the macro as the last and multi-line parameter.
+
+````` markdown
+<!--
+link:   https://pannellum.org/css/style.css
+        https://cdn.pannellum.org/2.4/pannellum.css
+
+script: https://cdn.pannellum.org/2.4/pannellum.js
+
+@panorama
+<div id="panorama_@0" style="width: 100%; height: 400px;"></div>
+<script>
+  pannellum.viewer('panorama_@0', {
+    "type": "equirectangular",
+    "panorama": "@1",
+    "autoLoad": false,
+    "hotSpots": [@2]
+});
+</script>
+@end
+-->
+
+```json @panorama("0",https://pannellum.org/images/cerro-toco-0.jpg)
+{
+  "pitch": 14.1,
+  "yaw": 1.5,
+  "type": "info",
+  "text": "Baltimore Museum of Art",
+  "URL": "https://artbma.org/"
+},
+{
+  "pitch": -0.9,
+  "yaw": 144.4,
+  "type": "info",
+  "text": "North Charles Street"
+}
+```
+`````
+
+
+### Debugging
+<!--
+@highlight: <b style="color: red">@0</b>
+
+@red_and_green:
+  @highlight(@0) <i style="color: green">@1</i>
+-->
+
+Creating macros, can be quite difficult, especially if it is about creating and
+calling macros nested macros with various parameters. And defining macros in
+Atom is somehow similar to navigating in the dark, since it is not possible to
+inspect the DOM. But you can escape a macro by and additional `@`, which outputs
+a gray and escaped HTML `pre` `code` block.
+
+``` markdown
+<!--
+@highlight: <b style="color: red">@0</b>
+
+@red_and_green:
+  @highlight(@0) <i style="color: green">@1</i>
+-->
+
+@@red_and_green(red,`simply, simply, green`)
+```
+
+
+<pre style="background:#CCCCCC"><code>
+\<b style="color: red"\>red\</b\> \<i style="color: green"\>simply, simply, green\</i\></code></pre>
+
+### Special Macros
+
+The following macros are special ones that are used by the LiaScript to deal with a couple of convenience functions.
+
+#### `attribute`
+
+Attribution is an important issue.
+With the attribute command, you can define the attribution that is showed within the info field within the navigation panel.
+These elements get also imported if you import the functionality from another course.
+
+A good attribution might look like the following ones...
+
+```md
+<!--
+attribute: [AlaSQL](https://alasql.org)
+  by [Andrey Gershun](agershun@gmail.com)
+  & [Mathias Rangel Wulff](m@rawu.dk)
+  is licensed under [MIT](https://opensource.org/licenses/MIT)
+
+attribute: [PapaParse](https://www.papaparse.com)
+  by [Matthew Holt](https://twitter.com/mholt6)
+  is licensed under [MIT](https://opensource.org/licenses/MIT)
+-->
+```
+
+#### `author`
+
+The author information is visible within the information panel as well as on the course-card on the home-screen.
+
+```md
+<!--
+author: Your name
+-->
+```
+
+#### `comment`
+
+This information is shown at the course-card at the home-screen.
+It should contain a short and precise description of your course.
+This macro will only show one paragraph, even if you define more content.
+
+```md
+<!--
+comment: Learn something about ...
+  even if you insert multiple paragraphs
+
+  there will only be one paragraph
+-->
+```
+
+
+#### `date`
+
+A convenience function that can be used to show the latest update time to the user.
+This is also shown at the information panel.
+
+```md
+<!--
+date: 08/03/2020
+-->
+```
+
+
+#### `dark`
+
+You can change the default appearance of your document, either if you prefer dark mode or light mode.
+This will not change the user preferences.
+The default mode is defined by the user settings.
+
+```md
+<!--
+dark: true
+
+@@ or ...
+
+dark: false
+-->
+```
+
+
+#### `email`
+
+Simply add some contact information that is shown in the information panel.
+This can also be overwritten for every section.
+
+```md
+<!--
+email: contact@web.de
+-->
+```
+
+
+#### `import`
+
+You can import the main macros of other courses, simply by using the `import` command, which is followed by the raw URL of the foreign course.
+You can also import various different courses, every URL will be loaded before the course is loaded.
+Only the definitions in the main header are loaded, this includes, scripts, css, macros, attribution, and onload.
+Our basic templates are currently hosted at https://github.com/LiaTemplates .
+Every course basically describes its macros and how to apply them.
+Only the content of this course is loaded for speed-reasons, it is currently not possible to load a course, that requires macros of another course and so on.
+
+```` md
+<!--
+import: https://raw.githubusercontent.com/liaTemplates/rextester_template/master/README.md
+    https://other_url
+
+import: this will import a third url
+-->
+
+``` python
+print("Hello World")
+```
+@Rextester.eval(@Python)
+````
+
+
+#### `input`
+
+Use this only in conjunction with executable code and projects or with quizzes.
+This macro can only be used in a script tag and gets replaced by the current user input.
+
+To refer to the inputs in a project, use the parameterized macro:
+
+``` md
+@input(0)   <== equal to @input
+@input(1)
+```
+
+
+#### `language`
+
+Set the internationalization of the course.
+This will set basic button information
+The currently available languages are defined in:
+
+https://github.com/liaScript/lia-localization
+
+``` md
+<!--
+@@bulgarian
+language: bg
+
+@@english
+language: en
+
+@@german
+language: de
+
+@@persion
+language: fa
+
+@@armenian
+language: hy
+
+@@dutch
+language: nl
+
+@@ukrainian
+language: ua
+-->
+```
+
+
+#### `link`
+
+If you need to load additional CSS files, use `link` followed by the URL of your stylesheet.
+Similar to `import` or `script`, you can load multiple files.
+See https://github.com/liaScript/custom-style for more information on how to define custom styling.
+
+```md
+<!--
+link: https://some.css
+  https://another.css
+-->
+```
+
+
+#### `logo`
+
+The logo definition requires a URL of an image, weather absolute or relative.
+It is used to define a background image for the course-card at the home-screen.
+
+```md
+<!--
+logo: ./pics/logo.png
+-->
+```
+
+#### `mode`
+
+You can change the default style of your document, either if you do not have any effects you can set mode to `Textbook` or start with and interactive `Presentation`.
+The three modes a the same as defined within the document at the upper right button. The default mode is defined by the user settings.
+
+```md
+<!--
+mode: Presentation
+
+mode: Slides
+
+mode: Textbook
+-->
+```
+
+
+#### `narrator`
+
+Set the narrator-voice of your course-speaker.
+The voice is a service of https://responsivevoice.org that is free for non-commercial educational content.
+The list below shows all currently available voices and languages.
+
+```md
+<!--
+narrator: Afrikaans Male
+-->
+```
+
+
+| Female                        | Male                        |
+|-------------------------------|-----------------------------|
+| UK English Female             | UK English Male             |
+| US English Female             | US English Male             |
+|                               | Afrikaans Male              |
+|                               | Albanian Male               |
+| Arabic Female                 | Arabic Male                 |
+| Armenian Male                 |                             |
+| Australian Female             | Australian Male             |
+|                               | Bosnian Male                |
+| Brazilian Portuguese Female   | Brazilian Portuguese Male   |
+|                               | Catalan Male                |
+|                               | Croatian Male               |
+| Chinese Female                | Chinese Male                |
+| Chinese (Hong Kong) Female    | Chinese (Hong Kong) Male    |
+| Chinese Taiwan Female         | Chinese Taiwan Male         |
+| Czech Female                  | Czech Male                  |
+| Danish Female                 | Danish Male                 |
+| Deutsch Female                | Deutsch Male                |
+| Dutch Female                  | Dutch Male                  |
+|                               | Esperanto Male              |
+| Finnish Female                | Finnish Male                |
+| French Female                 | French Male                 |
+| Greek Female                  | Greek Male                  |
+| Hindi Female                  | Hindi Male                  |
+| Hungarian Female              | Hungarian Male              |
+|                               | Icelandic Male              |
+| Indonesian Female             | Indonesian Male             |
+| Italian Female                | Italian Male                |
+| Japanese Female               | Japanese Male               |
+| Korean Female                 | Korean Male                 |
+| Latin Female                  | Latin Male                  |
+|                               | Latvian Male                |
+|                               | Macedonian Male             |
+| Moldavian Female              | Moldavian Male              |
+|                               | Montenegrin Male            |
+| Norwegian Female              | Norwegian Male              |
+| Polish Female                 | Polish Male                 |
+| Portuguese Female             | Portuguese Male             |
+| Romanian Female               | Romanian Male               |
+| Russian Female                | Russian Male                |
+|                               | Serbian Male                |
+|                               | Serbo-Croatian Male         |
+| Slovak Female                 | Slovak Male                 |
+| Spanish Female                | Spanish Male                |
+| Spanish Latin American Female | Spanish Latin American Male |
+|                               | Swahili Male                |
+| Swedish Female                | Swedish Male                |
+|                               | Tamil Male                  |
+| Thai Female                   | Thai Male                   |
+| Turkish Female                | Turkish Male                |
+| Vietnamese Female             | Vietnamese Male             |
+|                               | Welsh Male                  |
+
+
+#### `onload`
+
+Sometimes it might be necessary to preload some JavaScript code that is gets executed before the course is loaded.
+Or you want to define some global functions that can be used afterwards everywhere.
+`onload` actually does the same as its HTML counterpart and is used to accomplish this task.
+
+``` md
+<!--
+@onload
+// this macro contains some important functions that are loaded
+// only once ...
+
+alert("Hello World")
+@end
+-->
+```
+
+#### `script`
+
+Load all required JavaScript files/libraries with this command.
+
+``` md
+<!--
+script: https://some.js
+  https://another.js
+  ...
+-->
+```
+
+#### `translation`
+
+If you already have some translated versions of your course or know where they can be found, then use this macro.
+Simply add the name and the URL.
+This links will be also visible within the information panel of your course.
+
+``` md
+<!--
+translation: Deutsch  translations/German.md
+translation: Français translations/French.md
+translation: Русский  translations/Russian.md
+-->
+```
+
+#### `uid`
+
+This macro can only be used within the document, not within the header.
+Sometimes it is necessary to define unique identifiers if you want to access some HTML nodes and do not want to name every manually.
+In this case it might be useful to define hidden macros, that make use of `@uid` which generates a unique identifier, whenever it is called.
+See for example https://github.com/liaTemplates/Rextester to see the application of this pattern for creating macros.
+
+
+```md
+<!--
+@eval: @hidden_eval(@uid,@input)
+
+@hidden_eval
+<script>
+// eval @input
+...
+// and do somethint with the content of "name_.."
+document.getElementByName("name_@0")
+</script>
+
+
+<div id="id_@0"></div>
+
+@end
+-->
+```
+
+
+#### `version`
+
+A very important information is the `version`, it follows the major.minor.patch
+notion. If you start to develop a course, you can leave this out, and you will
+be in some kind of development-version or as long as you are in major-version 0
+the course should be parsed, every time it is loaded. This is fine for small
+courses and no persistent content. But, if you include executable code or
+quizzes, this content is stored persistently at IndexedDB directly within your
+browser.
+
+If your course is ready or very large, it might make sense to define a major
+version, such as `1.0.12`. The benefit of this is, that every time, the user
+loads the course, the app tries to download the raw Markdown file and then it
+checks the version information, if the version is the same as the one that is
+currently stored within IndexedDB, then it does not require to preprocess the
+entire document again, instead it directly loads the preprocessed version
+directly. This is especially useful for smart phones.
+
+``` markdown
+<!--
+version: 0.0.1
+...
+-->
+
+# Main Title
+```
+
+
+__So how to change the version information?__
+
+If you only fix typos or add or change static content, it is sufficient enough
+to increase the patch element and thus for example `1.0.14` to `1.0.15`.
+
+If you add slides to the end of your document, it is okay to increase the minor
+version number, eg. going from `1.0.15` to `1.1.0`.
+
+Major versions changes are required, if you change the structure of your
+document, especially quizzes and code. As already mentioned these persistent
+state information are stored within IndexedDB, but moving code or quizzes from
+one slide to another will might destroy previous states. For this purpose major
+version changes are required (`1.1.0` -> `2.0.0`), which will result in a new
+version also in IndexedDB. The old code/state is still available and can be
+restored.
+
 
 ## Future Work
 
