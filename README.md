@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  3.0.0
+version:  4.0.0
 language: en
 narrator: US English Male
 
@@ -479,6 +479,95 @@ Result:
 | ** col 2 is **    | centered      |   $12 |
 | * zebra stripes * | are neat      |    $1 |
 
+
+                                   --{{1}}--
+As you can see in the LiaScript interpreted version, tables can be sorted
+according to a column, either ascending or descending. But why stopping here?
+Every table also defines a dataset, right. So why not simply using it to
+directly plot graphs, scatter-plots, or bar-charts.
+
+
+                                   --{{2}}--
+If the first column of a table contains only numbers, and the other columns
+contain some numbers, then these values can be directly plotted. The first
+column  thus describes always the x values and the rest is up to you. Use the
+small icon above the table to switch between table view and plotted version.
+
+    {{2}}
+``` md
+| x's |  some y's  |    dist |
+| --- |:----------:| -------:|
+| 1   |    1 \$    | 16 $km$ |
+| 2.2 |    2 \$    | 12 $km$ |
+| 3.3 |    5 \$    |  1 $km$ |
+| 4   | -12.333 \$ |         |
+```
+
+    {{2}}
+| x's |  some y's  |    dist |
+| --- |:----------:| -------:|
+| 1   |    1 \$    | 16 $km$ |
+| 2.2 |    2 \$    | 12 $km$ |
+| 3.3 |    5 \$    |  1 $km$ |
+| 4   | -12.333 \$ |         |
+
+
+                                   --{{3}}--
+A function cannot turn an x value into different y values, thus, if you have at
+least one x value twice, the resulting plot will be a scatter plot. By the way,
+only the first word in a cell (separated by spaces) gets interpreted as a
+number. If you don't want this to happen for a certain cell, then simply attach
+something directly to the number, add a character in front of it or use the math
+notation.
+
+    {{3}}
+``` markdown
+| x's |  some y's  |                              dist |
+| --- |:----------:| ---------------------------------:|
+| 1   |    1 \$    |                           16 $km$ |
+| 2.2 |    2 \$    |                           12 $km$ |
+| 3.3 |    5 \$    |                            1 $km$ |
+| 4   | -12.333 \$ | -555$km$ <-- this will be ignored |
+| 4   |            |                                 1 |
+```
+
+    {{3}}
+| x's |  some y's  |                              dist |
+| --- |:----------:| ---------------------------------:|
+| 1   |    1 \$    |                           16 $km$ |
+| 2.2 |    2 \$    |                           12 $km$ |
+| 3.3 |    5 \$    |                            1 $km$ |
+| 4   | -12.333 \$ | -555$km$ <-- this will be ignored |
+| 4   |            |                                 1 |
+
+
+                                   --{{4}}--
+Last but not least _bar-charts_. If the first column contains at least one cell,
+that cannot be parsed as a number, while the other columns still have numbers,
+then this table gets interpreted as a bar-chart. The first column thus defines
+your set of groups. It is now also possible to sort your table according to
+different columns and see this ordering also within the bar-chart representation.
+
+
+    {{4}}
+```markdown
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |             02 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+| Sheep           |           90 |             12 |      95 |
+| Human           |           68 |             70 |      10 |
+```
+
+    {{4}}
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |             02 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+| Sheep           |           90 |             12 |      95 |
+| Human           |           68 |             70 |      10 |
 
 
 ### Blockquotes
@@ -1642,25 +1731,25 @@ to solve the most common tasks.
 
 Markdown-format:
 
-```markdown
-                                      diagram title
-    1.5 |           *
-        |
-      y |        *      *
-      - |      *          *
-      a |     *             *       *
-      x |    *                 *
-      i |   *
-      s |  *
-        | *                              *        *
-      0 +------------------------------------------
-         2.0              x-axis                100
+```text
+                                  diagram title
+1.5 |           *
+    |                                 (* stars)
+  y |        *      *
+  - |      *          *
+  a |     *             *       *
+  x |    *                 *
+  i |   *
+  s |  *
+    | *                              *        *
+  0 +------------------------------------------
+     2.0              x-axis                100
 ```
 
 Result:
 
                             diagram title
-    1.5 |           *
+    1.5 |           *                     (* stars)
         |
       y |        *      *
       - |      *          *
@@ -1681,15 +1770,15 @@ limits, then the min max values 0 and 1 are used by default.
 
 Markdown-format:
 
-```markdown
-         1 |                   *                       *
-           |               *       *               *       *
-           |*             *         *             *         *
-    y-axis | *           *           *           *           *
-           |  *         *             *         *             *
-           |   *       *               *       *               *
-           |       *                       *                      *
-        -1 +--------------------------------------------------------
+```text
+     1 |                   *                       *
+       |               *       *               *       *
+       |*             *         *             *         *
+y-axis | *           *           *           *           *
+       |  *         *             *         *             *
+       |   *       *               *       *               *
+       |       *                       *                      *
+    -1 +--------------------------------------------------------
 ```
 
          1 |                   *                       *
@@ -1712,21 +1801,21 @@ a b the color blue.
 Markdown-format:
 
 ```markdown
-    | r          *
-    |    r
-    |       r *      *
-    |        * r       *
-    |       *      r      *       *
-    |      *            r    *
-    |     *                 r
-    |   *                          r
-    | *                              *    r    *
-    +-------------------------------------------
+| r          *                               (* stars)
+|    r                                       (r imaginary course)
+|       r *      *       B  B  B  B  B  B  B (B big dots)
+|        * r       *
+|       *      r      *       *
+|      *            r    *
+|     *                 r
+|   *                          r
+| *                              *    r    *
++-------------------------------------------
 ```
 
-    | r          *
-    |    r
-    |       r *      *
+    | r          *                              (* stars)
+    |    r                                      (r imaginary course)
+    |       r *      *      B  B  B  B  B  B  B (B big dots)
     |        * r       *
     |       *      r      *       *
     |      *            r    *
@@ -1776,6 +1865,88 @@ Markdown-format:
        |   x    BBBBBBBBBBBBB
        +-----------------------------
          0                           2
+
+### Colors
+
+The color codes are somehow defined by the character itself, see the list.
+
+| char | color        | hex       |
+| ---- | ------------ | --------- |
+| `a`  | Amber        | `#FFBF00` |
+| `b`  | Blue         | `#0000FF` |
+| `c`  | Cyan         | `#00FFFF` |
+| `d`  | Dark red     | `#8B0000` |
+| `e`  | Ebony        | `#555D50` |
+| `f`  | Forest green | `#014421` |
+| `g`  | Green        | `#008000` |
+| `h`  | Heliotrope   | `#DF73FF` |
+| `i`  | Indigo       | `#4B0082` |
+| `j`  | Jade         | `#00A86B` |
+| `k`  | Kaki         | `#C3B091` |
+| `l`  | Lime         | `#00FF00` |
+| `m`  | Mint         | `#3EB489` |
+| `n`  | browN        | `#88540B` |
+| `o`  | Orange       | `#FF7F00` |
+| `p`  | Pink         | `#FFC0CB` |
+| `q`  | Queen blue   | `#436B95` |
+| `r`  | Red          | `#FF0000` |
+| `s`  | Silver       | `#C0C0C0` |
+| `t`  | Teal         | `#008080` |
+| `u`  | Ultramarine  | `#3F00FF` |
+| `v`  |              | `#EE82EE` |
+| `w`  |              | `#FFFFFF` |
+| `y`  |              | `#FFFF00` |
+| `z`  | Zomp         | `#39A78E` |
+
+### Shapes
+
+The shape of the dot is also defined by the character, see the example below.
+
+```text
+6 | + * #           A a B b
+  | C c D d E e F f G g H h
+  | I i J j K k L l M m N n
+  | o O P p Q q R r S s T t
+  | U u V v W w X x Y y Z z
+1 +------------------------
+  0                      24
+```
+
+    6 | + * #           A a B b
+      | C c D d E e F f G g H h
+      | I i J j K k L l M m N n
+      | o O P p Q q R r S s T t
+      | U u V v W w X x Y y Z z
+    1 +------------------------
+       0                     24
+
+
+### Line types
+
+As depicted in the line diagrams below, next to different colors, lines and dots
+can have different shapes, whether they are dashed, dotted, smoothed or not.
+
+```text
+|                 * *    +  +    #  #
+|                *   *  +    +  #    #
+| N   O   P   Q   R   S   T   U   V   W   X   Y   Z
+|NA NOB OPC PQD QRE RSF STG TUH UVI VWJ WXK XYL YZM Z
+|An ABo BCp CDq DEr EFs FGt GHu HIv IJw JKx KLy LMz M
+|na nob opc pqd qre rsf stg tuh uvi vwj wxk xyl yzm z
+|a  ab  bc  cd  de  ef  fg  gh  hi  ij  jk  kl  lm  m
++----------------------------------------------------
+```
+
+
+    |                 * *    +  +    #  #
+    |                *   *  +    +  #    #
+    | N   O   P   Q   R   S   T   U   V   W   X   Y   Z
+    |NA NOB OPC PQD QRE RSF STG TUH UVI VWJ WXK XYL YZM Z
+    |An ABo BCp CDq DEr EFs FGt GHu HIv IJw JKx KLy LMz M
+    |na nob opc pqd qre rsf stg tuh uvi vwj wxk xyl yzm z
+    |a  ab  bc  cd  de  ef  fg  gh  hi  ij  jk  kl  lm  m
+    +----------------------------------------------------
+
 
 ## Surveys
 
