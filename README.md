@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  4.1.0
+version:  4.1.1
 language: en
 narrator: US English Male
 
@@ -1552,11 +1552,12 @@ You are right, super was the correct answer again
 
 ## Effects
 
-There are currently three types of effects, that are supported by liaScript:
+There are currently four types of effects, that are supported by liaScript:
 
 1. Inline effects
 2. Block effects
-3. and a narrator
+3. a narrator
+4. and Playback functions
 
 Every effect is defined by two braces around one or two numbers `{{1-2}}`, which
 marks the order of their appearance. The second and optional number defines, at
