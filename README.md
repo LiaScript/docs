@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  4.0.0
+version:  4.1.0
 language: en
 narrator: US English Male
 
@@ -1001,7 +1001,7 @@ console.error("and red for errors")
 
 As you may have noticed, the last statement of an executed code-block does also
 define the `return` statement. However, there are some results that are treated
-differently. These are strings that start with `"LIA: "`. The string  
+differently. These are strings that start with `"LIA: "`. The string
 `"LIA: stop"` for example, is used to tell the system to simply stop the
 execution, without any further output.
 
@@ -1675,7 +1675,10 @@ Russian Female
 
 1. we are using the text-to-speech engine of https://responsivevoice.org
 2. the narrator voice must be defined within the initial comment of a script
-3. use `--{{id}}--` to indicate what is spoken and when
+3. use `--{{number}}--` to indicate what is spoken and when
+4. use `--{{number voice}}--` to change the voice for this particular comment
+5. you can have multiple comments with the same number, those will be combined,
+   but only the voice of the first one is used
 
 ``` markdown
                                 --{{1}}--
@@ -1716,7 +1719,191 @@ Konvertierung leicht lesbar ist.
 Шварцем. Многие идеи языка были позаимствованы из существующих соглашений по
 разметке текста в электронных письмах. Реализации языка Markdown преобразуют
 текст в формате Markdown в валидный, правильно построенный XHTML и заменяют
- левые угловые скобки («<») и амперсанды («&») на соответствующие коды сущностей.
+левые угловые скобки («<») и амперсанды («&») на соответствующие коды сущностей.
+
+#### Hidden TTS
+
+Sometimes it might be necessary to add a comment or to read a part aloud to
+underline a certain point, which might be necessary in the narrated mode, but
+not in the Textbook. Therefor it is possible to put your TTS output into simple
+HTML comments. This wont be shown to anyone and also not visible on most other
+Markdown parsers and renderer.
+
+```html
+<!-- --{{1}}--
+Speak this out, but do not show it to anyone.
+-->
+```
+
+<!-- --{{1}}--
+Speak this out, but do not show it to anyone.
+-->
+
+### Playback
+
+Since Text2Speech output is baked into the LiaScript notation, why not using it
+on purpose for language learners. Thus, you can use `{{|>}}` or `{{!>}}` to
+indicate, what should be spoken out loud. You can of course also use different
+voices.
+
+```Markdown
+    {{|>}}
+This entire paragraph will be spoken out __LOUD__.
+
+    {{!> Australian Female}}
+* But in this case, this can also be combined
+* with a couple of
+* - different
+  - Markdown elements
+  - whether it makes sense or not.
+```
+
+    {{|>}}
+This entire paragraph will be spoken out __LOUD__.
+
+    {{!> Australian Female}}
+* But in this case, this can also be combined
+* with a couple of
+* - different
+  - Markdown elements
+  - whether it makes sense or not.
+
+#### Playback-Blocks
+
+
+And of course, it is also possible to combine various elements by using the
+LiaScript block notation. Simply add as many Markdown-blocks between two lines
+of stars and they will be interpreted as one larger block.
+
+
+```Markdown
+                  {{|>}}
+**************************************************
+This entire paragraph will be spoken out __LOUD__.
+
+* But in this case, this can also be combined
+* with a couple of
+* - different
+  - Markdown elements
+  - whether it makes sense or not.
+
+**************************************************
+```
+
+                  {{|>}}
+**************************************************
+This entire paragraph will be spoken out __LOUD__.
+
+* But in this case, this can also be combined
+* with a couple of
+* - different
+  - Markdown elements
+  - whether it makes sense or not.
+**************************************************
+
+
+#### Animations to Playback
+
+Since we are using the double braces notation for playback elements, this can
+also be used in combination with animation effects, simply by adding an a
+appearance number or  an appearance and dissappearance number. Depending o the
+current state of the animation, this will result in different sentences.
+
+
+```Markdown
+    {{1 |>}}
+This is an example where {|> 1-2}{I go} _{|> 2}{I am going}_ to work.
+```
+
+
+    {{1 |>}}
+This is an example where {|> 1-2}{I go} _{|> 2}{I am going}_ to work.
+
+
+#### Inlining
+
+And as presented before, you can also use inlining for Playback elements, as it
+was used for animations by simply using two pairs of braces
+`{|>}{text to speak}` or `{!>}{text to speak}`. While the first looks familiar,
+the second type of writing can be used in tables, so it does not interfear with
+other Markdown interpreters.
+
+
+```Markdown
+| English              | German                            | Russian                                 | Arabic male               | Arabic female               |
+| -------------------- |:--------------------------------- |:--------------------------------------- |:------------------------- | --------------------------- |
+| {!>}{I go}           | {!> Deutsch Male}{ich gehe}       | {!> Russian Male}{я хожу}               | {!> Arabic Male}{أذْهبُ}  |                             |
+| {!>}{you go}         | {!> Deutsch Male}{du gehst}       | {!> Russian Male}{ты ходишь}            | {!> Arabic Male}{تذْهبُ}  | {!> Arabic Female}{تذْهبين} |
+| {!>}{he/she/it goes} | {!> Deutsch Male}{er/sie/es geht} | {!> Russian Male}{он / она / оно ходит} | {!> Arabic Male}{يذْهبُ}  | {!> Arabic Female}{تذْهبُ}  |
+| {!>}{we go}          | {!> Deutsch Male}{wir gehen}      | {!> Russian Male}{мы ходим}             | {!> Arabic Male}{نذْهبُ}  |                             |
+| {!>}{you go}         | {!> Deutsch Male}{ihr geht}       | {!> Russian Male}{вы ходите}            | {!> Arabic Male}{تذْهبون} | {!> Arabic Female}{تذْهبْن} |
+| {!>}{they go}        | {!> Deutsch Male}{sie gehen}      | {!> Russian Male}{они ходят}            | {!> Arabic Male}{يذْهبون} | {!> Arabic Female}{يذْهبْن} |
+```
+
+
+| English              | German                            | Russian                                 | Arabic male               | Arabic female               |
+| -------------------- |:--------------------------------- |:--------------------------------------- |:------------------------- | --------------------------- |
+| {!>}{I go}           | {!> Deutsch Male}{ich gehe}       | {!> Russian Male}{я хожу}               | {!> Arabic Male}{أذْهبُ}  |                             |
+| {!>}{you go}         | {!> Deutsch Male}{du gehst}       | {!> Russian Male}{ты ходишь}            | {!> Arabic Male}{تذْهبُ}  | {!> Arabic Female}{تذْهبين} |
+| {!>}{he/she/it goes} | {!> Deutsch Male}{er/sie/es geht} | {!> Russian Male}{он / она / оно ходит} | {!> Arabic Male}{يذْهبُ}  | {!> Arabic Female}{تذْهبُ}  |
+| {!>}{we go}          | {!> Deutsch Male}{wir gehen}      | {!> Russian Male}{мы ходим}             | {!> Arabic Male}{نذْهبُ}  |                             |
+| {!>}{you go}         | {!> Deutsch Male}{ihr geht}       | {!> Russian Male}{вы ходите}            | {!> Arabic Male}{تذْهبون} | {!> Arabic Female}{تذْهبْن} |
+| {!>}{they go}        | {!> Deutsch Male}{sie gehen}      | {!> Russian Male}{они ходят}            | {!> Arabic Male}{يذْهبون} | {!> Arabic Female}{يذْهبْن} |
+
+#### Hiding Text
+<!--
+@play: {!> @0}{<span style="display: none">@1</span>}
+@en: @play(UK English Male,@0)
+@de: @play(Deutsch Male,@0)
+@ru: @play(Russian Female,@0)
+@ar: @play(Arabic @0,@1)
+-->
+
+If you only want to show only the play buttons but not the text, it is possible
+to use some HTML tricks. The easiest way is to put your text into an HTML
+element like `<span style="display: none">Text to read</span>` and make it
+invisible by using the attribute `display: none`.
+
+But, since it is possible to define custom [Macros](#macros), you can use also a
+more elegant way. Simply add the following comment directly after your Markdown
+heading. The `@play` macro has two parameters one for the voice and the other
+for the text, the other macros simply define the voice and pass the text as a
+second parameter. Within the Arabic macro it is also possible to set the gender
+of the narrator.
+
+``` Markdown
+#### Hiding Text
+<!--
+@play: {!> @0}{<span style="display: none">@1</span>}
+@en: @play(UK English Male,@0)
+@de: @play(Deutsch Male,@0)
+@ru: @play(Russian Female,@0)
+@ar: @play(Arabic @0,@1)
+-->
+
+| go        |         EN          |         DE          |            RU             |      AR male      |      AR female      |
+| --------- |:-------------------:|:-------------------:|:-------------------------:|:-----------------:|:-------------------:|
+| I         |      @en(I go)      |    @de(ich gehe)    |        @ru(я хожу)        | @ar(Male,أذْهبُ)   |                     |
+| you       |     @en(you go)     |    @de(du gehst)    |      @ru(ты ходишь)       | @ar(Male,تذْهبُ)   | @ar(Female,تذْهبين) |
+| he/she/it | @en(he/she/it goes) | @de(er/sie/es geht) | @ru(он / она / оно ходит) | @ar(Male,يذْهبُ)   | @ar(Female,تذْهبُ)   |
+| we        |     @en(we go)      |   @de(wir gehen)    |       @ru(мы ходим)       | @ar(Male,نذْهبُ)   |                     |
+| you       |     @en(you go)     |    @de(ihr geht)    |      @ru(вы ходите)       | @ar(Male,تذْهبون) | @ar(Female,تذْهبْن)  |
+| they      |    @en(they go)     |   @de(sie gehen)    |      @ru(они ходят)       | @ar(Male,يذْهبون) | @ar(Female,يذْهبْن)  |
+
+```
+
+
+The result is a table with playback buttons only:
+
+
+| go        |         EN          |         DE          |            RU             |      AR male      |      AR female      |
+| --------- |:-------------------:|:-------------------:|:-------------------------:|:-----------------:|:-------------------:|
+| I         |      @en(I go)      |    @de(ich gehe)    |        @ru(я хожу)        | @ar(Male,أذْهبُ)  |                     |
+| you       |     @en(you go)     |    @de(du gehst)    |      @ru(ты ходишь)       | @ar(Male,تذْهبُ)  | @ar(Female,تذْهبين) |
+| he/she/it | @en(he/she/it goes) | @de(er/sie/es geht) | @ru(он / она / оно ходит) | @ar(Male,يذْهبُ)  | @ar(Female,تذْهبُ)  |
+| we        |     @en(we go)      |   @de(wir gehen)    |       @ru(мы ходим)       | @ar(Male,نذْهبُ)  |                     |
+| you       |     @en(you go)     |    @de(ihr geht)    |      @ru(вы ходите)       | @ar(Male,تذْهبون) | @ar(Female,تذْهبْن) |
+| they      |    @en(they go)     |   @de(sie gehen)    |      @ru(они ходят)       | @ar(Male,يذْهبون) | @ar(Female,يذْهبْن) |
 
 
 ## Charts
@@ -2188,12 +2375,12 @@ https://ivanceras.github.io/svgbob-editor/
 
 ```` ascii
        HO
-        \       
-         \      
+        \
+         \
           \____________
-          /------------ O     
+          /------------ O
          /
-   _____/        
+   _____/
  H2N
 ````
 
