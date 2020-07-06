@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  5.0.0
+version:  6.0.0
 language: en
 narrator: US English Male
 
@@ -27,6 +27,7 @@ translation: Русский  translations/Russian.md
 -->
 
 # Lia-Script
+
 
                                     --{{0}}--
 With Lia, we try to implement an extended Markdown format that should enable
@@ -1184,6 +1185,79 @@ error.add_detail(0, // <- associated code-block
 throw(error);
 ```
 <script>@input</script>
+
+
+#### Styling
+
+As for Tables, it is also possible to apply some basic styling attributes to the
+editor. At default code-snippets that ar not executable will not show line
+numbers in order to be used also for pseudo-code, while executeable blocks will
+show line numbers, while the later ones can be edited and not the others. However,
+you can apply the follow attributes to make some definitions explicit. We tried
+to apply the common ACE notation. Attributes have to be applied per code-block,
+as it is shown in the example:
+
+````` markdown
+<!-- data-showGutter="false" -->
+```cpp
+// some C++ code without line numbers
+...
+```
+<!-- data-readOnly="true" -->
+```hpp
+// some header-file with lineNumbers,
+// that cannot be edited
+```
+<script>
+...// your execution code
+</script>
+`````
+
+__Attributes:__
+
+* `data-firstLineNumber`: change the initial line number to any number you
+  prefer (default: `data-firstLineNumber="0"`).
+* `data-fontSize`: change the default font-size, which has to be defined with
+  `pt` (default `data-fontSize="12pt"`).
+* `data-readOnly`: whether it is an executable snippet or not, there are
+  different default values, you can either set only `data-readOnly` to make it
+  read-only or pass it a boolean value (`data-readOnly="false"`)
+* `data-showGutter`: same as with read-only
+* `data-tabSize`: this takes an integer to represent the default tab-size
+  replacement (default `data-tabSize="2"`)
+* `data-theme`: your default theme as in your settings is applied, but you can
+  change this to any of the ace-themes, eg: `Chaos`, `Eclipse`,
+  `Soliarized Light`, ...
+* `data-marker`: use this to highlight aspects of your code, you have to apply
+  the following pattern `data-marker="y1 x1 y2 x2 color type;"`. You start
+  with a row and column and end with a row and a column. Then you can apply one
+  of the predefined colors, for `error`, `log`, `warn`, `debug` or `info`, or
+  you can set your own color with the css rgba function,
+  __do not use spaces in this function__!
+
+  The type is optional, but you can choose between one of the following
+  ace-marker types: `text`, (default `fullLine`), `screenLine`
+
+  If you want more than one marker, then simply separate different marker
+  definitions with a colon ...
+
+<!-- data-marker="
+0 0 0 100 error screenline;
+2 0 4 200 log;
+6 12 6 33 rgba(55,255,100,0.5) text"
+data-showGutter="true"
+data-theme="chaos"
+data-readOnly="false" -->
+```
+this will be red
+
+this is blue ...
+until the next
+line
+
+and this is rgba(55,255,100,0.5)
+```
+
 
 #### Examples
 
@@ -2706,7 +2780,117 @@ Simply `data-type="none"` to prevent any kind of visualization.
 
   `data-src="https://cors-anywhere.herokuapp.com/https://code.highcharts.com/mapdata/custom/europe.geo.json"`
 
+### custom
 
+<script>
+function func(x) {
+    x /= 10;
+    return Math.sin(x) * Math.cos(x * 2 + 1) * Math.sin(x * 3 + 2) * 50;
+}
+
+function generateData() {
+    let data = [];
+    for (let i = -200; i <= 200; i += 0.1) {
+        data.push([i, func(i)]);
+    }
+    return data;
+}
+
+option = {
+    animation: false,
+    grid: {
+        top: 40,
+        left: 50,
+        right: 40,
+        bottom: 50
+    },
+    xAxis: {
+        name: 'x',
+        minorTick: {
+            show: true
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#999'
+            }
+        },
+        minorSplitLine: {
+            show: true,
+            lineStyle: {
+                color: '#ddd'
+            }
+        }
+    },
+    yAxis: {
+        name: 'y',
+        min: -100,
+        max: 100,
+        minorTick: {
+            show: true
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#999'
+            }
+        },
+        minorSplitLine: {
+            show: true,
+            lineStyle: {
+                color: '#ddd'
+            }
+        }
+    },
+    dataZoom: [{
+        show: true,
+        type: 'inside',
+        filterMode: 'none',
+        xAxisIndex: [0],
+        startValue: -20,
+        endValue: 20
+    }, {
+        show: true,
+        type: 'inside',
+        filterMode: 'none',
+        yAxisIndex: [0],
+        startValue: -20,
+        endValue: 20
+    }],
+    series: [
+        {
+            type: 'line',
+            showSymbol: false,
+            clip: true,
+            data: generateData()
+        }
+    ]
+}
+
+let div = document.getElementById("functionPlot")
+
+
+
+//[1].setAttribute("option", JSON.stringify(option))
+</script>
+
+
+
+<e-charts
+option='{
+  "xAxis": {
+    "type": "category",
+    "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+  },
+  "yAxis": {
+    "type": "value"
+  },
+  "series": [{
+    "data": [820,932,901,934,1290,1330,1320],
+    "type":"line"
+  }]
+}'></e-charts>
+
+
+<div id="functionPlot"></div>
 
 ## Surveys
 
@@ -3695,27 +3879,32 @@ narrator: Afrikaans Male
 
 
 | Female                        | Male                        |
-|-------------------------------|-----------------------------|
+| ----------------------------- | --------------------------- |
 | UK English Female             | UK English Male             |
 | US English Female             | US English Male             |
 |                               | Afrikaans Male              |
 |                               | Albanian Male               |
 | Arabic Female                 | Arabic Male                 |
-| Armenian Male                 |                             |
+|                               | Armenian Male               |
 | Australian Female             | Australian Male             |
+| Bangla Bangladesh Female      | Bangla Bangladesh Male      |
+| Bangla India Female           | Bangla India Male           |
 |                               | Bosnian Male                |
 | Brazilian Portuguese Female   | Brazilian Portuguese Male   |
 |                               | Catalan Male                |
-|                               | Croatian Male               |
 | Chinese Female                | Chinese Male                |
 | Chinese (Hong Kong) Female    | Chinese (Hong Kong) Male    |
 | Chinese Taiwan Female         | Chinese Taiwan Male         |
+|                               | Croatian Male               |
 | Czech Female                  | Czech Male                  |
 | Danish Female                 | Danish Male                 |
 | Deutsch Female                | Deutsch Male                |
 | Dutch Female                  | Dutch Male                  |
 |                               | Esperanto Male              |
+|                               | Estonian Male               |
+| Filipino Female               |                             |
 | Finnish Female                | Finnish Male                |
+| French Canadian Female        | French Canadian Male        |
 | French Female                 | French Male                 |
 | Greek Female                  | Greek Male                  |
 | Hindi Female                  | Hindi Male                  |
@@ -3730,6 +3919,7 @@ narrator: Afrikaans Male
 |                               | Macedonian Male             |
 | Moldavian Female              | Moldavian Male              |
 |                               | Montenegrin Male            |
+| Nepali                        | Nepali                      |
 | Norwegian Female              | Norwegian Male              |
 | Polish Female                 | Polish Male                 |
 | Portuguese Female             | Portuguese Male             |
@@ -3737,14 +3927,16 @@ narrator: Afrikaans Male
 | Russian Female                | Russian Male                |
 |                               | Serbian Male                |
 |                               | Serbo-Croatian Male         |
+| Sinhala                       | Sinhala                     |
 | Slovak Female                 | Slovak Male                 |
 | Spanish Female                | Spanish Male                |
 | Spanish Latin American Female | Spanish Latin American Male |
 |                               | Swahili Male                |
 | Swedish Female                | Swedish Male                |
-|                               | Tamil Male                  |
+| Tamil Female                  | Tamil Male                  |
 | Thai Female                   | Thai Male                   |
 | Turkish Female                | Turkish Male                |
+| Ukrainian Female              |                             |
 | Vietnamese Female             | Vietnamese Male             |
 |                               | Welsh Male                  |
 
