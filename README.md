@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  6.0.0
+version:  6.0.1
 language: en
 narrator: US English Male
 
@@ -2796,7 +2796,7 @@ function generateData() {
     return data;
 }
 
-option = {
+let option = {
     animation: false,
     grid: {
         top: 40,
@@ -2867,9 +2867,8 @@ option = {
 
 let div = document.getElementById("functionPlot")
 
+div.innerHTML = "<e-charts option='" + JSON.stringify(option) + "'></e-charts>"
 
-
-//[1].setAttribute("option", JSON.stringify(option))
 </script>
 
 
