@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  6.0.1
+version:  6.0.2
 language: en
 narrator: US English Male
 
@@ -28,6 +28,9 @@ translation: Русский  translations/Russian.md
 
 # Lia-Script
 
+[![Gitter](https://badges.gitter.im/LiaScript/community.svg)](https://gitter.im/LiaScript/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
+---
 
                                     --{{0}}--
 With Lia, we try to implement an extended Markdown format that should enable
