@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  6.0.2
+version:  7.0.0
 language: en
 narrator: US English Male
 
@@ -52,7 +52,7 @@ become open-source projects and more interactive ... with collaborating teachers
 and students ...
 
 * easy to share adapt and translate
-* no additional software required, everything is implemented in JavaScirpt/Elm
+* no additional software required, everything is implemented in JavaScript/Elm
   and runs directly within the browser (online)
 * automatic conversion to epub, pdf, ...
 
@@ -139,7 +139,34 @@ whereby the number of hash-tags is used to define the hierarchy.
 
  ...
 ## Section Title 2
+
+Local Subsection
+================
+
+Local Sub-SubSection
+--------------------
 ```
+
+
+                                    --{{1}}--
+If you want to structure your sections further, then the following syntax can
+be applied. These subsections are not part of the table of contents, but it can
+be used to add further headings to your slide.
+
+                                      {{1}}
+```markdown
+...
+
+## Section Title
+
+Local Subsection
+================
+
+Local Sub-SubSection
+--------------------
+```
+
+
 
 ### Text-Formatting
 
@@ -192,7 +219,7 @@ As you can see from the examples, you can combine all elements freely.
 
 #### Escape Characters
 
-\*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$
+\*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@
 
                                      --{{0}}--
 If you want to use multiple stars, hash-tags, or other syntax elements within
@@ -247,6 +274,30 @@ quotes at the end of the url.
    * `[next slide](#11)` -> [next slide](#11)
    * `[next slide](#images-and-movies)` -> [next slide](#images-and-movies)
 
+
+##### Preview-Lia
+
+                                    --{{0}}--
+LiaScript has an advanced preview link, that will load the remote course and
+parse the main information such as title, version, comment, logo, email, tags,
+form your main HTML-comment at the top of you document. To do this, you will
+have to used `[preview-lia]` as the title of your link, which is followed by the
+raw url of your course document.
+
+
+`[preview-lia](https://raw.githubusercontent.com/LiaScript/docs/master/README.md)`
+
+[preview-lia](https://raw.githubusercontent.com/LiaScript/docs/master/README.md)
+
+
+                                    --{{1}}--
+You can use this technique also to create previews for other courses on your
+personal website or for other GitHub projects. For more information follow the
+link:
+
+{{1}} https://aizac.herokuapp.com/markdown-just-got-a-new-preview-tag/
+
+
 #### Images and Movies
 
                                     --{{0}}--
@@ -259,13 +310,17 @@ correctly in other Markdown parsers or on github. There is baked-in support for
 means that you only have to include the link and the resource will be embedded
 appropriately.
 
+                                    --{{1}}--
+The trailing information that you add to your image in `"` will add a caption.
+You can also use Markdown in here as well as formulas, but keep it short 😄...
+
 
 **Image-notation: `![alt-text](image-url "some info")`**
 
-- url: `![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg "a picture of a lion")`
-- ![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg "a picture of a lion")
+- url: `![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg "_Fig_: a picture of a very friendly lion")`
+- ![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg "_Fig_: a picture of a very friendly lion")
 - relative path: `![image](img/lenna.jpg)`
-- ![image](img/lenna.jpg "beautiful Lenna")
+- ![image](img/lenna.jpg)
 
 ---
 
@@ -685,14 +740,28 @@ Here is the source data that is discussed in the article ...
 
 
 
-#### HTML & JavaScirpt
+#### HTML & JavaScript
 
                                  --{{0}}--
 In contrast to common Markdown-Parsers it is also possible to include and
 execute javascript code. If you combine it with your HTML elements, you are free
 to integrate whatever you want.
 
+                                 --{{1}}--
+The last statement of your script defines also the result, that will be shown,
+if and only if it is not `undefined`, or simply use `console.log` to log the
+script activities. As the examples below show, you can combine your scripts with
+LiaScript animations. Thus, they will only be execute in the right
+fragment/context. But. you can do much much more with scripts.
+
+                                  {{1}}
+> Checkout Section [JavaScript](#JavaScript-or-JS-Components) for more information!
+
 ``` html
+Do some internal calculation <script> 99 * 88  </script>, the next script
+contains an error <script> 99 * a </script>.
+
+                                  {{1}}
 <div class="ct-chart ct-golden-section" id="chart"></div>
 <script>
     // Initialize a Line chart in the container with the ID chart
@@ -700,11 +769,15 @@ to integrate whatever you want.
         labels: [1, 2, 3, 4],
         series: [[100, 120, 180, 200]]
     });
+
+    console.debug("loaded #chart") // or undefined
 </script>
 ```
 
+Do some internal calculation <script> 99 * 88  </script>, the next script
+contains an error: <script> 99 * a </script>.
 
-                                   {{0-1}}
+                                {{2-3}}
 <div class="ct-chart ct-golden-section" id="chart1"></div>
 <script>
 // Initialize a Line chart in the container with the ID chart1
@@ -712,10 +785,12 @@ new Chartist.Line('#chart1', {
   labels: [1, 2, 3, 4],
   series: [[100, 120, 180, 200]]
 });
+
+console.debug("loaded #chart1")
 </script>
 
 
-                                     {{1}}
+                                {{3}}
 <div class="ct-chart ct-golden-section" id="chart2"></div>
 <script>
 // Initialize a Line chart in the container with the ID chart2
@@ -723,10 +798,12 @@ new Chartist.Line('#chart2', {
   labels: [1, 2, 3, 4],
   series: [[-100, 120, 180, 20]]
 });
+
+console.debug("loaded #chart2")
 </script>
 
-                                --{{2}}--
-Note, you have to include all required JavaScirpt-resourses in the initial
+                                --{{3}}--
+Note, you have to include all required JavaScript-resourses in the initial
 comment after the script definition. And by combining this feature with
 LiaScript effects, you can build even more sophisticated courses.
 
@@ -991,7 +1068,7 @@ and you have to handle multiple outputs.
 /* send.log(type, sep, content)
 *
 * params:
-*  - type: one of the follow strings "debug", "info", "warn", "error"
+*  - type: one of the follow strings "debug", "info", "warn", "error", "html"
 *  - sep: a string like separator, mostly for newlines "\n"...
 *  - content : represents a list of list
 */
@@ -1000,6 +1077,8 @@ console.debug("these are short hands for send.log('debug' ... ")
 console.warn("warn")
 console.log("info")
 console.error("and red for errors")
+
+console.html("<b>Some more fancy stuff:</b> <img width='40px' src='https://www.math.uni-bielefeld.de/~jsauter/Octahedron.gif'/>")
 
 "fin"
 ```
@@ -1136,12 +1215,12 @@ even more, you can directly import macros from other courses. Section
 ##### Error Handling
 
 As mentioned earlier, `send.lia` can do more then just passing messages to the
-terminal output. The editor that is currently used by LiaScript is [ace](todo),
-which allows to mark lines with warnings and errors. Since there is no name
-associated to a file (like with the `@input(0)` macro). You have to use a list
-of lists,  which contain all necessary information that you want to pass to the
-editor. The list element is associated with the code-block, starting from top to
-bottom.
+terminal output. The editor that is currently used by LiaScript is
+[ace](https://ace.c9.io), which allows to mark lines with warnings and errors.
+Since there is no name associated to a file (like with the `@input(0)` macro).
+You have to use a list of lists,  which contain all necessary information that
+you want to pass to the editor. The list element is associated with the
+code-block, starting from top to bottom.
 
 ``` js
 send.lia( "ups, something went wrong",
@@ -3441,7 +3520,7 @@ By the way, macros are case-sensitive, thus there is a difference between
 
 Block-macros are not followed by an colon and are parsed until they reach the
 `@end` symbol. Every macro can also be used to define Markdown content, HTML,
-CSS, or even JavaScirpt.
+CSS, or even JavaScript.
 
 ``` md
 <!--
@@ -4057,6 +4136,998 @@ one slide to another will might destroy previous states. For this purpose major
 version changes are required (`1.1.0` -> `2.0.0`), which will result in a new
 version also in IndexedDB. The old code/state is still available and can be
 restored.
+
+## JavaScript or JS-Components
+
+> By the time of writing this, I do strongly believe that the script-tag, that
+> was introduced by Netscape in 1995 (cf.
+> [Wikipedia](https://en.wikipedia.org/wiki/JavaScript#History)), is used in the
+> wrong way. It is still somehow outside of HTML, although, if it could embedded
+> as part of the DOM, we would not have to search the DOM for IDs and try to
+> manimpulate the content of a certain node. Much of the work, that we try to
+> put into the development of Web-Components could be easily achieved by using
+> only the script-tag slightly different.
+
+In LiaScript we now have the power to insert script everywhere and to connect
+them with a simple publish-subscribe mechanism, in order to create even more
+interactive books and courses. Thus you can add additional calculations
+everywhere within your document and the internal LiaScript- event-system handles
+their execution. This can be seen as an inverse attempt to Jupyther- or
+R-Notebooks, where content is placed around code for documentation. We try to
+integrate code as a native element into content.
+
+> All scripts are executed only after all external javascript-files have been
+> imported.
+
+### Basics
+
+Simply use the well-know `<script> ... </script>` (nearly) everywhere within
+your document to perform any kind of calculation 10 percent from 99 \$ is equal
+to <script>99 * 0.1</script>. Or, you can also query any kind of external
+service such as https://www.wikidata.org, weather forecasting from
+https://openweathermap.org or random gifs of cats from https://giphy.com, as it
+is depicted below.
+
+    <script run-once>
+    fetch('https://api.giphy.com/v1/gifs/random?api_key=XuS4MlQmIR6WQpMA8Zpxv4shNfJW8Aci&tag=cat')
+      .then(response => response.json())
+      .then(data => send.html(`<img height="250px" src="${data.data["image_url"]}">`))
+
+    "loading"
+    </script>
+
+
+> If you are "reading" this course in LiaScript, you will have noticed, that the
+> background of those script-results is actually gray. You can double-click on
+> them to see what is actually inside and edit the code. If you click somewhere
+> else, so that the object loses its focus, the script gets reevaluted.
+
+Usage
+=====
+
+The snippet below depicts how such scripts can be defined. The result of a
+script is directly used as the content of the cell and placed exactly there
+where the script-tag was originaly defined. The result of the first cell is
+obvious, it is a number. The larger second script actually has two different
+results, the first result is the string `loading`, the second one is generated
+by the promise of the JavaScript fetch-API, it triggers a download process for
+the given url and if this is successful, the send-object is used to send back a
+string that is internally interpreted as a new HTML-image.
+
+
+``` markdown
+Some inline calculation: <script>99 * 0.1</script>
+
+<script run-once>
+fetch('https://api.giphy.com/v1/gifs/random?api_key=...tag=cat')
+  .then(response => response.json())
+  .then(data => send.html(`<img height="250px" src="${data.data["image_url"]}">`))
+
+"loading"
+</script>
+```
+
+The following code snippet shows a more obvious example, the script generates  a
+timeout that triggers the execution of the function after 5 seconds. Which
+means, that the first result is the string `waiting for 5 seconds` and after
+this time a new result is generated: `I am ready!`.
+
+``` markdown
+<script run-once>
+setTimeout(function(){
+  send.lia("I am ready!")
+}, 5000)
+
+"waiting for 5 seconds"
+</script>
+```
+
+However, there is a better way of doing this. Within the example above, the
+script is marked by LiaScript that is not running anymore, since a first valid
+result was already generated, which means, that this script is triggerd also for
+the next time, if you go to the next slide and return. One way of dealing with
+this issue, is to used the attribute `run-once` or `run-once="true"` to
+indicate, that the code should only be executed once. The result of the script
+is stored and the script is never again executed. But, you can also use the same
+methids as they were introduced in section [Communication](#communication).
+
+That means, you can use the two return strings, but you can use also the two
+functions:
+
+* `"LIA: wait"` --> `send.wait()`
+* `"LIA: stop"` --> `send.stop()`
+
+``` markdown
+<script>
+setTimeout(function(){
+  send.lia("I am ready!")
+}, 5000)
+
+"LIA: wait" // or send.wait()
+</script>
+```
+
+The function `send.lia` marks the execution of the script to be finished, but in
+the case that your produce continous results, you can use the following:
+
+``` markdown
+<script>
+function counter(i) {
+  if (i > 0) {
+    send.output("HTML: <h"+i+" style='display: inline-block'>hallo " + i +"</h"+i+">")
+    setTimeout(() => counter(i-1), 1000)
+  } else {
+    send.stop()
+  }
+}
+
+counter(6)
+
+send.wait() // or "LIA: wait"
+</script>
+```
+
+Actually only two functions, `send.lia` and `send.output`. The functions
+`send.wait` and `send.stop` are actually only shortcuts for
+`send.lia("LIA: wait")` and `send.lia("LIA: stop")`. In the same way `send.html`
+is only a shortcut for `send.lia("HTML: " + ...)`, as it is depicted below.
+
+``` markdown
+<script>
+let html_string = "<h2>Markdown</h2>"
+send.html(html_string)
+send.lia("HTML: " + html_string)
+"HTML: " + html_string
+</script>
+```
+
+Errors
+======
+
+Every script can contain errors, and so does the follow script <script> a * 33
+</script>. The error message is printed in red, even if you only wanted to
+execute a script, that does not produce any outputs. You can double-click onto
+the error message to edit the code and define the variable `a`.
+
+
+### Execution & Animations
+
+You can combine scripts with LiaScript animations and thus trigger their
+execution. If you are in textbook mode all scripts will be executed. If a script
+does not belong to an animation, it will be executed immediately when you open a
+slide on every time you visit the slide, if you do not set the parameter
+`run-once` or if the the slide is not marked as running.
+
+``` html
+<script>alert("0")</script>
+
+{{1}} <script>alert("1")</script>
+
+{{2}} <script>alert("2")</script>
+
+{{3}} <script>alert("3")</script>
+```
+
+<script run-once>alert("0")</script>
+
+{{1}} <script>alert("1")</script>
+
+{{2}} <script>alert("2")</script>
+
+{{3}} <script>alert("3")</script>
+
+A script is only executed within the local scope of a slide. It is not possible
+to trigger the execution of scripts from slides that have not been visited. But
+scripts can remain active, even if you go to another slide.
+
+
+### `input`
+
+Using only static scripts is actually boring, we want to interact with the
+scripts and pass input values. In LiaScript this is achieved through a
+combination of script-tags with input-tags. Simply add the parameter `input`
+to with an additional type information to the script tag.
+
+> All possible types that are defined by the HTML5 standard can be used, as well
+> as their specific parameters. These are automatically passed to the generated
+> input:
+>
+> https://www.w3schools.com/tags/tag_input.asp
+
+
+Scripts that are combined with an input are marked by a thin frame, you can
+click on them and change the input. And, different inputs pruduce different
+result and might trigger the execution slightly differently 😏
+
+#### `button`
+
+The code as depited below, will implement a simple clickable button. The script
+is loaded once, when the slide is rendered and then every time you click on it.
+
+
+``` html
+<script input="button">
+alert("click")
+
+"click me"
+</script>
+```
+
+<script input="button">
+alert("click")
+
+"click me"
+</script>
+
+
+#### `text`
+
+This is also the default input. It shows also the usage of the `@input` macro.
+It defines the place, where the current the input value should be placed. Since
+with the same input, text, numbers, code, etc. could be defined, you have to
+decide if it is interpreted as a string in `""` or used as part of your code.
+The attribute `value` is used as the default initial input to your script, for
+the first execution. If no `value` is defined, then the default input is an
+empty string.
+
+``` html
+<script input="text" value="reverse">
+let str = "@input"
+// the input string gets reversed
+str.split("").reverse().join("")
+</script>
+```
+
+
+Text inputs are evaluted emediately on every change.
+
+
+<script input="text" value="reverse">
+let str = "@input"
+
+str.split("").reverse().join("")
+</script>
+
+
+> For more information about text inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_text.asp
+
+#### `number`
+
+The number input is similar to text, but only numbers are allowed as input and
+you can set additional parameters such aus `min`, `max`, and `step`.
+
+``` markdown
+<script input="number" value="1" min="0" max="1000000">
+let i = @input // direct usage as a number
+
+"Square of " + i + " = " + i * i
+</script>
+```
+
+As for texts, the input is evaluted on every change.
+
+<script input="number" value="1" min="0" max="1000000">
+let i = @input
+
+"Square of " + i + " = " + i * i
+</script>
+
+> For more information about number inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_number.asp
+
+#### `range`
+
+The range is actually a slider, that generates numbers as input and you can set
+additional parameters such aus `min`, `max`, and `step`.
+
+``` markdown
+<script input="number" value="1" min="0" max="1000" step="0.1">
+let i = @input // direct usage as a number
+
+"Square of " + i + " = " + i * i
+</script>
+```
+
+The input is evaluted on every change.
+
+<script input="range" value="0" min="0" max="360" step="0.1">
+let i = @input
+
+"Sinus of " + i + " = " + Math.sin(i)
+</script>
+
+> For more information about range inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_range.asp
+
+
+#### `search`
+
+The search input is actually text input, but in contrast to text, the script is
+only executed after the input field looses its context.
+
+``` markdown
+<script input="search" value="abcdefg">
+let str = "@input"
+
+"reverse of \"" + str + "\" -> " + str.split("").reverse().join("")
+</script>
+```
+
+---
+
+<script input="search" value="abcdefg">
+let str = "@input"
+
+"reverse of \"" + str + "\" -> " + str.split("").reverse().join("")
+</script>
+
+> For more information about search inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_search.asp
+
+
+#### `password`
+
+
+The password input is actually text input, but in contrast to text the input is
+not directly visible and the script is only executed after the input field
+looses its context.
+
+``` markdown
+<script input="password">
+let password = "@input"
+
+if (password == "LiaScript") {
+  "You got it!"
+} else {
+  "please enter the correct password"
+}
+</script>
+```
+
+---
+
+<script input="password">
+let password = "@input"
+
+if (password == "LiaScript") {
+  "You got it!"
+} else {
+  "please enter the correct password"
+}
+</script>
+
+> For more information about password inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_password.asp
+
+
+#### `radio`
+
+In contrast to the commonly usage of radio buttons, which requires the
+definition of multiple radio inputs, LiaScript achieves the same with input
+`radio` and the definition of the `options` parameter. All possible options are
+separated by `|`. Thus, the user can only select one of the defined options.
+
+
+``` html
+<script input="radio" value="1" options="1|2|3|Hello World|true">
+"Selected option: @input"
+</script>
+```
+
+Changes will trigger an immediate execution of the script.
+
+<script input="radio" value="1" options="1|2|3|Hello World|true">
+"Selected option: @input"
+</script>
+
+> `options` is not a standard HTML parameter, for more information on radio
+> inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_radio.asp
+
+#### `select`
+
+`select` is actually not an input type, but we added it, since it allows to
+perform the same task as radio-buttons, but the representation is a drop-down
+list. The usage of `options` and their separation by `|` is equal to radio
+buttons.
+
+``` html
+<script input="select" value="1" options="1|2|3|Hello World|true">
+"Selected option: @input"
+</script>
+```
+
+Changes will trigger an immediate execution of the script.
+
+<script input="select" value="1" options="1|2|3|Hello World|true">
+"Selected option: @input"
+</script>
+
+> `options` is not a standard HTML parameter, for more information on radio
+> inputs see:
+>
+> https://www.w3schools.com/tags/tag_select.asp
+
+
+#### `checkbox`
+
+Checkboxes in contrast to radio-buttons or select allow you to select multiple
+elements at once or none.
+
+If no options are defined, a checkbox is treated as a single input that switches between true and false, wheather, the checkbox is checked or not:
+
+``` html
+<script input="checkbox" value="true">
+"@input"
+</script>
+```
+
+<script input="checkbox" value="true">
+"@input"
+</script>
+
+---
+
+If you define `options` the current value as well as the result is treated
+as a list of strings in JSON format:
+
+``` html
+<script input="checkbox" value='["Ben"]' options="Ben|Jerry|Tom|Hardy" >
+@input
+</script>
+```
+
+<script input="checkbox" value='["Ben"]' options="Ben|Jerry|Tom|Hardy" >
+@input
+</script>
+
+---
+
+This might not be a sufficient and readable, therefor it is also possible to
+define formats for outputs (see section
+[Formatting with Intl](#Formatting-with-Intl)). The `list` format for example
+allows to add language specific textual formatting for list.
+
+``` html
+<script
+  input="checkbox"
+  value='["Ben", "Jerry", "Tom"]'
+  options=" Ben | Jerry | Tom | Hardy "
+
+  format="list" locale="en"
+>
+  let list = @input
+
+  if (list.length == 0)
+    ["no one"]
+  else
+    list
+</script>
+```
+
+<script
+  input="checkbox"
+  value='["Ben", "Jerry", "Tom"]'
+  options=" Ben | Jerry | Tom | Hardy "
+
+  format="list" locale="en"
+>
+  let list = @input
+
+  if (list.length == 0)
+    ["no one"]
+  else
+    list
+</script>
+
+
+> For more information about checkbox inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_checkbox.asp
+
+
+#### `date`
+
+Date allows offers a datepicker. The normal return value is a string of the
+format `YYYY-MM-DD` (Year-Month-Day), but it is also possible to tweak this
+output according to some language specific formats.
+
+``` html
+<script input="date" value="2020-10-10" format="datetime" locale="en">
+"@input"
+</script>
+```
+
+The execution is triggered on every change.
+
+<script input="date" value="2020-10-10" format="datetime" locale="en">
+"@input"
+</script>
+
+> For more information about date inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_date.asp
+
+
+#### `datetime-local`
+
+Datetime-local includes the date and time. The standard return format is
+`YYYY-MM-DDTHH:MM` (Year-Month-DayTHour:Minutes). The execution is triggered on
+every change.
+
+``` html
+<script input="datetime-local" value="2020-11-20T12:30">
+"@input"
+</script>
+```
+
+<script input="datetime-local" value="2020-11-20T12:30">
+"@input"
+</script>
+
+But of course, it is also possible to format time and date:
+
+``` html
+<script input="datetime-local"
+        value="2020-11-20T12:30"
+        format="datetime"
+        locale="en"
+        dateStyle='full'
+        timeStyle='short'>
+"@input"
+</script>
+```
+
+<script input="datetime-local"
+        value="2020-11-20T12:30"
+        format="datetime"
+        dateStyle='full'
+        timeStyle='short'>
+"@input"
+</script>
+
+> For more information about datetime-local inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_datetime-local.asp
+
+
+#### `time`
+
+``` html
+<script input="time" value="11:30">
+"@input"
+</script>
+```
+
+<script input="time" value="11:30">
+"@input"
+</script>
+
+> For more information about time inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_time.asp
+
+
+
+#### `email`
+
+
+``` html
+<script input="email" placeholder="please your Email">
+let email = "@input"
+
+if (email) {
+  email
+} else {
+  "email"
+}
+</script>
+```
+
+<script input="email" placeholder="please your Email">
+let email = "@input"
+
+if (email) {
+  email
+} else {
+  "email"
+}
+</script>
+
+> For more information about time inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_email.asp
+
+
+#### `url`
+
+
+``` html
+<script input="url" value="url">
+"@input"
+</script>
+```
+
+<script input="url" value="url">
+"@input"
+</script>
+
+> For more information about url inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_url.asp
+
+
+#### `tel`
+
+``` html
+<script input="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="123-45-678">
+let tel = "@input"
+
+if (tel) {
+  tel
+} else {
+  "tel"
+}
+</script>
+```
+
+<script input="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="123-45-678">
+let tel = "@input"
+
+if (tel) {
+  tel
+} else {
+  "tel"
+}
+</script>
+
+> For more information about tel inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_tel.asp
+
+
+#### `submit`
+
+I qually used as the `button` input, see therefor section [button](#button)
+
+#### `month`
+
+``` html
+<script input="month" value="1999-12">
+"@input"
+</script>
+```
+
+<script input="month" value="1999-12">
+"@input"
+</script>
+
+> For more information about month inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_month.asp
+
+#### `week`
+
+
+``` html
+<script input="week" value="2020-W40">
+"@input"
+</script>
+```
+
+<script input="week" value="2020-W40">
+"@input"
+</script>
+
+> For more information about week inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_week.asp
+
+#### `file`
+
+not working yet ...
+
+> For more information about file inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_file.asp
+
+
+#### `hidden`
+
+This type is special, as it does not produce any visible output, but as shown in
+section [output](#output), this can be used to hide complex calculation, that
+might be used by various different elements as input.
+
+``` html
+<script input="hidden">
+{value: 12, height: "12px", points: 123.12}
+</script>
+```
+
+#### `color`
+
+Defines a color picker. The normal return value has the format `#RRGGBB` (red
+green blue). The number values are defined in hex ranging from 00 to FF.
+
+```html
+<script input="color" value="#FF0000">
+"HTML: <b style='color:@input'>@input</b>"
+</script>
+```
+
+<script input="color" value="#FF0000">
+"HTML: <b style='color:@input'>@input</b>"
+</script>
+
+> For more information about color inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_color.asp
+
+
+#### `image`
+
+Not used atm.
+
+#### `textarea`
+
+This is also not a input type, but instead the application of the textarea HTML
+element. This can be used to edit more complex multiline strings. The script is
+only executed after the element has lost its context.
+
+``` html
+<script input="textarea" value="<span style='font-size: 32px'>hallo</span>" style="width:100%">
+`HTML: @input`
+</script>
+```
+
+<script input="textarea" value="<span style='font-size: 32px'>hallo</span>" style="width:100%">
+`HTML: @input`
+</script>
+
+> For more information about textareas see:
+>
+> https://www.w3schools.com/tags/tag_textarea.asp
+
+
+### `output`
+<!--
+boolean: <script input="checkbox" value="true" output="@0" modify="false">
+         @input
+         </script>
+
+and:     <script modify="false">@input(`@0`) && @input(`@1`) </script>
+-->
+
+
+You can use the `output="channel-name"` parameter to define a dedicated channel,
+on which the script publishes its changed outputs and other scripts can
+subscribe to these changes via `input(channel-name)`, but the channel name has
+to be in markdownish style backtics, as depited below:
+
+``` html
+publishing node P
+<script input="checkbox" value="true" output="P">
+@input
+</script>
+AND Q
+<script input="checkbox" value="true" output="Q">
+@input
+</script>
+result in:
+<script output="AND">
+@input(`P`) && @input(`Q`)
+</script>
+```
+
+publishing node P
+<script input="checkbox" value="true" output="P">
+@input
+</script>
+AND publishing node Q
+<script input="checkbox" value="true" output="Q">
+@input
+</script>
+result in:
+<script output="AND">
+@input(`P`) && @input(`Q`)
+</script>
+
+Within the example above you can also see the difference between scripts with
+and without associated inputs. Scripts with inputs do have a frame, while
+scripts without inputs do only have grey backgound.
+
+
+Combining scripts with macros
+=============================
+
+Such scripts are of course complicated to read and require a lot of boilerplate
+code, which could and should be hidden behind macros, to make the text event
+more readable. The example below, shows how two macros can be defined that could
+be used everywhere within your code, also with changing parameters.
+
+
+``` markdown
+### `output`
+<!--
+boolean: <script input="checkbox" value="true" output="@0" modify="false">
+         @input
+         </script>
+
+and:     <script modify="false">@input(`@0`) && @input(`@1`) </script>
+-->
+
+@boolean(P), @boolean(Q) --> @and(P,Q)
+```
+
+@boolean(P), @boolean(Q) --> @and(P,Q)
+
+
+> The parameter **`modify="false"`** removes the the gray backgound, so that
+> scripts without any input become indistinguishable from the rest of the
+> content. This gray backgound also indicates, that the code behind the script
+> is **editable**. You can switch to the edit mode via a double-click on the
+> script element. Thus you can inspect every script and also edit it, the code
+> will only be executed after the textinput has lost the focus.
+
+#### `default` & Execution-Graphs
+
+If you connect scripts, this connection should actually form a directed graph,
+without cycles. But of course, if you want to, can produce also cycles, that
+stop only if the results do not change anymore.
+
+``` html
+<script input="range" value="1" default="1" output="x">
+@input * @input(`y`)
+</script>
+<script input="number" value="1" default="1" output="y">
+@input + @input(`x`)
+</script>
+```
+
+The `default` parameter is used to define a the default output of this script.
+Otherwise the initial calculation will result in an error, since the scripts do
+require the outputs of the other script that can never be calculated, due to the
+circular dependency.
+
+<script input="range" value="1" default="1" output="x">
+@input * @input(`y`)
+</script>
+<script input="number" value="1" default="1" output="y">
+@input + @input(`x`)
+</script>
+
+
+
+### Formatting with Intl
+
+`format=`
+
+
+* `"datetime"`:
+
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
+
+* `"number"`:
+
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat
+
+* `"list"`
+
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat
+
+* `"relativetime"`:
+
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat
+
+* `"pluralrules"`:
+
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules
+
+
+
+### Further Examples
+
+
+#### Tables
+<!--
+sin: <script format="number"
+             localeStyle="currency"
+             currency="EUR"
+             locale="de-DE"
+             modify="false"
+    > Math.sin(@input(`result`) + @input(`amp`) * @0) </script>
+-->
+
+``` markdown
+#### Tables
+<!--
+sin: <script format="number"
+             localeStyle="currency"
+             currency="EUR"
+             locale="de-DE"
+             modify="false"
+    > Math.sin(@input(`result`) + 0.5 * @0) </script>
+-->
+
+<script run-once
+        default="0"
+        output="result"
+        input="range" value="2" min="0" max="25" step="0.1"
+        >
+@input
+</script>
+
+
+<script run-once
+        default="0"
+        output="amp"
+        input="range" value="2" min="0" max="25" step="0.1"
+        >
+@input
+</script>
+
+
+<!-- data-type="barchart" id="tabelle" -->
+| Header 1 | <script>@input(`result`)</script> |
+|:-------- |--------: |
+| 1        | @sin(1)  |
+| 2        | @sin(2)  |
+| ...      | ....     |
+```
+
+Pos: <script run-once
+        default="0"
+        output="result"
+        input="range" value="2" min="0" max="25" step="0.1"
+        >
+@input
+</script>
+and amplitude:
+<script run-once
+        default="0"
+        output="amp"
+        input="range" value="1" min="0" max="2" step="0.1"
+        >
+@input
+</script>
+
+
+<!-- data-type="barchart" id="tabelle" -->
+| Header 1 | <script>@input(`result`)</script> |
+|:-------- |--------: |
+| 1        | @sin(1)  |
+| 2        | @sin(2)  |
+| 3        | @sin(3)  |
+| 4        | @sin(4)  |
+| 5        | @sin(5)  |
+| 6        | @sin(6)  |
+| 7        | @sin(7)  |
+| 8        | @sin(8)  |
+| 9        | @sin(9)  |
+
+#### Calculator
+<!--
+calc: <script run-once format="number" locale="en" notation="compact">@0</script>
+-->
+
+
+``` markdown
+#### Calculator
+<!--
+calc: <script run-once format="number" locale="de" notation="compact">@0</script>
+-->
+
+Interim calculation @calc(22*12345.98726) or @calc(`Math.pow(3.141592, 12)`)...
+```
+
+Interim calculation @calc(22*12345.98726) or @calc(`Math.pow(3.141592, 12)`)...
 
 
 ## Future Work
