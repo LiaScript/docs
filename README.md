@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  7.0.0
+version:  7.0.1
 language: en
 narrator: US English Male
 
@@ -2864,10 +2864,15 @@ Simply `data-type="none"` to prevent any kind of visualization.
 
 ### custom
 
-<script>
+<script input="range" value="2" output="range">@input</script>
+
+<script input="range" value="50" output="amplitude">@input</script>
+
+
+<script run-once style="display: inline-block; width: 100%">
 function func(x) {
     x /= 10;
-    return Math.sin(x) * Math.cos(x * 2 + 1) * Math.sin(x * 3 + 2) * 50;
+    return Math.sin(x) * Math.cos(x * @input(`range`) + 1) * Math.sin(x * 3 + 2) * @input(`amplitude`);
 }
 
 function generateData() {
@@ -2947,9 +2952,7 @@ let option = {
     ]
 }
 
-let div = document.getElementById("functionPlot")
-
-div.innerHTML = "<e-charts option='" + JSON.stringify(option) + "'></e-charts>"
+"HTML: <e-charts option='" + JSON.stringify(option) + "'></e-charts>"
 
 </script>
 
@@ -2969,9 +2972,6 @@ option='{
     "type":"line"
   }]
 }'></e-charts>
-
-
-<div id="functionPlot"></div>
 
 ## Surveys
 
@@ -3508,7 +3508,9 @@ author: someone who wants to create something new
 
 @Single.line  <-- this will be replaced at compile-time by: v
 
-you can add as much content as you want to your single-line macro! The only thing that is important, is to use indentation. Not __matter__ how [much](#12) it is.
+you can add as much content as you want to your single-line macro! The only
+thing that is important, is to use indentation. Not __matter__ how [much](#12)
+it is.
 
 @author <-- by: someone who wants to create something new
 ```
@@ -4963,10 +4965,10 @@ boolean: <script input="checkbox" value="true" output="@0" modify="false">
 and:     <script modify="false">@input(`@0`) && @input(`@1`) </script>
 -->
 
-@boolean(P), @boolean(Q) --> @and(P,Q)
+@boolean(p), @boolean(q) --> @and(p,q)
 ```
 
-@boolean(P), @boolean(Q) --> @and(P,Q)
+@boolean(p), @boolean(q) --> @and(p,q)
 
 
 > The parameter **`modify="false"`** removes the the gray backgound, so that
@@ -5111,6 +5113,118 @@ and amplitude:
 | 7        | @sin(7)  |
 | 8        | @sin(8)  |
 | 9        | @sin(9)  |
+
+#### Search
+
+To change the current search subject
+<script input="search" output="search" value=cats default="cats">"@input"</script>
+to something else, simply click on the search and start to type...
+If you click on the image below, a new random search will be triggerd.
+
+
+<script input="button" run-once style="display: inline-block">
+fetch('https://api.giphy.com/v1/gifs/random?api_key=XuS4MlQmIR6WQpMA8Zpxv4shNfJW8Aci&tag=' + encodeURI("@input(`search`)"))
+  .then(response => response.json())
+  .then(data => send.html(`<img height="350px" src="${data.data["image_url"]}">`))
+
+"loading"
+</script>
+
+#### Diagrams
+
+The first value defines some kind of range:
+<script input="range" value="2" output="range">@input</script>
+, while the second can be interpreted as range
+<script input="range" value="50" output="amplitude">@input</script>.
+You can double-click on any gray element to inspect and edit its javascript code.
+
+
+<script run-once style="display: inline-block; width: 100%">
+function func(x) {
+    x /= 10;
+    return Math.sin(x) * Math.cos(x * @input(`range`) + 1) * Math.sin(x * 3 + 2) * @input(`amplitude`);
+}
+
+function generateData() {
+    let data = [];
+    for (let i = -200; i <= 200; i += 0.1) {
+        data.push([i, func(i)]);
+    }
+    return data;
+}
+
+let option = {
+    animation: false,
+    grid: {
+        top: 40,
+        left: 50,
+        right: 40,
+        bottom: 50
+    },
+    xAxis: {
+        name: 'x',
+        minorTick: {
+            show: true
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#999'
+            }
+        },
+        minorSplitLine: {
+            show: true,
+            lineStyle: {
+                color: '#ddd'
+            }
+        }
+    },
+    yAxis: {
+        name: 'y',
+        min: -100,
+        max: 100,
+        minorTick: {
+            show: true
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#999'
+            }
+        },
+        minorSplitLine: {
+            show: true,
+            lineStyle: {
+                color: '#ddd'
+            }
+        }
+    },
+    dataZoom: [{
+        show: true,
+        type: 'inside',
+        filterMode: 'none',
+        xAxisIndex: [0],
+        startValue: -20,
+        endValue: 20
+    }, {
+        show: true,
+        type: 'inside',
+        filterMode: 'none',
+        yAxisIndex: [0],
+        startValue: -20,
+        endValue: 20
+    }],
+    series: [
+        {
+            type: 'line',
+            showSymbol: false,
+            clip: true,
+            data: generateData()
+        }
+    ]
+}
+
+"HTML: <e-charts option='" + JSON.stringify(option) + "'></e-charts>"
+
+</script>
 
 #### Calculator
 <!--
