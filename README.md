@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  7.0.1
+version:  8.0.0
 language: en
 narrator: US English Male
 
@@ -296,6 +296,22 @@ personal website or for other GitHub projects. For more information follow the
 link:
 
 {{1}} https://aizac.herokuapp.com/markdown-just-got-a-new-preview-tag/
+
+
+##### QR-Codes
+
+Sometimes it might be required to have both, a link and a visual representation:
+__QR-Codes__. Similar to preview links you simply, simply name your link:
+`[qr-code](url)`.
+
+[qr-code](https://LiaScript.github.io)
+
+You can further add some information, if you add a title to the link. By the way, Markdown is also allowed within the link-title:
+
+`[qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog](https://aizac.herokuapp.com)__")`
+
+[qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog](https://aizac.herokuapp.com)__")
+
 
 
 #### Images and Movies
@@ -2342,7 +2358,7 @@ datasets. The following sections are intended to give a brief overview on differ
 visualization options and how the systems determines, which one gets applied.
 And of course, you can also enforce your visualization style.
 
-### LinePlot
+### `LinePlot`
 
 The following dataset was taken from https://ourworldindata.org and it shows
 the government expenditure on education in percentage to the GDP. Thus the
@@ -2404,7 +2420,34 @@ data-ylabel="% of GDP"
 | ...  |     ... | ... |     ... |     ... |
 ```
 
-### ScatterPlot
+You can of course also visualize any kind of table, that does not fullfill this
+type of classification to line or scatterplot. Define another kind of
+presentation and if not all values within the first column can be parsed as
+numbers, then they are interpreted as categories. If you change the order of the
+table, then also the order of categories in the visualization is changed.
+
+``` md
+<!-- data-type="line" -->
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |              2 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+| Sheep           |           90 |             12 |      95 |
+| Human           |           68 |             70 |      10 |
+```
+
+<!-- data-type="line" -->
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |              2 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+| Sheep           |           90 |             12 |      95 |
+| Human           |           68 |             70 |      10 |
+
+
+### `ScatterPlot`
 
 
 If your table is similar to the one in a LinePlot, but the first column
@@ -2429,7 +2472,7 @@ visualized as a scatter plot only showing the dots.
 |   10.0 | 10.0 |   7 |
 
 
-### BoxPlot
+### `BoxPlot`
 
 
 If you have a ScatterPlot like representation, but actually want to use this
@@ -2463,7 +2506,7 @@ datasets and get visualized accordingly.
 |   10.0 | 10.0 |   7 |
 |        |      |   1 |
 
-### BarChart
+### `BarChart`
 
 In contrast to a line or a scatter plot, if the first colum contains at least
 one entry thant cannot be parsed as a number, this might be represented also as
@@ -2483,7 +2526,7 @@ chosen.
 | Human           |           68 |             70 |      10 |
 
 
-### Radar
+### `Radar`
 
 
 If for example humans and sheeps are removed from the dataset, then wheight in
@@ -2497,7 +2540,7 @@ that allows to analyze data visually with different "y"-axis.
 | Brown bat       |        0.020 |             30 |      10 |
 
 
-### PieChart
+### `PieChart`
 
 If you have a table with only one row full of numbers, this will be
 automatically presented as an pie chart. The head represents the categories and
@@ -2519,7 +2562,7 @@ main title and the subtitle of your chart.
 | Student rating   |      50 |      50 |    100 |     200 |       350 |   250 |
 
 
-#### PieChart(s)
+#### `PieChart`(s)
 
 The default behavior for the Table below, would be to represent it as a bar-chart.
 But, you can enforce the usage of pie charts, simply by adding the attribute
@@ -2577,8 +2620,39 @@ The result is the same as above, but it might be easier to handle your data.
 | Hard-Rock                         | {0-1}{350} {1}{400} |
 | Samba                             | {0-1}{250} {1}{230} |
 
+### `Funnel`
 
-### Map
+Funnel is a similar representation as PieChart, but it is not set automatically.
+If you want to use funnel, you will have to set the `data-type` parameter to
+funnel.
+
+``` markdown
+<!-- data-type="funnel" -->
+| Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
+| -------:| -------:| ------:| -------:| ---------:| -----:|
+|      50 |      50 |    100 |     200 |       350 |   250 |
+```
+
+<!-- data-type="funnel" -->
+| Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
+| -------:| -------:| ------:| -------:| ---------:| -----:|
+|      50 |      50 |    100 |     200 |       350 |   250 |
+
+The rest is the same as for piecharts, you can also use effects to generate
+animated diagrams.
+
+<!-- data-type="funnel" data-transpose -->
+| Music-Style {0-1}{1994} {1}{2014} |      Student rating |
+|:--------------------------------- | -------------------:|
+| Classic                           |   {0-1}{50} {1}{20} |
+| Country                           |   {0-1}{50} {1}{30} |
+| Reggae                            |                 100 |
+| Hip-Hop                           | {0-1}{200} {1}{220} |
+| Hard-Rock                         | {0-1}{350} {1}{400} |
+| Samba                             | {0-1}{250} {1}{230} |
+
+
+### `Map`
 
 A map is similar to a BarChart from the table structure, but if you want to
 depict your data on a real map, you will have to add a geojson-file, that
@@ -2653,7 +2727,7 @@ data, that is attached to your table in the following way:
 
 
 
-### HeatMap
+### `HeatMap`
 
 Another type of visualization is a HeatMap, which is used, if the table head and
 the first column do only contain numbers, in other words coordinates. If you
@@ -2698,7 +2772,7 @@ data-show
 
 https://datavizpyr.com/heatmaps-with-seaborn-in-python/
 
-### Parallel
+### `Parallel`
 
 
 A Parallel representation jumps in, if there are simply too many categories, so
@@ -2757,7 +2831,7 @@ that your BarChart would contain only thin lines.
 | Romania                |  9.42580218461200 |            1.350 |                 73.3734146341464 |           14.8579664297396 |    69.8993946432444 |  15.2426389270160 |    21513622 |
 
 
-### Graph
+### `Graph`
 
 If the first column and the head of the table are equal, then the interpreter
 tries to interpret the content of the table as an adjacency matrix, which
@@ -2788,7 +2862,7 @@ __directed graph__, whereby the values define the strength of the line.
 > Unfortunatelly, self referenceing or multigraphs are currently not supported.
 
 
-#### Sankey
+#### `Sankey`
 
 A Sankey diagram is a special type of directed graph that can be used to streams
 or the flow of something, such as engergy, money, etc.
@@ -2805,7 +2879,7 @@ https://en.wikipedia.org/wiki/Sankey_diagram
 | E      |  2  |  1  |  1  |  1  |     |
 
 
-### None
+### `None`
 
 Simply `data-type="none"` to prevent any kind of visualization.
 
@@ -2952,13 +3026,13 @@ let option = {
     ]
 }
 
-"HTML: <e-charts option='" + JSON.stringify(option) + "'></e-charts>"
+"HTML: <lia-chart option='" + JSON.stringify(option) + "'></lia-chart>"
 
 </script>
 
 
 
-<e-charts
+<lia-chart
 option='{
   "xAxis": {
     "type": "category",
@@ -2971,7 +3045,7 @@ option='{
     "data": [820,932,901,934,1290,1330,1320],
     "type":"line"
   }]
-}'></e-charts>
+}'></lia-chart>
 
 ## Surveys
 
@@ -3200,7 +3274,7 @@ https://ivanceras.github.io/svgbob-editor/
 ### Chemical Structures
 
 ```` ascii
-   ----- O
+    -----. O
           \
            \________
            /        \
@@ -4595,7 +4669,8 @@ as a list of strings in JSON format:
 This might not be a sufficient and readable, therefor it is also possible to
 define formats for outputs (see section
 [Formatting with Intl](#Formatting-with-Intl)). The `list` format for example
-allows to add language specific textual formatting for list.
+allows to add language specific textual formatting for list. If you do not add
+locale information the document language is used as a default.
 
 ``` html
 <script
@@ -5005,30 +5080,102 @@ circular dependency.
 @input + @input(`x`)
 </script>
 
+### Further settings
+
+`value`
+=======
+
+Set the default input value, if it is a number or a string or something else,
+depends on the usage of the `@input` macro within the script.
+
+---
+
+`update-on-change`
+==================
+
+As mentioned earlier, every input-field has a specific update handling, `range`,
+`number`, `text`, `radio`, `checkbox`, trigger the execution of the script on
+every change, while the others are triggered only after the user hits enter or
+if the input field loses the focus. However, by using the parameter
+`update-on-change` you can change this behavior. It can be switched off or on by passing true or false, if you only pass `update-on-change` true is used as the default:
+
+* `update-on-change`
+* `update-on-change="true"`
+* `update-on-change="false"`
+
+---
+
+`input-active`
+==============
+
+Inputs are only visible, if the user clicks on the script representation. If you
+pass the parameter `input-active`, then the input will be visible on the first
+appearance, but it will be closed if the element loses the focus again.
+
+---
+
+`input-always-active`
+=====================
+
+Using this parameter, it is possible to switch on the input-field for ever, it
+will not be closed if the focus is lost.
+
+---
+
+`run-once`
+==========
+
+A script will be executed multiple times, if the site is rendered, or if it is
+associated to a certain effect number. If the calculation should be executed
+only once use this parameter. The result is preserved and displayed on every
+appearance.
+
+---
+
+`modify`
+========
+
+By double-clicking onto a script, you get into edit-mode. The code is displayed
+to the user and can be edited and it is executed again if the code-input field
+loses the context. By setting `modify="false"` to false, this editing function
+is switched of furthermore there is **no gray background** displayed.
+
+This is a script: <script modify="false">12</script>
+
 
 
 ### Formatting with Intl
 
-`format=`
+By using the `format` parameter you can set a specific kind of visual
+formatting. This will be visible to the user, but if you connect different
+script with input/output then the original result of an execution will be passed
+to the subsequent scripts. The links below show contain all information to the associated formatting all params are directly passed to the formatting function.
 
+Use `locale` to change the type of language/localization. If you do not pass
+such a value, then the default document language setting is used as default.
 
-* `"datetime"`:
+> There is one difference by using the `style` parameter. `style` is used format
+> the output with inline CSS. But some formattings also contain a `style`
+> parameter. In order to don't mess up with styles you have to use `localeStyle`
+> to set the locale language formatting style ;)
+
+* `format="datetime"`:
 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
 
-* `"number"`:
+* `format="number"`:
 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat
 
-* `"list"`
+* `format="list"`
 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat
 
-* `"relativetime"`:
+* `format="relativetime"`:
 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat
 
-* `"pluralrules"`:
+* `format="pluralrules"`:
 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules
 
@@ -5222,7 +5369,7 @@ let option = {
     ]
 }
 
-"HTML: <e-charts option='" + JSON.stringify(option) + "'></e-charts>"
+"HTML: <lia-chart option='" + JSON.stringify(option) + "'></lia-chart>"
 
 </script>
 
