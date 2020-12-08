@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  8.0.0
+version:  8.0.1
 language: en
 narrator: US English Male
 
@@ -537,25 +537,27 @@ Result:
                                    --{{0}}--
 Tables, we hope, are self-explanatory. The second line is used to define a table
 header as well as the alignment of the column, which is indicated by the colon.
-The default is left alignment.
+The default is left alignment. Additionaly you can add a starting comment to a
+cell, that can be used to add additional styling or HTML parameters or the
+entire cell.
 
 Markdown-format:
 
 ``` markdown
-| Tables            | Are           | Cool  |
-| ----------------- |:-------------:| -----:|
-| *** col 3 is ***  | right-aligned | $1600 |
-| ** col 2 is **    | centered      |   $12 |
-| * zebra stripes * | are neat      |    $1 |
+| <!-- style="background: #44ffff"--> Tables |      Are      |  Cool |
+| ------------------------------------------ |:-------------:| -----:|
+| *** col 3 is ***                           | right-aligned | $1600 |
+| ** col 2 is **                             |   centered    |   $12 |
+| * zebra stripes *                          |   are neat    |    $1 |
 ```
 
 Result:
 
-| Tables            | Are           | Cool  |
-| ----------------- |:-------------:| -----:|
-| *** col 3 is ***  | right-aligned | $1600 |
-| ** col 2 is **    | centered      |   $12 |
-| * zebra stripes * | are neat      |    $1 |
+| <!-- style="background: #44ffff"-->  Tables |      Are      |  Cool |
+| ---------------------------------------- |:-------------:| -----:|
+| *** col 3 is ***                         | right-aligned | $1600 |
+| ** col 2 is **                           |   centered    |   $12 |
+| * zebra stripes *                        |   are neat    |    $1 |
 
 
                                    --{{1}}--
@@ -1565,7 +1567,7 @@ if (rslt === "") {
 We provide a list of templates with more examples that can be used to start
 developing your own courses. See:
 
-https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md
+[preview-lia](https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md)
 
 ## Quizzes
 
