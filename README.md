@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  8.0.1
+version:  9.0.0
 language: en
 narrator: US English Male
 
@@ -1654,6 +1654,17 @@ The rest is self-explaining...
     [ [ ]   [X]    [ ]  ]       a second one
     [ ( )   ( )    (X)  ]       now it is single-choice
     [ ( )   (X)    ( )   (X) ]  more or less options are fine too
+
+### Selection
+
+The options within a selection are simply separated by `|` and the correct
+option is surrounded by parentheses ...
+
+``` markdown
+[[ ok | ( $ f(a,b,c) = (a^2+b^2+c^2)^3 $ ) | **FALSE** ]]
+```
+
+[[ ok | ( $ f(a,b,c) = (a^2+b^2+c^2)^3 $ ) | **FALSE** ]]
 
 ### Hints
 
