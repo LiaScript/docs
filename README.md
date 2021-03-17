@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  9.0.1
+version:  9.0.2
 language: en
 narrator: US English Male
 
@@ -5460,6 +5460,17 @@ Gallery
 ![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)
 ![small](img/lenna.jpg)
 ![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)
+
+
+Gallery with custom style
+=========================
+
+![small](img/lenna.jpg)<!-- style="height: 400px" -->
+![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)<!-- style="height: 400px" -->
+![small](img/lenna.jpg)<!-- style="height: 400px" -->
+![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)<!-- style="height: 400px" -->
+![small](img/lenna.jpg)<!-- style="height: 400px" -->
+![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)<!-- style="height: 400px" -->
 
 
 Gallery with caption
