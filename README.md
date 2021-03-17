@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  9.0.0
+version:  9.0.1
 language: en
 narrator: US English Male
 
@@ -5431,3 +5431,67 @@ The mind in the dark and the man behind the eLab-project ...
 
 --{{3}}--
 Embedded systems developer, creator or arduinoview, and Markdown evangelist ...
+
+
+## Todo
+
+Image
+=====
+
+![small](img/lenna.jpg)
+
+![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)
+
+
+Image with caption
+==================
+
+![small](img/lenna.jpg "An image of beautiful Lena ...")
+
+![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg "Some image of a certain dog breed")
+
+
+Gallery
+=======
+
+![small](img/lenna.jpg)
+![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)
+![small](img/lenna.jpg)
+![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)
+![small](img/lenna.jpg)
+![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)
+
+
+Gallery with caption
+====================
+
+![small](img/lenna.jpg "An image of beautiful Lena ...")
+![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg "Some image of a certain dog breed")
+![small](img/lenna.jpg "An image of beautiful Lena ...")
+![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg "Some image of a certain dog breed")
+![small](img/lenna.jpg "An image of beautiful Lena ...")
+![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg "Some image of a certain dog breed")
+
+
+
+Image within Text
+=================
+
+![small](img/lenna.jpg) Lorem ipsum dolor sit amet, consectetur adipisicing
+elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+Image within Text with caption
+==============================
+
+![small](img/lenna.jpg "An image of beautiful Lena ...") Lorem ipsum dolor sit
+amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+deserunt mollit anim id est laborum.
