@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  9.0.2
+version:  9.0.3
 language: en
 narrator: US English Male
 
@@ -5414,23 +5414,29 @@ Interim calculation @calc(22*12345.98726) or @calc(`Math.pow(3.141592, 12)`)...
 ## Contributors and Credit
 
 
-{1}{<h1> André Dietrich </h1>} <!-- class = "animated fadeInUpBig" -->
+{1}{<h1> <a href="https://github.com/andre-dietrich">André Dietrich</a> </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{1}}--
-Programming paradigm experimenter and creator of liaScript and SelectScript...
+Programming paradigm experimenter and creator of LiaScript and SelectScript...
 
 
 
-{2}{<h1> Sebastian Zug  </h1>} <!-- class = "animated fadeInUpBig" -->
+{2}{<h1> <a href="https://github.com/SebastianZug">Sebastian Zug</a> </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{2}}--
 The mind in the dark and the man behind the eLab-project ...
 
 
-{3}{<h1> Karl Fessel    </h1>} <!-- class = "animated fadeInUpBig" -->
+{3}{<h1> <a href="https://github.com/kfessel">Karl Fessel</a> </h1>} <!-- class = "animated fadeInUpBig" -->
 
 --{{3}}--
 Embedded systems developer, creator or arduinoview, and Markdown evangelist ...
+
+
+{4}{<h1> <a href="https://github.com/stvrhm">Steve Rehm</a> </h1>} <!-- class = "animated fadeInUpBig" -->
+
+    --{{4}}--
+CSS & SASS crack and friendly face behind new face of LiaScript ...
 
 
 ## Todo
