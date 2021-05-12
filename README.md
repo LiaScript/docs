@@ -2,9 +2,9 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  9.0.3
+version:  10.0.0
 language: en
-narrator: US English Male
+narrator: UK English Female
 
 logo:     https://liascript.github.io/img/bg-showcase-1.jpg
 
@@ -20,73 +20,346 @@ link: https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 
 link: https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css
 
-translation: Deutsch  translations/German.md
-translation: Français translations/French.md
-translation: Русский  translations/Russian.md
-
 -->
 
-# Lia-Script
 
-[![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://LiaScript.github.io/course/?https://github.com/LiaScript/docs) [![Gitter](https://badges.gitter.im/LiaScript/community.svg)](https://gitter.im/LiaScript/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+# LiaScript
 
----
-
-                                    --{{0}}--
-With Lia, we try to implement an extended Markdown format that should enable
-everyone to create, share, adapt, translate or correct and extend online courses
-without the need of being a web-developer.
-
-See the online rendered version at:
-https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md
-
-                                    --{{0}}--
-Click on the (ear) button at the navigation bar to switch between spoken and
-plain text mode format. And use the arrows-buttons at the top for navigating.
+> To see this document as an interactive LiaScript rendered version, click on the
+> following link/badge:
+>
+> [![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://LiaScript.github.io/course/?https://github.com/LiaScript/docs)
+>
+> If you need help, feel free to ask us any questions in the chat:
+>
+> [![Gitter](https://badges.gitter.im/LiaScript/community.svg)](https://gitter.im/LiaScript/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 
-*Lia-Script* <!-- class = "animated infinite bounce" style = "color: red; display: inline-block" onclick = "alert('It started with a click!');" -->
-is an extended Markdown format for writing interactive online
-courses. Imagine all schoolbooks, technical or scientific literature could
-become open-source projects and more interactive ... with collaborating teachers
-and students ...
+                            --{{0}}--
+With LiaScript, we tried to implement an extended
+[Markdown](https://en.wikipedia.org/wiki/Markdown) format that should enable
+everyone to create, share, adapt, translate or correct online courses without
+the need of being a web-developer. We believe that a language-based approach,
+instead of a tooling-centered one, provides more flexibility, freedom of
+creativity, and sustainability. Therefor we tried to develop a simplistic syntax
+that extends the static Markdown with quizzes, animations, spoken text,
+automated visualization [ASCII-art](https://en.wikipedia.org/wiki/ASCII_art) and
+much more. Everything has been woven around Markdown, so that the content can
+still be read and interpreted with any kind of editor or Markdown-interpreter.
 
-* easy to share adapt and translate
-* no additional software required, everything is implemented in JavaScript/Elm
-  and runs directly within the browser (online)
-* automatic conversion to epub, pdf, ...
+
+**What is LiaScript?**
+
+* a Markdown dialect for interactive courses and data-driven publishing,
+* everything is implemented in Elm/JavaScript and runs directly within the
+  browser (online),
+* the interpreter itself is also a reader, which allows for storing documents as
+  well as the progress,
+* courses can also be taken offline, since the interpreter is also a progressive
+  web app (PWA), that allows to store documents and progress directly within
+  the browser (locally),
+* everything is private, we do not store any data about the courses nor the
+  users and their progress
 
 
-                                     --{{1}}--
-Everything that is required is simple text-editor and a web-browser. Or you
-start directly to create and share your course on github. The entire parsing and
-transformation of Lia-Markdown to any other format is done within the browser at
-client-side.
+                            --{{1}}--
+There are a couple of problems that we currently see in the creation of
+[Open educational resources (OER)](https://en.wikipedia.org/wiki/Open_educational_resources).
+One of them is isolation, that means people, who want to create content, are
+seldomly connected via the applied technologies, instead, they are separated by
+platforms, authoring tools and used core technologies (programming languages).
+Furthermore, it is not possible to simply grab an educational website/project
+and to adapt its content for another audience. Additionally, it seems to be
+nearly impossible for people without a technical background to simply set up a
+small course. Thus, they stuck with Word, PowerPoint, and PDF, since they
+provide a simple continuation of the static formats people have used before the
+computer-era.
+"_If I want to publish content for the computer, I want my audience to dive in, experiment, simulate, play with the content... but not only read._"
+
+                              {{1}}
+********************************************************************************
+
+**Goals**
+
+* Simplicity: with a human-centered markup-language, anyone should be enabled to
+  create and modify content.
+* Interactive: the browser is the next operating systems and although content
+  with LiaScript is developed within a "static" markup-language it should not be
+  presented that way.
+* Extendability: everything that is not part of LiaScript shall be embeddable
+  and importable.
+* Durability: platforms go down, the development of proprietary software/formats
+  is discontinued, but LiaScript is not hosted on one platform (it can be
+  hosted everywhere) and even without the LiaScript interpreter the content is
+  still readable and interpretable with every editor; you could even print or
+  engrave it on stone or clay. Furthermore, if you use some kind of versioning
+  system (e.g. [git](https://en.wikipedia.org/wiki/Git)) you can refer to any
+  previous version of your course.
+
+********************************************************************************
+
+                           --{{2}}--
+Imagine a world where everyone would have the same access to high quality
+educational content for free. Imagine all kind of schoolbooks, technical or
+scientific literature could become open-courSe projects and more interactive,
+with collaborating teachers and students. Everything that is required is a
+simple text-editor and a web-browser.
+
+                             {{2}}
+![OER logo](https://upload.wikimedia.org/wikipedia/commons/2/20/Global_Open_Educational_Resources_Logo.svg)
 
 
 ## Tools
 
-                                     --{{0}}--
-There are currently 2 Plugins for the [Atom Editor](https://atom.io/) available,
-which are intended to ease and simplify the development of online course with
+                           --{{0}}--
+As already mentioned all you need to work with LiaScript is an text-editor, but
+it can be usefull to apply one of the follwing tools. At least we apply them to
+see the result of a change within the course document immediately. You will see,
+that the development of online-courses will speed up, especially if there is no
+need for memorizing complex point and click sequences.
+
+> "_Let the editor be your canvas and the keyboard your brush._"
+
+### Editing
+
+**Atom:**
+
+                           --{{0}}--
+There are currently 2 plugins for the [Atom Editor](https://atom.io/) available,
+which are intended to ease and simplify the development of online courses with
 LiaScript.
 
-[liascript-preview](https://atom.io/packages/liascript-preview): Is a tiny
-previewer that, if it was toggled, updates the view on your course each time you
-save your document.
+![Atom with liascript-plugins](https://raw.githubusercontent.com/andre-dietrich/liascript-preview/master/preview.gif "Screencast of the Atom-editor with the liascript-preview and liascript-snippts installed.")<!-- style="width: 100%" -->
+
+0. [Atom](https://atom.io): This is the free and open and official
+   [GitHub](https://github.com) editor, with lots of plugins for various use
+   cases.
+1. [liascript-preview](https://atom.io/packages/liascript-preview): Is a tiny
+   previewer that, if it was toggled ( `Alt+L` ), updates the view on your
+   course each time you save your document.
+2. [liascript-snippets](https://atom.io/packages/liascript-snippets): If you
+   start typing `lia` in your Markdown document you switch on a fuzzy search,
+   that contains a lot of LiaScript help, examples, and snippets.
 
 
-![previewer](https://raw.githubusercontent.com/andre-dietrich/liascript-preview/master/preview.gif)<!-- style="width: 100%" -->
 
-[liascript-snippets](https://atom.io/packages/liascript-snippets): If you start
-typing "lia" in your document you switch on a fuzzy search, that contains a lot
-of LiaScript help, examples, and snippets.
+                             {{1}}
+********************************************************************************
 
-![snippets](https://raw.githubusercontent.com/andre-dietrich/liascript-snippets/master/preview.gif)<!-- style="width: 100%" -->
+**LiaScript-DevServer:**
+
+                           --{{1}}--
+If you are used to another editor, you can also start a LiaScript development
+server locally. It works like the plugin for Atom and updates your course within
+your browser on every save, but this can also be used to monitor multiple
+projects. And you can also use it for testing purposes, as if you would deploy
+your projects.
+
+![liascript-devserver](https://raw.githubusercontent.com/liascript/liascript-devserver/main/pics/navigation.gif "Screencast of the liascript-devserver while navigating through a folder-structure.")<!-- style="width: 100%" -->
+
+Get the project from:
+
+* npmjs: https://www.npmjs.com/package/@liascript/devserver
+* GitHub: https://github.com/LiaScript/LiaScript-DevServer
+
+********************************************************************************
 
 
-## *Markdown*-Syntax
+                             {{2}}
+********************************************************************************
 
+**CodiLIA:**
+
+                           --{{2}}--
+If you prefer to work with multiple authors simultaneously, then you should give
+[CodiLIA](https://github.com/liascript/codilia) a try. It is a fork of the
+collaborative editor
+[CodiMD/Hedgehoc](https://github.com/hedgedoc/hedgedoc/tree/master), but instead
+of a Markdown preview, you will have a LiaScript preview, and you can
+immediately publish your courses.
+
+Project: https://github.com/liascript/codilia
+
+!?[CodiLIA deploy to Heroku](https://www.youtube.com/watch?v=AERiykLvcoQ "**Movie:** A HowTo deploy CodiLIA server to Heroku for free.")
+
+********************************************************************************
+
+### Projects
+
+                           --{{0}}--
+The easiest way of importing a LiaScript into another website or
+[Learning Management System (LMS)](https://en.wikipedia.org/wiki/Learning_management_system)
+such as
+[Moodle](https://en.wikipedia.org/wiki/Moodle),
+[ILIAS](https://en.wikipedia.org/wiki/ILIAS), or
+[OPAL](https://de.wikipedia.org/wiki/OPAL_%28Lernplattform%29), is via importing
+an external website or if possible via an
+[`iframe`](https://en.wikipedia.org/wiki/HTML_element#Frames).
+
+!?[LiaScript embed into OPAL](https://www.youtube.com/watch?v=c97m2guiAeA "Movie: Screencast of a LiaScript course that is hosted via CodiLIA and imported as an external resource into OPAL.")
+
+
+                             {{1}}
+********************************************************************************
+
+**LiaScript-Exporter:**
+
+                           --{{1}}--
+However, there might be cases where you want to store the progress within the
+LMS. We therefor have developed an experimental exporter, which allows to bundle
+your entire project as an
+[SCORM](https://en.wikipedia.org/wiki/Sharable_Content_Object_Reference_Model)
+compliant zip-file that can be imported into most common LMS. Other formats than
+SCORM can be added too, simply write us a mail or create an issue, if you
+require another one.
+
+* npmjs: https://www.npmjs.com/package/@liascript/exporter
+* GitHub: https://github.com/liascript/liascript-exporter
+
+********************************************************************************
+
+
+                             {{2}}
+********************************************************************************
+
+**Preview-Lia:**
+
+                           --{{2}}--
+If you want to refer to your own courses or to foreign ones on your personal
+website or blog, you can make use of our "preview web component". This creates
+preview cards, which are updated at client-side, so that there is no need to
+manually update all information whenever there is a change in the course. Simply
+add the `script` tag as depicted in the code-snippet and link to your courses
+via the tag `preview-lia`.
+
+``` html
+<html>
+  <head>
+    <script type="text/javascript" src="https://liascript.github.io/course/preview-lia.js"></script>
+  </head>
+  <body>
+    ...
+    <preview-lia src="https://raw.githubusercontent.com/liaScript/docs/master/README.md">
+    </preview-lia>
+
+    <preview-lia src="https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md">
+    </preview-lia>
+
+    ...
+  </body>
+</html>
+```
+
+> For more information visit the blog entry:
+> [Markdown just got a new preview tag](https://aizac.herokuapp.com/markdown-just-got-a-new-preview-tag)
+>
+> _However, you can also use this to refer to your personal GitHub projects._
+
+********************************************************************************
+
+
+                           --{{3}}--
+LiaScript was originally developed for supporting programming courses for
+embedded systems. You can see an example of the previous eLab remote laboratory
+installation.
+
+                             {{3}}
+!?[eLab demonstrator](https://www.youtube.com/watch?v=bICfKRyKTwE "**Movie:** A review on the historical eLab system, the predecessor to LiaScript.")
+
+                           --{{4}}--
+Now it is the opposite, our main focus lays in the development of the Markup
+language, but parts of the old systems can still be used. Especially if you want
+to teach programming in (_Java_, _C_, _C++_, _C#_, _Mono_, _Go_ and _Python_).
+The CodeRunner is an open-source project that enables remote compiling and
+execution of code. We apply it to teach procedural and object-oriented
+programming. You can either host your own server or use our free herokuapp:
+
+       {{4}}
+> **CodeRunner:**
+>
+> * GitHub: https://github.com/liascript/CodeRunner
+>
+> * Try the interactive LiaScript version at:
+>
+>   https://liascript.github.io/course/?https://github.com/liascript/CodeRunner
+>
+> * Or if you want to import this functionality into your course, then add the
+>   following statement into the main header of your LiaScript course:
+>
+>   `import: https://raw.githubusercontent.com/LiaScript/CodeRunner/master/README.md`
+
+
+### Publishing
+
+                           --{{0}}--
+By now you should have a basic idea of what you can do with LiaScript, but
+probably not how you can publish your courses. The best way is actually to use
+[GitHub](https://github.com), this way no prior versions of your course get
+lost, and you give others (you can even invite them) the opportunity to
+contribute to your project.
+
+                           --{{1}}--
+No further hosting is required, no further compilation step, the JavaScript
+interpreter of LiaScript does everything else directly within the browser at
+client-side.
+
+                           --{{2}}--
+As you can see from the _example_, it is also possible to refer to a specific
+slide. You only have to add a `#` with the number of the slide, or you can add
+the name of the specific slide as well.
+
+                           --{{3}}--
+
+The same way you can also refer to courses that you have put into your
+[DropBox](https://en.wikipedia.org/wiki/Dropbox_%28service%29),
+[ownCloud](https://en.wikipedia.org/wiki/OwnCloud),
+[NextCloud](https://en.wikipedia.org/wiki/Nextcloud), or if you have access to
+some old-fashioned webspace then you can also store all of your files there. You
+only have to make them publically available and to refer to the raw or in other
+words, the text document. All other sources are loaded relative to this URL.
+
+0. Create a free account at https://github.com
+1. Refer to your projects as via a URL parameter:
+
+   `https://LiaScript.github.io/course/?YOUR_RAW_COURSE_URL.md`
+
+2. Example with reference to a specific slide:
+
+   https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md#5
+
+2. Use other ways of hosting repositories as well (e.g.
+   [DropBox](https://en.wikipedia.org/wiki/Dropbox_%28service%29),
+   [ownCloud](https://en.wikipedia.org/wiki/OwnCloud),
+   [NextCloud](https://en.wikipedia.org/wiki/Nextcloud)).
+
+#### LiaBooks
+
+                           --{{0}}--
+However, we have no idea who is using LiaScript elsewhere, so it might be hard
+to find some resources online. From time to time we translate open-books into
+LiaScript and make them more interactive. You can see some of our the
+experiments at the following URL and use them as a source of inspiration:
+
+https://github.com/LiaBooks
+
+![screenshot of the LiaBooks repository](img/screenshot_liabooks.png)
+
+#### LiaTemplates
+
+                           --{{0}}--
+If you tried out CodeRunner, you will have probably noticed that you can reuse
+functionality from different courses, simply by using the keyword `import:`
+within the main definition of your LiaScript document. Such a functionality is
+defined with the help of macros. We will dive deeper into this feature at the
+end of this document, but if you are interested you can inspect some of our
+templates, which shall provide self-explaining courses of how to embed and use
+the implemented macros.
+
+https://github.com/LiaTemplates
+
+![screenshot of the LiaTemplates repository](img/screenshot_liatemplates.png)
+
+## Markdown-Syntax
 
                                      --{{0}}--
 This section is intended to give a brief overview on the basic Markdown
@@ -2792,7 +3065,7 @@ A Parallel representation jumps in, if there are simply too many categories, so
 that your BarChart would contain only thin lines.
 
 <!-- data-show -->
-| Country                |    GDP growth (%) | Births per woman | Life expectancy at birth (years) | Population ages \>= 65 (%) | Pop. ages 15-64 (%) | Pop ages 0-14 (%) | Pop (total) |
+| Country                |    GDP growth (%) | Births per woman | Life expectancy at birth (years) | Population ages >= 65 (%) | Pop. ages 15-64 (%) | Pop ages 0-14 (%) | Pop (total) |
 | ---------------------- | -----------------:| ----------------:| --------------------------------:| --------------------------:| -------------------:| -----------------:| -----------:|
 | Albania                |               7.5 |            1.858 |                 76.6337073170732 |            9.3330694913874 |    66.4522208535245 |  24.2147096550882 |     3143291 |
 | Andorra                |  3.57073718591123 |            1.260 |                              NaN |                        NaN |                 NaN |               NaN |     83810.5 |
