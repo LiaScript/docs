@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  11.0.0
+version:  11.0.1
 language: en
 narrator: UK English Female
 
@@ -802,6 +802,7 @@ include the link and the resource will be embedded appropriately.
 
 #### So what is left?? 💫
 
+                          --{{0}}--
 If it is something else that you want to embed something else from another
 website, then you should try out the link syntax with two starting question
 marks. This means, LiaScript will try to use the [oEmbed](https://oembed.com)
