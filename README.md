@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  10.0.0
+version:  11.0.0
 language: en
 narrator: UK English Female
 
@@ -361,11 +361,15 @@ https://github.com/LiaTemplates
 
 ## Markdown-Syntax
 
-                                     --{{0}}--
-This section is intended to give a brief overview on the basic Markdown
-formatting elements. The only difference to common Markdown at this point is,
-that every course has to start with a comment, which defines authors, a language
-and  a narrator voice, see https://responsivevoice.org for all supported voices.
+                          --{{0}}--
+This section is intended to give a brief overview on the basic Markdown syntax
+elements. The only difference to common Markdown at this point is, that you can
+define meta-information such as author, language, voice, etc. within a
+HTML-comment at the beginning of every document. We will describe all of these
+elements in more detail in [section: Macros](#macros). All of these `macros`
+start with a single word, which is followed by a colon. If you require more
+space, like for `comment:` or `link:` you can use multiple lines, but every
+following line has to start with an indentation.
 
 Initial LIA-comment-tag for basic definitions:
 
@@ -382,22 +386,44 @@ language: en
 
 narrator: US English Female
 
-script:   javascript resourse url
+comment:  Write a short abstract of your course, that
+          might contain multiple lines and sentences.
 
-script:   another javascript resourse url
+script:   https://javascript_resourse_url
 
-link:     some css stuff
-          and some more css
+script:   https://another_javascript_resourse_url
 
+link:     https://some_css_stuff
+          https://and_some_more_css
 -->
 ```
 
 
+                          --{{1}}--
+The meta-information from your document is later shown within the
+information-section as well as within the home-section.
+
+                            {{1}}
+![Screencast of meta-information usage](img/meta-information.gif)
+
+
+
+                          --{{2}}--
+If you already know Markdown, then you can skip most of the content in this
+section. However, there are some slight differences that will be marked with a
+trailing star at the section title.
+
+            {{2}}
+<!-- style="font-size: 2em" -->
+> Something might be different 💫
+
+
 ### Structuring
 
-                                    --{{0}}--
+                          --{{0}}--
 A course is structured as any other Markdown document with starting hash-tags,
-whereby the number of hash-tags is used to define the hierarchy.
+whereby the number of hash-tags is used to define the hierarchy of your
+document.
 
 ```markdown
 # Main Title
@@ -412,21 +438,33 @@ whereby the number of hash-tags is used to define the hierarchy.
 
  ...
 ## Section Title 2
-
-Local Subsection
-================
-
-Local Sub-SubSection
---------------------
 ```
 
+                          --{{1}}--
+Every section is presented separately. In contrast to most Markdown-parsers,
+LiaScript applies a two step-approach. Sections are parsed at first, which means
+that the parsers searches for patterns as depicted below. Parsing the content of
+a section is quite time-consuming, that is why the section-content gets only
+analyzed, if this specific should be displayed to the user. However, this
+happens only at the first appearance, afterwards the resulting view is restored
+from a local cache.
 
-                                    --{{1}}--
-If you want to structure your sections further, then the following syntax can
-be applied. These subsections are not part of the table of contents, but it can
-be used to add further headings to your slide.
+                            {{1}}
+**Preprocessing pattern:** `## foo bar`
 
-                                      {{1}}
+
+#### Sub-Titles 💫
+
+                          --{{0}}--
+There might be some cases, where you want to add further headings. We therefor
+apply the following syntax with underlining "equal signs" or "minuses". In
+common Markdown, this alternative syntax is applied to define level-1 and
+level-2 headings. We use it to create headings that are one level `=` or two
+levels `-` below the main heading. However, these subsections will not be part
+of the table of contents, and since their interpretation is slightly different
+to common Markdown, it should be avoided.
+
+
 ```markdown
 ...
 
@@ -439,123 +477,147 @@ Local Sub-SubSection
 --------------------
 ```
 
+### Content blocks
+
+                          --{{0}}--
+How would you separate paragraphs or other content elements from each other, if
+you only have a type-writer? The easiest way is a spatial separation, and in
+Markdown this is done via an empty line. Thus, whenever you have blocks such as
+paragraphs, enumerations, or tables, it is common practice to separate them via
+a newline. This makes it easier for you to edit and structure your course, and
+it prevents the interpreter from too much work.
+
+``` markdown
+This is a paragraph that consist only of one line.
+
+Here comes another paragraph
+with multiple lines.
+And multiple sentences.
+```
+
+### Text-Formatting 💫
 
 
-### Text-Formatting
+                            --{{0}}--
+How does text-highlighting work in a text file and thus within a paragraph?
+Well, Markdown defines some basic characters that can be used to surround a word
+or a collection of words. We tried to use the GitHub flavored Markdown style for
+simple formatting, thus simply use multiple stars or underscores to mark certain
+parts of a text.
 
-                                    --{{0}}--
-We tried to use the github flavored Markdown style for simple formatting with
-some additional elements.
+* `*italic*` -> *italic*
+* `**bold**` -> **bold**
+* `***bold and italic ***` -> ***bold and italic ***
+* `_also italic_` -> _also italic_
+* `__also bold__` -> __also bold__
+* `___also bold and italic___` -> ___also bold and italic___
+* `~strike~` -> ~strike~
 
-\*italic\* -> *italic*
 
-\*\*bold\*\* -> **bold**
+                          --{{1}}--
+We define some additions to common Markdown, such as underline and superscript,
+which can be defined with the following syntax:
 
-\*\*\*bold and italic \*\*\* -> ***bold and italic ***
-
-\_also italic\_ -> _also italic_
-
-\_\_also bold\_\_ -> __also bold__
-
-\_\_\_also bold and italic\_\_\_ -> ___also bold and italic___
-
-\~strike\~ -> ~strike~
-
-                                     --{{1}}--
-These exceptions are for example underline and its combination with strike
-through or the application of superscript. If you, for example, superscript
-superscript you can get even smaller.
-
-                                       {{1}}
-********************************************************************************
-
-\~\~underline\~\~ -> ~~underline~~
-
-\~\~\~strike and underline\~\~\~ -> ~~~strike and underline~~~
-
-\^superscript\^ -> ^superscript^ ^^superscript^^ ^^^superscript^^^
-
-********************************************************************************
+                            {{1}}
+* `~~underline~~` -> ~~underline~~
+* `~~~strike and underline~~~` -> ~~~strike and underline~~~
+* `^superscript^` -> ^superscript^
 
 
 #### Combinations
 
-                                     --{{0}}--
-As you can see from the examples, you can combine all elements freely.
+                          --{{0}}--
+As you can see from the examples, you can combine and nest all elements freely.
 
 
-\*\*bold \_bold italic\_\*\* -> **bold _italic_**
-
-\*\*\~bold strike\~ \~\~bold underline\~\~\*\* -> **~bold strike~ ~~bold underline~~**
-
-\*\~italic strike\~ \~\~italic underline\~\~\* -> *~italic strike~ ~~italic underline~~*
+* `**bold _bold italic_**` -> **bold _bold italic_**
+* `**~bold strike~ ~~bold underline~~**` -> **~bold strike~ ~~bold underline~~**
+* `*~italic strike~ ~~italic underline~~*` -> *~italic strike~ ~~italic underline~~*
 
 #### Escape Characters
 
-\*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@
+                          --{{0}}--
+If you want to use stars, hash-tags, or other syntax elements within your
+document without applying their functionality, then you can escape or in other
+words indicate them with a starting backslash. If you want to escape a
+backslash, you will have to write two subsequent backslashes. But you do not
+have to use it, if there is only one star within a line, this will be
+interpreted as a single character. So you will have to apply this kind of
+escaping only to prevent misunderstandings between you and the interpreter.
 
-                                     --{{0}}--
-If you want to use multiple stars, hash-tags, or other syntax elements within
-your script without applying their functionality, then you can escape them with
-a starting backslash.
 
-### Symbols
+``` markdown
+\*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@, \\
+```
 
-                                     --{{0}}--
+**Result:** \*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@, \\
+
+### Symbols & Unicode 💫
+
+                          --{{0}}--
 One thing that we missed in standard Markdown, was an implementation for arrows.
-The parenthesis shows, how arrows are defined in our Markdown implementation with
-their result on the right (these symbols are generated automatically for you).
+The verbatim text shows, how arrows are defined in our Markdown implementation with
+their result on the right.
 
-(`->`) ->, (`->>`) ->>, (`>->`) >->, (`<-`) <-, (`<-<`) <-<,
-(`<<-`) <<-, (`<->`) <->, (`=>`) =>, (`<=`) <=, (`<=>`) <=>
+`->` ->, `->>` ->>, `>->` >->, `<-` <-, `<-<` <-<,
+`<<-` <<-, `<->` <->, `=>` =>, `<=` <=, `<=>` <=>
 
-(`-->`) -->, (`<--`) <--, (`<-->`) <-->, (`==>`) ==>, (`<==`) <==, (`<==>`) <==>
+`-->` -->, `<--` <--, `<-->` <-->, `==>` ==>, `<==` <==, `<==>` <==>
 
-(`~>`) ~>, (`<~`) <~
+`~>` ~>, `<~` <~
 
-                                     --{{1}}--
+                          --{{1}}--
 But you can also use some basic smileys. We will try to extend this partial
 support in the future.
 
-                                       {{1}}
+                            {{1}}
 `:-)` :-), `;-)` ;-), `:-D` :-D, `:-O` :-O, `:-(` :-(, `:-|` :-|,
 `:-/` :-/, `:-P` :-P, `:-*` :-*, `:')` :'), `:'(` :'(
 
+                          --{{2}}--
+However, since LiaScript accepts
+[Unicode](https://en.wikipedia.org/wiki/Unicode), you can also copy and paste
+any kind of character including [emojis](https://emojipedia.org).
+
+
 ### References
 
-The next section shows how external resources can be integrated.
+> The next section shows how external resources can be referenced and integrated.
+
 
 #### Simple Links
 
-                                     --{{0}}--
+                          --{{0}}--
 There are two ways of adding links to a Markdown document, either by inlining
-the url directly or you can name it, as shown in listing 2, by applying the
-typical brackets and parenthesis notation, the optional info is put in double
-quotes at the end of the url.
+the URL directly or you can name it (as shown in listing 2), by applying the
+typical brackets and parenthesis notation, the optional information is put in
+double quotes at the end of the URL. This optional information is used as a
+title attribute, and it is shown, when the user hovers the link with the mouse.
 
 
-1. example of an url-link -> http://goo.gl/fGXNvu
+1. Example of an URL-link -> http://goo.gl/fGXNvu
 
-   text-formatting can be applied also (`*** http://goo.gl/fGXNvu ***`) ->
+   text-formatting can be applied also `*** http://goo.gl/fGXNvu ***` ->
    *** http://goo.gl/fGXNvu ***
 
-2. naming the link (`[title](http://goo.gl/fGXNvu "optional info")`) -> [title](http://goo.gl/fGXNvu "click Me")
+2. Naming the link (`[title](http://goo.gl/fGXNvu "optional info")`) ->
+   [title](http://goo.gl/fGXNvu "optional info")
 
 3. For internal navigation you can refer to the slide number or to title with
    with a starting `#`
 
-   * `[next slide](#11)` -> [next slide](#11)
-   * `[next slide](#images-and-movies)` -> [next slide](#images-and-movies)
+   * `[next slide](#18)` -> [next slide](#18)
+   * `[next slide](#preview-lia)` -> [next slide](#preview-lia)
 
 
-##### Preview-Lia
+##### Preview-Lia 💫
 
-                                    --{{0}}--
+                          --{{0}}--
 LiaScript has an advanced preview link, that will load the remote course and
-parse the main information such as title, version, comment, logo, email, tags,
-form your main HTML-comment at the top of you document. To do this, you will
-have to used `[preview-lia]` as the title of your link, which is followed by the
-raw url of your course document.
+parse the meta-information such as title, version, comment, logo, email, tags,
+form your main HTML-comment at the top of your document. To do this, you will
+have to use `[preview-lia]` as the title of your link, which is followed by the
+raw URL of your course document.
 
 
 `[preview-lia](https://raw.githubusercontent.com/LiaScript/docs/master/README.md)`
@@ -563,74 +625,225 @@ raw url of your course document.
 [preview-lia](https://raw.githubusercontent.com/LiaScript/docs/master/README.md)
 
 
-                                    --{{1}}--
+                          --{{1}}--
 You can use this technique also to create previews for other courses on your
-personal website or for other GitHub projects. For more information follow the
-link:
+personal website or for other GitHub projects, as it was described in section
+[Projects](#projects). For more information follow the link:
 
 {{1}} https://aizac.herokuapp.com/markdown-just-got-a-new-preview-tag/
 
 
-##### QR-Codes
+##### QR-Codes 💫
 
-Sometimes it might be required to have both, a link and a visual representation:
-__QR-Codes__. Similar to preview links you simply, simply name your link:
-`[qr-code](url)`.
-
-[qr-code](https://LiaScript.github.io)
-
-You can further add some information, if you add a title to the link. By the way, Markdown is also allowed within the link-title:
-
-`[qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog](https://aizac.herokuapp.com)__")`
-
-[qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog](https://aizac.herokuapp.com)__")
+                          --{{0}}--
+Sometimes it might be required to have both, a link and a visual representation
+of it as an __QR-Codes__. Similar to previews, you simply name your link
+`qr-code`:
 
 
+* Syntax: `[qr-code](https://LiaScript.github.io)`
+* Example:
 
-#### Images and Movies
+  [qr-code](https://LiaScript.github.io)
 
-                                    --{{0}}--
+                          --{{1}}--
+You can add further information to your link by adding a title. Markdown is also
+allowed within the link title. In case of an image or media link, the title will
+be used as a subtitle and displayed accordingly.
+
+                            {{1}}
+* Syntax: `[qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog at heroku](https://aizac.herokuapp.com)__")`
+* Example:
+
+  [qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog at heroku](https://aizac.herokuapp.com)__")
+
+
+#### Images 💫
+
+                          --{{0}}--
+Images are defined similar to links, but they are indicated with a starting
+exclamation mark.
+
+                          --{{1}}--
+The name of the link or the alt-text is not wasted, since it is not displayed
+anymore. Instead, it is displayed, if the image cannot be loaded for some
+reasons, and it is used by screen readers to give visually impaired people a
+hint, of what will be visible on the image. So please, don't leave it empty.
+
+                          --{{2}}--
+The URL can be either relative to your Markdown document or it can be absolute,
+which means it is pointing to an external resource.
+
+                          --{{3}}--
+The optional title in LiaScript is not only used as a title attribute, instead
+it is used as a real sub-title for all media links.
+
+<!-- style="font-size: 1.4em" -->
+**Image-notation: !\[{1}{`alt-text`}\]({2}{url} {3}{"optional sub-title"})**
+
+                            {{2}}
+* relative URL: `![Beautiful Lenna](img/lenna.jpg)`
+
+  ![Beautiful Lenna](img/lenna.jpg)
+
+* absolute URL: `![Annunciation of ...](https://upload.wiki...jpg)`
+
+  ![Annunciation of the brith of Christ](https://upload.wikimedia.org/wikipedia/commons/5/51/Leonardo_da_Vinci_Annunciation.jpg "{3}{*Annunciation c. 1472–1476*: is thought to be Leonardo's earliest complete work}")
+
+
+                          --{{4}}--
+Note, that LiaScript iis smart enough to scale your images to the optimal size.
+If your image is smaller than the current maximal applicable width, it is shown
+in full size. If it is larger, than it is scaled to fit in width and also in
+height. You can further click on all images to open them as modal and if the
+image is quite large, such as Leonardo's painting, then you can also zoom and
+inspect it, by hovering with the mouse or thumb.
+
+                         --{{5}}--
+Additionally, if you start a paragraph with an image, LiaScript expects it to be
+a floating object, which is depicted with a maximal size of 50% of your
+view-port, if it is not smaller than that.
+
+                           {{5}}
+********************************************************************************
+
+``` markdown
+![Beautiful Lenna](img/lenna.jpg "subtitles are allowed too")
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, ...
+
+```
+
+---
+
+![Beautiful Lenna](img/lenna.jpg "subtitles are allowed too") Lorem ipsum dolor
+sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet,
+consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+laboris nisi ut aliquip ex ea commodo consequat.
+
+
+********************************************************************************
+
+##### Galleries 💫
+
+                          --{{0}}--
+How would you interpret a paragraph full of images? We thought that the only
+reasonable depiction of this could be a gallery.
+
+``` markdown
+![img1](url) ![img2](url) ![img3](url)
+![img4](url)
+![img5](url)
+```
+
+                          --{{1}}--
+And we like this idea... You can click on every image and inspect it also with
+the zooming feature.
+
+                            {{1}}
+![Portrait of a lady](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg/723px-Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg "La Belle Ferronnière, c. 1490–1498")
+![Lady with an Ermine](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg/761px-Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg "Lady with an Ermine, c. 1489–1491, Czartoryski Museum, Kraków, Poland")
+![Mona Lisa](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg "Mona Lisa or La Gioconda c. 1503–1516, Louvre, Paris")
+![Virgin and Child ](https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Leonardo_da_Vinci_-_Virgin_and_Child_with_St_Anne_C2RMF_retouched.jpg/764px-Leonardo_da_Vinci_-_Virgin_and_Child_with_St_Anne_C2RMF_retouched.jpg "The Virgin and Child with Saint Anne, c. 1501–1519, Louvre, Paris")
+![The Death of Leonardo da Vinci](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Francois_Ier_Leonard_de_Vinci-Jean_Auguste_Dominique_Ingres.jpg/1276px-Francois_Ier_Leonard_de_Vinci-Jean_Auguste_Dominique_Ingres.jpg "The Death of Leonardo da Vinci, by Ingres, 1818")
+
+
+#### Audio 💫
+
+                          --{{0}}--
+If an exclamation mark indicates visual content, why not using a question mark
+to indicate auditive content. (From our perspective it resembles an ear.)
+Everything is similar to images and the URLs can be either relative or absolute.
+
+* Syntax: `?[a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")`
+* Example:
+
+  ?[a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")
+
+
+                          --{{1}}--
+Additionally, you can also directly reference music from the
+[SoundCloud](https://Soundcloud.com) website. The associated song will be
+automatically embedded for you.
+
+                            {{1}}
+* Syntax: `?[soundcloud](https://soundcloud.com/glennmorrison/beethoven-moonlight-sonata)`
+* Example:
+
+  ?[soundcloud](https://soundcloud.com/glennmorrison/beethoven-moonlight-sonata)
+
+
+#### Movies 💫
+
+                          --{{0}}--
 Images are marked with a starting exclamation mark before the link, audio by a
 starting question mark and movies are made of images and sound, that is why you
-combine both marks `!?`. Defining ressources this way shows at least the links
-correctly in other Markdown parsers or on github. There is baked-in support for
-[YouTube](https://YouTube.com), [Soundcloud](https://Soundcloud.com),
-[Vimeo](https://Vimeo.com) and [TeacherTube](https://TeacherTube.com), which
-means that you only have to include the link and the resource will be embedded
-appropriately.
-
-                                    --{{1}}--
-The trailing information that you add to your image in `"` will add a caption.
-You can also use Markdown in here as well as formulas, but keep it short 😄...
-
-
-**Image-notation: `![alt-text](image-url "some info")`**
-
-- url: `![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg "_Fig_: a picture of a very friendly lion")`
-- ![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg "_Fig_: a picture of a very friendly lion")
-- relative path: `![image](img/lenna.jpg)`
-- ![image](img/lenna.jpg)
-
----
-
-**Audio-notation: `?[alt-text](audio-url "some info")`**
-
-- `?[a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")`
-- ?[a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")
-- `?[soundcloud](https://soundcloud.com/glennmorrison/beethoven-moonlight-sonata "just add the link")`
-- ?[a horse](https://soundcloud.com/glennmorrison/beethoven-moonlight-sonata "just add the link")
-
----
+combine both marks `!?`. Defining resources this way shows at least the links
+correctly in other Markdown parsers or on GitHub. There is baked-in support for
+[YouTube](https://YouTube.com), [Vimeo](https://Vimeo.com) and
+[TeacherTube](https://TeacherTube.com), which means that you only have to
+include the link and the resource will be embedded appropriately.
 
 **Movie-notation: `!?[alt-text](movie-url)`**
 
-- YouTube: `!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)`
-- !?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)
-- See also http://www.google.com/support/youtube/bin/answer.py?hl=en&answer=56107
-    to get an overview on how a YouTube link has to be formatted to add a starting
-    and/or end point, autoplay, subtitles, and other options.
-- relative path: `!?[movie](vid/math.mp4)`
-- !?[movie](vid/math.mp4) <!-- width="60%" -->
+- YouTube: `!?[The Future of Programming](https://www.youtube.com/watch?v=8pTEmbeENF4)`
+
+  !?[The Future of Programming](https://www.youtube.com/watch?v=8pTEmbeENF4)
+
+- relative path: `!?[Something about math](vid/math.mp4)`
+
+  !?[Something about math](vid/math.mp4)
+
+
+#### So what is left?? 💫
+
+If it is something else that you want to embed something else from another
+website, then you should try out the link syntax with two starting question
+marks. This means, LiaScript will try to use the [oEmbed](https://oembed.com)
+service, which is offered by a couple of websites. If this succeeds, this will
+embed only a specific part. If it fails, then LiaScript will at least try to
+embed the website via an `iframe`.
+
+Examples:
+
+* [SketchFab](https://sketchfab.com): `https://sketchfab.com/3d-models/ear-anatomy-468e2039bde34a3fabb9e90bff9cd56b`
+
+  ??[ear model](https://sketchfab.com/3d-models/ear-anatomy-468e2039bde34a3fabb9e90bff9cd56b)
+
+* [StoryMaps](https://storymaps.arcgis.com):
+
+  ??[presentation](https://storymaps.arcgis.com/stories/583f8b48a857442cb8d27411c93a9664)
+
+* [CirquitJS](https://www.falstad.com/circuit):
+
+  ??[Simulation: Noninverting Amplifier](https://www.falstad.com/circuit/circuitjs.html?startCircuit=amp-noninvert.txt)
+
+
+#### Galleries \#2
+
+                          --{{0}}--
+What you have seen previously with images is also possible with any kind of
+multimedia link. Simply put everything into one paragraph and LiaScript will
+automatically generate a gallery for you:
+
+``` markdown
+![img](url) ?[audio](url) !?[movie](url)
+??[something else](url)
+??[something else](url)
+```
+
+![Photo of Jupiter](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Latest_NASA_photo_of_Jupiter_taken_this_Sunday_by_the_Juno_probe.png/1280px-Latest_NASA_photo_of_Jupiter_taken_this_Sunday_by_the_Juno_probe.png)
+?[a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")
+!?[Fun with Tables](https://www.youtube.com/watch?v=Y_7q9T5jYHo)
+??[VTK VolumeContour](https://kitware.github.io/vtk-js/examples/VolumeContour/index.html)
+??[Circuit simulation](https://www.falstad.com/circuit/circuitjs.html?startCircuit=majority.txt)
+??[Bust of Nefertiti](https://sketchfab.com/3d-models/bust-of-nefertiti-foia-results-8c60faca6152405e9d35784efa8b9aa1)
+
 
 ### Styling
 
