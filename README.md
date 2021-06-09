@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  11.0.1
+version:  11.0.2
 language: en
 narrator: UK English Female
 
@@ -445,9 +445,9 @@ Every section is presented separately. In contrast to most Markdown-parsers,
 LiaScript applies a two step-approach. Sections are parsed at first, which means
 that the parsers searches for patterns as depicted below. Parsing the content of
 a section is quite time-consuming, that is why the section-content gets only
-analyzed, if this specific should be displayed to the user. However, this
-happens only at the first appearance, afterwards the resulting view is restored
-from a local cache.
+analyzed, if this specific section should be displayed to the user. However,
+this happens only at the first appearance, afterwards the resulting view is
+restored from a local cache.
 
                             {{1}}
 **Preprocessing pattern:** `## foo bar`
