@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  11.0.2
+version:  11.0.3
 language: en
 narrator: UK English Female
 
@@ -692,7 +692,7 @@ it is used as a real sub-title for all media links.
 
 
                           --{{4}}--
-Note, that LiaScript iis smart enough to scale your images to the optimal size.
+Note, that LiaScript is smart enough to scale your images to the optimal size.
 If your image is smaller than the current maximal applicable width, it is shown
 in full size. If it is larger, than it is scaled to fit in width and also in
 height. You can further click on all images to open them as modal and if the
@@ -812,15 +812,15 @@ embed the website via an `iframe`.
 
 Examples:
 
-* [SketchFab](https://sketchfab.com): `https://sketchfab.com/3d-models/ear-anatomy-468e2039bde34a3fabb9e90bff9cd56b`
+* [SketchFab](https://sketchfab.com): `??[ear model](https://sketchfab.com/3d-models/ear-anatomy-468e2039bde34a3fabb9e90bff9cd56b)`
 
   ??[ear model](https://sketchfab.com/3d-models/ear-anatomy-468e2039bde34a3fabb9e90bff9cd56b)
 
-* [StoryMaps](https://storymaps.arcgis.com):
+* [StoryMaps](https://storymaps.arcgis.com): `??[presentation](https://storymaps.arcgis.com/stories/583f8b48a857442cb8d27411c93a9664)`
 
   ??[presentation](https://storymaps.arcgis.com/stories/583f8b48a857442cb8d27411c93a9664)
 
-* [CirquitJS](https://www.falstad.com/circuit):
+* [CirquitJS](https://www.falstad.com/circuit): `  ??[Simulation: Noninverting Amplifier](https://www.falstad.com/circuit/circuitjs.html?startCircuit=amp-noninvert.txt)`
 
   ??[Simulation: Noninverting Amplifier](https://www.falstad.com/circuit/circuitjs.html?startCircuit=amp-noninvert.txt)
 
