@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  11.0.3
+version:  11.0.4
 language: en
 narrator: UK English Female
 
@@ -425,6 +425,7 @@ A course is structured as any other Markdown document with starting hash-tags,
 whereby the number of hash-tags is used to define the hierarchy of your
 document.
 
+<!-- class="translate"-->
 ```markdown
 # Main Title
 
@@ -464,7 +465,7 @@ levels `-` below the main heading. However, these subsections will not be part
 of the table of contents, and since their interpretation is slightly different
 to common Markdown, it should be avoided.
 
-
+<!-- class="translate"-->
 ```markdown
 ...
 
@@ -487,6 +488,7 @@ paragraphs, enumerations, or tables, it is common practice to separate them via
 a newline. This makes it easier for you to edit and structure your course, and
 it prevents the interpreter from too much work.
 
+<!-- class="translate"-->
 ``` markdown
 This is a paragraph that consist only of one line.
 
@@ -505,13 +507,13 @@ or a collection of words. We tried to use the GitHub flavored Markdown style for
 simple formatting, thus simply use multiple stars or underscores to mark certain
 parts of a text.
 
-* `*italic*` -> *italic*
-* `**bold**` -> **bold**
-* `***bold and italic ***` -> ***bold and italic ***
-* `_also italic_` -> _also italic_
-* `__also bold__` -> __also bold__
-* `___also bold and italic___` -> ___also bold and italic___
-* `~strike~` -> ~strike~
+* `*italic*` -> *italic*<!-- class="notranslate"-->
+* `**bold**` -> **bold**<!-- class="notranslate"-->
+* `***bold and italic ***` -> ***bold and italic ***<!-- class="notranslate"-->
+* `_also italic_` -> _also italic_<!-- class="notranslate"-->
+* `__also bold__` -> __also bold__<!-- class="notranslate"-->
+* `___also bold and italic___` -> ___also bold and italic___<!-- class="notranslate"-->
+* `~strike~` -> ~strike~<!-- class="notranslate"-->
 
 
                           --{{1}}--
@@ -519,9 +521,9 @@ We define some additions to common Markdown, such as underline and superscript,
 which can be defined with the following syntax:
 
                             {{1}}
-* `~~underline~~` -> ~~underline~~
-* `~~~strike and underline~~~` -> ~~~strike and underline~~~
-* `^superscript^` -> ^superscript^
+* `~~underline~~` -> ~~underline~~<!-- class="notranslate"-->
+* `~~~strike and underline~~~` -> ~~~strike and underline~~~<!-- class="notranslate"-->
+* `^superscript^` -> ^superscript^<!-- class="notranslate"-->
 
 
 #### Combinations
@@ -530,9 +532,9 @@ which can be defined with the following syntax:
 As you can see from the examples, you can combine and nest all elements freely.
 
 
-* `**bold _bold italic_**` -> **bold _bold italic_**
-* `**~bold strike~ ~~bold underline~~**` -> **~bold strike~ ~~bold underline~~**
-* `*~italic strike~ ~~italic underline~~*` -> *~italic strike~ ~~italic underline~~*
+* `**bold _bold italic_**` -> **bold _bold italic_**<!-- class="notranslate"-->
+* `**~bold strike~ ~~bold underline~~**` -> **~bold strike~ ~~bold underline~~**<!-- class="notranslate"-->
+* `*~italic strike~ ~~italic underline~~*` -> *~italic strike~ ~~italic underline~~*<!-- class="notranslate"-->
 
 #### Escape Characters
 
