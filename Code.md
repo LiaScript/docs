@@ -291,6 +291,8 @@ comments/issues or to add other mappings.
 
 ## Short List
 
+Complete overview on all supported languages:
+
 
 | short-code          | syntax-highlighting |
 | ------------------- | ------------------- |
