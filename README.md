@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  11.0.4
+version:  12.0.0
 language: en
 narrator: UK English Female
 
@@ -827,7 +827,7 @@ Examples:
   ??[Simulation: Noninverting Amplifier](https://www.falstad.com/circuit/circuitjs.html?startCircuit=amp-noninvert.txt)
 
 
-#### Galleries \#2
+##### Galleries \#2 💫
 
                           --{{0}}--
 What you have seen previously with images is also possible with any kind of
@@ -848,277 +848,350 @@ automatically generate a gallery for you:
 ??[Bust of Nefertiti](https://sketchfab.com/3d-models/bust-of-nefertiti-foia-results-8c60faca6152405e9d35784efa8b9aa1)
 
 
-### Styling
+## Markdown-Blocks
 
-                                    --{{0}}--
-Adding CSS elements or classes or any other HTML setting to an image or to any
-other Markdown element is implemented via a trailing comment-tag, everything
-within this comment is treated as a HTML attribute, so that it can
-also be used to apply graphical filters of for positioning.
+                          --{{0}}--
+So far we had introduced Markdown only on a tiny level, which means, by now you
+should know how to emphasize words and phrases within a paragraph, how to add
+images and how you can use references to point to internal or external
+resources. But, all we did so far is to work with **paragraphs**. But as pointed
+out in the quote below, Markdown can do even more.
 
+> ... Markdown’s syntax is comprised entirely of punctuation characters, which
+> punctuation characters have been carefully chosen so as to look like what
+> they mean. E.g., asterisks around a word actually look like \*emphasis\*.
+> Markdown lists look like, well, lists. Even blockquotes look like quoted
+> passages of text, assuming you’ve ever used email.
+>
+> -- Markdown philosophy by
+> [John Gruber](https://daringfireball.net/projects/markdown/syntax#philosophy)
 
-``` markdown
-![image](...Creative-Tail-Animal-lion.svg)<!--
-style = "width: 100px;
-         border: 10px solid;
-         filter: grayscale(100%);"
+                          --{{1}}--
+Within the following part we will learn how to deal with Markdown blocks and
+how to format your content to define the following elements:
 
-class = "animated infinite bounce"
--->
-```
+       {{1}}
+1. Lists
+2. Blockquotes
+3. Tables
+4. HTML
+5. Code-Snippets
+6. Horizontal rules
 
+### Lists
 
-![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)<!--
-style = "width: 100px;
-         border: 10px solid;
-         filter: grayscale(100%);"
+                          --{{0}}--
+The GitHub-flavored Markdown supports two types of list, ordered and unordered
+ones and so does LiaScript. If you every used a typewriter then the following
+syntax for lists would look natural to you. The only thing that matters here is
+the correct indentation.
 
-class = "animated infinite bounce"
--->
-![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)<!--
-style="
-  width: 120px;
-  border: 10px solid;"
--->
-![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)<!--
-  style="width: 140px;
-  border: 10px solid;"
--->
-![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)<!--
-  style="width: 120px;
-  border: 10px solid;
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);"
--->
-![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)<!--
-  style="width: 100px;
-  border: 10px solid;
-  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-  filter: blur(5px);"
--->
-
-                                     --{{1}}--
-The same technique can also be applied to style and format movies and other inline
-elements, such as links, words, symbols, or code...
-
-                                       {{1}}
-********************************************************************************
-
-!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
-style = "width: 100px; height: 60px;"
--->
-!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
-style = "width: 120px; height: 70px;"
--->
-!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
-style = "width: 140px; height: 80px;"
--->
-!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
-style = "width: 120px;
-         height: 70px;
-         -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-         filter: grayscale(100%);"
--->
-!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
-style = "width: 100px;
-         height: 60px;
-         -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-         filter: blur(5px);"
--->
-
-`:-) <!-- class = "animated infinite bounce" -->` ==> :-) <!-- class = "animated infinite bounce" -->
-
-`[google](www.google.de) <!-- style = "color: red;" -->` ==> [google](www.google.de) <!-- style = "color: red;" -->
-
-********************************************************************************
-
-
-#### Block-Styling
-
-                                  --{{0}}--
-Settings for entire blocks can be set with a **starting** comment that includes
-all required HTML-attributes and can even contain animation settings. These can
-be used to highlight specific elements of your slides.
-
-
-``` markdown
-<!-- class = "animated rollIn" style = "animation-delay: 3s; color: purple" -->
-The whole text-block should appear in purple color and with a wobbling effect.
-Which is a **bad** example, please use it with causion ...
-~~ ;-) ~~ <!-- class = "animated infinite bounce" style = "color: red; display: inline-block" -->
-```
-
-<!-- class = "animated rollIn" style = "animation-delay: 3s; color: purple" -->
-The whole text-block should appear in purple color and with a wobbling effect.
-Which is a **bad** example, please use it with causion ...
-~~ ;-) ~~ <!-- class = "animated infinite bounce" style = "color: red; display: inline-block" -->
-
-### Lists & Tables
-
-Within the following part enumerations, itemizations and tables are presented,
-actually with no difference to basic Markdown, so you can skip this section,
-if you are already familiar with it.
+> **Use spaces for correct indentation!** Tabs are allowed too, but might be
+> confusing, since editors tend to use varying lengths from 2 to 4 spaces to
+> display them...
 
 #### Unordered Lists
 
-                                 --{{0}}--
-To define unordered list, starting stars, pluses, and minuses can be used and
-mixed. If one point has more than one line, you can also use newlines, but with
-spaces at the beginning. Paragraphs can be included in the same way, by using
-two newlines.
+                          --{{0}}--
+To define an unordered list, starting stars `*`, pluses `+`, and minuses `-` can
+be used and mixed. If one point has more than one line, you can also use
+multiple lines  Paragraphs can be included in the same way, by using two
+newlines.
 
-Markdown-format:
+**Markdown-Syntax:**
 
 ``` markdown
 * alpha
-+ *beta*
++ **beta**
 - gamma
   and delta
 
   new Paragraph
+
+  - and another
+  - important list
+
+- epsilon
 ```
 
-Result:
+                          --{{1}}--
+As you can see from the result, you can apply all Markdown styling elements
+freely. The starting characters will be interpreted equally, thus it makes no
+difference, if you use stars, pluses and minus. To improve the readability of
+your document, we would recommend to stick with one format for every level.
+Starting with stars on the first level and minuses within the second level, etc.
+
+                            {{1}}
+********************************************************************************
+
+**Result:**
 
 * alpha
-+ *beta*
++ **beta**
 - gamma
   and delta
 
   new Paragraph
 
+  - and another
+  - important list
 
-#### Ordered Lists
+- epsilon
 
-                                 --{{0}}--
+********************************************************************************
+
+#### Ordered Lists 💫
+
+                          --{{0}}--
 Ordered list start with a number and a dot. As you can see from the example, the
-numbering is important, n contrast to the github flavored Markdown. This way you
-can separate lists, add something in between, make use of animations and
-effects. And it is also possible to mix lists with other lists and elements
-freely.
+numbering is important, in contrast to the GitHub flavored Markdown or the
+original Markdown, where the list below would result in two separate list that
+contain  two elements (1. and 2.) ignoring your numbering order. With the
+LiaScript interpretation you can separate your lists add more explanations in
+between, use animations to make certain parts appear or disappear, etc.
 
-Markdown-format:
+
+**Markdown-Syntax:**
 
 ``` markdown
 0. alpha
-2. **beta**
-1. * gamma
+1. **beta**
+
+Something else ...
+
+2. * gamma
    * delta
    * and epsilon
 3. probably zeta
 ```
 
-Result:
+**Result:**
 
 0. alpha
-2. **beta**
-1. * gamma
+1. **beta**
+
+Something else ...
+
+2. * gamma
    * delta
    * and epsilon
 3. probably zeta
 
-#### Tables
 
+### Blockquotes
 
-> __Note:__ Checkout section [Fun With Tables](#66) to see what is even possible
-> with tables. The follow section provides only a small overview...
+                          --{{0}}--
+If you, from time to time, reply to emails, than the following notation will
+look quite familiar to you. To make use of quoted test, simply start a line with
+a `>` greater than character.
 
-                                   --{{0}}--
-Tables, we hope, are self-explanatory. The second line is used to define a table
-header as well as the alignment of the column, which is indicated by the colon.
-The default is left alignment. Additionaly you can add a starting comment to a
-cell, that can be used to add additional styling or HTML parameters or the
-entire cell.
+**Markdown-Syntax:**
 
-Markdown-format:
-
-``` markdown
-| <!-- style="background: #44ffff"--> Tables |      Are      |  Cool |
-| ------------------------------------------ |:-------------:| -----:|
-| *** col 3 is ***                           | right-aligned | $1600 |
-| ** col 2 is **                             |   centered    |   $12 |
-| * zebra stripes *                          |   are neat    |    $1 |
-```
-
-Result:
-
-| <!-- style="background: #44ffff"-->  Tables |      Are      |  Cool |
-| ---------------------------------------- |:-------------:| -----:|
-| *** col 3 is ***                         | right-aligned | $1600 |
-| ** col 2 is **                           |   centered    |   $12 |
-| * zebra stripes *                        |   are neat    |    $1 |
-
-
-                                   --{{1}}--
-As you can see in the LiaScript interpreted version, tables can be sorted
-according to a column, either ascending or descending. But why stopping here?
-Every table also defines a dataset, right. So why not simply using it to
-directly plot graphs, scatter-plots, or bar-charts.
-
-
-                                   --{{2}}--
-If the first column of a table contains only numbers, and the other columns
-contain some numbers, then these values can be directly plotted. The first
-column  thus describes always the x values and the rest is up to you. Use the
-small icon above the table to switch between table view and plotted version.
-
-    {{2}}
 ``` md
-| x's |  some y's  |    dist |
-| --- |:----------:| -------:|
-| 1   |    1 \$    | 16 $km$ |
-| 2.2 |    2 \$    | 12 $km$ |
-| 3.3 |    5 \$    |  1 $km$ |
-| 4   | -12.333 \$ |         |
+> This was said some time ago ...
+>
+>> This was said even longer ago,
+> > I guess ...
+>
+> * aleph
+> * beth
 ```
 
-    {{2}}
-| x's |  some y's  |    dist |
-| --- |:----------:| -------:|
-| 1   |    1 \$    | 16 $km$ |
-| 2.2 |    2 \$    | 12 $km$ |
-| 3.3 |    5 \$    |  1 $km$ |
-| 4   | -12.333 \$ |         |
+                          --{{1}}--
+As you can see from the example, all Markdown elements can be used within a
+blockquote and vice versa. Everything you have learned so far can be easily
+combined, it could also be a gallery or an embedded object...
 
 
-                                   --{{3}}--
-A function cannot turn an x value into different y values, thus, if you have at
-least one x value twice, the resulting plot will be a scatter plot. By the way,
-only the first word in a cell (separated by spaces) gets interpreted as a
-number. If you don't want this to happen for a certain cell, then simply attach
-something directly to the number, add a character in front of it or use the math
-notation.
+                            {{1}}
+********************************************************************************
 
-    {{3}}
+**Result:**
+
+> This was said some time ago ...
+>
+>> This was said even longer ago,
+> > I guess ...
+>
+> * aleph
+> * beth
+
+********************************************************************************
+
+#### Citations 💫
+
+                          --{{0}}--
+Blockquotes are often used for citations, and so do we. You can use the
+following pattern to mark a blockquote as a citation. Simply use two paragraphs
+within a blockquote and start the second one with two dashes `--`.
+
+**LiaScript-Syntax:**
+
+```
+> “Live as if you were to die tomorrow.
+> Learn as if you were to live forever.”
+>
+> -- Mahatma Gandhi
+```
+
+                          --{{1}}--
+The resulting blockquote looks slightly different. Furthermore, the paragraph
+followed by dashes is put into and HTML `cite`-tag.
+
+             {{1}}
+> “Live as if you were to die tomorrow.
+> Learn as if you were to live forever.”
+>
+> -- Mahatma Gandhi
+
+
+                          --{{2}}--
+You can use this syntax, with starting dashes, everywhere within a LiaScript
+document and your corresponding paragraph it will be rendered within a
+`cite`-tag. But, at this time it will only affect the representation of
+blockquotes. We are not sure yet, how this can also be applied to images,
+tables, lists, etc.
+
+             {{2}}
+``` md
+lorem ipsum ....
+
+-- Some more citations
+```
+
+### Tables
+
+                          --{{0}}--
+Tables, _as we hope_, are easy to interpret and to create. Simply use horizontal
+rules to separate cells. The header is always defined by the first line, while
+the second line is used to separate the table header from the body visually and
+to define the column alignment.
+
+
+**Markdown-format:**
+
 ``` markdown
-| x's |  some y's  |                              dist |
-| --- |:----------:| ---------------------------------:|
-| 1   |    1 \$    |                           16 $km$ |
-| 2.2 |    2 \$    |                           12 $km$ |
-| 3.3 |    5 \$    |                            1 $km$ |
-| 4   | -12.333 \$ | -555$km$ <-- this will be ignored |
-| 4   |            |                                 1 |
+| Tables               |      Are      |  Cool |
+| -------------------- |:-------------:| -----:|
+| *** columns 3 is *** | right-aligned | $1600 |
+| ** column 2 is **    |   centered    |   $12 |
+| * zebra stripes *    |   are neat    |    $1 |
 ```
 
-    {{3}}
-| x's |  some y's  |                              dist |
-| --- |:----------:| ---------------------------------:|
-| 1   |    1 \$    |                           16 $km$ |
-| 2.2 |    2 \$    |                           12 $km$ |
-| 3.3 |    5 \$    |                            1 $km$ |
-| 4   | -12.333 \$ | -555$km$ <-- this will be ignored |
-| 4   |            |                                 1 |
+                          --{{1}}--
+As you can see in the result, you can sort tables, by clicking onto the icon
+that appears on the right of every header cell. A table will then be either
+sorted ascending, descending, or not sorted, which means your initial row order
+will be restored.
+
+                            {{1}}
+********************************************************************************
+
+**Result:**
+
+| Tables               |      Are      |  Cool |
+| -------------------- |:-------------:| -----:|
+| *** columns 3 is *** | right-aligned | $1600 |
+| ** column 2 is **    |   centered    |   $12 |
+| * zebra stripes *    |   are neat    |    $1 |
+
+********************************************************************************
+
+                          --{{2}}--
+The position of the colon defines whether a column should be centered, aligned
+to the left or to the right. By default, if you do not use colons, all columns
+are aligned to the left.
+
+
+          {{2}}
+* centered --> `:---:`
+* right --> `---:`
+* left --> `:---` or `---` (default)
+
+
+#### Tables <--> Data (Demo) 💫
+
+
+But why stopping here? A table, in many cases, is just a representation of a
+dataset. If so, why not simply visualizing it accordingly and plot a graph,
+display a chart or a map, or whatever fits the most for your data. At the moment
+we apply simple rules to identify the nature of your dataset and thus choose a
+visual representation.
+
+> For more details have a look at section [Fun With Tables](#fun-with-tables),
+> which provides and extensive overview onto all supported representation
+> schemes.
+
+                          --{{1}}--
+The easiest and probably most obvious representation of a simple plot, would be
+the following. A header with some names and columns that contain numbers. The
+first column is interpreted as the main column and thus defines the $x$ values
+and the rest is up to you. A cell is then only associated with a number, if the
+first "word", _sequence of characters separated by a space_, can be parsed as a
+number. The `0km` within this example gets ignored. So if you want certain
+values to be ignored, simply attach something directly to the number, or add a
+character in front of it.
+
+
+          {{1}}
+``` md
+| x's |  some y's  |                  dist |
+| --- |:----------:| ---------------------:|
+| 1   |    1 \$    |                 16 km |
+| 2.2 |    2 \$    |                 12 km |
+| 3.3 |    5 \$    |                  1 km |
+| 4   | -12.333 \$ | 0km _will be ignored_ |
+```
+
+                          --{{2}}--
+LiaScript identifies this pattern and automatically adds a button above the
+table, which allows to switch between the table and the "line chart"
+representation. You can modify the chart interactively and even download the
+resulting image.
+
+          {{2}}
+| x's |  some y's  |                  dist |
+| --- |:----------:| ---------------------:|
+| 1   |    1 \$    |                 16 km |
+| 2.2 |    2 \$    |                 12 km |
+| 3.3 |    5 \$    |                  1 km |
+| 4   | -12.333 \$ | 0km _will be ignored_ |
+
+
+                            --{{3}}--
+A function cannot possess different $y$ values for one $x$ value, thus, if you
+have two or more equal $x$ values, the resulting plot will be a scatter plot.
+
+           {{3}}
+``` markdown
+| x's |  some y's  |  dist |
+| --- |:----------:| -----:|
+| 1   |    1 \$    | 16 km |
+| 2.2 |    2 \$    | 12 km |
+| 3.3 |    5 \$    |  1 km |
+| 4   | -12.333 \$ | -5 km |
+| 4   |            |     1 |
+```
+
+           {{3}}
+| x's |  some y's  |  dist |
+| --- |:----------:| -----:|
+| 1   |    1 \$    | 16 km |
+| 2.2 |    2 \$    | 12 km |
+| 3.3 |    5 \$    |  1 km |
+| 4   | -12.333 \$ | -5 km |
+| 4   |            |     1 |
 
 
                                    --{{4}}--
 Last but not least _bar-charts_. If the first column contains at least one cell,
-that cannot be parsed as a number, while the other columns still have numbers,
-then this table gets interpreted as a bar-chart. The first column thus defines
-your set of groups. It is now also possible to sort your table according to
-different columns and see this ordering also within the bar-chart representation.
+that cannot be parsed as a number while the others do have, then this table gets
+interpreted as a bar-chart. The first column thus defines your set of groups. It
+is now also possible to sort your table according to different columns and see
+this ordering also within the bar-chart representation.
 
 
-    {{4}}
+                               {{4}}
 ```markdown
 | Animal          | weight in kg | Lifespan years | Mitogen |
 | --------------- | ------------:| --------------:| -------:|
@@ -1129,7 +1202,7 @@ different columns and see this ordering also within the bar-chart representation
 | Human           |           68 |             70 |      10 |
 ```
 
-    {{4}}
+                               {{4}}
 | Animal          | weight in kg | Lifespan years | Mitogen |
 | --------------- | ------------:| --------------:| -------:|
 | Mouse           |        0.028 |             02 |      95 |
@@ -1139,115 +1212,455 @@ different columns and see this ordering also within the bar-chart representation
 | Human           |           68 |             70 |      10 |
 
 
-### Blockquotes
-
-Markdown-format:
-
-``` markdown
-<!--
-style="font-size: 18px; font-style: italic; width: 500px; margin: 0.25em 0;"
--->
-> Blockquotes are very handy in email to emulate reply text.
-> This line is part of the same quote.
-
-Quote break.
-
-> This is a very long line that will still be quoted properly when it wraps...
-```
-
-Result:
-
-<!--
-style="font-size: 18px; font-style: italic; width: 500px; margin: 0.25em 0;"
--->
-> Blockquotes are very handy in email to emulate reply text.
-> This line is part of the same quote.
-
-Quote break.
-
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
-
-
-                                   --{{1}}--
-Next to simple paragraphs also any other block element can be included ...
-
-
-                                     {{1}}
-********************************************************************************
-
-``` markdown
-> <!-- style="font-size: 18px; font-style: italic; width: 500px; margin: 5.25em 0;" -->
-> | Tables            | Are           | Cool  |
-> | ----------------- |:-------------:| -----:|
-> | *** col 3 is ***  | right-aligned | $1600 |
-> | ** col 2 is **    | centered      |   $12 |
-> | * zebra stripes * | are neat      |    $1 |
-```
-
-Result:
-
-> <!-- style="font-size: 18px; font-style: italic; width: 500px; margin: 5.25em 0;" -->
-> | Tables            | Are           | Cool  |
-> | ----------------- |:-------------:| -----:|
-> | *** col 3 is ***  | right-aligned | $1600 |
-> | ** col 2 is **    | centered      |   $12 |
-> | * zebra stripes * | are neat      |    $1 |
-
-********************************************************************************
+                          --{{5}}--
+As mentioned earlier, this is only a brief introduction into this topic. So
+check out section [Fun With Tables](#fun-with-tables) for a complete overview.
 
 ### HTML
 
-You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
-Mixing HTML with Markdown is also possible, but it should be used with caution,
-since it is mixing two different styles of parsing.
+                          --{{0}}--
+You can also use plain HTML in your Markdown, if you miss something. It will
+mostly work pretty good, but it should be used with caution, since some
+interpreters apply different rules. Some interpret everything within an HTML tag
+as HTML, while others allow mixing. Thus, HTML can contain Markdown, which
+contains HTML, which contains... By the way, LiaScript allows mixing. Thus, keep
+in mind that newlines and indentation are still relevant.
 
-```HTML
-Test **bold** and <b> HTML bold</b> works also inline
+**Markdown-Syntax:**
 
+``` html
+<div style="color: green">
+
+Test <q>**bold**</q> and <b>HTML bold</b> works also inline
+
+![Beautiful Lenna](img/lenna.jpg "Image of Lenna with a hat")
+
+</div>
+```
+
+                          --{{1}}--
+The result shows how the inline-CSS is applied to all nested Markdown elements.
+However, if you want to apply some styling to your document, LiaScript supports
+another minimal invasive way of doing that. We will describe this in detail in
+section [Styling](#styling).
+
+                            {{1}}
+********************************************************************************
+
+**Result:**
+
+<div style="color: green">
+
+Test <q>**bold**</q> and <b>HTML bold</b> works also inline
+
+![Beautiful Lenna](img/lenna.jpg "Image of Lenna with a hat")
+
+</div>
+
+********************************************************************************
+
+                          --{{2}}--
+If you use custom HTML instead of Markdown, then no styling will be applied. You
+can of course create more complex content or tables, this way you can apply your
+own styling to all elements. If you want to, you can also copy the generated
+LiaScript structure and use our classes. Most Browsers include an inspector,
+which can be used to interactively inspect the entire DOM-tree. But you can also
+import your own styles within the main document comment by using the `link`. We
+will explain this in more details within the macro section [link](#link).
+
+
+                            {{2}}
+1. [CSS-Reference](https://www.w3schools.com/CSSref/default.asp)
+
+2. Open Inspector: `Ctrl+Shift+i` or `Ctrl+Shift+k`
+
+   !?[Inspecting the DOM](https://www.youtube.com/watch?v=Gk6BljF60RI)
+
+3. ``` md
+   <!--
+   ...
+   link: file.css
+   ...
+   -->
+
+   # Main Title
+   ```
+
+#### Details & Summary
+
+                          --{{0}}--
+The `details` and `summary` tags are standard HTML tags and GitHub also supports
+the internal usage of Markdown for these specific tags. These tags offer a neat
+way to define something what is nowadays called accordion. Thus, your user can
+click on the summary text to make the body of the `details`-tag appear.
+
+``` md
 <details>
 
-<summary>$ f(a,b,c) = (a^2+b^2+c^2)^3 $</summary>
+<summary>**Honest Textbook ads (click to enlarge)**</summary>
 
-<p>
-Here is the source data that is discussed in the article ...
-</p>
-
-<dl>
-  <dt style="color: red">Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt><b>Markdown in HTML</b></dt>
-  <dd>Does _work_ **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
+!?[If High School and College Textbooks Were Honest - Honest Ads](https://www.youtube.com/watch?v=lhSjYT7pWkw)
 
 </details>
 ```
 
-Test **bold** and <b> HTML bold</b> works also inline
-
+                            {{1}}
 <details>
 
-<summary>$ f(a,b,c) = (a^2+b^2+c^2)^3 $</summary>
+<summary>**Honest Textbook ads (click to enlarge)**</summary>
 
-<p>
-Here is the source data that is discussed in the article ...
-</p>
-
-<dl>
-  <dt style="color: red">Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt><b>Markdown in HTML</b></dt>
-  <dd>Does _work_ **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
-
-!?[alt-text](https://www.youtube.com/watch?v=g4q55nTnO54)
+!?[If High School and College Textbooks Were Honest - Honest Ads](https://www.youtube.com/watch?v=lhSjYT7pWkw)
 
 </details>
 
+#### `<lia-keep>` 💫
+
+                          --{{0}}--
+If you want to embed more complex HTML, you can use the `lia-keep` tag to
+surround your code.
+
+``` html
+<lia-keep>
+<details>
+
+<summary>**Honest Textbook ads (click to enlarge)**</summary>
+
+!?[If High School and College Textbooks Were Honest - Honest Ads](https://www.youtube.com/watch?v=lhSjYT7pWkw)
+
+</details>
+</lia-keep>
+```
+
+                          --{{1}}--
+As it is demonstrated in the result, everything within this tag will be treated
+as HTML only, no Markdown parsing will be applied and indentation will be
+checked.
 
 
-#### HTML & JavaScript
+**Result:**
+
+<lia-keep>
+<details>
+
+<summary>**Honest Textbook ads (click to enlarge)**</summary>
+
+!?[If High School and College Textbooks Were Honest - Honest Ads](https://www.youtube.com/watch?v=lhSjYT7pWkw)
+
+</details>
+</lia-keep>
+
+
+### Code
+
+                          --{{0}}--
+In Markdown, you can use a sequence of at least three subsequent backticks `\``
+to indicate a code-block that should not be treated as Markdown, but instead
+contains some kind of code for which syntax-highlighting should be used, if
+possible. The first word after the backticks is used as an indicator, for which
+kind of syntax-highlighting should be applied.
+
+```` md
+``` python
+import time
+# Quick, count to ten!
+for i in range(10):
+    # (but not *too* quick)
+    time.sleep(0.5)
+    print(i)
+```
+````
+
+                          --{{1}}--
+In case you are wondering, how to embed a code-block into a code-block with
+backticks? Three backticks are the minimum, thus you can surround your Markdown
+code-block example with a sequence of 4 or more backticks. If you start with
+four backticks, LiaScript will parse everything as code until it reaches a
+matching number of backticks.
+
+        {{1}}
+``` python
+import time
+# Quick, count to ten!
+for i in range(10):
+  # (but not *too* quick)
+  time.sleep(0.5)
+  print(i)
+```
+
+                          --{{2}}--
+However, we are still in the Markdown world with static code visualization.
+LiaScript has also support for interactive programming, thus all of your
+code-snippet can be made executable and editable. This will be described in more
+detail in section [Interactive Coding](#interactive-coding).
+
+#### Differences to Markdown 💫
+
+                          --{{0}}--
+Markdown also supports adding code by using tilde `~` characters instead of
+backticks. This is at the moment not supported by LiaScript, but might be added
+in the future.
+
+``` md
+~~~ javascript
+var a = "b"
+~~~
+```
+
+                          --{{1}}--
+Additionally, it is also possible in standard Markdown to use indentation with
+at least 4 spaces to mark a block or a line as code. In LiaScript this is
+treated differently. You can use indentation to keep your document readable. The
+two indicators for text-to-speech in the example are treated equally by
+LiaScript, but another Markdown interpreter will interpret the second example as
+a single paragraph, while the indicator in the first example will be treated as
+code, and thus be easier to read with any other Markdown interpreter (including
+GitHub).
+
+
+                            {{1}}
+``` md
+This is not code ...
+
+    Any kind of text with a 4 space
+    indentation will be treated as code
+    in Markdown ...
+
+                --{{1}}--
+This text will be spoken out loud in LiaScript.
+
+--{{2}}--
+This text will be spoken out loud too.
+```
+
+
+#### Projects 💫
+
+                          --{{0}}--
+If you want to bundle a couple of code-blocks into something that mirrors a
+project, you can achieve this with the following syntax. All code-blocks are
+simply attached to each other, in order to indicate a grouping. If you separate
+them at least by one newline, they will be treated as separately. This will be
+pretty neat, if we introduce the concept of interactive code-blocks.
+
+
+```` md
+``` js     -EvalScript.js
+let who = data.first_name + " " + data.last_name;
+
+if(data.online) {
+  who + " is online"; }
+else {
+  who + " is NOT online"; }
+```
+``` json    +Data.json
+{
+  "first_name" :  "Sammy",
+  "last_name"  :  "Shark",
+  "online"     :  true
+}
+```
+````
+
+                          --{{1}}--
+You can define optional names within the head of your code-block. The starting
+plus `+` and minus `-` symbols are used to indicate, if the resulting
+code-blocks should be visible or hidden. However, you can change this, by
+clicking onto the resulting title-bar to either maximize or minimize the
+code-block.
+
+                            {{1}}
+``` js     -EvalScript.js
+let who = data.first_name + " " + data.last_name;
+
+if(data.online) {
+  who + " is online"; }
+else {
+  who + " is NOT online"; }
+```
+``` json    +Data.json
+{
+  "first_name" :  "Sammy",
+  "last_name"  :  "Shark",
+  "online"     :  true
+}
+```
+
+
+#### Supported Languages 💫
+
+                          --{{0}}--
+In most cases you can simply add the name of the language or the common filename
+ending into the head of a code snippet. Most Markdown interpreters use
+[highlight.js](https://highlightjs.org) for language rendering, since we require
+also an editor with syntax highlighting capabilities, we use
+[ace](https://ace.c9.io). Thus, the language support might differ to other
+systems. We therefor apply a mapping, so that you can still use all
+[highlight.js](https://highlightjs.org) short-codes but also those of
+[ace](https://ace.c9.io).
+
+Overview: https://github.com/LiaScript/docs/blob/master/Code.md
+
+
+### Horizontal rules 💫
+
+                          --{{0}}--
+At the moment it is only possible to insert horizontal rules by adding lines
+with at least 3 dashes, longer dashes are also allowed. Common Markdown also
+allows to define such rules with stars `*`, but this is used in LiaScript to
+group blocks and will be described later...
+
+**Markdown-Syntax:**
+
+``` markdown
+some paragraph
+
+---
+
+something else
+
+----------------
+```
+
+**Result:**
+
+some paragraph
+
+---
+
+something else
+
+----------------
+
+
+
+## Styling
+
+                          --{{0}}--
+In contrast to most Markdown dialects, LiaScript allows to add custom styling
+and parameters to all Markdown elements by attaching a simple HTML-comment. If
+the content of this comment can be parsed as HTML-attributes, then these
+settings will be applied to entire block or to a single element, such as a word
+or a bold phrase, etc. We thus separate between inline and block styling,
+whereby the position of the HTML-comment defines, what should be "styled".
+
+``` markdown
+<!--
+style="color: red; width: 100%;"
+id = "elementID" class="foo bar"
+-->
+```
+
+### Block-Styling
+
+                          --{{0}}--
+Settings for entire blocks can be set with a **starting** comment that includes
+all required HTML-attributes and can even contain animation settings. This can
+be used to highlight specific elements of your slides.
+
+**LiaScript-Syntax:**
+
+``` markdown
+<!-- class = "animated rollIn" style = "animation-delay: 3s; color: purple" -->
+The whole text-block should appear in purple color and with a wobbling effect.
+Which is a **bad** example, please use it with caution ...
+```
+
+**Result:**
+
+<!-- class = "animated rollIn" style = "animation-delay: 3s; color: purple" -->
+The whole text-block should appear in purple color and with a wobbling effect.
+Which is a **bad** example, please use it with caution ...
+
+
+### Inline-Styling
+
+                          --{{0}}--
+Inline styling works similarly, but you simply add your HTML-comment after the
+element. This way you can change font-colors, set custom size and position
+configurations for images and videos, or even apply graphical filters.
+
+**LiaScript-Syntax:**
+
+``` markdown
+This **is an important**<!-- style="color: red" --> part
+of the text.
+
+
+![image](...Creative-Tail-Animal-lion.svg)<!--
+style = "width: 100%;
+         border: 10px solid;"
+class = "animated infinite bounce"
+-->
+
+Some blurry and black-and-white video:
+
+!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
+style = "filter: blur(5px);"
+-->
+```
+
+                          --{{1}}--
+As you can see from the results, CSS is a pretty powerful tool and by using
+HTML-comments to tweak your Markdown, you can still read the document with any
+ordinary Markdown interpreter that simply ignores these comments.
+
+                            {{1}}
+********************************************************************************
+
+**Result:**
+
+This **is an important**<!-- style="color: red" --> part
+of the text.
+
+![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)<!--
+style = "width: 100%;
+         border: 10px solid;"
+class = "animated infinite bounce"
+-->
+
+Some blurry and black-and-white video:
+
+!?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
+style = "filter: blur(2px) grayscale(100%);"
+-->
+
+********************************************************************************
+
+### Hiding Content
+
+                          --{{0}}--
+There might be use cases where you either want to show some parts only on GitHub
+and provide and alternative view at LiaScript. As it was shortly introduced in
+the sections before, you can add comments to the start of every block to add
+additional attributes. These attributes can also be used as a trigger to hide or
+show content.
+
+``` markdown
+<!-- style="display:block" -->
+<div style="display:none">
+
+Visible only in LiaScript, but not on GitHub.
+
+</div>
+
+-----------------------------------------------
+
+<!-- style="display:none" -->
+<div style="display:block" id="fooBar">
+
+Not visible in LiaScript, but on GitHub!
+
+</div>
+```
+
+                          --{{1}}--
+The attributes within the comment will overwrite the attributes within the
+block. Thus, if there would be more stuff within style, this will be overwritten
+too, but other attributes like `id` that are not contained within the comment
+won't be affected...
+
+
+## JavaScript
 
                                  --{{0}}--
 In contrast to common Markdown-Parsers it is also possible to include and
@@ -1315,35 +1728,6 @@ comment after the script definition. And by combining this feature with
 LiaScript effects, you can build even more sophisticated courses.
 
 
-### HTML Hiding Content
-
-There might be use cases where you either want to show some parts only within
-the HTML world and others only withing the LiaScript world. As it was shortly
-introduced in the section about styling, you can add comments to the start of
-every block to add additional attributes. These attributes can be used a trigger
-to hide or show content.
-
-``` markdown
-<!-- style="display:block" -->
-<div style="display:none">
-
-only visible in LiaScript
-
-</div>
-
------------------------------------------------
-
-<!-- style="display:none" -->
-<div style="display:block" width="200px">
-
-Not visible in LiaScript, but everywhere else
-
-</div>
-```
-
-The attributes within the comment overwrite the attributes within the block,
-thus, if there would be more stuff within style, this will be overwritten, but
-other attributes like `width` wont...
 
 ## Footnotes
 
@@ -5926,78 +6310,3 @@ Embedded systems developer, creator or arduinoview, and Markdown evangelist ...
 
     --{{4}}--
 CSS & SASS crack and friendly face behind new face of LiaScript ...
-
-
-## Todo
-
-Image
-=====
-
-![small](img/lenna.jpg)
-
-![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)
-
-
-Image with caption
-==================
-
-![small](img/lenna.jpg "An image of beautiful Lena ...")
-
-![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg "Some image of a certain dog breed")
-
-
-Gallery
-=======
-
-![small](img/lenna.jpg)
-![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)
-![small](img/lenna.jpg)
-![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)
-![small](img/lenna.jpg)
-![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)
-
-
-Gallery with custom style
-=========================
-
-![small](img/lenna.jpg)<!-- style="height: 400px" -->
-![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)<!-- style="height: 400px" -->
-![small](img/lenna.jpg)<!-- style="height: 400px" -->
-![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)<!-- style="height: 400px" -->
-![small](img/lenna.jpg)<!-- style="height: 400px" -->
-![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg)<!-- style="height: 400px" -->
-
-
-Gallery with caption
-====================
-
-![small](img/lenna.jpg "An image of beautiful Lena ...")
-![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg "Some image of a certain dog breed")
-![small](img/lenna.jpg "An image of beautiful Lena ...")
-![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg "Some image of a certain dog breed")
-![small](img/lenna.jpg "An image of beautiful Lena ...")
-![big](https://c4.wallpaperflare.com/wallpaper/522/893/260/dog-shepherd-wales-welsh-corgi-hd-wallpaper-preview.jpg "Some image of a certain dog breed")
-
-
-
-Image within Text
-=================
-
-![small](img/lenna.jpg) Lorem ipsum dolor sit amet, consectetur adipisicing
-elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-Image within Text with caption
-==============================
-
-![small](img/lenna.jpg "An image of beautiful Lena ...") Lorem ipsum dolor sit
-amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-deserunt mollit anim id est laborum.

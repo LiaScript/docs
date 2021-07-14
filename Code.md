@@ -291,7 +291,8 @@ comments/issues or to add other mappings.
 
 ## Short List
 
-Complete overview on all supported languages:
+Complete overview on all supported languages and the applied syntax highlighting
+scheme of `ace`.
 
 
 | short-code          | syntax-highlighting |
