@@ -458,7 +458,7 @@ restored from a local cache.
 
                           --{{0}}--
 There might be some cases, where you want to add further headings. We therefor
-apply the following syntax with underlining "equal signs" or "minuses". In
+apply the following syntax with underlining "equal signs" or "dashes". In
 common Markdown, this alternative syntax is applied to define level-1 and
 level-2 headings. We use it to create headings that are one level `=` or two
 levels `-` below the main heading. However, these subsections will not be part
@@ -504,8 +504,8 @@ And multiple sentences.
 How does text-highlighting work in a text file and thus within a paragraph?
 Well, Markdown defines some basic characters that can be used to surround a word
 or a collection of words. We tried to use the GitHub flavored Markdown style for
-simple formatting, thus simply use multiple stars or underscores to mark certain
-parts of a text.
+simple formatting, thus simply use multiple asterisks or underscores to mark
+certain parts of a text.
 
 * `*italic*` -> *italic*<!-- class="notranslate"-->
 * `**bold**` -> **bold**<!-- class="notranslate"-->
@@ -539,11 +539,11 @@ As you can see from the examples, you can combine and nest all elements freely.
 #### Escape Characters
 
                           --{{0}}--
-If you want to use stars, hash-tags, or other syntax elements within your
+If you want to use asterisks, hash-tags, or other syntax elements within your
 document without applying their functionality, then you can escape or in other
 words indicate them with a starting backslash. If you want to escape a
 backslash, you will have to write two subsequent backslashes. But you do not
-have to use it, if there is only one star within a line, this will be
+have to use it, if there is only one asterisk within a line, this will be
 interpreted as a single character. So you will have to apply this kind of
 escaping only to prevent misunderstandings between you and the interpreter.
 
@@ -893,8 +893,8 @@ the correct indentation.
 #### Unordered Lists
 
                           --{{0}}--
-To define an unordered list, starting stars `*`, pluses `+`, and minuses `-` can
-be used and mixed. If one point has more than one line, you can also use
+To define an unordered list, starting asterisks `*`, pluses `+`, and dashes `-`
+can be used and mixed. If one point has more than one line, you can also use
 multiple lines  Paragraphs can be included in the same way, by using two
 newlines.
 
@@ -917,9 +917,10 @@ newlines.
                           --{{1}}--
 As you can see from the result, you can apply all Markdown styling elements
 freely. The starting characters will be interpreted equally, thus it makes no
-difference, if you use stars, pluses and minus. To improve the readability of
-your document, we would recommend to stick with one format for every level.
-Starting with stars on the first level and minuses within the second level, etc.
+difference, if you use asterisks, pluses and dashes. To improve the readability
+of your document, we would recommend to stick with one format for every level.
+Starting with asterisks on the first level and dashes within the second level,
+etc.
 
                             {{1}}
 ********************************************************************************
@@ -982,7 +983,7 @@ Something else ...
 
                           --{{0}}--
 If you, from time to time, reply to emails, than the following notation will
-look quite familiar to you. To make use of quoted test, simply start a line with
+look quite familiar to you. To make use of quoted text, simply start a line with
 a `>` greater than character.
 
 **Markdown-Syntax:**
@@ -1215,6 +1216,7 @@ this ordering also within the bar-chart representation.
                           --{{5}}--
 As mentioned earlier, this is only a brief introduction into this topic. So
 check out section [Fun With Tables](#fun-with-tables) for a complete overview.
+
 
 ### HTML
 
@@ -1506,7 +1508,7 @@ Overview: https://github.com/LiaScript/docs/blob/master/Code.md
                           --{{0}}--
 At the moment it is only possible to insert horizontal rules by adding lines
 with at least 3 dashes, longer dashes are also allowed. Common Markdown also
-allows to define such rules with stars `*`, but this is used in LiaScript to
+allows to define such rules with asterisks `*`, but this is used in LiaScript to
 group blocks and will be described later...
 
 **Markdown-Syntax:**
@@ -2835,7 +2837,7 @@ This entire paragraph will be spoken out __LOUD__.
 
 And of course, it is also possible to combine various elements by using the
 LiaScript block notation. Simply add as many Markdown-blocks between two lines
-of stars and they will be interpreted as one larger block.
+of asterisks and they will be interpreted as one larger block.
 
 
 ```Markdown
