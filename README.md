@@ -1606,7 +1606,6 @@ something else
 ----------------
 
 
-
 ## Styling
 
                           --{{0}}--
@@ -1624,6 +1623,14 @@ id = "elementID" class="foo bar"
 -->
 ```
 
+**Further resources:**
+
+* Complete-Overview:
+  [w3schools CSS-Tutorial](https://www.w3schools.com/Css/css_syntax.asp)
+
+* ![Basic Inline Styling - CSS](https://www.youtube.com/watch?v=jH_WY-sQ8Lg)
+
+
 ### Block-Styling
 
                           --{{0}}--
@@ -1639,12 +1646,43 @@ The whole text-block should appear in purple color and with a wobbling effect.
 Which is a **bad** example, please use it with caution ...
 ```
 
-**Result:**
+**Result: (be patient)**
 
 <!-- class = "animated rollIn" style = "animation-delay: 3s; color: purple" -->
 The whole text-block should appear in purple color and with a wobbling effect.
 Which is a **bad** example, please use it with caution ...
 
+                          --{{1}}--
+Additionally, this method can be used to to overwrite some aspects of all
+Markdown element. The example shows how you can change the background color for
+a certain element. This comes quite handy, if you want to further emphasis some
+parts of your document.
+
+
+                            {{1}}
+********************************************************************************
+
+``` markdown
+<!-- style="background-color: tomato;"-->
+> **Warning**
+>
+> You have to be aware, that this does not affect the
+> font-color (dark/light mode). Try to use  pastel
+> colors, or overwrite the color manually with:
+>
+>  `color: white;`
+```
+
+<!-- style="background-color: tomato;"-->
+> **Warning**
+>
+> You have to be aware, that this does not affect the
+> font-color (dark/light mode). Try to use  pastel
+> colors, or overwrite the color manually with:
+>
+>  `color: white;`
+
+********************************************************************************
 
 ### Inline-Styling
 
