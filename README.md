@@ -1319,9 +1319,9 @@ link: file.css
 
                           --{{0}}--
 The `details` and `summary` tags are standard HTML tags and GitHub also supports
-the internal usage of Markdown for these specific tags. These tags offer a neat
-way to define something what is nowadays called accordion. Thus, your user can
-click on the summary text to make the body of the `details`-tag appear.
+their usage with Markdown. These tags offer a neat way to define something what
+is nowadays called accordion. Thus, your user can click on the summary text to
+make the body of the `details`-tag appear.
 
 **Syntax:**
 
@@ -1348,18 +1348,33 @@ click on the summary text to make the body of the `details`-tag appear.
 #### `<lia-keep>` 💫
 
                           --{{0}}--
-If you want to embed more complex HTML and only HTML, without taking care about
-indentation, then should use the `lia-keep` tag to surround your code.
+If you want to embed more complex HTML, and only HTML, without taking care about
+indentation and formatting, then should use the `lia-keep` tag to surround your
+code.
 
 ``` html
 <lia-keep>
-<details>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      width: 250px; height: 40px;
+      text-align: center;
+    }
+  </style>
 
-<summary>**Honest Textbook ads (click to enlarge)**</summary>
-
-!?[If High School and College Textbooks Were Honest - Honest Ads](https://www.youtube.com/watch?v=lhSjYT7pWkw)
-
-</details>
+  <table style="margin: 1em">
+    <tr>
+      <th>**Header 1**</th>
+      <th>**Header 2**</th>
+    </tr>
+    <tr>
+      <td>Cell 1</td>
+      <td rowspan="2">Cell 2</td>
+    </tr>
+    <tr>
+      <td>Cell 3</td>
+    </tr>
+  </table>
 </lia-keep>
 ```
 
@@ -1374,14 +1389,31 @@ checked.
 **Result:**
 
 <lia-keep>
-<details>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      width: 250px;
+      height: 40px;
+      text-align: center;
+    }
+  </style>
 
-<summary>**Honest Textbook ads (click to enlarge)**</summary>
+  <table style="margin: 1em">
+    <tr>
+      <th>**Header 1**</th>
+      <th>**Header 2**</th>
+    </tr>
+    <tr>
+      <td>Cell 1</td>
+      <td rowspan="2">Cell 2</td>
+    </tr>
+    <tr>
+      <td>Cell 3</td>
+    </tr>
+  </table>
 
-!?[If High School and College Textbooks Were Honest - Honest Ads](https://www.youtube.com/watch?v=lhSjYT7pWkw)
-
-</details>
 </lia-keep>
+
 
 ********************************************************************************
 
