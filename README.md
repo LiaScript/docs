@@ -944,12 +944,13 @@ etc.
 #### Ordered Lists 💫
 
                           --{{0}}--
-Ordered list start with a number and a dot. As you can see from the example, the
-numbering is important, in contrast to the GitHub flavored Markdown or the
-original Markdown, where the list below would result in two separate list that
-contain  two elements (1. and 2.) ignoring your numbering order. With the
-LiaScript interpretation you can separate your lists add more explanations in
-between, use animations to make certain parts appear or disappear, etc.
+Ordered lists start with a number and a dot. As you can see from the example,
+the numbering is important. In contrast to the GitHub flavored Markdown or the
+original Markdown, where the list below would result in two separate list
+containing where the numbering for every list would start at 1 and would also
+ignore your numbering order. With the LiaScript interpretation you can separate
+your lists, add more explanations in between, use animations to make certain
+parts appear or disappear, etc.
 
 
 **Markdown-Syntax:**
@@ -1112,7 +1113,7 @@ are aligned to the left.
 
 #### Tables <--> Data (Demo) 💫
 
-
+                          --{{0}}--
 But why stopping here? A table, in many cases, is just a representation of a
 dataset. If so, why not simply visualizing it accordingly and plot a graph,
 display a chart or a map, or whatever fits the most for your data. At the moment
@@ -1217,6 +1218,22 @@ this ordering also within the bar-chart representation.
 As mentioned earlier, this is only a brief introduction into this topic. So
 check out section [Fun With Tables](#fun-with-tables) for a complete overview.
 
+#### Editing
+
+                          --{{0}}--
+Editing tables might seem tedious, but actually it is not. There is huge number
+of plugins for different editors that you can use, which do the formatting for
+you. You can use them to quickly navigate through your cells, and some even
+allow sorting.
+
+![Demo of a table editor](img/table-editing.gif)
+
+**Editors: Plugins**
+
+* Atom: [markdown-table-editor](https://atom.io/packages/markdown-table-editor)
+* VS-Code: [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable)
+* Obsidion: [Advanced Tables](https://github.com/tgrosinger/advanced-tables-obsidian)
+
 
 ### HTML
 
@@ -1261,32 +1278,42 @@ Test <q>**bold**</q> and <b>HTML bold</b> works also inline
 
 ********************************************************************************
 
+
+
                           --{{2}}--
 If you use custom HTML instead of Markdown, then no styling will be applied. You
 can of course create more complex content or tables, this way you can apply your
-own styling to all elements. If you want to, you can also copy the generated
-LiaScript structure and use our classes. Most Browsers include an inspector,
-which can be used to interactively inspect the entire DOM-tree. But you can also
-import your own styles within the main document comment by using the `link`. We
-will explain this in more details within the macro section [link](#link).
-
+own styling to all elements.
 
                             {{2}}
-1. [CSS-Reference](https://www.w3schools.com/CSSref/default.asp)
+[CSS-Reference](https://www.w3schools.com/CSSref/default.asp)
 
-2. Open Inspector: `Ctrl+Shift+i` or `Ctrl+Shift+k`
+                          --{{3}}--
+If you want to, you can also copy the generated LiaScript structure and use our
+classes. Most Browsers include an inspector, which can be used to interactively
+inspect the entire DOM-tree.
 
-   !?[Inspecting the DOM](https://www.youtube.com/watch?v=Gk6BljF60RI)
+                            {{3}}
+Open Inspector: `Ctrl+Shift+i` or `Ctrl+Shift+k`
 
-3. ``` md
-   <!--
-   ...
-   link: file.css
-   ...
-   -->
+                            {{3}}
+!?[Inspecting the DOM](https://www.youtube.com/watch?v=Gk6BljF60RI)
 
-   # Main Title
-   ```
+                          --{{4}}--
+But, you can also import your own styles within the main document comment by
+using the `link`. We will explain this in more details within the macro section
+[link](#link).
+
+                            {{4}}
+``` md
+<!--
+...
+link: file.css
+...
+-->
+
+# Main Title
+```
 
 #### Details & Summary
 
@@ -1295,6 +1322,8 @@ The `details` and `summary` tags are standard HTML tags and GitHub also supports
 the internal usage of Markdown for these specific tags. These tags offer a neat
 way to define something what is nowadays called accordion. Thus, your user can
 click on the summary text to make the body of the `details`-tag appear.
+
+**Syntax:**
 
 ``` md
 <details>
@@ -1306,7 +1335,8 @@ click on the summary text to make the body of the `details`-tag appear.
 </details>
 ```
 
-                            {{1}}
+**Result:**
+
 <details>
 
 <summary>**Honest Textbook ads (click to enlarge)**</summary>
@@ -1318,8 +1348,8 @@ click on the summary text to make the body of the `details`-tag appear.
 #### `<lia-keep>` 💫
 
                           --{{0}}--
-If you want to embed more complex HTML, you can use the `lia-keep` tag to
-surround your code.
+If you want to embed more complex HTML and only HTML, without taking care about
+indentation, then should use the `lia-keep` tag to surround your code.
 
 ``` html
 <lia-keep>
@@ -1338,6 +1368,8 @@ As it is demonstrated in the result, everything within this tag will be treated
 as HTML only, no Markdown parsing will be applied and indentation will be
 checked.
 
+                            {{1}}
+********************************************************************************
 
 **Result:**
 
@@ -1350,6 +1382,14 @@ checked.
 
 </details>
 </lia-keep>
+
+********************************************************************************
+
+                          --{{2}}--
+This way, you could for example also import more complex HTML-tables with merged
+cells, pictures with multiple sources for different screen-sizes, and more.
+_With great power comes great responsibility._  Thus, you will also be
+responsibile for your styling.
 
 
 ### Code
