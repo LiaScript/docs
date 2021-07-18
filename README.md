@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  12.0.0
+version:  14.0.0
 language: en
 narrator: UK English Female
 
@@ -870,6 +870,11 @@ out in the quote below, Markdown can do even more.
 Within the following part we will learn how to deal with Markdown blocks and
 how to format your content to define the following elements:
 
+<!-- --{{1}}--
+list, blockquotes, tables, custom HTML, horizontal rules and dealing with
+code-blocks.
+ -->
+
        {{1}}
 1. Lists
 2. Blockquotes
@@ -882,7 +887,7 @@ how to format your content to define the following elements:
 
                           --{{0}}--
 The GitHub-flavored Markdown supports two types of list, ordered and unordered
-ones and so does LiaScript. If you every used a typewriter then the following
+ones, and so does LiaScript. If you every used a typewriter then the following
 syntax for lists would look natural to you. The only thing that matters here is
 the correct indentation.
 
@@ -895,8 +900,8 @@ the correct indentation.
                           --{{0}}--
 To define an unordered list, starting asterisks `*`, pluses `+`, and dashes `-`
 can be used and mixed. If one point has more than one line, you can also use
-multiple lines  Paragraphs can be included in the same way, by using two
-newlines.
+multiple lines to define paragraphs. All other Markdown elements, you will get
+to know, can be included in the same way.
 
 **Markdown-Syntax:**
 
@@ -944,13 +949,14 @@ etc.
 #### Ordered Lists 💫
 
                           --{{0}}--
+
 Ordered lists start with a number and a dot. As you can see from the example,
 the numbering is important. In contrast to the GitHub flavored Markdown or the
-original Markdown, where the list below would result in two separate list
-containing where the numbering for every list would start at 1 and would also
-ignore your numbering order. With the LiaScript interpretation you can separate
-your lists, add more explanations in between, use animations to make certain
-parts appear or disappear, etc.
+original Markdown, where the list below would result in **two** separate lists,
+and the numbering for every list would start at 1, ignoring your numbering
+order. With the LiaScript interpretation you can separate your lists, add more
+explanations in between, or use animations to make certain parts appear or
+disappear.
 
 
 **Markdown-Syntax:**
@@ -961,10 +967,10 @@ parts appear or disappear, etc.
 
 Something else ...
 
-2. * gamma
+3. * gamma
    * delta
    * and epsilon
-3. probably zeta
+2. probably zeta
 ```
 
 **Result:**
@@ -974,10 +980,10 @@ Something else ...
 
 Something else ...
 
-2. * gamma
+3. * gamma
    * delta
    * and epsilon
-3. probably zeta
+2. probably zeta
 
 
 ### Blockquotes
@@ -1127,10 +1133,10 @@ visual representation.
                           --{{1}}--
 The easiest and probably most obvious representation of a simple plot, would be
 the following. A header with some names and columns that contain numbers. The
-first column is interpreted as the main column and thus defines the $x$ values
-and the rest is up to you. A cell is then only associated with a number, if the
-first "word", _sequence of characters separated by a space_, can be parsed as a
-number. The `0km` within this example gets ignored. So if you want certain
+first column is interpreted as the main column and thus defines the <var>x</var>
+values, the rest is up to you. A cell is then only associated with a number, if
+the first "word", _sequence of characters separated by a space_, can be parsed
+as a number. The `0km` within this example gets ignored. So if you want certain
 values to be ignored, simply attach something directly to the number, or add a
 character in front of it.
 
@@ -1161,8 +1167,9 @@ resulting image.
 
 
                             --{{3}}--
-A function cannot possess different $y$ values for one $x$ value, thus, if you
-have two or more equal $x$ values, the resulting plot will be a scatter plot.
+A function cannot possess different <var>y</var>-values for one
+<var>x</var>-value, thus, if you have two or more equal <var>x</var>-values, the
+resulting plot will be a scatter plot.
 
            {{3}}
 ``` markdown
@@ -1189,8 +1196,8 @@ have two or more equal $x$ values, the resulting plot will be a scatter plot.
 Last but not least _bar-charts_. If the first column contains at least one cell,
 that cannot be parsed as a number while the others do have, then this table gets
 interpreted as a bar-chart. The first column thus defines your set of groups. It
-is now also possible to sort your table according to different columns and see
-this ordering also within the bar-chart representation.
+is now also possible to sort your table according to different columns, and to
+see this ordering also within the bar-chart representation.
 
 
                                {{4}}
@@ -1221,10 +1228,10 @@ check out section [Fun With Tables](#fun-with-tables) for a complete overview.
 #### Editing
 
                           --{{0}}--
-Editing tables might seem tedious, but actually it is not. There is huge number
-of plugins for different editors that you can use, which do the formatting for
-you. You can use them to quickly navigate through your cells, and some even
-allow sorting.
+Editing tables might seem tedious, but actually it is not. There is a huge
+number of plugins for different editors that you can use, which do the
+formatting for you. You can use them to quickly navigate through your cells, and
+some even allow sorting.
 
 ![Demo of a table editor](img/table-editing.gif)
 
@@ -1301,8 +1308,8 @@ Open Inspector: `Ctrl+Shift+i` or `Ctrl+Shift+k`
 
                           --{{4}}--
 But, you can also import your own styles within the main document comment by
-using the `link`. We will explain this in more details within the macro section
-[link](#link).
+using the `link` definition. We will explain this in more details within the
+macro section [link](#link).
 
                             {{4}}
 ``` md
@@ -1418,8 +1425,9 @@ checked.
 ********************************************************************************
 
                           --{{2}}--
-This way, you could for example also import more complex HTML-tables with merged
-cells, pictures with multiple sources for different screen-sizes, and more.
+
+This way, you could for example also import even more complex HTML-tables,
+pictures with multiple sources for different screen-sizes, and more.
 _With great power comes great responsibility._  Thus, you will also be
 responsibile for your styling.
 
@@ -1488,7 +1496,7 @@ two indicators for text-to-speech in the example are treated equally by
 LiaScript, but another Markdown interpreter will interpret the second example as
 a single paragraph, while the indicator in the first example will be treated as
 code, and thus be easier to read with any other Markdown interpreter (including
-GitHub).
+the representation on GitHub).
 
 
                             {{1}}
@@ -1513,7 +1521,7 @@ This text will be spoken out loud too.
 If you want to bundle a couple of code-blocks into something that mirrors a
 project, you can achieve this with the following syntax. All code-blocks are
 simply attached to each other, in order to indicate a grouping. If you separate
-them at least by one newline, they will be treated as separately. This will be
+them at least by one newline, they will be treated separately. This will be
 pretty neat, if we introduce the concept of interactive code-blocks.
 
 
@@ -1559,12 +1567,16 @@ else {
 }
 ```
 
+                          --{{2}}--
+If you do not add a plus or a minus as a prefix to your file, the plus is used
+as default.
+
 
 #### Supported Languages 💫
 
                           --{{0}}--
 In most cases you can simply add the name of the language or the common filename
-ending into the head of a code snippet. Most Markdown interpreters use
+ending into the head of a code snippet. Most Markdown interpreters will use
 [highlight.js](https://highlightjs.org) for language rendering, since we require
 also an editor with syntax highlighting capabilities, we use
 [ace](https://ace.c9.io). Thus, the language support might differ to other
@@ -1578,10 +1590,10 @@ Overview: https://github.com/LiaScript/docs/blob/master/Code.md
 ### Horizontal rules 💫
 
                           --{{0}}--
-At the moment it is only possible to insert horizontal rules by adding lines
-with at least 3 dashes, longer dashes are also allowed. Common Markdown also
+At the moment it is possible to insert horizontal rules by adding lines with at
+least 3 dashes, longer sequences of dashes are allowed too. Common Markdown also
 allows to define such rules with asterisks `*`, but this is used in LiaScript to
-group blocks and will be described later...
+group blocks, as we will described later...
 
 **Markdown-Syntax:**
 
