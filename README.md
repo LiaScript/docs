@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  14.0.0
+version:  14.0.1
 language: en
 narrator: UK English Female
 
@@ -886,7 +886,7 @@ code-blocks.
 ### Lists
 
                           --{{0}}--
-The GitHub-flavored Markdown supports two types of list, ordered and unordered
+The GitHub-flavored Markdown supports two types of lists, ordered and unordered
 ones, and so does LiaScript. If you every used a typewriter then the following
 syntax for lists would look natural to you. The only thing that matters here is
 the correct indentation.
