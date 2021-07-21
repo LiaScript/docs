@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  14.0.2
+version:  14.0.3
 language: en
 narrator: UK English Female
 
@@ -905,6 +905,7 @@ to know, can be included in the same way.
 
 **Markdown-Syntax:**
 
+<!-- class="translate"-->
 ``` markdown
 * alpha
 + **beta**
@@ -961,6 +962,7 @@ disappear.
 
 **Markdown-Syntax:**
 
+<!-- class="translate"-->
 ``` markdown
 0. alpha
 1. **beta**
@@ -995,6 +997,7 @@ a `>` greater than character.
 
 **Markdown-Syntax:**
 
+<!-- class="translate"-->
 ``` md
 > This was said some time ago ...
 >
@@ -1035,6 +1038,7 @@ within a blockquote and start the second one with two dashes `--`.
 
 **LiaScript-Syntax:**
 
+<!-- class="translate"-->
 ```
 > “Live as if you were to die tomorrow.
 > Learn as if you were to live forever.”
@@ -1061,6 +1065,7 @@ blockquotes. We are not sure yet, how this can also be applied to images,
 tables, lists, etc.
 
              {{2}}
+<!-- class="translate"-->
 ``` md
 lorem ipsum ....
 
@@ -1078,6 +1083,7 @@ to define the column alignment.
 
 **Markdown-format:**
 
+<!-- class="translate"-->
 ``` markdown
 | Tables               |      Are      |  Cool |
 | -------------------- |:-------------:| -----:|
@@ -1158,6 +1164,7 @@ representation. You can modify the chart interactively and even download the
 resulting image.
 
           {{2}}
+<!-- class="notranslate"-->
 | x's |  some y's  |                  dist |
 | --- |:----------:| ---------------------:|
 | 1   |    1 \$    |                 16 km |
@@ -1183,6 +1190,7 @@ resulting plot will be a scatter plot.
 ```
 
            {{3}}
+<!-- class="notranslate"-->
 | x's |  some y's  |  dist |
 | --- |:----------:| -----:|
 | 1   |    1 \$    | 16 km |
@@ -1212,6 +1220,7 @@ see this ordering also within the bar-chart representation.
 ```
 
                                {{4}}
+<!-- class="notranslate"-->
 | Animal          | weight in kg | Lifespan years | Mitogen |
 | --------------- | ------------:| --------------:| -------:|
 | Mouse           |        0.028 |             02 |      95 |
@@ -1254,6 +1263,7 @@ in mind that newlines and indentation are still relevant.
 
 **Markdown-Syntax:**
 
+<!-- class="translate"-->
 ``` html
 <div style="color: green">
 
@@ -1332,6 +1342,7 @@ make the body of the `details`-tag appear.
 
 **Syntax:**
 
+<!-- class="notranslate"-->
 ``` md
 <details>
 
@@ -1500,6 +1511,7 @@ the representation on GitHub).
 
 
                             {{1}}
+<!-- class="translate"-->
 ``` md
 This is not code ...
 
@@ -1597,6 +1609,7 @@ group blocks, as we will described later...
 
 **Markdown-Syntax:**
 
+<!-- class="translate"-->
 ``` markdown
 some paragraph
 
