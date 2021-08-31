@@ -327,7 +327,7 @@ words, the text document. All other sources are loaded relative to this URL.
 
    https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md#5
 
-2. Use other ways of hosting repositories as well (e.g.
+3. Use other ways of hosting repositories as well (e.g.
    [DropBox](https://en.wikipedia.org/wiki/Dropbox_%28service%29),
    [ownCloud](https://en.wikipedia.org/wiki/OwnCloud),
    [NextCloud](https://en.wikipedia.org/wiki/Nextcloud)).
