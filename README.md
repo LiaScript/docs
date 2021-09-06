@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  15.0.0
+version:  15.0.1
 language: en
 narrator: UK English Female
 
@@ -2019,7 +2019,7 @@ resource and different platforms might have different capabilities.
 
                           --{{1}}--
 In most cases, you can use something like `&autoplay=1`, `&muted=true` or
-`&mute=false` as it is depited below:
+`&mute=false` as it is depicted below:
 
                             {{1}}
 `!?[Multimedia](url/...?autoplay=1&mute=1&start=1895&end=1905)`
@@ -5692,7 +5692,7 @@ result and might trigger the execution slightly differently 😏
 
 #### `button`
 
-The code as depited below, will implement a simple clickable button. The script
+The code as depicted below, will implement a simple clickable button. The script
 is loaded once, when the slide is rendered and then every time you click on it.
 
 
@@ -6261,7 +6261,7 @@ and:     <script modify="false">@input(`@0`) && @input(`@1`) </script>
 You can use the `output="channel-name"` parameter to define a dedicated channel,
 on which the script publishes its changed outputs and other scripts can
 subscribe to these changes via `input(channel-name)`, but the channel name has
-to be in markdownish style backtics, as depited below:
+to be in markdownish style backtics, as depicted below:
 
 ``` html
 publishing node P
