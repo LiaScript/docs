@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  15.0.2
+version:  15.0.3
 language: en
 narrator: UK English Female
 
@@ -2036,7 +2036,7 @@ of the different possible settings. For [PeerTube](https://peertube.tv) and
 
 **URL Parameters:**
 
-* [DailyMotion](ttp://embedcodedailymotion.blogspot.com/2016/05/dailymotion-embed-generator-tdborder.html)
+* [DailyMotion](http://embedcodedailymotion.blogspot.com/2016/05/dailymotion-embed-generator-tdborder.html)
 * [Vimeo](https://vimeo.zendesk.com/hc/en-us/articles/360001494447-Using-Player-Parameters)
 * [YouTube](https://developers.google.com/youtube/player_parameters)
 * PeerTube
