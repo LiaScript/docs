@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  14.0.3
+version:  15.0.0
 language: en
 narrator: UK English Female
 
@@ -770,7 +770,8 @@ Everything is similar to images and the URLs can be either relative or absolute.
 
                           --{{1}}--
 Additionally, you can also directly reference music from the
-[SoundCloud](https://Soundcloud.com) website. The associated song will be
+[SoundCloud](https://Soundcloud.com) website or from
+[Music.YouTube](https://music.youtube.com). The associated song will be
 automatically embedded for you.
 
                             {{1}}
@@ -787,7 +788,8 @@ Images are marked with a starting exclamation mark before the link, audio by a
 starting question mark and movies are made of images and sound, that is why you
 combine both marks `!?`. Defining resources this way shows at least the links
 correctly in other Markdown parsers or on GitHub. There is baked-in support for
-[YouTube](https://YouTube.com), [Vimeo](https://Vimeo.com) and
+[YouTube](https://YouTube.com), [Vimeo](https://Vimeo.com),
+[PeerTube](https://peertube.tv), [DailyMotion](https://www.dailymotion.com) and
 [TeacherTube](https://TeacherTube.com), which means that you only have to
 include the link and the resource will be embedded appropriately.
 
@@ -801,6 +803,14 @@ include the link and the resource will be embedded appropriately.
 
   !?[Something about math](vid/math.mp4)
 
+
+                          --{{1}}--
+If you required more control over your video, such as autoplay, muted,
+start-time, and probably also size and colors, the you can also apply custom
+styling rules, then you should take a look at the following section:
+
+                            {{1}}
+[Customizing-Multimedia](#Customizing-Multimedia)
 
 #### So what is left?? 💫
 
@@ -1293,6 +1303,10 @@ Test <q>**bold**</q> and <b>HTML bold</b> works also inline
 
 </div>
 
+> See the following list for an complete overview onto all HTML elements:
+>
+> [HTML Element Reference](https://www.w3schools.com/tags/default.asp)
+
 ********************************************************************************
 
 
@@ -1311,7 +1325,7 @@ classes. Most Browsers include an inspector, which can be used to interactively
 inspect the entire DOM-tree.
 
                             {{3}}
-Open Inspector: `Ctrl+Shift+i` or `Ctrl+Shift+k`
+Open Inspector: <kdb>Ctrl+Shift+i</kdb> or <kdb>Ctrl+Shift+k</kdb>
 
                             {{3}}
 !?[Inspecting the DOM](https://www.youtube.com/watch?v=Gk6BljF60RI)
@@ -1631,37 +1645,103 @@ something else
 ----------------
 
 
-## Styling
+## Custom Styling
 
+
+                 <!-- style="color: red" -->
                           --{{0}}--
-In contrast to most Markdown dialects, LiaScript allows to add custom styling
-and parameters to all Markdown elements by attaching a simple HTML-comment. If
-the content of this comment can be parsed as HTML-attributes, then these
-settings will be applied to entire block or to a single element, such as a word
-or a bold phrase, etc. We thus separate between inline and block styling,
-whereby the position of the HTML-comment defines, what should be "styled".
+In order to support a nearly equal experience for all Markdown interpreters you
+should stick with the basic Markdown notation or use simple HTML-tags as much as
+possible, for example if you want to change the color of a sentence or a word.
 
+                          --{{1}}--
+However, LiaScript allows you also to inject attributes into all Markdown blocks
+and inline elements by attaching an HTML-comment to that specific object. If the
+content of this HTML-comment can be parsed as HTML-attributes, then these
+settings will be applied to the element attached.
+
+                           {{1-2}}
 ``` markdown
 <!--
-style="color: red; width: 100%;"
-id = "elementID" class="foo bar"
+style="color: red;" id = "elementID" class="foo bar"
 -->
 ```
 
+
+
+                            {{2}}
+********************************************************************************
+
 **Further resources:**
 
-* Complete-Overview:
-  [w3schools CSS-Tutorial](https://www.w3schools.com/Css/css_syntax.asp)
+                         --{{2}}--
+The following resources will give you a full overview onto the most common HTML
+attributes and onto styling elements. It might be pretty overwhelming at first
+glance, what is possible, but you will see, that with some basic elements you
+can already achieve a lot. And when it comes to HTML and styling, you can find
+examples for pretty much everything on your prefered search-engine, e.g.
+[ecosia](https://www.ecosia.org).
 
-* !?[Basic Inline Styling - CSS](https://www.youtube.com/watch?v=jH_WY-sQ8Lg)
+
+* **HTML attributes:**
+
+  > Checkout the following link to get a full overview onto all HTML attributes,
+  > which you can also apply in LiaScript:
+  > [w3schools: HTML Attribute Reference](https://www.w3schools.com/tags/ref_attributes.asp)
+
+* **Styling with CSS:**
+
+  > In most cases inline-styling will be applied, the following website covers
+  > all CSS-Syntax elements, which then can be used simply by attaching comments
+  > in the following way:
+  >
+  > `<!-- style="color: red; font-size: 20px;" -->`
+  >
+  > [w3schools CSS-Tutorial](https://www.w3schools.com/Css/css_syntax.asp)
+  >
+  > !?[Basic Inline Styling - CSS](https://www.youtube.com/watch?v=jH_WY-sQ8Lg)
+
+********************************************************************************
 
 
 ### Block-Styling
 
-                          --{{0}}--
+                            --{{0}}--
+So what is actually a block in LiaScript or Markdown? Basically it is everything
+that is separated by a newline, such as a paragraph, a table, a code-block or a
+list. But it can also be a block of multiple blocks, such as a list, which may
+consist of different bullet points, where every bullet point can be a list of
+multiple blocks by itself.
+
+* **Blocks:**
+
+  * [tables](#Tables)
+  * [paragraphs](#content-blocks)
+  * [lists (ordered/unordered)](#lists)
+  * [blockquotes](#blockquotes)
+  * [horizontal rules](#horizontal-rules-💫)
+  * [HTML-blocks](#HTML) (if standing alone)
+
+* **LiaScript-Extensions:**
+
+  * [comments](#narrator)
+  * [citations](#citations-💫)
+  * [effects](#effects)
+  * [quizzes](#quizzes)
+  * [surveys](#surveys)
+  * [tables](#fun-with-tables)
+  * [ASCII-Art](#ascii-art-#2) & [Charts](#charts)
+  * [executable code-blocks and projects](#Syntax-highlighting)
+
+
+
+                          --{{1}}--
 Settings for entire blocks can be set with a **starting** comment that includes
 all required HTML-attributes and can even contain animation settings. This can
-be used to highlight specific elements of your slides.
+also be used to highlight specific elements of your slides.
+
+                            {{1}}
+********************************************************************************
 
 **LiaScript-Syntax:**
 
@@ -1669,6 +1749,7 @@ be used to highlight specific elements of your slides.
 <!-- class = "animated rollIn" style = "animation-delay: 3s; color: purple" -->
 The whole text-block should appear in purple color and with a wobbling effect.
 Which is a **bad** example, please use it with caution ...
+
 ```
 
 **Result: (be patient)**
@@ -1677,14 +1758,16 @@ Which is a **bad** example, please use it with caution ...
 The whole text-block should appear in purple color and with a wobbling effect.
 Which is a **bad** example, please use it with caution ...
 
-                          --{{1}}--
-Additionally, this method can be used to to overwrite some aspects of all
-Markdown element. The example shows how you can change the background color for
-a certain element. This comes quite handy, if you want to further emphasis some
-parts of your document.
+********************************************************************************
 
 
-                            {{1}}
+                          --{{2}}--
+Additionally, this method can be used to overwrite some aspects of all Markdown
+element. The example shows how you can change the background color for a certain
+element. This comes quite handy, if you want to emphasize further some parts of
+your document.
+
+                            {{2}}
 ********************************************************************************
 
 ``` markdown
@@ -1709,22 +1792,59 @@ parts of your document.
 
 ********************************************************************************
 
+                          --{{3}}--
+The following example shows the depicts the interconnection of nested
+block-elements. For the entire table and also for all other blocks, it is
+possible to set the properties for width, font-color and font size, which will
+be applied onto every cell. And every cell can overwrite these values simply by
+adding a style-comment as the first element. These settings are even preserved,
+if you reorder the table.
+
+                            {{3}}
+********************************************************************************
+
+``` markdown
+               <!-- style="width: 50%; min-width: 400px; color: red; font-size:20px" -->
+| <!-- style="background: azure"--> Header 1 | <!-- style="background: brown"--> Header 2        |
+|:------------------------------------------ |:------------------------------------------------- |
+| <!-- style="background: coral"--> Item 1   | <!-- style="background: rgb(12,12,111)"--> Item 2 |
+| <!-- style="background: cyan" --> Item 3   | <!-- style="background: #b88608"--> Item 4        |
+```
+
+**Result**
+
+                <!-- style="width: 50%; min-width: 400px; color: red; font-size:20px" -->
+| <!-- style="background: azure"--> Header 1 | <!-- style="background: brown"--> Header 2        |
+|:------------------------------------------ |:------------------------------------------------- |
+| <!-- style="background: coral"--> Item 1   | <!-- style="background: rgb(12,12,111)"--> Item 2 |
+| <!-- style="background: cyan" --> Item 3   | <!-- style="background: #b88608"--> Item 4        |
+
+********************************************************************************
+
+
+                          --{{4}}--
+There are some special (internal) formats for changing the appearance of
+code-blocks and how to deal with tables. These topics will be handled
+separately.
+
+
 ### Inline-Styling
 
                           --{{0}}--
-Inline styling works similarly, but you simply add your HTML-comment after the
-element. This way you can change font-colors, set custom size and position
-configurations for images and videos, or even apply graphical filters.
+So what are inline elements? These are basically all the tiny parts, such as
+single words, bold-text, links, inline-code, but also images and videos. In
+contrast to blocks where you attach the comment to front, inline elements can be
+modified by attaching a comment to the end. That's it ...
 
 **LiaScript-Syntax:**
 
 ``` markdown
 This **is an important**<!-- style="color: red" --> part
-of the text.
+of the text<!-- style="color: green; font-size: 10rem;" -->.
 
 
 ![image](...Creative-Tail-Animal-lion.svg)<!--
-style = "width: 100%;
+style = "width: 300px;
          border: 10px solid;"
 class = "animated infinite bounce"
 -->
@@ -1732,14 +1852,13 @@ class = "animated infinite bounce"
 Some blurry and black-and-white video:
 
 !?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
-style = "filter: blur(5px);"
+style = "filter: blur(2px); grayscale(80%);"
 -->
 ```
 
                           --{{1}}--
-As you can see from the results, CSS is a pretty powerful tool and by using
-HTML-comments to tweak your Markdown, you can still read the document with any
-ordinary Markdown interpreter that simply ignores these comments.
+As you can see from the results, the entire bold text is treated as one block,
+whereby in the second case only the single word "text" gets modified.
 
                             {{1}}
 ********************************************************************************
@@ -1747,10 +1866,10 @@ ordinary Markdown interpreter that simply ignores these comments.
 **Result:**
 
 This **is an important**<!-- style="color: red" --> part
-of the text.
+of the text<!-- style="color: green; font-size: 10rem;" -->.
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)<!--
-style = "width: 100%;
+style = "width: 300px;
          border: 10px solid;"
 class = "animated infinite bounce"
 -->
@@ -1758,12 +1877,69 @@ class = "animated infinite bounce"
 Some blurry and black-and-white video:
 
 !?[movie](https://www.youtube.com/watch?v=8pTEmbeENF4)<!--
-style = "filter: blur(2px) grayscale(100%);"
+style = "filter: blur(2px) grayscale(80%);"
 -->
 
 ********************************************************************************
 
-### Hiding Content
+                          --{{2}}--
+CSS is a pretty powerful tool and by using HTML-comments to tweak your Markdown,
+you can still read the document with any ordinary Markdown interpreter that
+simply ignores these comments.
+
+### Images and Styling
+
+                          --{{0}}--
+Styling images might happen quite often. However, you have to be aware of the
+fact, that the modal view functionality is only possible if LiaScript is in
+total control of the image. Thus, it will handle the optimal scaling for you and
+adds a click-event to switch to the modal view.
+
+```markdown
+![The Wave](...ave_off_Kanagawa_%28Kanagawa_oki_nami.jpg "without attribute injection")
+
+![Workplace](https://www.w3schools.com/htmL/workplace.jpg "with attribute are added")<!-- usemap="#workmap" -->
+
+<map name="workmap">
+  <area shape="rect" coords="34,44,270,350" title="Computer" onclick="alert('You clicked the Computer')" >
+  <area shape="rect" coords="290,172,333,250" title="Phone" href="#12">
+  <area shape="circle" coords="337,300,44" title="Cup of coffee" href="#Projects">
+</map>
+```
+
+                          --{{1}}--
+Thus, if you click onto the first image, you will be able to inspect it in more
+detail. If you click onto the second image, then a map associated with this
+image  is in charge of it, which handles click-events differently.
+
+                            {{1}}
+********************************************************************************
+
+**Result**
+
+![Workplace](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/1952.343_-_Under_the_Wave_off_Kanagawa_%28Kanagawa_oki_nami.jpg/2560px-1952.343_-_Under_the_Wave_off_Kanagawa_%28Kanagawa_oki_nami.jpg "without attribute injection")
+
+![Workplace](https://www.w3schools.com/htmL/workplace.jpg "with attribute are added")<!-- usemap="#workmap" -->
+
+<map name="workmap">
+  <area shape="rect" coords="34,44,270,350" title="Computer" onclick="alert('Cmputer')" >
+  <area shape="rect" coords="290,172,333,250" title="Phone" href="#12">
+  <area shape="circle" coords="337,300,44" title="Cup of coffee" href="#Projects">
+</map>
+
+> -- The example for the map was taken from
+> [w3schools](https://www.w3schools.com/tags/tag_map.asp).
+
+********************************************************************************
+
+### What else can you do
+
+                         --{{0}}--
+The following examples present some useful application of combining attribute
+injection into LiaScript components.
+
+
+#### Hiding Content
 
                           --{{0}}--
 There might be use cases where you either want to show some parts only on GitHub
@@ -1795,6 +1971,101 @@ The attributes within the comment will overwrite the attributes within the
 block. Thus, if there would be more stuff within style, this will be overwritten
 too, but other attributes like `id` that are not contained within the comment
 won't be affected...
+
+#### Customizing Multimedia
+
+                          --{{0}}--
+As you have seen previously sizing videos and applying CSS filters is easy.
+However, there might also be the case that you want to start a video from some
+special point or to play it automatically, when it appears.
+
+
+                          --{{1}}--
+If the video is yours, then you can use the following attributes `àutoplay` and
+`muted` to control the behavior and the additional fragment `#t=4,12` attached
+to the URL of the video, will tell the browser where to start and where to stop
+the video. The stop-parameter should be optional.
+
+
+                            {{1}}
+``` markdown
+!?[Something about math](vid/math.mp4#t=4,12)<!--
+autoplay="true"
+muted="true"
+-->
+```
+
+
+                          --{{2}}--
+The resulting video starts immediately at second 4 and stops at second 10, and
+of course it will be muted.
+
+                 {{2}}
+!?[Something about math](vid/math.mp4#t=4,10)<!--
+autoplay="true"
+muted="true" -->
+
+
+##### Platform Diversity
+
+                          --{{0}}--
+However, if you are referencing other resource on platforms such as
+[YouTube](https://youtube.com), [Vimeo](https://vimeo.com),
+[DailyMotion](https://dailymotion.com), [PeerTube](https://peertube.tv) or
+[TeacherTube](https://teachertube.com) you can achieve something similar, but in
+a slightly different way. These settings have to be added to the URL of your
+resource and different platforms might have different capabilities.
+
+
+                          --{{1}}--
+In most cases, you can use something like `&autoplay=1`, `&muted=true` or
+`&mute=false` as it is depited below:
+
+                            {{1}}
+`!?[Multimedia](url/...?autoplay=1&mute=1&start=1895&end=1905)`
+
+
+                          --{{2}}--
+But, different platforms support different functionalities. Here is a link list
+of the different possible settings. For [PeerTube](https://peertube.tv) and
+[TeacherTube](https://teachertube.com) we could not find any settings so far.
+
+
+                            {{2}}
+********************************************************************************
+
+**URL Parameters:**
+
+* [DailyMotion](ttp://embedcodedailymotion.blogspot.com/2016/05/dailymotion-embed-generator-tdborder.html)
+* [Vimeo](https://vimeo.zendesk.com/hc/en-us/articles/360001494447-Using-Player-Parameters)
+* [YouTube](https://developers.google.com/youtube/player_parameters)
+* PeerTube
+* TeacherTube
+
+********************************************************************************
+
+
+## Math-Mode
+
+{{0}} via KaTex http://katex.org
+
+{{1}} Inline math-mode `$ \frac{a}{\sum{b+i}} $` -> $ \frac{a}{\sum{b+i}} $
+
+                                        {{2}}
+Multi-line math-mode can be applied by double dollars `$$ formula $$`
+$$
+  \frac{a}{\sum{b+i}}
+$$
+
+                                    --{{0}}--
+We apply KaTeX for math-formatting, see the documentation at www.katex.org.
+
+                                    --{{1}}--
+A formula can be either inline with single dollars.
+
+                                    --{{2}}--
+Or multi-line by using the double dollar notation.
+
 
 
 ## JavaScript
@@ -1886,26 +2157,7 @@ on the marker.
       can consist of multiple blocks.
 
 
-## Math-Mode
 
-{{0}} via KaTex http://katex.org
-
-{{1}} Inline math-mode `$ \frac{a}{\sum{b+i}} $` -> $ \frac{a}{\sum{b+i}} $
-
-                                        {{2}}
-Multi-line math-mode can be applied by double dollars `$$ formula $$`
-$$
-  \frac{a}{\sum{b+i}}
-$$
-
-                                    --{{0}}--
-We apply KaTeX for math-formatting, see the documentation at www.katex.org.
-
-                                    --{{1}}--
-A formula can be either inline with single dollars.
-
-                                    --{{2}}--
-Or multi-line by using the double dollar notation.
 
 ## Syntax Highlighting
 
