@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  15.0.1
+version:  15.0.2
 language: en
 narrator: UK English Female
 
@@ -1793,12 +1793,12 @@ your document.
 ********************************************************************************
 
                           --{{3}}--
-The following example shows the depicts the interconnection of nested
-block-elements. For the entire table and also for all other blocks, it is
-possible to set the properties for width, font-color and font size, which will
-be applied onto every cell. And every cell can overwrite these values simply by
-adding a style-comment as the first element. These settings are even preserved,
-if you reorder the table.
+The following example depicts the interconnection of nested block-elements. For
+the entire table and also for all other blocks, it is possible to set the
+properties for width, font-color and font size, which will be applied onto every
+cell. And every cell can overwrite these values simply by adding a style-comment
+as the first element. These settings are even preserved, if you reorder the
+table.
 
                             {{3}}
 ********************************************************************************
