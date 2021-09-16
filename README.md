@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  16.0.0
+version:  16.0.1
 language: en
 narrator: UK English Female
 
@@ -2096,14 +2096,17 @@ following resources.
 
   https://katex.org/docs/support_table.html
 
+* Detexify: get the appropriate command by drawing symbols
+
+  http://detexify.kirelabs.org/classify.html
+
 
                  --{{4}}--
 Sometimes it might be tedious to find the right, command for the intended
 symbol, if you can draw it, then you should give
 [detexify](http://detexify.kirelabs.org/classify.html) a try.
 
-         {{4}}
-??[Detexify](http://detexify.kirelabs.org/classify.html)<!-- style="width:100%" -->
+
 
 ### Formula Playground
 <!--
