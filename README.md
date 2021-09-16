@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  15.0.3
+version:  16.0.0
 language: en
 narrator: UK English Female
 
@@ -2045,28 +2045,152 @@ of the different possible settings. For [PeerTube](https://peertube.tv) and
 ********************************************************************************
 
 
-## Math-Mode
+## Math & Formulas
 
-{{0}} via KaTex http://katex.org
+                 --{{0}}--
+The following will not work on [GitHub](https://github.com), but most
+Markdown-interpreters do support formulas with a
+[LaTeX](https://en.wikipedia.org/wiki/LaTeX)-like syntax. As it is common in
+many Markdown dialects, such as in
+[Pandoc-Markdown](https://pandoc.org/MANUAL.html#math), you can apply dollar
+signs to surround a "math"-environment. Everything within the dollar signs
+belongs to the formula only, there is currently no nesting of other HTML or
+LiaScript/Markdown allowed.
 
-{{1}} Inline math-mode `$ \frac{a}{\sum{b+i}} $` -> $ \frac{a}{\sum{b+i}} $
 
-                                        {{2}}
+              --{{1}}--
+Use single dollar signs to define an inline formula, which will be treated as an
+ordinary text element.
+
+                          {{1}}
+Inline math-mode `$ \frac{a}{\sum{b+i}} $` -> $ \frac{a}{\sum{b+i}} $
+
+
+             --{{2}}--
+Use double dollar signs to indicate a formula-block. This way you can also use
+multiple lines to define a formula or a set of formulas that will furthermore
+be displayed larger.
+
+
+                          {{2}}
 Multi-line math-mode can be applied by double dollars `$$ formula $$`
 $$
   \frac{a}{\sum{b+i}}
 $$
 
-                                    --{{0}}--
-We apply KaTeX for math-formatting, see the documentation at www.katex.org.
+                           --{{3}}--
+Currently, we apply the [KaTeX](http://katex.org) library for typesetting. If you
+are already familiar with [LaTeX](https://en.wikipedia.org/wiki/LaTeX) or
+[MathJAX](https://www.mathjax.org), as another alternative library, then you can
+start immediately to define formulas. If not, then check out some of the
+following resources.
 
-                                    --{{1}}--
-A formula can be either inline with single dollars.
+         {{3}}
+* via KaTeX: http://katex.org
 
-                                    --{{2}}--
-Or multi-line by using the double dollar notation.
+* Supported functions:
+
+  https://katex.org/docs/supported.html
+
+* Alphabetically sorted features:
+
+  https://katex.org/docs/support_table.html
 
 
+                 --{{4}}--
+Sometimes it might be tedious to find the right, command for the intended
+symbol, if you can draw it, then you should give
+[detexify](http://detexify.kirelabs.org/classify.html) a try.
+
+         {{4}}
+??[Detexify](http://detexify.kirelabs.org/classify.html)<!-- style="width:100%" -->
+
+### Formula Playground
+<!--
+@formula: <script>console.html(`<lia-formula formula="@'input" displayMode="true"></lia-formula>`);"LIA: stop"</script>
+
+-->
+
+                          --{{0}}--
+Alignment is a typical use case for formulas. The code below, shows how this can
+be achieved by using ampersands, which are used as an anchor for the center of a
+formula.
+
+```latex
+\begin{split}
+  a &=b+c \\
+    &=e+f \\
+    &=g+h+i+j\\
+a+b+&c+d=12\\
+\end{split}
+```
+@formula
+
+
+                          --{{1}}--
+If you want to number your formulas, we recommend using the `\tag` command to
+add or overwrite the reference number. Automatic numbering does not work well at
+the moment, since the formulas are rendered within a
+[web component](https://en.wikipedia.org/wiki/Web_Components), and it does
+conflict with the LiaScript idea of animation, which we describe in a later part
+of this series.
+
+
+      {{1}}
+```latex
+\tag{33}
+\begin{equation}
+ a =b+c
+\end{equation}
+```
+@formula
+
+
+                          --{{2}}--
+And finally it is possible to add some styling, but with
+[KaTeX](https://katex.org/docs/supported.html#html)-functionalities, this
+includes some basic styling, with the same inline CSS, as we had described it in
+section [Custom Styling](#custom-styling). (Can you spot the strange looking
+german character [_Eszett_](https://en.wikipedia.org/wiki/%C3%9F).) And you can
+mark elements as links with `\href` and add images with the command
+`\includegraphics`.
+
+
+      {{2}}
+```latex
+\begin{Bmatrix}
+   a & b & c & d & e & f \\
+   g & h & i & j & k & l \\
+   m & n & o & p & q & r \\
+   s & t & u & v & w & x \\
+   y & z & ä & ö & ü &
+   \htmlStyle{color: red; font-size: 26px}{ß}
+\end{Bmatrix}
+\\
+\href{https://katex.org/docs/supported.html#html}{\KaTeX HTML support}
+\\
+\includegraphics[height=0.8em, totalheight=0.9em, width=0.9em, alt=KA logo]{https://katex.org/img/khan-academy.png}
+```
+@formula
+
+## Footnotes
+
+    --{{0}}--
+There are two types of footnotes, either inline or divided ones (into two
+parts). The the footnotbody is only showed in textbook mode, or if you click
+on the marker.
+
+1. Inline Footnote[^1](explanation in one line) => `[^1](explanation in one line)`
+2. Divided into a marker[^2] => `[^2]`, that can appeare every where and an
+   explanation at the bottom of a section.
+
+   ```md
+   [^2]: This is an explanation, than
+         can consist of multiple blocks.
+   ```
+
+[^2]: This is an explanation, than
+      can consist of multiple blocks.
 
 ## JavaScript
 
@@ -2137,24 +2261,7 @@ LiaScript effects, you can build even more sophisticated courses.
 
 
 
-## Footnotes
 
-    --{{0}}--
-There are two types of footnotes, either inline or divided ones (into two
-parts). The the footnotbody is only showed in textbook mode, or if you click
-on the marker.
-
-1. Inline Footnote[^1](explanation in one line) => `[^1](explanation in one line)`
-2. Divided into a marker[^2] => `[^2]`, that can appeare every where and an
-   explanation at the bottom of a section.
-
-   ```md
-   [^2]: This is an explanation, than
-         can consist of multiple blocks.
-   ```
-
-[^2]: This is an explanation, than
-      can consist of multiple blocks.
 
 
 
