@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  16.0.1
+version:  16.0.2
 language: en
 narrator: UK English Female
 
@@ -2063,7 +2063,7 @@ Use single dollar signs to define an inline formula, which will be treated as an
 ordinary text element.
 
                           {{1}}
-Inline math-mode `$ \frac{a}{\sum{b+i}} $` -> $ \frac{a}{\sum{b+i}} $
+Inline math-mode `$ \frac{a}{\sum{b+i}} $` -> $ \frac{a}{\sum{b+i}} $<!-- class="notranslate"-->
 
 
              --{{2}}--
@@ -2076,7 +2076,7 @@ be displayed larger.
 Multi-line math-mode can be applied by double dollars `$$ formula $$`
 $$
   \frac{a}{\sum{b+i}}
-$$
+$$<!-- class="notranslate"-->
 
                            --{{3}}--
 Currently, we apply the [KaTeX](http://katex.org) library for typesetting. If you
@@ -2119,6 +2119,7 @@ Alignment is a typical use case for formulas. The code below, shows how this can
 be achieved by using ampersands, which are used as an anchor for the center of a
 formula.
 
+<!-- class="notranslate"-->
 ```latex
 \begin{split}
   a &=b+c \\
@@ -2140,6 +2141,7 @@ of this series.
 
 
       {{1}}
+<!-- class="notranslate"-->
 ```latex
 \tag{33}
 \begin{equation}
@@ -2160,6 +2162,7 @@ mark elements as links with `\href` and add images with the command
 
 
       {{2}}
+<!-- class="notranslate"-->
 ```latex
 \begin{Bmatrix}
    a & b & c & d & e & f \\
