@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  17.0.0
+version:  17.0.1
 language: en
 narrator: UK English Female
 
@@ -2229,6 +2229,7 @@ The standard way of creating footnotes is to attach a marker to important
 elements within your sections. A marker is defined by brackets with a starting
 `^`. Then you can insert numbers, symbols and words.
 
+               <!-- class="translate"-->
 ``` markdown
 Something[^1] important[^2] about[^🦶] notes.
 ```
@@ -2241,6 +2242,7 @@ block-elements that you have mentioned so far, but they have to be indented with
 at least 2 spaces.
 
                             {{1}}
+                <!-- class="translate"-->
 ``` markdown
 [^1]: **Something** and **anything** are concepts of existence in ontology,
   contrasting with the concept of nothing. Both are used to describe the
