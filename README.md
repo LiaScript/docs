@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  16.0.2
+version:  17.0.0
 language: en
 narrator: UK English Female
 
@@ -2181,22 +2181,129 @@ mark elements as links with `\href` and add images with the command
 
 ## Footnotes
 
-    --{{0}}--
-There are two types of footnotes, either inline or divided ones (into two
-parts). The the footnotbody is only showed in textbook mode, or if you click
-on the marker.
+                            --{{0}}--
+Before moving on to the LiaScript specific features, such as quizzes, surveys,
+animations, ASCII-art, etc., we would like present a last feature that is common
+to many Markdown dialects and these are footnotes. So, what are footnotes in
+general and when to use them.
 
-1. Inline Footnote[^1](explanation in one line) => `[^1](explanation in one line)`
-2. Divided into a marker[^2] => `[^2]`, that can appeare every where and an
-   explanation at the bottom of a section.
+                            {{0-1}}
+>     {{|> UK English Male}}
+> Footnotes are notes at the foot of the page while endnotes are collected under
+> a separate heading at the end of a chapter, volume, or entire work. Unlike
+> footnotes, endnotes have the advantage of not affecting the layout of the main
+> text, but may cause inconvenience to readers who have to move back and forth
+> between the main text and the endnotes.
+>
+> -- [Wikipedia](https://en.wikipedia.org/wiki/Note_%28typography%29)
 
-   ```md
-   [^2]: This is an explanation, than
-         can consist of multiple blocks.
-   ```
 
-[^2]: This is an explanation, than
-      can consist of multiple blocks.
+                          --{{1}}--
+In LiaScript a "section", which is defined by a header and a body, resembles a
+page. Thus, the body might contain a couple of footnote-marks, while the actual
+footnotes have to be defined at the end of the body. Other Markdown interpreters
+might define a more "wide-spread" usage of footnotes, but in LiaScript this is
+not possible at the moment. We parse/interpret only one section at a time and
+not the entire document. So keep this in mind when using footnotes.
+
+
+                            {{1}}
+``` markdown
+### header 3
+
+body
+
+body
+
+body
+
+footnotes
+
+## ...
+```
+
+### Standard-Footnotes
+
+                          --{{0}}--
+The standard way of creating footnotes is to attach a marker to important
+elements within your sections. A marker is defined by brackets with a starting
+`^`. Then you can insert numbers, symbols and words.
+
+``` markdown
+Something[^1] important[^2] about[^🦶] notes.
+```
+
+                          --{{1}}--
+At the end of your body, you simply add a list with all indented remarks you
+want to add. This list starts with your markers, that are followed by a colon.
+Your notes or footnote-bodies can consist of multiple paragraphs and all other
+block-elements that you have mentioned so far, but they have to be indented with
+at least 2 spaces.
+
+                            {{1}}
+``` markdown
+[^1]: **Something** and **anything** are concepts of existence in ontology,
+  contrasting with the concept of nothing. Both are used to describe the
+  understanding that what exists is not nothing without needing to address the
+  existence of everything. The philosopher, David Lewis, has pointed out that
+  these are necessarily vague terms, asserting that "ontological ...
+
+  -- [Wikipedia](https://en.wikipedia.org/wiki/Something_%28concept%29)
+
+[^2]:> It is **important** to mention that anything can be added to a footnote
+  > also some piece of code, images, videos, etc.
+  >
+  > ??[How to Use Footnotes](https://www.youtube.com/watch?v=Gg6vXoHO95I)
+
+[^🦶]: Actually you are not forced to use numbers, you can use any kind of
+       symbol or even words too.
+
+       _But, please be consise._
+```
+
+                          --{{2}}--
+By clicking onto the footnote, all of your comments will be shown in a modal
+view in all view-modes. If you are in "textbook" mode, then these footnotes
+are additionally displayed at the very end of the current "page".
+
+
+                            {{2}}
+********************************************************************************
+
+**Result:**
+
+Something[^1] important[^2] about[^🦶] notes.
+
+********************************************************************************
+
+[^1]: **Something** and **anything** are concepts of existence in ontology,
+  contrasting with the concept of nothing. Both are used to describe the
+  understanding that what exists is not nothing without needing to address the
+  existence of everything. The philosopher, David Lewis, has pointed out that
+  these are necessarily vague terms, asserting that "ontological ...
+
+  -- [Wikipedia](https://en.wikipedia.org/wiki/Something_%28concept%29)
+
+[^2]:> It is **important** to mention that anything can be added to a footnote
+  > also some piece of code, images, videos, etc.
+  >
+  > ??[How to Use Footnotes](https://www.youtube.com/watch?v=Gg6vXoHO95I)
+
+[^🦶]: Actually you are not forced to use numbers, you can use any kind of
+       symbol or even words too.
+
+       _But, please stick to one explicit format._
+
+### Inline-Footnotes
+
+                          --{{0}}--
+The following idea of defining inline-footnotes was borrowed from LaTeX. If you
+want to add only some text without further Markdown-syntax then you can add this
+in parentheses to your footnote-mark. In this case it is not necessary to add a
+more sophisticated explanation to the end of the sections.
+
+
+`Inline Footnote [^x](__explanation__ in one line)` => Inline Footnote[^x](__explanation__ in one line)
 
 ## JavaScript
 
@@ -6812,3 +6919,6 @@ Embedded systems developer, creator or arduinoview, and Markdown evangelist ...
 
     --{{4}}--
 CSS & SASS crack and friendly face behind new face of LiaScript ...
+
+
+# Appendix
