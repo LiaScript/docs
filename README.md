@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  17.0.1
+version:  18.0.0
 language: en
 narrator: UK English Female
 
@@ -2307,6 +2307,418 @@ more sophisticated explanation to the end of the sections.
 
 `Inline Footnote [^x](__explanation__ in one line)` => Inline Footnote[^x](__explanation__ in one line)
 
+## State
+
+                          --{{0}}--
+Some words about state. The LiaScript runtime-environment preserves the internal
+state of the following elements, depending on where you execute your courses and
+depending on the version.
+
+* [Tasks](#tasks)
+* [Quizzes](#quizzes)
+* [Surveys](#surveys)
+* Code
+* `(<script>)`
+
+
+                          --{{1}}--
+LiaScript currently runs in three different environments. You can either share
+and read courses via the [project website](https://LiaScript.github.io/course/),
+generate
+[SCORM-packages](https://en.wikipedia.org/wiki/Sharable_Content_Object_Reference_Model),
+which can be uploaded to an LMS, or create self-containing websites.
+
+
+                            {{1}}
+1. **LiaScript PWA**
+
+                          --{{2}}--
+   If you share your course via the website, then all the courses and the
+   current course states are preserved within the Browser database
+   [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
+   locally. **All of the states?** Well ... the internal state of the previous
+   components is only preserved, if your course has a version $\text{v} \geq 1$.
+   The default version is `0.0.0`, which means that the course is in
+   _development mode_, and thus the structure of your course might change every
+   time. If a user reloads the course, then all states are cleared.
+
+   - Where: https://LiaScript.github.io/course/
+   - Source: [liascript/src/typescript/connectors/Browser](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/connectors/Browser)
+
+2. **SCORM 1.2**
+
+                          --{{3}}--
+   [SCORM](https://en.wikipedia.org/wiki/Sharable_Content_Object_Reference_Model)
+   stands for Sharable Content Object Reference Model and allows you to store
+   the course state directly within every LMS that has support for SCORM 1.2.
+   For this case you have to use our
+   [exporter](https://github.com/LiaScript/LiaScript-Exporter), which translates
+   your course into a "SCORM-compliant" zip-file. You can check if your LMS has
+   support for SCORM, by visiting our LMS-overview.
+
+   - Where: https://github.com/LiaScript/LiaScript-Exporter#scorm12
+   - Source: [liascript/src/typescript/connectors/SCORM1.2](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/connectors/SCORM1.2)
+   - Does your LMS support SCORM 1.2:
+     [LMS-Overview](https://github.com/LiaScript/LiaScript-Exporter#lms-support-list)
+
+3. **Base**
+
+                          --{{4}}--
+   You can also use our
+   [exporter-tool](https://github.com/LiaScript/LiaScript-Exporter) to create
+   single websites of your course. But, this "base" does only support to store
+   user-settings, such as style, mode, etc. This "base-connector" is also used
+   for the live-server and editors. If you are a developer and want to extend
+   the LiaScript support to store state within your backend, then this is the
+   right place to look at. This module provides an abstract class, to which all
+   statefull data is sent. You can simply inherit from this class and implement
+   the access to your system.
+
+   - Where: https://github.com/LiaScript/LiaScript-Exporter#web
+   - Source: [liascript/src/typescript/connectors/Base](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/connectors/Base)
+
+                          --{{5}}--
+For more information on versioning and how to use it, check out section
+[`version`](#version) within the [macros](#macros) section. But for now, it is
+okay to know, that you can adapt, restructure and share your courses freely, if
+you are in dev-mode. If your course is ready to be launched, use versioning to
+preserve the state of your users.
+
+## Tasks
+
+                          --{{0}}--
+Before we show you how to create quizzes, we would like to introduce **tasks**,
+which were also a source of inspiration for us, for developing a similar syntax
+for quizzes and surveys. The GitHub flavored Markdown offers a very intuitive
+way of creating check-lists or task-lists.
+
+<!-- class="translate" -->
+``` markdown
+**Which topics did you master so far?**
+
+- [ ] Biology
+- [ ] Chemistry
+- [ ] Computer Science
+- [X] Something about LiaScript
+```
+
+                          --{{1}}--
+It is basically a list where the brackets are used to symbolize check-boxes and
+by using an upper- or lowercase x, it is possible to mark a checkbox as checked.
+In LiaScript however, it is possible for the user to manipulate these states,
+and they will be preserved if your document is in version 1 or greater.
+
+                            {{1}}
+********************************************************************************
+
+**Which topics did you master so far?**
+
+- [ ] Biology
+- [ ] Chemistry
+- [ ] Computer Science
+- [X] Something about LiaScript
+
+********************************************************************************
+
+### Tasks and Scripting
+
+                          --{{0}}--
+In case you are wondering where the **"Script"** in LiaScript comes from? We
+wanted to make documents more interactive, by embedding native support for
+scripting. Coding will become an essential skill in the future so why not using
+it to directly extend the native capabilities of static documents and its
+elements. Scripts can either be executed separately or they can be attached to
+tasks, quizzes, surveys, and code-snippets.
+
+                          --{{1}}--
+The example might look a bit weird for the moment, but it is only meant as a
+demonstration. You can use scripting in LiaScript, if you want to, but it is not
+required. Thus, whenever you change the state of the task-list, then the script
+below gets executed and the `@input`-macro will be substituted by current input.
+`output="tasks"` says, that the result is published under the topic "tasks",
+thus, every script that contains an `@input(\`tasks\`)` will be executed
+afterwards as well with the changed input. Task-lists simply produces and array
+with boolean values.
+
+                            {{1}}
+<!-- class="translate" -->
+``` markdown
+**What do you want to learn today?**
+
+- [ ] Biology
+- [ ] Chemistry
+<script output="tasks">"@input"</script>
+
+<script style="width: 100%">
+try {
+  let task = JSON.parse("@input(`tasks`)") // interpret the output="tasks"
+
+  if(task[0]) {
+    send.liascript(`## Biology
+
+Hey, great, you want to learn something about Biology.
+
+* resource 1
+* resource 2
+
+The input from the tasks above was: \`[${task}]\``)
+  } else ""
+
+} catch(e) {}
+</script>
+```
+
+                          --{{2}}--
+Depending on the input scripts can generate different results, it is even
+possible to return LiaScript code, which will be analyzed and rendered
+dynamically. If an empty string or undefined gets returned, then the script will
+not be visible to the user. We will describe all Lia-Scripting capabilities and
+features in more detail in a later [chapter](#javaScript-or-js-components).
+
+
+                            {{2}}
+********************************************************************************
+
+**What do you want to learn today?**
+
+- [ ] Biology
+- [ ] Chemistry
+<script output="tasks">
+  "@input"
+</script>
+
+<script style="width: 100%">
+try {
+  let task = JSON.parse("@input(`tasks`)")
+
+  if(task[0]) {
+    send.liascript(`## Biology
+
+Hey, great, you want to learn something about Biology.
+
+* resource 1
+* resource 2
+
+The input from the tasks above was: \`[${task}]\``
+    )
+  } else ""
+
+} catch(e) {}
+</script>
+
+
+<script style="width: 100%">
+try {
+  let task = JSON.parse("@input(`tasks`)")
+
+  if(task[1]) {
+    send.liascript(`## Chemistry
+
+Hey, great, you want to learn something about Chemistry.
+
+The input from the tasks above was: \`[${task}]\`
+
+...`)
+  } else ""
+
+} catch(e) {}
+</script>
+
+********************************************************************************
+
+
+                          --{{3}}--
+If we are talking about embedding scripts, that perform some kind of
+calculation, data analysis, etc. Why shouldn't this be visible to the user as
+well? In LiaScript you can inspect these highlighted elements with rounded
+corners, which represent the result of a script, simply be double-clicking or
+double-tabbing. The user can manipulate them and observe the results, simply by
+changing the code. If the editor is closed, then the code gets reevaluated.
+
+                            {{3}}
+> We all know what can happen when you cannot get access to primary data and the
+> code that was used to analyze it. Europe's entire austerity policy after the
+> debt crisis was based on wrong conclusions drawn from incorrect data and false
+> calculations from a single Excel spreadsheet.
+>
+> https://en.wikipedia.org/wiki/Growth_in_a_Time_of_Debt
+
+                          --{{4}}--
+But, this is enough for the moment, let us continue with quizzes...
+
+## Quizzes
+
+
+Quizzes are an essential element of every online course, which allow students to
+reflect and test their knowledge.  Lia currently supports  different types of
+quizzes which can be tweaked, if required.
+
+### Text Inputs
+
+                                  --{{0}}--
+A text input field is defined simply by a newline and two brackets around the
+solution word, value or sentence. In the depicted example, the word solution is
+the solution. If you enter something else, the check will fail.
+
+Markdown-format: `[[solution]]`
+
+Please enter the word * "solution" * into the text-field!
+
+    [[solution]]
+
+### Single-Choice
+
+                                  --{{0}}--
+A single choice quiz can be defined with parenthesis within brackets and an X,
+which marks the only correct answer option. The additional text is Lia-Markdown
+again.
+
+Markdown-format:
+
+``` markdown
+[( )] Wrong
+[(X)] This is the **correct** answer
+[( )] This is ~~wrong~~ too!
+```
+
+Only one element can be selected, but if you want to, you can also have multiple
+correct answers!
+
+    [( )] Wrong
+    [(X)] This is the **correct** answer
+    [( )] This is ~~wrong~~ too!
+
+
+### Multiple-Choice
+
+                                  --{{0}}--
+A multiple choice quiz can be defined with brackets within brackets and an X,
+which are used to mark the correct answer option. In contrast to single choice
+quizzes, there can be multiple selected choices or no one, which is also allowed.
+
+``` markdown
+[[ ]] Do not touch!
+[[X]] Select this one ...
+[[X]] ... and this one too!
+[[ ]] also not correct ...
+```
+
+Multiple of them can be selected, or all, or none of them ...
+
+    [[ ]] Do not touch!
+    [[X]] Select this one ...
+    [[X]] ... and this one too!
+    [[ ]] also not correct ...
+
+
+### Matrix
+
+If you want to, you can combine single-choice and multiple-choice quizzes within
+one larger matrix. A header is required and different elements have to be
+separated by using parentheses or brackets.
+
+``` markdown
+[[:-)] (:-]) [$a^2$]]
+[ [X]   [ ]    [X]  ]       a multiple-choice row
+[ [ ]   [X]    [ ]  ]       a second one
+[ ( )   ( )    (X)  ]       now it is single-choice
+[ ( )   (X)    ( )   (X) ]  more or less options are fine too
+```
+
+The rest is self-explaining...
+
+    [[:-)] (:-]) [$a^2$]]
+    [ [X]   [ ]    [X]  ]       a multiple-choice row
+    [ [ ]   [X]    [ ]  ]       a second one
+    [ ( )   ( )    (X)  ]       now it is single-choice
+    [ ( )   (X)    ( )   (X) ]  more or less options are fine too
+
+### Selection
+
+The options within a selection are simply separated by `|` and the correct
+option is surrounded by parentheses ...
+
+``` markdown
+[[ ok | ( $ f(a,b,c) = (a^2+b^2+c^2)^3 $ ) | **FALSE** ]]
+```
+
+[[ ok | ( $ f(a,b,c) = (a^2+b^2+c^2)^3 $ ) | **FALSE** ]]
+
+### Hints
+
+                                  --{{0}}--
+To any type of quiz you can add as many hints as you want, which are revealed in
+order by clicking onto the question mark.
+
+Markdown-format:
+
+``` markdown
+[[super]]
+[[?]] another word for awesome
+[[?]] not great or mega
+[[?]] hopefully not that bad
+[[?]] there are no hints left
+```
+
+A text input with additional hints:
+
+    [[super]]
+    [[?]] another word for awesome
+    [[?]] not great or mega
+    [[?]] hopefully not that bad
+    [[?]] there are no hints left
+
+
+### Solution
+
+                                   --{{0}}--
+And finally, some quizzes might require some more explanations, if they are
+solved or not. That is why, with additional three opening and three closing
+brackets you mark the beginning and the end of your solution, which can contain
+multiple paragraphs, formulas, program code, videos, etc as well as effects (see
+therefor the next section).
+
+Markdown-format:
+
+``` markdown
+[[super]]
+[[?]] hint 1
+[[?]] hint 2
+***********************************************************************
+
+                                {{1}}
+You are right, super was the correct answer again
+
+* {2}{super} as an effect
+* $\sum x + 3$
+* terra
+
+![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)
+
+***********************************************************************
+```
+
+A quiz with hints and a revealed result.
+
+    [[super]]
+    [[?]] hint 1
+    [[?]] hint 2
+    ***********************************************************************
+
+                                    {{1}}
+You are right, super was the correct answer again
+
+* {2}{super} as an effect
+* $\sum x + 3$
+* terra
+
+![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)
+
+    ***********************************************************************
+
+
+
+
 ## JavaScript
 
                                  --{{0}}--
@@ -3053,174 +3465,6 @@ developing your own courses. See:
 
 [preview-lia](https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md)
 
-## Quizzes
-
-Quizzes are an essential element of every online course for students to reflect
-and test their knowledge. Lia currently supports three different types of
-quizzes which can be tweaked, if required.
-
-### Text Inputs
-
-                                  --{{0}}--
-A text input field is defined simply by a newline and two brackets around the
-solution word, value or sentence. In the depicted example, the word solution is
-the solution. If you enter something else, the check will fail.
-
-Markdown-format: `[[solution]]`
-
-Please enter the word * "solution" * into the text-field!
-
-    [[solution]]
-
-### Single-Choice
-
-                                  --{{0}}--
-A single choice quiz can be defined with parenthesis within brackets and an X,
-which marks the only correct answer option. The additional text is Lia-Markdown
-again.
-
-Markdown-format:
-
-``` markdown
-[( )] Wrong
-[(X)] This is the **correct** answer
-[( )] This is ~~wrong~~ too!
-```
-
-Only one element can be selected, but if you want to, you can also have multiple
-correct answers!
-
-    [( )] Wrong
-    [(X)] This is the **correct** answer
-    [( )] This is ~~wrong~~ too!
-
-
-### Multiple-Choice
-
-                                  --{{0}}--
-A multiple choice quiz can be defined with brackets within brackets and an X,
-which are used to mark the correct answer option. In contrast to single choice
-quizzes, there can be multiple selected choices or no one, which is also allowed.
-
-``` markdown
-[[ ]] Do not touch!
-[[X]] Select this one ...
-[[X]] ... and this one too!
-[[ ]] also not correct ...
-```
-
-Multiple of them can be selected, or all, or none of them ...
-
-    [[ ]] Do not touch!
-    [[X]] Select this one ...
-    [[X]] ... and this one too!
-    [[ ]] also not correct ...
-
-
-### Matrix
-
-If you want to, you can combine single-choice and multiple-choice quizzes within
-one larger matrix. A header is required and different elements have to be
-separated by using parentheses or brackets.
-
-``` markdown
-[[:-)] (:-]) [$a^2$]]
-[ [X]   [ ]    [X]  ]       a multiple-choice row
-[ [ ]   [X]    [ ]  ]       a second one
-[ ( )   ( )    (X)  ]       now it is single-choice
-[ ( )   (X)    ( )   (X) ]  more or less options are fine too
-```
-
-The rest is self-explaining...
-
-    [[:-)] (:-]) [$a^2$]]
-    [ [X]   [ ]    [X]  ]       a multiple-choice row
-    [ [ ]   [X]    [ ]  ]       a second one
-    [ ( )   ( )    (X)  ]       now it is single-choice
-    [ ( )   (X)    ( )   (X) ]  more or less options are fine too
-
-### Selection
-
-The options within a selection are simply separated by `|` and the correct
-option is surrounded by parentheses ...
-
-``` markdown
-[[ ok | ( $ f(a,b,c) = (a^2+b^2+c^2)^3 $ ) | **FALSE** ]]
-```
-
-[[ ok | ( $ f(a,b,c) = (a^2+b^2+c^2)^3 $ ) | **FALSE** ]]
-
-### Hints
-
-                                  --{{0}}--
-To any type of quiz you can add as many hints as you want, which are revealed in
-order by clicking onto the question mark.
-
-Markdown-format:
-
-``` markdown
-[[super]]
-[[?]] another word for awesome
-[[?]] not great or mega
-[[?]] hopefully not that bad
-[[?]] there are no hints left
-```
-
-A text input with additional hints:
-
-    [[super]]
-    [[?]] another word for awesome
-    [[?]] not great or mega
-    [[?]] hopefully not that bad
-    [[?]] there are no hints left
-
-
-### Solution
-
-                                   --{{0}}--
-And finally, some quizzes might require some more explanations, if they are
-solved or not. That is why, with additional three opening and three closing
-brackets you mark the beginning and the end of your solution, which can contain
-multiple paragraphs, formulas, program code, videos, etc as well as effects (see
-therefor the next section).
-
-Markdown-format:
-
-``` markdown
-[[super]]
-[[?]] hint 1
-[[?]] hint 2
-***********************************************************************
-
-                                {{1}}
-You are right, super was the correct answer again
-
-* {2}{super} as an effect
-* $\sum x + 3$
-* terra
-
-![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)
-
-***********************************************************************
-```
-
-A quiz with hints and a revealed result.
-
-    [[super]]
-    [[?]] hint 1
-    [[?]] hint 2
-    ***********************************************************************
-
-                                    {{1}}
-You are right, super was the correct answer again
-
-* {2}{super} as an effect
-* $\sum x + 3$
-* terra
-
-![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)
-
-    ***********************************************************************
 
 ## Effects
 
