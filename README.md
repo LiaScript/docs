@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  18.0.1
+version:  18.0.3
 language: en
 narrator: UK English Female
 
@@ -2337,10 +2337,10 @@ which can be uploaded to an LMS, or create self-containing websites.
    current course states are preserved within the Browser database
    [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
    locally. **All of the states?** Well ... the internal state of the previous
-   components is only preserved, if your course has a version $\text{v} \geq 1$.
-   The default version is `0.0.0`, which means that the course is in
-   _development mode_, and thus the structure of your course might change every
-   time. If a user reloads the course, then all states are cleared.
+   components is only preserved, if your course has a version greater than or
+   equal to `1.0.0`. The default version is `0.0.1`, which means that the course
+   is in _development mode_, and thus the structure of your course might change
+   every time. If a user reloads the course, then all states are cleared.
 
    - Where: https://LiaScript.github.io/course/
    - Source: [liascript/src/typescript/connectors/Browser](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/connectors/Browser)
