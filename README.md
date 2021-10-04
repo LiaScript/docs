@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  18.0.0
+version:  18.0.1
 language: en
 narrator: UK English Female
 
@@ -2445,13 +2445,13 @@ with boolean values.
 ``` markdown
 **What do you want to learn today?**
 
-- [ ] Biology
+- [X] Biology
 - [ ] Chemistry
 <script output="tasks">"@input"</script>
 
 <script style="width: 100%">
 try {
-  let task = JSON.parse("@input(`tasks`)") // interpret the output="tasks"
+  let task = @input(`tasks`) // interpret the output="tasks"
 
   if(task[0]) {
     send.liascript(`## Biology
@@ -2462,9 +2462,8 @@ Hey, great, you want to learn something about Biology.
 * resource 2
 
 The input from the tasks above was: \`[${task}]\``)
-  } else ""
-
-} catch(e) {}
+  } else send.clear()
+} catch(e) { }
 </script>
 ```
 
@@ -2481,11 +2480,10 @@ features in more detail in a later [chapter](#javaScript-or-js-components).
 
 **What do you want to learn today?**
 
-- [ ] Biology
+- [X] Biology
 - [ ] Chemistry
-<script output="tasks">
-  "@input"
-</script>
+<script output="tasks">"@input"</script>
+
 
 <script style="width: 100%">
 try {
@@ -2501,15 +2499,14 @@ Hey, great, you want to learn something about Biology.
 
 The input from the tasks above was: \`[${task}]\``
     )
-  } else ""
-
-} catch(e) {}
+  } else send.clear()
+} catch(e) { }
 </script>
 
 
 <script style="width: 100%">
 try {
-  let task = JSON.parse("@input(`tasks`)")
+  let task = @input(`tasks`)
 
   if(task[1]) {
     send.liascript(`## Chemistry
@@ -2519,9 +2516,8 @@ Hey, great, you want to learn something about Chemistry.
 The input from the tasks above was: \`[${task}]\`
 
 ...`)
-  } else ""
-
-} catch(e) {}
+  } else send.clear()
+} catch(e) { }
 </script>
 
 ********************************************************************************
@@ -2530,16 +2526,17 @@ The input from the tasks above was: \`[${task}]\`
                           --{{3}}--
 If we are talking about embedding scripts, that perform some kind of
 calculation, data analysis, etc. Why shouldn't this be visible to the user as
-well? In LiaScript you can inspect these highlighted elements with rounded
-corners, which represent the result of a script, simply be double-clicking or
-double-tabbing. The user can manipulate them and observe the results, simply by
-changing the code. If the editor is closed, then the code gets reevaluated.
+well? We all know what can happen when you cannot get access to primary data and
+the code that was used to analyze it. In LiaScript you can inspect these
+highlighted elements with rounded corners, which represent the result of a
+script, simply by double-clicking or double-tabbing. The user can manipulate
+them and observe the results, simply by changing the code. If the editor is
+closed, then the code gets reevaluated.
 
                             {{3}}
-> We all know what can happen when you cannot get access to primary data and the
-> code that was used to analyze it. Europe's entire austerity policy after the
-> debt crisis was based on wrong conclusions drawn from incorrect data and false
-> calculations from a single Excel spreadsheet.
+> Europe's entire austerity policy after the debt crisis was based on wrong
+> conclusions drawn from incorrect data and false calculations from a
+> **single Excel spreadsheet**.
 >
 > https://en.wikipedia.org/wiki/Growth_in_a_Time_of_Debt
 
