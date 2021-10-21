@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  19.0.1
+version:  19.0.2
 language: en
 narrator: UK English Female
 
@@ -2613,6 +2613,7 @@ solution. Thus, the only thing that has to be done, is to surround your "ASCII"
 checkboxes with additional brackets, which are followed by a line of
 Markdown/LiaScript.
 
+<!-- class="translate"-->
 ``` markdown
 - [[ ]] Empty means not checked
 - [[X]] Uppercase `X` means checked ...
@@ -2645,6 +2646,7 @@ interpreted by LiaScript as the same quiz.
 
 
                             {{2}}
+<!-- class="translate"-->
 ``` markdown
 Without starting dashes (paragraph):
 
@@ -2668,6 +2670,7 @@ If brackets are used to define checkboxes, why not using parentheses to indicate
 radio-buttons. In contrast to multiple-choice quizzes only one option can be
 selected.
 
+<!-- class="translate"-->
 ``` markdown
 - [( )] Not selected
 - [(X)] **This one has to be selected**
@@ -2695,7 +2698,8 @@ However, you can also define multiple possible solutions a user might select
 only one option, but multiple might be correct.
 
                             {{2}}
-```
+<!-- class="translate"-->
+``` markdown
 What is the correct spelling of H(D)D?
 
     [(X)] hard (**disk**) drive
@@ -2730,6 +2734,7 @@ will be presented.
 > Using single-choice quizzes, it is also possible to define something simple as
 > a True or False quiz.
 >
+> <!-- class="translate"-->
 > ``` markdown
 > Do you know an easier way of creating quizzes?
 >
@@ -2756,6 +2761,7 @@ line, use brackets if you want to insert parenthesis and vice versa.
 
 
                             {{0}}
+<!-- class="translate"-->
 ``` markdown
 - [[male (der)] (female [die]) [neuter (das)]]
 - [    [X]           [ ]             [ ]     ]  Mann - German for man
@@ -2792,6 +2798,7 @@ Man or woman is obvious, but you guess the remaining German grammatical genders?
 > this does not cause an error. You as a course designer can see, that there
 > might have a mistake occurred, but maybe you use it with a purpose.
 >
+> <!-- class="translate"-->
 > ``` markdown
 > [[option 1] [option 2]]
 > [   [X]                     ] only with option 1
@@ -2814,6 +2821,7 @@ this is, that in the future we would like to extend the usage of text- and
 selection-quizzes to be used everywhere, within paragraphs or tables to from
 clozes.
 
+<!-- class="translate"-->
 ``` markdown
 What did the fish say when he swam into the wall?
 
@@ -2848,7 +2856,7 @@ that are surrounded by parenthesis. An option can be any kind of LiaScript
 inline element and since vertical bars `|` are used as separators, you can
 simplify the readability by using newlines.
 
-
+<!-- class="translate"-->
 ``` markdown
 What is the derivative function of $f(x) = x^6$?
 
@@ -2876,13 +2884,16 @@ for clozes. And you can use indentation, such as it is possible for all quizzes.
 
 What is the derivative function of $f(x) = x^6$?
 
-[[ $f'(x) = 6$ | ( $f'(x) = 6x^5$ ) | $f'(x) = 5x^6$ ]]
+[[ $f'(x) = 6$<!-- class="notranslate"-->
+| ( $f'(x) = 6x^5$<!-- class="notranslate"--> )
+| $f'(x) = 5x^6$<!-- class="notranslate"--> ]]
+
 
 Can be also written as:
 
-    [[  ($f'(x) = 6$)
-    | ( $f'(x) = 6x^5$ )
-    |   $f'(x) = 5x^6$
+    [[  $f'(x) = 6$<!-- class="notranslate"-->
+    | ( $f'(x) = 6x^5$<!-- class="notranslate"-->  )
+    |   $f'(x) = 5x^6$<!-- class="notranslate"-->
     | ( **This will be counted as correct too...** )
     ]]
 
@@ -2937,6 +2948,7 @@ However, you can improve your quizzes by asking your question as a paragraph,
 which is followed by your quiz. This way LiaScript will associate or label the
 quiz with your question.
 
+<!-- class="translate"-->
 ``` markdown
 Ask a question as an ordinary Markdown paragraph,
 which is followed by what?
@@ -2952,6 +2964,7 @@ ID by using the
 [aria-labelledby](https://www.w3.org/TR/wai-aria/#aria-labelledby) attribute.
 
                             {{1}}
+<!-- class="translate"-->
 ``` markdown
 <div>
 
@@ -2974,7 +2987,7 @@ All of the following elements can be added to any type of quiz that you have
 seen before. This includes and arbitrary number of hints, a more detailed
 solution or a custom script that handles the user input.
 
-    <div style="width:100%;height:0;padding-bottom:63%;position:relative;"><iframe src="https://giphy.com/embed/qUDenOaWmXImQ" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/scott-pilgrim-michael-cera-level-up-qUDenOaWmXImQ">via GIPHY</a></p>
+<div style="width:100%;height:0;padding-bottom:63%;position:relative;"><iframe src="https://giphy.com/embed/qUDenOaWmXImQ" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/scott-pilgrim-michael-cera-level-up-qUDenOaWmXImQ">via GIPHY</a></p>
 
 #### Hints
 
@@ -2983,7 +2996,7 @@ To any type of quiz you can add as many hints as you want, the pattern is simply
 two brackets with an additional question mark. If you want to, you can also add
 starting dashes to the hints.
 
-
+<!-- class="translate"-->
 ``` markdown
 What is $37 + 15$?
 
@@ -3026,7 +3039,7 @@ solved or not. Therefor, simply use two "lines" that are defined by at least
 three asterisks to group your solution. The solution explanation can contain
 an arbitrary number of LiaScript elements.
 
-
+<!-- class="translate"-->
 ```` markdown
 What is $37 + 15$?
 
@@ -3117,6 +3130,7 @@ your quiz-script defines if the quiz is marked as solved or not. Only if the
 last statement evaluates to `true` it is marked as solved, for any other value
 it is simply a failed trial.
 
+
 ``` markdown
 What did the fish say when he swam into the wall?
 
@@ -3135,6 +3149,7 @@ surrounded by spaces.
                             {{1}}
 ********************************************************************************
 
+<!-- class="notranslate"-->
 What did the fish say when he swam into the wall?
 
 [[dam]]
