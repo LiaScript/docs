@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  19.0.0
+version:  19.0.1
 language: en
 narrator: UK English Female
 
@@ -3466,13 +3466,13 @@ does the opposite. You can try out to the following two scripts to encode and
 decode different strings.
 
                             {{1}}
-* `btoa`: (Beautiful TO Awful)
+* `btoa`: <script input="text" value="solution" input-always-active modify="false">btoa(`@input`)</script>
 
-  <script input="text" value="solution" input-always-active run-once modify="false">btoa(`@input`)</script>
+  (Beautiful TO Awful)
 
-* `atob`: (Awful TO Beautiful)
+* `atob`: <script input="text" value="c29sdXRpb24=" input-always-active modify="false">atob(`@input`)</script>
 
-  <script input="text" value="c29sdXRpb24=" input-always-active run-once modify="false">atob(`@input`)</script>
+  (Awful TO Beautiful)
 
 
                             {{2}}
