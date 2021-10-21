@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  18.0.3
+version:  19.0.0
 language: en
 narrator: UK English Female
 
@@ -113,7 +113,7 @@ simple text-editor and a web-browser.
 
                            --{{0}}--
 As already mentioned all you need to work with LiaScript is an text-editor, but
-it can be usefull to apply one of the follwing tools. At least we apply them to
+it can be usefull to apply one of the following tools. At least we apply them to
 see the result of a change within the course document immediately. You will see,
 that the development of online-courses will speed up, especially if there is no
 need for memorizing complex point and click sequences.
@@ -2545,173 +2545,1330 @@ But, this is enough for the moment, let us continue with quizzes...
 
 ## Quizzes
 
-
+                          --{{0}}--
 Quizzes are an essential element of every online course, which allow students to
-reflect and test their knowledge.  Lia currently supports  different types of
-quizzes which can be tweaked, if required.
+reflect and test their knowledge. As mentioned before, we used the
+GitHub-flavored Markdown notation for tasks as an inspiration for quizzes.
 
-### Text Inputs
+                          --{{1}}--
+Long story short, everything that is related to quizzes is defined as a
+combination of brackets with brackets or parentheses.
 
-                                  --{{0}}--
-A text input field is defined simply by a newline and two brackets around the
-solution word, value or sentence. In the depicted example, the word solution is
-the solution. If you enter something else, the check will fail.
+    {{1-2}}
+- `[[   ]]`
+- `[(   )]`
 
-Markdown-format: `[[solution]]`
-
-Please enter the word * "solution" * into the text-field!
-
-    [[solution]]
-
-### Single-Choice
-
-                                  --{{0}}--
-A single choice quiz can be defined with parenthesis within brackets and an X,
-which marks the only correct answer option. The additional text is Lia-Markdown
-again.
-
-Markdown-format:
-
-``` markdown
-[( )] Wrong
-[(X)] This is the **correct** answer
-[( )] This is ~~wrong~~ too!
-```
-
-Only one element can be selected, but if you want to, you can also have multiple
-correct answers!
-
-    [( )] Wrong
-    [(X)] This is the **correct** answer
-    [( )] This is ~~wrong~~ too!
+                          --{{2}}--
+LiaScript currently supports 5 different types of quizzes and one, so-called
+generic type, which can be used to created custom quizzes of any kind.
 
 
-### Multiple-Choice
-
-                                  --{{0}}--
-A multiple choice quiz can be defined with brackets within brackets and an X,
-which are used to mark the correct answer option. In contrast to single choice
-quizzes, there can be multiple selected choices or no one, which is also allowed.
-
-``` markdown
-[[ ]] Do not touch!
-[[X]] Select this one ...
-[[X]] ... and this one too!
-[[ ]] also not correct ...
-```
-
-Multiple of them can be selected, or all, or none of them ...
-
-    [[ ]] Do not touch!
-    [[X]] Select this one ...
-    [[X]] ... and this one too!
-    [[ ]] also not correct ...
+                            {{2-3}}
+1. Multiple-Choice: `[[X|x| ]] ...`
+2. Single-Choice:   `[(X|x| )] ...`
+3. Matrix: as a combination of multiple- and single-choice quizzes
+3. Text-Quiz: `[[solution]]`
+4. Selection-Quiz: `[[ opt. 1 | opt. 2 | (solution opt.) ]]`
+0. "Generic": `[[!]]`
 
 
-### Matrix
+                          --{{3}}--
+Additionally, it is possible to tweak every quiz with additional features, such
+as hints, a resolution that is presented if the users solves the quiz by their
+own or clicks onto the "show solution" button. And finally, as you have seen it
+with tasks, you can attach scripts to each quiz in order to implement more
+sophisticated quizzes or simply to log the output.
 
-If you want to, you can combine single-choice and multiple-choice quizzes within
-one larger matrix. A header is required and different elements have to be
-separated by using parentheses or brackets.
+                            {{3}}
+1. Hints: `[[?]]`
+2. Solutions: some arbitrary Markdown content
+3. Associated scripts: to be executed, when the user clicks onto the
+   "check"-button
 
-``` markdown
-[[:-)] (:-]) [$a^2$]]
-[ [X]   [ ]    [X]  ]       a multiple-choice row
-[ [ ]   [X]    [ ]  ]       a second one
-[ ( )   ( )    (X)  ]       now it is single-choice
-[ ( )   (X)    ( )   (X) ]  more or less options are fine too
-```
+### Quiz Types
 
-The rest is self-explaining...
+                          --{{0}}--
+Within the following section we will introduce the 5 types of quizzes, which are
+currently supported by LiaScript. Additionally, you have to know that users
+cannot fail, by default it is possible to retry a quiz until it is solved, or
+the user clicks onto the resolve button. The only thing that is counted is the
+number of trials.
 
-    [[:-)] (:-]) [$a^2$]]
-    [ [X]   [ ]    [X]  ]       a multiple-choice row
-    [ [ ]   [X]    [ ]  ]       a second one
-    [ ( )   ( )    (X)  ]       now it is single-choice
-    [ ( )   (X)    ( )   (X) ]  more or less options are fine too
 
-### Selection
+<div style="width:100%;height:0;padding-bottom:68%;position:relative;"><iframe src="https://giphy.com/embed/pKEufUXBqsLi8" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/the-simpsons-poochie-pKEufUXBqsLi8">via GIPHY</a></p>
 
-The options within a selection are simply separated by `|` and the correct
-option is surrounded by parentheses ...
+
+                          --{{1}}--
+If testing knowledge becomes something deeply personal, without any limitation
+on the number of trials, why should anyone cheat at all. In this sense,
+LiaScript is meant to be a language for learning and education instead of
+assessment. But, if you want to, you can also tweak this by using scripts 😉.
+
+
+#### 1. Multiple-Choice
+
+                           --{{0}}--
+A multiple-choice quiz can also be interpreted as a task list with a predefined
+solution. Thus, the only thing that has to be done, is to surround your "ASCII"
+checkboxes with additional brackets, which are followed by a line of
+Markdown/LiaScript.
 
 ``` markdown
-[[ ok | ( $ f(a,b,c) = (a^2+b^2+c^2)^3 $ ) | **FALSE** ]]
+- [[ ]] Empty means not checked
+- [[X]] Uppercase `X` means checked ...
+- [[x]] ... and lowercase `x` too ...
+- [[ ]] **as defined in the first line** ...
 ```
 
-[[ ok | ( $ f(a,b,c) = (a^2+b^2+c^2)^3 $ ) | **FALSE** ]]
+                          --{{1}}--
+As you can see from the example it does not matter, whether you use lowercase or
+uppercase `X` to mark a checked element.
 
-### Hints
+                            {{1}}
+********************************************************************************
 
-                                  --{{0}}--
-To any type of quiz you can add as many hints as you want, which are revealed in
-order by clicking onto the question mark.
+**Result:**
 
-Markdown-format:
+- [[ ]] Empty means not checked
+- [[X]] Uppercase `X` means checked ...
+- [[x]] ... and lowercase `x` too ...
+- [[ ]] **as defined in the first line** ...
+
+********************************************************************************
+
+                          --{{2}}--
+The starting dashes for quizzes are also optional, you can omit them and GitHub
+and other Markdown renderer will present a single paragraph. Or, you can also
+use an indentation of at least 4 spaces, which will be presented by other
+interpreters as code. However, all the following representations will be
+interpreted by LiaScript as the same quiz.
+
+
+                            {{2}}
+``` markdown
+Without starting dashes (paragraph):
+
+[[ ]] Empty means not checked
+[[X]] Uppercase `X` means checked ...
+[[x]] ... and lowercase `x` too ...
+[[ ]] **as defined in the first line** ...
+
+With indentation of at least 4 spaces (code):
+
+    [[ ]] Empty means not checked
+    [[X]] Uppercase `X` means checked ...
+    [[x]] ... and lowercase `x` too ...
+    [[ ]] **as defined in the first line** ...
+```
+
+#### 2. Single-Choice
+
+                          --{{0}}--
+If brackets are used to define checkboxes, why not using parentheses to indicate
+radio-buttons. In contrast to multiple-choice quizzes only one option can be
+selected.
 
 ``` markdown
-[[super]]
-[[?]] another word for awesome
-[[?]] not great or mega
-[[?]] hopefully not that bad
-[[?]] there are no hints left
+- [( )] Not selected
+- [(X)] **This one has to be selected**
+- [( )] ~~Do not select this one ...~~
 ```
 
-A text input with additional hints:
+                          --{{1}}--
+You can also omit the starting dashes and/or use indentation as with
+multiple-choice quizzes and use upper- or lowercase `X` to indicate the
+solution.
 
-    [[super]]
-    [[?]] another word for awesome
-    [[?]] not great or mega
-    [[?]] hopefully not that bad
-    [[?]] there are no hints left
+                            {{1}}
+********************************************************************************
+
+**Result:**
+
+- [( )] Not selected
+- [(X)] **This one has to be selected**
+- [( )] ~~Do not select this one ...~~
+
+********************************************************************************
+
+                          --{{2}}--
+However, you can also define multiple possible solutions a user might select
+only one option, but multiple might be correct.
+
+                            {{2}}
+```
+What is the correct spelling of H(D)D?
+
+    [(X)] hard (**disk**) drive
+    [( )] hard (**desk**) drive
+    [(x)] hard (**disc**) drive
+```
+
+                            {{3}}
+********************************************************************************
+
+**Result:**
+
+What is the correct spelling of H(D)D?
+
+    [(X)] hard (**disk**) drive
+    [( )] hard (**desk**) drive
+    [(x)] hard (**disc**) drive
+
+********************************************************************************
+
+                          --{{3}}--
+Thus, if the user selects the first or the last option, the quiz will be marked
+as solved, or if the user clicks onto the "show solution" button, both options
+will be presented.
 
 
-### Solution
+
+                            {{4}}
+> ## How to create a true/false quiz?
+>
+>                        --{{4}}--
+> Using single-choice quizzes, it is also possible to define something simple as
+> a True or False quiz.
+>
+> ``` markdown
+> Do you know an easier way of creating quizzes?
+>
+>     [( )] Yes
+>     [(X)] No
+> ```
+>
+> **Result:**
+>
+> Do you know an easier way of creating quizzes?
+>
+>     [( )] Yes
+>     [(X)] No
+
+
+#### 3. Matrix-Quiz
+
+                          --{{0}}--
+You can also combine multiple single- and multiple-choice quizzes into one
+larger matrix-quiz. The "vector" quizzes are now simply defined as rows, whereby
+you have to define a custom header, which represent the solution options. It
+makes no real difference if you use parentheses or brackets within the header
+line, use brackets if you want to insert parenthesis and vice versa.
+
+
+                            {{0}}
+``` markdown
+- [[male (der)] (female [die]) [neuter (das)]]
+- [    [X]           [ ]             [ ]     ]  Mann - German for man
+- [    ( )           (X)             ( )     ]  Frau - German for woman
+```
+
+                          --{{1}}--
+However, within the quiz-body, which is contains the quiz-vectors as rows, the
+brackets and parenthesis make a difference. The first row gets presented as
+multiple-choice with checkboxes, while the second line defines a single-choice
+with radio buttons.
+
+                            {{1}}
+********************************************************************************
+
+Man or woman is obvious, but you guess the remaining German grammatical genders?
+
+    [[male (der<!-- class="notranslate"-->)]   (female [die<!-- class="notranslate"-->])   [neuter (das<!-- class="notranslate"-->)]]
+    [    [X]           [ ]             [ ]     ]  Mann<!-- class="notranslate"--> - German for man
+    [    ( )           (X)             ( )     ]  Frau<!-- class="notranslate"--> - German for woman
+    [    [X]           [ ]             [ ]     ]  Junge<!-- class="notranslate"--> - German for boy
+    [    ( )           ( )             (X)     ]  Mädchen<!-- class="notranslate"--> - German for girl
+    [    [X]           [X]             [ ]     ]  Paprika<!-- class="notranslate"--> - German for bell pepper
+    [    (X)           (X)             (X)     ]  Joghurt<!-- class="notranslate"--> - German for yogurt
+
+********************************************************************************
+
+                            {{2}}
+> **Fun fact:**
+>
+>                         --{{2}}--
+> The number of elements within a row does not necessarily have to match the
+> number of elements within the head. Although it might be rendered strangely,
+> this does not cause an error. You as a course designer can see, that there
+> might have a mistake occurred, but maybe you use it with a purpose.
+>
+> ``` markdown
+> [[option 1] [option 2]]
+> [   [X]                     ] only with option 1
+> [   [ ]        [X]          ] with two options
+> [   [X]        [ ]       [X]] with three options
+> ```
+>
+> [[option 1] [option 2]]
+> [   [X]                     ] only with option 1
+> [   [ ]        [X]          ] with two options
+> [   [X]        [ ]       [X]] with three options
+
+#### 4. Text-Quiz
+
+                          --{{0}}--
+A simple text-input quiz is defined only by two brackets that contain the
+solution string. For these simple kind of quizzes, it is currently not allowed
+to add a starting dash, but you can use optional indentation. The reason for
+this is, that in the future we would like to extend the usage of text- and
+selection-quizzes to be used everywhere, within paragraphs or tables to from
+clozes.
+
+``` markdown
+What did the fish say when he swam into the wall?
+
+    [[dam]]
+```
+
+                            {{1}}
+********************************************************************************
+**Result:**
+
+What did the fish say when he swam into the wall?
+
+    [[dam]]
+
+********************************************************************************
+
+                          --{{1}}--
+The user input will be compared with your solution-string, and if and only if
+they are equal the quiz will be labelled as solved. For different reasons it
+might  be necessary to clean up the input, in order to deal with different types
+of spelling, uppercase and lowercase, etc. Fort this purpose scripts can be
+associated to a quiz, see therefor section
+[Associated Scripts](#associated-scripts).
+
+
+#### 5. Selection-Quiz
+
+                          --{{0}}--
+Finally, a selection-quiz is a collection of LiaScript/Markdown options that are
+separated by vertical bars `|`. The solution is defined by the option or options
+that are surrounded by parenthesis. An option can be any kind of LiaScript
+inline element and since vertical bars `|` are used as separators, you can
+simplify the readability by using newlines.
+
+
+``` markdown
+What is the derivative function of $f(x) = x^6$?
+
+[[ $f'(x) = 6$ | ( $f'(x) = 6x^5$ ) | $f'(x) = 5x^6$ ]]
+
+Can be also written as:
+
+    [[  $f'(x) = 6$
+    | ( $f'(x) = 6x^5$ )
+    |   $f'(x) = 5x^6$
+    | ( **This will be counted as correct too...** )
+    ]]
+```
+
+                          --{{1}}--
+This type of quiz allows you to have multiple correct options and starting
+dashes are not supported yet, due to their future usage as native input elements
+for clozes. And you can use indentation, such as it is possible for all quizzes.
+
+
+                            {{1}}
+********************************************************************************
+
+**Result:**
+
+What is the derivative function of $f(x) = x^6$?
+
+[[ $f'(x) = 6$ | ( $f'(x) = 6x^5$ ) | $f'(x) = 5x^6$ ]]
+
+Can be also written as:
+
+    [[  ($f'(x) = 6$)
+    | ( $f'(x) = 6x^5$ )
+    |   $f'(x) = 5x^6$
+    | ( **This will be counted as correct too...** )
+    ]]
+
+********************************************************************************
+
+
+#### 0. Generic Quizzes
+
+                          --{{0}}--
+Generic quizzes can be used to define any kind of quiz. The course-developer can
+define own types of quizzes, whereby the following combination of brackets with
+an additional exclamation mark has to be associated with a script.
+
+``` markdown
+[[!]]
+<script>
+  const random = Math.random()
+
+  alert("random value: "+ random)
+
+  random < 0.2
+</script>
+```
+
+                          --{{1}}--
+This script does only generate a random number, outputs the result in an `alert`
+and checks if the random value is less than 0.2. And if so, the quiz will be
+marked as solved otherwise not. Thus, the last statement has to be `true` in
+order to mark a quiz as solved, any other value will be accounted as `false`.
+
+                            {{1}}
+    [[!]]
+    <script>
+      const random = Math.random()
+
+      alert("random value:"+ random)
+
+      random < 0.2
+    </script>
+
+                          --{{2}}--
+The usage of associated scripts for quizzes will be described in detail in
+section [Associated Scripts](#associated-scripts).
+
+#### Notes about Questions
+
+                          --{{0}}--
+Not all of the previous examples we have shown were perfect in the sense of
+accessibility. Although these quizzes look good "for us", they might not be
+perfectly for people that require a screen-reader to go through a course.
+However, you can improve your quizzes by asking your question as a paragraph,
+which is followed by your quiz. This way LiaScript will associate or label the
+quiz with your question.
+
+``` markdown
+Ask a question as an ordinary Markdown paragraph,
+which is followed by what?
+
+    [[quiz]]
+```
+
+                          --{{1}}--
+If your question requires more elements, then it is also possible to group it
+with supplemental elements by putting it into a single HTML-element such as a
+`div`. The `div` will get a unique ID and the question will be labeled with this
+ID by using the
+[aria-labelledby](https://www.w3.org/TR/wai-aria/#aria-labelledby) attribute.
+
+                            {{1}}
+``` markdown
+<div>
+
+Ask a question as an ordinary Markdown paragraph,
+which is followed by what?
+
+1. important
+2. also relevant ...
+3. [an image](http://...)
+
+</div>
+
+    [[quiz]]
+```
+
+### Tweaks
+
+                          --{{0}}--
+All of the following elements can be added to any type of quiz that you have
+seen before. This includes and arbitrary number of hints, a more detailed
+solution or a custom script that handles the user input.
+
+    <div style="width:100%;height:0;padding-bottom:63%;position:relative;"><iframe src="https://giphy.com/embed/qUDenOaWmXImQ" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/scott-pilgrim-michael-cera-level-up-qUDenOaWmXImQ">via GIPHY</a></p>
+
+#### Hints
+
+                          --{{0}}--
+To any type of quiz you can add as many hints as you want, the pattern is simply
+two brackets with an additional question mark. If you want to, you can also add
+starting dashes to the hints.
+
+
+``` markdown
+What is $37 + 15$?
+
+    [[52]]
+    [[?]] the solution is larger than 50
+    [[?]] it is less than 55
+    [[?]] it should be an even number
+
+This is also a valid quiz ...
+
+[[52]]
+- [[?]] the solution is larger than 50
+- [[?]] it is less than 55
+- [[?]] it should be an even number
+```
+
+                          --{{1}}--
+The user can reveal these hints, step by step by clicking onto the light bulb or
+"show hint" button.
+
+                            {{1}}
+********************************************************************************
+
+What is $37 + 15$?
+
+    [[52]]
+    [[?]] the solution is larger than 50
+    [[?]] it is less than 55
+    [[?]] it should be an even number
+
+********************************************************************************
+
+
+#### Solution
+
 
                                    --{{0}}--
 And finally, some quizzes might require some more explanations, if they are
-solved or not. That is why, with additional three opening and three closing
-brackets you mark the beginning and the end of your solution, which can contain
-multiple paragraphs, formulas, program code, videos, etc as well as effects (see
-therefor the next section).
+solved or not. Therefor, simply use two "lines" that are defined by at least
+three asterisks to group your solution. The solution explanation can contain
+an arbitrary number of LiaScript elements.
+
+
+```` markdown
+What is $37 + 15$?
+
+[[52]]
+[[?]] the solution is larger than 50
+[[?]] it is less than 55
+[[?]] it should be an even number
+***********************************************************************
+
+52 is the correct solution, you get this by adding:
+
+``` ascii
+                        .------.
+                        |      |
+                        |      v
+                        |
+                        |     (1)
+  37           3(7)     |     (3)x          37
++ 15         + 1(5)     |   + (1)x        + 15
+---- -->     ------ --> |   ------ -->    ----
+  ??           (12)     |     (5)2          52
+                |       |                 ====
+                '-------'
+                  carry
+```
+
+??[MS-DOS Math Game](https://archive.org/embed/msdos_Super_Solvers_Teasure_MathStorm_1992)
+
+***********************************************************************
+````
+
+                          --{{1}}--
+In this case the solution contains an ASCII-art drawing, but it can be anything,
+such as a an image, a video, or even something like a small game
+
+                            {{1}}
+********************************************************************************
+What is $37 + 15$?
+
+[[52]]
+[[?]] the solution is larger than 50
+[[?]] it is less than 55
+[[?]] it should be an even number
+******************************************************
+
+52 is the correct solution, you get this by adding:
+
+``` ascii
+                        .------.
+                        |      |
+                        |      v
+                        |
+                        |     (1)
+  37           3(7)     |     (3)x          37
++ 15         + 1(5)     |   + (1)x        + 15
+---- -->     ------ --> |   ------ -->    ----
+  ??           (12)     |     (5)2          52
+                |       |                 ====
+                '-------'
+                  carry
+```
+
+??[MS-DOS Math Game](https://archive.org/embed/msdos_Super_Solvers_Teasure_MathStorm_1992)
+
+*******************************************************
+
+********************************************************************************
+
+
+
+#### Associated Scripts
+
+                          --{{0}}--
+The following section contains a list of use-cases and ideas how to use quizzes
+and scripts in association to generate a more complex user experience.
+
+<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/4GaHBQh3f4jBEpbQvP" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/shecodesio-swipe-up-computer-congratulations-4GaHBQh3f4jBEpbQvP">via GIPHY</a></p>
+
+##### Cleaning up
+
+                          --{{0}}--
+If you are using for example the text-quiz, and you want to react to different
+ways of spelling or to clean starting and trailing white-spaces. Then you can
+attach a script to your quiz. The `@input` is marker that will be substituted by
+the current user input. `trim` and `toLowerCase` are  JavaScript
+functions/methods that are used to clean the input string. The last statement of
+your quiz-script defines if the quiz is marked as solved or not. Only if the
+last statement evaluates to `true` it is marked as solved, for any other value
+it is simply a failed trial.
+
+``` markdown
+What did the fish say when he swam into the wall?
+
+[[dam]]
+<script>
+let input = "@input".trim().toLowerCase()
+
+input == "dam" || input == "damn"
+</script>
+```
+
+                          --{{1}}--
+Try out the following quiz. You can now enter "damn" or "dam" in different ways,
+surrounded by spaces.
+
+                            {{1}}
+********************************************************************************
+
+What did the fish say when he swam into the wall?
+
+[[dam]]
+<script>
+let input = "@input".trim().toLowerCase()
+
+input == "dam" || input == "damn"
+</script>
+
+********************************************************************************
+
+
+##### Quiz `@input`s
+
+                          --{{0}}--
+`@input` will be replaced by the current state of the quiz that should be
+checked. If you are not sure, how the input might look like, you can always
+experiment with a simple `alert` that shows the current input.
+
+                            {{1}}
+********************************************************************************
+
+---
+
+**Text-quiz:**
+
+                          --{{1}}--
+The output or in LiaScript terms the `@input` gets substituted by a string,
+without apostrophes. This might look strange since you have to add apostrophes
+within the code, but all inputs are substituted without any additional type
+formatting, this way they can be used in different ways and even contain peaces
+of code.
+
+``` markdown
+[[text]]
+<script> alert("@input") </script>
+```
+
+**Result:**
+
+[[text]]
+<script> alert("@input") </script>
+
+********************************************************************************
+
+
+
+                            {{2}}
+********************************************************************************
+
+---
+
+**Selection-quiz:**
+
+                          --{{2}}--
+A selection quiz is defined by a number that represents the current input,
+starting from `0`. The initial state is marked with `-1` to indicate that
+nothing has been selected so far. In this example `A` would be represented by
+`0`, `B` by `1`, `C` by `2` and so on.
+
+
+``` markdown
+[[A|B|C|(D)]]
+<script> alert(@input) </script>
+```
+
+**Result:**
+
+[[A|B|C|(D)]]
+<script> alert(@input) </script>
+
+********************************************************************************
+
+
+
+                            {{3}}
+********************************************************************************
+
+---
+
+**Multiple-choice:**
+
+                          --{{3}}--
+A multiple-choice quiz is represented by an array of ones and zeros, whereby a
+`1` means checked and `0` the opposite.
+
+``` markdown
+[[X]] A
+[[ ]] B
+[[X]] C
+<script> alert("@input") </script>
+```
+
+**Result:**
+
+[[X]] A
+[[ ]] B
+[[X]] C
+<script> alert("@input") </script>
+
+********************************************************************************
+
+
+
+                            {{4}}
+********************************************************************************
+
+---
+
+**Single-choice:**
+
+                          --{{4}}--
+A single-choice quizzes behave similar as selections, the state is represented
+by a number, starting from `0`, which represents the first option. A quiz that
+has been not touched by the user will return `-1` as input value.
+
+``` markdown
+[(X)] 0
+[( )] 1
+[(X)] 2
+<script> alert("@input") </script>
+```
+
+**Result:**
+
+[(X)] 0
+[( )] 1
+[(X)] 2
+<script> alert("@input") </script>
+
+********************************************************************************
+
+
+
+                            {{5}}
+********************************************************************************
+
+---
+
+**Matrix:**
+
+                          --{{5}}--
+As matrices are arrays of "vector" quizzes, their input state is represented as
+an array of multiple-choice and single-choice states. Thus, a list of lists with
+zeros and ones as well as numbers.
+
+``` markdown
+Weird, isn't it ;-)
+
+[[male (der)]   (female [die])   [neuter (das)]]
+[    [X]           [ ]             [ ]     ]  Mann - German for man
+[    ( )           (X)             ( )     ]  Frau - German for woman
+[    [X]           [ ]             [ ]     ]  Junge - German for boy
+[    ( )           ( )             (X)     ]  Mädchen - German for girl
+[    [X]           [X]             [ ]     ]  Paprika - German for bell pepper
+[    (X)           (X)             (X)     ]  Joghurt - German for yogurt
+<script>alert("@input")</script>
+```
+
+
+**Result:**
+
+[[male (der<!-- class="notranslate"-->)]   (female [die<!-- class="notranslate"-->])   [neuter (das<!-- class="notranslate"-->)]]
+[    [X]           [ ]             [ ]     ]  Mann<!-- class="notranslate"--> - German for man
+[    ( )           (X)             ( )     ]  Frau<!-- class="notranslate"--> - German for woman
+[    [X]           [ ]             [ ]     ]  Junge<!-- class="notranslate"--> - German for boy
+[    ( )           ( )             (X)     ]  Mädchen<!-- class="notranslate"--> - German for girl
+[    [X]           [X]             [ ]     ]  Paprika<!-- class="notranslate"--> - German for bell pepper
+[    (X)           (X)             (X)     ]  Joghurt<!-- class="notranslate"--> - German for yogurt
+<script>alert("@input")</script>
+
+********************************************************************************
+
+
+
+                            {{6}}
+********************************************************************************
+
+---
+
+**Generic:**
+
+                          --{{6}}--
+In case of a generic quiz, the developer is responsible for defining and storing
+state. Thus, there will be no input. The only case where `@input` gets
+substituted by a value, is when the user clicks onto the resolve button. This is
+indicated by the input `true`.
+
+``` markdown
+[[!]]
+<script>alert("@input")</script>
+```
+
+
+[[!]]
+<script>alert("@input")</script>
+
+********************************************************************************
+
+##### Async & Errors
+
+                          --{{0}}--
+There might be the rare case, where you have to send the user input to an
+external service to check them. Scripts in LiaScript can also define
+asynchronous code, as it is displayed within the example.
+
+``` markdown
+What is $37 + 15$?
+
+[[52]]
+<script>
+setTimeout(function(){
+  alert("your input was: '@input'")
+  send.lia("true")
+}, 1000)
+
+"LIA: wait"
+</script>
+```
+
+                          --{{1}}--
+In LiaScript, we can use some command strings that trigger a certain behavior,
+these are global to all scripts and will be described in more detail in section
+[Communication](#communication).
+
+
+                            {{1}}
+- `"LIA: wait"`: mark the script as still running
+- `"LIA: stop"`: halt the execution of the script
+
+
+                          --{{2}}--
+Additionally, you can see a function-call within the example. `setTimeout`
+triggers the execution of the internally defined function, which performs an
+`alert` with the  user input and then sends "true" back to the internal
+quiz-event handler. Every script is executed with an additional `send` object
+and `send.lia` means send this back to LiaScript. Thus, the result could also be
+evaluated by an external service, and this result will then be used to control
+the quiz.
+
+                            {{2}}
+- `send`: general object to for communicating with the LiaScript internal
+  event-handler for a specific entity, for more information see section
+  [Communication](#communication)
+
+
+                          --{{3}}--
+Let us extend this example a little bit further. The `send` to `lia` can have
+two meanings, one if everything was ok while the second might be the result of
+an error. `send.lia` can have three values, the first is the message, the second
+one contains more detailed information about the result, which is not required
+at the moment, while the last value tells LiaScript if everything was ok or by
+using `false` that an error has occurred. The default value is always ok.
+
+
+                            {{3}}
+``` markdown
+What is $37 + 15$?
+
+[[52]]
+<script>
+setTimeout(function(){
+  alert("your input was: '@input'")
+
+  if ("@input" === "") {
+    // generic error message
+    send.lia("You have to fill in something into the input field", [], false)
+  } else {
+    // this is equal to send.lia("some message", [], true)
+    send.lia("true")
+  }
+}, 1000)
+
+"LIA: wait"
+</script>
+```
+
+                          --{{4}}--
+Thus, if you try out the following example, you will have to wait one second
+until the result is evaluated, which in this case always results in a solved
+quiz. But, if you do not add any input, then an error message will be displayed.
+
+                            {{4}}
+********************************************************************************
+
+**Result:**
+
+What is $37 + 15$?
+
+[[52]]
+<script>
+setTimeout(function(){
+  alert("your input was: '@input'")
+
+  if ("@input" === "") {
+    // generic error message
+    send.lia("You have to fill in something into the input field", [], false)
+  } else {
+    // this is equal to send.lia("some message", [], true)
+    send.lia("true")
+  }
+}, 1000)
+
+"LIA: wait"
+</script>
+
+********************************************************************************
+
+
+##### Obfuscate Quizzes
+
+                          --{{0}}--
+We would like to note, that this is only one method to obfuscate a quiz, by
+using JavaScript, in this case by using the function `btoa`.
+
+``` markdown
+[[...]]
+<script>
+// btoa("solution") == "c29sdXRpb24="
+"c29sdXRpb24=" == btoa( "@input".trim().toLowerCase() )
+</script>
+```
+
+                          --{{1}}--
+[`btoa`](https://developer.mozilla.org/en-US/docs/Web/API/btoa) creates a
+[Base64](https://developer.mozilla.org/en-US/docs/Glossary/Base64)-encoded ASCII
+string, while [`atob`](https://developer.mozilla.org/en-US/docs/Web/API/atob)
+does the opposite. You can try out to the following two scripts to encode and
+decode different strings.
+
+                            {{1}}
+* `btoa`: (Beautiful TO Awful)
+
+  <script input="text" value="solution" input-always-active run-once modify="false">btoa(`@input`)</script>
+
+* `atob`: (Awful TO Beautiful)
+
+  <script input="text" value="c29sdXRpb24=" input-always-active run-once modify="false">atob(`@input`)</script>
+
+
+                            {{2}}
+********************************************************************************
+
+                          --{{2}}--
+The result is a quiz, where it is not possible to see the solution immediately,
+simply by getting a glimpse onto the raw course document.
+
+**Result:**
+
+[[...]]
+<script>
+// btoa("solution") == "c29sdXRpb24="
+"c29sdXRpb24=" == btoa( "@input".trim().toLowerCase() )
+</script>
+
+********************************************************************************
+
+##### Quizzes & Macros
+<!--
+@customQuiz
+[[...]]
+<script>
+"@0" == btoa( "@input".trim().toLowerCase() )
+</script>
+@end
+-->
+
+                          --{{0}}--
+It might look tedious to create these trailing scripts and to add them again and
+again to your document, which makes a course harder to maintain and to develop.
+However, in LiaScript you can define macros, that can be used to solve
+repetitive tasks.
+
+                          --{{1}}--
+As depicted in the example, you can define custom macros within an HTML-comment
+of a section or within the main comment at the head of every document. Wherever
+you write the macro `@customQuiz` within your document, this macro will be
+substituted by the content defined in the HTML-comment, which comes between
+`@customQuiz` and `@end`. For more information see section [Macros](#macros).
+
+                            {{1}}
+``` markdown
+##### Quizzes & Macros
+<!--
+
+@customQuiz
+[[...]]
+<script>
+"@0" == btoa( "@input".trim().toLowerCase() )
+</script>
+@end
+
+-->
+
+...
+
+@customQuiz(c29sdXRpb24=)
+
+
+@customQuiz(NTI=)
+```
+
+                          --{{2}}--
+You can further parameterize your macros, as you can see in the code, there is
+an `@0`, which can be interpreted as a placeholder that shall be substituted by
+the first parameter of your macro call.
+
+                          --{{3}}--
+That's it, you can add as much as `@customQuiz`-macros and if you do some
+changes, you do not have to go through all scripts, but instead you only have to
+change one single macro.
+
+
+                            {{3}}
+********************************************************************************
+
+The solution should be "solution":
+
+@customQuiz(c29sdXRpb24=)
+
+What is $37 + 15$?
+
+@customQuiz(NTI=)
+
+********************************************************************************
+
+
+                           --{{4}}--
+By defining macros it is furthermore possible to create LiaScript libraries that
+can imported into other courses, see therefor also section [Macros](#macros).
+
+
+##### Final thoughts on wrong solution
+
+                          --{{0}}--
+The quiz for adding two numbers was actually taken from the presentation of Greg
+Wilson, and it gives a good example for what scripts can be used for. Instead of
+logging and checking if an answer is correct or not, we should use it to assist
+students while they are learning and try to identify patterns in wrong answers.
+
+                           {{0-1}}
+!?[What Everyone in Tech Should Know About Teaching and Learning](https://www.youtube.com/watch?v=ewXvFQByRqY&start=717s)
+
+                          --{{1}}--
+As you have seen it for [tasks](#tasks-and-scripting), the result of a script
+can also be published, in this case the topic is defined by the `output`
+attribute.
+
+
+                            {{1}}
+``` markdown
+What is $37 + 15$?
+
+[[52]]
+<script output="quiz:37+15">
+  if ("@input" == "52") {
+    true
+  } else {
+    "@input"
+  }
+</script>
+```
+
+                          --{{2}}--
+Other scripts can be defined, that are subscribed to the output of the quiz, see
+the different `@input` macro. These scripts are executed when the output of the
+previous script changes. Every script can be used to identify another pattern,
+since students can be wrong for different reasons. We need to identify such
+patterns and react properly instead of measuring only fail and success.
+
+
+                            {{2}}
+``` markdown
+<script style="display: block">
+//   3(7)       (3)7
+// + 1(5)     + (1)5       The first and second steps were correct,
+// ------ ->  ------  ->   but the student forgot to carry the 1
+//   (12)       (4)2       in the 10 digit column.
+
+if ("@input(`quiz:37+15`)" == "42") {
+  send.liascript(`## Maybe you forgot to carry...
+
+Checkout the follow video to recap carrying.
+
+!?[Carrying for larger digits](https://www.youtube.com/watch?v=VPsYRPdlIpU)
+`)
+} else ""
+</script>
+
+<script style="display: block">
+//   3(7)       (3)7       The first and second steps were also
+// + 1(5)     + (1)5       correct, but carrying was not provided
+// ------ ->  ------  ->   properly, maybe there is a problem with
+//   (12)      (4)12       understanding digit columns...
+
+
+if ("@input(`quiz:37+15`)" == "412") {
+  send.lia(`You are nearly there, there might be a problem with the 10 digit columns...`)
+} else ""
+</script>
+```
+
+                          --{{3}}--
+With LiaScript you do not have to come up immediately with a perfect online
+course, you can adapt it in little steps and let it increasingly grow.
+
+
+                            {{3}}
+********************************************************************************
+
+What is $37 + 15$? This time you should make the mistakes 42 and 412.
+
+[[52]]
+<script output="quiz:37+15">
+  if ("@input" == "52") {
+    true
+  } else {
+    "@input"
+  }
+</script>
+
+
+<script style="display: block">
+//   3(7)       (3)7
+// + 1(5)     + (1)5       The first and second steps were correct,
+// ------ ->  ------  ->   but the student forgot to carry the 1
+//   (12)       (4)2       in the 10 digit column.
+
+if ("@input(`quiz:37+15`)" == "42") {
+  send.liascript(`## Maybe you forgot to carry...
+
+Checkout the follow video to recap carrying.
+
+!?[Carrying for larger digits](https://www.youtube.com/watch?v=VPsYRPdlIpU)
+`)
+} else ""
+</script>
+
+<script style="display: block">
+//   3(7)       (3)7       The first and second steps were also
+// + 1(5)     + (1)5       correct, but carrying was not provided
+// ------ ->  ------  ->   properly, maybe there is a problem with
+//   (12)      (4)12       understanding digit columns...
+
+
+if ("@input(`quiz:37+15`)" == "412") {
+  send.lia(`You are nearly there, there might be a problem with the 10 digit columns...`)
+} else ""
+</script>
+
+********************************************************************************
+
+
+##### Generic++
+<!--
+@article: <script output="@0" value="select" input="select" options="der|die|das|dem|den|des">
+            if("@input(`articles`)" == "true") {
+              "@1"
+            } else {
+              "@input"
+            }
+          </script>
+-->
+
+                          --{{0}}--
+Ok, German articles behave strangely. This is a more complex example of a
+generic quiz that is connected to multiple scripts with an input, which are
+implemented with a single LiaScript macro.
+
+Do you know which German articles belong to which gender in which case?
+
+[[!]]
+<script output="articles">
+if ("@input" !== "true") {
+  "@input(`11`)"=="der"  &&  "@input(`21`)"=="die"  &&  "@input(`31`)"=="das"  &&  "@input(`41`)"=="die" &&
+  "@input(`12`)"=="des"  &&  "@input(`22`)"=="der"  &&  "@input(`32`)"=="des"  &&  "@input(`42`)"=="der" &&
+  "@input(`13`)"=="dem"  &&  "@input(`23`)"=="der"  &&  "@input(`33`)"=="dem"  &&  "@input(`43`)"=="den" &&
+  "@input(`14`)"=="den"  &&  "@input(`24`)"=="die"  &&  "@input(`34`)"=="das"  &&  "@input(`44`)"=="die"
+}
+</script>
+
+| Case      | Masculine        | Feminine         | Neuter           | Plural           |
+| --------- | ---------------- | ---------------- | ---------------- | ---------------- |
+| Nominativ | @article(11,der) | @article(21,die) | @article(31,das) | @article(41,die) |
+| Genitiv   | @article(12,des) | @article(22,der) | @article(32,des) | @article(42,der) |
+| Dativ     | @article(13,dem) | @article(23,der) | @article(33,dem) | @article(43,den) |
+| Accusativ | @article(14,den) | @article(24,die) | @article(34,das) | @article(44,die) |
+
+
+                          --{{1}}--
+The following code-block shows how this quiz was actually implemented.
+
+                            {{1}}
+``` markdown
+##### Generic++
+<!--
+@article: <script output="@0" value="select" input="select" options="der|die|das|dem|den|des">
+            if("@input(`articles`)" == "true") {
+              "@1"
+            } else {
+              "@input"
+            }
+          </script>
+-->
+
+                          --{{0}}--
+Ok, German articles behave strangely. This is a more complex example of a
+generic quiz that is connected to multiple scripts with an input, which are
+implemented with a single LiaScript macro.
+
+Do you know which German articles belong to which gender in which case?
+
+[[!]]
+<script output="articles">
+if ("@input" !== "true") {
+  "@input(`11`)"=="der"  &&  "@input(`21`)"=="die"  &&  "@input(`31`)"=="das"  &&  "@input(`41`)"=="die" &&
+  "@input(`12`)"=="des"  &&  "@input(`22`)"=="der"  &&  "@input(`32`)"=="des"  &&  "@input(`42`)"=="der" &&
+  "@input(`13`)"=="dem"  &&  "@input(`23`)"=="der"  &&  "@input(`33`)"=="dem"  &&  "@input(`43`)"=="den" &&
+  "@input(`14`)"=="den"  &&  "@input(`24`)"=="die"  &&  "@input(`34`)"=="das"  &&  "@input(`44`)"=="die"
+}
+</script>
+
+| Case      | Masculine        | Feminine         | Neuter           | Plural           |
+| --------- | ---------------- | ---------------- | ---------------- | ---------------- |
+| Nominativ | @article(11,der) | @article(21,die) | @article(31,das) | @article(41,die) |
+| Genitiv   | @article(12,des) | @article(22,der) | @article(32,des) | @article(42,der) |
+| Dativ     | @article(13,dem) | @article(23,der) | @article(33,dem) | @article(43,den) |
+| Accusativ | @article(14,den) | @article(24,die) | @article(34,das) | @article(44,die) |
+```
+
+
+
+## Surveys
+
+                             --{{0}}--
+A script should not define a one-way road to the student! So surveys are
+required.
+
+### Text-Inputs
+
+Similar to text-quizzes, use the following syntax to define a text-survey, where
+the number of underlines defines the presented line numbers:
+
+   `[[___ ___ ___ ___]]`
+
+What is your opinion on ... :
+
+    [[____ ____ ____ ____]]
+
+### Single Choice Vector
+
+                              --{{0}}--
+And also this kind of survey is similar to a single choice quiz, but in this
+case numbers within parenthesis are used to define some kind of variable
+identifier. That is why they do not have to be in order.
+
+```markdown
+[(1)] option 1
+[(2)] option 2
+[(3)] option 3
+[(0)] option 0
+```
+
+You can only select one option:
+
+    [(1)] option 1
+    [(2)] option 2
+    [(3)] option 3
+    [(0)] option 0
+
+
+### Multi Choice Vector
+
+                               --{{0}}--
+Similar to multi-choice quizzes, you can define multi-choice survey vectors with
+a number in double square brackets. But, and this is also possible for all other
+kinds of surveys you can define some kind of variable name with a starting colon.
+
+```markdown
+[[red]]         is it red
+[[green]]       green
+[[blue]]        or blue
+[[dark purple]] no one likes purple ( last chance ;-) )
+```
+
+Select some of your favored colors!
+
+    [[red]]         is it red
+    [[green]]       green
+    [[blue]]        or blue
+    [[dark purple]] no one likes purple ( last chance ;-) )
+
+### Single Choice Matrix
+
+                              --{{0}}--
+For defining survey blocks you only have to a header row, whose definition is
+also used by the trailing rows.
 
 Markdown-format:
 
-``` markdown
-[[super]]
-[[?]] hint 1
-[[?]] hint 2
-***********************************************************************
-
-                                {{1}}
-You are right, super was the correct answer again
-
-* {2}{super} as an effect
-* $\sum x + 3$
-* terra
-
-![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)
-
-***********************************************************************
+```markdown
+[(totally)(agree)(unsure)(maybe not)(disagree)]
+[                                             ] liaScript is great?
+[                                             ] I would use it to make online **courses**?
+[                                             ] I would use it for online **surveys**?
 ```
 
-A quiz with hints and a revealed result.
+    [(totally)(agree)(unsure)(maybe not)(disagree)]
+    [                                             ] liaScript is great?
+    [                                             ] I would use it to make online **courses**?
+    [                                             ] I would use it for online **surveys**?
 
-    [[super]]
-    [[?]] hint 1
-    [[?]] hint 2
-    ***********************************************************************
+### Multi Choice Matrix
 
-                                    {{1}}
-You are right, super was the correct answer again
+                               --{{0}}--
+I guess, multi-choice blocks are self-explanatory...
 
-* {2}{super} as an effect
-* $\sum x + 3$
-* terra
+Markdown-format:
 
-![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)
+```markdown
+[[1][2][3][4][5][6][7]]
+[                     ] question 1 ?
+[                     ] question 2 ?
+[                     ] question 3 ?
+```
 
-    ***********************************************************************
+Result:
+
+    [[1][2][3][4][5][6][7]]
+    [                     ] question 1 ?
+    [                     ] question 2 ?
+    [                     ] question 3 ?
+
+
 
 
 
@@ -2782,8 +3939,6 @@ console.debug("loaded #chart2")
 Note, you have to include all required JavaScript-resourses in the initial
 comment after the script definition. And by combining this feature with
 LiaScript effects, you can build even more sophisticated courses.
-
-
 
 
 
@@ -4215,7 +5370,7 @@ visualized as a scatter plot only showing the dots.
 
 If you have a ScatterPlot like representation, but actually want to use this
 data as primary data for your BoxPlot, you can manually change the type of
-visualization to BoxPlot, simply by adding the follwing attribute to the head of
+visualization to BoxPlot, simply by adding the following attribute to the head of
 your table, as it is shown in the snippet below. Columns are then treated as
 datasets and get visualized accordingly.
 
@@ -4785,106 +5940,6 @@ option='{
   }]
 }'></lia-chart>
 
-## Surveys
-
-                             --{{0}}--
-A script should not define a one-way road to the student! So surveys are
-required.
-
-### Text-Inputs
-
-Similar to text-quizzes, use the following syntax to define a text-survey, where
-the number of underlines defines the presented line numbers:
-
-   `[[___ ___ ___ ___]]`
-
-What is your opinion on ... :
-
-    [[____ ____ ____ ____]]
-
-### Single Choice Vector
-
-                              --{{0}}--
-And also this kind of survey is similar to a single choice quiz, but in this
-case numbers within parenthesis are used to define some kind of variable
-identifier. That is why they do not have to be in order.
-
-```markdown
-[(1)] option 1
-[(2)] option 2
-[(3)] option 3
-[(0)] option 0
-```
-
-You can only select one option:
-
-    [(1)] option 1
-    [(2)] option 2
-    [(3)] option 3
-    [(0)] option 0
-
-
-### Multi Choice Vector
-
-                               --{{0}}--
-Similar to multi-choice quizzes, you can define multi-choice survey vectors with
-a number in double square brackets. But, and this is also possible for all other
-kinds of surveys you can define some kind of variable name with a starting colon.
-
-```markdown
-[[red]]         is it red
-[[green]]       green
-[[blue]]        or blue
-[[dark purple]] no one likes purple ( last chance ;-) )
-```
-
-Select some of your favored colors!
-
-    [[red]]         is it red
-    [[green]]       green
-    [[blue]]        or blue
-    [[dark purple]] no one likes purple ( last chance ;-) )
-
-### Single Choice Matrix
-
-                              --{{0}}--
-For defining survey blocks you only have to a header row, whose definition is
-also used by the trailing rows.
-
-Markdown-format:
-
-```markdown
-[(totally)(agree)(unsure)(maybe not)(disagree)]
-[                                             ] liaScript is great?
-[                                             ] I would use it to make online **courses**?
-[                                             ] I would use it for online **surveys**?
-```
-
-    [(totally)(agree)(unsure)(maybe not)(disagree)]
-    [                                             ] liaScript is great?
-    [                                             ] I would use it to make online **courses**?
-    [                                             ] I would use it for online **surveys**?
-
-### Multi Choice Matrix
-
-                               --{{0}}--
-I guess, multi-choice blocks are self-explanatory...
-
-Markdown-format:
-
-```markdown
-[[1][2][3][4][5][6][7]]
-[                     ] question 1 ?
-[                     ] question 2 ?
-[                     ] question 3 ?
-```
-
-Result:
-
-    [[1][2][3][4][5][6][7]]
-    [                     ] question 1 ?
-    [                     ] question 2 ?
-    [                     ] question 3 ?
 
 
 
