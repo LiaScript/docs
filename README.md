@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  19.0.2
+version:  19.0.3
 language: en
 narrator: UK English Female
 
@@ -803,6 +803,14 @@ include the link and the resource will be embedded appropriately.
 
   !?[Something about math](vid/math.mp4)
 
+- > # List of supported Video Platforms
+  >
+  > * [DailyMotion](https://www.dailymotion.com)
+  > * [PeerTube](https://peertube.tv)
+  > * [TeacherTube](https://TeacherTube.com)
+  > * [Video TU-Freiberg](https://video.tu-freiberg.de)
+  > * [Vimeo](https://Vimeo.com)
+  > * [YouTube](https://YouTube.com)
 
                           --{{1}}--
 If you required more control over your video, such as autoplay, muted,
