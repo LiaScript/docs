@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  19.0.4
+version:  19.0.5
 language: en
 narrator: UK English Female
 
@@ -28,7 +28,7 @@ link: https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css
 > To see this document as an interactive LiaScript rendered version, click on the
 > following link/badge:
 >
-> [![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](hhttps://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md)
+> [![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md)
 >
 > If you need help, feel free to ask us any questions in the chat:
 >
