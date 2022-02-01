@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  19.0.5
+version:  19.0.6
 language: en
 narrator: UK English Female
 
@@ -4231,7 +4231,7 @@ send.handle("input", input => {
   try{
     console.log(eval(input))
   } catch (e) {
-    console.error(e);
+    console.error(e.message);
   }
 })
 
