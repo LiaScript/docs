@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  19.0.6
+version:  19.0.7
 language: en
 narrator: UK English Female
 
@@ -3806,6 +3806,14 @@ the number of underlines defines the presented line numbers:
 What is your opinion on ... :
 
     [[____ ____ ____ ____]]
+
+---
+
+Or a single line only:
+
+`[[___]]`
+
+    [[___]]
 
 ### Single Choice Vector
 
