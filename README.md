@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  19.0.7
+version:  19.0.8
 language: en
 narrator: UK English Female
 
@@ -309,7 +309,13 @@ slide. You only have to add a `#` with the number of the slide, or you can add
 the name of the specific slide as well.
 
                            --{{3}}--
+You can also add additional tags to your project to make it discoverable. We
+currently use three distict categories: `liascript` to mark it to be related to
+the projects, while the others `liascript-course` and `liascript-template` are
+used to distinguish the projects into courses or extension, which can be added
+to courses.
 
+                           --{{4}}--
 The same way you can also refer to courses that you have put into your
 [DropBox](https://en.wikipedia.org/wiki/Dropbox_%28service%29),
 [ownCloud](https://en.wikipedia.org/wiki/OwnCloud),
@@ -327,7 +333,17 @@ words, the text document. All other sources are loaded relative to this URL.
 
    https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md#5
 
-3. Use other ways of hosting repositories as well (e.g.
+3. Make your document discoverable by adding the tags `liascript` and or
+   `liascript-course`, `liascript-template` to make it appear in one of the
+   following GitHub topics:
+
+   - general: https://github.com/topics/liascript
+   - free courses: https://github.com/topics/liascript-course
+   - extensions: https://github.com/topics/liascript-template
+
+   _More information on tagging projects can be found [here](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics)._
+
+4. Use other ways of hosting repositories as well (e.g.
    [DropBox](https://en.wikipedia.org/wiki/Dropbox_%28service%29),
    [ownCloud](https://en.wikipedia.org/wiki/OwnCloud),
    [NextCloud](https://en.wikipedia.org/wiki/Nextcloud)).
@@ -344,6 +360,11 @@ https://github.com/LiaBooks
 
 ![screenshot of the LiaBooks repository](img/screenshot_liabooks.png)
 
+> __Full overview on courses via the topic `liascript-course`:__
+>
+> https://github.com/topics/liascript-course
+
+
 #### LiaTemplates
 
                            --{{0}}--
@@ -358,6 +379,10 @@ the implemented macros.
 https://github.com/LiaTemplates
 
 ![screenshot of the LiaTemplates repository](img/screenshot_liatemplates.png)
+
+> __Full overview on extensions via the topic `liascript-template`:__
+>
+> https://github.com/topics/liascript-template
 
 ## Markdown-Syntax
 
