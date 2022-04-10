@@ -635,7 +635,7 @@ title attribute, and it is shown, when the user hovers the link with the mouse.
 
    * `[next slide](#18)` -> [next slide](#18)
    * `[next slide](#preview-lia-💫)` -> [next slide](#preview-lia-💫)
-   * If your internal link includes parentheses or other characters, your can
+   * If your internal link includes parentheses or other characters, you can
      also use percent-encoding. An opening parentheses would then be written as
      `%28` and a closing one as `%29`.
 
