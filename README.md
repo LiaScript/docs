@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  19.0.8
+version:  19.0.9
 language: en
 narrator: UK English Female
 
@@ -129,7 +129,7 @@ There are currently 2 plugins for the [Atom Editor](https://atom.io/) available,
 which are intended to ease and simplify the development of online courses with
 LiaScript.
 
-![Atom with liascript-plugins](https://raw.githubusercontent.com/andre-dietrich/liascript-preview/master/preview.gif "Screencast of the Atom-editor with the liascript-preview and liascript-snippts installed.")<!-- style="width: 100%" -->
+![Atom with liascript-plugins](https://raw.githubusercontent.com/andre-dietrich/liascript-preview/master/preview.gif "Screencast of the Atom-editor with the liascript-preview and liascript-snippts installed.")
 
 0. [Atom](https://atom.io): This is the free and open and official
    [GitHub](https://github.com) editor, with lots of plugins for various use
@@ -155,7 +155,7 @@ your browser on every save, but this can also be used to monitor multiple
 projects. And you can also use it for testing purposes, as if you would deploy
 your projects.
 
-![liascript-devserver](https://raw.githubusercontent.com/liascript/liascript-devserver/main/pics/navigation.gif "Screencast of the liascript-devserver while navigating through a folder-structure.")<!-- style="width: 100%" -->
+![liascript-devserver](https://raw.githubusercontent.com/liascript/liascript-devserver/main/pics/navigation.gif "Screencast of the liascript-devserver while navigating through a folder-structure.")
 
 Get the project from:
 
@@ -634,8 +634,13 @@ title attribute, and it is shown, when the user hovers the link with the mouse.
    with a starting `#`
 
    * `[next slide](#18)` -> [next slide](#18)
-   * `[next slide](#preview-lia)` -> [next slide](#preview-lia)
+   * `[next slide](#preview-lia-💫)` -> [next slide](#preview-lia-💫)
+   * If your internal link includes parentheses or other characters, your can
+     also use percent-encoding. An opening parentheses would then be written as
+     `%28` and a closing one as `%29`.
 
+     For more information visit:
+     https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding
 
 ##### Preview-Lia 💫
 
