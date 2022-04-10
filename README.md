@@ -631,7 +631,7 @@ title attribute, and it is shown, when the user hovers the link with the mouse.
    [title](http://goo.gl/fGXNvu "optional info")
 
 3. For internal navigation you can refer to the slide number or to title with
-   with a starting `#`
+   a starting `#`
 
    * `[next slide](#18)` -> [next slide](#18)
    * `[next slide](#preview-lia-💫)` -> [next slide](#preview-lia-💫)
