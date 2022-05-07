@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  19.0.9
+version:  20.0.0
 language: en
 narrator: UK English Female
 
@@ -478,17 +478,71 @@ restored from a local cache.
                             {{1}}
 **Preprocessing pattern:** `## foo bar`
 
+#### Semantic Correct HTML
+
+                          --{{0}}--
+As mentioned earlier, the preprocessor searches for patterns `## header` at the beginning of a line to identify sections.
+However, there might be cases where you want to have multiple different sections on one slide, with different headers.
+[Semantic HTML](https://en.wikipedia.org/wiki/Semantic_HTML) can help us to deal with this, especially the two [HTML5](https://en.wikipedia.org/wiki/HTML_5) tags [`section`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and [`article`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article).
+
+``` markdown
+# Slide-Title
+
+<section>
+## Section-Title
+
+...
+</section>
+
+<article>
+## Article-Title
+
+...
+</article>
+```
+
+                          --{{1}}--
+LiaScript will identify these HTML-tags and the content, such that the content within cannot be used as a separator.
+If you use these two semantic tags, your content is grouped in semanic correct way, which improves the readability if screen-readers are used or keyboard navigation is used.
+
+                          --{{2}}--
+When to use which tag might be philosophical question.
+We can say, if you just want to structure your content with different sub-headers, then use `<section>`.
+If your content represents a self-contained document, then use `<article>`.
+However, the visually presented result will be the same, such that you could also
+use a `<div>` to structure your content.
+
+<section>
+##### Section-Title
+
+> The `<section>` HTML element represents a generic standalone section of a document, which doesn't have a more specific semantic element to represent it.
+> Sections should always have a heading, with very few exceptions.
+>
+> Source: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+
+</section>
+
+
+<article>
+##### Article-Title
+
+> The `<article>` HTML element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable (e.g., in syndication).
+> Examples include: a forum post, a magazine or newspaper article, or a blog entry, a product card, a user-submitted comment, an interactive widget or gadget, or any other independent item of content.
+>
+> Source: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+
+</article>
 
 #### Sub-Titles 💫
 
                           --{{0}}--
-There might be some cases, where you want to add further headings. We therefor
+There might be some cases, where you want to add further headings quickly. We therefor
 apply the following syntax with underlining "equal signs" or "dashes". In
 common Markdown, this alternative syntax is applied to define level-1 and
 level-2 headings. We use it to create headings that are one level `=` or two
 levels `-` below the main heading. However, these subsections will not be part
 of the table of contents, and since their interpretation is slightly different
-to common Markdown, it should be avoided.
+to common Markdown, you should use the method presented in the previous section.
 
 <!-- class="translate"-->
 ```markdown
@@ -4465,6 +4519,13 @@ until the next
 line
 
 and this is rgba(55,255,100,0.5)
+```
+
+<!-- data-marker="0 0 0 100 yellow fullLine;"-->
+```
+this will be yellow
+
+xxxxx
 ```
 
 
