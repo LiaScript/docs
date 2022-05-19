@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  20.0.0
+version:  20.0.1
 language: en
 narrator: UK English Female
 
@@ -125,21 +125,37 @@ need for memorizing complex point and click sequences.
 **Atom:**
 
                            --{{0}}--
-There are currently 2 plugins for the [Atom Editor](https://atom.io/) available,
-which are intended to ease and simplify the development of online courses with
+There are currently 2 plugins for the [Atom Editor](https://atom.io) and
+[Visual-Studio-Code](https://code.visualstudio.com/Download) available, which
+are intended to ease and simplify the development of online courses with
 LiaScript.
 
 ![Atom with liascript-plugins](https://raw.githubusercontent.com/andre-dietrich/liascript-preview/master/preview.gif "Screencast of the Atom-editor with the liascript-preview and liascript-snippts installed.")
 
-0. [Atom](https://atom.io): This is the free and open and official
+1. [Atom](https://atom.io): This is the free and open and official
    [GitHub](https://github.com) editor, with lots of plugins for various use
    cases.
-1. [liascript-preview](https://atom.io/packages/liascript-preview): Is a tiny
-   previewer that, if it was toggled ( `Alt+L` ), updates the view on your
-   course each time you save your document.
-2. [liascript-snippets](https://atom.io/packages/liascript-snippets): If you
-   start typing `lia` in your Markdown document you switch on a fuzzy search,
-   that contains a lot of LiaScript help, examples, and snippets.
+
+   1. [liascript-preview](https://github.com/andre-dietrich/liascript-preview):
+      Is a tiny previewer that, if it was toggled ( `Alt+L` ), updates the view
+      on your course each time you save your document.
+   2. [liascript-snippets](https://github.com/andre-dietrich/liascript-snippets):
+      If you start typing `lia` in your Markdown document you switch on a fuzzy
+      search, that contains a lot of LiaScript help, examples, and snippets.
+
+   Detailed installation instructions can be found [here](https://aizac.herokuapp.com/install-atom-with-liascript/).
+
+2. [Visual-Studio-Code](https://code.visualstudio.com/Download): This is
+   Microsofts new flagship with various plugins and extensions.
+
+   1. [liascript-preview](https://marketplace.visualstudio.com/items?itemName=LiaScript.liascript-preview):
+      Is a tiny previewer that, if it was toggled ( `Alt+L` ), updates the view
+      on your course each time you save your document.
+   2. [liascript-snippets](https://marketplace.visualstudio.com/items?itemName=LiaScript.liascript-snippets):
+      If you start typing `lia` in your Markdown document you switch on a fuzzy
+      search, that contains a lot of LiaScript help, examples, and snippets.
+
+   Detailed installation instructions can be found [here](https://aizac.herokuapp.com/install-visual-studio-code-with-liascript/).
 
 
 
