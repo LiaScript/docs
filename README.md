@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  20.0.1
+version:  20.0.2
 language: en
 narrator: UK English Female
 
@@ -24,6 +24,7 @@ link: https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css
 
 
 # LiaScript
+
 
 > To see this document as an interactive LiaScript rendered version, click on the
 > following link/badge:
@@ -2181,10 +2182,17 @@ be displayed larger.
 
 
                           {{2}}
+<section>
+
 Multi-line math-mode can be applied by double dollars `$$ formula $$`
+
+<!-- class="notranslate" -->
 $$
   \frac{a}{\sum{b+i}}
-$$<!-- class="notranslate"-->
+$$
+
+</section>
+
 
                            --{{3}}--
 Currently, we apply the [KaTeX](http://katex.org) library for typesetting. If you
@@ -3890,13 +3898,44 @@ if ("@input" !== "true") {
 
 
 
-## Surveys
+## Surveys & Classrooms
 
-                             --{{0}}--
-A script should not define a one-way road to the student! So surveys are
-required.
+A survey or questionaire from our perspective is a quiz without a solution.
+Thus, the syntax is the same to quizzes, but instead of a solution you have to provide options.
+If you use the [LiaScript-Exporter](todo) to generate [SCORM-packages](todo) of a course, then the state of the quizzes and surveys will be stored within the LMS-backend.
+
+But, if you are also using [LiaScript](https://LiaScript.github.io) for your live presentations, you can also open a classroom directly from your Browser and create a shared experience, where all of the connected peers will get the same and anonymous view.
+
+
+
+### Classroom experience
+
+
 
 ### Text-Inputs
+
+As already mentioned, the difference to quizzes is, that you have to provide options or placeholders.
+In case of a text-input you have to provide a placeholder, which consists of at least 3 underscores that are separated spaces.
+
+
+You can have a single text-input by using the following pattern:
+
+**Example**
+
+`[[___]]`
+
+    [[___]]
+
+
+In this type of survey, you can use commas to separate different phrases or keyword/topics.
+Apply this for short comments or reactions only.
+The result will be presented as word-cloud, where all phrases are presented in uppercase.
+Their size is defined by their frequency and you
+
+
+---
+
+
 
 Similar to text-quizzes, use the following syntax to define a text-survey, where
 the number of underlines defines the presented line numbers:
@@ -3905,15 +3944,10 @@ the number of underlines defines the presented line numbers:
 
 What is your opinion on ... :
 
-    [[____ ____ ____ ____]]
+    [[_______    ____ ____ ____]]
 
 ---
 
-Or a single line only:
-
-`[[___]]`
-
-    [[___]]
 
 ### Single Choice Vector
 
@@ -4000,7 +4034,7 @@ Result:
     [                     ] question 3 ?
 
 
-
+### Classroom experience
 
 
 
@@ -6746,8 +6780,7 @@ a gray and escaped HTML `pre` `code` block.
 ```
 
 <lia-keep>
-<pre style="background:#CCCCCC"><code>
-\<b style="color: red"\>red\</b\> \<i style="color: green"\>simply, simply, green\</i\></code></pre></lia-keep>
+<pre style="background:#CCCCCC"><code><b style="color: red">red</b> <i style="color: green">simply, simply, green</i></code></pre></lia-keep>
 
 ### Special Macros
 
