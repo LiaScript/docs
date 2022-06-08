@@ -132,6 +132,7 @@ comments/issues or to add other mappings.
 | inform7        | i7                                                                         | [Inform 7](http://inform7.com)                                                                 | markup     |                      |
 | `ini`          | `toml`                                                                     | [TOML, also INI](https://github.com/toml-lang/toml)                                            | config     | `ini`, `toml`        |
 |                |                                                                            | [io](https://iolanguage.org)                                                                   |            | `io`                 |
+|                |                                                                            | [ion](https://github.com/ion-lang/ion)                                                         | ion        | `ion`                |
 | irpf90         |                                                                            | [IRPF90](http://irpf90.ups-tlse.fr)                                                            | scientific |                      |
 | isbl           |                                                                            | ISBL                                                                                           | enterprise |                      |
 |                |                                                                            | [Jack](https://classes.engineering.wustl.edu/cse365/jack.php)                                  |            | `jack`               |
@@ -193,6 +194,7 @@ comments/issues or to add other mappings.
 | `openscad`     | `scad`                                                                     | [OpenSCAD](https://www.openscad.org)                                                           | scientific | `scad`               |
 | oxygene        |                                                                            | [Oxygene](https://www.elementscompiler.com/elements/default.aspx)                              |            |                      |
 | parser3        |                                                                            | [Parser3](https://www.parser.ru/en)                                                            | template   |                      |
+|                |                                                                            | [PartiQL](https://partiql.org)                                                                 |            | `partiql`            |
 | `perl`         | `pl`, `pm`                                                                 | [Perl](https://www.perl.org)                                                                   | common     | `perl`               |
 | pf             | pf.conf                                                                    | [Packet Filter config](http://man.openbsd.org/pf.conf)                                         | config     |                      |
 | `pgsql`        | `postgres`, `postgresql`                                                   | [PostgreSQL and PL/pgSQL](https://www.postgresql.org/docs/11/sql.html)                         |            | `pgsql`              |
@@ -232,6 +234,7 @@ comments/issues or to add other mappings.
 | `ruby`         | `gemspec`, `irb`, `podspec`, `rb`, `thor`                                  | [Ruby](https://www.ruby-lang.org)                                                              | common     | `ruby`               |
 | ruleslanguage  |                                                                            | [Oracle Rules Language](https://docs.oracle.com/cd/E17904_01/dev.1111/e10227/rlref.htm)        | enterprise |                      |
 | `rust`         | `rs`                                                                       | [Rust](https://www.rust-lang.org)                                                              | common     | `rust`               |
+|                |                                                                            | [SAC](https://en.wikipedia.org/wiki/SAC_programming_language)                                  |            | `sac`                |
 | sas            |                                                                            | SAS                                                                                            |            |                      |
 |                |                                                                            |                                                                                                |            | `sass`               |
 | `scala`        |                                                                            | [Scala](https://www.scala-lang.org)                                                            | functional | `scala`              |
@@ -431,6 +434,7 @@ scheme of `ace`.
 | `ini`               | `ini`               |
 | `toml`              | `toml`              |
 | `io`                | `io`                |
+| `ion`               | `ion`               |
 | `jack`              | `jack`              |
 | `jade`              | `jade`              |
 | `java`              | `java`              |
@@ -510,6 +514,7 @@ scheme of `ace`.
 | `plaintext`         | `plaintext`         |
 | `text`              | `text`              |
 | `txt`               | `text`              |
+| `partiql`           | `partiql`           |
 | `powershell`        | `powershell`        |
 | `pwsh`              | `powershell`        |
 | `ps`                | `powershell`        |
@@ -549,6 +554,7 @@ scheme of `ace`.
 | `thor`              | `ruby`              |
 | `rust`              | `rust`              |
 | `rs`                | `rust`              |
+| `sac`               | `sac`               |
 | `sass`              | `sass`              |
 | `scala`             | `scala`             |
 | `scheme`            | `scheme`            |
