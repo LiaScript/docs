@@ -1066,6 +1066,25 @@ etc.
 
 ********************************************************************************
 
+                           {{2}}
+> __Note:__
+> At the moment it is required to separate blocks by at least one empty line.
+> The following example will be interpreted as a single paragraph:
+>
+> ``` markdown
+> * this is one single
+>   - paragraph with a dash.
+> ```
+>
+> Whereby the following will result in a bullet point with another one nested
+>
+> ``` markdown
+> * separate paragraph
+>
+>   - and this is a separate sub listing
+> ```
+
+
 #### Ordered Lists 💫
 
                           --{{0}}--
