@@ -645,10 +645,10 @@ escaping only to prevent misunderstandings between you and the interpreter.
 
 
 ``` markdown
-\*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@, \\
+\*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@, \\, \<, \>
 ```
 
-**Result:** \*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@, \\
+**Result:** \*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@, \\, \<, \>
 
 ### Symbols & Unicode 💫
 
