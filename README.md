@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  20.0.3
+version:  21.0.0
 language: en
 narrator: UK English Female
 
@@ -3916,136 +3916,284 @@ if ("@input" !== "true") {
 ```
 
 
-
 ## Surveys & Classrooms
 
-A survey or questionaire from our perspective is a quiz without a solution.
+                               --{{0}}--
+A survey or questionaire from our perspective is a quiz without a predefined solution.
 Thus, the syntax is the same to quizzes, but instead of a solution you have to provide options.
-If you use the [LiaScript-Exporter](todo) to generate [SCORM-packages](todo) of a course, then the state of the quizzes and surveys will be stored within the LMS-backend.
+If you use the [LiaScript-Exporter](https://www.npmjs.com/package/@liascript/exporter) to generate [SCORM-packages](https://en.wikipedia.org/wiki/Sharable_Content_Object_Reference_Model) of a course, then the state of the quizzes, surveys, and tasks will be stored within the LMS-backend.
 
+<div style="width:100%;height:0;padding-bottom:43%;position:relative;"><iframe src="https://giphy.com/embed/C6JQPEUsZUyVq" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/james-franco-same-but-different-C6JQPEUsZUyVq">via GIPHY</a></p>
+
+                               --{{1}}--
 But, if you are also using [LiaScript](https://LiaScript.github.io) for your live presentations, you can also open a classroom directly from your Browser and create a shared experience, where all of the connected peers will get the same and anonymous view.
-
-
-
-### Classroom experience
-
-
+We will explain the classroom-idea in more detail at the end of this section.
 
 ### Text-Inputs
 
+                               --{{0}}--
 As already mentioned, the difference to quizzes is, that you have to provide options or placeholders.
 In case of a text-input you have to provide a placeholder, which consists of at least 3 underscores that are separated spaces.
 
 
 You can have a single text-input by using the following pattern:
 
-**Example**
+<!-- class="translate"-->
+``` markdown
+**This is a one liner, you can use commas `,` to separate your inputs:**
 
-`[[___]]`
+    [[___]]
+```
+
+                                 {{1}}
+*******************************************************************************
+
+---
+
+**This is a one liner, you can use `commas` to separate your inputs:**
 
     [[___]]
 
+*******************************************************************************
 
+
+                               --{{1}}--
 In this type of survey, you can use commas to separate different phrases or keyword/topics.
 Apply this for short comments or reactions only.
-The result will be presented as word-cloud, where all phrases are presented in uppercase.
-Their size is defined by their frequency and you
 
 
----
-
-
-
+                               --{{2}}--
 Similar to text-quizzes, use the following syntax to define a text-survey, where
 the number of underlines defines the presented line numbers:
 
-   `[[___ ___ ___ ___]]`
 
-What is your opinion on ... :
+                                 {{2}}
+<!-- class="translate"-->
+``` markdown
+Please describe your opinion in a few sentences:
 
-    [[_______    ____ ____ ____]]
+    [[___ ___ ___ ___]]
+
+    [[______   ___   ___   ______]]
+```
+
+                               --{{3}}--
+Thereby it does not metter how much spaces you add or how long the underscore lines are, both definitions will result in the same `textarea` input.
+
+                                 {{3}}
+*******************************************************************************
 
 ---
 
+Please describe your opinion in a few sentences:
 
-### Single Choice Vector
+    [[___   ___   ___   ___]]
 
-                              --{{0}}--
-And also this kind of survey is similar to a single choice quiz, but in this
-case numbers within parenthesis are used to define some kind of variable
-identifier. That is why they do not have to be in order.
+*******************************************************************************
 
+### Single-Choice Vector
+
+                               --{{0}}--
+And also this kind of survey is similar to a single choice quiz, but in this case numbers within parenthesis are used to define some kind of variable
+identifier.
+That is why they do not have to be in order.
+
+<!-- class="translate"-->
 ```markdown
-[(1)] option 1
-[(2)] option 2
-[(3)] option 3
-[(0)] option 0
+Select one option:
+
+    [(1)] option 1
+    [(2)] option 2
+    [(3)] option 3
+    [(0)] option 0
 ```
 
-You can only select one option:
+                               --{{1}}--
+The result will look like the one presented below:
+
+                                 {{1}}
+*******************************************************************************
+
+Select one option:
 
     [(1)] option 1
     [(2)] option 2
     [(3)] option 3
     [(0)] option 0
 
+*******************************************************************************
 
-### Multi Choice Vector
+
+But, instead of numbers you can define also more complex option names.
+__There is only one difference, the options that start with numbers, will be plotted in the classroom presentation as distributions, whereby not numbers will be presented as categorical values.__ 
+
+             {{2}}
+<!-- class="translate"-->
+```markdown
+Select one option:
+
+- [(very good)]       I like it very much
+- [(good)]            It is ok
+- [(bad)]             I don't like it
+- [(something else)]  I am not sure 
+```
+
+As you can see from the example, you can apply different styles for encoding surveys too.
+Either you use indentation, so that other Markdown interpreter will show it as code, or you use lists.
+
+
+                                 {{2}}
+*******************************************************************************
+
+Select one option:
+
+- [(very good)]       I like it very much
+- [(good)]            It is ok
+- [(bad)]             I don't like it
+- [(something else)]  I am not sure 
+
+*******************************************************************************
+
+
+### Multi-Choice Vector
 
                                --{{0}}--
 Similar to multi-choice quizzes, you can define multi-choice survey vectors with
 a number in double square brackets. But, and this is also possible for all other
 kinds of surveys you can define some kind of variable name with a starting colon.
 
+<!-- class="translate"-->
 ```markdown
+What are your favorite colors?
+
 [[red]]         is it red
 [[green]]       green
 [[blue]]        or blue
-[[dark purple]] no one likes purple ( last chance ;-) )
+[[dark purple]] last chance ;-)
 ```
 
-Select some of your favored colors!
+                               --{{1}}--
+Within a LiaScript classroom, this represents categorical values.
+
+                                 {{1}}
+*******************************************************************************
+
+What are your favorite colors?
 
     [[red]]         is it red
     [[green]]       green
     [[blue]]        or blue
     [[dark purple]] no one likes purple ( last chance ;-) )
 
-### Single Choice Matrix
+*******************************************************************************
+
+                                 --{{2}}--
+If you want to turn this into a contiuous representation, you have work with starting numbers.
+
+                                  {{2}}
+*******************************************************************************
+
+<!-- class="translate"-->
+```markdown
+What are your favorite colors?
+
+- [[1 red]]         is it red
+- [[2 green]]       green
+- [[3 blue]]        or blue
+- [[4 dark purple]] last chance ;-)
+```
+
+---
+
+What are your favorite colors?
+
+- [[1 red]]         is it red
+- [[2 green]]       green
+- [[3 blue]]        or blue
+- [[4 dark purple]] last chance ;-)
+
+*******************************************************************************
+
+### Single-Choice Matrix
 
                               --{{0}}--
-For defining survey blocks you only have to a header row, whose definition is
-also used by the trailing rows.
+For defining survey blocks you only have to have a header row, whose definition is also used by the trailing rows.
 
-Markdown-format:
+__Markdown-format:__
 
+<!-- class="translate"-->
 ```markdown
-[(totally)(agree)(unsure)(maybe not)(disagree)]
-[                                             ] liaScript is great?
-[                                             ] I would use it to make online **courses**?
-[                                             ] I would use it for online **surveys**?
+What is your opinion about LiaScript?
+
+    [(totally)(agree)(unsure)(maybe not)(disagree)]
+    [                                             ] LiaScript is great?
+    [                                             ] I would use it to make online **courses**?
+    [                                             ] I would use it for online **surveys**?
 ```
+
+---
+
+__Result:__
+
+What is your opinion about LiaScript?
 
     [(totally)(agree)(unsure)(maybe not)(disagree)]
     [                                             ] liaScript is great?
     [                                             ] I would use it to make online **courses**?
     [                                             ] I would use it for online **surveys**?
 
-### Multi Choice Matrix
+
+                               --{{1}}--
+And also in this case, again, you can use numbers to display the summary as categorical.
+
+                               --{{2}}--
+As depicted below, the brackets `[   ]` do not have to match with the first line. 
+
+                                 {{1}}
+*******************************************************************************
+
+__Markdown-format:__
+
+<!-- class="translate"-->
+```markdown
+What is your opinion about LiaScript?
+
+- [(1 totally)(2 agree)(3 unsure)(4 maybe not)(5 disagree)]
+- [                ] LiaScript is great?
+- [                ] I would use it to make online **courses**?
+- [                ] I would use it for online **surveys**?
+```
+
+---
+
+__Result:__
+
+What is your opinion about LiaScript?
+
+- [(1 totally)(2 agree)(3 unsure)(4 maybe not)(5 disagree)]
+- [                ] LiaScript is great?
+- [                ] I would use it to make online **courses**?
+- [                ] I would use it for online **surveys**?
+
+*******************************************************************************
+
+### Multi-Choice Matrix
 
                                --{{0}}--
-I guess, multi-choice blocks are self-explanatory...
+The multi-choice blocks are self-explanatory and behave exactly as the single-choice blocks from the previous section.
 
-Markdown-format:
+__Markdown-format:__
 
+<!-- class="translate"-->
 ```markdown
 [[1][2][3][4][5][6][7]]
 [                     ] question 1 ?
 [                     ] question 2 ?
 [                     ] question 3 ?
 ```
+---
 
-Result:
+__Result:__
 
     [[1][2][3][4][5][6][7]]
     [                     ] question 1 ?
@@ -4053,9 +4201,174 @@ Result:
     [                     ] question 3 ?
 
 
-### Classroom experience
+### Associated Scripts
+
+                               --{{0}}--
+As it was done with taks and quizzes, you can also associate a script to every survey to change its behavior or to send the result to an external service.
+By default, you have to provide some input in order to submit the data.
+Within the following example both cases are treated as errors, wheter the user just hits the submit button or if only spaces and tabs will be entered.
+The script returns `true`, if the input matches your experience, otherwise an error message will be presented to the user.
+If you just return `false`, then no information will be presented to the user.
 
 
+``` markdown
+Please enter some spaces at first:
+
+[[___]]
+<script>
+  let input = `@input`.trim()
+
+  if (input.length > 0) {
+    true
+  } else {
+    send.lia("Please enter some text", [], false)
+  }
+</script>
+```
+
+---
+
+__Result:__
+
+[[___]]
+<script>
+  let input = `@input`.trim()
+
+  if (input.length > 0) {
+    true
+  } else {
+    send.lia("Please enter some text", [], false)
+  }
+</script>
+
+                               --{{1}}--
+The input-data for different types of summaries is the same as for quizzes, but you can check the input always manually via [`alert`](https://www.w3schools.com/jsref/met_win_alert.asp) function.
+__Note that `console.log` will not work in this case at the moment.__
+
+
+                                 {{1}}
+*******************************************************************************
+
+<!-- class="translate"-->
+``` markdown
+What are your favorite colors?
+
+[[1 red]]         is it red
+[[2 green]]       green
+[[3 blue]]        or blue
+[[4 dark purple]] last chance ;-)
+<script>
+  alert(`@input`)
+</script>
+```
+
+What are your favorite colors?
+
+[[1 red]]         is it red
+[[2 green]]       green
+[[3 blue]]        or blue
+[[4 dark purple]] last chance ;-)
+<script>
+  alert(`@input`)
+</script>
+
+*******************************************************************************
+
+### Classroom Experience
+
+We try to develop a simple classroom experience light without any centralized authority or server.
+Therefor we currently apply distributed [Web3.0](https://en.wikipedia.org/wiki/Web3) technologies, which synchronize the state of a classroom accross multiple connected users/browsers.
+At the moment we can synchronize and visualize quizzes and surveys and display an annoym overview onto the results.
+The basic idea is, if you join a room, you bring your data with you, if you leave the room then all of your data will be removed from the global state.
+Thus, nothing is stored nothing is logged and you have the control over your data.
+All associated servers run only as relays.
+
+
+#### I don't want Classrooms
+
+                               --{{0}}--
+You can disable this feature also for your course, simply by adding the command `classroom: disable` or `classroom: false` to your main defintintion.
+
+``` markdown
+<!--
+author: ...
+
+classroom: disable
+-->
+
+# Title
+
+```
+
+#### Working with Classrooms
+
+                               --{{0}}--
+If you are on the LiaScript website and if you have a course started you can directly switch to the classroom settings by clicking onto the share button.
+
+          {{0-1}}
+![Open Classroom](img/classroom1.png)
+
+
+                               --{{1}}--
+When you click onto the classroom button, you should be presented with the classroom settings, where you have to choose one backend service.
+We would prefer to use [GunDB](https://gun.eco).
+Some services like [Beaker](https://beakerbrowser.com) require you to run your course from another browser or you will have different settings.
+
+          {{1-2}}
+![Classroom Settings](img/classroom2.png)
+
+
+                               --{{2}}--
+We provide different information for the different services that can be applied.
+However, what is similar to all is that you have to define a room name that must be unique.
+To help you, you can click onto the circle arrow symbol and a name will be generated randomly for your.
+The passwords are optional.
+
+          {{2-3}}
+![Classroom with GunDB](img/classroom3.png)
+
+
+                               --{{3}}--
+If you then click onto connect and a connection could be established, the classroom settings will be closed automatically.
+Otherwise a error message should be provided.
+If everything worked fine you will see, at least one user within the classroom and the URL of your course will have changed.
+You can not either share the new URL, which contains all required configurations, or you can send the room name and the password and the course-URL seperately to your peers.
+In this case they will have to repeat these steps.
+
+          {{3-4}}
+![Open Classroom](img/classroom4.png)
+
+
+                               --{{4}}--
+In order to disconnect, you will have to go to the classroom settings again and click onto the disconnect button.
+Again, the URL of the course will change back to the original representation.
+
+           {{4}}
+![Open Classroom](img/classroom5.png)
+
+                                 {{3}}
+> __Note:__
+> You can try this out, if you open LiaScript on different browsers and go back to the quizzes and surveys sections.
+> You should experiment a bit the resulting presentations.
+> Additionally, try to disconnect and observe the effect on the connected instances.
+
+#### Future Classrooms
+
+                               --{{0}}--
+As already mentioned, we currently only synchronize quizzes and surveys.
+Other elements will be added in the future, such as distributed pair-programming, user roles, asking questions, etc.
+
+                                {{0-1}}
+<div style="width:100%;height:0;padding-bottom:62%;position:relative;"><iframe src="https://giphy.com/embed/3otO6zntMrmhpvaYX6" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/online-education-learning-3otO6zntMrmhpvaYX6">via GIPHY</a></p>
+
+
+                               --{{1}}--
+If you are interested in the implementation stuff, we build classrooms with the help of [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) and try to make LiaScript as backend-agnostic as possible.
+You can add support for your own systems [here](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/sync).
+
+                                 {{1}}
+__Implementation:__
+https://github.com/LiaScript/LiaScript/tree/development/src/typescript/sync
 
 ## JavaScript
 
