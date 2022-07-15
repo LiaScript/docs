@@ -16,9 +16,9 @@ comment:  This document shall provide an entire compendium and course on the
 script:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
           https://felixhao28.github.io/JSCPP/dist/JSCPP.es5.min.js
 
-link: https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
+link:     https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 
-link: https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css
+link:     https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css
 
 -->
 
@@ -913,6 +913,7 @@ include the link and the resource will be embedded appropriately.
   > * [Vimeo](https://Vimeo.com)
   > * [YouTube](https://YouTube.com)
 
+
                           --{{1}}--
 If you required more control over your video, such as autoplay, muted,
 start-time, and probably also size and colors, the you can also apply custom
@@ -920,6 +921,7 @@ styling rules, then you should take a look at the following section:
 
                             {{1}}
 [Customizing-Multimedia](#Customizing-Multimedia)
+
 
 #### So what is left?? 💫
 
@@ -3919,21 +3921,21 @@ if ("@input" !== "true") {
 ## Surveys & Classrooms
 
                                --{{0}}--
-A survey or questionaire from our perspective is a quiz without a predefined solution.
+A survey or questionnaire from our perspective is a quiz without a predefined solution.
 Thus, the syntax is the same to quizzes, but instead of a solution you have to provide options.
 If you use the [LiaScript-Exporter](https://www.npmjs.com/package/@liascript/exporter) to generate [SCORM-packages](https://en.wikipedia.org/wiki/Sharable_Content_Object_Reference_Model) of a course, then the state of the quizzes, surveys, and tasks will be stored within the LMS-backend.
 
 <div style="width:100%;height:0;padding-bottom:43%;position:relative;"><iframe src="https://giphy.com/embed/C6JQPEUsZUyVq" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/james-franco-same-but-different-C6JQPEUsZUyVq">via GIPHY</a></p>
 
                                --{{1}}--
-But, if you are also using [LiaScript](https://LiaScript.github.io) for your live presentations, you can also open a classroom directly from your Browser and create a shared experience, where all of the connected peers will get the same and anonymous view.
+But, if you are also using [LiaScript](https://LiaScript.github.io) for your live presentations, you can also open a classroom directly from your Browser and create a shared experience, where all the connected peers will get the same and anonymous view.
 We will explain the classroom-idea in more detail at the end of this section.
 
 ### Text-Inputs
 
                                --{{0}}--
 As already mentioned, the difference to quizzes is, that you have to provide options or placeholders.
-In case of a text-input you have to provide a placeholder, which consists of at least 3 underscores that are separated spaces.
+In case of a text-input, you have to provide a placeholder, which consists of at least 3 underscores that are separated spaces.
 
 
 You can have a single text-input by using the following pattern:
@@ -3950,7 +3952,7 @@ You can have a single text-input by using the following pattern:
 
 ---
 
-**This is a one liner, you can use `commas` to separate your inputs:**
+**This is a one-liner, you can use `commas` to separate your inputs:**
 
     [[___]]
 
@@ -3978,7 +3980,7 @@ Please describe your opinion in a few sentences:
 ```
 
                                --{{3}}--
-Thereby it does not metter how much spaces you add or how long the underscore lines are, both definitions will result in the same `textarea` input.
+Thereby, it does not matter how many spaces you add or how long the underscore lines are, both definitions will result in the same `textarea` input.
 
                                  {{3}}
 *******************************************************************************
@@ -3991,10 +3993,11 @@ Please describe your opinion in a few sentences:
 
 *******************************************************************************
 
+
 ### Single-Choice Vector
 
                                --{{0}}--
-And also this kind of survey is similar to a single choice quiz, but in this case numbers within parenthesis are used to define some kind of variable
+And also this kind of survey is similar to a single choice quiz, but in this case, numbers within parenthesis are used to define some kind of variable
 identifier.
 That is why they do not have to be in order.
 
@@ -4024,7 +4027,7 @@ Select one option:
 *******************************************************************************
 
 
-But, instead of numbers you can define also more complex option names.
+But, instead of numbers, you can also define more complex option names.
 __There is only one difference, the options that start with numbers, will be plotted in the classroom presentation as distributions, whereby not numbers will be presented as categorical values.__ 
 
              {{2}}
@@ -4058,9 +4061,8 @@ Select one option:
 ### Multi-Choice Vector
 
                                --{{0}}--
-Similar to multi-choice quizzes, you can define multi-choice survey vectors with
-a number in double square brackets. But, and this is also possible for all other
-kinds of surveys you can define some kind of variable name with a starting colon.
+Similar to multi-choice quizzes, you can define multi-choice survey vectors with a number in double square brackets.
+But, and this is also possible for all other kinds of surveys, you can define some kind of variable name with a starting colon.
 
 <!-- class="translate"-->
 ```markdown
@@ -4088,7 +4090,7 @@ What are your favorite colors?
 *******************************************************************************
 
                                  --{{2}}--
-If you want to turn this into a contiuous representation, you have work with starting numbers.
+If you want to turn this into a continuous representation, you have to work with starting numbers.
 
                                   {{2}}
 *******************************************************************************
@@ -4117,7 +4119,7 @@ What are your favorite colors?
 ### Single-Choice Matrix
 
                               --{{0}}--
-For defining survey blocks you only have to have a header row, whose definition is also used by the trailing rows.
+For defining survey blocks, you only have to have a header row, whose definition is also used by the trailing rows.
 
 __Markdown-format:__
 
@@ -4138,7 +4140,7 @@ __Result:__
 What is your opinion about LiaScript?
 
     [(totally)(agree)(unsure)(maybe not)(disagree)]
-    [                                             ] liaScript is great?
+    [                                             ] LiaScript is great?
     [                                             ] I would use it to make online **courses**?
     [                                             ] I would use it for online **surveys**?
 
@@ -4204,10 +4206,11 @@ __Result:__
 ### Associated Scripts
 
                                --{{0}}--
-As it was done with taks and quizzes, you can also associate a script to every survey to change its behavior or to send the result to an external service.
+As it was done with tasks and quizzes, you can also associate a script to every survey to change its behavior or to send the result to an external service.
 By default, you have to provide some input in order to submit the data.
-Within the following example both cases are treated as errors, wheter the user just hits the submit button or if only spaces and tabs will be entered.
-The script returns `true`, if the input matches your experience, otherwise an error message will be presented to the user.
+Within the following example, both cases are treated as errors, whether the user just hits the submit button or if only spaces and tabs will be entered.
+The script returns `true`, if the input matches your experience.
+Otherwise, an error message will be presented to the user, depending on the input length.
 If you just return `false`, then no information will be presented to the user.
 
 
@@ -4218,10 +4221,12 @@ Please enter some spaces at first:
 <script>
   let input = `@input`.trim()
 
-  if (input.length > 0) {
+  if (input.length > 4) {
     true
-  } else {
+  } else if (input.length == 0) {
     send.lia("Please enter some text", [], false)
+  } else {
+    send.lia("Please provide some meaningfull input", [], false)
   }
 </script>
 ```
@@ -4234,10 +4239,12 @@ __Result:__
 <script>
   let input = `@input`.trim()
 
-  if (input.length > 0) {
+  if (input.length > 4) {
     true
-  } else {
+  } else if (input.length == 0) {
     send.lia("Please enter some text", [], false)
+  } else {
+    send.lia("Please provide some meaningfull input", [], false)
   }
 </script>
 
@@ -4276,18 +4283,18 @@ What are your favorite colors?
 
 ### Classroom Experience
 
-We try to develop a simple classroom experience light without any centralized authority or server.
-Therefor we currently apply distributed [Web3.0](https://en.wikipedia.org/wiki/Web3) technologies, which synchronize the state of a classroom accross multiple connected users/browsers.
-At the moment we can synchronize and visualize quizzes and surveys and display an annoym overview onto the results.
+We try to develop a simple classroom experience, light without any centralized authority or server.
+Therefor, we currently apply distributed [Web3.0](https://en.wikipedia.org/wiki/Web3) technologies, which synchronize the state of a classroom across multiple connected users/browsers.
+At the moment, we can synchronize and visualize quizzes and surveys and display an anonymous overview onto the results.
 The basic idea is, if you join a room, you bring your data with you, if you leave the room then all of your data will be removed from the global state.
-Thus, nothing is stored nothing is logged and you have the control over your data.
+Thus, nothing is stored nothing is logged, and you have the control over your data.
 All associated servers run only as relays.
 
 
 #### I don't want Classrooms
 
                                --{{0}}--
-You can disable this feature also for your course, simply by adding the command `classroom: disable` or `classroom: false` to your main defintintion.
+You can also disable this feature for your course, simply by adding the command `classroom: disable` or `classroom: false` to your main definition.
 
 ``` markdown
 <!--
@@ -4303,7 +4310,7 @@ classroom: disable
 #### Working with Classrooms
 
                                --{{0}}--
-If you are on the LiaScript website and if you have a course started you can directly switch to the classroom settings by clicking onto the share button.
+If you are on the LiaScript website and if you have a course started, you can directly switch to the classroom settings by clicking onto the share button.
 
           {{0-1}}
 ![Open Classroom](img/classroom1.png)
@@ -4312,7 +4319,7 @@ If you are on the LiaScript website and if you have a course started you can dir
                                --{{1}}--
 When you click onto the classroom button, you should be presented with the classroom settings, where you have to choose one backend service.
 We would prefer to use [GunDB](https://gun.eco).
-Some services like [Beaker](https://beakerbrowser.com) require you to run your course from another browser or you will have different settings.
+Some services like [Beaker](https://beakerbrowser.com) require you to run your course from another browser, or you will have different settings.
 
           {{1-2}}
 ![Classroom Settings](img/classroom2.png)
@@ -4321,7 +4328,7 @@ Some services like [Beaker](https://beakerbrowser.com) require you to run your c
                                --{{2}}--
 We provide different information for the different services that can be applied.
 However, what is similar to all is that you have to define a room name that must be unique.
-To help you, you can click onto the circle arrow symbol and a name will be generated randomly for your.
+To help you, you can click onto the circle arrow symbol and a name will be generated randomly for you.
 The passwords are optional.
 
           {{2-3}}
@@ -4330,10 +4337,10 @@ The passwords are optional.
 
                                --{{3}}--
 If you then click onto connect and a connection could be established, the classroom settings will be closed automatically.
-Otherwise a error message should be provided.
-If everything worked fine you will see, at least one user within the classroom and the URL of your course will have changed.
-You can not either share the new URL, which contains all required configurations, or you can send the room name and the password and the course-URL seperately to your peers.
-In this case they will have to repeat these steps.
+Otherwise, an error message should be provided.
+If everything worked fine, you will see, at least one user within the classroom and the URL of your course will have changed.
+You can now either share the new URL, which contains all required configurations, or you can send the room name and the password and the course-URL separately to your peers.
+In this case, they will have to repeat these steps.
 
           {{3-4}}
 ![Open Classroom](img/classroom4.png)
@@ -4349,8 +4356,48 @@ Again, the URL of the course will change back to the original representation.
                                  {{3}}
 > __Note:__
 > You can try this out, if you open LiaScript on different browsers and go back to the quizzes and surveys sections.
-> You should experiment a bit the resulting presentations.
+> You should experiment a bit with the resulting presentations.
 > Additionally, try to disconnect and observe the effect on the connected instances.
+
+#### Classroom Experience
+
+                               --{{0}}--
+The following video shows how to open, share, and close a LiaScript classroom.
+
+!?[LiaScript classroom demo](https://www.youtube.com/watch?v=Kjk6OblugXI&autoplay=true)
+
+
+#### Enabling the Classrooms in any LMS
+
+                               --{{0}}--
+If you have exported your course to a [SCORM](https://en.wikipedia.org/wiki/Sharable_Content_Object_Reference_Model) or [IMS](https://www.imsglobal.org/activity/learning-tools-interoperability) package with the [LiaScript-Exporter](https://www.npmjs.com/package/@liascript/exporter) you can also establish classrooms between different users of the same course within a single [LMS](https://en.wikipedia.org/wiki/Learning_management_system) or between different ones, such as [Moodle](https://en.wikipedia.org/wiki/Moodle) or [ILIAS](https://en.wikipedia.org/wiki/ILIAS).
+
+                               --{{1}}--
+By default, the classroom-feature is disabled within any exports, but as you can disable it for your course, it is also possible to enable it.
+Thus, at first, you have to enable this feature within your course, before you export it.
+
+                                 {{1}}
+``` markdown
+<!--
+...
+
+classroom: enable
+
+-->
+
+# Your Course
+```
+
+                               --{{2}}--
+Secondly, the classroom name has to be truly unique and surrounded by quotations.
+By default, the URL of your Markdown file and the room-name are used to generate a unique ID for the classroom, which prevents collisions between different courses, which accidentally use the same room name.
+However, by surrounding the room-name with single or double quotation marks, you instruct [LiaScript](https://liascript.github.io) to use this specific room name and to ignore the course URL.
+__All the roommates have to enter exactly the same name for the classroom.__
+That's it!
+
+                                 {{2}}
+**Room name:** `"This has to be a truely unique name 129281715#123"`
+
 
 #### Future Classrooms
 
@@ -4370,166 +4417,645 @@ You can add support for your own systems [here](https://github.com/LiaScript/Lia
 __Implementation:__
 https://github.com/LiaScript/LiaScript/tree/development/src/typescript/sync
 
-## JavaScript
 
-                                 --{{0}}--
-In contrast to common Markdown-Parsers it is also possible to include and
-execute javascript code. If you combine it with your HTML elements, you are free
-to integrate whatever you want.
+## Effects
 
-                                 --{{1}}--
-The last statement of your script defines also the result, that will be shown,
-if and only if it is not `undefined`, or simply use `console.log` to log the
-script activities. As the examples below show, you can combine your scripts with
-LiaScript animations. Thus, they will only be execute in the right
-fragment/context. But. you can do much much more with scripts.
+                               --{{0}}--
+There are currently three types of what we call effects, these are:
 
-                                  {{1}}
-> Checkout Section [JavaScript](#JavaScript-or-JS-Components) for more information!
+<!-- --{{0}}--
+animations, comments, and playback functions
+-->
 
-``` html
-Do some internal calculation <script> 99 * 88  </script>, the next script
-contains an error <script> 99 * a </script>.
+1. Animations
+2. Comments via Text-to-Speech
+3. and Playback functions
 
-                                  {{1}}
-<div class="ct-chart ct-golden-section" id="chart"></div>
-<script>
-    // Initialize a Line chart in the container with the ID chart
-    new Chartist.Line('#chart', {
-        labels: [1, 2, 3, 4],
-        series: [[100, 120, 180, 200]]
-    });
+                               --{{1}}--
+All of these elements can be used inline and on block-level.
+Every effect is defined by two braces:
 
-    console.debug("loaded #chart") // or undefined
-</script>
+                                 {{1}}
+``` markdown
+    --{{1}}--
+Spoken comments.
+
+     {{1-2}}
+Blocks that appear at animation
+step 1 and disappear on step 2.
+
+     {{|>}}
+To be read aloud when user clicks
+the on the play button...
 ```
 
-Do some internal calculation <script> 99 * 88  </script>, the next script
-contains an error: <script> 99 * a </script>.
+                               --{{2}}--
+Animations are only visible and comments are read out aloud in "Presentation" or in "Slides" mode.
+If you set the mode to "Textbook", then all animations and comments will be displayed on one slide, where you have placed them within the document.
+Within the other two modes, they are revealed step by step on every click.
 
-                                {{2-3}}
-<div class="ct-chart ct-golden-section" id="chart1"></div>
-<script>
-// Initialize a Line chart in the container with the ID chart1
-new Chartist.Line('#chart1', {
-  labels: [1, 2, 3, 4],
-  series: [[100, 120, 180, 200]]
-});
-
-console.debug("loaded #chart1")
-</script>
+                                {{3 |>}}
+> __You need to balance these features properly, so that your course can be read in Textbook mode, used for presentations, and more.__
 
 
-                                {{3}}
-<div class="ct-chart ct-golden-section" id="chart2"></div>
-<script>
-// Initialize a Line chart in the container with the ID chart2
-new Chartist.Line('#chart2', {
-  labels: [1, 2, 3, 4],
-  series: [[-100, 120, 180, 20]]
-});
+### Animations
 
-console.debug("loaded #chart2")
-</script>
+                                   --{{0}}--
+Animations are defined by two curly braces and one starting and one optional ending number.
+Animations can be associated to single blocks, multiple blocks and also inlined.
 
-                                --{{3}}--
-Note, you have to include all required JavaScript-resourses in the initial
-comment after the script definition. And by combining this feature with
-LiaScript effects, you can build even more sophisticated courses.
+`{{start-stop?}} | {start-stop?}{inline}`
+
+#### Block Animations
 
 
+                                   --{{0}}--
+Animations can be associated to blocks, simply by adding two curly braces on top of a block.
+We recommend applying indentation of at least spaces to an animations definitions.
+Other Markdown renderer will highlight this as code, such that it is easier to read.
 
+``` markdown
+     {{1}}
+This is an example for a *single* block animations.
 
+     {{2-3}}
+This one will appear on animation step 2 and disappear on 3.
 
-
-## Syntax Highlighting
-
-The following section shows a three types of code blocks, simple inline and
-block-code as well as interactive block-code, as an extension to common
-Markdown.
-
-### Inline-Code
-
-Inline code via \` enter some code in here 1\#\#\#\$& \` -> ` enter some code in here 1###$& `
-
-### Block-Code
-
-                                --{{0}}--
-Syntax highlighting is enabled with highlight.js. Blocks of code are either by
-lines with three back-ticks \`\`\` and an identifier for the language. See a
-complete list of examples and how to write language names at the
-[highlight.js demo page](http://softwaremaniacs.org/media/soft/highlight/test.html).
-
-````` markdown
-```language <- (python, c, javascript, ...)  +OptionalTitle
-
-code ...
-
-```
-`````
-
-C example:
-
-``` c Sample.cpp
-#include "test.h"
-
-int main () {
-    printf("this is an example\n");
-    return 0;
-}
+{{4}} This is also ok, but it will look be harder to spot on GitHub.
 ```
 
-Python example:
+                               --{{2}}--
+Use a starting and an ending number, if you want the element to disappear at a certain point.
 
-``` python
-import math
+__Result:__
 
-def lia_sqrt(val):
-    return math.sqrt(val) + 22
+
+     {{1}}
+This is an example for a *single* block animations.
+
+     {{2-3}}
+This one will appear on animation step 2 and disappear on 3.
+
+
+{{4}} This is also ok, but it will look be harder to spot on GitHub.
+
+
+#### Multi-Block Animations
+
+                               --{{0}}--
+Similarly, as it was done for quizzes, as described in section [Quiz-Solution](#solution), you can group multiple markdown blocks by lines of asterisks.
+Simply add the curly braces with the animation definition above the upper line.
+
+
+``` markdown
+            {{1-2}}
+************************************
+
+This is an example...
+
+| that     | contains |
+|----------|----------|
+| multiple | blocks.  |
+
+************************************
+
+
+             {{2}}
+<section>
+
+As an alternative, you can also use
+HTML-tags ...
+
+
+... to surround multiple blocks.
+
+</section>
 ```
 
-### Interactive Code
+                               --{{1}}--
+Blocks can also have a starting and disappearing number.
 
-                                    --{{0}}--
+                               --{{2}}--
+Depending on your preferred style, you can also use HTML-tags to group blocks.
+These will then be displayed slightly different on [GitHub](https://github.com).
 
-Why should code examples not be interactive and editable, especially if it is
-JavaScript or any other language that has been ported to it? Simply add the
-required resources to the initial comment with keyword `script`.
+__Result:__
 
-1. Add resource to main-comment: `script: url.js`
+            {{1-2}}
+************************************
 
-2. Add a trailing script-tag to your code: `<script>@input</script>`
+This is an example...
 
-3. A project with multiple files can be realized with `@input(0)`, `@input(1)`, ...,`@input(n)`.
+| that     | contains |
+|----------|----------|
+| multiple | blocks.  |
 
-
-                                     --{{1}}--
-And add an additional script tag to the end of your language definition with an
-`@input` macro. This element is afterwards substituted with your code and
-executed. We provide some basic examples within the following section.
-
-                                    --{{2}}--
-Use the `@input` macro as a parameterized function in projects. The number
-defines the the file, starting from 0.
+************************************
 
 
+             {{2}}
+<section>
 
-#### JavaScript
+As an alternative, you can also use
+HTML-tags ...
 
-                                    --{{0}}--
-Click on the run-button to execute the script or double-click on the code to
-edit it and to change the output ...
 
-Double-click on the code to switch to edit mode and double-click to get out:
+... to surround multiple blocks.
 
+</section>
+
+
+#### Inline Animations
+
+                                   --{{0}}--
+Inline effects can be used in nearly all LiaScript elements.
+In this you will have to unpack the curly braces, the first pair surrounds the animation definition, while the second pair contains all inline elements that should appear and or disappear.
+
+``` markdown
+* no effect here
+* but in this line {2}{show ***second***}
+* as well as this one {1-2}{show ***first*** remove on __second__}
+```
+
+* no effect here
+* but in this line {2}{show ***second***}
+* as well as this one {1-2}{show ***first*** remove on __second__}
+
+<!-- --{{1}}--
+Goto animation step 1.
+-->
+
+<!-- --{{2}}--
+Goto animation step 2.
+-->
+
+
+#### Combinations & Styling
+
+                               --{{0}}--
+Animations can also be grouped freely, such that one multi-block animation can contain multiple block animations and one block can also contain further inline animations:
+
+``` markdown
+<!--
+class="animate__animated animate__backInUp"
+style="background:#CCC; padding:3rem; min-height: 40vh; border-radius: 3rem"
+-->
+                 {{1}}
+*******************************************
+
+This block contains {2}{multiple} inline animations.
+With some
+{2-3}{styled}<!-- class="animate__animated animate__flash" -->
+elements as well.
+
+<!-- class="animate__animated animate__backInDown" -->
+                  {{3}}
+!?[Animated paintings](https://www.youtube.com/watch?v=-DDphfCnFQc&autoplay=true)
+
+*******************************************
+```
+
+
+<!--
+class="animate__animated animate__backInUp"
+style="background:#CCC; padding:3rem; min-height: 40vh; border-radius: 3rem"
+-->
+                 {{1}}
+*******************************************
+
+This block contains {2}{multiple} inline animations.
+With some
+{2-3}{styled}<!-- class="animate__animated animate__flash" -->
+elements as well.
+
+<!-- class="animate__animated animate__backInDown" -->
+                  {{3}}
+!?[Animated paintings](https://www.youtube.com/watch?v=-DDphfCnFQc&autoplay=true)
+
+*******************************************
+
+
+                               --{{4}}--
+Any kind of CSS can also be added to an animation, as it was already described in section [Custom Styling](#custom-styling).
+Additionally, we had added an additional CSS stylesheet to the main HTML-comment of this document.
+This will load [Animate CSS](https://animate.style/#documentation), but you can use any other CSS library or custom styling as well.
+
+                                 {{4}}
+*******************************************************************************
+
+__Animate.css documentation:__ https://animate.style/
+
+
+``` markdown
+<!--
+author: ...
+
+link:   https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css
+-->
+
+# LiaScript
+```
+*******************************************************************************
+
+### Comments: Text 2 Speech 
+
+                               --{{0}}--
+The idea of a comment is that they should be associated to witch animations.
+When animation $x$ is revealed, then the comment $x$ is read aloud. 
+Like in a PowerPoint presentations, when one element appears and the presenter says something, clicks the next element appears and is also commented.
+Thus, a comment is a paragraph that is marked by two curly braces, which contain a number, and two dashes around the braces.
+If multiple comments have the same number, then they will be replayed in the order of appearance.
+
+``` markdown
+          --{{1}}--
+This will be spoken out loud.
+
+          --{{2}}--
+This will be spoken out loud too,
+but at animation step 2.
+
+          --{{2}}--
+Don't forget me.
+
+       {{1}}
+__I am animation 1 {2}{and 2 too}.__
+```
+
+          --{{1}}--
+This will be spoken out loud.
+
+          --{{2}}--
+This will be spoken out loud too,
+but at animation step 2.
+
+          --{{2}}--
+Don' forget me.
+
+       {{1}}
+__I am animation 1 {2}{and 2 too}.__
+
+
+                               --{{3}}--
+If you change the presentation mode, then you will see that these comments will be displayed in place in "Textbook" mode.
+In "Slides" mode they will also be presented to the user, while they will be hidden in "Presentation" mode.
+If you switch off the sound, then this is the mode that can be used for presenting content, while the others can be used for self studying.
+
+#### Voices & Language
+<!--
+narrator: UK English Male
+@Tanja:   Russian Female
+-->
+
+                               --{{0}}--
+But where does the voice come from?
+In LiaScript within the initial comment, you can use the `lang` macro to define the document translation and `narrator` to define the default voice.
+Currently, we are using [responsivevoice](https://responsivevoice.org) to offer the same language capabilities in all browsers and devices.
+It is possible to change the `narrator` on different layers, globally within the main comment tag, per slide, and also per comment, by inserting the voice into the comment definition.
+
+
+1. Speech-Engine: https://responsivevoice.org
+2. Default `narrator` must be defined within the initial comment, otherwise `US English Male` is used
+3. You can overwrite the default `narrator` per slide, by attaching a comment to the title tag 
+4. Use `--{{number}}--` to indicate what is spoken and when
+5. Use `--{{number voice}}--` to change the voice for this particular comment
+6. It is also possible to define custom macros for language definitions
+7. You can have multiple comments with the same number, those will be combined, but only the voice of the first one is used
+8. See a complete list of all supported voices in section [`narrator`](#narrator)
+
+---
+
+``` markdown
+<!--
+author:   ...
+lang:     en
+narrator: US English Male
+-->
+
+# Title
+
+...
+
+#### Voices & Language
+<!--
+narrator: UK English Female
+@Tanja:   Russian Female
+-->
+
+                    --{{1}}--
+The entire ***Markdown*** paragraph right below the effect definition in double
+minus notation is sent to responsivevoice to speak the text out loud in
+`Presentation` or `Slides` mode.
+
+                    --{{3 Deutsch Female}}--
+Markdown ist eine vereinfachte Auszeichnungssprache, die von John Gruber und
+Aaron Swartz entworfen und im Dezember 2004 mit Version 1.0.1 spezifiziert ...
+
+                    --{{4 @Tanja}}--
+«Для торжества зла достаточно бездействия хороших людей».
+```
+
+---
+
+                    --{{1}}--
+The entire ***Markdown*** paragraph right below the effect definition in double
+minus notation is sent to responsivevoice to speak the text out loud in
+`Presentation` or `Slides` mode.
+
+                    --{{3 Deutsch Female}}--
+Markdown ist eine vereinfachte Auszeichnungssprache, die von John Gruber und
+Aaron Swartz entworfen und im Dezember 2004 mit Version 1.0.1 spezifiziert ...
+
+                    --{{4 @Tanja}}--
+«Для торжества зла достаточно бездействия хороших людей».
+
+
+#### Hidden Comments
+
+                               --{{0}}--
+Sometimes, it might be necessary to add a comment or to read a part aloud to underline a certain point, which might be necessary in the narrated mode, but not in the Textbook.
+Therefor, it is possible to put your TTS output into simple HTML comments.
+This won't be shown to anyone and also not visible on most other Markdown parsers and renderer.
+
+```html
+<!-- --{{1}}--
+Speak this out, but do not show it to anyone.
+-->
+```
+
+<!-- --{{1}}--
+Speak this out, but do not show it to anyone.
+-->
+
+
+                                 {{1}}
+The associated hidden comment to this point will not be visble in Textbook mode!
+
+
+#### Translations
+
+                               --{{0}}--
+If you click on the language settings, you can either click on the element "Translate with Google (experimental)" and select another language.
+In this case, a JavaScript library will be injected that implements the translation feature.
+As you can see from the example, not all parts will be translated.
+Code blocks will not be translated by default, as well as comments that have been marked with another voice than the default.
+These comments remain as they are, while LiaScript tries to find an appropriate voice for the new language and gender.
+
+![translations](img/translation.png "Screenshot of a translation to Hebrew with Google-translate.")
+
+                               --{{1}}--
+You can attach specific parameters to the comment that prohibit or enforce translation.
+By default, Google will search for the `class` definition `translate` or `notranslate`, but other external browser plugins might also take into account the HTML5 attribute [`translate`](https://www.w3schools.com/tags/att_translate.asp).
+So it is always good to use both definitions.
+
+
+                                 {{1}}
+``` markdown
+<!-- class="notranslate" translate="no" style="color: red" -->
+                    --{{2}}--
+I will not be translated!
+
+                    --{{3 Russian Female}}--
+«Для торжества зла достаточно бездействия хороших людей».
+```
+
+<!-- class="notranslate" translate="no" style="color: red" -->
+                    --{{2}}--
+I will not be translated!
+
+                    --{{3 Russian Female}}--
+«Для торжества зла достаточно бездействия хороших людей».
+
+
+                               --{{4}}--
+You can attach these language attributes to any kind of Markdown block or inline element to control the translation.
+Note that code environments and foreign language comments will be tagged automatically with no-translate.
+
+### Playback
+
+                               --{{0}}--             
+Since Text2Speech output is baked into the LiaScript notation, why not using it on purpose for language learners.
+Simply add a stylized play-button to the effect definition to indicate, what should be spoken out loud.
+You can of also use different voices.
+
+```Markdown
+    {{|>}}
+This entire paragraph will be spoken out __LOUD__.
+
+    {{!> Australian Female}}
+* But in this case, this can also be combined
+* with a couple of
+* - different
+  - Markdown elements
+  - whether it makes sense or not.
+```
+
+    {{|>}}
+This entire paragraph will be spoken out __LOUD__.
+
+    {{!> Australian Female}}
+* But in this case, this can also be combined
+* with a couple of
+* - different
+  - Markdown elements
+  - whether it makes sense or not.
+
+
+#### Playback-Blocks
+
+                               --{{0}}--
+And like it was introduced for animations, you can also group multiple block.
+Simply add as many Markdown-blocks between two lines of asterisks, and they will be interpreted as one larger block.
+
+
+```markdown
+<!--style="background: #EEE; padding:2rem"-->
+                  {{|>}}
+**************************************************
+This entire paragraph will be spoken out __LOUD__.
+
+* But in this case, this can also be combined
+* with a couple of
+* - different
+  - Markdown elements
+  - whether it makes sense or not.
+
+**************************************************
+```
+
+<!--style="background: #EEE; padding:2rem"-->
+                  {{|>}}
+**************************************************
+This entire paragraph will be spoken out __LOUD__.
+
+* But in this case, this can also be combined
+* with a couple of
+* - different
+  - Markdown elements
+  - whether it makes sense or not.
+**************************************************
+
+                               --{{1}}--
+As an __alternative__, you can also use an HTML-tag like __`<section>`__ or __`<div>`__ to group blocks, the LiaScript result will stay the same, but it will be rendered differently on other Markdown interpreters.
+
+#### Playback-Inlines
+
+                               --{{0}}--
+And as presented before, you can also use inlining for Playback elements, as it was used for animations by simply using two pairs of braces.
+Depending on your preferences and the current context, it is also possible to define the stylized play-button with a vertical line or an exclamation mark.
+Like in the presented example, the exclamation will not interfere with the table definition.
+
+
+```Markdown
+| English              | German                            | Russian                                 | Arabic male               | Arabic female               |
+| -------------------- |:--------------------------------- |:--------------------------------------- |:------------------------- | --------------------------- |
+| {!>}{I go}           | {!> Deutsch Male}{ich gehe}       | {!> Russian Male}{я хожу}               | {!> Arabic Male}{أذْهبُ}  |                             |
+| {!>}{you go}         | {!> Deutsch Male}{du gehst}       | {!> Russian Male}{ты ходишь}            | {!> Arabic Male}{تذْهبُ}  | {!> Arabic Female}{تذْهبين} |
+| {!>}{he/she/it goes} | {!> Deutsch Male}{er/sie/es geht} | {!> Russian Male}{он / она / оно ходит} | {!> Arabic Male}{يذْهبُ}  | {!> Arabic Female}{تذْهبُ}  |
+| {!>}{we go}          | {!> Deutsch Male}{wir gehen}      | {!> Russian Male}{мы ходим}             | {!> Arabic Male}{نذْهبُ}  |                             |
+| {!>}{you go}         | {!> Deutsch Male}{ihr geht}       | {!> Russian Male}{вы ходите}            | {!> Arabic Male}{تذْهبون} | {!> Arabic Female}{تذْهبْن} |
+| {!>}{they go}        | {!> Deutsch Male}{sie gehen}      | {!> Russian Male}{они ходят}            | {!> Arabic Male}{يذْهبون} | {!> Arabic Female}{يذْهبْن} |
+```
+
+                               --{{1}}--
+The result is displayed within the table, all elements can be played on demand.
+
+                                 {{1}}
+| English              | German                            | Russian                                 | Arabic male               | Arabic female               |
+| -------------------- |:--------------------------------- |:--------------------------------------- |:------------------------- | --------------------------- |
+| {!>}{I go}           | {!> Deutsch Male}{ich gehe}       | {!> Russian Male}{я хожу}               | {!> Arabic Male}{أذْهبُ}  |                             |
+| {!>}{you go}         | {!> Deutsch Male}{du gehst}       | {!> Russian Male}{ты ходишь}            | {!> Arabic Male}{تذْهبُ}  | {!> Arabic Female}{تذْهبين} |
+| {!>}{he/she/it goes} | {!> Deutsch Male}{er/sie/es geht} | {!> Russian Male}{он / она / оно ходит} | {!> Arabic Male}{يذْهبُ}  | {!> Arabic Female}{تذْهبُ}  |
+| {!>}{we go}          | {!> Deutsch Male}{wir gehen}      | {!> Russian Male}{мы ходим}             | {!> Arabic Male}{نذْهبُ}  |                             |
+| {!>}{you go}         | {!> Deutsch Male}{ihr geht}       | {!> Russian Male}{вы ходите}            | {!> Arabic Male}{تذْهبون} | {!> Arabic Female}{تذْهبْن} |
+| {!>}{they go}        | {!> Deutsch Male}{sie gehen}      | {!> Russian Male}{они ходят}            | {!> Arabic Male}{يذْهبون} | {!> Arabic Female}{يذْهبْن} |
+
+
+#### Hiding Text
+<!--
+@play: {!> @0}{<span style="display: inline-block; text-indent: -10000px">@1</span>}
+@en: @play(UK English Male,@0)
+@de: @play(Deutsch Male,@0)
+@ru: @play(Russian Female,@0)
+@ar: @play(Arabic @0,@1)
+-->
+
+                               --{{0}}--
+If you only want to show the play buttons but not the text, it is possible to use some HTML tricks.
+The easiest way is to put your text into an HTML element and to remove it from the screen by using a `span` whose content is shifted from the screen.
+Simply styling the element with `display: none` will not work, since the TTS function requires the text to be rendered within the DOM and the translation via Google will not work, if the element is not visible.
+
+                               --{{1}}--
+But, since it is possible to define custom [Macros](#macros), we can also apply a more elegant way.
+We define a set of local macros directly within a comment attached to the current heading.
+The `@play` macro has two parameters, one for the voice and the other for the text, the other macros are simply shortcuts for the voice that pass the text as the second parameter to the `@play` macro.
+Within the Arabic macro, it is also possible to define the gender of the narrator.
+
+                                 {{1}}
+``` Markdown
+#### Hiding Text
+<!--
+@play: {!> @0}{<span style="display: inline-block; text-indent: -10000px">@1</span>}
+@en: @play(UK English Male,@0)
+@de: @play(Deutsch Male,@0)
+@ru: @play(Russian Female,@0)
+@ar: @play(Arabic @0,@1)
+-->
+
+| go        |         EN          |         DE          |            RU             |      AR male      |      AR female      |
+| --------- |:-------------------:|:-------------------:|:-------------------------:|:-----------------:|:-------------------:|
+| I         |      @en(I go)      |    @de(ich gehe)    |        @ru(я хожу)        | @ar(Male,أذْهبُ)   |                     |
+| you       |     @en(you go)     |    @de(du gehst)    |      @ru(ты ходишь)       | @ar(Male,تذْهبُ)   | @ar(Female,تذْهبين) |
+| he/she/it | @en(he/she/it goes) | @de(er/sie/es geht) | @ru(он / она / оно ходит) | @ar(Male,يذْهبُ)   | @ar(Female,تذْهبُ)   |
+| we        |     @en(we go)      |   @de(wir gehen)    |       @ru(мы ходим)       | @ar(Male,نذْهبُ)   |                     |
+| you       |     @en(you go)     |    @de(ihr geht)    |      @ru(вы ходите)       | @ar(Male,تذْهبون) | @ar(Female,تذْهبْن)  |
+| they      |    @en(they go)     |   @de(sie gehen)    |      @ru(они ходят)       | @ar(Male,يذْهبون) | @ar(Female,يذْهبْن)  |
+
+```
+
+                               --{{3}}--
+The result is a table with playback buttons only, where the text is hidden and where the main language will be translated while the other languages remain.
+
+
+                                 {{3}}
+| go        |         EN          |         DE          |            RU             |      AR male      |      AR female      |
+| --------- |:-------------------:|:-------------------:|:-------------------------:|:-----------------:|:-------------------:|
+| I         |      @en(I go)      |    @de(ich gehe)    |        @ru(я хожу)        | @ar(Male,أذْهبُ)  |                     |
+| you       |     @en(you go)     |    @de(du gehst)    |      @ru(ты ходишь)       | @ar(Male,تذْهبُ)  | @ar(Female,تذْهبين) |
+| he/she/it | @en(he/she/it goes) | @de(er/sie/es geht) | @ru(он / она / оно ходит) | @ar(Male,يذْهبُ)  | @ar(Female,تذْهبُ)  |
+| we        |     @en(we go)      |   @de(wir gehen)    |       @ru(мы ходим)       | @ar(Male,نذْهبُ)  |                     |
+| you       |     @en(you go)     |    @de(ihr geht)    |      @ru(вы ходите)       | @ar(Male,تذْهبون) | @ar(Female,تذْهبْن) |
+| they      |    @en(they go)     |   @de(sie gehen)    |      @ru(они ходят)       | @ar(Male,يذْهبون) | @ar(Female,يذْهبْن) |
+
+#### Animations to Playback
+
+                               --{{0}}--
+Since we are using the double braces notation for playback elements, this can also be used in combination with animations. 
+Simply by adding an appearance number, or an appearance and disappearance number.
+Depending on the current state of the animation, this will result in different sentences.
+
+
+```Markdown
+    {{1 |>}}
+This is an example where {|> 1-2}{I go} _{|> 2}{I am going}_ to work.
+```
+
+                               --{{1}}--
+You have to keep in mind, that this will work as intended if the user is not in Textbook mode.
+Otherwise, all elements will be read out loud and nothing is hidden.
+
+    {{1 |>}}
+This is an example where {|> 1-2}{I go} _{|> 2}{I am going}_ to work.
+
+
+## Interactive Code
+
+                               --{{0}}--
+In section [Code](#code) we had already introduced how code-snippets can be defined in Markdown and LiaScript.
+In this part we will introduce how such code can be made executable and editable.
+
+<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/zOvBKUUEERdNm" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/coding-zOvBKUUEERdNm">via GIPHY</a></p>
+
+
+### Starting simple
+
+Any code snippet can be made interactive by attaching a script-tag to the end.
+The idea is the same as for tasks, quizzes, and surveys.
+The `@input` is simply a placeholder that gets replaced by the current user-input.
+
+
+```` markdown
 ``` javascript
 var i=0;
 var j=0;
 var result = 0;
 
-for(i = 0; i<1000; i++) {
+for(i = 0; i<10; i++) {
     for(j = 0; j<i; j++) {
         result += j;
+        console.log("(", i, ",", j, ") result", result)
+    }
+}
+// the last statement defines the return statement
+result;
+```
+<script>@input</script>
+````
+
+                               --{{1}}--
+If the code is in JavaScript and provides a full and executable example, not only pseudo-code, then it can be directly executed.
+Just click on the run-button directly below the editor.
+The console output will be piped into the local shell that appears below the code-snippet.
+
+                                 {{1}}
+``` javascript
+var i=0;
+var j=0;
+var result = 0;
+
+for(i = 0; i<10; i++) {
+    for(j = 0; j<i; j++) {
+        result += j;
+        console.log("(", i, ",", j, ") result", result)
     }
 }
 // the last statement defines the return statement
@@ -4537,18 +5063,23 @@ result;
 ```
 <script>@input</script>
 
-#### Projects
+
+                               --{{2}}--
+It is possible to re-run the example, but you can also make changes, such as the number of loops.
+When you execute your modified example, a new version will be added to the end of the list.
+It is possible to go back and forth between versions and if a previous version gets modified, this will create append also new version.  
+
+
+### Projects
 
                 --{{0}}--
-Multiple different code snippets can be combined to form a larger project. It
-requires to write them in a row. You can give them names, if you add a second
-parameter after the highlighting definition. Add a `+` or `-` to the front of
-your filename, in order to indicate, if it should be visible by default or not.
+Multiple different code snippets can be combined to form a larger projects too.
+It requires to write them in a row.
+You can give them names, if you add a second parameter after the highlighting definition.
+Add a `+` or `-` to the front of your filename, in order to indicate, if it should be visible by default or not.
 
                 --{{1}}--
-As mentioned earlier the `@input` macro gets substituted by the input of the
-editor and you can pass a number to indicate which macro should be substituted
-by which code block (`@input(0)` is equivalent to `@input`).
+As previously mentioned the `@input` macro gets substituted by the input of the editor, but you can pass also a number to indicate which macro should be substituted by which code block (`@input(0)` is equivalent to `@input`).
 
 ```` markdown
 ``` js     -EvalScript.js
@@ -4570,12 +5101,18 @@ else {
   // insert the JSON dataset into the local variable data
   let data = @input(1);
 
-  // eval the script that uses this dataset
+  // eval the script that uses this dataset, but just
+  // inserting the @input, which already contains JS code
+  // would be also fine ... 
   eval(`@input(0)`);
 </script>
-
 ````
 
+                               --{{2}}--
+The result is a project which consists of two files.
+Each file can be edited separately, while the script tag provides only some basic glue-code that tells LiaScript what to do with the input. 
+
+                                 {{2}}
 ``` js     -EvalScript.js
 let who = data.first_name + " " + data.last_name;
 
@@ -4596,46 +5133,112 @@ else {
   let data = @input(1);
 
   // eval the script that uses this dataset
-  eval(`@input(0)`);
+  @input
 </script>
 
 
-#### Communication
+### Loading external Resources
+<!--
+script:   https://cdn.rawgit.com/davidedc/Algebrite/master/dist/algebrite.bundle-for-browser.js
+-->
 
-> If you want to write Markdown, you can skip this section, if you want to learn
-> more about creating editable code for various different languages and purposes
-> you will have to read this.
->
-> Check out https://github.com/LiaTemplates to see more sophisticated examples.
-
-The easiest way to execute some code, is simply to add a script-tag to the end
-of your code-block. But, sometimes an execution takes longer or requires to
-execute some asynchronous code. For this purpose, LiaScript offers a simple
-event system that will be explained in more detail. For simplicity the entire
-code block will contain all JavaScript code that can be edited and executed.
-This can be placed afterwards below the code block.
+                               --{{0}}--
+If you want to make use of some external functionality, you can also load additional JavaScript modules into LiaScript.
+Simply add the `script` command to the main definition of your LiaScript header.
+For more information on this, take a look at section [`script`](#script) in the [Macros](#macros) chapter.
 
 
-To every executed peace of code a `send` module is associated, that is intended
-to handle all required communication with that specific code-block or project
-and the outer world. Thus, every `send` module is module does only exists in
-this particular scope.
+``` markdown
+<!--
+author: ...
 
-To start with, there is a `log` method, which can be used to send different
-types of outputs directly to the console. But, you can of course also use the
-`console.log` functions that do quite the same. Nevertheless, `send.log` gives
-you a little more power when you start to create your own LiaScript libraries
-and you have to handle multiple outputs.
+script: https://cdn.rawgit.com/davidedc/Algebrite/master/dist/algebrite.bundle-for-browser.js
+-->
 
+# Title
+
+...
+```
+
+                               --{{1}}--
+If this library has been loaded, it can be used also directly within the script-tag.
+In this case we made use of the Computer-Algebra-System ([Algebrit](http://algebrite.org)), which is used to solve some algebraic equations.
+
+                                 {{1}}
+```` markdown
+```javascript
+f=sin(t)^4-2*cos(t/2)^3*sin(t)
+
+f=circexp(f)
+
+defint(f,t,0,2*pi)
+```
+<script> Algebrite.run(`@input`) </script>
+````
+
+                               --{{2}}--
+The result is a fully functional computer algebra editor where you can experiment and modify equations.
+
+
+                                 {{2}}
+```javascript
+f=sin(t)^4-2*cos(t/2)^3*sin(t)
+
+f=circexp(f)
+
+defint(f,t,0,2*pi)
+```
+<script> Algebrite.run(`@input`) </script>
+
+
+### Code API
+
+                               --{{0}}--
+The easiest way to execute some code, is simply to add a script-tag to the end of your code-block.
+But, sometimes an execution takes longer or requires to execute some asynchronous code.
+For this purpose, LiaScript offers a simple API and event system that will be explained in more detail.
+For simplicity all of the following examples will only contain JavaScript code that gets interpreted just by executing `@input`.
+
+#### `send` - Object
+
+                               --{{0}}--
+To every executed piece of code a `send` module is associated, which handles all required communication with that specific code-block or project and the outer world.
+Thus, every `send` module does only exists in this particular scope and it offers different methods for different problems.
+
+- __`send.log`__ : output logging information
+- __`send.lia`__ : send messages and control commands
+- __`send.handle`__ : handler terminal inputs
+- __`send.register`__ :
+- __`send.dispatch`__ : 
+
+                               --{{1}}--
+To start with, there is a `log` method, which can be used to send different types of outputs directly to the console.
+
+                                 {{1}}
 ``` js
 /* send.log(type, sep, content)
 *
 * params:
-*  - type: one of the follow strings "debug", "info", "warn", "error", "html"
+*  - type: one of the follow strings "debug", "info", "warn", "error", "html", "stream"
 *  - sep: a string like separator, mostly for newlines "\n"...
 *  - content : represents a list of list
 */
 
+send.log("debug", "", ["This is a debug information"])
+send.log("warn", "", ["This is a warning", 12, [1,2,3]])
+"fin"
+```
+<script>@input</script>
+
+
+                               --{{2}}--
+But we provide shortcuts for this, via the internal `console`, which does actually the same.
+Nevertheless, `send.log` gives you a little more power when you start to create your own LiaScript libraries and you have to handle multiple outputs.
+And as you can see, you can also pass HTML content directly.
+
+
+                                 {{2}}
+``` js
 console.debug("these are short hands for send.log('debug' ... ")
 console.warn("warn")
 console.log("info")
@@ -4648,11 +5251,21 @@ console.html("<b>Some more fancy stuff:</b> <img width='40px' src='https://www.m
 <script>@input</script>
 
 
-As you may have noticed, the last statement of an executed code-block does also
-define the `return` statement. However, there are some results that are treated
-differently. These are strings that start with `"LIA: "`. The string
-`"LIA: stop"` for example, is used to tell the system to simply stop the
-execution, without any further output.
+#### Return types
+
+As you may have noticed, the last statement of an executed code-block does also define the `return` statement.
+The output is alway interpreted as a string and handled this way.
+
+``` js
+33*33
+```
+<script>@input</script>
+
+
+However, there are some results that are treated differently.
+These are strings that start with `"LIA: "`.
+The string `"LIA: stop"` for example, is used to tell the system to simply stop the execution, there will be no further output.
+In this case, you can used `console.log` to print the result to the terminal.
 
 ``` js
 33*33
@@ -4662,8 +5275,11 @@ execution, without any further output.
 ```
 <script>@input</script>
 
-If the execution of your code may take longer, include some asynchronous calls
-or you need to call an external service, you can tell this by finishing with the
+
+If you directly want to send control messages at various stages of the script, you can use `send.lia`, which will also directly output the result at the console
+
+
+If the execution of your code may take longer, include some asynchronous calls or you need to call an external service, you can tell this by finishing with the
 statement `"LIA: wait"`, which will show arrows that loop forever or until they
 receive a `"LIA: stop"` signal.
 
@@ -4832,6 +5448,66 @@ throw(error);
 <script>@input</script>
 
 
+
+### Examples
+
+#### Running JSCPP
+
+
+Teaching other language-basics is also possible, for this example we applied [JSCPP](https://github.com/felixhao28/JSCPP)
+to run simple C++ programs:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 120;
+    int rslt = 0;
+    for(int i=1; i<a; ++i) {
+        rslt += i;
+        cout << "rslt: " << rslt << endl;
+    }
+    cout << "final result = " << rslt << endl;
+    return 0;
+}
+```
+<script>
+  var output = "";
+  JSCPP.run(`@input`, "", {stdio: {write: s => { output += s }}});
+  output;
+</script>
+
+### Interactive Coding
+
+                                    --{{0}}--
+Why should code examples not be interactive and editable, especially if it is
+JavaScript or any other language that has been ported to it? Simply add the
+required resources to the initial comment with keyword `script`.
+
+1. Add resource to main-comment: `script: url.js`
+
+2. Add a trailing script-tag to your code: `<script>@input</script>`
+
+3. A project with multiple files can be realized with `@input(0)`, `@input(1)`, ...,`@input(n)`.
+
+
+                                     --{{1}}--
+And add an additional script tag to the end of your language definition with an
+`@input` macro. This element is afterwards substituted with your code and
+executed. We provide some basic examples within the following section.
+
+                                    --{{2}}--
+Use the `@input` macro as a parameterized function in projects. The number
+defines the the file, starting from 0.
+
+
+
+
+
+
+
+
 #### Styling
 
 As for Tables, it is also possible to apply some basic styling attributes to the
@@ -4902,14 +5578,6 @@ line
 
 and this is rgba(55,255,100,0.5)
 ```
-
-<!-- data-marker="0 0 0 100 yellow fullLine;"-->
-```
-this will be yellow
-
-xxxxx
-```
-
 
 #### Examples
 
@@ -5122,361 +5790,6 @@ developing your own courses. See:
 [preview-lia](https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md)
 
 
-## Effects
-
-There are currently four types of effects, that are supported by liaScript:
-
-1. Inline effects
-2. Block effects
-3. a narrator
-4. and Playback functions
-
-Every effect is defined by two braces around one or two numbers `{{1-2}}`, which
-marks the order of their appearance. The second and optional number defines, at
-which step the element becomes invisible again.
-
-### Inline Effects
-
-                                   --{{0}}--
-Inline effects can be used in nearly all liaScript elements, as already
-mentioned, the first number within curly braces defines the number of appearance
-while the second part defines those Markdown elements that should be revealed
-step wise. If you use 0, then the effect will be revealed immediately.
-
-Use this to highlight important facts and to structure your slides (multiple
-effects can be combined, due to the usage of equal numbers):
-
-``` markdown
-* no effect here
-* but in this line {1}{show *** first ***}
-* as well as this one {1-2}{show *** first ***}, which contains two effects
-  {2}{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)}
-```
-
-* no effect here
-* but in this line {1}{show *** first ***}
-* as well as this one {1-2}{show *** first ***}, which contains two effects
-  {2}{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)}
-
-
-### Animations
-
-                                   --{{0}}--
-To define animations and transitions, you can use the animate.css notation,
-simply place an animation definition within the comment tag after the effects,
-as it is done within the examples.
-
-
-See https://daneden.github.io/animate.css for more animation effects.
-
-``` markdown
-* {0}{ *bounce* } <!-- class = "animated infinite bounce" style = "animation-delay: 5s;" -->
-* {1-2}{zoomIn} <!-- class = "animated zoomIn" -->
-* {2-3}{zoomOut} <!-- class = "animated zoomOut" -->
-* {3}{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)} <!-- class = "animated rubberBand" -->
-```
-
-* {0}{ *bounce* } <!-- class = "animated infinite bounce" style = "animation-delay: 5s;" -->
-* {1-2}{zoomIn} <!-- class = "animated zoomIn" -->
-* {2-3}{zoomOut} <!-- class = "animated zoomOut" -->
-* {3}{![image](https://upload.wikimedia.org/wikipedia/commons/d/d0/Creative-Tail-Animal-lion.svg)} <!-- class = "animated rubberBand" -->
-
-### Block Effects
-
-                                   --{{0}}--
-Block effects as animations are defined similarly to inline effects, just with
-one additional newline after the effect definition. The following Markdown block
-is then entirely associated with this effect.
-
-                                   --{{1}}--
-You can combine blocks by enclosing them into two lines of equality signs, as
-you can see from the examples below, an effect can also contain further effects.
-
-
-``` markdown
-                               {{1-3}}
-This is an example for a *single* block effect.
-
-                               {{2-4}}
-********************************************************************************
-
-This is an example for a ... wait a second {3 rubberBand}{**multi**} ...
-block effect.
-
-* alpha
-* beta
-* gamma
-
-********************************************************************************
-```
-
-                                  {{1-3}}
-This is an example for a *single* block effect.
-
-                                  {{2-4}}
-********************************************************************************
-
-This is an example for a ... wait a second {3}{**multi**} ...
-block effect.
-
-* alpha
-* beta
-* gamma
-
-********************************************************************************
-
-                                --{{4}}--
-You can put spaces before the definition of a block effect, to prevent github
-and others from adding the definition to a Markdown paragraph, and thus, to
-render the script properly.
-
-### Narrator
-<!--
-language: en_UK
-
-narrator: UK English Male
-
-@Tom
-UK English Male
-@end
-
-@Tanja
-Russian Female
-@end
--->
-
-
-1. we are using the text-to-speech engine of https://responsivevoice.org
-2. the narrator voice must be defined within the initial comment of a script
-3. use `--{{number}}--` to indicate what is spoken and when
-4. use `--{{number voice}}--` to change the voice for this particular comment
-5. you can have multiple comments with the same number, those will be combined,
-   but only the voice of the first one is used
-
-``` markdown
-                                --{{1}}--
-The entire ***Markdown*** paragraph right below the effect definition in double
-minus notation is sent to responsivevoice to speak the text out loud. If you
-click on the ear button at the navigation panel, then this paragraph gets
-rendered at the place where it is defined.
-
-                               --{{3 Deutsch Female}}--
-Markdown ist eine vereinfachte Auszeichnungssprache, die von John Gruber und
-Aaron Swartz entworfen und im Dezember 2004 mit Version 1.0.1 spezifiziert ...
-
-                               --{{4 @Tanja}}--
-Первоначально создан в 2004 году Джоном Грубером (англ. John Gruber) и Аароном
-Шварцем. Многие идеи языка были позаимствованы из существующих соглашений ...
-```
-
-                                --{{1}}--
-The entire ***Markdown*** paragraph right below the effect definition in double
-minus notation is sent to responsivevoice to speak the text out loud. If you
-click on the ear button at the navigation panel, then this paragraph gets
-rendered at the place where it is defined.
-
-                                --{{2}}--
-The narrator voice is defined within the initial comment, but you can reset this
-for the entire section, by adding such a definition directly after the title
-tag, or you can add a voice directly after the comment number to let your script
-talk in different languages. Proceed and listen ;-)
-
-                                --{{3 Deutsch Female}}--
-Markdown ist eine vereinfachte Auszeichnungssprache, die von John Gruber und
-Aaron Swartz entworfen und im Dezember 2004 mit Version 1.0.1 spezifiziert
-wurde. Ein Ziel von Markdown ist, dass schon die Ausgangsform ohne weitere
-Konvertierung leicht lesbar ist.
-
-                               --{{4 @Tanja}}--
-Первоначально создан в 2004 году Джоном Грубером (англ. John Gruber) и Аароном
-Шварцем. Многие идеи языка были позаимствованы из существующих соглашений по
-разметке текста в электронных письмах. Реализации языка Markdown преобразуют
-текст в формате Markdown в валидный, правильно построенный XHTML и заменяют
-левые угловые скобки («<») и амперсанды («&») на соответствующие коды сущностей.
-
-#### Hidden TTS
-
-Sometimes it might be necessary to add a comment or to read a part aloud to
-underline a certain point, which might be necessary in the narrated mode, but
-not in the Textbook. Therefor it is possible to put your TTS output into simple
-HTML comments. This wont be shown to anyone and also not visible on most other
-Markdown parsers and renderer.
-
-```html
-<!-- --{{1}}--
-Speak this out, but do not show it to anyone.
--->
-```
-
-<!-- --{{1}}--
-Speak this out, but do not show it to anyone.
--->
-
-### Playback
-
-Since Text2Speech output is baked into the LiaScript notation, why not using it
-on purpose for language learners. Thus, you can use `{{|>}}` or `{{!>}}` to
-indicate, what should be spoken out loud. You can of course also use different
-voices.
-
-```Markdown
-    {{|>}}
-This entire paragraph will be spoken out __LOUD__.
-
-    {{!> Australian Female}}
-* But in this case, this can also be combined
-* with a couple of
-* - different
-  - Markdown elements
-  - whether it makes sense or not.
-```
-
-    {{|>}}
-This entire paragraph will be spoken out __LOUD__.
-
-    {{!> Australian Female}}
-* But in this case, this can also be combined
-* with a couple of
-* - different
-  - Markdown elements
-  - whether it makes sense or not.
-
-#### Playback-Blocks
-
-
-And of course, it is also possible to combine various elements by using the
-LiaScript block notation. Simply add as many Markdown-blocks between two lines
-of asterisks and they will be interpreted as one larger block.
-
-
-```Markdown
-                  {{|>}}
-**************************************************
-This entire paragraph will be spoken out __LOUD__.
-
-* But in this case, this can also be combined
-* with a couple of
-* - different
-  - Markdown elements
-  - whether it makes sense or not.
-
-**************************************************
-```
-
-                  {{|>}}
-**************************************************
-This entire paragraph will be spoken out __LOUD__.
-
-* But in this case, this can also be combined
-* with a couple of
-* - different
-  - Markdown elements
-  - whether it makes sense or not.
-**************************************************
-
-
-#### Animations to Playback
-
-Since we are using the double braces notation for playback elements, this can
-also be used in combination with animation effects, simply by adding an a
-appearance number or  an appearance and dissappearance number. Depending o the
-current state of the animation, this will result in different sentences.
-
-
-```Markdown
-    {{1 |>}}
-This is an example where {|> 1-2}{I go} _{|> 2}{I am going}_ to work.
-```
-
-
-    {{1 |>}}
-This is an example where {|> 1-2}{I go} _{|> 2}{I am going}_ to work.
-
-
-#### Inlining
-
-And as presented before, you can also use inlining for Playback elements, as it
-was used for animations by simply using two pairs of braces
-`{|>}{text to speak}` or `{!>}{text to speak}`. While the first looks familiar,
-the second type of writing can be used in tables, so it does not interfear with
-other Markdown interpreters.
-
-
-```Markdown
-| English              | German                            | Russian                                 | Arabic male               | Arabic female               |
-| -------------------- |:--------------------------------- |:--------------------------------------- |:------------------------- | --------------------------- |
-| {!>}{I go}           | {!> Deutsch Male}{ich gehe}       | {!> Russian Male}{я хожу}               | {!> Arabic Male}{أذْهبُ}  |                             |
-| {!>}{you go}         | {!> Deutsch Male}{du gehst}       | {!> Russian Male}{ты ходишь}            | {!> Arabic Male}{تذْهبُ}  | {!> Arabic Female}{تذْهبين} |
-| {!>}{he/she/it goes} | {!> Deutsch Male}{er/sie/es geht} | {!> Russian Male}{он / она / оно ходит} | {!> Arabic Male}{يذْهبُ}  | {!> Arabic Female}{تذْهبُ}  |
-| {!>}{we go}          | {!> Deutsch Male}{wir gehen}      | {!> Russian Male}{мы ходим}             | {!> Arabic Male}{نذْهبُ}  |                             |
-| {!>}{you go}         | {!> Deutsch Male}{ihr geht}       | {!> Russian Male}{вы ходите}            | {!> Arabic Male}{تذْهبون} | {!> Arabic Female}{تذْهبْن} |
-| {!>}{they go}        | {!> Deutsch Male}{sie gehen}      | {!> Russian Male}{они ходят}            | {!> Arabic Male}{يذْهبون} | {!> Arabic Female}{يذْهبْن} |
-```
-
-
-| English              | German                            | Russian                                 | Arabic male               | Arabic female               |
-| -------------------- |:--------------------------------- |:--------------------------------------- |:------------------------- | --------------------------- |
-| {!>}{I go}           | {!> Deutsch Male}{ich gehe}       | {!> Russian Male}{я хожу}               | {!> Arabic Male}{أذْهبُ}  |                             |
-| {!>}{you go}         | {!> Deutsch Male}{du gehst}       | {!> Russian Male}{ты ходишь}            | {!> Arabic Male}{تذْهبُ}  | {!> Arabic Female}{تذْهبين} |
-| {!>}{he/she/it goes} | {!> Deutsch Male}{er/sie/es geht} | {!> Russian Male}{он / она / оно ходит} | {!> Arabic Male}{يذْهبُ}  | {!> Arabic Female}{تذْهبُ}  |
-| {!>}{we go}          | {!> Deutsch Male}{wir gehen}      | {!> Russian Male}{мы ходим}             | {!> Arabic Male}{نذْهبُ}  |                             |
-| {!>}{you go}         | {!> Deutsch Male}{ihr geht}       | {!> Russian Male}{вы ходите}            | {!> Arabic Male}{تذْهبون} | {!> Arabic Female}{تذْهبْن} |
-| {!>}{they go}        | {!> Deutsch Male}{sie gehen}      | {!> Russian Male}{они ходят}            | {!> Arabic Male}{يذْهبون} | {!> Arabic Female}{يذْهبْن} |
-
-#### Hiding Text
-<!--
-@play: {!> @0}{<span style="display: none">@1</span>}
-@en: @play(UK English Male,@0)
-@de: @play(Deutsch Male,@0)
-@ru: @play(Russian Female,@0)
-@ar: @play(Arabic @0,@1)
--->
-
-If you only want to show only the play buttons but not the text, it is possible
-to use some HTML tricks. The easiest way is to put your text into an HTML
-element like `<span style="display: none">Text to read</span>` and make it
-invisible by using the attribute `display: none`.
-
-But, since it is possible to define custom [Macros](#macros), you can use also a
-more elegant way. Simply add the following comment directly after your Markdown
-heading. The `@play` macro has two parameters one for the voice and the other
-for the text, the other macros simply define the voice and pass the text as a
-second parameter. Within the Arabic macro it is also possible to set the gender
-of the narrator.
-
-``` Markdown
-#### Hiding Text
-<!--
-@play: {!> @0}{<span style="display: none">@1</span>}
-@en: @play(UK English Male,@0)
-@de: @play(Deutsch Male,@0)
-@ru: @play(Russian Female,@0)
-@ar: @play(Arabic @0,@1)
--->
-
-| go        |         EN          |         DE          |            RU             |      AR male      |      AR female      |
-| --------- |:-------------------:|:-------------------:|:-------------------------:|:-----------------:|:-------------------:|
-| I         |      @en(I go)      |    @de(ich gehe)    |        @ru(я хожу)        | @ar(Male,أذْهبُ)   |                     |
-| you       |     @en(you go)     |    @de(du gehst)    |      @ru(ты ходишь)       | @ar(Male,تذْهبُ)   | @ar(Female,تذْهبين) |
-| he/she/it | @en(he/she/it goes) | @de(er/sie/es geht) | @ru(он / она / оно ходит) | @ar(Male,يذْهبُ)   | @ar(Female,تذْهبُ)   |
-| we        |     @en(we go)      |   @de(wir gehen)    |       @ru(мы ходим)       | @ar(Male,نذْهبُ)   |                     |
-| you       |     @en(you go)     |    @de(ihr geht)    |      @ru(вы ходите)       | @ar(Male,تذْهبون) | @ar(Female,تذْهبْن)  |
-| they      |    @en(they go)     |   @de(sie gehen)    |      @ru(они ходят)       | @ar(Male,يذْهبون) | @ar(Female,يذْهبْن)  |
-
-```
-
-
-The result is a table with playback buttons only:
-
-
-| go        |         EN          |         DE          |            RU             |      AR male      |      AR female      |
-| --------- |:-------------------:|:-------------------:|:-------------------------:|:-----------------:|:-------------------:|
-| I         |      @en(I go)      |    @de(ich gehe)    |        @ru(я хожу)        | @ar(Male,أذْهبُ)  |                     |
-| you       |     @en(you go)     |    @de(du gehst)    |      @ru(ты ходишь)       | @ar(Male,تذْهبُ)  | @ar(Female,تذْهبين) |
-| he/she/it | @en(he/she/it goes) | @de(er/sie/es geht) | @ru(он / она / оно ходит) | @ar(Male,يذْهبُ)  | @ar(Female,تذْهبُ)  |
-| we        |     @en(we go)      |   @de(wir gehen)    |       @ru(мы ходим)       | @ar(Male,نذْهبُ)  |                     |
-| you       |     @en(you go)     |    @de(ihr geht)    |      @ru(вы ходите)       | @ar(Male,تذْهبون) | @ar(Female,تذْهبْن) |
-| they      |    @en(they go)     |   @de(sie gehen)    |      @ru(они ходят)       | @ar(Male,يذْهبون) | @ar(Female,يذْهبْن) |
 
 
 ## Charts
@@ -7508,6 +7821,77 @@ one slide to another will might destroy previous states. For this purpose major
 version changes are required (`1.1.0` -> `2.0.0`), which will result in a new
 version also in IndexedDB. The old code/state is still available and can be
 restored.
+
+
+## JavaScript
+
+                                 --{{0}}--
+In contrast to common Markdown-Parsers it is also possible to include and
+execute javascript code. If you combine it with your HTML elements, you are free
+to integrate whatever you want.
+
+                                 --{{1}}--
+The last statement of your script defines also the result, that will be shown,
+if and only if it is not `undefined`, or simply use `console.log` to log the
+script activities. As the examples below show, you can combine your scripts with
+LiaScript animations. Thus, they will only be execute in the right
+fragment/context. But. you can do much much more with scripts.
+
+                                  {{1}}
+> Checkout Section [JavaScript](#JavaScript-or-JS-Components) for more information!
+
+``` html
+Do some internal calculation <script> 99 * 88  </script>, the next script
+contains an error <script> 99 * a </script>.
+
+                                  {{1}}
+<div class="ct-chart ct-golden-section" id="chart"></div>
+<script>
+    // Initialize a Line chart in the container with the ID chart
+    new Chartist.Line('#chart', {
+        labels: [1, 2, 3, 4],
+        series: [[100, 120, 180, 200]]
+    });
+
+    console.debug("loaded #chart") // or undefined
+</script>
+```
+
+Do some internal calculation <script> 99 * 88  </script>, the next script
+contains an error: <script> 99 * a </script>.
+
+                                {{2-3}}
+<div class="ct-chart ct-golden-section" id="chart1"></div>
+<script>
+// Initialize a Line chart in the container with the ID chart1
+new Chartist.Line('#chart1', {
+  labels: [1, 2, 3, 4],
+  series: [[100, 120, 180, 200]]
+});
+
+console.debug("loaded #chart1")
+</script>
+
+
+                                {{3}}
+<div class="ct-chart ct-golden-section" id="chart2"></div>
+<script>
+// Initialize a Line chart in the container with the ID chart2
+new Chartist.Line('#chart2', {
+  labels: [1, 2, 3, 4],
+  series: [[-100, 120, 180, 20]]
+});
+
+console.debug("loaded #chart2")
+</script>
+
+                                --{{3}}--
+Note, you have to include all required JavaScript-resourses in the initial
+comment after the script definition. And by combining this feature with
+LiaScript effects, you can build even more sophisticated courses.
+
+
+
 
 ## JavaScript or JS-Components
 
