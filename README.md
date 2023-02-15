@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  21.0.0
+version:  22.0.0
 language: en
 narrator: UK English Female
 
@@ -3246,6 +3246,40 @@ What is $37 + 15$?
 ********************************************************************************
 
 
+#### Randomization
+
+                       --{{0}}--
+Currently it is only possible to randomize vector and matrix quizzes, that means that the order of rows can be shuffled.
+This happens only ones, when the slide is loaded for the first time, this includes also page reloads.
+Just by adding the option `data-randomize` to the comment attached to the head of the quiz.
+Other options might be added in the future.
+
+``` markdown
+Are the options of the quiz in order?
+
+<!-- data-randomize -->
+- [(X)] option 1 (yes)
+- [( )] option 2 (no)
+- [(X)] option 3 (maybe)
+- [( )] option 4 (I don't care)
+```
+
+                       --{{1}}--
+If you reload the page, the order of the options will change, but not when you go to another slide and come back.
+
+
+        {{1}}
+<div>
+
+Are the options of the quiz in order?
+
+<!-- data-randomize -->
+- [(X)] option 1 (yes)
+- [( )] option 2 (no)
+- [(X)] option 3 (maybe)
+- [( )] option 4 (I don't care)
+
+</div>
 
 #### Associated Scripts
 
@@ -7564,31 +7598,43 @@ The currently available languages are defined in:
 
 https://github.com/liaScript/lia-localization
 
+
+
 ``` md
 <!--
-@@bulgarian
-language: bg
-
 @@english
 language: en
-
-@@german
-language: de
-
-@@persion
-language: fa
-
-@@armenian
-language: hy
 
 @@dutch
 language: nl
 
-@@ukrainian
-language: ua
+@@french
+language: fr
+
+@@german
+language: de
+
+...
 -->
 ```
 
+
+| language  | code |                                                                              translation |
+|-----------|:----:|-----------------------------------------------------------------------------------------:|
+| arabic    |  ar  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ar.json) |
+| armenian  |  hy  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hy.json) |
+| bulgarian |  bg  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.bg.json) |
+| chinese   |  zh  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.zh.json) |
+| english   |  en  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.en.json) |
+| dutch     |  nl  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.nl.json) |
+| french    |  fr  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fr.json) |
+| german    |  de  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.de.json) |
+| korean    |  ko  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ko.json) |
+| persian   |  fa  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fa.json) |
+| russian   |  ru  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ru.json) |
+| spanish   |  es  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.es.json) |
+| taiwanese |  tw  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.tw.json) |
+| ukrainian |  ua  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ua.json) |
 
 #### `link`
 
