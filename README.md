@@ -7619,22 +7619,29 @@ language: de
 ```
 
 
-| language  | code |                                                                              translation |
-|-----------|:----:|-----------------------------------------------------------------------------------------:|
-| arabic    |  ar  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ar.json) |
-| armenian  |  hy  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hy.json) |
-| bulgarian |  bg  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.bg.json) |
-| chinese   |  zh  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.zh.json) |
-| english   |  en  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.en.json) |
-| dutch     |  nl  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.nl.json) |
-| french    |  fr  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fr.json) |
-| german    |  de  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.de.json) |
-| korean    |  ko  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ko.json) |
-| persian   |  fa  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fa.json) |
-| russian   |  ru  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ru.json) |
-| spanish   |  es  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.es.json) |
-| taiwanese |  tw  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.tw.json) |
-| ukrainian |  ua  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ua.json) |
+| language   | code |                                                                              translation |
+|------------|:----:|-----------------------------------------------------------------------------------------:|
+| Amharic    |  am  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.am.yaml) |
+| Arabic     |  ar  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ar.yaml) |
+| Armenian   |  hy  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hy.yaml) |
+| Bengali    |  bn  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.bn.yaml) |
+| Bulgarian  |  bg  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.bg.yaml) |
+| Chinese    |  zh  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.zh.yaml) |
+| English    |  en  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.en.yaml) |
+| Dutch      |  nl  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.nl.yaml) |
+| French     |  fr  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fr.yaml) |
+| German     |  de  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.de.yaml) |
+| Hindi      |  hi  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hi.yaml) |
+| Japanese   |  ja  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ja.yaml) |
+| Korean     |  ko  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ko.yaml) |
+| Panjabi    |  pa  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.pa.yaml) |
+| Persian    |  fa  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fa.yaml) |
+| Portuguese |  pt  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.pt.yaml) |
+| Russian    |  ru  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ru.yaml) |
+| Spanish    |  es  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.es.yaml) |
+| Suaheli    |  sw  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.sw.yaml) |
+| Taiwanese  |  tw  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.tw.yaml) |
+| Ukrainian  |  ua  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ua.yaml) |
 
 #### `link`
 
