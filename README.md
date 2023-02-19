@@ -2598,7 +2598,7 @@ Hey, great, you want to learn something about Biology.
 * resource 1
 * resource 2
 
-The input from the tasks above was: \`[${task}]\``)
+The input from the tasks above was: [${task}]`)
   } else send.clear()
 } catch(e) { }
 </script>
