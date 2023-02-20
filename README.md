@@ -2598,7 +2598,7 @@ Hey, great, you want to learn something about Biology.
 * resource 1
 * resource 2
 
-The input from the tasks above was: \`[${task}]\``)
+The input from the tasks above was: [${task}]`)
   } else send.clear()
 } catch(e) { }
 </script>
@@ -2624,7 +2624,7 @@ features in more detail in a later [chapter](#javaScript-or-js-components).
 
 <script style="width: 100%">
 try {
-  let task = JSON.parse("@input(`tasks`)")
+  let task = @input(`tasks`)
 
   if(task[0]) {
     send.liascript(`## Biology
@@ -2634,7 +2634,7 @@ Hey, great, you want to learn something about Biology.
 * resource 1
 * resource 2
 
-The input from the tasks above was: \`[${task}]\``
+The input from the tasks above was: [${task}]`
     )
   } else send.clear()
 } catch(e) { }
@@ -2650,7 +2650,7 @@ try {
 
 Hey, great, you want to learn something about Chemistry.
 
-The input from the tasks above was: \`[${task}]\`
+The input from the tasks above was: [${task}]
 
 ...`)
   } else send.clear()
