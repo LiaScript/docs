@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  22.0.2
+version:  23.0.0
 language: en
 narrator: UK English Female
 
@@ -3280,6 +3280,134 @@ Are the options of the quiz in order?
 - [( )] option 4 (I don't care)
 
 </div>
+
+#### Further Settings
+
+              --{{0}}--
+Next to randomization you can also use the following configuration options and also combine them: 
+
+                {{1}}
+- ##### Maximum Trials `data-max-trials`
+  
+              --{{1}}--
+  Pass an integer to `data-max-trials` and the quiz will be automatically solved after x wrong trials.
+
+  ``` markdown
+  What happens if you check 3 times the wrong answer?
+
+  <!-- data-max-trials="3"-->
+  [( )] Absolutelly nothing?
+  [(X)] The quiz will be solved!
+  ```
+  
+  ---
+
+  What happens if you check 3 times the wrong answer?
+
+  <!-- data-max-trials="3"-->
+  [( )] Absolutelly nothing?
+  [(X)] The quiz will be solved!
+
+                {{2}}
+- ##### Hide and reveal the solve button `data-solution-button`
+
+              --{{2}}--
+  You can either use values such as `on|off`, `true|false`, `disable|enable` to show or hide the solution button.
+  By default it is always `on`, but it is also possible to pass an integer value to reveal this button at a certein user trial.
+  In this case `0` is not interpreted as false, but that it should be immediately visible and `1` only after the first wrong trial.
+
+  ``` markdown
+  Can you reveal the solution button?
+
+  <!-- data-solution-button="off" -->
+  [( )] YES
+  [(X)] NO
+
+  ---
+
+  How many trials are necessary to show the solution button?
+
+  <!-- data-solution-button="3" -->
+  [[3]]
+  ```
+
+  ---
+
+  Can you reveal the solution button?
+
+  <!-- data-solution-button="off" -->
+  [( )] YES
+  [(X)] NO
+
+  ---
+
+  How many trials are necessary to show the solution button?
+
+  <!-- data-solution-button="3" -->
+  [[3]]
+
+                {{3}}
+- ##### Hide and reveal the hint button `data-hint-button`
+
+              --{{3}}--
+  This configuration options can be used similarly as the previous one, although there won't be many occasions to disable or enable the hint button when no hints were defined.
+  However, you can use the numerical value to show hints only after a certain amount of wrong trials, thus `1` will reveal the button only after the first wrong trial.
+
+  ``` markdown
+  How many trials are necessary to show the hints?
+
+  <!-- data-hint-button="2" -->
+  [[2]]
+  [[?]] The solution is smaller than 3
+  [[?]] Try an even number
+  ```
+
+  ---
+
+  How many trials are necessary to show the hints?
+
+  <!-- data-hint-button="2" -->
+  [[2]]
+  [[?]] The solution is smaller than 3
+  [[?]] Try an even number
+
+                {{4}}
+- ##### Scoring a quiz `data-score`
+  
+              --{{4}}--
+  The result of this setting will not be visible at all, instead it is used to score a quiz, if the course is exported into a SCORM package and uploaded to an LMS.
+  Within an export every quiz is rated equally with a value of 1.
+  It is possible to pass an integer or float value, e.g. `2`, `2.0`, `2.12345`.
+
+                {{5}}
+- ##### Combinations
+
+              --{{5}}--
+  And as mentioned earlier, you can freely combine all of these configurations.
+
+  ``` markdown
+  You have only two trials, without a solution button ;-) 
+
+  <!-- 
+    data-max-trials="2"
+    data-solution-button="off"
+    data-randomize
+  -->
+  [( )] Wrong
+  [(X)] Right
+  ```
+
+  ---
+
+  You have only two trials, without a solution button ;-) 
+
+  <!-- 
+    data-max-trials="2"
+    data-solution-button="off"
+    data-randomize
+  -->
+  [( )] Wrong
+  [(X)] Right
 
 #### Associated Scripts
 
