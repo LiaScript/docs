@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  23.0.0
+version:  23.0.1
 language: en
 narrator: UK English Female
 
@@ -2247,7 +2247,8 @@ symbol, if you can draw it, then you should give
 
 ### Formula Playground
 <!--
-@formula: <script>console.html(`<lia-formula formula="@'input" displayMode="true"></lia-formula>`);"LIA: stop"</script>
+
+@runFormula: <script>console.html(`<lia-formula formula="@'input" displayMode="true"></lia-formula>`);"LIA: stop"</script>
 
 -->
 
@@ -2265,7 +2266,7 @@ formula.
 a+b+&c+d=12\\
 \end{split}
 ```
-@formula
+@runFormula
 
 
                           --{{1}}--
@@ -2285,7 +2286,7 @@ of this series.
  a =b+c
 \end{equation}
 ```
-@formula
+@runFormula
 
 
                           --{{2}}--
@@ -2314,7 +2315,7 @@ mark elements as links with `\href` and add images with the command
 \\
 \includegraphics[height=0.8em, totalheight=0.9em, width=0.9em, alt=KA logo]{https://katex.org/img/khan-academy.png}
 ```
-@formula
+@runFormula
 
 ## Footnotes
 
