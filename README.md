@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  23.0.1
+version:  24.0.0
 language: en
 narrator: UK English Female
 
@@ -19,6 +19,8 @@ script:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
 link:     https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 
 link:     https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css
+
+
 
 -->
 
@@ -2317,6 +2319,114 @@ mark elements as links with `\href` and add images with the command
 ```
 @runFormula
 
+### Formula-Macros
+<!--
+formula:  foo  {x^2}
+formula:  \bar  {#1^2}
+-->
+
+                 --{{0}}--
+Additionally, you can define custom macros, as it is supported by [KaTeX](https://katex.org).
+However, there are currently two options to define macros, which can be either local or global.
+
+
+       {{1}}
+<section>
+
+#### Local
+
+      --{{1}}--
+Local macros can be defined directly within the formula environment.
+Even if you use something like `\gdef`, which stands for global define, these macros will only affect the local formula.
+The reason for this is, that in contrast to other Markdown renderers, LiaScript will only parse and display the current slide/section.
+A global definition on slide 100 will not affect the formulas on slide 12.
+
+Documentation: [KaTeX-Macros](https://katex.org/docs/supported.html#macros)
+
+`$ \def\foo{x^2} \foo + \foo $` --> $ \def\foo{x^2} \foo + \foo $
+
+`$ \gdef\bar#1{#1^2} \bar{y} + \bar{y} $` --> $ \gdef\bar#1{#1^2} \bar{y} + \bar{y} $
+
+</section>
+
+
+    {{2}}
+<section>
+
+#### Global
+
+However, if you want to define a custom set of macros and reuse them within all of your formulas, you will have to define them within the main comment of your document.
+Use the `formula` macro, whereby the first word defines the macro name (the starting backslash is optional) and the remainder is used as the body.
+All of these macros are then passed to every formula while rendering, see therefor the comments at:
+
+[KaTeX rendering options](https://katex.org/docs/options.html)
+
+
+``` markdown
+<!--
+author: ...
+
+formula:  foo   {x^2}
+formula:  \bar  {#1^2}
+
+-->
+
+# Main
+
+$ \foo + \foo $
+
+$ \bar{y} + \bar{y} $
+```
+
+`$ \foo + \foo $` --> $ \foo + \foo $
+
+`$ \bar{y} + \bar{y} $` --> $ \bar{y} + \bar{y} $
+
+</section>
+
+
+    {{3}}
+<section>
+
+#### Changing
+
+    --{{3}}--
+Additionally, it is possible to overwrite global formulas or define new ones per slide.
+In the example below, the new formula definition for `foo` will be used, while `bar` remains as it is.
+However, if you switch to another slide, the previously global definition of `foo` is used again.
+
+
+``` markdown
+...
+
+## Subsection
+<!--
+formula: \foo  {y^3}
+-->
+
+$ \bar{\foo} + \bar{\foo} $
+
+```
+
+</section>
+
+
+    {{4}}
+<section>
+
+#### Mixing global and local
+
+    --{{4}}--
+Unfortunately, it is currently not possible to use both types of macros within one formula.
+If there are local macro definitions, then no global macros are passed.
+Thus, the following formula will result in an error, since the global `\bar` is not defined.
+Passing macros as rendering options and defining local ones currently result in KaTeX errors.
+
+`$ \def\foo{x^2} \bar{\foo} + \bar{\foo} $` $ --> \def\foo{x^2} \bar{\foo} + \bar{\foo} $
+
+</section>
+
+
 ## Footnotes
 
                             --{{0}}--
@@ -4449,10 +4559,21 @@ What are your favorite colors?
 We try to develop a simple classroom experience, light without any centralized authority or server.
 Therefor, we currently apply distributed [Web3.0](https://en.wikipedia.org/wiki/Web3) technologies, which synchronize the state of a classroom across multiple connected users/browsers.
 At the moment, we can synchronize and visualize quizzes and surveys and display an anonymous overview onto the results.
+Additionally every executable code can also be edited in collaborative mode.
+Last but not least, the current implementation of a LiaScript classroom offers a chat, that interprets the inputs as LiaScript.
+Thus, it is possible to add quizzes, surveys and even code into the chat.
+
+> # What is Synced?
+>
+> * Quizzes
+> * Surveys
+> * Executable code
+
 The basic idea is, if you join a room, you bring your data with you, if you leave the room then all of your data will be removed from the global state.
 Thus, nothing is stored nothing is logged, and you have the control over your data.
 All associated servers run only as relays.
-
+But, chat messages and collaborative changes to a code snippet will remain within the classroom as long as on user is within the room.
+If all leave the room, the chat and the collaborative changes are lost...
 
 #### I don't want Classrooms
 
