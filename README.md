@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  24.0.0
+version:  25.0.0
 language: en
 narrator: UK English Female
 
@@ -2807,7 +2807,7 @@ combination of brackets with brackets or parentheses.
 - `[(   )]`
 
                           --{{2}}--
-LiaScript currently supports 5 different types of quizzes and one, so-called
+LiaScript currently supports 6 different types of quizzes and one, so-called
 generic type, which can be used to created custom quizzes of any kind.
 
 
@@ -2817,6 +2817,7 @@ generic type, which can be used to created custom quizzes of any kind.
 3. Matrix: as a combination of multiple- and single-choice quizzes
 3. Text-Quiz: `[[solution]]`
 4. Selection-Quiz: `[[ opt. 1 | opt. 2 | (solution opt.) ]]`
+5. Gap-Text everything: Use selection- and text-quizzes within Markdown-blocks
 0. "Generic": `[[!]]`
 
 
@@ -2836,7 +2837,7 @@ sophisticated quizzes or simply to log the output.
 ### Quiz Types
 
                           --{{0}}--
-Within the following section we will introduce the 5 types of quizzes, which are
+Within the following section we will introduce the 6 types of quizzes, which are
 currently supported by LiaScript. Additionally, you have to know that users
 cannot fail, by default it is possible to retry a quiz until it is solved, or
 the user clicks onto the resolve button. The only thing that is counted is the
@@ -3146,6 +3147,282 @@ Can be also written as:
     ]]
 
 ********************************************************************************
+
+
+#### 6. Gap-Text Extreme
+
+                     --{{0}}--
+Internally we call this type a multi-quiz, it allows to freely use text- and selection quizzes within all other kinds of Markdown-blocks to generate more complex test situations.
+
+     {{1}}
+<section>
+
+                    --{{1}}--
+Lets have a look at the following example, it shows a simple gap text for english learners.
+The first thing thing to mention here, is that the text-input pattern is a fully featured LiaScript-Markdown element, thus it can be styled with the Markdown syntax.
+Thus, if type in some words or if you click on the resolve button, you will see that the input is styled accordingly.
+Additionally, you can see, that the length of an input filed is defined by the length of the text-pattern, this can be used as an secondary styling element, if you want to make all fields to have the same length or make some even longer.
+
+
+``` markdown
+__I (learn) [[  have been learning  ]] English for seven years now.__
+But last year I (not / work) [[ was not working ]] hard enough for English,
+that's why my marks (not / be) _[[ were not ]]_ really that good then.
+As I (pass / want) [[ want to pass ]] my English exam successfully next year,
+I (study) ~[[ am going to study ]]~ harder this term.
+```
+
+---
+
+__I (learn) [[  have been learning  ]] English for seven years now.__
+But last year I (not / work) [[ was not working ]] hard enough for English, that's why my marks (not / be) _[[ were not ]]_ really that good then.
+As I (pass / want) [[ want to pass ]] my English exam successfully next year, I (study) ~[[ am going to study ]]~ harder this term.
+
+</section>
+
+
+     {{2}}
+<section>
+
+                    --{{2}}--
+Even more than this, you can also embed selections.
+Insert the quiz pattern, separate different options with vertical bars and put the correct answer into parentheses.
+As you can in the in the example below, selections can contain valid Markdown and also be styled by surrounding them with Markdown syntax.
+
+
+``` markdown
+Wladimir [[ Putin ]] is the richest (still living) dictator
+with an estimated fortune of over
+__4,500,000,000 [[ (US Dollar 💵) | Euro 💶 | _Rubel 💸_ | Pound 💷 ]]__!
+```
+
+---
+
+Wladimir [[ Putin ]] is the richest (still living) dictator
+with an estimated fortune of over
+__4,500,000,000 [[ (US Dollar 💵) | Euro 💶 | _Rubel 💸_ | Pound 💷 ]]__!
+****************************************************
+
+> {{Russian Female |>}}
+> 😱 боже мой, боже мой, боже мой ..., for this money an ordinary soldier has to fight in combat for **138.889 years**.
+>
+> Source: [The Guardian](https://www.theguardian.com/world/2022/jun/20/russian-emails-vladimir-putin-llcinvest)
+
+****************************************************
+
+
+</section>
+
+##### More!!!
+
+     --{{0}}--
+Since text inputs and selections are now a so-called first class member within LiaScript, you can think of creating other kinds of quizzes, by not only using simple paragraphs.
+This section shows only some inspirational examples that you can use and extend for your own purpose.
+
+       {{1}}
+<section>
+
+###### Base Math
+
+               --{{1}}--
+Of course, basic arithmetic is quite simple now ...
+
+
+```` markdown
+``` ascii 
+.----------.      .----------.
+| ⭐       |      |  ⭐ ⭐   |
+|      ⭐  |      | ⭐ ⭐ ⭐ |
+'----------'      '----------'
+```
+
+[[ 2 ]] + [[ 5 ]] = [[ 7 ]]
+````
+
+---
+
+<!-- style="max-width: 300px" -->
+``` ascii 
+.----------.      .----------.
+| ⭐       |      |  ⭐ ⭐   |
+|      ⭐  |      | ⭐ ⭐ ⭐ |
+'----------'      '----------'
+```
+
+[[ 2 ]] + [[ 5 ]] = [[ 7 ]]
+
+</section>
+
+
+       {{2}}
+<section>
+
+###### Who said this?
+
+      --{{2}}--
+But, you can also, like in this example, use a simple selection within a quote to create a quiz?
+
+``` markdown
+> “How is education supposed to make me feel smarter?
+> Besides, every time I learn something new, it pushes some old stuff out of my brain.
+> Remember when I took that home winemaking course, and I forgot how to drive?”
+>
+> -- By [[ Dieter Nuhr | Nida Mohammad Nadim | (Homer Simpson)]]
+```
+
+---
+
+> “How is education supposed to make me feel smarter?
+> Besides, every time I learn something new, it pushes some old stuff out of my brain.
+> Remember when I took that home winemaking course, and I forgot how to drive?”
+>
+> -- By [[ Dieter Nuhr: _German comedian_ | Nida Mohammad Nadim: _Afghan minister for higher education_ | (Homer Simpson: _A cartoon character too_)]]
+
+</section>
+
+
+       {{3}}
+<section>
+
+###### Read it aloud
+
+                         --{{3}}--
+Later in section [Effects](#effects), you will learn about animations and text to speech output.
+Effects in LiaScript are always associated with curly braces.
+Adding two curly braces on top of a Markdown block will add a play-button that will read aloud loud the entire block.
+Additionally, you can also change the voice, depending on the language you teach. 
+
+
+``` markdown
+                    {{English Male |>}}
+The film that I saw [[(that)|those|these|then]] night wasn’t very good.
+It was all [[ about ]] a man [[ who ]] built a
+time machine so he [[ could ]] travel back in time.
+It took him ages and ages [[ to ]] build the machine.
+```
+
+---
+
+                    {{English Male |>}}
+The film that I saw [[ (that)|those|these|then ]] night wasn’t very good.
+It was all [[ about ]] a man [[ who ]] built a
+time machine so he [[ could ]] travel back in time.
+It took him ages and ages [[ to ]] build the machine.
+
+</section>
+
+
+    {{4}}
+<section>
+
+###### Tables
+
+                       --{{4}}--
+Of course, you can use a table and add some inputs and create a structured quiz...
+
+
+``` markdown
+German grammar test:
+
+| Verb    |   Person      | Präsens von "werden" | Partizip II    | Infinitiv von haben/sein |
+|---------|:-------------:|:--------------------:|:--------------:|:------------------------:|
+| gehen   | Ich           |     [[ werde  ]]     | [[ gegangen ]] | [[ sein ]].              |
+| sage    | Du            |     [[ wirst  ]]     | [[ gesagt ]]   | [[ haben ]].             |
+| machen  | Er / Sie / Es |     [[ wird   ]]     | [[ gemacht ]]  | [[ haben ]].             |
+| laufen  | Wir           |     [[ werden ]]     | [[ gelaufen ]] | [[ sein ]].              |
+| singen  | Ihr           |     [[ werdet ]]     | [[ gesungen ]] | [[ haben ]].             |
+| spielen | Sie           |     [[ werden ]]     | [[ gespielt ]] | [[ haben ]].             |
+```
+
+---
+
+German grammar test:
+
+| Verb    |   Person      | Präsens von "werden" | Partizip II    | Infinitiv von haben/sein |
+|---------|:-------------:|:--------------------:|:--------------:|:------------------------:|
+| gehen   | Ich           |     [[ werde  ]]     | [[ gegangen ]] | [[ sein ]].              |
+| sage    | Du            |     [[ wirst  ]]     | [[ gesagt ]]   | [[ haben ]].             |
+| machen  | Er / Sie / Es |     [[ wird   ]]     | [[ gemacht ]]  | [[ haben ]].             |
+| laufen  | Wir           |     [[ werden ]]     | [[ gelaufen ]] | [[ sein ]].              |
+| singen  | Ihr           |     [[ werdet ]]     | [[ gesungen ]] | [[ haben ]].             |
+| spielen | Sie           |     [[ werden ]]     | [[ gespielt ]] | [[ haben ]].             |
+
+
+      {{5}}
+<div>
+
+          --{{5}}--
+But, since tables are treated as data sets that scream for visualization (for more information checkout section [Fun with Tables](#fun-with-tables)), you can use also this feature to visualize your quiz.
+The following two examples are called "know your competitors" ;-) and they are used only for illustration.
+Depending on the tabular structure you define and the type of data you provide, LiaScript will try to estimate an appropriate visualization.
+For input fields, the value of the solution is used for classification.
+
+
+``` markdown
+<!-- data-title="LMS market share 2022 (North America)" -->
+| Brightspace    | Canvas          | Classroom      | Moodle          | Others         | Schoology      |
+|:--------------:|:---------------:|:--------------:|:---------------:|:--------------:|:--------------:|
+| [[(3 %)|11 %]] | [[13 %|(28 %)]] | [[8 %|(24 %)]] | [[(11 %)|31 %]] | [[2 %|(12 %)]] | [[7 %|(22 %)]] |
+
+---
+
+| LMS | Average cost per month   |
+|-----|--------------------------|
+| Brightspace | [[13 $|(80 $)]]  |
+| Canvas      | [[(10 $)|99 $]]  |
+| Classroom   | [[(0 free)|3 $]] |
+| Moodle      | [[11 $ |(15 $)]] |
+| Schoology   | [[(4 $)|12 $]]   |
+```
+
+---
+
+<!-- data-title="LMS market share 2022 (North America)" -->
+| Brightspace    | Canvas          | Classroom      | Moodle          | Others         | Schoology      |
+|:--------------:|:---------------:|:--------------:|:---------------:|:--------------:|:--------------:|
+| [[(3 %)|11 %]] | [[13 %|(28 %)]] | [[8 %|(24 %)]] | [[(11 %)|31 %]] | [[2 %|(12 %)]] | [[7 %|(22 %)]] |
+
+---
+
+| LMS | Average cost per month   |
+|-----|--------------------------|
+| Brightspace | [[13 $|(80 $)]]  |
+| Canvas      | [[(10 $)|99 $]]  |
+| Classroom   | [[(0 free)|3 $]] |
+| Moodle      | [[11 $ |(15 $)]] |
+| Schoology   | [[(4 $)|12 $]]   |
+
+</div>
+
+</section>
+
+
+        {{6}}
+<section>
+
+##### Last but not Least (Galleries)
+
+
+              --{{6}}--
+Galleries are just a collection of multimedia links.
+The text within brackets is used as `alt` or alternative text for an image, if the image cannot be displayed (which is also used by screen readers).
+And the additional text within quotes is commonly used for the title attribute, but it LiaScript it is also displayed as a subtitle that can contain valid LiaScript Markdown.
+Well, if this is the case, this can be used to contain also input fields, such that the entire gallery is then interpreted as on quiz.
+
+``` markdown
+![image 1](https://img1 "Markdown subtitle [[(option 1)|option 2|option 3]]")
+![image 2](https://img2 "Another [[subtitle]]")
+!?[video](https://www.youtube.com/watch?v=... "Subtitle for [[multi-media]]")
+```
+
+---
+
+![Self portrain](https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Self-portrait_as_the_Allegory_of_Painting_%28La_Pittura%29_-_Artemisia_Gentileschi.jpg/767px-Self-portrait_as_the_Allegory_of_Painting_%28La_Pittura%29_-_Artemisia_Gentileschi.jpg "Self-Portrait as the Allegory of Painting: [[(1638 - 1639)|1641|1641-1642]]")
+![Samson and Delilah](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Samson_und_delilah.jpg/1221px-Samson_und_delilah.jpg "Samson and Delilah: [[1628|(1630 - 1638)|1633 - 1637]]")
+![Virgin with the Child](https://upload.wikimedia.org/wikipedia/commons/e/e0/Artemisia_Gentileschi_-_Madonna_con_Bambino_%281609-1610%29.jpg "Virgin with the Child: [[(1609–1610)|1618|1622-1623]]")
+!?[BBC Documentary](https://www.youtube.com/watch?v=WcSRtdg9FyM "BBC Documentary: Michael Palin's Quest for Artemisia")
+
+</section>
 
 
 #### 0. Generic Quizzes
