@@ -1862,7 +1862,7 @@ multiple blocks by itself.
   * [quizzes](#quizzes)
   * [surveys](#surveys)
   * [tables](#fun-with-tables)
-  * [ASCII-Art](#ascii-art-#2) & [Charts](#charts)
+  * [ASCII-Art](#ascii-art) & [Charts](#charts)
   * [executable code-blocks and projects](#Syntax-highlighting)
 
 
@@ -3229,7 +3229,7 @@ Of course, basic arithmetic is quite simple now ...
 
 
 ```` markdown
-``` ascii 
+``` ascii
 .----------.      .----------.
 | ⭐       |      |  ⭐ ⭐   |
 |      ⭐  |      | ⭐ ⭐ ⭐ |
@@ -3242,7 +3242,7 @@ Of course, basic arithmetic is quite simple now ...
 ---
 
 <!-- style="max-width: 300px" -->
-``` ascii 
+``` ascii
 .----------.      .----------.
 | ⭐       |      |  ⭐ ⭐   |
 |      ⭐  |      | ⭐ ⭐ ⭐ |
@@ -3290,7 +3290,7 @@ But, you can also, like in this example, use a simple selection within a quote t
 Later in section [Effects](#effects), you will learn about animations and text to speech output.
 Effects in LiaScript are always associated with curly braces.
 Adding two curly braces on top of a Markdown block will add a play-button that will read aloud loud the entire block.
-Additionally, you can also change the voice, depending on the language you teach. 
+Additionally, you can also change the voice, depending on the language you teach.
 
 
 ``` markdown
@@ -3400,7 +3400,7 @@ For input fields, the value of the solution is used for classification.
         {{6}}
 <section>
 
-##### Last but not Least (Galleries)
+##### Galleries
 
 
               --{{6}}--
@@ -3421,6 +3421,51 @@ Well, if this is the case, this can be used to contain also input fields, such t
 ![Samson and Delilah](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Samson_und_delilah.jpg/1221px-Samson_und_delilah.jpg "Samson and Delilah: [[1628|(1630 - 1638)|1633 - 1637]]")
 ![Virgin with the Child](https://upload.wikimedia.org/wikipedia/commons/e/e0/Artemisia_Gentileschi_-_Madonna_con_Bambino_%281609-1610%29.jpg "Virgin with the Child: [[(1609–1610)|1618|1622-1623]]")
 !?[BBC Documentary](https://www.youtube.com/watch?v=WcSRtdg9FyM "BBC Documentary: Michael Palin's Quest for Artemisia")
+
+</section>
+
+{{7}}
+<section>
+
+##### Last but not Least (ASCII-art)
+
+      --{{7}}--
+Checkout what is possible in section [ASCII-Art](#ASCII-Art), but these are basically sketches and drawings based on a few ASCII-characters such as `+`, `|`, `-`, and some more.
+To indicate such an image use a standard Markdown code-block and use `ascii` as the language prefix
+
+```` markdown
+<!-- data-show-partial-solution -->
+``` ascii
+                        .----------------------.
+                       /                      /|
+             .--------+----------------------+ +---------.
+            /         |      " [[  24   ]] " |/         /|
+  .--------+----------+----------+-----------+---------+ +----------.
+ /         |         11          |      "[[   13   ]] "|/          /|
++----------+----------+----------+----------+----------+----------+ +
+|      " [[   5   ]] "|          6          |          7          |/
++---------------------+---------------------+---------------------+
+```
+````
+
+    --{{8}}--
+The LiaScript elements have to be placed into quotations, to separate them from the ASCII-art image, which is turned into an SVG image.
+To trick the interpreter from applying a single line text-input, we need to add a space before the actual input.
+
+      {{8}}
+<!-- data-show-partial-solution -->
+``` ascii
+                        .----------------------.
+                       /                      /|
+             .--------+----------------------+ +---------.
+            /         |      " [[  24   ]] " |/         /|
+  .--------+----------+----------+-----------+---------+ +----------.
+ /         |         11          |      "[[   13   ]] "|/          /|
++----------+----------+----------+----------+----------+----------+ +
+|      " [[   5   ]] "|          6          |          7          |/
++---------------------+---------------------+---------------------+
+```
+
 
 </section>
 
@@ -3672,11 +3717,11 @@ Are the options of the quiz in order?
 #### Further Settings
 
               --{{0}}--
-Next to randomization you can also use the following configuration options and also combine them: 
+Next to randomization you can also use the following configuration options and also combine them:
 
                 {{1}}
 - ##### Maximum Trials `data-max-trials`
-  
+
               --{{1}}--
   Pass an integer to `data-max-trials` and the quiz will be automatically solved after x wrong trials.
 
@@ -3687,7 +3732,7 @@ Next to randomization you can also use the following configuration options and a
   [( )] Absolutelly nothing?
   [(X)] The quiz will be solved!
   ```
-  
+
   ---
 
   What happens if you check 3 times the wrong answer?
@@ -3759,24 +3804,62 @@ Next to randomization you can also use the following configuration options and a
   [[?]] The solution is smaller than 3
   [[?]] Try an even number
 
-                {{4}}
+                 {{4}}
+- ##### Revealing Partial Solutions `data-show-partial-solution`
+
+               --{{4}}--
+  If a quiz might have to many input options and you require a way to separate partially correct answers from wrong ones, then you need to use this attribute.
+  It can be applied onto [gap-texts](#6.-gap-text-extreme) and [matrix-quizzes](#3.-matrix-quiz).
+  In contrast to a gap-text, which can also contain single selections, in a matrix the entire row will be highlighted as correct or wrong.
+
+  ```` md
+  <!-- data-show-partial-solution -->
+  ``` ascii
+                          .----------------------.
+                         /                      /|
+               .--------+----------------------+ +---------.
+              /         |      " [[  24   ]] " |/         /|
+    .--------+----------+----------+-----------+---------+ +----------.
+   /         |         11          |      "[[   13   ]] "|/          /|
+  +----------+----------+----------+----------+----------+----------+ +
+  |      " [[   5   ]] "|          6          |          7          |/
+  +---------------------+---------------------+---------------------+
+  ```
+  ````
+
+  ---
+
+  <!-- data-show-partial-solution -->
+  ``` ascii
+                          .----------------------.
+                         /                      /|
+               .--------+----------------------+ +---------.
+              /         |      " [[  24   ]] " |/         /|
+    .--------+----------+----------+-----------+---------+ +----------.
+   /         |         11          |      "[[   13   ]] "|/          /|
+  +----------+----------+----------+----------+----------+----------+ +
+  |      " [[   5   ]] "|          6          |          7          |/
+  +---------------------+---------------------+---------------------+
+  ```
+
+                {{5}}
 - ##### Scoring a quiz `data-score`
-  
-              --{{4}}--
+
+              --{{5}}--
   The result of this setting will not be visible at all, instead it is used to score a quiz, if the course is exported into a SCORM package and uploaded to an LMS.
   Within an export every quiz is rated equally with a value of 1.
   It is possible to pass an integer or float value, e.g. `2`, `2.0`, `2.12345`.
 
-                {{5}}
+                {{6}}
 - ##### Combinations
 
-              --{{5}}--
+              --{{6}}--
   And as mentioned earlier, you can freely combine all of these configurations.
 
   ``` markdown
-  You have only two trials, without a solution button ;-) 
+  You have only two trials, without a solution button ;-)
 
-  <!-- 
+  <!--
     data-max-trials="2"
     data-solution-button="off"
     data-randomize
@@ -3787,9 +3870,9 @@ Next to randomization you can also use the following configuration options and a
 
   ---
 
-  You have only two trials, without a solution button ;-) 
+  You have only two trials, without a solution button ;-)
 
-  <!-- 
+  <!--
     data-max-trials="2"
     data-solution-button="off"
     data-randomize
@@ -4578,7 +4661,7 @@ Select one option:
 
 
 But, instead of numbers, you can also define more complex option names.
-__There is only one difference, the options that start with numbers, will be plotted in the classroom presentation as distributions, whereby not numbers will be presented as categorical values.__ 
+__There is only one difference, the options that start with numbers, will be plotted in the classroom presentation as distributions, whereby not numbers will be presented as categorical values.__
 
              {{2}}
 <!-- class="translate"-->
@@ -4588,7 +4671,7 @@ Select one option:
 - [(very good)]       I like it very much
 - [(good)]            It is ok
 - [(bad)]             I don't like it
-- [(something else)]  I am not sure 
+- [(something else)]  I am not sure
 ```
 
 As you can see from the example, you can apply different styles for encoding surveys too.
@@ -4603,7 +4686,7 @@ Select one option:
 - [(very good)]       I like it very much
 - [(good)]            It is ok
 - [(bad)]             I don't like it
-- [(something else)]  I am not sure 
+- [(something else)]  I am not sure
 
 *******************************************************************************
 
@@ -4699,7 +4782,7 @@ What is your opinion about LiaScript?
 And also in this case, again, you can use numbers to display the summary as categorical.
 
                                --{{2}}--
-As depicted below, the brackets `[   ]` do not have to match with the first line. 
+As depicted below, the brackets `[   ]` do not have to match with the first line.
 
                                  {{1}}
 *******************************************************************************
@@ -5218,11 +5301,11 @@ link:   https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css
 ```
 *******************************************************************************
 
-### Comments: Text 2 Speech 
+### Comments: Text 2 Speech
 
                                --{{0}}--
 The idea of a comment is that they should be associated to witch animations.
-When animation $x$ is revealed, then the comment $x$ is read aloud. 
+When animation $x$ is revealed, then the comment $x$ is read aloud.
 Like in a PowerPoint presentations, when one element appears and the presenter says something, clicks the next element appears and is also commented.
 Thus, a comment is a paragraph that is marked by two curly braces, which contain a number, and two dashes around the braces.
 If multiple comments have the same number, then they will be replayed in the order of appearance.
@@ -5276,7 +5359,7 @@ It is possible to change the `narrator` on different layers, globally within the
 
 1. Speech-Engine: https://responsivevoice.org
 2. Default `narrator` must be defined within the initial comment, otherwise `US English Male` is used
-3. You can overwrite the default `narrator` per slide, by attaching a comment to the title tag 
+3. You can overwrite the default `narrator` per slide, by attaching a comment to the title tag
 4. Use `--{{number}}--` to indicate what is spoken and when
 5. Use `--{{number voice}}--` to change the voice for this particular comment
 6. It is also possible to define custom macros for language definitions
@@ -5393,7 +5476,7 @@ Note that code environments and foreign language comments will be tagged automat
 
 ### Playback
 
-                               --{{0}}--             
+                               --{{0}}--
 Since Text2Speech output is baked into the LiaScript notation, why not using it on purpose for language learners.
 Simply add a stylized play-button to the effect definition to indicate, what should be spoken out loud.
 You can of also use different voices.
@@ -5550,7 +5633,7 @@ The result is a table with playback buttons only, where the text is hidden and w
 #### Animations to Playback
 
                                --{{0}}--
-Since we are using the double braces notation for playback elements, this can also be used in combination with animations. 
+Since we are using the double braces notation for playback elements, this can also be used in combination with animations.
 Simply by adding an appearance number, or an appearance and disappearance number.
 Depending on the current state of the animation, this will result in different sentences.
 
@@ -5567,6 +5650,2084 @@ Otherwise, all elements will be read out loud and nothing is hidden.
     {{1 |>}}
 This is an example where {|> 1-2}{I go} _{|> 2}{I am going}_ to work.
 
+
+
+
+## Fun with Tables
+
+    --{{0}}--
+As already mentioned, tables cannot only be interpreted as structural elements
+within a Markdown document, but also as datasets. In fact, there is little
+difference between a diagram and collection of values.
+
+
+      9 |                                       (* dots)
+        |
+      y |                              *
+      - |
+      a |                    *
+      x |
+      i |          *
+      s |
+        |*
+      0 +------------------------------------
+        0            x-axis                 36
+
+    --{{1}}--
+The same values collected within a list. If you click onto the little icon above
+this list, you will get the same plot as depicted above.
+
+      {{1}}
+|   x | dots |
+| ---:| ----:|
+|   0 |    0 |
+|  10 |    2 |
+|  20 |    4 |
+|  30 |    6 |
+
+    --{{2}}--
+One of the biggest problems in science is the lack of primary data. Projects
+such as the Open-Science-Framework (http://osf.io) try to leverage this, by
+offering a plattform, where scientists can store and document vast amounts of
+data. But why not directly add and visulaize the data, so that they could be
+used and inspected by others, instead of using external tools to create
+visualizations.
+
+    --{{3}}--
+Everyone who is creating some kind of data or putting it into a Markdown already
+performs some kind of configuration. Based on that table's/data's structural
+settings, we can __visualize data automatically__. Actually it is quite
+surprising, why there has never been an attempt to treat Markdown tables as
+datasets. The following sections are intended to give a brief overview on different
+visualization options and how the systems determines, which one gets applied.
+And of course, you can also enforce your visualization style.
+
+### `LinePlot`
+
+    --{{0}}--
+The following dataset was taken from https://ourworldindata.org and it shows
+the government expenditure on education in percentage to the GDP. Thus the
+first column defines the x-values while the later ones define the categories.
+
+    --{{1}}--
+If you click on the image icon again, you will see a more elaborate
+representation with title and labels.
+
+<!--
+data-title="Government expenditure on education"
+data-xlabel="year"
+data-ylabel="% of GDP"
+-->
+| Year | Finland |     USA | Germany |   China |
+| ---- | -------:| -------:| -------:| -------:|
+| 1995 | 6.80942 |         | 4.42079 | 1.84192 |
+| 1996 | 6.86052 |         | 4.48319 | 1.85338 |
+| 1997 |         |         |         |         |
+| 1998 |         |         | 4.45345 | 1.84432 |
+| 1999 | 5.86960 |         |         | 1.88803 |
+| 2000 | 5.71687 |         |         |         |
+| 2001 | 5.84797 |         |         |         |
+| 2002 | 6.02477 |         |         |         |
+| 2003 | 6.17476 |         |         |         |
+| 2004 | 6.16849 |         |         |         |
+| 2005 | 6.03605 |         |         |         |
+| 2006 | 5.93809 |         | 4.27930 |         |
+| 2007 | 5.68608 |         | 4.34302 |         |
+| 2008 | 5.84676 |         | 4.40954 |         |
+| 2009 | 6.48517 |         | 4.88047 |         |
+| 2010 | 6.54070 | 5.42001 | 4.91368 |         |
+| 2011 | 6.48200 | 5.22389 | 4.80779 |         |
+| 2012 | 7.19254 | 5.19485 | 4.93331 |         |
+| 2013 | 7.15848 | 4.94378 | 4.93496 |         |
+| 2014 | 7.15155 | 4.98948 | 4.93112 |         |
+
+https://ourworldindata.org/financing-education#all-charts-preview
+
+
+    --{{2}}--
+The reason for this is, you can actually add additional settings as it was done
+to style different Markdown elements, simply by attaching an HTML-comment to the
+front of this table. The type of representation is still automatically
+determined based on the table structure, but it is still possible to add
+attributes like `data-title`, `data-xlabel`, `data-ylabel` to tweak the
+graphical representation. See section [Attributes](#attributes) for more
+information.
+
+      {{2}}
+``` markdown
+<!--
+data-title="Government expenditure on education"
+data-xlabel="year"
+data-ylabel="% of GDP"
+-->
+| Year | Finland | USA | Germany |   China |
+| ---- | -------:| ---:| -------:| -------:|
+| 1995 | 6.80942 |     | 4.42079 | 1.84192 |
+| 1996 | 6.86052 |     | 4.48319 | 1.85338 |
+| ...  |     ... | ... |     ... |     ... |
+```
+
+    --{{3}}--
+You can of course also visualize any kind of table, that does not fullfill this
+type of classification to line or scatterplot. Define another kind of
+presentation and if not all values within the first column can be parsed as
+numbers, then they are interpreted as categories. If you change the order of the
+table, then also the order of categories in the visualization is changed.
+
+      {{3}}
+``` md
+<!-- data-type="line" -->
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |              2 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+| Sheep           |           90 |             12 |      95 |
+| Human           |           68 |             70 |      10 |
+```
+
+      {{3}}
+<!-- data-type="line" -->
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |              2 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+| Sheep           |           90 |             12 |      95 |
+| Human           |           68 |             70 |      10 |
+
+
+### `ScatterPlot`
+
+    --{{0}}--
+If your table is similar to the one in a LinePlot, but the first column
+contains numbers which appear twice or more times, than this data cannot be
+interpreted as a "function" in a mathematical sense. This data is then simply
+visualized as a scatter plot only showing the dots.
+
+```
+| Random |    I |  II |
+| ------:| ----:| ---:|
+|    5.0 |  1.0 |   5 |
+|    ... |      |     |
+|    5.0 | 10.0 |   7 |
+|    ... |      |     |
+```
+
+| Random |    I |  II |
+| ------:| ----:| ---:|
+|    5.0 |  1.0 |   5 |
+|    6.0 |  1.0 |   4 |
+|    7.0 |  1.0 |   5 |
+|    8.0 |  1.0 |   5 |
+|    9.0 |  1.0 |   4 |
+|   10.0 |  1.0 |   5 |
+|    5.0 | 10.0 |   7 |
+|    6.0 | 10.0 |   8 |
+|    7.0 | 10.0 |   7 |
+|    8.0 | 10.0 |   7 |
+|    9.0 | 10.0 |   8 |
+|   10.0 | 10.0 |   7 |
+
+
+### `BoxPlot`
+
+    --{{0}}--
+If you have a ScatterPlot like representation, but actually want to use this
+data as primary data for your BoxPlot, you can manually change the type of
+visualization to BoxPlot, simply by adding the following attribute to the head of
+your table, as it is shown in the snippet below. Columns are then treated as
+datasets and get visualized accordingly.
+
+``` Markdown
+<!-- data-type="boxplot" -->
+| Random |    I |  II |
+| ------:| ----:| ---:|
+|    5.0 |  1.0 |   5 |
+|    ... |  ... |  .. |
+```
+
+<!-- data-type="boxplot" -->
+| Random |    I |  II |
+| ------:| ----:| ---:|
+|    5.0 |  1.0 |   5 |
+|    6.0 |  1.0 |   4 |
+|    7.0 |  1.0 |   5 |
+|    8.0 |  1.0 |   5 |
+|    9.0 |  1.0 |   4 |
+|   10.0 |  1.0 |   5 |
+|    5.0 | 10.0 |   7 |
+|    6.0 | 10.0 |   8 |
+|    7.0 | 10.0 |   7 |
+|    8.0 | 10.0 |   7 |
+|    9.0 | 10.0 |   8 |
+|   10.0 | 10.0 |   7 |
+|        |      |   1 |
+
+### `BarChart`
+
+    --{{0}}--
+In contrast to a line or a scatter plot, if the first colum contains at least
+one entry thant cannot be parsed as a number, this might be represented also as
+BarChart. Which works perfectly with the following example. If the maximum
+values of the columns do not differ to much, then this dataset it represented as
+a BarChart, otherwise you might end up seeing only one huge bar, while the other
+bars are indistiguishable from each other. In this case other visualization are
+chosen.
+
+``` markdown
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |              2 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+| Sheep           |           90 |             12 |      95 |
+| Human           |           68 |             70 |      10 |
+```
+
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |              2 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+| Sheep           |           90 |             12 |      95 |
+| Human           |           68 |             70 |      10 |
+
+
+### `Radar`
+
+    --{{0}}--
+If for example humans and sheeps are removed from the dataset, then wheight in
+kg would not be visible in a BarChart at all. In this case a Radar is selected,
+that allows to analyze data visually with different "y"-axis.
+
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |             02 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+
+
+### `PieChart`
+
+    --{{0}}--
+If you have a table with only one row full of numbers, this will be
+automatically presented as an pie chart. The head represents the categories and
+the body the quatities.
+
+
+| Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
+| -------:| -------:| ------:| -------:| ---------:| -----:|
+|      50 |      50 |    100 |     200 |       350 |   250 |
+
+
+    --{{1}}--
+You can use the first column to give some more information about your data. If
+the first element of the list body contains a text, that cannot be directly
+interpreted as a number, then these two text snippets are used to the define the
+main title and the subtitle of your chart.
+
+      {{1}}
+| Music-Style 1994 | Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
+|:---------------- | -------:| -------:| ------:| -------:| ---------:| -----:|
+| Student rating   |      50 |      50 |    100 |     200 |       350 |   250 |
+
+
+#### `PieChart`(s)
+
+    --{{0}}--
+The default behavior for the Table below, would be to represent it as a bar-chart.
+But, you can enforce the usage of pie charts, simply by adding the attribute
+`piechart` into the HTML comment, directly above the table:
+
+```markdown
+<!-- data-type="PieChart" -->
+| Music-Style | Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
+|:----------- | -------:| -------:| ------:| -------:| ---------:| -----:|
+| 1994        |      50 |      50 |    100 |     200 |       350 |   250 |
+| ...         |     ... |     ... |    ... |     ... |       ... |   ... |
+```
+
+    --{{1}}--
+The result looks as follows:
+
+      {{1}}
+<!-- data-type="PieChart" -->
+| Music-Style | Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
+|:----------- | -------:| -------:| ------:| -------:| ---------:| -----:|
+| 1994        |      50 |      50 |    100 |     200 |       350 |   250 |
+| 2014        |      20 |      30 |    100 |     220 |       400 |   230 |
+| demo 2034   |       5 |      12 |     98 |     293 |       345 |    32 |
+
+##### Animating Charts
+
+    --{{0}}--
+Since data is parsed at runtime, you can also use animations to change the
+values  of chart, while go on in your slide or move back. But keep in mind, that
+this might lead to negative effects, if your audience preferes the textbook
+mode:
+
+       {{1}}
+| Music-Style {1-2}{1994} {2}{2014} |           Classic |           Country | Reggae |             Hip-Hop |           Hard-Rock |               Samba |
+|:--------------------------------- | -----------------:| -----------------:| ------:| -------------------:| -------------------:| -------------------:|
+| Student rating                    | {1-2}{50} {2}{20} | {1-2}{50} {2}{30} |    100 | {1-2}{200} {2}{220} | {1-2}{350} {2}{400} | {1-2}{250} {2}{230} |
+
+##### Transposing Data
+
+    --{{0}}--
+If the previous table was too long and you prefer to use only two columns and
+grow your data vertically, then you can use the attribute `data-transpose`,
+which flips mirrows your data along an imaginary vertical axis.
+
+
+```markdown
+<!-- data-transpose -->
+| Music-Style {1-2}{1994} {2}{2014} |    Student rating |
+|:--------------------------------- | -----------------:|
+| Classic                           | {1-2}{50} {2}{20} |
+| Country                           | {1-2}{50} {2}{30} |
+| ...                               |               ... |
+```
+
+    --{{1}}--
+The result is the same as above, but it might be easier to handle your data.
+
+      {{1}}
+<!-- data-transpose -->
+| Music-Style {1-2}{1994} {2}{2014} |      Student rating |
+|:--------------------------------- | -------------------:|
+| Classic                           |   {1-2}{50} {2}{20} |
+| Country                           |   {1-2}{50} {2}{30} |
+| Reggae                            |                 100 |
+| Hip-Hop                           | {1-2}{200} {2}{220} |
+| Hard-Rock                         | {1-2}{350} {2}{400} |
+| Samba                             | {1-2}{250} {2}{230} |
+
+### `Funnel`
+
+    --{{0}}--
+Funnel is a similar representation as PieChart, but it is not set automatically.
+If you want to use funnel, you will have to set the `data-type` parameter to
+funnel.
+
+``` markdown
+<!-- data-type="funnel" -->
+| Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
+| -------:| -------:| ------:| -------:| ---------:| -----:|
+|      50 |      50 |    100 |     200 |       350 |   250 |
+```
+
+<!-- data-type="funnel" -->
+| Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
+| -------:| -------:| ------:| -------:| ---------:| -----:|
+|      50 |      50 |    100 |     200 |       350 |   250 |
+
+     --{{1}}--
+The rest is the same as for piecharts, you can also use effects to generate
+animated diagrams.
+
+       {{1}}
+<!-- data-type="funnel" data-transpose -->
+| Music-Style {1-2}{1994} {2}{2014} |      Student rating |
+|:--------------------------------- | -------------------:|
+| Classic                           |   {1-2}{50} {2}{20} |
+| Country                           |   {1-2}{50} {2}{30} |
+| Reggae                            |                 100 |
+| Hip-Hop                           | {1-2}{200} {2}{220} |
+| Hard-Rock                         | {1-2}{350} {2}{400} |
+| Samba                             | {1-2}{250} {2}{230} |
+
+
+### `Map`
+
+    --{{0}}--
+A map is similar to a BarChart from the table structure, but if you want to
+depict your data on a real map, you will have to add a geojson-file, that
+contains all relevant data about the form of your countries, states, cities,
+etc. The first column has to match the names of your objects in your geojson
+data, that is attached to your table in the following way:
+
+``` markdown
+<!-- data-type="map" data-src="https://code.highcharts.com/mapdata/custom/europe.geo.json" -->
+| Country                | percent |
+| ---------------------- | ------- |
+| Albania                | 73.5    |
+| Andorra                | 98.9    |
+```
+
+
+<!-- style="height: 600px" data-type="map" data-src="https://code.highcharts.com/mapdata/custom/europe.geo.json" -->
+| Country                | percent |
+| ---------------------- | ------- |
+| Albania                | 73.5    |
+| Andorra                | 98.9    |
+| Armenia                | 72.4    |
+| Austria                | 87.9    |
+| Azerbaijan             | 79.8    |
+| Belarus                | 79.7    |
+| Belgium                | 93.9    |
+| Bosnia and Herzegovina | 80.8    |
+| Bulgaria               | 66.7    |
+| Croatia                | 91.5    |
+| Cyprus                 | 84.4    |
+| Czech Republic         | 87.7    |
+| Denmark                | 97.8    |
+| Estonia                | 97.9    |
+| Finland                | 94.0    |
+| France                 | 92.3    |
+| Georgia                | 68.1    |
+| Germany                | 96.0    |
+| Greece                 | 72.9    |
+| Hungary                | 89.0    |
+| Iceland                | 99.0    |
+| Ireland                | 91.9    |
+| Italy                  | 92.5    |
+| Latvia                 | 87.1    |
+| Liechtenstein          | 98.1    |
+| Lithuania              | 90.9    |
+| Luxembourg             | 97.8    |
+| Macedonia              | 79.2    |
+| Malta                  | 83.1    |
+| Moldova                | 76.1    |
+| Monaco                 | 97.5    |
+| Montenegro             | 71.5    |
+| Netherlands            | 95.6    |
+| Norway                 | 98.4    |
+| Poland                 | 78.2    |
+| Portugal               | 78.2    |
+| Republic of Serbia     | 73.4    |
+| Romania                | 73.8    |
+| Russia                 | 80.9    |
+| San Marino             | 60.2    |
+| Slovakia               | 84.9    |
+| Slovenia               | 79.9    |
+| Spain                  | 92.5    |
+| Sweden                 | 96.4    |
+| Switzerland            | 93.7    |
+| Turkey                 | 83.3    |
+| Ukraine                | 93.4    |
+| United Kingdom         | 94.9    |
+| Vatican City           | 60.1    |
+
+> Currently there is only support to visualize one column, but this will be
+> fixed in the future ...
+
+
+
+### `HeatMap`
+
+    --{{0}}--
+Another type of visualization is a HeatMap, which is used, if the table head and
+the first column do only contain numbers, in other words coordinates. If you
+want to use categories instead of coordinate numbers, you can enforce the usage
+of a heatmap, with the comment shown below:
+
+``` markdown
+<!--
+data-type="heatmap"
+data-title="Seattle mean temperature in Fahrenheit"
+data-show
+-->
+| Seattle |  Jan |  Feb |  Mar |  Apr |  May |  ... |
+| -------:| ----:| ----:| ----:| ----:| ----:| ----:|
+|       0 | 40.7 | 41.5 | 43.6 | 46.6 | 51.4 |  ... |
+|       2 |  ... |  ... |  ... |  ... |  ... |  ... |
+
+```
+
+    --{{1}}--
+The attribute `data-show` simply shows the diagram at default, instead of using
+the table.
+
+      {{1}}
+<!--
+data-type="heatmap"
+data-title="Seattle mean temperature in Fahrenheit"
+data-show
+-->
+| Seattle |  Jan |  Feb |  Mar |  Apr |  May |  Jun |  Jul |   Aug |  Sep |  Oct |  Nov |  Dec |
+| -------:| ----:| ----:| ----:| ----:| ----:| ----:| ----:| -----:| ----:| ----:| ----:| ----:|
+|       0 | 40.7 | 41.5 | 43.6 | 46.6 | 51.4 | 56.0 | 60.5 |  61.2 | 57.0 | 50.1 | 44.1 | 39.6 |
+|       2 | 40.2 | 40.7 | 42.7 | 45.3 | 50.0 | 54.4 | 58.5 |  59.2 | 55.4 | 49.2 | 43.5 | 39.3 |
+|       4 | 39.7 | 40.0 | 41.9 | 44.4 | 48.9 | 53.2 | 57.0 |  57.7 | 54.2 | 48.6 | 43.1 | 38.9 |
+|       6 | 39.6 | 39.5 | 41.3 | 44.2 | 49.5 | 54.2 | 57.8 |  57.4 | 53.6 | 48.2 | 42.8 | 38.7 |
+|       8 | 39.6 | 39.9 | 42.9 | 47.1 | 52.7 | 57.3 | 61.3 |  61.1 | 56.7 | 49.5 | 43.1 | 38.7 |
+|      10 | 41.3 | 42.7 | 46.4 | 50.7 | 56.4 | 60.9 | 65.2 |  65.4 | 60.9 | 52.8 | 45.5 | 40.4 |
+|      12 | 43.8 | 46.0 | 49.5 | 53.8 | 59.6 | 64.3 | 69.4 |  69.8 | 65.1 | 56.0 | 47.8 | 42.6 |
+|      14 | 45.1 | 47.7 | 51.3 | 55.9 | 61.9 | 66.9 | 72.6 |  73.2 | 67.7 | 57.8 | 48.8 | 43.6 |
+|      16 | 44.5 | 47.5 | 51.4 | 55.9 | 62.3 | 67.5 | 73.9 |  74.3 | 68.2 | 57.4 | 47.8 | 42.6 |
+|      18 | 42.6 | 44.7 | 48.7 | 53.8 | 60.3 | 65.9 | 72.3 |  72.2 | 64.6 | 53.9 | 46.0 | 41.2 |
+|      20 | 42.0 | 43.3 | 46.4 | 50.2 | 56.0 | 61.4 | 66.9 |  66.6 | 60.7 | 52.3 | 45.2 | 40.7 |
+|      22 | 41.4 | 42.5 | 45.0 | 48.3 | 53.5 | 58.2 | 63.2 |  63.5 | 58.7 | 51.1 | 44.5 | 40.1 |
+
+https://datavizpyr.com/heatmaps-with-seaborn-in-python/
+
+### `Parallel`
+
+    --{{0}}--
+A Parallel representation jumps in, if there are simply too many categories, so
+that your BarChart would contain only thin lines.
+
+<!-- data-show -->
+| Country                |    GDP growth (%) | Births per woman | Life expectancy at birth (years) | Population ages >= 65 (%) | Pop. ages 15-64 (%) | Pop ages 0-14 (%) | Pop (total) |
+| ---------------------- | -----------------:| ----------------:| --------------------------------:| --------------------------:| -------------------:| -----------------:| -----------:|
+| Albania                |               7.5 |            1.858 |                 76.6337073170732 |            9.3330694913874 |    66.4522208535245 |  24.2147096550882 |     3143291 |
+| Andorra                |  3.57073718591123 |            1.260 |                              NaN |                        NaN |                 NaN |               NaN |     83810.5 |
+| Austria                |  2.17880778069679 |            1.414 |                 80.4475609756098 |           17.0078802490015 |    67.7942859199021 |  15.1978338310964 |     8336926 |
+| Byelarus               | 11.29603925282670 |            1.420 |                 70.6328780487805 |           13.8161084682917 |    71.3440867491758 |  14.8398047825325 |     9680850 |
+| Belgium                |  1.00416891576425 |            1.820 |                 80.1095609756098 |           17.2425951179457 |    65.9073170003941 |  16.8500878816601 |    10708433 |
+| Bosnia and Herzegovina |  5.41999999999929 |            1.209 |                 75.1063170731708 |           13.7875788575916 |    70.5586044787057 |  15.6538166637027 |     3773100 |
+| Bulgaria               |  6.21712220063873 |            1.478 |                 73.3165853658537 |           17.3328904412356 |    69.2610054713067 |  13.4061040874577 |     7623395 |
+| Channel Islands        |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
+| Croatia                |  2.35925308110710 |            1.470 |                 75.9121951219512 |           17.1754953634927 |    67.5174504975681 |  15.3070541389392 |     4434000 |
+| Czech Republic         |  2.46366103329814 |            1.497 |                 77.2112195121951 |           14.6644147081870 |    71.1889763214880 |  14.1466089703250 |    10424336 |
+| Denmark                | -0.86969912719333 |            1.892 |                 78.7004878048781 |           15.9364325701275 |    65.6692750948847 |  18.3942923349878 |     5493621 |
+| Estonia                | -5.12891873578752 |            1.661 |                 73.9731707317073 |           16.9573479430650 |    68.0747344729978 |  14.9679175839372 |     1340675 |
+| Faroe Islands          |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |       48511 |
+| Finland                |  0.92209645431238 |            1.846 |                 79.7919512195122 |           16.5283868561977 |    66.6427434111131 |  16.8288697326892 |     5313399 |
+| France                 |  0.21695181782435 |            1.998 |                 81.5204878048781 |           16.6134150592142 |    64.9880225189894 |  18.3985624217964 |    62277432 |
+| Germany                |  0.98801573506542 |            1.376 |                 80.0885365853659 |           19.9652972040776 |    66.3351760329956 |  13.6995267629268 |    82110097 |
+| Greece                 |  2.01498162894308 |            1.506 |                 79.9631707317073 |           18.1870521529388 |    67.5883962990861 |  14.2245515479751 |    11237094 |
+| Hungary                |  0.59999999999994 |            1.352 |                 74.0090243902439 |           16.0592099507043 |    68.9813743902960 |  14.9594156589996 |    10038188 |
+| Iceland                |  0.95512219949856 |            2.140 |                 81.5751219512195 |           11.6851788453979 |    67.3938402627208 |  20.9209808918813 |      317414 |
+| Ireland                | -3.03575424255612 |            2.100 |                 79.8568292682927 |           11.1093456408398 |    68.3358023622894 |  20.5548519968708 |     4425675 |
+| Isle of Man            |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
+| Italy                  | -1.31844836660481 |            1.414 |                 81.9452097560976 |           20.0909973618083 |    65.7289363852644 |  14.1800662529273 |    59832179 |
+| Kosovo                 |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
+| Latvia                 | -4.55213597961080 |            1.453 |                 72.2382926829268 |           17.1863911389844 |    69.0425815911418 |  13.7710272698738 |     2266094 |
+| Liechtenstein          |  1.79808929851180 |            1.400 |                 82.6341463414634 |                        NaN |                 NaN |               NaN |       35629 |
+| Lithuania              |  2.76144078921502 |            1.470 |                 71.8217073170732 |           15.9677094440150 |    68.7509466357882 |  15.2813439201968 |     3358115 |
+| Luxembourg             |  0.03220273485962 |            1.605 |                 80.5246341463415 |           14.0365040657173 |    67.9773784654310 |  17.9861174688517 |      488650 |
+| Macedonia              |  4.80000000000011 |            1.438 |                 74.2113170731707 |           11.5845850425847 |    69.9825898844976 |  18.4328250729177 |     2041342 |
+| Malta                  |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
+| Moldova                |  7.76484641287229 |            1.495 |                 68.4371463414634 |           11.1369548727738 |    71.6754849214449 |  17.1875602057813 |     3633369 |
+| Monaco                 |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
+| Republic of Montenegro |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
+| Netherlands            |  1.99580842581707 |            1.775 |                 80.4007317073171 |           14.7235949405444 |    67.3305328508120 |  17.9458722086436 |    16445593 |
+| Norway                 |  1.81507058553292 |            1.960 |                 80.7414634146342 |           14.6455888097593 |    66.2064766744808 |  19.1479345157599 |     4768212 |
+| Poland                 |  5.00408460108383 |            1.390 |                 75.5331707317073 |           13.3256480555872 |    71.4634305149354 |  15.2109214294774 |    38125759 |
+| Portugal               | -0.03467455605676 |            1.374 |                 79.2497560975610 |           17.5012814880078 |    67.1365409199047 |  15.3621775920875 |    10622413 |
+| San Marino             |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
+| Serbia                 |  5.51795169957776 |            1.400 |                 73.6365853658537 |           14.5167655385706 |    67.6335858157006 |  17.8496486457288 |     7350221 |
+| Slovakia               |  6.17046824289093 |            1.320 |                 74.8107317073171 |           11.9677699353106 |    72.3868259638361 |  15.6454041008533 |     5406626 |
+| Slovenia               |  3.49251997044142 |            1.528 |                 78.9739024390244 |           16.0267556735963 |    70.1117152095851 |  13.8615291168186 |     2021316 |
+| Spain                  |  0.85776978982683 |            1.461 |                 81.0880487804878 |           16.9394050582152 |    68.3398363315641 |  14.7207586102207 |    45555716 |
+| Sweden                 | -0.40879886604371 |            1.910 |                 81.2371707317073 |           17.7223651519496 |    65.5617228818501 |  16.7159119662004 |     9219637 |
+| Switzerland            |  1.89715399119828 |            1.480 |                 82.1617073170732 |           16.6721873799941 |    67.8197089730996 |  15.5081036469063 |     7647675 |
+| Ukraine                |  2.09999999999999 |            1.390 |                 68.2514634146342 |           15.9037623084261 |    70.1546462864768 |  13.9415914050970 |    46258200 |
+| United Kingdom         |  0.54791121956627 |            1.940 |                 79.9033658536585 |           16.3019124620612 |    66.1561282590033 |  17.5419592789355 |    61406928 |
+| Montenegro             |  6.89999999999999 |            1.642 |                 74.0975365853659 |           12.8497239486590 |    67.5957824239814 |  19.5544936273596 |      622344 |
+| Isle of Man            |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |       80543 |
+| Romania                |  9.42580218461200 |            1.350 |                 73.3734146341464 |           14.8579664297396 |    69.8993946432444 |  15.2426389270160 |    21513622 |
+
+
+### `Graph`
+
+    --{{0}}--
+If the first column and the head of the table are equal, then the interpreter
+tries to interpret the content of the table as an adjacency matrix, which
+defines a graph. If those values are symetrical according to the diagonal, then
+the matrix defines an __undirected graph__.
+
+<!-- data-title="Undirected Graph" -->
+| Graph |  A  |  B  |  C  |  D  |  E  |
+|:----- |:---:|:---:|:---:|:---:|:---:|
+| A     |  0  |  1  |  0  |  1  |  0  |
+| B     |  1  |  0  |  0  |  1  |  0  |
+| C     |  0  |  0  |  0  |  0  |  0  |
+| D     |  1  |  1  |  0  |  0  |  1  |
+| E     |  0  |  0  |  0  |  1  |  0  |
+
+    --{{1}}--
+In contrast to this, if those values differ, then the result is simply an an
+__directed graph__, whereby the values define the strength of the line.
+
+      {{1}}
+<!-- data-title="Directed Graph" -->
+| Graph |  A  |  B  |  C  |  D  |  E  |
+|:----- |:---:|:---:|:---:|:---:|:---:|
+| A     |  0  | 12  |  0  |  1  |  0  |
+| B     | -22 |  0  |  0  | 0.4 |  0  |
+| C     |  0  |  0  |  0  |  0  |  0  |
+| D     |  2  | 12  |  0  |  0  |  1  |
+| E     |  0  |  0  |  0  |  2  |  0  |
+
+> Unfortunatelly, self referenceing or multigraphs are currently not supported.
+
+
+#### `Sankey`
+
+    --{{0}}--
+A Sankey diagram is a special type of directed graph that can be used to streams
+or the flow of something, such as engergy, money, etc.
+
+https://en.wikipedia.org/wiki/Sankey_diagram
+
+<!-- data-type="sankey" -->
+| Sankey |  A  |  B  |  C  |  D  |  E  |
+|:------ |:---:|:---:|:---:|:---:|:---:|
+| A      |     |  2  |     |     |     |
+| B      |  3  |     |     |     |     |
+| C      |  1  |  1  |     |     |     |
+| D      |     |  1  |  1  |     |     |
+| E      |  2  |  1  |  1  |  1  |     |
+
+
+### `None`
+
+    --{{0}}--
+Simply `data-type="none"` to prevent any kind of visualization.
+
+``` markdown
+<!-- data-type="none" -->
+| Sankey |  A  |  B  |  C  |  D  |  E  |
+|:------ |:---:|:---:|:---:|:---:|:---:|
+| A      |     |  2  |     |     |     |
+| B      |  3  |     |     |     |     |
+...
+```
+
+<!-- data-type="none" -->
+| Sankey |  A  |  B  |  C  |  D  |  E  |
+|:------ |:---:|:---:|:---:|:---:|:---:|
+| A      |     |  2  |     |     |     |
+| B      |  3  |     |     |     |     |
+| C      |  1  |  1  |     |     |     |
+| D      |     |  1  |  1  |     |     |
+| E      |  2  |  1  |  1  |  1  |     |
+
+
+### Attributes
+
+* __`data-type`__: You can use `data-type="map|boxplot|barchart|..."` to
+  overwrite the automatically identfied representation with your desired one.
+  The names can be taken from the previous titles, it is not relevant if you
+  use lower or upper-case. This way it is also possible to use types that cannot
+  be automatically infered at the moment, such as Sankey or BoxPlot.
+
+  If you do not want to show tables as diagrams, you can also use
+  `data-type="None"` and only the table will be visible.
+
+* __`data-show`__: Simply add this attribute or set it to true
+  (`data-show="true"`), if you want to visualize your data immediately, without
+  the need to click in the switch-button. It is still possible for your users to
+  switch to the table representation.
+
+* __`data-transpose`__: Like in the mathematical sense, set this attribute or
+  set it to true (`data-transpose="true"`), if you want to switch rows and
+  columns. One benefit is, that you can for example use PieChart and let your
+  table grow vertically instead of using a horizontal monster.
+
+* __`data-title`__: Normaly, the first cell defines the title of your diagram,
+  but if you want larger titles and not have to write gigantic table headers,
+  apply this attribute `data-title="Use whatever title you want to ..."`
+
+* __`data-xlabel`__: As above, you can also define the strings for the labels,
+  in this case for the x label
+
+* __`data-ylabel`__: or the y label.
+
+* __`data-src`__: Currently this attribute is used to refere to your geojson
+  data, if you use the `data-type="Map"` representation, but this might change
+  in the future to load and visualize data directly, such as csv.
+
+  If you are using geojson files from external websites such as:
+
+  https://code.highcharts.com/mapdata/
+
+  It can be usefull to use anycors, if the data cannot be visualized due to
+  CORS restrictions:
+
+  `data-src="https://cors-anywhere.herokuapp.com/https://code.highcharts.com/mapdata/custom/europe.geo.json"`
+
+### custom
+
+<script input="range" value="2" output="range">@input</script>
+
+<script input="range" value="50" output="amplitude">@input</script>
+
+
+<script run-once style="display: inline-block; width: 100%">
+function func(x) {
+    x /= 10;
+    return Math.sin(x) * Math.cos(x * @input(`range`) + 1) * Math.sin(x * 3 + 2) * @input(`amplitude`);
+}
+
+function generateData() {
+    let data = [];
+    for (let i = -200; i <= 200; i += 0.1) {
+        data.push([i, func(i)]);
+    }
+    return data;
+}
+
+let option = {
+    animation: false,
+    grid: {
+        top: 40,
+        left: 50,
+        right: 40,
+        bottom: 50
+    },
+    xAxis: {
+        name: 'x',
+        minorTick: {
+            show: true
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#999'
+            }
+        },
+        minorSplitLine: {
+            show: true,
+            lineStyle: {
+                color: '#ddd'
+            }
+        }
+    },
+    yAxis: {
+        name: 'y',
+        min: -100,
+        max: 100,
+        minorTick: {
+            show: true
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#999'
+            }
+        },
+        minorSplitLine: {
+            show: true,
+            lineStyle: {
+                color: '#ddd'
+            }
+        }
+    },
+    dataZoom: [{
+        show: true,
+        type: 'inside',
+        filterMode: 'none',
+        xAxisIndex: [0],
+        startValue: -20,
+        endValue: 20
+    }, {
+        show: true,
+        type: 'inside',
+        filterMode: 'none',
+        yAxisIndex: [0],
+        startValue: -20,
+        endValue: 20
+    }],
+    series: [
+        {
+            type: 'line',
+            showSymbol: false,
+            clip: true,
+            data: generateData()
+        }
+    ]
+}
+
+"HTML: <lia-chart option='" + JSON.stringify(option) + "'></lia-chart>"
+
+</script>
+
+
+
+<lia-chart
+option='{
+  "xAxis": {
+    "type": "category",
+    "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+  },
+  "yAxis": {
+    "type": "value"
+  },
+  "series": [{
+    "data": [820,932,901,934,1290,1330,1320],
+    "type":"line"
+  }]
+}'></lia-chart>
+
+
+
+
+## ASCII-Art
+
+    --{{0}}--
+Well, based on the [SvgBob-project](https://github.com/ivanceras/svgbob) by Ivan Ceras, LiaScript also has support for basic ASCII art drawings.
+
+    --{{1}}--
+We had to rebuild the library in elm, the project can be found here:
+
+      {{1}}
+https://github.com/andre-dietrich/elm-svgbob/
+
+    --{{2}}--
+If you want to use it, simply create a new Markdown code-block with at least 10 backticks, or use `ascii` as for the language indicator:
+
+      {{2}}
+```` markdown
+``` ascii
++------+   +-----+   +-----+   +-----+
+|      |   |     |   |     |   |     |
+| Foo  +-->| Bar +---+ Baz |<--+ Moo |
+|      |   |     |   |     |   |     |
++------+   +-----+   +--+--+   +-----+
+              ^         |
+              |         V
+.-------------+-----------------------.
+| Hello here and there and everywhere |
+'-------------------------------------'
+```
+````
+
+The result will be an SVG image that is scaled according to the full width of the available screen.
+
+``` ascii
++------+   +-----+   +-----+   +-----+
+|      |   |     |   |     |   |     |
+| Foo  +-->| Bar +---+ Baz |<--+ Moo |
+|      |   |     |   |     |   |     |
++------+   +-----+   +--+--+   +-----+
+              ^         |
+              |         V
+.-------------+-----------------------.
+| Hello here and there and everywhere |
+'-------------------------------------'
+```
+
+### How to Draw things ...
+
+    --{{0}}--
+Remember, everything that you require is a keyboard, therefore you have to use some basic characters to draw different shapes.
+Unicode is now fully supported in LiaScript, which means, that is is also possible to use emojies within your drawings and you can also embed LiaScript elements for integrating anything LiaScript related.
+
+
+#### 1. Boxes
+
+    --{{0}}--
+Depending on the type of characters, it is possible to define different kind of boxes, triangles or rectangular shapes. Supported characters for borders are:
+
+__borders:__
+
+* straight: `-`, `_`, `|`
+* rounded: `(`, `)`
+* diagonal: `\`, `/`
+
+      {{1}}
+<section>
+
+    --{{1}}--
+Additionally it is possible to define different shapes for the corners, which range from normal, rounded, or special ones, that can be used also to represent relations and are not bounded to corners only:
+
+__corners:__
+
+* normal: `+`
+* rounded: all of them are actually treated equally, when creating the svg corner. Different representations do only affect the ASCII drawing.
+
+  `.`, `,`, `´`, `'`
+* special: filled dot `*`, filled square `#`, empty dot (`o`, `O`)
+
+</section>
+
+    --{{2}}--
+Here are some examples for different shapes:
+
+      {{2}}
+```` md
+``` ascii
++-----+      _____      +-----+      _____       _____
+|  0  |     |  1  |     |  2  |     |  3  |     |_ 4 _|
++-----+     |_____|     |_____|     +-----+
+
+.-----.     ._____.     ,-----,     -------     '-----'
+|  5  |     |  6  |     |  7  |     |  8  |     |  9  |
+'-----'     ,_____,     |_____|     -------     '_____'
+
+o------o    *------*    #------#    O------O    .-----+
+|  10  |    |  11  |    |  12  |    |  13  |    |  14 |
+o------o    *------*    #------#    O------O    +-----'
+
+ .----+     +----.      .-----.     /\       .------.
+(  15 |     | 16  )    (  17   )   /18\     /  19  /
+ `----+     +----´      `-----´   /____\   /______/
+```
+````
+
+    --{{3}}--
+And here is their representation as an ASCII-art image:
+
+      {{3}}
+``` ascii
++-----+      _____      +-----+      _____       _____
+|  0  |     |  1  |     |  2  |     |  3  |     |_ 4 _|
++-----+     |_____|     |_____|     +-----+
+
+.-----.     ._____.     ,-----,     -------     '-----'
+|  5  |     |  6  |     |  7  |     |  8  |     |  9  |
+'-----'     ,_____,     |_____|     -------     '_____'
+
+o------o    *------*    #------#    O------O    .-----+
+|  10  |    |  11  |    |  12  |    |  13  |    |  14 |
+o------o    *------*    #------#    O------O    +-----'
+
+ .----+     +----.      .-----.     /\       .------.
+(  15 |     | 16  )    (  17   )   /18\     /  19  /
+ `----+     +----´      `-----´   /____\   /______/
+```
+
+#### 2. Arrows & Connectors
+
+    --{{0}}--
+Depending on the direction of your arrow you have to use on either `<`, `>` for left and right, `v` or `V` for down, `^` or `A` for up.
+The other endings (`*`, `#`, `o`, `O`) are direction independent.
+
+```` md
+``` ascii
+---->   ---->>   ----o   ----O   ----*   ----#
+
+<--->   <<-->>   o---o   O---O   *---*   #---#
+_______________________________________
+ |     |     |     |     |     |     |
+ v     V     #     o     O     *
+
+ ^     A     #     o     O     *
+ |     |     |     |     |     |     |
+-+-----+-----+-----+-----+-----+-----+-
+
+^     A     #        o     O     *
+ \     \     \      /     /     /
+  \     \     \    /     /     /
+   v     V     #  o     O     *
+```
+````
+
+    --{{1}}--
+The result looks pretty nice.
+This approach enables you to draw already some fancy images and to change them quite easily.
+Like in "toki pona", sometimes a reduced set of features allows you to get directly to the point.
+
+      {{1}}
+``` ascii
+ ---->   ---->>   ----o   ----O   ----*   ----#
+
+ <--->   <<-->>   o---o   O---O   *---*   #---#
+ _______________________________________
+  |     |     |     |     |     |     |
+  v     V     #     o     O     *
+
+  ^     A     #     o     O     *
+  |     |     |     |     |     |     |
+ -+-----+-----+-----+-----+-----+-----+-
+
+ ^     A     #        o     O     *
+  \     \     \      /     /     /
+   \     \     \    /     /     /
+    v     V     #  o     O     *
+```
+
+    --{{2}}--
+You can also use the arrows to connect, your other drawings, but keep in mind that in some cases you will have to use the `+` sign to fully attach your lines to another edge.
+
+      {{2}}
+```` md
+``` ascii
++-----+     +-----+     +-----+     +-----+
+|  0  |---->|  1  |     |  2  +---->|  3  |
++-----+     +-----+     +-----+     +-----+
+
++-----+     +-----+     +-----+     +-----+
+|     |     |     |     |     |     |     |
+|  4  *-----#  5  |-----+  6  o----->  7  |
+|     |     |     |     |     |     |     |
++-----+     +-----+     +-----+     +-----+
+
+      +---#--o---*---<--->---O---.
+      |  .-<<---,      .---.      \
+      A /      /      /     \      \
+      |/      (      V       o      #
+      *        \    /         \    /
+                `--+           `--*
+```
+````
+    --{{3}}--
+The result looks like follows:
+
+      {{3}}
+``` ascii
++-----+     +-----+     +-----+     +-----+
+|  0  |---->|  1  |     |  2  +---->|  3  |
++-----+     +-----+     +-----+     +-----+
+
++-----+     +-----+     +-----+     +-----+
+|     |     |     |     |     |     |     |
+|  4  *-----#  5  |-----+  6  o----->  7  |
+|     |     |     |     |     |     |     |
++-----+     +-----+     +-----+     +-----+
+
+      +---#--o---*---<--->---O---.
+      |  .-<<---,      .---.      \
+      A /      /      /     \      \
+      |/      (      V       o      #
+      *        \    /         \    /
+                `--+           `--*
+```
+
+#### 3. More Shapes
+
+    --{{0}}--
+Here are some more examples of rounded shapes, that can be used in simple drawings.
+
+```` md
+``` ascii
+                                   /\
++-----+   .-----.    .-----.      /  \
+|  1  |   |  2  |   (   3   )    /    \
++-----+   '-----'    '-----'    '------'
+
+  _______            ________      .-------.
+ /       \      /\   \       \    /         \
+/    5    \    /  \   )   7   )  (     8     )
+\         /    \  /  /_______/    \         /
+ \_______/      \/                 '-------'
+
+  +----------+
+ /            \
++      9       +
+ \            /
+  +----------+
+
+   .-----------.       .  <-.      .->  .
+  (     10      )     (  11  )    (  12  )
+   '-----+ ,---'       `->  '      `  <-'
+         |/
+         '
+   _   __   .-.   .--.   .--.--.    .---.
+  (_) (__) ( X ) ( 16 ) ( 1( )7 )  ( 1 8 )
+            '-'   `--'   `--'--'    `---´
+
+.-----.  .----.   +----+  *----*
+ \   /    \    \   \    \  \    \
+  \ /      \    \   \    \  \    \
+   '        '----'   +----+  O----O
+```
+````
+
+    --{{1}}--
+As you can see, by using parentheses different rounded shapes can be generated too.
+
+      {{1}}
+``` ascii
+                                   /\
++-----+   .-----.    .-----.      /  \
+|  1  |   |  2  |   (   3   )    /    \
++-----+   '-----'    '-----'    '------'
+
+  _______            ________      .-------.
+ /       \      /\   \       \    /         \
+/    5    \    /  \   )   7   )  (     8     )
+\         /    \  /  /_______/    \         /
+ \_______/      \/                 '-------'
+
+  +----------+
+ /            \
++      9       +
+ \            /
+  +----------+
+
+   .-----------.       .  <-.      .->  .
+  (     10      )     (  11  )    (  12  )
+   '-----+ ,---'       `->  '      `  <-'
+         |/
+         '
+   _   __   .-.   .--.   .--.--.    .---.
+  (_) (__) ( X ) ( 16 ) ( 1( )7 )  ( 1 8 )
+            '-'   `--'   `--'--'    `---´
+
+.-----.  .----.   +----+  *----*
+ \   /    \    \   \    \  \    \
+  \ /      \    \   \    \  \    \
+   '        '----'   +----+  O----O
+```
+
+
+#### 4. Box Drawing
+
+    --{{0}}--
+The Unicode standard defines a set of characters/symbols, that were used in the past for drawing user interfaces and menus within the console.
+You can use these symbols too, or in combination with the upper symbols an shapes.
+
+
+```` md
+``` ascii
+╔════════════════════════════════════[×]═╗       ╭─────╮
+║ Fenstertitel                           ║       │     │     ╳
+╟──────────────────────────────────────┬─╢       ╵     ╷    ╱ ╲
+║ Fensterinhalt                        │▲║       ╰─────╯
+║                                      │░║
+║                                      │░║       ┌─┬┐  ╔═╦╗  ╓─╥╖  ╒═╤╕
+║                                      │░║       │ ││  ║ ║║  ║ ║║  │ ││
+║                                      │░║       ├─┼┤  ╠═╬╣  ╟─╫╢  ╞═╪╡
+║                                      │█║       └─┴┘  ╚═╩╝  ╙─╨╜  ╘═╧╛
+║                                      │░║
+║                                      │░║       ┌───────────────────┐
+║                                      │░║       │  ╔═══╗ Some Text  │▒
+║                                      │░║       │  ╚═╦═╝ in the box │▒
+║                                      │░║       ╞═╤══╩══╤═══════════╡▒
+║                                      │░║       │ ├──┬──┤           │▒
+║                                      │░║       │ └──┴──┘           │▒
+║                                      │▼║       └───────────────────┘▒
+╚══════════════════════════════════════╧═╝        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+```
+````
+
+    --{{1}}--
+These Unicode images can also be combined with the previous ASCII-art examples, or you can use these box drawing elements to add shadows and more.
+
+      {{1}}
+``` ascii
+╔════════════════════════════════════[×]═╗       ╭─────╮
+║ Fenstertitel                           ║       │     │     ╳
+╟──────────────────────────────────────┬─╢       ╵     ╷    ╱ ╲
+║ Fensterinhalt                        │▲║       ╰─────╯
+║                                      │░║
+║                                      │░║       ┌─┬┐  ╔═╦╗  ╓─╥╖  ╒═╤╕
+║                                      │░║       │ ││  ║ ║║  ║ ║║  │ ││
+║                                      │░║       ├─┼┤  ╠═╬╣  ╟─╫╢  ╞═╪╡
+║                                      │█║       └─┴┘  ╚═╩╝  ╙─╨╜  ╘═╧╛
+║                                      │░║
+║                                      │░║       ┌───────────────────┐
+║                                      │░║       │  ╔═══╗ Some Text  │▒
+║                                      │░║       │  ╚═╦═╝ in the box │▒
+║                                      │░║       ╞═╤══╩══╤═══════════╡▒
+║                                      │░║       │ ├──┬──┤           │▒
+║                                      │░║       │ └──┴──┘           │▒
+║                                      │▼║       └───────────────────┘▒
+╚══════════════════════════════════════╧═╝        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+```
+
+    --{{2}}--
+The following table contains a set of characters, that can be used via copy and paste to draw any kind of boxes.
+
+      {{2}}
+|        |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------ |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+250x |  ─  |  ━  |  │  |  ┃  |  ┄  |  ┅  |  ┆  |  ┇  |  ┈  |  ┉  |  ┊  |  ┋  |  ┌  |  ┍  |  ┎  |  ┏  |
+| U+251x |  ┐  |  ┑  |  ┒  |  ┓  |  └  |  ┕  |  ┖  |  ┗  |  ┘  |  ┙  |  ┚  |  ┛  |  ├  |  ┝  |  ┞  |  ┟  |
+| U+252x |  ┠  |  ┡  |  ┢  |  ┣  |  ┤  |  ┥  |  ┦  |  ┧  |  ┨  |  ┩  |  ┪  |  ┫  |  ┬  |  ┭  |  ┮  |  ┯  |
+| U+253x |  ┰  |  ┱  |  ┲  |  ┳  |  ┴  |  ┵  |  ┶  |  ┷  |  ┸  |  ┹  |  ┺  |  ┻  |  ┼  |  ┽  |  ┾  |  ┿  |
+| U+254x |  ╀  |  ╁  |  ╂  |  ╃  |  ╄  |  ╅  |  ╆  |  ╇  |  ╈  |  ╉  |  ╊  |  ╋  |  ╌  |  ╍  |  ╎  |  ╏  |
+| U+255x |  ═  |  ║  |  ╒  |  ╓  |  ╔  |  ╕  |  ╖  |  ╗  |  ╘  |  ╙  |  ╚  |  ╛  |  ╜  |  ╝  |  ╞  |  ╟  |
+| U+256x |  ╠  |  ╡  |  ╢  |  ╣  |  ╤  |  ╥  |  ╦  |  ╧  |  ╨  |  ╩  |  ╪  |  ╫  |  ╬  |  ╭  |  ╮  |  ╯  |
+| U+257x |  ╰  |  ╱  |  ╲  |  ╳  |  ╴  |  ╵  |  ╶  |  ╷  |  ╸  |  ╹  |  ╺  |  ╻  |  ╼  |  ╽  |  ╾  |  ╿  |
+
+
+    --{{3}}--
+If you need shadows or different kind of shadings, you can use some of the following elements.
+
+      {{3}}
+|        |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------ |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+258x |  ▀  |  ▁  |  ▂  |  ▃  |  ▄  |  ▅  |  ▆  |  ▇  |  █  |  ▉  |  ▊  |  ▋  |  ▌  |  ▍  |  ▎  |  ▏  |
+| U+259x |  ▐  |  ░  |  ▒  |  ▓  |  ▔  |  ▕  |  ▖  |  ▗  |  ▘  |  ▙  |  ▚  |  ▛  |  ▜  |  ▝  |  ▞  |  ▟  |
+
+
+#### 5. Emojies
+
+Emojies are defined in the Unicode-standard too, that is why you can use any kind of symbols that you use in your day to day chat messages.
+
+
+```` md
+``` ascii
+😎             👩
+
+Bob            Alice
+|    hello      |
++-------------->|
+|               |
+|  Is it ok?    |
+|<- - - - - - - |
+Bob            Alice
+
+😎             👩
+```
+````
+
+---
+
+``` ascii
+😎             👩
+
+Bob            Alice
+|    hello      |
++-------------->|
+|               |
+|  Is it ok?    |
+|<- - - - - - - |
+Bob            Alice
+
+😎             👩
+```
+
+    --{{1}}--
+The tables below, contain some of the most widely used emojis, which can be directly copied into your drawing.
+
+      {{1}}
+<section>
+
+|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+1F60x | 😀  | 😁  | 😂  | 😃  | 😄  | 😅  | 😆  | 😇  | 😈  | 😉  | 😊  | 😋  | 😌  | 😍  | 😎  | 😏  |
+| U+1F61x | 😐  | 😑  | 😒  | 😓  | 😔  | 😕  | 😖  | 😗  | 😘  | 😙  | 😚  | 😛  | 😜  | 😝  | 😞  | 😟  |
+| U+1F62x | 😠  | 😡  | 😢  | 😣  | 😤  | 😥  | 😦  | 😧  | 😨  | 😩  | 😪  | 😫  | 😬  | 😭  | 😮  | 😯  |
+| U+1F63x | 😰  | 😱  | 😲  | 😳  | 😴  | 😵  | 😶  | 😷  | 😸  | 😹  | 😺  | 😻  | 😼  | 😽  | 😾  | 😿  |
+| U+1F64x | 🙀  | 🙁  | 🙂  | 🙃  | 🙄  | 🙅  | 🙆  | 🙇  | 🙈  | 🙉  | 🙊  | 🙋  | 🙌  | 🙍  | 🙎  | 🙏  |
+
+---
+
+|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+1F4Dx | 📐  | 📑  | 📒  | 📓  | 📔  | 📕  | 📖  | 📗  | 📘  | 📙  | 📚  | 📛  | 📜  | 📝  | 📞  | 📟  |
+| U+1F4Ex | 📠  | 📡  | 📢  | 📣  | 📤  | 📥  | 📦  | 📧  | 📨  | 📩  | 📪  | 📫  | 📬  | 📭  | 📮  | 📯  |
+| U+1F4Fx | 📰  | 📱  | 📲  | 📳  | 📴  | 📵  | 📶  | 📷  | 📸  | 📹  | 📺  | 📻  | 📼  | 📽️  |     | 📿  |
+| U+1F50x | 🔀  | 🔁  | 🔂  | 🔃  | 🔄  | 🔅  | 🔆  | 🔇  | 🔈  | 🔉  | 🔊  | 🔋  | 🔌  | 🔍  | 🔎  | 🔏  |
+| U+1F51x | 🔐  | 🔑  | 🔒  | 🔓  | 🔔  | 🔕  | 🔖  | 🔗  | 🔘  | 🔙  | 🔚  | 🔛  | 🔜  | 🔝  | 🔞  | 🔟  |
+| U+1F52x | 🔠  | 🔡  | 🔢  | 🔣  | 🔤  | 🔥  | 🔦  | 🔧  | 🔨  | 🔩  | 🔪  | 🔫  | 🔬  | 🔭  | 🔮  | 🔯  |
+| U+1F53x | 🔰  | 🔱  | 🔲  | 🔳  | 🔴  | 🔵  | 🔶  | 🔷  | 🔸  | 🔹  | 🔺  | 🔻  | 🔼  | 🔽  |     |     |
+| U+1F54x |     |     |     |     |     |     |     |     |     | 🕉️  | 🕊️  | 🕋  | 🕌  | 🕍  | 🕎  |     |
+| U+1F55x | 🕐  | 🕑  | 🕒  | 🕓  | 🕔  | 🕕  | 🕖  | 🕗  | 🕘  | 🕙  | 🕚  | 🕛  | 🕜  | 🕝  | 🕞  | 🕟  |
+| U+1F56x | 🕠  | 🕡  | 🕢  | 🕣  | 🕤  | 🕥  | 🕦  | 🕧  |     |     |     |     |     |     |     | 🕯️  |
+| U+1F57x | 🕰️  |     |     | 🕳️  | 🕴️  | 🕵️  | 🕶️  | 🕷️  | 🕸️  | 🕹️  | 🕺  |     |     |     |     |     |
+| U+1F58x |     |     |     |     |     |     |     | 🖇️  |     |     | 🖊️  | 🖋️  | 🖌️  | 🖍️  |     |     |
+| U+1F59x | 🖐️  |     |     |     |     | 🖕  | 🖖  |     |     |     |     |     |     |     |     |     |
+| U+1F5Ax |     |     |     |     | 🖤  | 🖥️  |     |     | 🖨️  |     |     |     |     |     |     |     |
+| U+1F5Bx |     | 🖱️  | 🖲️  |     |     |     |     |     |     |     |     |     | 🖼️  |     |     |     |
+| U+1F5Cx |     |     | 🗂️  | 🗃️  | 🗄️  |     |     |     |     |     |     |     |     |     |     |     |
+| U+1F5Dx |     | 🗑️  | 🗒️  | 🗓️  |     |     |     |     |     |     |     |     | 🗜️  | 🗝️  | 🗞️  |     |
+| U+1F5Ex |     | 🗡️  |     | 🗣️  |     |     |     |     | 🗨️  |     |     |     |     |     |     | 🗯️  |
+| U+1F5Fx |     |     |     | 🗳️  |     |     |     |     |     |     | 🗺️  | 🗻  | 🗼  | 🗽  | 🗾  | 🗿  |
+| U+1F60x | 😀  | 😁  | 😂  | 😃  | 😄  | 😅  | 😆  | 😇  | 😈  | 😉  | 😊  | 😋  | 😌  | 😍  | 😎  | 😏  |
+| U+1F61x | 😐  | 😑  | 😒  | 😓  | 😔  | 😕  | 😖  | 😗  | 😘  | 😙  | 😚  | 😛  | 😜  | 😝  | 😞  | 😟  |
+| U+1F62x | 😠  | 😡  | 😢  | 😣  | 😤  | 😥  | 😦  | 😧  | 😨  | 😩  | 😪  | 😫  | 😬  | 😭  | 😮  | 😯  |
+| U+1F63x | 😰  | 😱  | 😲  | 😳  | 😴  | 😵  | 😶  | 😷  | 😸  | 😹  | 😺  | 😻  | 😼  | 😽  | 😾  | 😿  |
+| U+1F64x | 🙀  | 🙁  | 🙂  | 🙃  | 🙄  | 🙅  | 🙆  | 🙇  | 🙈  | 🙉  | 🙊  | 🙋  | 🙌  | 🙍  | 🙎  | 🙏  |
+| U+1F68x | 🚀  | 🚁  | 🚂  | 🚃  | 🚄  | 🚅  | 🚆  | 🚇  | 🚈  | 🚉  | 🚊  | 🚋  | 🚌  | 🚍  | 🚎  | 🚏  |
+| U+1F69x | 🚐  | 🚑  | 🚒  | 🚓  | 🚔  | 🚕  | 🚖  | 🚗  | 🚘  | 🚙  | 🚚  | 🚛  | 🚜  | 🚝  | 🚞  | 🚟  |
+| U+1F6Ax | 🚠  | 🚡  | 🚢  | 🚣  | 🚤  | 🚥  | 🚦  | 🚧  | 🚨  | 🚩  | 🚪  | 🚫  | 🚬  | 🚭  | 🚮  | 🚯  |
+| U+1F6Bx | 🚰  | 🚱  | 🚲  | 🚳  | 🚴  | 🚵  | 🚶  | 🚷  | 🚸  | 🚹  | 🚺  | 🚻  | 🚼  | 🚽  | 🚾  | 🚿  |
+| U+1F6Cx | 🛀  | 🛁  | 🛂  | 🛃  | 🛄  | 🛅  |     |     |     |     |     | 🛋️  | 🛌  | 🛍️  | 🛎️  | 🛏️  |
+
+---
+
+|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+1F6Dx | 🛐  | 🛑  | 🛒  |     |     | 🛕  | 🛖  | 🛗  |     |     |     |     |     |     |     |     |
+| U+1F6Ex | 🛠️  | 🛡️  | 🛢️  | 🛣️  | 🛤️  | 🛥️  |     |     |     | 🛩️  |     | 🛫  | 🛬  |     |     |     |
+| U+1F6Fx | 🛰️  |     |     | 🛳️  | 🛴  | 🛵  | 🛶  | 🛷  | 🛸  | 🛹  | 🛺  | 🛻  | 🛼  |     |     |     |
+| U+1F7Ex | 🟠  | 🟡  | 🟢  | 🟣  | 🟤  | 🟥  | 🟦  | 🟧  | 🟨  | 🟩  | 🟪  | 🟫  |     |     |     |     |
+| U+1F90x |     |     |     |     |     |     |     |     |     |     |     |     | 🤌  | 🤍  | 🤎  | 🤏  |
+| U+1F91x | 🤐  | 🤑  | 🤒  | 🤓  | 🤔  | 🤕  | 🤖  | 🤗  | 🤘  | 🤙  | 🤚  | 🤛  | 🤜  | 🤝  | 🤞  | 🤟  |
+| U+1F92x | 🤠  | 🤡  | 🤢  | 🤣  | 🤤  | 🤥  | 🤦  | 🤧  | 🤨  | 🤩  | 🤪  | 🤫  | 🤬  | 🤭  | 🤮  | 🤯  |
+| U+1F93x | 🤰  | 🤱  | 🤲  | 🤳  | 🤴  | 🤵  | 🤶  | 🤷  | 🤸  | 🤹  | 🤺  |     | 🤼  | 🤽  | 🤾  | 🤿  |
+| U+1F94x | 🥀  | 🥁  | 🥂  | 🥃  | 🥄  | 🥅  |     | 🥇  | 🥈  | 🥉  | 🥊  | 🥋  | 🥌  | 🥍  | 🥎  | 🥏  |
+| U+1F95x | 🥐  | 🥑  | 🥒  | 🥓  | 🥔  | 🥕  | 🥖  | 🥗  | 🥘  | 🥙  | 🥚  | 🥛  | 🥜  | 🥝  | 🥞  | 🥟  |
+| U+1F96x | 🥠  | 🥡  | 🥢  | 🥣  | 🥤  | 🥥  | 🥦  | 🥧  | 🥨  | 🥩  | 🥪  | 🥫  | 🥬  | 🥭  | 🥮  | 🥯  |
+| U+1F97x | 🥰  | 🥱  | 🥲  | 🥳  | 🥴  | 🥵  | 🥶  |     |     |     | 🥺  | 🥻  | 🥼  | 🥽  | 🥾  | 🥿  |
+| U+1F98x | 🦀  | 🦁  | 🦂  | 🦃  | 🦄  | 🦅  | 🦆  | 🦇  | 🦈  | 🦉  | 🦊  | 🦋  | 🦌  | 🦍  | 🦎  | 🦏  |
+| U+1F99x | 🦐  | 🦑  | 🦒  | 🦓  | 🦔  | 🦕  | 🦖  | 🦗  | 🦘  | 🦙  | 🦚  | 🦛  | 🦜  | 🦝  | 🦞  | 🦟  |
+| U+1F9Ax | 🦠  | 🦡  | 🦢  |     |     | 🦥  | 🦦  | 🦧  | 🦨  | 🦩  | 🦪  |     |     |     | 🦮  | 🦯  |
+| U+1F9Bx | 🦰  | 🦱  | 🦲  | 🦳  | 🦴  | 🦵  | 🦶  | 🦷  | 🦸  | 🦹  | 🦺  | 🦻  | 🦼  | 🦽  | 🦾  | 🦿  |
+| U+1F9Cx | 🧀  | 🧁  | 🧂  | 🧃  | 🧄  | 🧅  | 🧆  | 🧇  | 🧈  | 🧉  | 🧊  | 🧋  |     | 🧍  | 🧎  | 🧏  |
+| U+1F9Dx | 🧐  | 🧑  | 🧒  | 🧓  | 🧔  | 🧕  | 🧖  | 🧗  | 🧘  | 🧙  | 🧚  | 🧛  | 🧜  | 🧝  | 🧞  | 🧟  |
+| U+1F9Ex | 🧠  | 🧡  | 🧢  | 🧣  | 🧤  | 🧥  | 🧦  | 🧧  | 🧨  | 🧩  | 🧪  | 🧫  | 🧬  | 🧭  | 🧮  | 🧯  |
+| U+1F9Fx | 🧰  | 🧱  | 🧲  | 🧳  | 🧴  | 🧵  | 🧶  | 🧷  | 🧸  | 🧹  | 🧺  | 🧻  | 🧼  | 🧽  | 🧾  | 🧿  |
+| U+1FA7x | 🩰  | 🩱  | 🩲  | 🩳  |     |     |     |     | 🩸  | 🩹  | 🩺  |     |     |     |     |     |
+| U+1FA8x | 🪀  | 🪁  | 🪂  |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+1FA9x | 🪐  | 🪑  | 🪒  | 🪓  | 🪔  | 🪕  |     |     |     |     |     |     |     |     |     |     |
+
+---
+
+|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+1F30x | 🌀  | 🌁  | 🌂  | 🌃  | 🌄  | 🌅  | 🌆  | 🌇  | 🌈  | 🌉  | 🌊  | 🌋  | 🌌  | 🌍  | 🌎  | 🌏  |
+| U+1F31x | 🌐  | 🌑  | 🌒  | 🌓  | 🌔  | 🌕  | 🌖  | 🌗  | 🌘  | 🌙  | 🌚  | 🌛  | 🌜  | 🌝  | 🌞  | 🌟  |
+| U+1F32x | 🌠  | 🌡️  |     |     | 🌤️  | 🌥️  | 🌦️  | 🌧️  | 🌨️  | 🌩️  | 🌪️  | 🌫️  | 🌬️  | 🌭  | 🌮  | 🌯  |
+| U+1F33x | 🌰  | 🌱  | 🌲  | 🌳  | 🌴  | 🌵  | 🌶️  | 🌷  | 🌸  | 🌹  | 🌺  | 🌻  | 🌼  | 🌽  | 🌾  | 🌿  |
+| U+1F34x | 🍀  | 🍁  | 🍂  | 🍃  | 🍄  | 🍅  | 🍆  | 🍇  | 🍈  | 🍉  | 🍊  | 🍋  | 🍌  | 🍍  | 🍎  | 🍏  |
+| U+1F35x | 🍐  | 🍑  | 🍒  | 🍓  | 🍔  | 🍕  | 🍖  | 🍗  | 🍘  | 🍙  | 🍚  | 🍛  | 🍜  | 🍝  | 🍞  | 🍟  |
+| U+1F36x | 🍠  | 🍡  | 🍢  | 🍣  | 🍤  | 🍥  | 🍦  | 🍧  | 🍨  | 🍩  | 🍪  | 🍫  | 🍬  | 🍭  | 🍮  | 🍯  |
+| U+1F37x | 🍰  | 🍱  | 🍲  | 🍳  | 🍴  | 🍵  | 🍶  | 🍷  | 🍸  | 🍹  | 🍺  | 🍻  | 🍼  | 🍽️  | 🍾  | 🍿  |
+| U+1F38x | 🎀  | 🎁  | 🎂  | 🎃  | 🎄  | 🎅  | 🎆  | 🎇  | 🎈  | 🎉  | 🎊  | 🎋  | 🎌  | 🎍  | 🎎  | 🎏  |
+| U+1F39x | 🎐  | 🎑  | 🎒  | 🎓  |     |     | 🎖️  | 🎗️  |     | 🎙️  | 🎚️  | 🎛️  |     |     | 🎞️  | 🎟️  |
+| U+1F3Ax | 🎠  | 🎡  | 🎢  | 🎣  | 🎤  | 🎥  | 🎦  | 🎧  | 🎨  | 🎩  | 🎪  | 🎫  | 🎬  | 🎭  | 🎮  | 🎯  |
+| U+1F3Bx | 🎰  | 🎱  | 🎲  | 🎳  | 🎴  | 🎵  | 🎶  | 🎷  | 🎸  | 🎹  | 🎺  | 🎻  | 🎼  | 🎽  | 🎾  | 🎿  |
+| U+1F3Cx | 🏀  | 🏁  | 🏂  | 🏃  | 🏄  | 🏅  | 🏆  | 🏇  | 🏈  | 🏉  | 🏊  | 🏋️  | 🏌️  | 🏍️  | 🏎️  | 🏏  |
+| U+1F3Dx | 🏐  | 🏑  | 🏒  | 🏓  | 🏔️  | 🏕️  | 🏖️  | 🏗️  | 🏘️  | 🏙️  | 🏚️  | 🏛️  | 🏜️  | 🏝️  | 🏞️  | 🏟️  |
+| U+1F3Ex | 🏠  | 🏡  | 🏢  | 🏣  | 🏤  | 🏥  | 🏦  | 🏧  | 🏨  | 🏩  | 🏪  | 🏫  | 🏬  | 🏭  | 🏮  | 🏯  |
+| U+1F3Fx | 🏰  |     |     | 🏳️  | 🏴  | 🏵️  |     | 🏷️  | 🏸  | 🏹  | 🏺  | 🏻  | 🏼  | 🏽  | 🏾  | 🏿  |
+| U+1F40x | 🐀  | 🐁  | 🐂  | 🐃  | 🐄  | 🐅  | 🐆  | 🐇  | 🐈  | 🐉  | 🐊  | 🐋  | 🐌  | 🐍  | 🐎  | 🐏  |
+| U+1F41x | 🐐  | 🐑  | 🐒  | 🐓  | 🐔  | 🐕  | 🐖  | 🐗  | 🐘  | 🐙  | 🐚  | 🐛  | 🐜  | 🐝  | 🐞  | 🐟  |
+| U+1F42x | 🐠  | 🐡  | 🐢  | 🐣  | 🐤  | 🐥  | 🐦  | 🐧  | 🐨  | 🐩  | 🐪  | 🐫  | 🐬  | 🐭  | 🐮  | 🐯  |
+| U+1F43x | 🐰  | 🐱  | 🐲  | 🐳  | 🐴  | 🐵  | 🐶  | 🐷  | 🐸  | 🐹  | 🐺  | 🐻  | 🐼  | 🐽  | 🐾  | 🐿️  |
+| U+1F44x | 👀  | 👁️  | 👂  | 👃  | 👄  | 👅  | 👆  | 👇  | 👈  | 👉  | 👊  | 👋  | 👌  | 👍  | 👎  | 👏  |
+| U+1F45x | 👐  | 👑  | 👒  | 👓  | 👔  | 👕  | 👖  | 👗  | 👘  | 👙  | 👚  | 👛  | 👜  | 👝  | 👞  | 👟  |
+| U+1F46x | 👠  | 👡  | 👢  | 👣  | 👤  | 👥  | 👦  | 👧  | 👨  | 👩  | 👪  | 👫  | 👬  | 👭  | 👮  | 👯  |
+| U+1F47x | 👰  | 👱  | 👲  | 👳  | 👴  | 👵  | 👶  | 👷  | 👸  | 👹  | 👺  | 👻  | 👼  | 👽  | 👾  | 👿  |
+| U+1F48x | 💀  | 💁  | 💂  | 💃  | 💄  | 💅  | 💆  | 💇  | 💈  | 💉  | 💊  | 💋  | 💌  | 💍  | 💎  | 💏  |
+| U+1F4Ax | 💠  | 💡  | 💢  | 💣  | 💤  | 💥  | 💦  | 💧  | 💨  | 💩  | 💪  | 💫  | 💬  | 💭  | 💮  | 💯  |
+| U+1F4Bx | 💰  | 💱  | 💲  | 💳  | 💴  | 💵  | 💶  | 💷  | 💸  | 💹  | 💺  | 💻  | 💼  | 💽  | 💾  | 💿  |
+| U+1F49x | 💐  | 💑  | 💒  | 💓  | 💔  | 💕  | 💖  | 💗  | 💘  | 💙  | 💚  | 💛  | 💜  | 💝  | 💞  | 💟  |
+| U+1F4Cx | 📀  | 📁  | 📂  | 📃  | 📄  | 📅  | 📆  | 📇  | 📈  | 📉  | 📊  | 📋  | 📌  | 📍  | 📎  | 📏  |
+
+---
+
+|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+26Dx  |     | ⛑️  |     | ⛓️  | ⛔️ |     |     |     |     |     |     |     |     |     |     |     |
+| U+26Ex  |     |     |     |     |     |     |     |     |     | ⛩️  | ⛪️ |     |     |     |     |     |
+| U+26Fx  | ⛰️  | ⛱️  | ⛲️ | ⛳️ | ⛴️  | ⛵️ |     | ⛷️  | ⛸️  | ⛹️  | ⛺️ |     |     | ⛽️ |     |     |
+| U+270x  |     |     | ✂️  |     |     | ✅️ |     |     | ✈️  | ✉️  | ✊️ | ✋️ | ✌️  | ✍️  |     | ✏️  |
+| U+271x  |     |     | ✒️  |     | ✔️  |     | ✖️  |     |     |     |     |     |     | ✝️  |     |     |
+| U+272x  |     | ✡️  |     |     |     |     |     |     | ✨️ |     |     |     |     |     |     |     |
+| U+273x  |     |     |     | ✳️  | ✴️  |     |     |     |     |     |     |     |     |     |     |     |
+| U+274x  |     |     |     |     | ❄️  |     |     | ❇️  |     |     |     |     | ❌️ |     | ❎️ |     |
+| U+275x  |     |     |     | ❓️ | ❔️ | ❕️ |     | ❗️ |     |     |     |     |     |     |     |     |
+| U+276x  |     |     |     | ❣️  | ❤️  |     |     |     |     |     |     |     |     |     |     |     |
+| U+279x  |     |     |     |     |     | ➕️ | ➖️ | ➗️ |     |     |     |     |     |     |     |     |
+| U+27Ax  |     | ➡️  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+27Bx  | ➰️ |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ➿️ |
+| U+293x  |     |     |     |     | ⤴️  | ⤵️  |     |     |     |     |     |     |     |     |     |     |
+| U+2B0x  |     |     |     |     |     | ⬅️  | ⬆️  | ⬇️  |     |     |     |     |     |     |     |     |
+| U+2B1x  |     |     |     |     |     |     |     |     |     |     |     | ⬛️ | ⬜️ |     |     |     |
+| U+2B5x  | ⭐️ |     |     |     |     | ⭕️ |     |     |     |     |     |     |     |     |     |     |
+| U+303x  | 〰️ |     |     |     |     |     |     |     |     |     |     |     |     | 〽️ |     |     |
+| U+329x  |     |     |     |     |     |     |     | ㊗️ |     | ㊙️ |     |     |     |     |     |     |
+| U+1F00x |     |     |     |     | 🀄  |     |     |     |     |     |     |     |     |     |     |     |
+| U+1F0Cx |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | 🃏  |
+| U+1F17x | 🅰️  | 🅱️  |     |     |     |     |     |     |     |     |     |     |     |     | 🅾️  | 🅿️  |
+| U+1F18x |     |     |     |     |     |     |     |     |     |     |     |     |     |     | 🆎  |     |
+| U+1F19x |     | 🆑  | 🆒  | 🆓  | 🆔  | 🆕  | 🆖  | 🆗  | 🆘  | 🆙  | 🆚  |     |     |     |     |     |
+| U+1F20x |     | 🈁  | 🈂️ |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+1F21x |     |     |     |     |     |     |     |     |     |     | 🈚  |     |     |     |     |     |
+| U+1F22x |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | 🈯  |
+| U+1F23x |     |     | 🈲  | 🈳  | 🈴  | 🈵  | 🈶  | 🈷️ | 🈸  | 🈹  | 🈺  |     |     |     |     |     |
+| U+1F25x | 🉐  | 🉑  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+
+---
+
+|        |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------ |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+00Ax |     |     |     |     |     |     |     |     |     | ©️  |     |     |     |     | ®️  |     |
+| U+203x |     |     |     |     |     |     |     |     |     |     |     |     | ‼️  |     |     |     |
+| U+204x |     |     |     |     |     |     |     |     |     | ⁉️  |     |     |     |     |     |     |
+| U+212x |     |     | ™️  |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+213x |     |     |     |     |     |     |     |     |     | ℹ️  |     |     |     |     |     |     |
+| U+219x |     |     |     |     | ↔️  | ↕️  | ↖️  | ↗️  | ↘️  | ↙️  |     |     |     |     |     |     |
+| U+21Ax |     |     |     |     |     |     |     |     |     | ↩️  | ↪️  |     |     |     |     |     |
+| U+231x |     |     |     |     |     |     |     |     |     |     | ⌚️ | ⌛️ |     |     |     |     |
+| U+232x |     |     |     |     |     |     |     |     | ⌨️  |     |     |     |     |     |     |     |
+| U+23Cx |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏏️  |
+| U+23Ex |     |     |     |     |     |     |     |     |     | ⏩️ | ⏪️ | ⏫️ | ⏬️ | ⏭️  | ⏮️  | ⏯️  |
+| U+23Fx | ⏰️ | ⏱️  | ⏲️  | ⏳️ |     |     |     |     | ⏸️  | ⏹️  | ⏺️  |     |     |     |     |     |
+| U+24Cx |     |     | Ⓜ️  |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+25Ax |     |     |     |     |     |     |     |     |     |     | ▪️  | ▫️  |     |     |     |     |
+| U+25Bx |     |     |     |     |     |     | ▶️  |     |     |     |     |     |     |     |     |     |
+| U+25Cx | ◀️  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+25Fx |     |     |     |     |     |     |     |     |     |     |     | ◻️  | ◼️  | ◽️ | ◾️ |     |
+| U+260x |  ☀  |  ☁  |  ☂  |  ☃  |  ☄  |  ★  |  ☆  |  ☇  |  ☈  |  ☉  |  ☊  |  ☋  |  ☌  |  ☍  |  ☎  |  ☏  |
+| U+261x |  ☐  |  ☑  |  ☒  |  ☓  | ☔  | ☕  |  ☖  |  ☗  |  ☘  |  ☙  |  ☚  |  ☛  |  ☜  |  ☝  |  ☞  |  ☟  |
+| U+262x |  ☠  |  ☡  |  ☢  |  ☣  |  ☤  |  ☥  |  ☦  |  ☧  |  ☨  |  ☩  |  ☪  |  ☫  |  ☬  |  ☭  |  ☮  |  ☯  |
+| U+263x |  ☰  |  ☱  |  ☲  |  ☳  |  ☴  |  ☵  |  ☶  |  ☷  |  ☸  |  ☹  |  ☺  |  ☻  |  ☼  |  ☽  |  ☾  |  ☿  |
+| U+264x |  ♀  |  ♁  |  ♂  |  ♃  |  ♄  |  ♅  |  ♆  |  ♇  | ♈  | ♉  | ♊  | ♋  | ♌  | ♍  | ♎  | ♏  |
+| U+265x | ♐  | ♑  | ♒  | ♓  |  ♔  |  ♕  |  ♖  |  ♗  |  ♘  |  ♙  |  ♚  |  ♛  |  ♜  |  ♝  |  ♞  |  ♟  |
+| U+266x |  ♠  |  ♡  |  ♢  |  ♣  |  ♤  |  ♥  |  ♦  |  ♧  |  ♨  |  ♩  |  ♪  |  ♫  |  ♬  |  ♭  |  ♮  |  ♯  |
+| U+267x |  ♰  |  ♱  |  ♲  |  ♳  |  ♴  |  ♵  |  ♶  |  ♷  |  ♸  |  ♹  |  ♺  |  ♻  |  ♼  |  ♽  |  ♾  | ♿  |
+| U+268x |  ⚀  |  ⚁  |  ⚂  |  ⚃  |  ⚄  |  ⚅  |  ⚆  |  ⚇  |  ⚈  |  ⚉  |  ⚊  |  ⚋  |  ⚌  |  ⚍  |  ⚎  |  ⚏  |
+| U+269x |  ⚐  |  ⚑  |  ⚒  | ⚓  |  ⚔  |  ⚕  |  ⚖  |  ⚗  |  ⚘  |  ⚙  |  ⚚  |  ⚛  |  ⚜  |  ⚝  |  ⚞  |  ⚟  |
+| U+26Ax |  ⚠  | ⚡  |  ⚢  |  ⚣  |  ⚤  |  ⚥  |  ⚦  |  ⚧  |  ⚨  |  ⚩  | ⚪  | ⚫  |  ⚬  |  ⚭  |  ⚮  |  ⚯  |
+| U+26Bx |  ⚰  |  ⚱  |  ⚲  |  ⚳  |  ⚴  |  ⚵  |  ⚶  |  ⚷  |  ⚸  |  ⚹  |  ⚺  |  ⚻  |  ⚼  | ⚽  | ⚾  |     |
+| U+26Cx |  ⛀  |  ⛁  |  ⛂  |  ⛃  | ⛄  | ⛅  |     |     |  ⛈  |     |     |     |     |     | ⛎  |  ⛏  |
+| U+26Dx |     |  ⛑  |     |  ⛓  | ⛔  |     |     |     |     |     |     |     |     |     |     |     |
+| U+26Ex |     |     |  ⛢  |     |     |     |     |     |     |  ⛩  | ⛪  |     |     |     |     |     |
+| U+26Fx |  ⛰  |  ⛱  | ⛲  | ⛳  |  ⛴  | ⛵  |     |  ⛷  |  ⛸  |  ⛹  | ⛺  |  ⛻  |  ⛼  | ⛽  |     |     |
+
+</section>
+
+### Styling ASCII
+
+    --{{0}}--
+As explained in section [Custom Styling](#custom-styling), it is also possible here to add custom styles by attaching an HTML comment to the beginning of an ASCII-art image.
+This enables you for example to center the image, define a maximum width or to change the color or some base svg elements.
+
+```` md
+<!--
+style="
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 315px;
+  fill: red;
+  stroke: green;" -->
+``` ascii
+                           .--->  F
+  A       B     C   D     /
+  *-------*-----*---*----*----->  E
+           \            ^ \
+            v          /   '--->  G
+             B --> C -'
+```
+````
+
+---
+
+<!--
+style="
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 315px;
+  fill: red;
+  stroke: green;" -->
+``` ascii
+                           .--->  F
+  A       B     C   D     /
+  *-------*-----*---*----*----->  E
+           \            ^ \
+            v          /   '--->  G
+             B --> C -'
+```
+
+### Adding Titles
+
+As shown in section [Code - Projects 💫](#Projects-💫) you can add a title after the language indicator.
+This "title" can be a one-liner of Markdown-LiaScript and is displayed, as it is done for images, directly below the ASCII-art image.
+
+```` markdown
+<!--
+style="
+  display: block;
+  max-width: 450px;" -->
+``` ascii  Fig.: Working with branches in git checkout the __[git-Workflow](https://about.gitlab.com/topics/version-control/what-is-git-workflow/)__
+
+new feature      .---#---.
+                 |       |
+development    .-o---o---o----o----o-.
+               |                     |
+main   *---*-+-*---*---*-------------*----
+```
+````
+
+<!--
+style="
+  display: block;
+  max-width: 450px;" -->
+``` ascii  Fig.: Working with branches in git checkout the __[git-Workflow](https://about.gitlab.com/topics/version-control/what-is-git-workflow/)__
+
+new feature      .---#---.
+                 |       |
+development    .-o---o---o----o----o-.
+               |                     |
+main   *---*-+-*---*---*-------------*----
+```
+
+### Embedding LiaScripts
+
+    --{{0}}--
+And of course, it is also possible to add LiaScript elements into your ASCII-art drawing.
+This is accomplished by double quotes `"`, which define something like a verbatim environment.
+There are currently two different types of environments, simple one-liner and blocks.
+
+    --{{1}}--
+The code example shows three applications for such verbatim LiaScript elements.
+At first, this is only a simple one-liner that can be integrated and styled, which is not possible for text otherwise.
+But secondly you can also add entire blocks with a subsequent number of quotations that start at the same horizontal x-position.
+And last but not least, this can also contain executable elements, animations, other inputs and more.
+
+      {{1}}
+````` markdown
+```` ascii
+ .---------------------------------------.          ╔════════════════════════════════════[×]═╗
+ |     https://LiaScript.github.io       |          ║ (3) Interactive JavaScript Console     ║▒
+ +---------------------------------------+          ╟──────────────────────────────────────┬─╢▒
+ | (1) "_ https://LiaScript.github.io _" |          ║"``` js                              "│▲║▒
+ '---------------------------------------'          ║"console.log('hello world')          "│░║▒
+                                                    ║"```                                 "│░║▒
+                    (2)                             ║"<script>@input</script>             "│░║▒
+"* Verbatim blocks start with quotes at the "       ║                                      │░║▒
+"  same x position                          "       ║                                      │█║▒
+"* The quote with the maximum length defines "      ║                                      │░║▒
+"  the width of the block "                         ║                                      │░║▒
+"* The number of subsequent quotes gets ignored,"   ║                                      │░║▒
+"  LiaScript elements are placed above the      "   ║                                      │▼║▒
+"  SVG-image "                                      ╚══════════════════════════════════════╧═╝▒
+                                                     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+````
+`````
+
+As it is visible in the generated image, the verbatim elements are not as exactly placed as the normal text.
+This might require some pushing back and forth of the to the quotations to get to the desired result.
+You can see that the verbatim elements are overlayed as `foreignObjects` above the SVG images by executing the code example.
+
+      {{2}}
+```` ascii
+ .---------------------------------------.          ╔════════════════════════════════════[×]═╗
+ |     https://LiaScript.github.io       |          ║ (3) Interactive JavaScript Console     ║▒
+ +---------------------------------------+          ╟──────────────────────────────────────┬─╢▒
+ | (1) "_ https://LiaScript.github.io _" |          ║"``` js                              "│▲║▒
+ '---------------------------------------'          ║"console.log('hello world')          "│░║▒
+                                                    ║"```                                 "│░║▒
+                    (2)                             ║"<script>@input</script>             "│░║▒
+"* Verbatim blocks start with quotes at the "       ║                                      │░║▒
+"  same x position                          "       ║                                      │█║▒
+"* The quote with the maximum length defines "      ║                                      │░║▒
+"  the width of the block "                         ║                                      │░║▒
+"* The number of subsequent quotes gets ignored,"   ║                                      │░║▒
+"  LiaScript elements are placed above the      "   ║                                      │▼║▒
+"  SVG-image "                                      ╚══════════════════════════════════════╧═╝▒
+                                                     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+````
+
+#### 1. Animations
+
+    --{{0}}--
+Where might such a integration of LiaScript into ASCII-Art shine?
+Of course when using animations to highlight a certain point.
+The following example shows the different usages of animations.
+The first 3 are inline-animations, that is why the number is bound to the text.
+While the last is a block-animation where the number is hidden.
+
+```` markdown
+``` ascii
+
+ 😀                                           😐
+  |             "{1}{_How are you?_}"         |
+  +------------------------------------------>|
+  |           "{2}{**Need to do math**}"      |
+  |<------------------------------------------+
+  |          "{3}{How difficult can it be?}"  |
+  +------------------------------------------>|
+  | "                {{4}}                  " |
+  | "$$                                     " |
+  | " x = \sqrt[3]{ y                       " |
+  | "   + \sqrt {y^2 + \bigg( \dfrac{c}{3a} " |
+  | "   - \dfrac{b^2}{9a^2} \bigg)^3}}      " |
+  | "$$                                     " |
+  +<------------------------------------------+
+  |                                           |
+```
+````
+
+---
+
+``` ascii
+
+ 😀                                           😐
+  |             "{1}{_How are you?_}"         |
+  +------------------------------------------>|
+  |           "{2}{**Need to do math**}"      |
+  |<------------------------------------------+
+  |          "{3}{How difficult can it be?}"  |
+  +------------------------------------------>|
+  | "                {{4}}                  " |
+  | "$$                                     " |
+  | " x = \sqrt[3]{ y                       " |
+  | "   + \sqrt {y^2 + \bigg( \dfrac{c}{3a} " |
+  | "   - \dfrac{b^2}{9a^2} \bigg)^3}}      " |
+  | "$$                                     " |
+  +<------------------------------------------+
+  |                                           |
+```
+
+#### 2. Animations with TTS
+
+    --{{0}}--
+The same animation can also be combined with text to speech output by using [comments](#Comments:-Text-2-Speech) or [hidden comments](#Hidden-comments) as shown in the example.
+Thereby, hidden comments are simply comments that are not shown to the public as normal comments, they are simply placed into an HTML comment and different voices can be added too.
+
+
+```` markdown
+``` ascii
+
+ 😀                                           😐
+  |             "{1}{_How are you?_}"         |
+  +------------------------------------------>|
+  |           "{2}{**Need to do math**}"      |
+  |<------------------------------------------+
+  .                 ...                       .
+```
+
+<!-- --{{1}}-- How are you? -->
+<!-- --{{2 UK English Female}}-- Need to do some math.-->
+<!-- --{{3}}-- How difficult can it be?-->
+<!-- --{{4}}-- What the hell! -->
+````
+
+``` ascii
+|             "{1}{_How are you?_}"         |
++------------------------------------------>|
+|           "{2}{**Need to do math**}"      |
+|<------------------------------------------+
+|          "{3}{How difficult can it be?}"  |
++------------------------------------------>|
+| "                {{4}}                  " |
+| "$$                                     " |
+| " x = \sqrt[3]{ y                       " |
+| "   + \sqrt {y^2 + \bigg( \dfrac{c}{3a} " |
+| "   - \dfrac{b^2}{9a^2} \bigg)^3}}      " |
+| "$$                                     " |
++<------------------------------------------+
+|                                           |
+```
+
+<!-- --{{1}}-- How are you? -->
+<!-- --{{2 UK English Female}}-- Need to do some math.-->
+<!-- --{{3}}-- How difficult can it be?-->
+<!-- --{{4}}-- What the hell! -->
+
+#### 3. Quizzes
+
+    --{{0}}--
+And of course, you can use this in combination with quiz-text inputs or selections.
+Since every quotation in this example is a separated Markdown-block, we need to trick the interpreter from trying to embed a single line text-quiz to a gap-text element by adding a space before the input.
+Together with the `data-show-partial-solution` command, this is an easy way of creating more complex quizzes.
+
+```` md
+<!-- data-show-partial-solution -->
+``` ascii
+                        .----------------------.
+                       /                      /|
+             .--------+----------------------+ +---------.
+            /         |      " [[  24   ]] " |/         /|
+  .--------+----------+----------+-----------+---------+ +----------.
+ /         |         11          |      "[[   13   ]] "|/          /|
++----------+----------+----------+----------+----------+----------+ +
+|      " [[   5   ]] "|          6          |          7          |/
++---------------------+---------------------+---------------------+
+```
+````
+
+    --{{1}}--
+If you try out the following example, correct and incorrect inputs will be highlighted.
+
+      {{1}}
+<!-- data-show-partial-solution -->
+``` ascii
+                        .----------------------.
+                       /                      /|
+             .--------+----------------------+ +---------.
+            /         |      " [[  24   ]] " |/         /|
+  .--------+----------+----------+-----------+---------+ +----------.
+ /         |         11          |      "[[   13   ]] "|/          /|
++----------+----------+----------+----------+----------+----------+ +
+|      " [[   5   ]] "|          6          |          7          |/
++---------------------+---------------------+---------------------+
+```
+
+
+#### 4. Working with Macros
+<!--
+@image: ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Human_Eye_Transverse_Cut_Unlabeled.jpg/1024px-Human_Eye_Transverse_Cut_Unlabeled.jpg)
+-->
+
+    --{{0}}--
+Since the size of an LiaScript element is defined based on width of the quotation, too long LiaScript definitions, such as an external image-URL might cause some problems.
+To solve this, you can define a local macro, in this case `@image`, which is basically only a substitution for the larger image.
+This macro can then be used as a placeholder within the verbatim.
+For more information on this topic, check out the section [Macros](#macros).
+
+
+```` markdown
+#### 4. Working with Macros
+<!--
+@image: ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Human_Eye_Transverse_Cut_Unlabeled.jpg/1024px-Human_Eye_Transverse_Cut_Unlabeled.jpg)
+-->
+
+Name the Elements in the following image:
+
+<!-- data-show-partial-solution -->
+``` ascii
+        "                  @image                      "
+
+
+" [[ (lens) | optic disc ]] "
+        *---------------------->
+
+
+                                               <------"[[  sclera  ]] "
+
+
+
+
+
+" [[ (retina) | chorid ]] "
+        *----------->
+
+
+
+
+                        <----*" [[   optic nerve   ]] "
+```
+````
+
+    --{{1}}--
+The result looks as follows, where the lower quotations are placed above the image.
+The size of the image was defined by the space between the quotes and required some manual moving till it fits.
+Can you solve it?
+
+    {{1}}
+<section>
+
+Name the Elements in the following image:
+
+<!-- data-show-partial-solution -->
+``` ascii
+        "                  @image                      "
+
+
+" [[ (lens) | optic disc ]] "
+        *---------------------->
+
+
+                                               <------"[[  sclera  ]] "
+
+
+
+
+
+" [[ (retina) | chorid ]] "
+        *----------->
+
+
+
+
+                        <----*" [[   optic nerve   ]] "
+```
+</section>
+
+
+## Charts
+
+    --{{0}}--
+In many cases, a diagram is only used to present some kind of signal paths,
+some primitive functions, some clusters or point clouds.
+You can still generate images, but why not applying some basic kind of ASCII-art
+to solve the most common tasks.
+
+
+                  Dunning-Krueger-Effect
+    100 |   *
+        |                                               *
+      C |    *                                     *
+      o |
+      n |  *  *                                 *
+      f |
+      i |      *
+      d |                                   *
+      e | *     *
+      n |
+      c |         *                  *
+      e |           *            *
+        |*               *
+      0 +-----------------------------------------------
+         0              Competence                   100
+
+
+### Line-Plot Basics
+
+    --{{0}}--
+As for the previous ASCII-art examples, LiaScript has a special notation for simple line-plots.
+These do not have to be surrounded by a code-block, the LiaScript interpreter will detect them automatically, based on their shape.
+But, it is recommend to add 4 spaces before such an image, this has the effect that any other Markdown-viewer will interpret this as an code-block, and thus, preserve the spaces and tabs.
+
+Markdown-format:
+
+```text
+                                      diagram title
+    1.5 |           *
+        |                                 (* stars)
+      y |        *      *
+      - |      *          *
+      a |     *             *       *
+      x |    *                 *
+      i |   *
+      s |  *
+        | *                              *        *
+      0 +------------------------------------------
+        2.0              x-axis                100
+```
+
+    --{{1}}--
+As you can see from the rendered image below, you can add axis names and values, a diagram title and a legend, which is originaly surrounded by parenthesis.
+The positions of points is automatically calculated based on the given length of the two axis.
+
+
+                  {{1}}
+                            diagram title
+    1.5 |           *                     (* stars)
+        |
+      y |        *      *
+      - |      *          *
+      a |     *             *       *
+      x |    *                 *
+      i |   *
+      s |  *
+        | *                              *        *
+      0 +------------------------------------------
+         2.0              x-axis                100
+
+
+                                --{{2}}--
+All diagram titles, labels, limits are optional, and if you do not define
+limits, then the min max values 0 and 1 are used by default.
+
+    {{2}}
+<section>
+
+```text
+     1 |                   *                       *
+       |               *       *               *       *
+       |*             *         *             *         *
+y-axis | *           *           *           *           *
+       |  *         *             *         *             *
+       |   *       *               *       *               *
+       |       *                       *                      *
+    -1 +--------------------------------------------------------
+```
+
+---
+
+         1 |                   *                       *
+           |               *       *               *       *
+           |*             *         *             *         *
+    y-axis | *           *           *           *           *
+           |  *         *             *         *             *
+           |   *       *               *       *               *
+           |       *                       *                      *
+        -1 +--------------------------------------------------------
+
+</section>
+
+### Multi-Line-Plots
+
+                             --{{0}}--
+Next to stars, you can also use any kind of character to define another line,
+where the character defines the color. For example an `r` marks the color red and
+a `A` the color `amber`.
+
+LiaScript-format:
+
+```markdown
+
+    | r          *                                    (* stars)
+    |    r                     A   A   A   A   A      (r imaginary course)
+    |       r *      *       A   A   A   A   A   A    (A big triangles)
+    |        * r       *
+    |       *      r      *       *
+    |      *            r    *
+    |     *                 r
+    |   *                          r
+    | *                              *    r    *
+    +-------------------------------------------
+```
+
+    --{{1}}--
+As you can see in the result, the characters do not only contain color information, since upper and lowercase characters define the size of the dots plotted, and even more than this, it defines also the shape.
+With r you can think of small round and red, while A looks like a large triangle.
+That is why some lines are rather smoothly interpolated and the `A` for example defines sharp line. More on this in section [Shape](#shape).
+
+               {{1}}
+    | r          *                                    (* stars)
+    |    r                     A   A   A   A   A      (r imaginary course)
+    |       r *      *       A   A   A   A   A   A    (A big triangles)
+    |        * r       *
+    |       *      r      *       *
+    |      *            r    *
+    |     *                 r
+    |   *                          r
+    | *                              *    r    *
+    +-------------------------------------------
+
+
+### Dot-Plots
+
+                                 --{{0}}--
+If the there are more point with the same character for one x-value, then only
+dots are plotted. And by using upper and lower case characters you can also
+define the size and the shape of the dots.
+
+Markdown-format:
+
+```markdown
+    10 |        rrrrrrrrrrrr    x
+       |    rrrrrrrrrrrrrrrr
+       |  rrrrrrrrrrrrrrrrr  BBBBB
+       | rrrrrrrrrrrrrrrr  BBBBBBBB
+       |rrrrrrrrrrrrrrr  BBBBBBBBBBB
+       |rrrrrrrrrrrrr  BBBBBBBBBBBBB
+       |rrrrrrrrrrr  BBBBBBBBBBBBBBB
+       | rrrrrrrr  BBBBBBBBBBBBBBBB
+       |  rrrrr  BBBBBBBBBBBBBBBBB
+       |        BBBBBBBBBBBBBBBB
+       |   x    BBBBBBBBBBBBB
+       +-----------------------------
+         0                           2
+```
+
+
+    10 |        rrrrrrrrrrrr    x
+       |    rrrrrrrrrrrrrrrr
+       |  rrrrrrrrrrrrrrrrr  BBBBB
+       | rrrrrrrrrrrrrrrr  BBBBBBBB
+       |rrrrrrrrrrrrrrr  BBBBBBBBBBB
+       |rrrrrrrrrrrrr  BBBBBBBBBBBBB
+       |rrrrrrrrrrr  BBBBBBBBBBBBBBB
+       | rrrrrrrr  BBBBBBBBBBBBBBBB
+       |  rrrrr  BBBBBBBBBBBBBBBBB
+       |        BBBBBBBBBBBBBBBB
+       |   x    BBBBBBBBBBBBB
+       +-----------------------------
+         0                           2
+
+### Colors
+
+    --{{0}}--
+The color codes are somehow defined by the character itself, see the list.
+The commonly used `x`, `+`, `*`, `#` stand for black, while `g` indicate green and we had to use `e` for ebony (brown), since `b` has to be blue.
+We hope the color codes make mostly sense.
+
+| char               | color        | hex        |                                 example                                 |
+| ------------------ | ------------ | ---------- |:-----------------------------------------------------------------------:|
+| `x`, `+`, `*`, `#` | black        | `#1000000` | <div style="background-color:#000000; width: 100%; height: 2rem"></div> |
+| `a`                | Amber        | `#FFBF00`  | <div style="background-color:#FFBF00; width: 100%; height: 2rem"></div> |
+| `b`                | Blue         | `#0000FF`  | <div style="background-color:#0000FF; width: 100%; height: 2rem"></div> |
+| `c`                | Cyan         | `#00FFFF`  | <div style="background-color:#00FFFF; width: 100%; height: 2rem"></div> |
+| `d`                | Dark red     | `#8B0000`  | <div style="background-color:#8B0000; width: 100%; height: 2rem"></div> |
+| `e`                | Ebony        | `#555D50`  | <div style="background-color:#555D50; width: 100%; height: 2rem"></div> |
+| `f`                | Forest green | `#014421`  | <div style="background-color:#014421; width: 100%; height: 2rem"></div> |
+| `g`                | Green        | `#008000`  | <div style="background-color:#008000; width: 100%; height: 2rem"></div> |
+| `h`                | Heliotrope   | `#DF73FF`  | <div style="background-color:#DF73FF; width: 100%; height: 2rem"></div> |
+| `i`                | Indigo       | `#4B0082`  | <div style="background-color:#4B0082; width: 100%; height: 2rem"></div> |
+| `j`                | Jade         | `#00A86B`  | <div style="background-color:#00A86B; width: 100%; height: 2rem"></div> |
+| `k`                | Kaki         | `#C3B091`  | <div style="background-color:#C3B091; width: 100%; height: 2rem"></div> |
+| `l`                | Lime         | `#00FF00`  | <div style="background-color:#00FF00; width: 100%; height: 2rem"></div> |
+| `m`                | Mint         | `#3EB489`  | <div style="background-color:#3EB489; width: 100%; height: 2rem"></div> |
+| `n`                | browN        | `#88540B`  | <div style="background-color:#88540B; width: 100%; height: 2rem"></div> |
+| `o`                | Orange       | `#FF7F00`  | <div style="background-color:#FF7F00; width: 100%; height: 2rem"></div> |
+| `p`                | Pink         | `#FFC0CB`  | <div style="background-color:#FFC0CB; width: 100%; height: 2rem"></div> |
+| `q`                | Queen blue   | `#436B95`  | <div style="background-color:#436B95; width: 100%; height: 2rem"></div> |
+| `r`                | Red          | `#FF0000`  | <div style="background-color:#FF0000; width: 100%; height: 2rem"></div> |
+| `s`                | Silver       | `#C0C0C0`  | <div style="background-color:#C0C0C0; width: 100%; height: 2rem"></div> |
+| `t`                | Teal         | `#008080`  | <div style="background-color:#008080; width: 100%; height: 2rem"></div> |
+| `u`                | Ultramarine  | `#3F00FF`  | <div style="background-color:#3F00FF; width: 100%; height: 2rem"></div> |
+| `v`                | Violet       | `#EE82EE`  | <div style="background-color:#EE82EE; width: 100%; height: 2rem"></div> |
+| `y`                | Yellow       | `#FFFF00`  | <div style="background-color:#FFFF00; width: 100%; height: 2rem"></div> |
+| `w`                | White        | `#FFFFFF`  | <div style="background-color:#FFFFFF; width: 100%; height: 2rem"></div> |
+| `z`                | Zomp         | `#39A78E`  | <div style="background-color:#39A78E; width: 100%; height: 2rem"></div> |
+
+
+### Shapes
+
+    --{{0}}--
+The shape of the dot is also defined by the character, see the example below.
+`T` stands for triangle, as well as `A` makes a triangular shape, for the others we had also to make some decisions that make sense, hopefully.
+
+```text
+6 | + * #           A a B b
+  | C c D d E e F f G g H h
+  | I i J j K k L l M m N n
+  | o O P p Q q R r S s T t
+  | U u V v W w X x Y y Z z
+1 +------------------------
+  0                      24
+```
+
+    6 | + * #           A a B b
+      | C c D d E e F f G g H h
+      | I i J j K k L l M m N n
+      | o O P p Q q R r S s T t
+      | U u V v W w X x Y y Z z
+    1 +------------------------
+       0                     24
+
+
+### Line types
+
+    --{{0}}--
+As depicted in the line diagrams below, next to different colors, lines and dots
+can have different shapes, whether they are dashed, dotted, smoothed or not.
+
+```text
+    <!-- style="height: 700px" -->
+    |   A     A     A     B     B     B     C     C     C
+    |A  D  A  D  A  D  B  E  B  E  B  E  C  F  C  F  C  F
+    |D  G  D  G  D  G  E  H  E  H  E  H  F  I  F  I  F  I
+    |G  J  G  J  G  J  H  K  H  K  H  K  I  L  I  L  I  L
+    |J  M  J  M  J  M  K  N  K  N  K  N  L  O  L  O  L  O
+    |M  P  M  P  M  P  N  Q  N  Q  N  Q  O  R  O  R  O  R
+    |P  S  P  S  P  S  Q  T  Q  T  Q  T  R  U  R  U  R  U
+    |S  V  S  V  S  V  T  W  T  W  T  W  U  X  U  X  U  X
+    |V  Y  V  Y  V  Y  W  Z  W  Z  W  Z  X  #  X  *  X  *
+    |Y     Y     Y     Z     Z     Z     #     #     *
+    +----------------------------------------------------
+```
+
+    <!-- style="height: 700px" -->
+    |   A     A     A     B     B     B     C     C     C
+    |A  D  A  D  A  D  B  E  B  E  B  E  C  F  C  F  C  F
+    |D  G  D  G  D  G  E  H  E  H  E  H  F  I  F  I  F  I
+    |G  J  G  J  G  J  H  K  H  K  H  K  I  L  I  L  I  L
+    |J  M  J  M  J  M  K  N  K  N  K  N  L  O  L  O  L  O
+    |M  P  M  P  M  P  N  Q  N  Q  N  Q  O  R  O  R  O  R
+    |P  S  P  S  P  S  Q  T  Q  T  Q  T  R  U  R  U  R  U
+    |S  V  S  V  S  V  T  W  T  W  T  W  U  X  U  X  U  X
+    |V  Y  V  Y  V  Y  W  Z  W  Z  W  Z  X  #  X  *  X  *
+    |Y     Y     Y     Z     Z     Z     #     #     *
+    +----------------------------------------------------
+
+
+      {{1}}
+<section>
+
+---
+
+    --{{1}}--
+And here is the same diagram only for the lower case characters.
+
+
+```
+    <!-- style="height: 700px" -->
+    |   a     a     a     b     b     b     c     c     c
+    |a  d  a  d  a  d  b  e  b  e  b  e  c  f  c  f  c  f
+    |d  g  d  g  d  g  e  h  e  h  e  h  f  i  f  i  f  i
+    |g  j  g  j  g  j  h  k  h  k  h  k  i  l  i  l  i  l
+    |j  m  j  m  j  m  k  n  k  n  k  n  l  o  l  o  l  o
+    |m  p  m  p  m  p  n  q  n  q  n  q  o  r  o  r  o  r
+    |p  s  p  s  p  s  q  t  q  t  q  t  r  u  r  u  r  u
+    |s  v  s  v  s  v  t  w  t  w  t  w  u  x  u  x  u  x
+    |v  y  v  y  v  y  w  z  w  z  w  z  x     x     X
+    |y     y     y     z     z     z
+    +----------------------------------------------------
+```
+
+    <!-- style="height: 700px" -->
+    |   a     a     a     b     b     b     c     c     c
+    |a  d  a  d  a  d  b  e  b  e  b  e  c  f  c  f  c  f
+    |d  g  d  g  d  g  e  h  e  h  e  h  f  i  f  i  f  i
+    |g  j  g  j  g  j  h  k  h  k  h  k  i  l  i  l  i  l
+    |j  m  j  m  j  m  k  n  k  n  k  n  l  o  l  o  l  o
+    |m  p  m  p  m  p  n  q  n  q  n  q  o  r  o  r  o  r
+    |p  s  p  s  p  s  q  t  q  t  q  t  r  u  r  u  r  u
+    |s  v  s  v  s  v  t  w  t  w  t  w  u  x  u  x  u  x
+    |v  y  v  y  v  y  w  z  w  z  w  z  x     x     X
+    |y     y     y     z     z     z
+    +----------------------------------------------------
+
+</section>
 
 ## Interactive Code
 
@@ -5628,7 +7789,7 @@ result;
                                --{{2}}--
 It is possible to re-run the example, but you can also make changes, such as the number of loops.
 When you execute your modified example, a new version will be added to the end of the list.
-It is possible to go back and forth between versions and if a previous version gets modified, this will create append also new version.  
+It is possible to go back and forth between versions and if a previous version gets modified, this will create append also new version.
 
 
 ### Projects
@@ -5664,14 +7825,14 @@ else {
 
   // eval the script that uses this dataset, but just
   // inserting the @input, which already contains JS code
-  // would be also fine ... 
+  // would be also fine ...
   eval(`@input(0)`);
 </script>
 ````
 
                                --{{2}}--
 The result is a project which consists of two files.
-Each file can be edited separately, while the script tag provides only some basic glue-code that tells LiaScript what to do with the input. 
+Each file can be edited separately, while the script tag provides only some basic glue-code that tells LiaScript what to do with the input.
 
                                  {{2}}
 ``` js     -EvalScript.js
@@ -5770,7 +7931,7 @@ Thus, every `send` module does only exists in this particular scope and it offer
 - __`send.lia`__ : send messages and control commands
 - __`send.handle`__ : handler terminal inputs
 - __`send.register`__ :
-- __`send.dispatch`__ : 
+- __`send.dispatch`__ :
 
                                --{{1}}--
 To start with, there is a `log` method, which can be used to send different types of outputs directly to the console.
@@ -6351,1359 +8512,6 @@ developing your own courses. See:
 [preview-lia](https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md)
 
 
-
-
-## Charts
-
-In many cases, a diagram is only used to present some kind of signal paths,
-some primitive functions, some clusters or point clouds.
-
-You can still generate images, but why not applying some basic kind of ASCII-art
-to solve the most common tasks.
-
-### Line-Plots 1
-
-Markdown-format:
-
-```text
-                                  diagram title
-1.5 |           *
-    |                                 (* stars)
-  y |        *      *
-  - |      *          *
-  a |     *             *       *
-  x |    *                 *
-  i |   *
-  s |  *
-    | *                              *        *
-  0 +------------------------------------------
-     2.0              x-axis                100
-```
-
-Result:
-
-                            diagram title
-    1.5 |           *                     (* stars)
-        |
-      y |        *      *
-      - |      *          *
-      a |     *             *       *
-      x |    *                 *
-      i |   *
-      s |  *
-        | *                              *        *
-      0 +------------------------------------------
-         2.0              x-axis                100
-
-
-### Line-Plots 2
-
-                                --{{0}}--
-All diagram titles, labels, limits are optional, and if you do not define
-limits, then the min max values 0 and 1 are used by default.
-
-Markdown-format:
-
-```text
-     1 |                   *                       *
-       |               *       *               *       *
-       |*             *         *             *         *
-y-axis | *           *           *           *           *
-       |  *         *             *         *             *
-       |   *       *               *       *               *
-       |       *                       *                      *
-    -1 +--------------------------------------------------------
-```
-
-         1 |                   *                       *
-           |               *       *               *       *
-           |*             *         *             *         *
-    y-axis | *           *           *           *           *
-           |  *         *             *         *             *
-           |   *       *               *       *               *
-           |       *                       *                      *
-        -1 +--------------------------------------------------------
-
-
-### Multi-Line-Plots
-
-                             --{{0}}--
-Next to stars, you can also use any kind of character to define another line,
-where the character defines the color. For example an r marks the color red and
-a b the color blue.
-
-Markdown-format:
-
-```markdown
-| r          *                               (* stars)
-|    r                                       (r imaginary course)
-|       r *      *       B  B  B  B  B  B  B (B big dots)
-|        * r       *
-|       *      r      *       *
-|      *            r    *
-|     *                 r
-|   *                          r
-| *                              *    r    *
-+-------------------------------------------
-```
-
-    | r          *                              (* stars)
-    |    r                                      (r imaginary course)
-    |       r *      *      B  B  B  B  B  B  B (B big dots)
-    |        * r       *
-    |       *      r      *       *
-    |      *            r    *
-    |     *                 r
-    |   *                          r
-    | *                              *    r    *
-    +-------------------------------------------
-
-
-
-### Dot-Plots
-
-                                 --{{0}}--
-If the there are more point with the same character for one x-value, then only
-dots are plotted. And by using upper and lower case characters you can also
-define the size of the dots.
-
-Markdown-format:
-
-```markdown
-    10 |        rrrrrrrrrrrr    x
-       |    rrrrrrrrrrrrrrrr
-       |  rrrrrrrrrrrrrrrrr  BBBBB
-       | rrrrrrrrrrrrrrrr  BBBBBBBB
-       |rrrrrrrrrrrrrrr  BBBBBBBBBBB
-       |rrrrrrrrrrrrr  BBBBBBBBBBBBB
-       |rrrrrrrrrrr  BBBBBBBBBBBBBBB
-       | rrrrrrrr  BBBBBBBBBBBBBBBB
-       |  rrrrr  BBBBBBBBBBBBBBBBB
-       |        BBBBBBBBBBBBBBBB
-       |   x    BBBBBBBBBBBBB
-       +-----------------------------
-         0                           2
-```
-
-
-    10 |        rrrrrrrrrrrr    x
-       |    rrrrrrrrrrrrrrrr
-       |  rrrrrrrrrrrrrrrrr  BBBBB
-       | rrrrrrrrrrrrrrrr  BBBBBBBB
-       |rrrrrrrrrrrrrrr  BBBBBBBBBBB
-       |rrrrrrrrrrrrr  BBBBBBBBBBBBB
-       |rrrrrrrrrrr  BBBBBBBBBBBBBBB
-       | rrrrrrrr  BBBBBBBBBBBBBBBB
-       |  rrrrr  BBBBBBBBBBBBBBBBB
-       |        BBBBBBBBBBBBBBBB
-       |   x    BBBBBBBBBBBBB
-       +-----------------------------
-         0                           2
-
-### Colors
-
-The color codes are somehow defined by the character itself, see the list.
-
-| char | color        | hex       |
-| ---- | ------------ | --------- |
-| `a`  | Amber        | `#FFBF00` |
-| `b`  | Blue         | `#0000FF` |
-| `c`  | Cyan         | `#00FFFF` |
-| `d`  | Dark red     | `#8B0000` |
-| `e`  | Ebony        | `#555D50` |
-| `f`  | Forest green | `#014421` |
-| `g`  | Green        | `#008000` |
-| `h`  | Heliotrope   | `#DF73FF` |
-| `i`  | Indigo       | `#4B0082` |
-| `j`  | Jade         | `#00A86B` |
-| `k`  | Kaki         | `#C3B091` |
-| `l`  | Lime         | `#00FF00` |
-| `m`  | Mint         | `#3EB489` |
-| `n`  | browN        | `#88540B` |
-| `o`  | Orange       | `#FF7F00` |
-| `p`  | Pink         | `#FFC0CB` |
-| `q`  | Queen blue   | `#436B95` |
-| `r`  | Red          | `#FF0000` |
-| `s`  | Silver       | `#C0C0C0` |
-| `t`  | Teal         | `#008080` |
-| `u`  | Ultramarine  | `#3F00FF` |
-| `v`  |              | `#EE82EE` |
-| `w`  |              | `#FFFFFF` |
-| `y`  |              | `#FFFF00` |
-| `z`  | Zomp         | `#39A78E` |
-
-### Shapes
-
-The shape of the dot is also defined by the character, see the example below.
-
-```text
-6 | + * #           A a B b
-  | C c D d E e F f G g H h
-  | I i J j K k L l M m N n
-  | o O P p Q q R r S s T t
-  | U u V v W w X x Y y Z z
-1 +------------------------
-  0                      24
-```
-
-    6 | + * #           A a B b
-      | C c D d E e F f G g H h
-      | I i J j K k L l M m N n
-      | o O P p Q q R r S s T t
-      | U u V v W w X x Y y Z z
-    1 +------------------------
-       0                     24
-
-
-### Line types
-
-As depicted in the line diagrams below, next to different colors, lines and dots
-can have different shapes, whether they are dashed, dotted, smoothed or not.
-
-```text
-|                 * *    +  +    #  #
-|                *   *  +    +  #    #
-| N   O   P   Q   R   S   T   U   V   W   X   Y   Z
-|NA NOB OPC PQD QRE RSF STG TUH UVI VWJ WXK XYL YZM Z
-|An ABo BCp CDq DEr EFs FGt GHu HIv IJw JKx KLy LMz M
-|na nob opc pqd qre rsf stg tuh uvi vwj wxk xyl yzm z
-|a  ab  bc  cd  de  ef  fg  gh  hi  ij  jk  kl  lm  m
-+----------------------------------------------------
-```
-
-
-    |                 * *    +  +    #  #
-    |                *   *  +    +  #    #
-    | N   O   P   Q   R   S   T   U   V   W   X   Y   Z
-    |NA NOB OPC PQD QRE RSF STG TUH UVI VWJ WXK XYL YZM Z
-    |An ABo BCp CDq DEr EFs FGt GHu HIv IJw JKx KLy LMz M
-    |na nob opc pqd qre rsf stg tuh uvi vwj wxk xyl yzm z
-    |a  ab  bc  cd  de  ef  fg  gh  hi  ij  jk  kl  lm  m
-    +----------------------------------------------------
-
-
-
-## Fun with Tables
-
-
-As already mentioned, tables cannot only be interpreted as structural elements
-within a Markdown document, but also as datasets. In fact, there is little
-difference between a diagram and collection of values.
-
-
-      9 |                                       (* dots)
-        |
-      y |                              *
-      - |
-      a |                    *
-      x |
-      i |          *
-      s |
-        |*
-      0 +------------------------------------
-        0            x-axis                 36
-
-The same values collected within a list. If you click onto the little icon above
-this list, you will get the same plot as depicted above.
-
-|   x | dots |
-| ---:| ----:|
-|   0 |    0 |
-|  10 |    2 |
-|  20 |    4 |
-|  30 |    6 |
-
-
-One of the biggest problems in science is the lack of primary data. Projects
-such as the Open-Science-Framework (http://osf.io) try to leverage this, by
-offering a plattform, where scientists can store and document vast amounts of
-data. But why not directly add and visulaize the data, so that they could be
-used and inspected by others, instead of using external tools to create
-visualizations.
-
-Everyone who is creating some kind of data or putting it into a Markdown already
-performs some kind of configuration. Based on that table's/data's structural
-settings, we can __visualize data automatically__. Actually it is quite
-surprising, why there has never been an attempt to treat Markdown tables as
-datasets. The following sections are intended to give a brief overview on different
-visualization options and how the systems determines, which one gets applied.
-And of course, you can also enforce your visualization style.
-
-### `LinePlot`
-
-The following dataset was taken from https://ourworldindata.org and it shows
-the government expenditure on education in percentage to the GDP. Thus the
-first column defines the x-values while the later ones define the categories.
-
-If you click on the image icon again, you will see a more elaborate
-representation with title and labels.
-
-<!--
-data-title="Government expenditure on education"
-data-xlabel="year"
-data-ylabel="% of GDP"
--->
-| Year | Finland |     USA | Germany |   China |
-| ---- | -------:| -------:| -------:| -------:|
-| 1995 | 6.80942 |         | 4.42079 | 1.84192 |
-| 1996 | 6.86052 |         | 4.48319 | 1.85338 |
-| 1997 |         |         |         |         |
-| 1998 |         |         | 4.45345 | 1.84432 |
-| 1999 | 5.86960 |         |         | 1.88803 |
-| 2000 | 5.71687 |         |         |         |
-| 2001 | 5.84797 |         |         |         |
-| 2002 | 6.02477 |         |         |         |
-| 2003 | 6.17476 |         |         |         |
-| 2004 | 6.16849 |         |         |         |
-| 2005 | 6.03605 |         |         |         |
-| 2006 | 5.93809 |         | 4.27930 |         |
-| 2007 | 5.68608 |         | 4.34302 |         |
-| 2008 | 5.84676 |         | 4.40954 |         |
-| 2009 | 6.48517 |         | 4.88047 |         |
-| 2010 | 6.54070 | 5.42001 | 4.91368 |         |
-| 2011 | 6.48200 | 5.22389 | 4.80779 |         |
-| 2012 | 7.19254 | 5.19485 | 4.93331 |         |
-| 2013 | 7.15848 | 4.94378 | 4.93496 |         |
-| 2014 | 7.15155 | 4.98948 | 4.93112 |         |
-
-https://ourworldindata.org/financing-education#all-charts-preview
-
-
-The reason for this is, you can actually add additional settings as it was done
-to style different Markdown elements, simply by attaching an HTML-comment to the
-front of this table. The type of representation is still automatically
-determined based on the table structure, but it is still possible to add
-attributes like `data-title`, `data-xlabel`, `data-ylabel` to tweak the
-graphical representation. See section [Attributes](#attributes) for more
-information.
-
-
-``` markdown
-<!--
-data-title="Government expenditure on education"
-data-xlabel="year"
-data-ylabel="% of GDP"
--->
-| Year | Finland | USA | Germany |   China |
-| ---- | -------:| ---:| -------:| -------:|
-| 1995 | 6.80942 |     | 4.42079 | 1.84192 |
-| 1996 | 6.86052 |     | 4.48319 | 1.85338 |
-| ...  |     ... | ... |     ... |     ... |
-```
-
-You can of course also visualize any kind of table, that does not fullfill this
-type of classification to line or scatterplot. Define another kind of
-presentation and if not all values within the first column can be parsed as
-numbers, then they are interpreted as categories. If you change the order of the
-table, then also the order of categories in the visualization is changed.
-
-``` md
-<!-- data-type="line" -->
-| Animal          | weight in kg | Lifespan years | Mitogen |
-| --------------- | ------------:| --------------:| -------:|
-| Mouse           |        0.028 |              2 |      95 |
-| Flying squirrel |        0.085 |             15 |      50 |
-| Brown bat       |        0.020 |             30 |      10 |
-| Sheep           |           90 |             12 |      95 |
-| Human           |           68 |             70 |      10 |
-```
-
-<!-- data-type="line" -->
-| Animal          | weight in kg | Lifespan years | Mitogen |
-| --------------- | ------------:| --------------:| -------:|
-| Mouse           |        0.028 |              2 |      95 |
-| Flying squirrel |        0.085 |             15 |      50 |
-| Brown bat       |        0.020 |             30 |      10 |
-| Sheep           |           90 |             12 |      95 |
-| Human           |           68 |             70 |      10 |
-
-
-### `ScatterPlot`
-
-
-If your table is similar to the one in a LinePlot, but the first column
-contains numbers which appear twice or more times, than this data cannot be
-interpreted as a "function" in a mathematical sense. This data is then simply
-visualized as a scatter plot only showing the dots.
-
-
-| Random |    I |  II |
-| ------:| ----:| ---:|
-|    5.0 |  1.0 |   5 |
-|    6.0 |  1.0 |   4 |
-|    7.0 |  1.0 |   5 |
-|    8.0 |  1.0 |   5 |
-|    9.0 |  1.0 |   4 |
-|   10.0 |  1.0 |   5 |
-|    5.0 | 10.0 |   7 |
-|    6.0 | 10.0 |   8 |
-|    7.0 | 10.0 |   7 |
-|    8.0 | 10.0 |   7 |
-|    9.0 | 10.0 |   8 |
-|   10.0 | 10.0 |   7 |
-
-
-### `BoxPlot`
-
-
-If you have a ScatterPlot like representation, but actually want to use this
-data as primary data for your BoxPlot, you can manually change the type of
-visualization to BoxPlot, simply by adding the following attribute to the head of
-your table, as it is shown in the snippet below. Columns are then treated as
-datasets and get visualized accordingly.
-
-``` Markdown
-<!-- data-type="boxplot" -->
-| Random |    I |  II |
-| ------:| ----:| ---:|
-|    5.0 |  1.0 |   5 |
-|    ... |  ... |  .. |
-```
-
-<!-- data-type="boxplot" -->
-| Random |    I |  II |
-| ------:| ----:| ---:|
-|    5.0 |  1.0 |   5 |
-|    6.0 |  1.0 |   4 |
-|    7.0 |  1.0 |   5 |
-|    8.0 |  1.0 |   5 |
-|    9.0 |  1.0 |   4 |
-|   10.0 |  1.0 |   5 |
-|    5.0 | 10.0 |   7 |
-|    6.0 | 10.0 |   8 |
-|    7.0 | 10.0 |   7 |
-|    8.0 | 10.0 |   7 |
-|    9.0 | 10.0 |   8 |
-|   10.0 | 10.0 |   7 |
-|        |      |   1 |
-
-### `BarChart`
-
-In contrast to a line or a scatter plot, if the first colum contains at least
-one entry thant cannot be parsed as a number, this might be represented also as
-BarChart. Which works perfectly with the following example. If the maximum
-values of the columns do not differ to much, then this dataset it represented as
-a BarChart, otherwise you might end up seeing only one huge bar, while the other
-bars are indistiguishable from each other. In this case other visualization are
-chosen.
-
-
-| Animal          | weight in kg | Lifespan years | Mitogen |
-| --------------- | ------------:| --------------:| -------:|
-| Mouse           |        0.028 |              2 |      95 |
-| Flying squirrel |        0.085 |             15 |      50 |
-| Brown bat       |        0.020 |             30 |      10 |
-| Sheep           |           90 |             12 |      95 |
-| Human           |           68 |             70 |      10 |
-
-
-### `Radar`
-
-
-If for example humans and sheeps are removed from the dataset, then wheight in
-kg would not be visible in a BarChart at all. In this case a Radar is selected,
-that allows to analyze data visually with different "y"-axis.
-
-| Animal          | weight in kg | Lifespan years | Mitogen |
-| --------------- | ------------:| --------------:| -------:|
-| Mouse           |        0.028 |             02 |      95 |
-| Flying squirrel |        0.085 |             15 |      50 |
-| Brown bat       |        0.020 |             30 |      10 |
-
-
-### `PieChart`
-
-If you have a table with only one row full of numbers, this will be
-automatically presented as an pie chart. The head represents the categories and
-the body the quatities.
-
-
-| Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
-| -------:| -------:| ------:| -------:| ---------:| -----:|
-|      50 |      50 |    100 |     200 |       350 |   250 |
-
-
-You can use the first column to give some more information about your data. If
-the first element of the list body contains a text, that cannot be directly
-interpreted as a number, then these two text snippets are used to the define the
-main title and the subtitle of your chart.
-
-| Music-Style 1994 | Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
-|:---------------- | -------:| -------:| ------:| -------:| ---------:| -----:|
-| Student rating   |      50 |      50 |    100 |     200 |       350 |   250 |
-
-
-#### `PieChart`(s)
-
-The default behavior for the Table below, would be to represent it as a bar-chart.
-But, you can enforce the usage of pie charts, simply by adding the attribute
-`piechart` into the HTML comment, directly above the table:
-
-```markdown
-<!-- data-type="PieChart" -->
-| Music-Style | Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
-|:----------- | -------:| -------:| ------:| -------:| ---------:| -----:|
-| 1994        |      50 |      50 |    100 |     200 |       350 |   250 |
-| ...         |     ... |     ... |    ... |     ... |       ... |   ... |
-```
-
-The result looks as follows:
-
-<!-- data-type="PieChart" -->
-| Music-Style | Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
-|:----------- | -------:| -------:| ------:| -------:| ---------:| -----:|
-| 1994        |      50 |      50 |    100 |     200 |       350 |   250 |
-| 2014        |      20 |      30 |    100 |     220 |       400 |   230 |
-| demo 2034   |       5 |      12 |     98 |     293 |       345 |    32 |
-
-Since data is parsed at runtime, you can also use animations to change the
-values  of chart, while go on in your slide or move back. But keep in mind, that
-this might lead to negative effects, if your audience preferes the textbook
-mode:
-
-| Music-Style {0-1}{1994} {1}{2014} |           Classic |           Country | Reggae |             Hip-Hop |           Hard-Rock |               Samba |
-|:--------------------------------- | -----------------:| -----------------:| ------:| -------------------:| -------------------:| -------------------:|
-| Student rating                    | {0-1}{50} {1}{20} | {0-1}{50} {1}{30} |    100 | {0-1}{200} {1}{220} | {0-1}{350} {1}{400} | {0-1}{250} {1}{230} |
-
-
-If the upper table might be too long and you prefer to use only two columns and
-grow your data vertically, then you can use the attribute `data-transpose`,
-which flips mirrows your data along an imaginary vertical axis.
-
-```markdown
-<!-- data-transpose -->
-| Music-Style {0-1}{1994} {1}{2014} |    Student rating |
-|:--------------------------------- | -----------------:|
-| Classic                           | {0-1}{50} {1}{20} |
-| Country                           | {0-1}{50} {1}{30} |
-| ...                               |               ... |
-```
-
-The result is the same as above, but it might be easier to handle your data.
-
-<!-- data-transpose -->
-| Music-Style {0-1}{1994} {1}{2014} |      Student rating |
-|:--------------------------------- | -------------------:|
-| Classic                           |   {0-1}{50} {1}{20} |
-| Country                           |   {0-1}{50} {1}{30} |
-| Reggae                            |                 100 |
-| Hip-Hop                           | {0-1}{200} {1}{220} |
-| Hard-Rock                         | {0-1}{350} {1}{400} |
-| Samba                             | {0-1}{250} {1}{230} |
-
-### `Funnel`
-
-Funnel is a similar representation as PieChart, but it is not set automatically.
-If you want to use funnel, you will have to set the `data-type` parameter to
-funnel.
-
-``` markdown
-<!-- data-type="funnel" -->
-| Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
-| -------:| -------:| ------:| -------:| ---------:| -----:|
-|      50 |      50 |    100 |     200 |       350 |   250 |
-```
-
-<!-- data-type="funnel" -->
-| Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
-| -------:| -------:| ------:| -------:| ---------:| -----:|
-|      50 |      50 |    100 |     200 |       350 |   250 |
-
-The rest is the same as for piecharts, you can also use effects to generate
-animated diagrams.
-
-<!-- data-type="funnel" data-transpose -->
-| Music-Style {0-1}{1994} {1}{2014} |      Student rating |
-|:--------------------------------- | -------------------:|
-| Classic                           |   {0-1}{50} {1}{20} |
-| Country                           |   {0-1}{50} {1}{30} |
-| Reggae                            |                 100 |
-| Hip-Hop                           | {0-1}{200} {1}{220} |
-| Hard-Rock                         | {0-1}{350} {1}{400} |
-| Samba                             | {0-1}{250} {1}{230} |
-
-
-### `Map`
-
-A map is similar to a BarChart from the table structure, but if you want to
-depict your data on a real map, you will have to add a geojson-file, that
-contains all relevant data about the form of your countries, states, cities,
-etc. The first column has to match the names of your objects in your geojson
-data, that is attached to your table in the following way:
-
-``` markdown
-<!-- data-type="map" data-src="https://code.highcharts.com/mapdata/custom/europe.geo.json" -->
-| Country                | percent |
-| ---------------------- | ------- |
-| Albania                | 73.5    |
-| Andorra                | 98.9    |
-```
-
-
-<!-- style="height: 600px" data-type="map" data-src="https://code.highcharts.com/mapdata/custom/europe.geo.json" -->
-| Country                | percent |
-| ---------------------- | ------- |
-| Albania                | 73.5    |
-| Andorra                | 98.9    |
-| Armenia                | 72.4    |
-| Austria                | 87.9    |
-| Azerbaijan             | 79.8    |
-| Belarus                | 79.7    |
-| Belgium                | 93.9    |
-| Bosnia and Herzegovina | 80.8    |
-| Bulgaria               | 66.7    |
-| Croatia                | 91.5    |
-| Cyprus                 | 84.4    |
-| Czech Republic         | 87.7    |
-| Denmark                | 97.8    |
-| Estonia                | 97.9    |
-| Finland                | 94.0    |
-| France                 | 92.3    |
-| Georgia                | 68.1    |
-| Germany                | 96.0    |
-| Greece                 | 72.9    |
-| Hungary                | 89.0    |
-| Iceland                | 99.0    |
-| Ireland                | 91.9    |
-| Italy                  | 92.5    |
-| Latvia                 | 87.1    |
-| Liechtenstein          | 98.1    |
-| Lithuania              | 90.9    |
-| Luxembourg             | 97.8    |
-| Macedonia              | 79.2    |
-| Malta                  | 83.1    |
-| Moldova                | 76.1    |
-| Monaco                 | 97.5    |
-| Montenegro             | 71.5    |
-| Netherlands            | 95.6    |
-| Norway                 | 98.4    |
-| Poland                 | 78.2    |
-| Portugal               | 78.2    |
-| Republic of Serbia     | 73.4    |
-| Romania                | 73.8    |
-| Russia                 | 80.9    |
-| San Marino             | 60.2    |
-| Slovakia               | 84.9    |
-| Slovenia               | 79.9    |
-| Spain                  | 92.5    |
-| Sweden                 | 96.4    |
-| Switzerland            | 93.7    |
-| Turkey                 | 83.3    |
-| Ukraine                | 93.4    |
-| United Kingdom         | 94.9    |
-| Vatican City           | 60.1    |
-
-> Currently there is only support to visualize one column, but this will be
-> fixed in the future ...
-
-
-
-### `HeatMap`
-
-Another type of visualization is a HeatMap, which is used, if the table head and
-the first column do only contain numbers, in other words coordinates. If you
-want to use categories instead of coordinate numbers, you can enforce the usage
-of a heatmap, with the comment shown below:
-
-``` markdown
-<!--
-data-type="heatmap"
-data-title="Seattle mean temperature in Fahrenheit"
-data-show
--->
-| Seattle |  Jan |  Feb |  Mar |  Apr |  May |  ... |
-| -------:| ----:| ----:| ----:| ----:| ----:| ----:|
-|       0 | 40.7 | 41.5 | 43.6 | 46.6 | 51.4 |  ... |
-|       2 |  ... |  ... |  ... |  ... |  ... |  ... |
-
-```
-
-The attribute `data-show` simply shows the diagram at default, instead of using
-the table.
-
-<!--
-data-type="heatmap"
-data-title="Seattle mean temperature in Fahrenheit"
-data-show
--->
-| Seattle |  Jan |  Feb |  Mar |  Apr |  May |  Jun |  Jul |   Aug |  Sep |  Oct |  Nov |  Dec |
-| -------:| ----:| ----:| ----:| ----:| ----:| ----:| ----:| -----:| ----:| ----:| ----:| ----:|
-|       0 | 40.7 | 41.5 | 43.6 | 46.6 | 51.4 | 56.0 | 60.5 |  61.2 | 57.0 | 50.1 | 44.1 | 39.6 |
-|       2 | 40.2 | 40.7 | 42.7 | 45.3 | 50.0 | 54.4 | 58.5 |  59.2 | 55.4 | 49.2 | 43.5 | 39.3 |
-|       4 | 39.7 | 40.0 | 41.9 | 44.4 | 48.9 | 53.2 | 57.0 |  57.7 | 54.2 | 48.6 | 43.1 | 38.9 |
-|       6 | 39.6 | 39.5 | 41.3 | 44.2 | 49.5 | 54.2 | 57.8 |  57.4 | 53.6 | 48.2 | 42.8 | 38.7 |
-|       8 | 39.6 | 39.9 | 42.9 | 47.1 | 52.7 | 57.3 | 61.3 |  61.1 | 56.7 | 49.5 | 43.1 | 38.7 |
-|      10 | 41.3 | 42.7 | 46.4 | 50.7 | 56.4 | 60.9 | 65.2 |  65.4 | 60.9 | 52.8 | 45.5 | 40.4 |
-|      12 | 43.8 | 46.0 | 49.5 | 53.8 | 59.6 | 64.3 | 69.4 |  69.8 | 65.1 | 56.0 | 47.8 | 42.6 |
-|      14 | 45.1 | 47.7 | 51.3 | 55.9 | 61.9 | 66.9 | 72.6 |  73.2 | 67.7 | 57.8 | 48.8 | 43.6 |
-|      16 | 44.5 | 47.5 | 51.4 | 55.9 | 62.3 | 67.5 | 73.9 |  74.3 | 68.2 | 57.4 | 47.8 | 42.6 |
-|      18 | 42.6 | 44.7 | 48.7 | 53.8 | 60.3 | 65.9 | 72.3 |  72.2 | 64.6 | 53.9 | 46.0 | 41.2 |
-|      20 | 42.0 | 43.3 | 46.4 | 50.2 | 56.0 | 61.4 | 66.9 |  66.6 | 60.7 | 52.3 | 45.2 | 40.7 |
-|      22 | 41.4 | 42.5 | 45.0 | 48.3 | 53.5 | 58.2 | 63.2 |  63.5 | 58.7 | 51.1 | 44.5 | 40.1 |
-
-https://datavizpyr.com/heatmaps-with-seaborn-in-python/
-
-### `Parallel`
-
-
-A Parallel representation jumps in, if there are simply too many categories, so
-that your BarChart would contain only thin lines.
-
-<!-- data-show -->
-| Country                |    GDP growth (%) | Births per woman | Life expectancy at birth (years) | Population ages >= 65 (%) | Pop. ages 15-64 (%) | Pop ages 0-14 (%) | Pop (total) |
-| ---------------------- | -----------------:| ----------------:| --------------------------------:| --------------------------:| -------------------:| -----------------:| -----------:|
-| Albania                |               7.5 |            1.858 |                 76.6337073170732 |            9.3330694913874 |    66.4522208535245 |  24.2147096550882 |     3143291 |
-| Andorra                |  3.57073718591123 |            1.260 |                              NaN |                        NaN |                 NaN |               NaN |     83810.5 |
-| Austria                |  2.17880778069679 |            1.414 |                 80.4475609756098 |           17.0078802490015 |    67.7942859199021 |  15.1978338310964 |     8336926 |
-| Byelarus               | 11.29603925282670 |            1.420 |                 70.6328780487805 |           13.8161084682917 |    71.3440867491758 |  14.8398047825325 |     9680850 |
-| Belgium                |  1.00416891576425 |            1.820 |                 80.1095609756098 |           17.2425951179457 |    65.9073170003941 |  16.8500878816601 |    10708433 |
-| Bosnia and Herzegovina |  5.41999999999929 |            1.209 |                 75.1063170731708 |           13.7875788575916 |    70.5586044787057 |  15.6538166637027 |     3773100 |
-| Bulgaria               |  6.21712220063873 |            1.478 |                 73.3165853658537 |           17.3328904412356 |    69.2610054713067 |  13.4061040874577 |     7623395 |
-| Channel Islands        |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
-| Croatia                |  2.35925308110710 |            1.470 |                 75.9121951219512 |           17.1754953634927 |    67.5174504975681 |  15.3070541389392 |     4434000 |
-| Czech Republic         |  2.46366103329814 |            1.497 |                 77.2112195121951 |           14.6644147081870 |    71.1889763214880 |  14.1466089703250 |    10424336 |
-| Denmark                | -0.86969912719333 |            1.892 |                 78.7004878048781 |           15.9364325701275 |    65.6692750948847 |  18.3942923349878 |     5493621 |
-| Estonia                | -5.12891873578752 |            1.661 |                 73.9731707317073 |           16.9573479430650 |    68.0747344729978 |  14.9679175839372 |     1340675 |
-| Faroe Islands          |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |       48511 |
-| Finland                |  0.92209645431238 |            1.846 |                 79.7919512195122 |           16.5283868561977 |    66.6427434111131 |  16.8288697326892 |     5313399 |
-| France                 |  0.21695181782435 |            1.998 |                 81.5204878048781 |           16.6134150592142 |    64.9880225189894 |  18.3985624217964 |    62277432 |
-| Germany                |  0.98801573506542 |            1.376 |                 80.0885365853659 |           19.9652972040776 |    66.3351760329956 |  13.6995267629268 |    82110097 |
-| Greece                 |  2.01498162894308 |            1.506 |                 79.9631707317073 |           18.1870521529388 |    67.5883962990861 |  14.2245515479751 |    11237094 |
-| Hungary                |  0.59999999999994 |            1.352 |                 74.0090243902439 |           16.0592099507043 |    68.9813743902960 |  14.9594156589996 |    10038188 |
-| Iceland                |  0.95512219949856 |            2.140 |                 81.5751219512195 |           11.6851788453979 |    67.3938402627208 |  20.9209808918813 |      317414 |
-| Ireland                | -3.03575424255612 |            2.100 |                 79.8568292682927 |           11.1093456408398 |    68.3358023622894 |  20.5548519968708 |     4425675 |
-| Isle of Man            |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
-| Italy                  | -1.31844836660481 |            1.414 |                 81.9452097560976 |           20.0909973618083 |    65.7289363852644 |  14.1800662529273 |    59832179 |
-| Kosovo                 |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
-| Latvia                 | -4.55213597961080 |            1.453 |                 72.2382926829268 |           17.1863911389844 |    69.0425815911418 |  13.7710272698738 |     2266094 |
-| Liechtenstein          |  1.79808929851180 |            1.400 |                 82.6341463414634 |                        NaN |                 NaN |               NaN |       35629 |
-| Lithuania              |  2.76144078921502 |            1.470 |                 71.8217073170732 |           15.9677094440150 |    68.7509466357882 |  15.2813439201968 |     3358115 |
-| Luxembourg             |  0.03220273485962 |            1.605 |                 80.5246341463415 |           14.0365040657173 |    67.9773784654310 |  17.9861174688517 |      488650 |
-| Macedonia              |  4.80000000000011 |            1.438 |                 74.2113170731707 |           11.5845850425847 |    69.9825898844976 |  18.4328250729177 |     2041342 |
-| Malta                  |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
-| Moldova                |  7.76484641287229 |            1.495 |                 68.4371463414634 |           11.1369548727738 |    71.6754849214449 |  17.1875602057813 |     3633369 |
-| Monaco                 |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
-| Republic of Montenegro |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
-| Netherlands            |  1.99580842581707 |            1.775 |                 80.4007317073171 |           14.7235949405444 |    67.3305328508120 |  17.9458722086436 |    16445593 |
-| Norway                 |  1.81507058553292 |            1.960 |                 80.7414634146342 |           14.6455888097593 |    66.2064766744808 |  19.1479345157599 |     4768212 |
-| Poland                 |  5.00408460108383 |            1.390 |                 75.5331707317073 |           13.3256480555872 |    71.4634305149354 |  15.2109214294774 |    38125759 |
-| Portugal               | -0.03467455605676 |            1.374 |                 79.2497560975610 |           17.5012814880078 |    67.1365409199047 |  15.3621775920875 |    10622413 |
-| San Marino             |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |         NaN |
-| Serbia                 |  5.51795169957776 |            1.400 |                 73.6365853658537 |           14.5167655385706 |    67.6335858157006 |  17.8496486457288 |     7350221 |
-| Slovakia               |  6.17046824289093 |            1.320 |                 74.8107317073171 |           11.9677699353106 |    72.3868259638361 |  15.6454041008533 |     5406626 |
-| Slovenia               |  3.49251997044142 |            1.528 |                 78.9739024390244 |           16.0267556735963 |    70.1117152095851 |  13.8615291168186 |     2021316 |
-| Spain                  |  0.85776978982683 |            1.461 |                 81.0880487804878 |           16.9394050582152 |    68.3398363315641 |  14.7207586102207 |    45555716 |
-| Sweden                 | -0.40879886604371 |            1.910 |                 81.2371707317073 |           17.7223651519496 |    65.5617228818501 |  16.7159119662004 |     9219637 |
-| Switzerland            |  1.89715399119828 |            1.480 |                 82.1617073170732 |           16.6721873799941 |    67.8197089730996 |  15.5081036469063 |     7647675 |
-| Ukraine                |  2.09999999999999 |            1.390 |                 68.2514634146342 |           15.9037623084261 |    70.1546462864768 |  13.9415914050970 |    46258200 |
-| United Kingdom         |  0.54791121956627 |            1.940 |                 79.9033658536585 |           16.3019124620612 |    66.1561282590033 |  17.5419592789355 |    61406928 |
-| Montenegro             |  6.89999999999999 |            1.642 |                 74.0975365853659 |           12.8497239486590 |    67.5957824239814 |  19.5544936273596 |      622344 |
-| Isle of Man            |               NaN |              NaN |                              NaN |                        NaN |                 NaN |               NaN |       80543 |
-| Romania                |  9.42580218461200 |            1.350 |                 73.3734146341464 |           14.8579664297396 |    69.8993946432444 |  15.2426389270160 |    21513622 |
-
-
-### `Graph`
-
-If the first column and the head of the table are equal, then the interpreter
-tries to interpret the content of the table as an adjacency matrix, which
-defines a graph. If those values are symetrical according to the diagonal, then
-the matrix defines an __undirected graph__.
-
-<!-- data-title="Undirected Graph" -->
-| Graph |  A  |  B  |  C  |  D  |  E  |
-|:----- |:---:|:---:|:---:|:---:|:---:|
-| A     |  0  |  1  |  0  |  1  |  0  |
-| B     |  1  |  0  |  0  |  1  |  0  |
-| C     |  0  |  0  |  0  |  0  |  0  |
-| D     |  1  |  1  |  0  |  0  |  1  |
-| E     |  0  |  0  |  0  |  1  |  0  |
-
-In contrast to this, if those values differ, then the result is simply an an
-__directed graph__, whereby the values define the strength of the line.
-
-<!-- data-title="Directed Graph" -->
-| Graph |  A  |  B  |  C  |  D  |  E  |
-|:----- |:---:|:---:|:---:|:---:|:---:|
-| A     |  0  | 12  |  0  |  1  |  0  |
-| B     | -22 |  0  |  0  | 0.4 |  0  |
-| C     |  0  |  0  |  0  |  0  |  0  |
-| D     |  2  | 12  |  0  |  0  |  1  |
-| E     |  0  |  0  |  0  |  2  |  0  |
-
-> Unfortunatelly, self referenceing or multigraphs are currently not supported.
-
-
-#### `Sankey`
-
-A Sankey diagram is a special type of directed graph that can be used to streams
-or the flow of something, such as engergy, money, etc.
-
-https://en.wikipedia.org/wiki/Sankey_diagram
-
-<!-- data-type="sankey" -->
-| Sankey |  A  |  B  |  C  |  D  |  E  |
-|:------ |:---:|:---:|:---:|:---:|:---:|
-| A      |     |  2  |     |     |     |
-| B      |  3  |     |     |     |     |
-| C      |  1  |  1  |     |     |     |
-| D      |     |  1  |  1  |     |     |
-| E      |  2  |  1  |  1  |  1  |     |
-
-
-### `None`
-
-Simply `data-type="none"` to prevent any kind of visualization.
-
-<!-- data-type="none" -->
-| Sankey |  A  |  B  |  C  |  D  |  E  |
-|:------ |:---:|:---:|:---:|:---:|:---:|
-| A      |     |  2  |     |     |     |
-| B      |  3  |     |     |     |     |
-| C      |  1  |  1  |     |     |     |
-| D      |     |  1  |  1  |     |     |
-| E      |  2  |  1  |  1  |  1  |     |
-
-
-### Attributes
-
-* __`data-type`__: You can use `data-type="map|boxplot|barchart|..."` to
-  overwrite the automatically identfied representation with your desired one.
-  The names can be taken from the previous titles, it is not relevant if you
-  use lower or upper-case. This way it is also possible to use types that cannot
-  be automatically infered at the moment, such as Sankey or BoxPlot.
-
-  If you do not want to show tables as diagrams, you can also use
-  `data-type="None"` and only the table will be visible.
-
-* __`data-show`__: Simply add this attribute or set it to true
-  (`data-show="true"`), if you want to visualize your data immediately, without
-  the need to click in the switch-button. It is still possible for your users to
-  switch to the table representation.
-
-* __`data-transpose`__: Like in the mathematical sense, set this attribute or
-  set it to true (`data-transpose="true"`), if you want to switch rows and
-  columns. One benefit is, that you can for example use PieChart and let your
-  table grow vertically instead of using a horizontal monster.
-
-* __`data-title`__: Normaly, the first cell defines the title of your diagram,
-  but if you want larger titles and not have to write gigantic table headers,
-  apply this attribute `data-title="Use whatever title you want to ..."`
-
-* __`data-xlabel`__: As above, you can also define the strings for the labels,
-  in this case for the x label
-
-* __`data-ylabel`__: or the y label.
-
-* __`data-src`__: Currently this attribute is used to refere to your geojson
-  data, if you use the `data-type="Map"` representation, but this might change
-  in the future to load and visualize data directly, such as csv.
-
-  If you are using geojson files from external websites such as:
-
-  https://code.highcharts.com/mapdata/
-
-  It can be usefull to use anycors, if the data cannot be visualized due to
-  CORS restrictions:
-
-  `data-src="https://cors-anywhere.herokuapp.com/https://code.highcharts.com/mapdata/custom/europe.geo.json"`
-
-### custom
-
-<script input="range" value="2" output="range">@input</script>
-
-<script input="range" value="50" output="amplitude">@input</script>
-
-
-<script run-once style="display: inline-block; width: 100%">
-function func(x) {
-    x /= 10;
-    return Math.sin(x) * Math.cos(x * @input(`range`) + 1) * Math.sin(x * 3 + 2) * @input(`amplitude`);
-}
-
-function generateData() {
-    let data = [];
-    for (let i = -200; i <= 200; i += 0.1) {
-        data.push([i, func(i)]);
-    }
-    return data;
-}
-
-let option = {
-    animation: false,
-    grid: {
-        top: 40,
-        left: 50,
-        right: 40,
-        bottom: 50
-    },
-    xAxis: {
-        name: 'x',
-        minorTick: {
-            show: true
-        },
-        splitLine: {
-            lineStyle: {
-                color: '#999'
-            }
-        },
-        minorSplitLine: {
-            show: true,
-            lineStyle: {
-                color: '#ddd'
-            }
-        }
-    },
-    yAxis: {
-        name: 'y',
-        min: -100,
-        max: 100,
-        minorTick: {
-            show: true
-        },
-        splitLine: {
-            lineStyle: {
-                color: '#999'
-            }
-        },
-        minorSplitLine: {
-            show: true,
-            lineStyle: {
-                color: '#ddd'
-            }
-        }
-    },
-    dataZoom: [{
-        show: true,
-        type: 'inside',
-        filterMode: 'none',
-        xAxisIndex: [0],
-        startValue: -20,
-        endValue: 20
-    }, {
-        show: true,
-        type: 'inside',
-        filterMode: 'none',
-        yAxisIndex: [0],
-        startValue: -20,
-        endValue: 20
-    }],
-    series: [
-        {
-            type: 'line',
-            showSymbol: false,
-            clip: true,
-            data: generateData()
-        }
-    ]
-}
-
-"HTML: <lia-chart option='" + JSON.stringify(option) + "'></lia-chart>"
-
-</script>
-
-
-
-<lia-chart
-option='{
-  "xAxis": {
-    "type": "category",
-    "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-  },
-  "yAxis": {
-    "type": "value"
-  },
-  "series": [{
-    "data": [820,932,901,934,1290,1330,1320],
-    "type":"line"
-  }]
-}'></lia-chart>
-
-
-
-
-## ASCII-Art #2
-
-Well, thanks to the great project [SvgBob](https://github.com/ivanceras/svgbob)
-the newest version of LiaScript also has support for some basic ASCII art
-drawings (not everything is supported yet). Simply use 4 or more backtics to
-enclose your artwork and draw whatever you want. And as with any other element,
-you can add some styling within HTML comments at the head of this element.
-
-The following examples are taken from the examples on the SvgBob project site.
-
-
-If you want to use a drawing tool for this, visit the online editor at:
-
-https://ivanceras.github.io/svgbob-editor/
-
-### Graphs
-
-<!-- style="display: block; margin-left: auto; margin-right: auto; max-width: 315px;" -->
-``` ascii
-                           .--->  F
-  A       B     C   D     /
-  *-------*-----*---*----*----->  E
-           \            ^ \
-            v          /   '--->  G
-             B --> C -'
-```
-
-<!-- style="display: block; margin-left: auto; margin-right: auto; max-width: 315px;" -->
-```    ascii
-  +------+   +-----+   +-----+   +-----+
-  |      |   |     |   |     |   |     |
-  | Foo  +-->| Bar +---+ Baz |<--+ Moo |
-  |      |   |     |   |     |   |     |
-  +------+   +-----+   +--+--+   +-----+
-                ^         |
-                |         V
-  .-------------+-----------------------.
-  | Hello here and there and everywhere |
-  '-------------------------------------'
-```
-
-### Diagrams
-
-
-``` ascii
-  E +-------------------------*--+     E |                         o
-  D |-------------------*--*--|--*     D |                   o  o  |  o
-  C |-------------*--*  |  |  |  |     C |             o  o  |  |  |  |
-  B |-------*--*  |  |  |  |  |  |     B |       o  o  |  |  |  |  |  |
-  A +-*--*--+--+--+--+--+--+--+--+     A +-o--o--|--|--|--|--|--|--|--|
-      5 10 15 20 25 30 35 40 45 50         5 10 15 20 25 30 35 40 45 50
-
-
-  85.67 ┤                                       ╭╮
-  78.20 ┤                                       ││                  ╭╮
-  70.73 ┤                                       ││  ╭╮ ╭╮ ╭╮   ╭╮  ╭╯╰─╮
-  63.27 ┤                        ╭╮         ╭─╮ ││ ╭╯╰╮│╰─╯╰╮╭╮│╰──╯   │╭
-  55.80 ┤   ╭╮                 ╭╮││╭╮ ╭╮╭╮  │ ╰─╯╰─╯  ││    ││││       ╰╯
-  48.33 ┤   │╰╮      ╭──╮      │││││╰╮│╰╯│  │         ╰╯    ╰╯╰╯
-  40.87 ┤╭╮ │ ╰╮╭╮  ╭╯  ╰─╮╭╮╭─╯╰╯╰╯ ╰╯  ╰──╯
-  33.40 ┤││ │  ╰╯╰╮╭╯     ││╰╯
-  25.93 ┤││╭╯     ╰╯      ╰╯
-  18.47 ┼╯││
-  11.00 ┤ ╰╯
-        └───────────┴───────────┴───────────┴───────────┴───────────┴────
-      2011        2012        2013        2014        2015        2016
-```
-
-### UML
-
-
-```` ascii
-   ____[]
-  | ___ |
-  ||   ||  device
-  ||___||  loads
-  | ooo |----------------------------------------------------------.
-  | ooo |    |                          |                          |
-  | ooo |    |                          |                          |
-  '_____'    |                          |                          |
-             |                          |                          |
-             v                          v                          v
-   .-------------------.  .---------------------------.  .-------------------.
-   | Loadable module C |  |     Loadable module A     |  | Loadable module B |
-   '-------------------'  |---------------------------|  |   (instrumented)  |
-             |            |         .-----.           |  '-------------------'
-             '------------+-------->| A.o |           |             |
-                 calls    |         '-----'           |             |
-                          |    .------------------.   |             |
-                          |   / A.instrumented.o /<---+-------------'
-                          |  '------------------'     |    calls
-                          '---------------------------'
-````
-
-```` ascii
-                                          .--> Base::Class::Derived_A
-                                         /
-                                        .----> Base::Class::Derived_B
-        Something -------.             /         \\
-                         \\           /           \\---> Base::Class::Derived
-       Something::else    \\         /             \\
-            \\             \\       /               '--> Base::Class::Derived
-             \\             \\     /
-              \\             \\   .-----------> Base::Class::Derived_C
-               \\             \\ /
-                '------ Base::Class
-                        /  \\ \\ \\
-                       '    \\ \\ \\
-                       |     \\ \\ \\
-                       .      \\ \\ '--- The::Latest
-                      /|       \\ \\      \\
-  With::Some::fantasy  '        \\ \\      '---- The::Latest::Greatest
-                      /|         \\ \\
-          More::Stuff  '          \\ '- I::Am::Running::Out::Of::Ideas
-                      /|           \\
-          More::Stuff  '            \\
-                      /              '--- Last::One
-          More::Stuff
-````
-
-
-### Chemical Structures
-
-```` ascii
-    -----. O
-          \
-           \________
-           /        \
-          /        \ \
-         /            \____________ N
-         \            /
-          \        / /
-           \________/
-````
-
-```` ascii
-       HO
-        \
-         \
-          \____________
-          /------------ O
-         /
-   _____/
- H2N
-````
-
-
-### Geometrical Shapes
-
-
-```` ascii
-  +------+.      +------+       +------+       +------+      .+------+
-  |`.    | `.    |\     |\      |      |      /|     /|    .' |    .'|
-  |  `+--+---+   | +----+-+     +------+     +-+----+ |   +---+--+'  |
-  |   |  |   |   | |    | |     |      |     | |    | |   |   |  |   |
-  +---+--+.  |   +-+----+ |     +------+     | +----+-+   |  .+--+---+
-   `. |    `.|    \|     \|     |      |     |/     |/    |.'    | .'
-     `+------+     +------+     +------+     +------+     +------+'
-````
-
-
-```` ascii
-  ____  ____  ____  ____                      ______________________
- /\   \/\   \/\   \/\   \                    /\                     \
-/  \___\ \___\ \___\ \___\                  /  \    _________________\
-\  / __/_/   / /   / /   /                  \   \   \                /
- \/_/\   \__/\/___/\/___/                    \   \   \__________    /
-   /  \___\    /  \___\                       \   \   \    /   /   /
-   \  / __/_  _\  /   /                        \   \   \  /   /   /
-    \/_/\   \/\ \/___/                          \   \   \/   /   /
-      /  \__/  \___\                             \   \  /   /   /
-      \  / _\  /   /                              \   \/   /   /
-       \/_/\ \/___/                                \      /   /
-         /  \___\                                   \    /   /
-         \  /   /                                    \  /   /
-          \/___/                                      \/___/
-````
-
-
-```` ascii
-                   _______
-                  / _____ \
-            _____/ /     \ \_____
-           / _____/  311  \_____ \
-     _____/ /     \       /     \ \_____
-    / _____/  221  \_____/  412  \_____ \
-   / /     \       /     \       /     \ \
-  / /  131  \_____/  322  \_____/  513  \ \
-  \ \       /     \       /     \       / /
-   \ \_____/  232  \_____/  423  \_____/ /
-   / /     \       /     \       /     \ \
-  / /  142  \_____/  333  \_____/  524  \ \
-  \ \       /     \       /     \       / /
-   \ \_____/  243  \_____/  434  \_____/ /
-   / /     \       /     \       /     \ \
-  / /  153  \_____/  344  \_____/  535  \ \
-  \ \       /     \       /     \       / /
-   \ \_____/  254  \_____/  445  \_____/ /
-    \_____ \       /     \       / _____/
-          \ \_____/  355  \_____/ /
-           \_____ \       / _____/
-                 \ \_____/ /
-                  \_______/
-````
-
-
-```` ascii
-  .----------------------------------------------------------------------.
-  |_.-._.-._.-._.-._.-._.-.    _.-._.-._.-.    _.-._.-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-._. .::db .-._.-._. .::db .-._.-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-._ .::d88b -._.-._ .::d88b -._.-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-. .::d8888b       .::d8888b ._.-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.- .::d88!::::::::::::d888888b _.-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.- \  Y88\_________\  Y888888P _.-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-. \  Y8888P ._.-. \  Y8888P ._.-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-._ /dbY88Pdb _.-._ /dbY88Pdb _.-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-. /d8P_YP Y8b .-. /d8P_YP Y8b .-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-     /d8P .-.\ Y8b   /d8P .- \ Y8b -._.-._.-._.-._.-._.|
-  |_.-._.-._.-._ .::db/d8P _.-. \.::db/d8P _.-. \ Y8b ._.-._.-._.-._.-._.|
-  |_.-._.-._.-. .::d88bYP ._.-. .::d88LSP ._.-._ \ Y8b    ._.-._.-._.-._.|
-  |_.-._.-._.- .::d8888b       .::d8888b`b _.-._. \ Y8b:db _.-._.-._.-._.|
-  |_.-._.-._. .::d88!::::::::::::d888888b`b .-._.- \ YPd88b .-._.-._.-._.|
-  |_.-._.-._. \  Y88\_________\  Y888888Pd8b       .::d8888b -._.-._.-._.|
-  |_.-._.-._.- \  Y8888P -._.- \  Y8888P!::::::::::::d888888b ._.-._.-._.|
-  |_.-._.-._.-. \  Y88Pdb ._.-. \  Y88Pdb_________\  Y888888P ._.-._.-._.|
-  |_.-._.-._.-._ \__YP Y8b _.-._ \__YP Y8b`P -._.- \  Y8888P -._.-._.-._.|
-  |_.-._.-._.-._.-._. \ Y8b .-._.-. /d\ Y8b .-._.-. /dbY88P .-._.-._.-._.|
-  |_.-._.-._.-._.-._.- \ Y8b -._.- /d8P\ Y8b -._.- /d8P_YP _.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-. \ Y8b     /d8P _\ Y8b     /d8P _.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-._ \ Y8b:db/d8P ._ \ Y8b:db/d8P ._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-._. \ YPd88bYP -._. \ YPd88bYP -._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-._. .::d8888b       .::d8888b .-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-._ .::d88!::::::::::::d888888b -._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-._ \  Y88\_________\  Y888888P -._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-._. \  Y8888P .-._. \  Y8888P .-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-._.- \  Y88P _.-._.- \  Y88P _.-._.-._.-._.-._.-._.|
-  |_.-._.-._.-._.-._.-._.-. \__YP ._.-._.-. \__YP ._.-._.-._.-._.-._.-._.|
-  `----------------------------------------------------------------------'
-````
-
-
-
-### Fun
-
-````````````````````````````
-                      |
-  ____________    __ -+-  ____________
-  \_____     /   /_ \ |   \     _____/
-   \_____    \____/  \____/    _____/
-    \_____                    _____/
-       \___________  ___________/
-                 /____\
-
-        .---.        .-----------
-       /     \  __  /    ------
-      / /     \(  )/    -----
-     //////   ' \/ `   ---
-    //// / // :    : ---
-   // /   /  /`    '--
-  //          //..\\
-         ====UU====UU====
-             '//||\\`
-               ''``
-          Daron Brewood
-````````````````````````````
-
-### Unicode
-
-And of course, if your ASCII table does not give you enough pleasure, you can
-also use any kind of Unicode symbol (also within the text).
-
-````````````````````````````````
-  ┌─┬┐  ╔═╦╗  ╓─╥╖  ╒═╤╕
-  │ ││  ║ ║║  ║ ║║  │ ││
-  ├─┼┤  ╠═╬╣  ╟─╫╢  ╞═╪╡
-  └─┴┘  ╚═╩╝  ╙─╨╜  ╘═╧╛
-  ┌───────────────────┐
-  │  ╔═══╗ Some Text  │▒
-  │  ╚═╦═╝ in the box │▒
-  ╞═╤══╩══╤═══════════╡▒
-  │ ├──┬──┤           │▒
-  │ └──┴──┘           │▒
-  └───────────────────┘▒
-   ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-````````````````````````````````
-
-### Unicode Art
-
-````````````````````````````
-  4 ◇ Sep @tw1tt3rart
- ▀▄─▀▄─▀▄─▀▄─▀▄─▀▄─▀▄─▀
- ▄▀─▄▀─▄▀─▄▀─▄▀─▄▀─▄▀─▄
- ▀─▄▀─▄▀─▄▀─▄▀─▄▀─▄▀─▄▀
- ▄─▀▄─▀▄─▀▄─▀▄─▀▄─▀▄─▀▄
- ▀▄─▀▄─▀▄─▀▄─▀▄─▀▄─▀▄─▀
- ▄▀─▄▀─▄▀─▄▀─▄▀
-
- 23 ◇ Apr @tw1tt3rart
- ║█║█║║█║█║█║║█║█║║█║█║█
- ║█║█║║█║█║█║║█║█║║█║█║█
- ║║║║║║║║║║║║║║║║║║║║║║║
- ╚╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩
-
- 19 ◇ Jan @tw1tt3rart
- ─────█─▄▀█──█▀▄─█─────
- ────▐▌──────────▐▌────
- ────█▌▀▄──▄▄──▄▀▐█────
- ───▐██──▀▀──▀▀──██▌───
- ──▄████▄──▐▌──▄████▄──
- RT
- @140artist
-````````````````````````````
-
-### Unicode Converter
-
-Image generated with:
-
-
-http://www.underware.nl/fonts/zeitung_mono/features/ASCII+/#feature_info
-
-
-`````````
-........................................................................................................................
-........................................................................................................................
-........................................................................................................................
-........................................................................................................................
-........................................................................................................................
-.........................................................=...=..........................................................
-......................................................=.====.===.=.=....................................................
-....................................................========.==========.................................................
-...............................................===========I================.............................................
-.........................................=...=========I===II=III=III=I======............................................
-.........................................=.========I==III=II=III=II==I======............................................
-.......................................=.=========III=IIIIII=I=IIII=I=====I=.===........................................
-.....................................=..========I==IIIIIIIII=IIIIII=I=I==II======.==....................................
-.....................................==========I=I=II=IIIIIIIAIIIAI=I====II========.==..................................
-....................................=====I=I===I=.=III=IIIIAAIIIIAI=I==IIII============.................................
-.....................................=====II==III==IIAIIIIIAII=AIAIIIIIIII===II=======..................................
-...................................==.======II=III==IAIIIIIAII=AAIII=II==I===II=I=====.==.=.............................
-....................................========IIIIIII=IIAIIIAAIIIAAIII==I==I==IIIII==I=======.............................
-.............................=....=========IIIIIIIIIIIAIIAAAIIIIAIII=IAIII=IIIIIIII=========..==........................
-.............................====.======I===IIAAAIIIIAAAIAAAAIAIAIIIIIAIIIAIIAAI======.=======.==.......................
-............................===I===========IIIIAAAIIIIAAAAAAAIAIAIAI=IIIIAAIII=I=I==============........................
-..............................==II=====III==IIIIIIAAI=AAIAAXAAAAIAAIIAAIAAIIIIII=I===IIII======....=....................
-............................=..=IAI===IIIIIIIIIIIAAAAAIAIXIXAAXAIAXAAIIAAAIIAII=IIIIIII========.====....................
-...........................====..IAII=IIIII=IIIIAIAIAAAAAXAXAAXAIAAAIAAAAIIIAIIIIIIIIII=====.=.===......................
-..................=.......========IIIIIIIIIAIIIIIIIAAXAAAXAAXXXAIXAIAXIAAAIAIIA==I=II=====I=====........................
-..................==......=========IIAIIIAIIIIAAAIIIAAAAAXAXXXXAAXAAAAAAAIAIIIII=III=======.=========...................
-...................=I==..=====I======IIIIIAAIAIIIAAAAAXXAXXXXAXAAXAXXIAAIAIIIIIIAII==.==IIII==IIII==....................
-....................=II===II===IIIIIIIAAAAIAAAAAIIIAXXXXXXXXXXXAAAAAAAXAAAAAAAAAIIIAAAAAIIIIII====......................
-....................==IIIIIIIIIIIIAAAAAAXAAAAIIIAIIIAXXXMXXXMXAAXXIAXXAXAAAAIII=IIII======IIII=I=====...................
-................==..====IIIAAAAIIIIAIAAAAAXAAXAIIIAAAIXAAMXMMMXXAAXXXXXXAAIIIIIAIIIIIIIIIIIIIII========.................
-...............=====II===IIAAAAAIII=====IIAXXAXXAAIAAAAXIAMMMMXAAAXMMXAIIAAAI=====IAIIIIIAII========....................
-...................=====IIIIIIAAAAAAAIIIIIIAAAIAAXMMXXXXXXMMMMMXXMMXAIAAAAAIII====IIAAAAIIII=======........=............
-...................========IIIIIAXXAAAAIAIIIIIAAAIAXAAAXXXXMMMXXMMMAAAAAAAAAIAIIIIAAAIAIII===========.=====.............
-................=======II=========IAXAAXXXXAAAAAXXAAXAAIMMMMMXXMMMAIAAAAIAAXXAAAAAAI==II=========..=======..............
-..........========.======IIIIIIIIIIIAAAXXXXXXXXAAXXXMXXXAMMMMMMMXXAAAXAAAAAXAAAAAIIIIIIIIIIIIIIIIIII===.................
-............===IIIAIIIIIIIIAAAAAAXXXXXXXXXXXXXAXXAXAXXMXXMMMMMMXMXXXXAAAAAAAIIAIIAAAAAAAAAAIIIIII=====..................
-................======IIIIIIIIAAAAAAAAAXAXAAAAXMMMXXAAMXIAMMMMMMMXMXXXXXXXXXXXAAAIIIIIIIIIIAIAII========................
-.................====II==I=IIIAIIIIAIAAXAAAAXXXXXXXMXXXMMAMMMMXIAMXAXXXXXXXXXXXAAAAAAAAAIAAIIIIII=I===..................
-...............====================IIAAAAXXXXXXXAXXMMMMMXMMWWMMMXXXXXAAAAAAAAAXXXAAAAAII=================...............
-....................===...======IIIAAAXXXXAAAXAXIAAIAXMMAAMWWMXAXXAXXXAXAAXXAXAXXXAIIIIIII====I==I====.=................
-..................=====IIIIIIAAAAAAAAAAAI=IAIAAA=IIAXXAXMXMWMMIAAAAXXXXXAXAIAAAXAAAAAAAAIIIIII==========................
-.................=====IIIIIIAAAIIIII=IIIIIIAXAAIAAAAXXXAIMMMMXIAIXAXXXAAXXXXXAIIIAAAIAAIAIIIII====II====................
-.................=======III=I======IIIIIIIAXAAAAIIAAIIIAAAMMMAAAAAIIIAXXXMXXXXAIII==IIIII==IIIII========................
-................=================II==IIIAAAAAAAIIAI===IIIMMMMXAIIAIIIIIAAXXXXXXXAAII==IIII========.====.................
-.................=====..=============IIAAAAAIIIIIII===IIIXMMMAIIAIIAIII=IAAAAAXXAAAIAII==============...................
-........................============IAAAIAAI===I======I==AMMMAIII=IAI====IIIAAAAAAAAIIIIIII===========..................
-=....................=======..=====IIII===II============IIMMMIIIIIII=====I===IAAAAAAAI=I=========.......................
-====================...====...==============I=============MMMI=================IIAAIIIIIIII========.....................
-===========================....===========================MMMI===================IIIIII====I==.==.......................
-===============================================..=========MMMI==.=....=================I===I====........................
-==========================================================MMMA=============......===..===.===.==........................
-==========================================================MMMA===========================..=====...===========.=........
-==========================================================MMMX==========================================================
-=========================================================IMMMX==========================================================
-========II==IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIAAAIIAIIXMMMMAIIIIAAAIIIIIIIIIIIIIII=IIIII=IIIIIIIIIIII================
-XXXXXXXXXXXXXXXXXXXXXXXXXXMXXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMXXXXMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMXMMM
-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMMMMMMWMMMMMMMWMWWWWMMWMMWWWWMMWWWWWWWWWWWWMWWWMMWMWWMMMMWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-`````````
-
 ## Macros
 
 Macros are an easy way in LiaScript to hide reoccurring or tedious tasks. In
@@ -8147,7 +8955,7 @@ language: de
 
 
 | language   | code |                                                                              translation |
-|------------|:----:|-----------------------------------------------------------------------------------------:|
+| ---------- |:----:| ----------------------------------------------------------------------------------------:|
 | Amharic    |  am  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.am.yaml) |
 | Arabic     |  ar  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ar.yaml) |
 | Armenian   |  hy  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hy.yaml) |
@@ -8159,6 +8967,7 @@ language: de
 | French     |  fr  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fr.yaml) |
 | German     |  de  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.de.yaml) |
 | Hindi      |  hi  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hi.yaml) |
+| Italian    |  it  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.it.yaml) | 
 | Japanese   |  ja  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ja.yaml) |
 | Korean     |  ko  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ko.yaml) |
 | Panjabi    |  pa  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.pa.yaml) |
