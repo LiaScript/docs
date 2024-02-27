@@ -8415,16 +8415,15 @@ Most of them provide a functionality that is implemented on the basis of editabl
 
 https://github.com/topics/liascript-template
 
+
+
+
 ## Macros
 
-Macros are an easy way in LiaScript to hide reoccurring or tedious tasks. In
-essence, they define a simple textsubstitution-system that can be parameterized
-and also imported from other courses. Actually, everything that starts with an
-`@`-symbol can be replaced by something that has been defined in the main-header
-or sub-header of your document.
-
-By now, you will have seen or changed macros like `author`, `logo`, or `comment`,
-but you can do even more.
+    --{{0}}--
+Macros in LiaScript serve as a means to streamline repetitive or complex tasks by defining text substitutions that can be parameterized.
+Anything starting with an `@` symbol can be replaced with a corresponding definition specified in the main header or sub-header of your LiaScript document.
+Commonly used macros such as `author`, `logo`, or `comment` provide basic functionality, but there are more possibilities to explore.
 
 ``` markdown
 <!--
@@ -8436,15 +8435,21 @@ email: your contact-information
 # Main Title
 ```
 
+    --{{1}}--
+Exactly, macros serve as placeholders that can be customized with parameters, allowing you to avoid repetitive copy-and-paste actions.
+LiaScript automatically recognizes these patterns and replaces them with the defined content.
 
-### Single Line
+      {{1}}
+`@author` --> @author
 
-There are actually two types of macros, single line macros and block macros.
-While the first one only returns a single line, the latter one preserves your
-custom indentation. This single line macros start with a macro-name, which is
-followed by a colon. The name has to start with a word-character. The starting
-`@`-symbol is optional, but I would suggest to use it for custom macros and to
-increase readability.
+### 1. Macro Basics
+
+#### Single Line
+
+    --{{0}}--
+There are two types of macros: single-line macros and block macros.
+Single-line macros consist of a macro name followed by a colon, with the name starting with a word character.
+While the `@` symbol at the beginning is optional, it's recommended for custom macros to enhance readability. These macros return only a single line of output.
 
 ``` markdown
 <!--
@@ -8462,7 +8467,7 @@ author: someone who wants to create something new
 
 # Main Title
 
-@Single.line  <-- this will be replaced at compile-time by: v
+@Single.line  <-- this will be replaced at compile-time by the text below:
 
 you can add as much content as you want to your single-line macro! The only
 thing that is important, is to use indentation. Not __matter__ how [much](#12)
@@ -8471,14 +8476,17 @@ it is.
 @author <-- by: someone who wants to create something new
 ```
 
-By the way, macros are case-sensitive, thus there is a difference between
-`@author` and `@Author`.
+    --{{1}}--
+By the way, macros are case-sensitive, thus there is a difference between the following ones:
 
-### Blocks
+`@author` is not equal to `@Author`.
 
-Block-macros are not followed by an colon and are parsed until they reach the
-`@end` symbol. Every macro can also be used to define Markdown content, HTML,
-CSS, or even JavaScript.
+#### Multi-Line Blocks
+
+    --{{0}}--
+Block macros don't have a colon after the macro name and continue parsing until they encounter the `@end` symbol.
+They can contain Markdown content, HTML, CSS, or JavaScript, providing greater flexibility in defining custom elements or functionalities.
+Block macros also preserve whitespaces and newlines, allowing you to format and structure content more precisely within the macro block.
 
 ``` md
 <!--
@@ -8505,12 +8513,16 @@ define other macros
 @block
 ```
 
+    --{{1}}--
+As you can see for `@smile`, macros can also call other macros.
 
-### Comments
+#### Commenting
 
-Commenting macros out or simply adding additional "personal" information to
-to a section happens with two additional `@@` for single-line, and three `@@@`s
-to comment blocks...
+    --{{0}}--
+To comment out single-line macros, you can use `@@` followed by the macro name.
+For block macros, you can use `@@@` followed by the macro name.
+This is useful for temporarily disabling macros or adding personal notes to your document without affecting its functionality.
+
 
 ``` md
 <!--
@@ -8530,13 +8542,11 @@ parser reaches ...
 -->
 ```
 
-### Overwriting Macros
+#### Overwriting Macros
 
-Actually every section can define its own set of macros, that only exist in that
-in that single section. Only the initial main-header at the start of a document
-defines a set of global macros. This might be useful, if you want to switch the
-voice of the narrator, authorship, etc.
-
+    --{{0}}--
+You can define macros within individual sections, which will override any macros with the same name defined in the main header.
+This allows for flexibility in customizing macros for specific sections of your document, such as changing the narrator's voice, adjusting authorship details, or any other customizations you may need.
 
 ``` markdown
 <!--
@@ -8549,7 +8559,7 @@ narrator: US English Female
 
 ....
 
-### Some other section
+#### Some other section
 <!--
 author: another author for this section
 ...
@@ -8560,51 +8570,52 @@ narrator: Australian Male
 
 ```
 
-### Passing Parameters
 
-It is also possible to pass parameters to macros, which looks like calling a
-function in most common programming languages. Simply call a macro with
-parentheses and put into everything, that you want to place within the macro,
-where something is placed is simply defined by an `@ + a number`, thus `@0`,
-`@1`, .., `@n`. Like most programming languages start counting at `0`, also in
-LiaScript `@0` defines the first parameter.
+#### Passing Parameters
+
+    --{{0}}--
+It is also possible to pass parameters to macros, which resembles calling a function in most common programming languages.
+Simply invoke a macro with parentheses and place everything you want to pass into the macro within them.
+The placement of each parameter within the macro is defined by an `@` followed by a number, such as `@0`, `@1`, up to `@n`.
+Just like in most programming languages where counting starts at `0`, in LiaScript, `@0` represents the first parameter.
+
 
 ``` markdown
 <!--
 @highlight: <b style="color: red">@0</b>
 -->
+
+# Main Title
 
 @highlight(I want this text to be read and bold)
 
 ```
 
+    --{{1}}--
+The following example illustrates how multiple parameters can be passed to a macro: they are simply separated by commas.
+However, a challenge arises when attempting to pass a string that contains commas; in such cases, the string must be enclosed in backticks.
+Additionally, as depicted, a macro can call or substitute another macro, which can be extremely useful for managing complexity.
+You can define simpler macros that call the complex one by setting default values, as described in the [uid](#uid) section.
 
-The following example shows, how multiple parameters can be passed to a macro,
-they are simply separated by commas. The main problem which appears is that, if
-you want to pass a string that contains commas, then this string has to be
-placed in backticks. As also depicted, a macro can also call/substitute another
-macro, which might be extremely useful if you have defined a very complex macro.
-You can define more "simple" macros, that call the "complex" one by setting some
-some default values, see therefor section [uid](#uid).
 
+      {{1}}
 ``` markdown
 <!--
-@highlight: <b style="color: red">@0</b>
+@highlight: <b style="color: @0">@1</b>
 
-@red_and_green:
-  @highlight(@0) <i style="color: green">@1</i>
+@highlight_green: @highlight(greeen,@0)
 -->
 
-@red_and_green(red,`simply, simply, green`)
+@highlight_green(`simply, simply, green`)
 ```
 
+    --{{2}}--
+Last but not least, to continue with basic Markdown syntax, it is also possible to pass multi-line parameters.
+This can be achieved by enclosing the multi-line content within a common Markdown code block delimited by three backticks.
 
-Last but not least, in order to go on with the basic Markdown syntax, it is also
-possible to pass multi-line parameters. How would you do this? Of course simply
-by using a common Markdown code-block with three backtics.
-
+      {{2}}
 ````` markdown
-@red_and_green(red,```please to not use
+@highlight_green(```please to not use
 this in production...
 
 * it is better to write Markdown
@@ -8612,12 +8623,13 @@ this in production...
 ```)
 `````
 
-As mentioned in the code, try to avoid this, since it generates ugly Markdown
-code on GitHub or on any other Markdown-interpreter/editor. But you can also use
-a code-block, which contains information about syntax highlighting and a macro,
-that defines the title. The part within the code-block is then simply passed to
-the macro as the last and multi-line parameter.
+    --{{3}}--
+As mentioned in the code, it is advised to avoid this approach because it generates unattractive Markdown code on platforms like GitHub or other Markdown interpreters/editors.
+However, you can utilize a code block that includes information about syntax highlighting along with a macro defining the title.
+The content within the code block is then passed to the macro as the last multi-line parameter.
 
+
+      {{3}}
 ````` markdown
 <!--
 link:   https://pannellum.org/css/style.css
@@ -8638,6 +8650,8 @@ script: https://cdn.pannellum.org/2.4/pannellum.js
 @end
 -->
 
+# Main title
+
 ```json @panorama("0",https://pannellum.org/images/cerro-toco-0.jpg)
 {
   "pitch": 14.1,
@@ -8655,23 +8669,19 @@ script: https://cdn.pannellum.org/2.4/pannellum.js
 ```
 `````
 
-### Escaping
+#### Escaping
 
-
-In some cases, for example if you want to pass content to a javascript string
-and you need to escape the content of the LiaScript content, wich could be a
-multiline string for example. Then you can simply add a `'` to your macro, for
-example:
+    --{{0}}--
+In some cases, such as when you need to pass content to a JavaScript string and escape the content of the LiaScript content, which could be a multiline string, you can add a `'` to your macro, for example:
 
 * `@'input` will result in an escaped version of the input string
 * `@'input(1)` is the same as above
 * `@'1` as a parameter will also get escaped
 * similarly to any other `@'macro(with, some, params)`
 
-> But be carefull to apply it only once in your macro chain as multiple escape
-> sequences might result in multiple backslashes (`\\\"`) for special characters.
+> But be careful to apply it only once in your macro chain, as multiple escape sequences might result in multiple backslashes (`\\\"`) for special characters.
 
-### Debugging
+#### Debugging
 <!--
 @highlight: <b style="color: red">@0</b>
 
@@ -8679,11 +8689,10 @@ example:
   @highlight(@0) <i style="color: green">@1</i>
 -->
 
-Creating macros, can be quite difficult, especially if it is about creating and
-calling macros nested macros with various parameters. And defining macros in
-Atom is somehow similar to navigating in the dark, since it is not possible to
-inspect the DOM. But you can escape a macro by and additional `@`, which outputs
-a gray and escaped HTML `pre` `code` block.
+    --{{0}}--
+Creating macros can be quite difficult, especially when it involves creating and calling nested macros with various parameters.
+Defining macros in Atom is somewhat akin to navigating in the dark, as it is not possible to inspect the DOM.
+However, you can escape a macro by adding an additional `@`, which outputs a gray and escaped HTML `pre` `code` block.
 
 ``` markdown
 <!--
@@ -8699,17 +8708,90 @@ a gray and escaped HTML `pre` `code` block.
 <lia-keep>
 <pre style="background:#CCCCCC"><code><b style="color: red">red</b> <i style="color: green">simply, simply, green</i></code></pre></lia-keep>
 
-### Special Macros
+
+### 2. Basic Macros
 
 The following macros are special ones that are used by the LiaScript to deal with a couple of convenience functions.
 
-#### `attribute`
 
-Attribution is an important issue.
-With the attribute command, you can define the attribution that is showed within the info field within the navigation panel.
-These elements get also imported if you import the functionality from another course.
+#### Base settings
 
-A good attribution might look like the following ones...
+##### `author`
+
+    --{{0}}--
+The author information is visible within the information panel as well as on the course-card on the home-screen.
+Use a semicolon to separate multiple authors.
+
+
+```md
+<!--
+author: Your name; Another Author
+-->
+```
+
+##### `comment`
+
+    --{{0}}--
+This information is shown on the course card at the home screen.
+It should contain a short and precise description of your course.
+This macro will only display one paragraph, even if you define more content.
+
+```md
+<!--
+comment: Learn something about ...
+  even if you insert multiple paragraphs
+
+  there will only be one paragraph
+-->
+```
+
+##### `date`
+
+    --{{0}}--
+A convenience function that can be used to show the latest update time to the user.
+This is also displayed in the information panel.
+
+```md
+<!--
+date: 08/03/2020
+-->
+```
+
+
+##### `logo`
+
+The logo definition requires a URL of an image, weather absolute or relative.
+It is used to define a background image for the course-card at the home-screen.
+
+```md
+<!--
+logo: ./pics/logo.png
+-->
+```
+
+##### `icon`
+
+
+
+##### `email`
+
+To add contact information that will be displayed in the information panel, you can include it in your LiaScript document.
+This contact information can also be overridden for specific sections if needed.
+
+```md
+<!--
+email: contact@web.de
+-->
+```
+
+
+##### `attribute`
+
+    --{{0}}--
+Attribution is an important issue. Using the `attribute` command, you can define the attribution that is shown within the info field within the navigation panel.
+These elements also get imported if you import the functionality from another course.
+A good attribution might look like the following examples:
+
 
 ```md
 <!--
@@ -8724,111 +8806,25 @@ attribute: [PapaParse](https://www.papaparse.com)
 -->
 ```
 
-#### `author`
-
-The author information is visible within the information panel as well as on the course-card on the home-screen.
-
-```md
-<!--
-author: Your name
--->
-```
-
-#### `comment`
-
-This information is shown at the course-card at the home-screen.
-It should contain a short and precise description of your course.
-This macro will only show one paragraph, even if you define more content.
-
-```md
-<!--
-comment: Learn something about ...
-  even if you insert multiple paragraphs
-
-  there will only be one paragraph
--->
-```
+#### __Internationalization__
 
 
-#### `date`
+##### `translation`
 
-A convenience function that can be used to show the latest update time to the user.
-This is also shown at the information panel.
-
-```md
-<!--
-date: 08/03/2020
--->
-```
-
-
-#### `dark`
-
-You can change the default appearance of your document, either if you prefer dark mode or light mode.
-This will not change the user preferences.
-The default mode is defined by the user settings.
-
-```md
-<!--
-dark: true
-
-@@ or ...
-
-dark: false
--->
-```
-
-
-#### `email`
-
-Simply add some contact information that is shown in the information panel.
-This can also be overwritten for every section.
-
-```md
-<!--
-email: contact@web.de
--->
-```
-
-
-#### `import`
-
-You can import the main macros of other courses, simply by using the `import` command, which is followed by the raw URL of the foreign course.
-You can also import various different courses, every URL will be loaded before the course is loaded.
-Only the definitions in the main header are loaded, this includes, scripts, css, macros, attribution, and onload.
-Our basic templates are currently hosted at https://github.com/LiaTemplates .
-Every course basically describes its macros and how to apply them.
-Only the content of this course is loaded for speed-reasons, it is currently not possible to load a course, that requires macros of another course and so on.
-
-```` md
-<!--
-import: https://raw.githubusercontent.com/liaTemplates/rextester_template/master/README.md
-    https://other_url
-
-import: this will import a third url
--->
-
-``` python
-print("Hello World")
-```
-@Rextester.eval(@Python)
-````
-
-
-#### `input`
-
-Use this only in conjunction with executable code and projects or with quizzes.
-This macro can only be used in a script tag and gets replaced by the current user input.
-
-To refer to the inputs in a project, use the parameterized macro:
+If you already have some translated versions of your course or know where they can be found, then use this macro.
+Simply add the name and the URL.
+This links will be also visible within the information panel of your course.
 
 ``` md
-@input(0)   <== equal to @input
-@input(1)
+<!--
+translation: Deutsch  translations/German.md
+translation: Français translations/French.md
+translation: Русский  translations/Russian.md
+-->
 ```
 
 
-#### `language`
+##### `language`
 
 Set the internationalization of the course.
 This will set basic button information
@@ -8882,48 +8878,7 @@ language: de
 | Taiwanese  |  tw  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.tw.yaml) |
 | Ukrainian  |  ua  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ua.yaml) |
 
-#### `link`
-
-If you need to load additional CSS files, use `link` followed by the URL of your stylesheet.
-Similar to `import` or `script`, you can load multiple files.
-See https://github.com/liaScript/custom-style for more information on how to define custom styling.
-
-```md
-<!--
-link: https://some.css
-  https://another.css
--->
-```
-
-
-#### `logo`
-
-The logo definition requires a URL of an image, weather absolute or relative.
-It is used to define a background image for the course-card at the home-screen.
-
-```md
-<!--
-logo: ./pics/logo.png
--->
-```
-
-#### `mode`
-
-You can change the default style of your document, either if you do not have any effects you can set mode to `Textbook` or start with and interactive `Presentation`.
-The three modes a the same as defined within the document at the upper right button. The default mode is defined by the user settings.
-
-```md
-<!--
-mode: Presentation
-
-mode: Slides
-
-mode: Textbook
--->
-```
-
-
-#### `narrator`
+##### `narrator`
 
 Set the narrator-voice of your course-speaker.
 The voice is a service of https://responsivevoice.org that is free for non-commercial educational content.
@@ -8999,78 +8954,7 @@ narrator: Afrikaans Male
 |                               | Welsh Male                  |
 
 
-#### `onload`
-
-Sometimes it might be necessary to preload some JavaScript code that is gets executed before the course is loaded.
-Or you want to define some global functions that can be used afterwards everywhere.
-`onload` actually does the same as its HTML counterpart and is used to accomplish this task.
-
-``` md
-<!--
-@onload
-// this macro contains some important functions that are loaded
-// only once ...
-
-alert("Hello World")
-@end
--->
-```
-
-#### `script`
-
-Load all required JavaScript files/libraries with this command.
-
-``` md
-<!--
-script: https://some.js
-  https://another.js
-  ...
--->
-```
-
-#### `translation`
-
-If you already have some translated versions of your course or know where they can be found, then use this macro.
-Simply add the name and the URL.
-This links will be also visible within the information panel of your course.
-
-``` md
-<!--
-translation: Deutsch  translations/German.md
-translation: Français translations/French.md
-translation: Русский  translations/Russian.md
--->
-```
-
-#### `uid`
-
-This macro can only be used within the document, not within the header.
-Sometimes it is necessary to define unique identifiers if you want to access some HTML nodes and do not want to name every manually.
-In this case it might be useful to define hidden macros, that make use of `@uid` which generates a unique identifier, whenever it is called.
-See for example https://github.com/liaTemplates/Rextester to see the application of this pattern for creating macros.
-
-
-```md
-<!--
-@eval: @hidden_eval(@uid,@input)
-
-@hidden_eval
-<script>
-// eval @input
-...
-// and do somethint with the content of "name_.."
-document.getElementByName("name_@0")
-</script>
-
-
-<div id="id_@0"></div>
-
-@end
--->
-```
-
-
-#### `version`
+#### Versioning: `version`
 
 A very important information is the `version`, it follows the major.minor.patch
 notion. If you start to develop a course, you can leave this out, and you will
@@ -9113,6 +8997,175 @@ one slide to another will might destroy previous states. For this purpose major
 version changes are required (`1.1.0` -> `2.0.0`), which will result in a new
 version also in IndexedDB. The old code/state is still available and can be
 restored.
+
+
+#### Loading External Resources
+
+##### `link`
+
+If you need to load additional CSS files, use `link` followed by the URL of your stylesheet.
+Similar to `import` or `script`, you can load multiple files.
+See https://github.com/liaScript/custom-style for more information on how to define custom styling.
+
+```md
+<!--
+link: https://some.css
+  https://another.css
+-->
+```
+
+##### `script`
+
+Load all required JavaScript files/libraries with this command.
+
+``` md
+<!--
+script: https://some.js
+  https://another.js
+  ...
+-->
+```
+
+
+##### `import`
+
+You can import the main macros of other courses, simply by using the `import` command, which is followed by the raw URL of the foreign course.
+You can also import various different courses, every URL will be loaded before the course is loaded.
+Only the definitions in the main header are loaded, this includes, scripts, css, macros, attribution, and onload.
+Our basic templates are currently hosted at https://github.com/LiaTemplates .
+Every course basically describes its macros and how to apply them.
+Only the content of this course is loaded for speed-reasons, it is currently not possible to load a course, that requires macros of another course and so on.
+
+```` md
+<!--
+import: https://raw.githubusercontent.com/liaTemplates/rextester_template/master/README.md
+    https://other_url
+
+import: this will import a third url
+-->
+
+``` python
+print("Hello World")
+```
+@Rextester.eval(@Python)
+````
+
+
+
+
+
+
+
+
+
+#### `dark`
+
+You can change the default appearance of your document, either to prefer dark mode or light mode.
+Please note that this will not alter the user's preferences.
+The default mode is determined by the user settings.
+
+```md
+<!--
+dark: true
+
+@@ or ...
+
+dark: false
+-->
+```
+
+
+
+
+
+
+
+#### `input`
+
+Use this only in conjunction with executable code and projects or with quizzes.
+This macro can only be used in a script tag and gets replaced by the current user input.
+
+To refer to the inputs in a project, use the parameterized macro:
+
+``` md
+@input(0)   <== equal to @input
+@input(1)
+```
+
+
+
+
+
+#### `mode`
+
+You can change the default style of your document, either if you do not have any effects you can set mode to `Textbook` or start with and interactive `Presentation`.
+The three modes a the same as defined within the document at the upper right button. The default mode is defined by the user settings.
+
+```md
+<!--
+mode: Presentation
+
+mode: Slides
+
+mode: Textbook
+-->
+```
+
+
+
+
+#### `onload`
+
+Sometimes it might be necessary to preload some JavaScript code that is gets executed before the course is loaded.
+Or you want to define some global functions that can be used afterwards everywhere.
+`onload` actually does the same as its HTML counterpart and is used to accomplish this task.
+
+``` md
+<!--
+@onload
+// this macro contains some important functions that are loaded
+// only once ...
+
+alert("Hello World")
+@end
+-->
+```
+
+#### `persistend`
+
+
+
+#### `style`
+
+
+#### `uid`
+
+This macro can only be used within the document, not within the header.
+Sometimes it is necessary to define unique identifiers if you want to access some HTML nodes and do not want to name every manually.
+In this case it might be useful to define hidden macros, that make use of `@uid` which generates a unique identifier, whenever it is called.
+See for example https://github.com/liaTemplates/Rextester to see the application of this pattern for creating macros.
+
+
+```md
+<!--
+@eval: @hidden_eval(@uid,@input)
+
+@hidden_eval
+<script>
+// eval @input
+...
+// and do somethint with the content of "name_.."
+document.getElementByName("name_@0")
+</script>
+
+
+<div id="id_@0"></div>
+
+@end
+-->
+```
+
+
 
 
 ## JavaScript
