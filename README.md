@@ -7797,21 +7797,20 @@ And here is the same diagram, only for the lower case characters.
 
 </section>
 
-## Interactive Code
+## Interactive Code-Blocks
 
                                --{{0}}--
-In section [Code](#code) we had already introduced how code-snippets can be defined in Markdown and LiaScript.
-In this part we will introduce how such code can be made executable and editable.
+In section [Code](#code), we had already introduced how code snippets can be defined in Markdown and LiaScript.
+In this part, we will introduce how such code can be made executable and editable.
 
 <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/zOvBKUUEERdNm" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/coding-zOvBKUUEERdNm">via GIPHY</a></p>
 
 
 ### Starting simple
 
-Any code snippet can be made interactive by attaching a script-tag to the end.
-The idea is the same as for tasks, quizzes, and surveys.
-The `@input` is simply a placeholder that gets replaced by the current user-input.
-
+    --{{0}}--
+Any code snippet can be made interactive by attaching a script tag to the end. The idea is the same as for tasks, quizzes, and surveys.
+The `@input` is simply a placeholder that gets replaced by the current user input.
 
 ```` markdown
 ``` javascript
@@ -7833,8 +7832,8 @@ result;
 
                                --{{1}}--
 If the code is in JavaScript and provides a full and executable example, not only pseudo-code, then it can be directly executed.
-Just click on the run-button directly below the editor.
-The console output will be piped into the local shell that appears below the code-snippet.
+Just click on the run button directly below the editor.
+The console output will be piped into the local shell that appears below the code snippet.
 
                                  {{1}}
 ``` javascript
@@ -7855,21 +7854,21 @@ result;
 
 
                                --{{2}}--
-It is possible to re-run the example, but you can also make changes, such as the number of loops.
+It is possible to rerun the example, but you can also make changes, such as the number of loops.
 When you execute your modified example, a new version will be added to the end of the list.
-It is possible to go back and forth between versions and if a previous version gets modified, this will create append also new version.
+It is possible to go back and forth between versions, and if a previous version gets modified, this will also append a new version.
 
 
 ### Projects
 
                 --{{0}}--
-Multiple different code snippets can be combined to form a larger projects too.
-It requires to write them in a row.
-You can give them names, if you add a second parameter after the highlighting definition.
-Add a `+` or `-` to the front of your filename, in order to indicate, if it should be visible by default or not.
+Multiple different code snippets can be combined to form larger projects too.
+It requires writing them in sequence, without empty lines in between.
+You can give them names by adding a second parameter after the highlighting definition.
+Add a `+` or `-` to the front of your filename to indicate whether it should be visible by default or not.
 
                 --{{1}}--
-As previously mentioned the `@input` macro gets substituted by the input of the editor, but you can pass also a number to indicate which macro should be substituted by which code block (`@input(0)` is equivalent to `@input`).
+As previously mentioned, the `@input` macro gets substituted by the input of the editor, but you can also pass a number to indicate which macro should be substituted by which code block (`@input(0)` is equivalent to `@input`).
 
 ```` markdown
 ``` js     -EvalScript.js
@@ -7899,8 +7898,8 @@ else {
 ````
 
                                --{{2}}--
-The result is a project which consists of two files.
-Each file can be edited separately, while the script tag provides only some basic glue-code that tells LiaScript what to do with the input.
+The result is a project consisting of two files.
+Each file can be edited separately, while the script tag provides only some basic glue code that tells LiaScript what to do with the input.
 
                                  {{2}}
 ``` js     -EvalScript.js
@@ -7934,9 +7933,7 @@ script:   https://cdn.rawgit.com/davidedc/Algebrite/master/dist/algebrite.bundle
 
                                --{{0}}--
 If you want to make use of some external functionality, you can also load additional JavaScript modules into LiaScript.
-Simply add the `script` command to the main definition of your LiaScript header.
-For more information on this, take a look at section [`script`](#script) in the [Macros](#macros) chapter.
-
+Simply add the `script` command to the main definition of your LiaScript header. For more information on this, take a look at section [`script`](#script) in the [Macros](#macros) chapter.
 
 ``` markdown
 <!--
@@ -7956,7 +7953,7 @@ In this case we made use of the Computer-Algebra-System ([Algebrit](http://algeb
 
                                  {{1}}
 ```` markdown
-```javascript
+``` matlab
 f=sin(t)^4-2*cos(t/2)^3*sin(t)
 
 f=circexp(f)
@@ -7971,7 +7968,7 @@ The result is a fully functional computer algebra editor where you can experimen
 
 
                                  {{2}}
-```javascript
+```matlab
 f=sin(t)^4-2*cos(t/2)^3*sin(t)
 
 f=circexp(f)
@@ -7992,14 +7989,14 @@ For simplicity all of the following examples will only contain JavaScript code t
 #### `send` - Object
 
                                --{{0}}--
-To every executed piece of code a `send` module is associated, which handles all required communication with that specific code-block or project and the outer world.
+To every executed piece of code a `send` object is associated, which handles all required communication with that specific code-block or project and the outer world.
 Thus, every `send` module does only exists in this particular scope and it offers different methods for different problems.
 
 - __`send.log`__ : output logging information
 - __`send.lia`__ : send messages and control commands
 - __`send.handle`__ : handler terminal inputs
-- __`send.register`__ :
-- __`send.dispatch`__ :
+- __`send.register`__ : register to a global event
+- __`send.dispatch`__ : dispatch a global event
 
                                --{{1}}--
 To start with, there is a `log` method, which can be used to send different types of outputs directly to the console.
@@ -8043,8 +8040,9 @@ console.html("<b>Some more fancy stuff:</b> <img width='40px' src='https://www.m
 
 #### Return types
 
-As you may have noticed, the last statement of an executed code-block does also define the `return` statement.
-The output is alway interpreted as a string and handled this way.
+    --{{0}}--
+As you may have noticed, the last statement of an executed code block also defines the `return` statement.
+The output is always interpreted as a string and handled in this way.
 
 ``` js
 33*33
@@ -8052,11 +8050,12 @@ The output is alway interpreted as a string and handled this way.
 <script>@input</script>
 
 
-However, there are some results that are treated differently.
-These are strings that start with `"LIA: "`.
-The string `"LIA: stop"` for example, is used to tell the system to simply stop the execution, there will be no further output.
-In this case, you can used `console.log` to print the result to the terminal.
+    --{{1}}--
+However, there are some results that are treated differently. These are strings that start with `"LIA: "`.
+For example, the string `"LIA: stop"` is used to tell the system to simply stop the execution; there will be no further output.
+In this case, you can use `console.log` to print the result to the terminal.
 
+      {{1}}
 ``` js
 33*33
 
@@ -8065,14 +8064,14 @@ In this case, you can used `console.log` to print the result to the terminal.
 ```
 <script>@input</script>
 
+    --{{2}}--
+If you want to directly send control messages at various stages of the script, you can use `send.lia`, which will also directly output the result in the console.
 
-If you directly want to send control messages at various stages of the script, you can use `send.lia`, which will also directly output the result at the console
+    --{{3}}--
+If the execution of your code may take longer, includes some asynchronous calls, or you need to call an external service, you can indicate this by finishing with the statement `"LIA: wait"`.
+This will show arrows that loop forever or until they receive a `"LIA: stop"` signal.
 
-
-If the execution of your code may take longer, include some asynchronous calls or you need to call an external service, you can tell this by finishing with the
-statement `"LIA: wait"`, which will show arrows that loop forever or until they
-receive a `"LIA: stop"` signal.
-
+      {{3}}
 ``` js
 setTimeout(function(){
   console.warn("end of execution")
@@ -8087,25 +8086,22 @@ setTimeout(function(){
 ```
 <script>@input</script>
 
-You might probably wonder, why there is a need for `send.lia`, if you could also
-pipe output to the console by using `send.log` or the shorthand `console.log`.
-As it will be described in the section about error handling, `send.lia` gives
-you more control, not only over the shell but also over the editor, see section
-[Error Handling](#Error-Handling).
+    --{{4}}--
+You might wonder why there is a need for `send.lia` if you could also pipe output to the console using `send.log` or the shorthand `console.log`.
+As described in the section about error handling, `send.lia` gives you more control not only over the shell but also over the editor.
+See section [Error Handling](#Error-Handling) for more details.
 
-The code example below, depicts how the terminal can be exposed, following the
-previous logic, we only have to define `"LIA: terminal"` as the last statement
-in order to switch on the terminal mode, that will be active until the user
-clicks on the stop button, formerly known as the execute button, or a
-`"LIA: stop"` is send from the script, or the browser gets refreshed.
+    --{{5}}--
+The code example below demonstrates how the terminal can be enabled.
+Following the previous logic, we only have to define `"LIA: terminal"` as the last statement in order to activate the terminal mode.
+This mode will remain active until the user clicks on the stop button (formerly known as the execute button), or a `"LIA: stop"` signal is sent from the script, or the browser is refreshed.
 
-In order to handle the `input` and the `stop` events from the terminal in the
-JavaScript world, we have to define handles, as it is done in the code below.
-Simply add a function, that evaluates or sends your terminal inputs to a foreign
-server or a websocket, or ... whatever you want ... And use the stop handle to
-close a connection or do some other stuff, if the user clicks onto the stop
-button.
+    --{{5}}--
+To handle the `input` and the `stop` events from the terminal in the JavaScript world, we have to define handlers, as shown in the code below.
+Simply add a function that evaluates or sends your terminal inputs to a foreign server or a websocket, or whatever you want.
+Use the stop handler to close a connection or perform other actions if the user clicks on the stop button.
 
+     {{5}}
 ``` js
 send.handle("input", input => {
   try{
@@ -8125,24 +8121,26 @@ function close(){
 ```
 <script>@input</script>
 
-A little side note, there is also a function called `console.clear`, that does
-what it says it clears the console, but it is not a realized by `send.log`,
-instead this is a shortcut for `send.lia("LIA: clear")`. These were all
+    --{{6}}--
+A little side note: there is also a function called `console.clear` that clears the console, but it is not triggered by `send.log`.
+Instead, this is a shortcut for `send.lia("LIA: clear")`.
+These were all the `"LIA: ..."` commands.
+In the next section, you will learn how to use the custom-built event system to accomplish even more tasks.
 
-`"LIA: ..."` commands, the next section you will learn how to use the custom
-built in event system to get even more stuff done.
+      {{6}}
+* `LIA: clear` -> clear the terminal
+* `LIA: terminal` -> start the terminal (awaits stop-event)
+* `LIA: stop` -> manual stop event
+* `LIA: wait` -> waiting for an asynchronous code execution to finish
 
-##### Ping Pong
+#### Ping Pong: `register` & `dispatch`
 
-All previous functions were executed only within the scope of a single
-code-block, but sometimes it is necessary to connect with other external events.
-For this purpose, the `send` object also contains two further generic functions,
-these are `register` and `dispatch`. Simply use a unique identifier to name an
-event, which is followed by a callback-function that does whatever you want.
-Both callbacks are defined in local scope, but by using `register` and
-`dispatch` you can send messages to any code-block. The example below also
-delivers the messages successfully, if both code-blocks would be defined on
-different slides.
+    --{{0}}--
+All previous functions were executed only within the scope of a single code block, but sometimes it is necessary to connect with other external events.
+For this purpose, the `send` object also contains two further generic functions: `register` and `dispatch`.
+Simply use a unique identifier to name an event, followed by a callback function that does whatever you want.
+Both callbacks are defined in local scope, but by using `register` and `dispatch`, you can send messages to any code block.
+The example below demonstrates how messages are successfully delivered, even if both code blocks are defined on different slides:
 
 
 ``` js
@@ -8174,22 +8172,23 @@ send.handle("input", input => {
 <script>@input</script>
 
 
-Adding such script-tags to the end of every code-block can be very tedious and
-cumbersome. Your Markdown will contain a lot of not necessary copy & paste code.
-To reduce this, LiaScript offers the possibility to define custom macros, and
-even more, you can directly import macros from other courses. Section
-[Macros](#Macros) is used to describe this issue in more.
+    --{{1}}--
+Adding script tags to the end of every code block can indeed be tedious and cumbersome, resulting in unnecessary copy and paste in your Markdown.
+To alleviate this, LiaScript offers the possibility to define custom macros.
+Even more conveniently, you can directly import macros from other courses.
+The [Macros](#macros) section describes this issue in more detail.
+This feature enables you to streamline your code and make your Markdown files more concise and manageable.
 
 
-##### Error Handling
+#### Error Handling
 
-As mentioned earlier, `send.lia` can do more then just passing messages to the
-terminal output. The editor that is currently used by LiaScript is
-[ace](https://ace.c9.io), which allows to mark lines with warnings and errors.
-Since there is no name associated to a file (like with the `@input(0)` macro).
-You have to use a list of lists,  which contain all necessary information that
-you want to pass to the editor. The list element is associated with the
-code-block, starting from top to bottom.
+    --{{1}}--
+As mentioned earlier, `send.lia` can do more than just passing messages to the terminal output.
+The editor currently used by LiaScript is [Ace](https://ace.c9.io), which allows marking lines with warnings and errors.
+Since there is no name associated with a file (like with the `@input(0)` macro), you have to use a list of lists containing all the necessary information that you want to pass to the editor.
+Each list element is associated with a code block, starting from top to bottom.
+This method allows you to provide line-specific warnings or errors, enhancing the interactivity and functionality of your code blocks within LiaScript.
+
 
 ``` js
 send.lia( "ups, something went wrong",
@@ -8211,13 +8210,13 @@ send.lia( "ups, something went wrong",
 ```
 <script>@input</script>
 
+    --{{1}}--
+If this seems too complicated, you can also throw an error by using `LiaError`.
+The second parameter is used to define the number of code blocks you are using.
+Then, all you need to do is provide detailed information, similar to the previous example, to specify the line numbers and error messages.
+This simplifies the process of adding errors to your code blocks in LiaScript.
 
-If this seems to complicated, you can also throw and error by using `LiaError`.
-The second parameter is used to define the number of code-blocks you use and
-then the only thing you require, is to add as much detailed information, which
-is similar to the previous example.
-
-
+      {{1}}
 ``` js
 // create a new error with an error message that is
 // connected to only one code-block, if you have more,
@@ -8237,13 +8236,9 @@ throw(error);
 ```
 <script>@input</script>
 
+### Example: CPP in JavaScript
 
-
-### Examples
-
-#### Running JSCPP
-
-
+    --{{0}}--
 Teaching other language-basics is also possible, for this example we applied [JSCPP](https://github.com/felixhao28/JSCPP)
 to run simple C++ programs:
 
@@ -8268,45 +8263,17 @@ int main() {
   output;
 </script>
 
-### Interactive Coding
 
-                                    --{{0}}--
-Why should code examples not be interactive and editable, especially if it is
-JavaScript or any other language that has been ported to it? Simply add the
-required resources to the initial comment with keyword `script`.
+### Styling
 
-1. Add resource to main-comment: `script: url.js`
+    --{{0}}--
+As for all previous elements, it is also possible to apply some basic styling attributes to the editor.
+By default, code snippets that are not executable will not show line numbers, allowing them to be used for pseudo-code.
+However, executable blocks will show line numbers, indicating that they can be edited.
+You can apply the following attributes to make these definitions explicit.
+We have tried to use the common ACE notation for these attributes.
+These attributes need to be applied per code block, as demonstrated in the example below:
 
-2. Add a trailing script-tag to your code: `<script>@input</script>`
-
-3. A project with multiple files can be realized with `@input(0)`, `@input(1)`, ...,`@input(n)`.
-
-
-                                     --{{1}}--
-And add an additional script tag to the end of your language definition with an
-`@input` macro. This element is afterwards substituted with your code and
-executed. We provide some basic examples within the following section.
-
-                                    --{{2}}--
-Use the `@input` macro as a parameterized function in projects. The number
-defines the the file, starting from 0.
-
-
-
-
-
-
-
-
-#### Styling
-
-As for Tables, it is also possible to apply some basic styling attributes to the
-editor. At default code-snippets that ar not executable will not show line
-numbers in order to be used also for pseudo-code, while executeable blocks will
-show line numbers, while the later ones can be edited and not the others. However,
-you can apply the follow attributes to make some definitions explicit. We tried
-to apply the common ACE notation. Attributes have to be applied per code-block,
-as it is shown in the example:
 
 ````` markdown
 <!-- data-showGutter="false" -->
@@ -8324,34 +8291,104 @@ as it is shown in the example:
 </script>
 `````
 
+    {{1}}
 __Attributes:__
 
-* `data-firstLineNumber`: change the initial line number to any number you
-  prefer (default: `data-firstLineNumber="0"`).
-* `data-fontSize`: change the default font-size, which has to be defined with
-  `pt` (default `data-fontSize="12pt"`).
-* `data-readOnly`: whether it is an executable snippet or not, there are
-  different default values, you can either set only `data-readOnly` to make it
-  read-only or pass it a boolean value (`data-readOnly="false"`)
-* `data-showGutter`: same as with read-only
-* `data-tabSize`: this takes an integer to represent the default tab-size
-  replacement (default `data-tabSize="2"`)
-* `data-theme`: your default theme as in your settings is applied, but you can
-  change this to any of the ace-themes, eg: `Chaos`, `Eclipse`,
-  `Soliarized Light`, ...
-* `data-marker`: use this to highlight aspects of your code, you have to apply
-  the following pattern `data-marker="y1 x1 y2 x2 color type;"`. You start
-  with a row and column and end with a row and a column. Then you can apply one
-  of the predefined colors, for `error`, `log`, `warn`, `debug` or `info`, or
-  you can set your own color with the css rgba function,
-  __do not use spaces in this function__!
+        {{1}}
+* __`data-firstLineNumber`__
 
-  The type is optional, but you can choose between one of the following
+      --{{1}}--
+  Change the initial line number to any number you prefer.
+
+  default: `data-firstLineNumber="0"`
+
+        {{2}}
+* __`data-fontSize`__
+
+      --{{2}}--
+  Change the default font-size, which has to be defined with `pt`.
+
+  default: `data-fontSize="12pt"`
+
+        {{3}}
+* __`data-readOnly`__
+
+      --{{3}}--
+  Whether it is an executable snippet or not, there are different default values, you can either set only `data-readOnly` to make it read-only or pass it a boolean value.
+
+  `data-readOnly="false"`
+
+        {{4}}
+* __`data-showGutter`__
+
+      --{{4}}--
+  Similar to read-only.
+
+        {{5}}
+* __`data-tabSize`__
+
+      --{{5}}--
+  This takes an integer to represent the default tab-size replacement.
+
+  default: `data-tabSize="2"`
+
+        {{6}}
+* __`data-theme`__
+
+      --{{6}}--
+  Your default theme as in your settings is applied, but you can change this to any of the ace-themes:
+
+  e.g.: `Chaos`, `Eclipse`, `Soliarized Light`, ...
+
+       {{7}}
+* __`data-marker`__
+
+       --{{7}}--
+  Use this to highlight aspects of your code, you have to apply
+  the following pattern.
+
+  `data-marker="y1 x1 y2 x2 color type;"`
+
+      --{{8}}--
+  You start with a row and column and end with a row and a column.
+  Then you can apply one of the predefined colors:
+
+        {{8}}
+  `error`, `log`, `warn`, `debug` or `info`
+
+      --{{8}}--
+  you can set your own color with the CSS `rgba` function,
+  __but do not use spaces in this function__!
+
+      --{{9}}--
+  The type is optional, but you can choose between one of the following types.
+  If you want more than one marker, then simply separate different marker definitions with a colon.
+
+        {{9}}
   ace-marker types: `text`, (default `fullLine`), `screenLine`
 
-  If you want more than one marker, then simply separate different marker
-  definitions with a colon ...
 
+    {{1}}
+```` markdown
+<!-- data-marker="
+0 0 0 100 error screenline;
+2 0 4 200 log;
+6 12 6 33 rgba(55,255,100,0.5) text"
+data-showGutter="true"
+data-theme="chaos"
+data-readOnly="false" -->
+```
+this will be red
+
+this is blue ...
+until the next
+line
+
+and this is rgba(55,255,100,0.5)
+```
+````
+
+    {{1}}
 <!-- data-marker="
 0 0 0 100 error screenline;
 2 0 4 200 log;
@@ -8369,216 +8406,14 @@ line
 and this is rgba(55,255,100,0.5)
 ```
 
-#### Examples
 
-##### JavaScript Chartist
+### More Examples
 
-A drawing example, for demonstrating that any javascript library can be used,
-also for drawing.
+    --{{0}}--
+Checkout the following collection on LiaScript templates.
+Most of them provide a functionality that is implemented on the basis of editable code-snippets and macros.
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-
-``` javascript
-// Initialize a Line chart in the container with the ID chart1
-new Chartist.Line('#chart1', {
-  labels: [1, 2, 3, 4],
-  series: [[100, 120, 180, 200]]
-});
-
-// Initialize a Line chart in the container with the ID chart2
-new Chartist.Bar('#chart2', {
-  labels: [1, 2, 3, 4],
-  series: [[5, 2, 8, 3]]
-});
-```
-<script>@input</script>
-
-<div class="ct-chart ct-golden-section" id="chart1"></div>
-<div class="ct-chart ct-golden-section" id="chart2"></div>
-
-
-##### Computer-Algebra
-<!--
-script:   https://cdn.rawgit.com/davidedc/Algebrite/master/dist/algebrite.bundle-for-browser.js
--->
-
-
-An example of a Computer-Algebra-System (Algebrit), see http://algebrite.org for more examples:
-
-``` javascript
-x + x
-```
-<script> Algebrite.run(`@input`) </script>
-
-
-
-```javascript
-f=sin(t)^4-2*cos(t/2)^3*sin(t)
-
-f=circexp(f)
-
-defint(f,t,0,2*pi)
-```
-<script> Algebrite.run(`@input`) </script>
-
-
-
-##### Elm
-
-```elm
--- Read more about this program in the official Elm guide:
--- https://guide.elm-lang.org/architecture/user_input/buttons.html
-
-import Html exposing (beginnerProgram, div, button, text)
-import Html.Events exposing (onClick)
-
-
-main =
-  beginnerProgram { model = 0, view = view, update = update }
-
-
-view model =
-  div []
-    [ button [ onClick Decrement ] [ text "-" ]
-    , div [] [ text (toString model) ]
-    , button [ onClick Increment ] [ text "+" ]
-    ]
-
-
-type Msg = Increment | Decrement
-
-
-update msg model =
-  case msg of
-    Increment ->
-      model + 1
-
-    Decrement ->
-      model - 1
-```
-
-
-##### C++
-
-Teaching other language-basics is also possible, for this example we applied [JSCPP](https://github.com/felixhao28/JSCPP)
-to run simple C++ programs:
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main() {
-    int a = 120;
-    int rslt = 0;
-    for(int i=1; i<a; ++i) {
-        rslt += i;
-        cout << "rslt: " << rslt << endl;
-    }
-    cout << "final result = " << rslt << endl;
-    return 0;
-}
-```
-<script>
-  var output = "";
-  JSCPP.run(`@input`, "", {stdio: {write: s => { output += s }}});
-  output;
-</script>
-
-##### Prolog
-<!--
-script:   https://curiosity-driven.github.io/prolog-interpreter/parser.js
-          https://curiosity-driven.github.io/prolog-interpreter/interpreter.js
--->
-
-
-See the implementation details at: https://curiosity-driven.org/prolog-interpreter
-
-
-** Load Database and Rules: **
-
-```prolog
-exists(A, list(A, _, _, _, _)).
-exists(A, list(_, A, _, _, _)).
-exists(A, list(_, _, A, _, _)).
-exists(A, list(_, _, _, A, _)).
-exists(A, list(_, _, _, _, A)).
-
-rightOf(R, L, list(L, R, _, _, _)).
-rightOf(R, L, list(_, L, R, _, _)).
-rightOf(R, L, list(_, _, L, R, _)).
-rightOf(R, L, list(_, _, _, L, R)).
-
-middle(A, list(_, _, A, _, _)).
-
-first(A, list(A, _, _, _, _)).
-
-nextTo(A, B, list(B, A, _, _, _)).
-nextTo(A, B, list(_, B, A, _, _)).
-nextTo(A, B, list(_, _, B, A, _)).
-nextTo(A, B, list(_, _, _, B, A)).
-nextTo(A, B, list(A, B, _, _, _)).
-nextTo(A, B, list(_, A, B, _, _)).
-nextTo(A, B, list(_, _, A, B, _)).
-nextTo(A, B, list(_, _, _, A, B)).
-
-puzzle(Houses) :-
-  exists(house(red, english, _, _, _), Houses),
-  exists(house(_, spaniard, _, _, dog), Houses),
-  exists(house(green, _, coffee, _, _), Houses),
-  exists(house(_, ukrainian, tea, _, _), Houses),
-  rightOf(house(green, _, _, _, _), house(ivory, _, _, _, _), Houses),
-  exists(house(_, _, _, oldgold, snails), Houses),
-  exists(house(yellow, _, _, kools, _), Houses),
-  middle(house(_, _, milk, _, _), Houses),
-  first(house(_, norwegian, _, _, _), Houses),
-  nextTo(house(_, _, _, chesterfield, _), house(_, _, _, _, fox), Houses),
-  nextTo(house(_, _, _, kools, _),house(_, _, _, _, horse), Houses),
-  exists(house(_, _, orangejuice, luckystike, _), Houses),
-  exists(house(_, japanese, _, parliament, _), Houses),
-  nextTo(house(_, norwegian, _, _, _), house(blue, _, _, _, _), Houses),
-  exists(house(_, _, water, _, _), Houses),
-  exists(house(_, _, _, _, zebra), Houses).
-
-solution(WaterDrinker, ZebraOwner) :-
-  puzzle(Houses),
-  exists(house(_, WaterDrinker, water, _, _), Houses),
-  exists(house(_, ZebraOwner, _, _, zebra), Houses).
-```
-<script>
-var rules = parser(lexer(`@input`)).parseRules();
-window['prolog_db'] = new Database(rules);
-
-"database loaded";
-</script>
-
-** Query: ( it may take some time ;-) ) **
-
-```prolog
-solution(WaterDrinker, ZebraOwner)
-```
-<script>
-var rslt = "";
-
-var goal = parser(lexer(`@input`)).parseTerm();
-
-for (var item of window.prolog_db.query(goal)) {
-    rslt += "Yes: " + item + "\n";
-}
-
-if (rslt === "") {
-   'No';
-} else {
-   rslt;
-}
-</script>
-
-#### More
-
-We provide a list of templates with more examples that can be used to start
-developing your own courses. See:
-
-[preview-lia](https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md)
-
+https://github.com/topics/liascript-template
 
 ## Macros
 
