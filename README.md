@@ -5656,9 +5656,8 @@ This is an example where {|> 1-2}{I go} _{|> 2}{I am going}_ to work.
 ## Fun with Tables
 
     --{{0}}--
-As already mentioned, tables cannot only be interpreted as structural elements
-within a Markdown document, but also as datasets. In fact, there is little
-difference between a diagram and collection of values.
+As previously noted, tables serve not only as structural elements within a Markdown document but also as datasets.
+In essence, there's minimal distinction between a diagram and a collection of values.
 
 
       9 |                                       (* dots)
@@ -5674,8 +5673,8 @@ difference between a diagram and collection of values.
         0            x-axis                 36
 
     --{{1}}--
-The same values collected within a list. If you click onto the little icon above
-this list, you will get the same plot as depicted above.
+The same values can be collected within a list.
+By clicking on the small icon above this list, you will obtain the same plot as depicted previously.
 
       {{1}}
 |   x | dots |
@@ -5686,32 +5685,27 @@ this list, you will get the same plot as depicted above.
 |  30 |    6 |
 
     --{{2}}--
-One of the biggest problems in science is the lack of primary data. Projects
-such as the Open-Science-Framework (http://osf.io) try to leverage this, by
-offering a plattform, where scientists can store and document vast amounts of
-data. But why not directly add and visulaize the data, so that they could be
-used and inspected by others, instead of using external tools to create
-visualizations.
+One of the most significant challenges in science is the scarcity of primary data.
+Initiatives like the Open Science Framework (http://osf.io) aim to address this issue by providing a platform where scientists can store and document extensive datasets.
+However, rather than relying on external tools to create visualizations, why not directly incorporate and visualize the data?
+This would enable others to utilize and examine the data more readily.
 
     --{{3}}--
-Everyone who is creating some kind of data or putting it into a Markdown already
-performs some kind of configuration. Based on that table's/data's structural
-settings, we can __visualize data automatically__. Actually it is quite
-surprising, why there has never been an attempt to treat Markdown tables as
-datasets. The following sections are intended to give a brief overview on different
-visualization options and how the systems determines, which one gets applied.
-And of course, you can also enforce your visualization style.
+Everyone who creates or utilizes data and incorporates it into Markdown is already engaging in some form of configuration.
+Leveraging the structural settings of tables or data, we can __automatically visualize data__.
+It's rather surprising that Markdown tables have not been treated as datasets before.
+The following sections aim to provide a brief overview of various visualization options and how the system determines which one to apply.
+Additionally, you have the flexibility to enforce your preferred visualization style.
+
 
 ### `LinePlot`
 
     --{{0}}--
-The following dataset was taken from https://ourworldindata.org and it shows
-the government expenditure on education in percentage to the GDP. Thus the
-first column defines the x-values while the later ones define the categories.
+The following dataset, sourced from https://ourworldindata.org, illustrates government expenditure on education as a percentage of GDP.
+The first column represents the x-values, while the subsequent columns denote different categories.
 
     --{{1}}--
-If you click on the image icon again, you will see a more elaborate
-representation with title and labels.
+If you click on the image icon again, you'll encounter a more elaborate representation complete with a title and labels.
 
 <!--
 data-title="Government expenditure on education"
@@ -5745,13 +5739,9 @@ https://ourworldindata.org/financing-education#all-charts-preview
 
 
     --{{2}}--
-The reason for this is, you can actually add additional settings as it was done
-to style different Markdown elements, simply by attaching an HTML-comment to the
-front of this table. The type of representation is still automatically
-determined based on the table structure, but it is still possible to add
-attributes like `data-title`, `data-xlabel`, `data-ylabel` to tweak the
-graphical representation. See section [Attributes](#attributes) for more
-information.
+The rationale behind this functionality is that you can incorporate additional settings, similar to how different Markdown elements are styled, by simply attaching an HTML comment to the beginning of the table.
+The type of representation is still automatically determined based on the table structure.
+However, you can still add attributes like `data-title`, `data-xlabel`, and `data-ylabel` to adjust the graphical representation. Refer to the section [Attributes](#attributes) for more detailed information.
 
       {{2}}
 ``` markdown
@@ -5768,11 +5758,10 @@ data-ylabel="% of GDP"
 ```
 
     --{{3}}--
-You can of course also visualize any kind of table, that does not fullfill this
-type of classification to line or scatterplot. Define another kind of
-presentation and if not all values within the first column can be parsed as
-numbers, then they are interpreted as categories. If you change the order of the
-table, then also the order of categories in the visualization is changed.
+Certainly, you can visualize any type of table that doesn't adhere to the classification of a line or ScatterPlot.
+Let's define another type of presentation, such as a bar chart.
+If not all values within the first column can be parsed as numbers, they are interpreted as categories.
+Additionally, if you change the order of the table, the order of categories in the visualization will also change accordingly.
 
       {{3}}
 ``` md
@@ -5800,10 +5789,8 @@ table, then also the order of categories in the visualization is changed.
 ### `ScatterPlot`
 
     --{{0}}--
-If your table is similar to the one in a LinePlot, but the first column
-contains numbers which appear twice or more times, than this data cannot be
-interpreted as a "function" in a mathematical sense. This data is then simply
-visualized as a scatter plot only showing the dots.
+If your table resembles that of a LinePlot, but the first column contains numbers that appear twice or more times, then this data cannot be interpreted as a "function" in a mathematical sense.
+In this case, the data is simply visualized as a ScatterPlot, displaying only the dots without connecting lines.
 
 ```
 | Random |    I |  II |
@@ -5833,11 +5820,9 @@ visualized as a scatter plot only showing the dots.
 ### `BoxPlot`
 
     --{{0}}--
-If you have a ScatterPlot like representation, but actually want to use this
-data as primary data for your BoxPlot, you can manually change the type of
-visualization to BoxPlot, simply by adding the following attribute to the head of
-your table, as it is shown in the snippet below. Columns are then treated as
-datasets and get visualized accordingly.
+If you have a dataset presented in a ScatterPlot-like format but wish to utilize this data as primary data for a BoxPlot, you can manually change the type of visualization to a BoxPlot.
+This can be achieved by adding the following attribute to the beginning of your table, as demonstrated in the snippet below.
+Each column is then treated as a dataset and visualized accordingly.
 
 ``` Markdown
 <!-- data-type="boxplot" -->
@@ -5867,13 +5852,11 @@ datasets and get visualized accordingly.
 ### `BarChart`
 
     --{{0}}--
-In contrast to a line or a scatter plot, if the first colum contains at least
-one entry thant cannot be parsed as a number, this might be represented also as
-BarChart. Which works perfectly with the following example. If the maximum
-values of the columns do not differ to much, then this dataset it represented as
-a BarChart, otherwise you might end up seeing only one huge bar, while the other
-bars are indistiguishable from each other. In this case other visualization are
-chosen.
+In contrast to a Line or ScatterPlot, if the first column contains at least one entry that cannot be parsed as a number, it might be represented as a BarChart.
+This concept works well with the following example.
+If the maximum values of the columns do not differ too much, then the dataset is represented as a BarChart.
+However, if the maximum values vary significantly, you might end up seeing only one huge bar, making the other bars indistinguishable from each other.
+In such cases, alternative visualizations are chosen.
 
 ``` markdown
 | Animal          | weight in kg | Lifespan years | Mitogen |
@@ -5897,9 +5880,8 @@ chosen.
 ### `Radar`
 
     --{{0}}--
-If for example humans and sheeps are removed from the dataset, then wheight in
-kg would not be visible in a BarChart at all. In this case a Radar is selected,
-that allows to analyze data visually with different "y"-axis.
+If, for example, humans and sheep are removed from the dataset, then weight in kilograms would not be visible in a BarChart at all. In such a case, a RadarChart is selected.
+This type of visualization allows for the analysis of data visually with different "y"-axes, accommodating for the diverse nature of the dataset.
 
 | Animal          | weight in kg | Lifespan years | Mitogen |
 | --------------- | ------------:| --------------:| -------:|
@@ -5911,9 +5893,8 @@ that allows to analyze data visually with different "y"-axis.
 ### `PieChart`
 
     --{{0}}--
-If you have a table with only one row full of numbers, this will be
-automatically presented as an pie chart. The head represents the categories and
-the body the quatities.
+If you have a table with only one row filled with numbers, it will be automatically presented as a pie chart.
+In this representation, the header represents the categories, while the body denotes the quantities associated with each category.
 
 
 | Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
@@ -5922,10 +5903,8 @@ the body the quatities.
 
 
     --{{1}}--
-You can use the first column to give some more information about your data. If
-the first element of the list body contains a text, that cannot be directly
-interpreted as a number, then these two text snippets are used to the define the
-main title and the subtitle of your chart.
+You can utilize the first column to provide additional information about your data.
+If the first element of the list body contains text that cannot be directly interpreted as a number, then these two text snippets are used to define the main title and the subtitle of your chart.
 
       {{1}}
 | Music-Style 1994 | Classic | Country | Reggae | Hip-Hop | Hard-Rock | Samba |
@@ -5936,9 +5915,9 @@ main title and the subtitle of your chart.
 #### `PieChart`(s)
 
     --{{0}}--
-The default behavior for the Table below, would be to represent it as a bar-chart.
-But, you can enforce the usage of pie charts, simply by adding the attribute
-`piechart` into the HTML comment, directly above the table:
+The default behavior for the table below would be to represent it as a barchart.
+However, you can enforce the usage of pie charts simply by adding the attribute `piechart` into the HTML comment directly above the table:
+
 
 ```markdown
 <!-- data-type="PieChart" -->
@@ -5949,6 +5928,7 @@ But, you can enforce the usage of pie charts, simply by adding the attribute
 ```
 
     --{{1}}--
+This instruction overrides the default behavior and ensures that the data is visualized as a piechart.
 The result looks as follows:
 
       {{1}}
@@ -5962,10 +5942,8 @@ The result looks as follows:
 ##### Animating Charts
 
     --{{0}}--
-Since data is parsed at runtime, you can also use animations to change the
-values  of chart, while go on in your slide or move back. But keep in mind, that
-this might lead to negative effects, if your audience preferes the textbook
-mode:
+Since data is parsed at runtime, you can also incorporate animations to dynamically change the values of the chart as you progress through your slides or navigate backward.
+However, it's important to consider that this approach may not be suitable for all audiences, especially those who prefer a more traditional textbook-style presentation.
 
        {{1}}
 | Music-Style {1-2}{1994} {2}{2014} |           Classic |           Country | Reggae |             Hip-Hop |           Hard-Rock |               Samba |
@@ -5975,9 +5953,8 @@ mode:
 ##### Transposing Data
 
     --{{0}}--
-If the previous table was too long and you prefer to use only two columns and
-grow your data vertically, then you can use the attribute `data-transpose`,
-which flips mirrows your data along an imaginary vertical axis.
+If the previous table was too long and you prefer to condense it into two columns and grow your data vertically, you can use the attribute `data-transpose`, which mirrors your data along an imaginary vertical axis.
+This allows you to present your data in a more compact format.
 
 
 ```markdown
@@ -5990,7 +5967,7 @@ which flips mirrows your data along an imaginary vertical axis.
 ```
 
     --{{1}}--
-The result is the same as above, but it might be easier to handle your data.
+The result remains the same as above, but organizing your data in this transposed format might make it easier to handle and interpret.
 
       {{1}}
 <!-- data-transpose -->
@@ -6006,9 +5983,8 @@ The result is the same as above, but it might be easier to handle your data.
 ### `Funnel`
 
     --{{0}}--
-Funnel is a similar representation as PieChart, but it is not set automatically.
-If you want to use funnel, you will have to set the `data-type` parameter to
-funnel.
+The Funnel is a similar representation to the PieChart, but it is not selected automatically.
+If you wish to use the funnel visualization, you'll need to set the `data-type` parameter to "funnel".
 
 ``` markdown
 <!-- data-type="funnel" -->
@@ -6023,8 +5999,7 @@ funnel.
 |      50 |      50 |    100 |     200 |       350 |   250 |
 
      --{{1}}--
-The rest is the same as for piecharts, you can also use effects to generate
-animated diagrams.
+The process for using effects to generate animated diagrams remains the same as for pie charts.
 
        {{1}}
 <!-- data-type="funnel" data-transpose -->
@@ -6041,11 +6016,9 @@ animated diagrams.
 ### `Map`
 
     --{{0}}--
-A map is similar to a BarChart from the table structure, but if you want to
-depict your data on a real map, you will have to add a geojson-file, that
-contains all relevant data about the form of your countries, states, cities,
-etc. The first column has to match the names of your objects in your geojson
-data, that is attached to your table in the following way:
+A map visualization is akin to a BarChart in terms of the table structure.
+However, if you intend to depict your data on an actual map, you'll need to include a GeoJSON file containing all relevant geographic information about the shapes of your countries, states, cities, etc.
+The first column of your table must match the names of the objects in your GeoJSON data, which is attached to your table as follows:
 
 ``` markdown
 <!-- data-type="map" data-src="https://code.highcharts.com/mapdata/custom/europe.geo.json" -->
@@ -6109,18 +6082,15 @@ data, that is attached to your table in the following way:
 | United Kingdom         | 94.9    |
 | Vatican City           | 60.1    |
 
-> Currently there is only support to visualize one column, but this will be
-> fixed in the future ...
+> Currently, there is only support for visualizing one column, but this limitation will be addressed in future updates, allowing for more comprehensive visualizations of multi-column data.
 
 
 
 ### `HeatMap`
 
     --{{0}}--
-Another type of visualization is a HeatMap, which is used, if the table head and
-the first column do only contain numbers, in other words coordinates. If you
-want to use categories instead of coordinate numbers, you can enforce the usage
-of a heatmap, with the comment shown below:
+Another type of visualization is a HeatMap, which is utilized when the table header and the first column exclusively contain numerical values, essentially representing coordinates.
+However, if you prefer to use categories instead of numerical coordinates, you can enforce the usage of a HeatMap by adding the following comment:
 
 ``` markdown
 <!--
@@ -6136,8 +6106,7 @@ data-show
 ```
 
     --{{1}}--
-The attribute `data-show` simply shows the diagram at default, instead of using
-the table.
+The attribute `data-show` simply displays the diagram by default, rather than using the table as the primary representation.
 
       {{1}}
 <!--
@@ -6160,13 +6129,13 @@ data-show
 |      20 | 42.0 | 43.3 | 46.4 | 50.2 | 56.0 | 61.4 | 66.9 |  66.6 | 60.7 | 52.3 | 45.2 | 40.7 |
 |      22 | 41.4 | 42.5 | 45.0 | 48.3 | 53.5 | 58.2 | 63.2 |  63.5 | 58.7 | 51.1 | 44.5 | 40.1 |
 
+    {{1}}
 https://datavizpyr.com/heatmaps-with-seaborn-in-python/
 
 ### `Parallel`
 
     --{{0}}--
-A Parallel representation jumps in, if there are simply too many categories, so
-that your BarChart would contain only thin lines.
+A Parallel representation is employed when there are simply too many categories, making a BarChart impractical due to the resulting thin lines.
 
 <!-- data-show -->
 | Country                |    GDP growth (%) | Births per woman | Life expectancy at birth (years) | Population ages >= 65 (%) | Pop. ages 15-64 (%) | Pop ages 0-14 (%) | Pop (total) |
@@ -6224,10 +6193,8 @@ that your BarChart would contain only thin lines.
 ### `Graph`
 
     --{{0}}--
-If the first column and the head of the table are equal, then the interpreter
-tries to interpret the content of the table as an adjacency matrix, which
-defines a graph. If those values are symetrical according to the diagonal, then
-the matrix defines an __undirected graph__.
+If the values in the first column and the header of the table are equal, then the interpreter attempts to interpret the content of the table as an adjacency matrix, which defines a graph.
+If these values are symmetrical across the diagonal, then the matrix defines an __undirected graph__.
 
 <!-- data-title="Undirected Graph" -->
 | Graph |  A  |  B  |  C  |  D  |  E  |
@@ -6239,8 +6206,7 @@ the matrix defines an __undirected graph__.
 | E     |  0  |  0  |  0  |  1  |  0  |
 
     --{{1}}--
-In contrast to this, if those values differ, then the result is simply an an
-__directed graph__, whereby the values define the strength of the line.
+In contrast to this, if those values differ, then the result is simply a __directed graph__, where the values define the strength of the connections between nodes.
 
       {{1}}
 <!-- data-title="Directed Graph" -->
@@ -6252,16 +6218,14 @@ __directed graph__, whereby the values define the strength of the line.
 | D     |  2  | 12  |  0  |  0  |  1  |
 | E     |  0  |  0  |  0  |  2  |  0  |
 
-> Unfortunatelly, self referenceing or multigraphs are currently not supported.
+      {{1}}
+> Unfortunately, self-referencing or multigraphs are currently not supported.
 
 
 #### `Sankey`
 
     --{{0}}--
-A Sankey diagram is a special type of directed graph that can be used to streams
-or the flow of something, such as engergy, money, etc.
-
-https://en.wikipedia.org/wiki/Sankey_diagram
+A Sankey diagram is a special type of directed graph that is used to visualize the flow of something, such as energy, money, or other resources, typically represented as streams or flows between nodes.
 
 <!-- data-type="sankey" -->
 | Sankey |  A  |  B  |  C  |  D  |  E  |
@@ -6272,11 +6236,12 @@ https://en.wikipedia.org/wiki/Sankey_diagram
 | D      |     |  1  |  1  |     |     |
 | E      |  2  |  1  |  1  |  1  |     |
 
+https://en.wikipedia.org/wiki/Sankey_diagram
 
 ### `None`
 
     --{{0}}--
-Simply `data-type="none"` to prevent any kind of visualization.
+Simply set `data-type="none"` to prevent any kind of visualization for the corresponding table.
 
 ``` markdown
 <!-- data-type="none" -->
@@ -6299,63 +6264,238 @@ Simply `data-type="none"` to prevent any kind of visualization.
 
 ### Attributes
 
-* __`data-type`__: You can use `data-type="map|boxplot|barchart|..."` to
-  overwrite the automatically identfied representation with your desired one.
-  The names can be taken from the previous titles, it is not relevant if you
-  use lower or upper-case. This way it is also possible to use types that cannot
-  be automatically infered at the moment, such as Sankey or BoxPlot.
+* __`data-type`__
 
-  If you do not want to show tables as diagrams, you can also use
-  `data-type="None"` and only the table will be visible.
+      --{{0}}--
+  You can use the attribute `data-type` to overwrite the automatically identified representation with your desired one.
+  The names can be taken from the presented list, and it is not relevant whether you use lower or upper case.
+  This approach also enables the use of types that cannot be automatically inferred at the moment, such as Sankey or BoxPlot.
+  If you do not want to show tables as diagrams, you can also use `none`, and only the table will be visible.
 
-* __`data-show`__: Simply add this attribute or set it to true
-  (`data-show="true"`), if you want to visualize your data immediately, without
-  the need to click in the switch-button. It is still possible for your users to
-  switch to the table representation.
+  * `data-type="bar|barchart"`
+  * `data-type="boxplot"`
+  * `data-type="funnel"`
+  * `data-type="graph"`
+  * `data-type="heatmap"`
+  * `data-type="line|lineplot"`
+  * `data-type="map"`
+  * __`data-type="none"`__
+  * `data-type="parallel"`
+  * `data-type="pie|piechart"`
+  * `data-type="radar"`
+  * `data-type="sankey"`
+  * `data-type="scatter|scatterplot"`
 
-* __`data-transpose`__: Like in the mathematical sense, set this attribute or
-  set it to true (`data-transpose="true"`), if you want to switch rows and
-  columns. One benefit is, that you can for example use PieChart and let your
-  table grow vertically instead of using a horizontal monster.
+        {{1}}
+* __`data-show`__
 
-* __`data-title`__: Normaly, the first cell defines the title of your diagram,
-  but if you want larger titles and not have to write gigantic table headers,
-  apply this attribute `data-title="Use whatever title you want to ..."`
+      --{{1}}--
+  Simply add this attribute or set it to true, if you want to visualize your data immediately, without the need to click on the switch button. However, users still retain the ability to switch to the table representation if desired.
 
-* __`data-xlabel`__: As above, you can also define the strings for the labels,
-  in this case for the x label
+  `<!-- data-show -->` or `<!-- data-show="true" -->`
 
-* __`data-ylabel`__: or the y label.
+        {{2}}
+* __`data-transpose`__:
 
-* __`data-src`__: Currently this attribute is used to refere to your geojson
-  data, if you use the `data-type="Map"` representation, but this might change
-  in the future to load and visualize data directly, such as csv.
+      --{{2}}--
+  Similar to the mathematical sense, set this attribute or set it to true if you want to transpose rows and columns.
+  One benefit is that you can, for example, use a PieChart and let your table grow vertically instead of using a horizontal layout.
 
-  If you are using geojson files from external websites such as:
+  `<!-- data-transpose -->` or `<!-- data-transpose="true" -->`
 
+        {{3}}
+* __`data-title`__:
+
+      --{{3}}--
+  By default, the first cell defines the title of your diagram.
+  However, if you prefer larger titles and want to avoid writing gigantic table headers, you can apply this attribute.
+
+  `<!-- data-title="Use whatever title you want to ..." -->`
+
+        {{4}}
+* __`data-xlabel`__:
+
+      --{{4}}--
+  Similarly, as described above, you can also define the strings for the labels, in this case, for the label for the x-axis.
+
+  `<!-- data-xlabel="Time in minutes" -->`
+
+        {{5}}
+* __`data-ylabel`__:
+
+      --{{5}}
+  Or, in this case label for the y-axis.
+
+  `<!-- data-ylabel="Distance in meters" -->`
+
+        {{6}}
+* __`data-src`__:
+
+      --{{6}}--
+  Currently, this attribute is used to refer to your GeoJSON data if you use the map representation.
+  However, this functionality might change in the future to allow for the loading and visualization of data directly, such as CSV files.
+  See sections [Fun with Tables - Map](#map)
+
+  `<!-- data-type="map" data-src="https://..." -->`
+
+      --{{7}}--
+  Be careful when utilizing GeoJSON files from external websites, as this may result in CORS (Cross-Origin Resource Sharing) problems.
+  It's better to store these files in your own projects and refer to them directly to avoid such issues.
+
+        {{7}}
   https://code.highcharts.com/mapdata/
 
-  It can be usefull to use anycors, if the data cannot be visualized due to
-  CORS restrictions:
 
-  `data-src="https://cors-anywhere.herokuapp.com/https://code.highcharts.com/mapdata/custom/europe.geo.json"`
+### Custom Diagrams
 
-### custom
+    --{{0}}--
+LiaScript utilizes [ECharts](https://echarts.apache.org) for the diagrams and therefore uses a custom HTML tag or web component called `lia-chart`.
+You can check out examples at the following site:
 
-<script input="range" value="2" output="range">@input</script>
+https://echarts.apache.org/examples/en/index.html
 
-<script input="range" value="50" output="amplitude">@input</script>
 
+    --{{1}}--
+Using this tag, you can pass your diagram configuration directly as an option in JSON format or as a simple dictionary, which will be evaluated automatically.
+
+
+      {{1}}
+``` html
+<lia-chart option="{
+  title: { text: 'Stacked Area Chart' },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: { backgroundColor: '#6a7985' }
+    }
+  },
+  legend: {
+    data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+  },
+  toolbox: {
+    feature: { saveAsImage: {} }
+  },
+  grid: { left: '3%',  right: '4%', bottom: '3%', containLabel: true },
+  xAxis: [{
+    type: 'category', boundaryGap: false,
+    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  }],
+  yAxis: [{ type: 'value' }],
+  series: [{
+      name: 'Email', type: 'line', stack: 'Total', areaStyle: {},
+      emphasis: { focus: 'series' },
+      data: [120, 132, 101, 134, 90, 230, 210]
+    },
+    {
+      name: 'Union Ads', type: 'line', stack: 'Total', areaStyle: {},
+      emphasis: { focus: 'series' },
+      data: [220, 182, 191, 234, 290, 330, 310]
+    },
+    {
+      name: 'Video Ads', type: 'line', stack: 'Total', areaStyle: {},
+      emphasis: { focus: 'series' },
+      data: [150, 232, 201, 154, 190, 330, 410]
+    },
+    {
+      name: 'Direct', type: 'line', stack: 'Total', areaStyle: {},
+      emphasis: { focus: 'series' },
+      data: [320, 332, 301, 334, 390, 330, 320]
+    },
+    {
+      name: 'Search Engine', type: 'line', stack: 'Total', areaStyle: {},
+      emphasis: { focus: 'series' },
+      data: [820, 932, 901, 934, 1290, 1330, 1320],
+      label: {
+        show: true,
+        position: 'top'
+      }
+    }
+  ]
+}"></lia-chart>
+```
+
+    --{{2}}--
+This approach allows you to rebuild nearly every example directly, providing flexibility and ease of customization.
+
+      {{2}}
+<lia-chart option="{
+  title: { text: 'Stacked Area Chart' },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: { backgroundColor: '#6a7985' }
+    }
+  },
+  legend: {
+    data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+  },
+  toolbox: {
+    feature: { saveAsImage: {} }
+  },
+  grid: { left: '3%',  right: '4%', bottom: '3%', containLabel: true },
+  xAxis: [{
+    type: 'category', boundaryGap: false,
+    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  }],
+  yAxis: [{ type: 'value' }],
+  series: [{
+      name: 'Email', type: 'line', stack: 'Total', areaStyle: {},
+      emphasis: { focus: 'series' },
+      data: [120, 132, 101, 134, 90, 230, 210]
+    },
+    {
+      name: 'Union Ads', type: 'line', stack: 'Total', areaStyle: {},
+      emphasis: { focus: 'series' },
+      data: [220, 182, 191, 234, 290, 330, 310]
+    },
+    {
+      name: 'Video Ads', type: 'line', stack: 'Total', areaStyle: {},
+      emphasis: { focus: 'series' },
+      data: [150, 232, 201, 154, 190, 330, 410]
+    },
+    {
+      name: 'Direct', type: 'line', stack: 'Total', areaStyle: {},
+      emphasis: { focus: 'series' },
+      data: [320, 332, 301, 334, 390, 330, 320]
+    },
+    {
+      name: 'Search Engine', type: 'line', stack: 'Total', areaStyle: {},
+      emphasis: { focus: 'series' },
+      data: [820, 932, 901, 934, 1290, 1330, 1320],
+      label: {
+        show: true,
+        position: 'top'
+      }
+    }
+  ]
+}"></lia-chart>
+
+
+      {{3}}
+<section>
+
+    --{{3}}--
+If you require the execution of JavaScript or need more interaction with the diagram, you can also apply `script` tags. For more information on this, refer to section [JavaScript or JS-Components](#JavaScript-or-JS-Components).
+
+
+$a =$ <script input="range" step="1" min="-1" max="6" value="2"  output="a">@input</script>,
+$b =$ <script input="range" step="0.1" min="-10" max="10" value="0"  output="b">@input</script>,
+$c =$ <script modify="false" input="range" step="0.1" min="-10" max="10" value="0"  output="c">@input</script>
+
+<script modify="false" run-once style="display: inline-block; width: 100%">
+"LIASCRIPT: ### $$f(x) = x^{@input(`a`)} + x * @input(`b`) + @input(`c`)$$"
+</script>
 
 <script run-once style="display: inline-block; width: 100%">
 function func(x) {
-    x /= 10;
-    return Math.sin(x) * Math.cos(x * @input(`range`) + 1) * Math.sin(x * 3 + 2) * @input(`amplitude`);
+    return Math.pow(x,  @input(`a`)) + @input(`b`) * x + @input(`c`);
 }
 
 function generateData() {
     let data = [];
-    for (let i = -200; i <= 200; i += 0.1) {
+    for (let i = -15; i <= 15; i += 0.01) {
         data.push([i, func(i)]);
     }
     return data;
@@ -6388,8 +6528,8 @@ let option = {
     },
     yAxis: {
         name: 'y',
-        min: -100,
-        max: 100,
+        min: -10,
+        max: 10,
         minorTick: {
             show: true
         },
@@ -6431,28 +6571,9 @@ let option = {
 }
 
 "HTML: <lia-chart option='" + JSON.stringify(option) + "'></lia-chart>"
-
 </script>
 
-
-
-<lia-chart
-option='{
-  "xAxis": {
-    "type": "category",
-    "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-  },
-  "yAxis": {
-    "type": "value"
-  },
-  "series": [{
-    "data": [820,932,901,934,1290,1330,1320],
-    "type":"line"
-  }]
-}'></lia-chart>
-
-
-
+</section>
 
 ## ASCII-Art
 
@@ -8967,7 +9088,7 @@ language: de
 | French     |  fr  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fr.yaml) |
 | German     |  de  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.de.yaml) |
 | Hindi      |  hi  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hi.yaml) |
-| Italian    |  it  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.it.yaml) | 
+| Italian    |  it  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.it.yaml) |
 | Japanese   |  ja  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ja.yaml) |
 | Korean     |  ko  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ko.yaml) |
 | Panjabi    |  pa  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.pa.yaml) |
