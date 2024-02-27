@@ -6346,7 +6346,7 @@ Simply set `data-type="none"` to prevent any kind of visualization for the corre
   https://code.highcharts.com/mapdata/
 
 
-### Custom Diagrams
+### Custom Diagrams with ECharts
 
     --{{0}}--
 LiaScript utilizes [ECharts](https://echarts.apache.org) for the diagrams and therefore uses a custom HTML tag or web component called `lia-chart`.
@@ -6362,56 +6362,28 @@ Using this tag, you can pass your diagram configuration directly as an option in
       {{1}}
 ``` html
 <lia-chart option="{
-  title: { text: 'Stacked Area Chart' },
-  tooltip: {
-    trigger: 'axis',
-    axisPointer: {
-      type: 'cross',
-      label: { backgroundColor: '#6a7985' }
-    }
+  title: { text: 'Two Value-Axes in Polar' },
+  polar: { center: ['50%', '54%'] },
+  tooltip: { trigger: 'axis',
+    axisPointer: { type: 'cross' }
   },
-  legend: {
-    data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
-  },
-  toolbox: {
-    feature: { saveAsImage: {} }
-  },
-  grid: { left: '3%',  right: '4%', bottom: '3%', containLabel: true },
-  xAxis: [{
-    type: 'category', boundaryGap: false,
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-  }],
-  yAxis: [{ type: 'value' }],
-  series: [{
-      name: 'Email', type: 'line', stack: 'Total', areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [120, 132, 101, 134, 90, 230, 210]
-    },
-    {
-      name: 'Union Ads', type: 'line', stack: 'Total', areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [220, 182, 191, 234, 290, 330, 310]
-    },
-    {
-      name: 'Video Ads', type: 'line', stack: 'Total', areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [150, 232, 201, 154, 190, 330, 410]
-    },
-    {
-      name: 'Direct', type: 'line', stack: 'Total', areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [320, 332, 301, 334, 390, 330, 320]
-    },
-    {
-      name: 'Search Engine', type: 'line', stack: 'Total', areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [820, 932, 901, 934, 1290, 1330, 1320],
-      label: {
-        show: true,
-        position: 'top'
+  angleAxis: { type: 'value', startAngle: 0 },
+  radiusAxis: { min: 0 },
+  series: [{ coordinateSystem: 'polar',
+    name: 'line',
+    type: 'line',
+    showSymbol: false,
+    data: (function() {
+      const data = [];
+      for (let i = 0; i <= 360; i++) {
+        let t = (i / 180) * Math.PI;
+        let r = Math.sin(2 * t) * Math.cos(2 * t);
+        data.push([r, i]);
       }
-    }
-  ]
+      return data
+    })()
+  }],
+  animationDuration: 2000
 }"></lia-chart>
 ```
 
@@ -6420,56 +6392,28 @@ This approach allows you to rebuild nearly every example directly, providing fle
 
       {{2}}
 <lia-chart option="{
-  title: { text: 'Stacked Area Chart' },
-  tooltip: {
-    trigger: 'axis',
-    axisPointer: {
-      type: 'cross',
-      label: { backgroundColor: '#6a7985' }
-    }
+  title: { text: 'Two Value-Axes in Polar' },
+  polar: { center: ['50%', '54%'] },
+  tooltip: { trigger: 'axis',
+    axisPointer: { type: 'cross' }
   },
-  legend: {
-    data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
-  },
-  toolbox: {
-    feature: { saveAsImage: {} }
-  },
-  grid: { left: '3%',  right: '4%', bottom: '3%', containLabel: true },
-  xAxis: [{
-    type: 'category', boundaryGap: false,
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-  }],
-  yAxis: [{ type: 'value' }],
-  series: [{
-      name: 'Email', type: 'line', stack: 'Total', areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [120, 132, 101, 134, 90, 230, 210]
-    },
-    {
-      name: 'Union Ads', type: 'line', stack: 'Total', areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [220, 182, 191, 234, 290, 330, 310]
-    },
-    {
-      name: 'Video Ads', type: 'line', stack: 'Total', areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [150, 232, 201, 154, 190, 330, 410]
-    },
-    {
-      name: 'Direct', type: 'line', stack: 'Total', areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [320, 332, 301, 334, 390, 330, 320]
-    },
-    {
-      name: 'Search Engine', type: 'line', stack: 'Total', areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [820, 932, 901, 934, 1290, 1330, 1320],
-      label: {
-        show: true,
-        position: 'top'
+  angleAxis: { type: 'value', startAngle: 0 },
+  radiusAxis: { min: 0 },
+  series: [{ coordinateSystem: 'polar',
+    name: 'line',
+    type: 'line',
+    showSymbol: false,
+    data: (function() {
+      const data = [];
+      for (let i = 0; i <= 360; i++) {
+        let t = (i / 180) * Math.PI;
+        let r = Math.sin(2 * t) * Math.cos(2 * t);
+        data.push([r, i]);
       }
-    }
-  ]
+      return data
+    })()
+  }],
+  animationDuration: 2000
 }"></lia-chart>
 
 
@@ -6503,12 +6447,7 @@ function generateData() {
 
 let option = {
     animation: false,
-    grid: {
-        top: 40,
-        left: 50,
-        right: 40,
-        bottom: 50
-    },
+    grid: { top: 40, left: 50, right: 40, bottom: 50 },
     xAxis: {
         name: 'x',
         minorTick: {
@@ -6527,9 +6466,7 @@ let option = {
         }
     },
     yAxis: {
-        name: 'y',
-        min: -10,
-        max: 10,
+        name: 'y', min: -10, max: 10,
         minorTick: {
             show: true
         },
@@ -6569,7 +6506,6 @@ let option = {
         }
     ]
 }
-
 "HTML: <lia-chart option='" + JSON.stringify(option) + "'></lia-chart>"
 </script>
 
@@ -6578,16 +6514,17 @@ let option = {
 ## ASCII-Art
 
     --{{0}}--
-Well, based on the [SvgBob-project](https://github.com/ivanceras/svgbob) by Ivan Ceras, LiaScript also has support for basic ASCII art drawings.
+Based on the [SvgBob project](https://github.com/ivanceras/svgbob) by Ivan Ceras, LiaScript also has support for basic ASCII art drawings.
 
     --{{1}}--
-We had to rebuild the library in elm, the project can be found here:
+We had to rebuild the library in Elm.
+The project can be found here:
 
       {{1}}
 https://github.com/andre-dietrich/elm-svgbob/
 
     --{{2}}--
-If you want to use it, simply create a new Markdown code-block with at least 10 backticks, or use `ascii` as for the language indicator:
+If you want to use it, simply create a new Markdown code block with at least 10 backticks, or use `ascii` as the language indicator.
 
       {{2}}
 ```` markdown
@@ -6605,8 +6542,10 @@ If you want to use it, simply create a new Markdown code-block with at least 10 
 ```
 ````
 
+    --{{3}}--
 The result will be an SVG image that is scaled according to the full width of the available screen.
 
+      {{3}}
 ``` ascii
 +------+   +-----+   +-----+   +-----+
 |      |   |     |   |     |   |     |
@@ -6623,14 +6562,16 @@ The result will be an SVG image that is scaled according to the full width of th
 ### How to Draw things ...
 
     --{{0}}--
-Remember, everything that you require is a keyboard, therefore you have to use some basic characters to draw different shapes.
-Unicode is now fully supported in LiaScript, which means, that is is also possible to use emojies within your drawings and you can also embed LiaScript elements for integrating anything LiaScript related.
+Remember, all you require is a keyboard, so you can use basic characters to draw different shapes.
+Unicode is fully supported in LiaScript, which means you can use emojis within your drawings.
+Additionally, you can embed LiaScript elements for integrating anything LiaScript related.
 
+<div style="width:100%;height:0;padding-bottom:53%;position:relative;"><iframe src="https://giphy.com/embed/PhN868ip5kXLNhTLC1" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/running-horse-run-cycle-PhN868ip5kXLNhTLC1">via GIPHY</a></p>
 
 #### 1. Boxes
 
     --{{0}}--
-Depending on the type of characters, it is possible to define different kind of boxes, triangles or rectangular shapes. Supported characters for borders are:
+Depending on the type of characters, you can define different kinds of boxes, triangles, or rectangular shapes. Supported characters for borders include:
 
 __borders:__
 
@@ -6642,7 +6583,7 @@ __borders:__
 <section>
 
     --{{1}}--
-Additionally it is possible to define different shapes for the corners, which range from normal, rounded, or special ones, that can be used also to represent relations and are not bounded to corners only:
+Additionally, it is possible to define different shapes for the corners. These range from normal, rounded corners to special ones that can be used to represent relations. These shapes are not limited to corners only:
 
 __corners:__
 
@@ -6650,6 +6591,7 @@ __corners:__
 * rounded: all of them are actually treated equally, when creating the svg corner. Different representations do only affect the ASCII drawing.
 
   `.`, `,`, `´`, `'`
+
 * special: filled dot `*`, filled square `#`, empty dot (`o`, `O`)
 
 </section>
@@ -6679,7 +6621,7 @@ o------o    *------*    #------#    O------O    +-----'
 ````
 
     --{{3}}--
-And here is their representation as an ASCII-art image:
+And here is their representation as an ASCII art image:
 
       {{3}}
 ``` ascii
@@ -6703,8 +6645,9 @@ o------o    *------*    #------#    O------O    +-----'
 #### 2. Arrows & Connectors
 
     --{{0}}--
-Depending on the direction of your arrow you have to use on either `<`, `>` for left and right, `v` or `V` for down, `^` or `A` for up.
+Depending on the direction of your arrow, you can use `<` or `>` for left and right, `v` or `V` for down, and `^` or `A` for up.
 The other endings (`*`, `#`, `o`, `O`) are direction independent.
+
 
 ```` md
 ``` ascii
@@ -6727,9 +6670,9 @@ _______________________________________
 ````
 
     --{{1}}--
-The result looks pretty nice.
-This approach enables you to draw already some fancy images and to change them quite easily.
-Like in "toki pona", sometimes a reduced set of features allows you to get directly to the point.
+The result looks quite nice indeed.
+This approach enables you to draw some fancy images and to change them quite easily.
+Similar to "toki pona," sometimes a reduced set of features allows you to get directly to the point.
 
       {{1}}
 ``` ascii
@@ -6751,7 +6694,8 @@ Like in "toki pona", sometimes a reduced set of features allows you to get direc
 ```
 
     --{{2}}--
-You can also use the arrows to connect, your other drawings, but keep in mind that in some cases you will have to use the `+` sign to fully attach your lines to another edge.
+You can also use arrows to connect your other drawings, but keep in mind that in some cases, you will have to use the `+` sign to fully attach your lines to another edge.
+
 
       {{2}}
 ```` md
@@ -6775,7 +6719,7 @@ You can also use the arrows to connect, your other drawings, but keep in mind th
 ```
 ````
     --{{3}}--
-The result looks like follows:
+The result looks as follows:
 
       {{3}}
 ``` ascii
@@ -6800,7 +6744,7 @@ The result looks like follows:
 #### 3. More Shapes
 
     --{{0}}--
-Here are some more examples of rounded shapes, that can be used in simple drawings.
+Here are some more examples of rounded shapes that can be used in simple drawings:
 
 ```` md
 ``` ascii
@@ -6838,7 +6782,7 @@ Here are some more examples of rounded shapes, that can be used in simple drawin
 ````
 
     --{{1}}--
-As you can see, by using parentheses different rounded shapes can be generated too.
+As you can see, by using parentheses, different rounded shapes can be generated too.
 
       {{1}}
 ``` ascii
@@ -6878,8 +6822,8 @@ As you can see, by using parentheses different rounded shapes can be generated t
 #### 4. Box Drawing
 
     --{{0}}--
-The Unicode standard defines a set of characters/symbols, that were used in the past for drawing user interfaces and menus within the console.
-You can use these symbols too, or in combination with the upper symbols an shapes.
+The Unicode standard defines a set of characters/symbols that were used in the past for drawing user interfaces and menus within the console.
+You can use these symbols individually or in combination with the symbols and shapes mentioned above.
 
 
 ```` md
@@ -6906,7 +6850,7 @@ You can use these symbols too, or in combination with the upper symbols an shape
 ````
 
     --{{1}}--
-These Unicode images can also be combined with the previous ASCII-art examples, or you can use these box drawing elements to add shadows and more.
+These Unicode images can also be combined with the previous ASCII art examples, or you can use these box drawing elements to add shadows and more detail to your drawings.
 
       {{1}}
 ``` ascii
@@ -6931,7 +6875,7 @@ These Unicode images can also be combined with the previous ASCII-art examples, 
 ```
 
     --{{2}}--
-The following table contains a set of characters, that can be used via copy and paste to draw any kind of boxes.
+The following table contains a set of characters that can be used via copy and paste to draw various types of boxes:
 
       {{2}}
 |        |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
@@ -6947,7 +6891,8 @@ The following table contains a set of characters, that can be used via copy and 
 
 
     --{{3}}--
-If you need shadows or different kind of shadings, you can use some of the following elements.
+If you need shadows or different kinds of shadings, you can use some of the following elements:
+
 
       {{3}}
 |        |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
@@ -6956,9 +6901,9 @@ If you need shadows or different kind of shadings, you can use some of the follo
 | U+259x |  ▐  |  ░  |  ▒  |  ▓  |  ▔  |  ▕  |  ▖  |  ▗  |  ▘  |  ▙  |  ▚  |  ▛  |  ▜  |  ▝  |  ▞  |  ▟  |
 
 
-#### 5. Emojies
+#### 5. Emojis
 
-Emojies are defined in the Unicode-standard too, that is why you can use any kind of symbols that you use in your day to day chat messages.
+Emojis are defined in the Unicode standard as well, which is why you can use any kind of symbols that you use in your day-to-day chat messages.
 
 
 ```` md
@@ -6994,7 +6939,7 @@ Bob            Alice
 ```
 
     --{{1}}--
-The tables below, contain some of the most widely used emojis, which can be directly copied into your drawing.
+These tables contain some of the most widely used emojis, which can be directly copied into your drawings:
 
       {{1}}
 <section>
@@ -7180,8 +7125,8 @@ The tables below, contain some of the most widely used emojis, which can be dire
 ### Styling ASCII
 
     --{{0}}--
-As explained in section [Custom Styling](#custom-styling), it is also possible here to add custom styles by attaching an HTML comment to the beginning of an ASCII-art image.
-This enables you for example to center the image, define a maximum width or to change the color or some base svg elements.
+As explained in section [Custom Styling](#custom-styling), it is also possible to add custom styles here by attaching an HTML comment to the beginning of an ASCII art image.
+This enables you, for example, to center the image, define a maximum width, or change the color of some base SVG elements.
 
 ```` md
 <!--
@@ -7223,8 +7168,8 @@ style="
 
 ### Adding Titles
 
-As shown in section [Code - Projects 💫](#Projects-💫) you can add a title after the language indicator.
-This "title" can be a one-liner of Markdown-LiaScript and is displayed, as it is done for images, directly below the ASCII-art image.
+As shown in section [Code - Projects 💫](#Projects-💫), you can add a title after the language indicator.
+This "title" can be a one-liner of Markdown-LiaScript and is displayed directly below the ASCII art image, similar to how it is done for images.
 
 ```` markdown
 <!--
@@ -7257,15 +7202,15 @@ main   *---*-+-*---*---*-------------*----
 ### Embedding LiaScripts
 
     --{{0}}--
-And of course, it is also possible to add LiaScript elements into your ASCII-art drawing.
-This is accomplished by double quotes `"`, which define something like a verbatim environment.
-There are currently two different types of environments, simple one-liner and blocks.
+And of course, it is also possible to add LiaScript elements into your ASCII art drawing.
+This is accomplished by using double quotes `"`, which define something like a verbatim environment.
+There are currently two different types of environments: simple one-liner and blocks.
 
     --{{1}}--
-The code example shows three applications for such verbatim LiaScript elements.
-At first, this is only a simple one-liner that can be integrated and styled, which is not possible for text otherwise.
-But secondly you can also add entire blocks with a subsequent number of quotations that start at the same horizontal x-position.
-And last but not least, this can also contain executable elements, animations, other inputs and more.
+The code example demonstrates three applications for such verbatim LiaScript elements.
+Firstly, you can integrate and style a simple one-liner, which is not possible for text otherwise.
+Secondly, you can add entire blocks with a subsequent number of quotations that start at the same horizontal x-position.
+Lastly, this can also contain executable elements, animations, other inputs, and more.
 
       {{1}}
 ````` markdown
@@ -7289,9 +7234,10 @@ And last but not least, this can also contain executable elements, animations, o
 ````
 `````
 
-As it is visible in the generated image, the verbatim elements are not as exactly placed as the normal text.
-This might require some pushing back and forth of the to the quotations to get to the desired result.
-You can see that the verbatim elements are overlayed as `foreignObjects` above the SVG images by executing the code example.
+    --{{2}}--
+As visible in the generated image, the verbatim elements are not as precisely placed as the normal text.
+This might require some adjustment of the positions of the quotations to achieve the desired result.
+You can observe that the verbatim elements are overlaid as `foreignObjects` above the SVG images by executing the code example.
 
       {{2}}
 ```` ascii
@@ -7316,11 +7262,10 @@ You can see that the verbatim elements are overlayed as `foreignObjects` above t
 #### 1. Animations
 
     --{{0}}--
-Where might such a integration of LiaScript into ASCII-Art shine?
-Of course when using animations to highlight a certain point.
-The following example shows the different usages of animations.
-The first 3 are inline-animations, that is why the number is bound to the text.
-While the last is a block-animation where the number is hidden.
+Such integration of LiaScript into ASCII art can shine when you want to use animations to highlight a certain point.
+For example, in the following example, different usages of animations are demonstrated.
+The first three are inline animations, where the number is bound to the text. The last example is a block animation where the number is hidden.
+
 
 ```` markdown
 ``` ascii
@@ -7367,8 +7312,9 @@ While the last is a block-animation where the number is hidden.
 #### 2. Animations with TTS
 
     --{{0}}--
-The same animation can also be combined with text to speech output by using [comments](#Comments:-Text-2-Speech) or [hidden comments](#Hidden-comments) as shown in the example.
-Thereby, hidden comments are simply comments that are not shown to the public as normal comments, they are simply placed into an HTML comment and different voices can be added too.
+The same animation can also be combined with text-to-speech output by using [comments](#Comments:-Text-2-Speech) or [hidden comments](#Hidden-comments) as shown in the example.
+Hidden comments are simply comments that are not shown to the public as normal comments.
+They are placed into an HTML comment, and different voices can be added too.
 
 
 ```` markdown
@@ -7413,8 +7359,8 @@ Thereby, hidden comments are simply comments that are not shown to the public as
 #### 3. Quizzes
 
     --{{0}}--
-And of course, you can use this in combination with quiz-text inputs or selections.
-Since every quotation in this example is a separated Markdown-block, we need to trick the interpreter from trying to embed a single line text-quiz to a gap-text element by adding a space before the input.
+Of course, you can use this in combination with quiz text inputs or selections.
+Since every quotation in this example is a separated Markdown block, we need to trick the interpreter from trying to embed a single line text quiz into a gap text element by adding a space before the input.
 Together with the `data-show-partial-solution` command, this is an easy way of creating more complex quizzes.
 
 ```` md
@@ -7456,7 +7402,7 @@ If you try out the following example, correct and incorrect inputs will be highl
 -->
 
     --{{0}}--
-Since the size of an LiaScript element is defined based on width of the quotation, too long LiaScript definitions, such as an external image-URL might cause some problems.
+Since the size of a LiaScript element is defined based on the width of the quotation, too long LiaScript definitions, such as an external image URL, might cause some problems.
 To solve this, you can define a local macro, in this case `@image`, which is basically only a substitution for the larger image.
 This macro can then be used as a placeholder within the verbatim.
 For more information on this topic, check out the section [Macros](#macros).
@@ -7468,7 +7414,7 @@ For more information on this topic, check out the section [Macros](#macros).
 @image: ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Human_Eye_Transverse_Cut_Unlabeled.jpg/1024px-Human_Eye_Transverse_Cut_Unlabeled.jpg)
 -->
 
-Name the Elements in the following image:
+Name the elements in the following image:
 
 <!-- data-show-partial-solution -->
 ``` ascii
@@ -7503,7 +7449,7 @@ Can you solve it?
     {{1}}
 <section>
 
-Name the Elements in the following image:
+Name the elements in the following image:
 
 <!-- data-show-partial-solution -->
 ``` ascii
@@ -7534,10 +7480,9 @@ Name the Elements in the following image:
 ## Charts
 
     --{{0}}--
-In many cases, a diagram is only used to present some kind of signal paths,
-some primitive functions, some clusters or point clouds.
-You can still generate images, but why not applying some basic kind of ASCII-art
-to solve the most common tasks.
+In many cases, a diagram is only used to present some kind of signal paths, primitive functions, clusters, or point clouds.
+While you can still generate images for these tasks, why not apply some basic ASCII art to solve the most common tasks?
+Using ASCII art can be a lightweight and versatile way to represent such simple structures, saving time and effort compared to creating and embedding images.
 
 
                   Dunning-Krueger-Effect
@@ -7561,9 +7506,10 @@ to solve the most common tasks.
 ### Line-Plot Basics
 
     --{{0}}--
-As for the previous ASCII-art examples, LiaScript has a special notation for simple line-plots.
-These do not have to be surrounded by a code-block, the LiaScript interpreter will detect them automatically, based on their shape.
-But, it is recommend to add 4 spaces before such an image, this has the effect that any other Markdown-viewer will interpret this as an code-block, and thus, preserve the spaces and tabs.
+As with the previous ASCII art examples, LiaScript has a special notation for simple line plots.
+These do not have to be surrounded by a code block; the LiaScript interpreter will detect them automatically based on their shape.
+However, it is recommended to add 4 spaces before such an image.
+This has the effect that any other Markdown viewer will interpret this as a code block, preserving the spaces and tabs.
 
 Markdown-format:
 
@@ -7583,8 +7529,8 @@ Markdown-format:
 ```
 
     --{{1}}--
-As you can see from the rendered image below, you can add axis names and values, a diagram title and a legend, which is originaly surrounded by parenthesis.
-The positions of points is automatically calculated based on the given length of the two axis.
+As you can see from the rendered image below, you can add axis names and values, a diagram title, and a legend, which is originally surrounded by parenthesis.
+The positions of points are automatically calculated based on the given length of the two axes.
 
 
                   {{1}}
@@ -7603,8 +7549,7 @@ The positions of points is automatically calculated based on the given length of
 
 
                                 --{{2}}--
-All diagram titles, labels, limits are optional, and if you do not define
-limits, then the min max values 0 and 1 are used by default.
+All diagram titles, labels, and limits are optional. If you do not define limits, then the minimum and maximum values 0 and 1 are used by default.
 
     {{2}}
 <section>
@@ -7636,9 +7581,8 @@ y-axis | *           *           *           *           *
 ### Multi-Line-Plots
 
                              --{{0}}--
-Next to stars, you can also use any kind of character to define another line,
-where the character defines the color. For example an `r` marks the color red and
-a `A` the color `amber`.
+Next to stars, you can also use any kind of character to define another line, where the character defines the color.
+For example, an `r` marks the color red, and an `A` represents the color amber.
 
 LiaScript-format:
 
@@ -7657,9 +7601,11 @@ LiaScript-format:
 ```
 
     --{{1}}--
-As you can see in the result, the characters do not only contain color information, since upper and lowercase characters define the size of the dots plotted, and even more than this, it defines also the shape.
-With r you can think of small round and red, while A looks like a large triangle.
-That is why some lines are rather smoothly interpolated and the `A` for example defines sharp line. More on this in section [Shape](#shape).
+As you can see in the result, the characters do not only contain color information.
+Upper and lowercase characters also define the size of the dots plotted, and even more than this, they define the shape.
+For example, with `r` you can think of small round and red dots, while `A` looks like a large triangle.
+That is why some lines are rather smoothly interpolated, and the `A`, for example, defines sharp lines.
+More on this can be found in section [Shape](#shape).
 
                {{1}}
     | r          *                                    (* stars)
@@ -7677,11 +7623,10 @@ That is why some lines are rather smoothly interpolated and the `A` for example 
 ### Dot-Plots
 
                                  --{{0}}--
-If the there are more point with the same character for one x-value, then only
-dots are plotted. And by using upper and lower case characters you can also
-define the size and the shape of the dots.
+If there are more points with the same character for one x-value, then only dots are plotted.
+By using upper and lower case characters, you can also define the size and the shape of the dots.
 
-Markdown-format:
+LiaScript-format:
 
 ```markdown
     10 |        rrrrrrrrrrrr    x
@@ -7717,9 +7662,9 @@ Markdown-format:
 ### Colors
 
     --{{0}}--
-The color codes are somehow defined by the character itself, see the list.
-The commonly used `x`, `+`, `*`, `#` stand for black, while `g` indicate green and we had to use `e` for ebony (brown), since `b` has to be blue.
-We hope the color codes make mostly sense.
+The color codes are somehow defined by the character itself, as seen in the list.
+The commonly used `x`, `+`, `*`, `#` stand for black, while `g` indicates green, and we had to use `e` for ebony (brown) since `b` has to be blue.
+We hope the color codes mostly make sense.
 
 | char               | color        | hex        |                                 example                                 |
 | ------------------ | ------------ | ---------- |:-----------------------------------------------------------------------:|
@@ -7754,8 +7699,9 @@ We hope the color codes make mostly sense.
 ### Shapes
 
     --{{0}}--
-The shape of the dot is also defined by the character, see the example below.
-`T` stands for triangle, as well as `A` makes a triangular shape, for the others we had also to make some decisions that make sense, hopefully.
+The shape of the dot is also defined by the character, as seen in the example below.
+`T` stands for triangle, as well as `A`, which also makes a triangular shape.
+For the other characters, we had to make some decisions that hopefully make sense.
 
 ```text
 6 | + * #           A a B b
@@ -7776,11 +7722,12 @@ The shape of the dot is also defined by the character, see the example below.
        0                     24
 
 
-### Line types
+### Line types & Style
 
     --{{0}}--
-As depicted in the line diagrams below, next to different colors, lines and dots
-can have different shapes, whether they are dashed, dotted, smoothed or not.
+As depicted in the line diagrams below, in addition to different colors, lines and dots can have different shapes, whether they are dashed, dotted, smoothed or not.
+And as for all other previous elements, you can apply custom styles, classes and modifiers too, by putting them into an HTML comment at the top of the diagram.
+
 
 ```text
     <!-- style="height: 700px" -->
@@ -7817,7 +7764,7 @@ can have different shapes, whether they are dashed, dotted, smoothed or not.
 ---
 
     --{{1}}--
-And here is the same diagram only for the lower case characters.
+And here is the same diagram, only for the lower case characters.
 
 
 ```
