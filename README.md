@@ -2,9 +2,12 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
+date:     28/02/2024
 version:  25.0.0
 language: en
 narrator: UK English Female
+
+repository: https://github.com/LiaScript/docs
 
 logo:     https://liascript.github.io/img/bg-showcase-1.jpg
 
@@ -20,8 +23,12 @@ link:     https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 
 link:     https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css
 
+import:   https://raw.githubusercontent.com/liaTemplates/ABCjs/main/README.md
 
+link:     https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs
+          https://fonts.googleapis.com/css2?family=Noto+Sans+Ogham
 
+font:     Noto Sans Egyptian Hieroglyphs, Noto Sans Ogham
 -->
 
 
@@ -3093,7 +3100,7 @@ they are equal the quiz will be labelled as solved. For different reasons it
 might  be necessary to clean up the input, in order to deal with different types
 of spelling, uppercase and lowercase, etc. Fort this purpose scripts can be
 associated to a quiz, see therefor section
-[Associated Scripts](#associated-scripts).
+[Quizzes and Scripting](#Quizzes-and-Scripting).
 
 
 #### 5. Selection-Quiz
@@ -3506,7 +3513,7 @@ order to mark a quiz as solved, any other value will be accounted as `false`.
 
                           --{{2}}--
 The usage of associated scripts for quizzes will be described in detail in
-section [Associated Scripts](#associated-scripts).
+section [Quizzes and Scripting](#Quizzes-and-Scripting).
 
 #### Notes about Questions
 
@@ -4836,7 +4843,7 @@ __Result:__
     [                     ] question 3 ?
 
 
-### Associated Scripts
+### Surveys and Scripting
 
                                --{{0}}--
 As it was done with tasks and quizzes, you can also associate a script to every survey to change its behavior or to send the result to an external service.
@@ -6938,188 +6945,38 @@ Bob            Alice
 😎             👩
 ```
 
-    --{{1}}--
-These tables contain some of the most widely used emojis, which can be directly copied into your drawings:
 
-      {{1}}
+
+    --{{1}}--
+You can either install a plugin to your editor for emojis or you can search the net for emojis.
+Check out the following links or see section [Unicode Symbols](#Unicode-Symbols) in the [Appendix](#Appendix).
+
 <section>
 
-|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
-| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| U+1F60x | 😀  | 😁  | 😂  | 😃  | 😄  | 😅  | 😆  | 😇  | 😈  | 😉  | 😊  | 😋  | 😌  | 😍  | 😎  | 😏  |
-| U+1F61x | 😐  | 😑  | 😒  | 😓  | 😔  | 😕  | 😖  | 😗  | 😘  | 😙  | 😚  | 😛  | 😜  | 😝  | 😞  | 😟  |
-| U+1F62x | 😠  | 😡  | 😢  | 😣  | 😤  | 😥  | 😦  | 😧  | 😨  | 😩  | 😪  | 😫  | 😬  | 😭  | 😮  | 😯  |
-| U+1F63x | 😰  | 😱  | 😲  | 😳  | 😴  | 😵  | 😶  | 😷  | 😸  | 😹  | 😺  | 😻  | 😼  | 😽  | 😾  | 😿  |
-| U+1F64x | 🙀  | 🙁  | 🙂  | 🙃  | 🙄  | 🙅  | 🙆  | 🙇  | 🙈  | 🙉  | 🙊  | 🙋  | 🙌  | 🙍  | 🙎  | 🙏  |
+* __Sites__
 
----
+  * Search emojis on: https://emojipedia.org
+  * Complete list on Unicode symbols: https://symbl.cc/en/unicode/table/
 
-|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
-| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| U+1F4Dx | 📐  | 📑  | 📒  | 📓  | 📔  | 📕  | 📖  | 📗  | 📘  | 📙  | 📚  | 📛  | 📜  | 📝  | 📞  | 📟  |
-| U+1F4Ex | 📠  | 📡  | 📢  | 📣  | 📤  | 📥  | 📦  | 📧  | 📨  | 📩  | 📪  | 📫  | 📬  | 📭  | 📮  | 📯  |
-| U+1F4Fx | 📰  | 📱  | 📲  | 📳  | 📴  | 📵  | 📶  | 📷  | 📸  | 📹  | 📺  | 📻  | 📼  | 📽️  |     | 📿  |
-| U+1F50x | 🔀  | 🔁  | 🔂  | 🔃  | 🔄  | 🔅  | 🔆  | 🔇  | 🔈  | 🔉  | 🔊  | 🔋  | 🔌  | 🔍  | 🔎  | 🔏  |
-| U+1F51x | 🔐  | 🔑  | 🔒  | 🔓  | 🔔  | 🔕  | 🔖  | 🔗  | 🔘  | 🔙  | 🔚  | 🔛  | 🔜  | 🔝  | 🔞  | 🔟  |
-| U+1F52x | 🔠  | 🔡  | 🔢  | 🔣  | 🔤  | 🔥  | 🔦  | 🔧  | 🔨  | 🔩  | 🔪  | 🔫  | 🔬  | 🔭  | 🔮  | 🔯  |
-| U+1F53x | 🔰  | 🔱  | 🔲  | 🔳  | 🔴  | 🔵  | 🔶  | 🔷  | 🔸  | 🔹  | 🔺  | 🔻  | 🔼  | 🔽  |     |     |
-| U+1F54x |     |     |     |     |     |     |     |     |     | 🕉️  | 🕊️  | 🕋  | 🕌  | 🕍  | 🕎  |     |
-| U+1F55x | 🕐  | 🕑  | 🕒  | 🕓  | 🕔  | 🕕  | 🕖  | 🕗  | 🕘  | 🕙  | 🕚  | 🕛  | 🕜  | 🕝  | 🕞  | 🕟  |
-| U+1F56x | 🕠  | 🕡  | 🕢  | 🕣  | 🕤  | 🕥  | 🕦  | 🕧  |     |     |     |     |     |     |     | 🕯️  |
-| U+1F57x | 🕰️  |     |     | 🕳️  | 🕴️  | 🕵️  | 🕶️  | 🕷️  | 🕸️  | 🕹️  | 🕺  |     |     |     |     |     |
-| U+1F58x |     |     |     |     |     |     |     | 🖇️  |     |     | 🖊️  | 🖋️  | 🖌️  | 🖍️  |     |     |
-| U+1F59x | 🖐️  |     |     |     |     | 🖕  | 🖖  |     |     |     |     |     |     |     |     |     |
-| U+1F5Ax |     |     |     |     | 🖤  | 🖥️  |     |     | 🖨️  |     |     |     |     |     |     |     |
-| U+1F5Bx |     | 🖱️  | 🖲️  |     |     |     |     |     |     |     |     |     | 🖼️  |     |     |     |
-| U+1F5Cx |     |     | 🗂️  | 🗃️  | 🗄️  |     |     |     |     |     |     |     |     |     |     |     |
-| U+1F5Dx |     | 🗑️  | 🗒️  | 🗓️  |     |     |     |     |     |     |     |     | 🗜️  | 🗝️  | 🗞️  |     |
-| U+1F5Ex |     | 🗡️  |     | 🗣️  |     |     |     |     | 🗨️  |     |     |     |     |     |     | 🗯️  |
-| U+1F5Fx |     |     |     | 🗳️  |     |     |     |     |     |     | 🗺️  | 🗻  | 🗼  | 🗽  | 🗾  | 🗿  |
-| U+1F60x | 😀  | 😁  | 😂  | 😃  | 😄  | 😅  | 😆  | 😇  | 😈  | 😉  | 😊  | 😋  | 😌  | 😍  | 😎  | 😏  |
-| U+1F61x | 😐  | 😑  | 😒  | 😓  | 😔  | 😕  | 😖  | 😗  | 😘  | 😙  | 😚  | 😛  | 😜  | 😝  | 😞  | 😟  |
-| U+1F62x | 😠  | 😡  | 😢  | 😣  | 😤  | 😥  | 😦  | 😧  | 😨  | 😩  | 😪  | 😫  | 😬  | 😭  | 😮  | 😯  |
-| U+1F63x | 😰  | 😱  | 😲  | 😳  | 😴  | 😵  | 😶  | 😷  | 😸  | 😹  | 😺  | 😻  | 😼  | 😽  | 😾  | 😿  |
-| U+1F64x | 🙀  | 🙁  | 🙂  | 🙃  | 🙄  | 🙅  | 🙆  | 🙇  | 🙈  | 🙉  | 🙊  | 🙋  | 🙌  | 🙍  | 🙎  | 🙏  |
-| U+1F68x | 🚀  | 🚁  | 🚂  | 🚃  | 🚄  | 🚅  | 🚆  | 🚇  | 🚈  | 🚉  | 🚊  | 🚋  | 🚌  | 🚍  | 🚎  | 🚏  |
-| U+1F69x | 🚐  | 🚑  | 🚒  | 🚓  | 🚔  | 🚕  | 🚖  | 🚗  | 🚘  | 🚙  | 🚚  | 🚛  | 🚜  | 🚝  | 🚞  | 🚟  |
-| U+1F6Ax | 🚠  | 🚡  | 🚢  | 🚣  | 🚤  | 🚥  | 🚦  | 🚧  | 🚨  | 🚩  | 🚪  | 🚫  | 🚬  | 🚭  | 🚮  | 🚯  |
-| U+1F6Bx | 🚰  | 🚱  | 🚲  | 🚳  | 🚴  | 🚵  | 🚶  | 🚷  | 🚸  | 🚹  | 🚺  | 🚻  | 🚼  | 🚽  | 🚾  | 🚿  |
-| U+1F6Cx | 🛀  | 🛁  | 🛂  | 🛃  | 🛄  | 🛅  |     |     |     |     |     | 🛋️  | 🛌  | 🛍️  | 🛎️  | 🛏️  |
+* __Plugins__
 
----
+  * VSCode - Ultimate Emoji: https://marketplace.visualstudio.com/items?itemName=rohit-chouhan.ultimate-emoji
+  * Atom - autocomplete-emojis: https://aizac.herokuapp.com/setting-up-atom/
 
-|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
-| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| U+1F6Dx | 🛐  | 🛑  | 🛒  |     |     | 🛕  | 🛖  | 🛗  |     |     |     |     |     |     |     |     |
-| U+1F6Ex | 🛠️  | 🛡️  | 🛢️  | 🛣️  | 🛤️  | 🛥️  |     |     |     | 🛩️  |     | 🛫  | 🛬  |     |     |     |
-| U+1F6Fx | 🛰️  |     |     | 🛳️  | 🛴  | 🛵  | 🛶  | 🛷  | 🛸  | 🛹  | 🛺  | 🛻  | 🛼  |     |     |     |
-| U+1F7Ex | 🟠  | 🟡  | 🟢  | 🟣  | 🟤  | 🟥  | 🟦  | 🟧  | 🟨  | 🟩  | 🟪  | 🟫  |     |     |     |     |
-| U+1F90x |     |     |     |     |     |     |     |     |     |     |     |     | 🤌  | 🤍  | 🤎  | 🤏  |
-| U+1F91x | 🤐  | 🤑  | 🤒  | 🤓  | 🤔  | 🤕  | 🤖  | 🤗  | 🤘  | 🤙  | 🤚  | 🤛  | 🤜  | 🤝  | 🤞  | 🤟  |
-| U+1F92x | 🤠  | 🤡  | 🤢  | 🤣  | 🤤  | 🤥  | 🤦  | 🤧  | 🤨  | 🤩  | 🤪  | 🤫  | 🤬  | 🤭  | 🤮  | 🤯  |
-| U+1F93x | 🤰  | 🤱  | 🤲  | 🤳  | 🤴  | 🤵  | 🤶  | 🤷  | 🤸  | 🤹  | 🤺  |     | 🤼  | 🤽  | 🤾  | 🤿  |
-| U+1F94x | 🥀  | 🥁  | 🥂  | 🥃  | 🥄  | 🥅  |     | 🥇  | 🥈  | 🥉  | 🥊  | 🥋  | 🥌  | 🥍  | 🥎  | 🥏  |
-| U+1F95x | 🥐  | 🥑  | 🥒  | 🥓  | 🥔  | 🥕  | 🥖  | 🥗  | 🥘  | 🥙  | 🥚  | 🥛  | 🥜  | 🥝  | 🥞  | 🥟  |
-| U+1F96x | 🥠  | 🥡  | 🥢  | 🥣  | 🥤  | 🥥  | 🥦  | 🥧  | 🥨  | 🥩  | 🥪  | 🥫  | 🥬  | 🥭  | 🥮  | 🥯  |
-| U+1F97x | 🥰  | 🥱  | 🥲  | 🥳  | 🥴  | 🥵  | 🥶  |     |     |     | 🥺  | 🥻  | 🥼  | 🥽  | 🥾  | 🥿  |
-| U+1F98x | 🦀  | 🦁  | 🦂  | 🦃  | 🦄  | 🦅  | 🦆  | 🦇  | 🦈  | 🦉  | 🦊  | 🦋  | 🦌  | 🦍  | 🦎  | 🦏  |
-| U+1F99x | 🦐  | 🦑  | 🦒  | 🦓  | 🦔  | 🦕  | 🦖  | 🦗  | 🦘  | 🦙  | 🦚  | 🦛  | 🦜  | 🦝  | 🦞  | 🦟  |
-| U+1F9Ax | 🦠  | 🦡  | 🦢  |     |     | 🦥  | 🦦  | 🦧  | 🦨  | 🦩  | 🦪  |     |     |     | 🦮  | 🦯  |
-| U+1F9Bx | 🦰  | 🦱  | 🦲  | 🦳  | 🦴  | 🦵  | 🦶  | 🦷  | 🦸  | 🦹  | 🦺  | 🦻  | 🦼  | 🦽  | 🦾  | 🦿  |
-| U+1F9Cx | 🧀  | 🧁  | 🧂  | 🧃  | 🧄  | 🧅  | 🧆  | 🧇  | 🧈  | 🧉  | 🧊  | 🧋  |     | 🧍  | 🧎  | 🧏  |
-| U+1F9Dx | 🧐  | 🧑  | 🧒  | 🧓  | 🧔  | 🧕  | 🧖  | 🧗  | 🧘  | 🧙  | 🧚  | 🧛  | 🧜  | 🧝  | 🧞  | 🧟  |
-| U+1F9Ex | 🧠  | 🧡  | 🧢  | 🧣  | 🧤  | 🧥  | 🧦  | 🧧  | 🧨  | 🧩  | 🧪  | 🧫  | 🧬  | 🧭  | 🧮  | 🧯  |
-| U+1F9Fx | 🧰  | 🧱  | 🧲  | 🧳  | 🧴  | 🧵  | 🧶  | 🧷  | 🧸  | 🧹  | 🧺  | 🧻  | 🧼  | 🧽  | 🧾  | 🧿  |
-| U+1FA7x | 🩰  | 🩱  | 🩲  | 🩳  |     |     |     |     | 🩸  | 🩹  | 🩺  |     |     |     |     |     |
-| U+1FA8x | 🪀  | 🪁  | 🪂  |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| U+1FA9x | 🪐  | 🪑  | 🪒  | 🪓  | 🪔  | 🪕  |     |     |     |     |     |     |     |     |     |     |
+  * LiaScript-LiveEditor: start typing a colon <kbd>:</kbd> to open the emoji search
 
----
+    https://LiaScript.github.io/LiveEditor
 
-|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
-| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| U+1F30x | 🌀  | 🌁  | 🌂  | 🌃  | 🌄  | 🌅  | 🌆  | 🌇  | 🌈  | 🌉  | 🌊  | 🌋  | 🌌  | 🌍  | 🌎  | 🌏  |
-| U+1F31x | 🌐  | 🌑  | 🌒  | 🌓  | 🌔  | 🌕  | 🌖  | 🌗  | 🌘  | 🌙  | 🌚  | 🌛  | 🌜  | 🌝  | 🌞  | 🌟  |
-| U+1F32x | 🌠  | 🌡️  |     |     | 🌤️  | 🌥️  | 🌦️  | 🌧️  | 🌨️  | 🌩️  | 🌪️  | 🌫️  | 🌬️  | 🌭  | 🌮  | 🌯  |
-| U+1F33x | 🌰  | 🌱  | 🌲  | 🌳  | 🌴  | 🌵  | 🌶️  | 🌷  | 🌸  | 🌹  | 🌺  | 🌻  | 🌼  | 🌽  | 🌾  | 🌿  |
-| U+1F34x | 🍀  | 🍁  | 🍂  | 🍃  | 🍄  | 🍅  | 🍆  | 🍇  | 🍈  | 🍉  | 🍊  | 🍋  | 🍌  | 🍍  | 🍎  | 🍏  |
-| U+1F35x | 🍐  | 🍑  | 🍒  | 🍓  | 🍔  | 🍕  | 🍖  | 🍗  | 🍘  | 🍙  | 🍚  | 🍛  | 🍜  | 🍝  | 🍞  | 🍟  |
-| U+1F36x | 🍠  | 🍡  | 🍢  | 🍣  | 🍤  | 🍥  | 🍦  | 🍧  | 🍨  | 🍩  | 🍪  | 🍫  | 🍬  | 🍭  | 🍮  | 🍯  |
-| U+1F37x | 🍰  | 🍱  | 🍲  | 🍳  | 🍴  | 🍵  | 🍶  | 🍷  | 🍸  | 🍹  | 🍺  | 🍻  | 🍼  | 🍽️  | 🍾  | 🍿  |
-| U+1F38x | 🎀  | 🎁  | 🎂  | 🎃  | 🎄  | 🎅  | 🎆  | 🎇  | 🎈  | 🎉  | 🎊  | 🎋  | 🎌  | 🎍  | 🎎  | 🎏  |
-| U+1F39x | 🎐  | 🎑  | 🎒  | 🎓  |     |     | 🎖️  | 🎗️  |     | 🎙️  | 🎚️  | 🎛️  |     |     | 🎞️  | 🎟️  |
-| U+1F3Ax | 🎠  | 🎡  | 🎢  | 🎣  | 🎤  | 🎥  | 🎦  | 🎧  | 🎨  | 🎩  | 🎪  | 🎫  | 🎬  | 🎭  | 🎮  | 🎯  |
-| U+1F3Bx | 🎰  | 🎱  | 🎲  | 🎳  | 🎴  | 🎵  | 🎶  | 🎷  | 🎸  | 🎹  | 🎺  | 🎻  | 🎼  | 🎽  | 🎾  | 🎿  |
-| U+1F3Cx | 🏀  | 🏁  | 🏂  | 🏃  | 🏄  | 🏅  | 🏆  | 🏇  | 🏈  | 🏉  | 🏊  | 🏋️  | 🏌️  | 🏍️  | 🏎️  | 🏏  |
-| U+1F3Dx | 🏐  | 🏑  | 🏒  | 🏓  | 🏔️  | 🏕️  | 🏖️  | 🏗️  | 🏘️  | 🏙️  | 🏚️  | 🏛️  | 🏜️  | 🏝️  | 🏞️  | 🏟️  |
-| U+1F3Ex | 🏠  | 🏡  | 🏢  | 🏣  | 🏤  | 🏥  | 🏦  | 🏧  | 🏨  | 🏩  | 🏪  | 🏫  | 🏬  | 🏭  | 🏮  | 🏯  |
-| U+1F3Fx | 🏰  |     |     | 🏳️  | 🏴  | 🏵️  |     | 🏷️  | 🏸  | 🏹  | 🏺  | 🏻  | 🏼  | 🏽  | 🏾  | 🏿  |
-| U+1F40x | 🐀  | 🐁  | 🐂  | 🐃  | 🐄  | 🐅  | 🐆  | 🐇  | 🐈  | 🐉  | 🐊  | 🐋  | 🐌  | 🐍  | 🐎  | 🐏  |
-| U+1F41x | 🐐  | 🐑  | 🐒  | 🐓  | 🐔  | 🐕  | 🐖  | 🐗  | 🐘  | 🐙  | 🐚  | 🐛  | 🐜  | 🐝  | 🐞  | 🐟  |
-| U+1F42x | 🐠  | 🐡  | 🐢  | 🐣  | 🐤  | 🐥  | 🐦  | 🐧  | 🐨  | 🐩  | 🐪  | 🐫  | 🐬  | 🐭  | 🐮  | 🐯  |
-| U+1F43x | 🐰  | 🐱  | 🐲  | 🐳  | 🐴  | 🐵  | 🐶  | 🐷  | 🐸  | 🐹  | 🐺  | 🐻  | 🐼  | 🐽  | 🐾  | 🐿️  |
-| U+1F44x | 👀  | 👁️  | 👂  | 👃  | 👄  | 👅  | 👆  | 👇  | 👈  | 👉  | 👊  | 👋  | 👌  | 👍  | 👎  | 👏  |
-| U+1F45x | 👐  | 👑  | 👒  | 👓  | 👔  | 👕  | 👖  | 👗  | 👘  | 👙  | 👚  | 👛  | 👜  | 👝  | 👞  | 👟  |
-| U+1F46x | 👠  | 👡  | 👢  | 👣  | 👤  | 👥  | 👦  | 👧  | 👨  | 👩  | 👪  | 👫  | 👬  | 👭  | 👮  | 👯  |
-| U+1F47x | 👰  | 👱  | 👲  | 👳  | 👴  | 👵  | 👶  | 👷  | 👸  | 👹  | 👺  | 👻  | 👼  | 👽  | 👾  | 👿  |
-| U+1F48x | 💀  | 💁  | 💂  | 💃  | 💄  | 💅  | 💆  | 💇  | 💈  | 💉  | 💊  | 💋  | 💌  | 💍  | 💎  | 💏  |
-| U+1F4Ax | 💠  | 💡  | 💢  | 💣  | 💤  | 💥  | 💦  | 💧  | 💨  | 💩  | 💪  | 💫  | 💬  | 💭  | 💮  | 💯  |
-| U+1F4Bx | 💰  | 💱  | 💲  | 💳  | 💴  | 💵  | 💶  | 💷  | 💸  | 💹  | 💺  | 💻  | 💼  | 💽  | 💾  | 💿  |
-| U+1F49x | 💐  | 💑  | 💒  | 💓  | 💔  | 💕  | 💖  | 💗  | 💘  | 💙  | 💚  | 💛  | 💜  | 💝  | 💞  | 💟  |
-| U+1F4Cx | 📀  | 📁  | 📂  | 📃  | 📄  | 📅  | 📆  | 📇  | 📈  | 📉  | 📊  | 📋  | 📌  | 📍  | 📎  | 📏  |
+* __OS Extensions__
 
----
+  * Ubuntu/Gnome - Emoji Selector: https://extensions.gnome.org/extension/1162/emoji-selector/
+  * Windows, use the keyword shortcut <kbd>⊞ Win</kbd> + <kbd>.</kbd> to open the emoji keyboard:
 
-|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
-| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| U+26Dx  |     | ⛑️  |     | ⛓️  | ⛔️ |     |     |     |     |     |     |     |     |     |     |     |
-| U+26Ex  |     |     |     |     |     |     |     |     |     | ⛩️  | ⛪️ |     |     |     |     |     |
-| U+26Fx  | ⛰️  | ⛱️  | ⛲️ | ⛳️ | ⛴️  | ⛵️ |     | ⛷️  | ⛸️  | ⛹️  | ⛺️ |     |     | ⛽️ |     |     |
-| U+270x  |     |     | ✂️  |     |     | ✅️ |     |     | ✈️  | ✉️  | ✊️ | ✋️ | ✌️  | ✍️  |     | ✏️  |
-| U+271x  |     |     | ✒️  |     | ✔️  |     | ✖️  |     |     |     |     |     |     | ✝️  |     |     |
-| U+272x  |     | ✡️  |     |     |     |     |     |     | ✨️ |     |     |     |     |     |     |     |
-| U+273x  |     |     |     | ✳️  | ✴️  |     |     |     |     |     |     |     |     |     |     |     |
-| U+274x  |     |     |     |     | ❄️  |     |     | ❇️  |     |     |     |     | ❌️ |     | ❎️ |     |
-| U+275x  |     |     |     | ❓️ | ❔️ | ❕️ |     | ❗️ |     |     |     |     |     |     |     |     |
-| U+276x  |     |     |     | ❣️  | ❤️  |     |     |     |     |     |     |     |     |     |     |     |
-| U+279x  |     |     |     |     |     | ➕️ | ➖️ | ➗️ |     |     |     |     |     |     |     |     |
-| U+27Ax  |     | ➡️  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| U+27Bx  | ➰️ |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ➿️ |
-| U+293x  |     |     |     |     | ⤴️  | ⤵️  |     |     |     |     |     |     |     |     |     |     |
-| U+2B0x  |     |     |     |     |     | ⬅️  | ⬆️  | ⬇️  |     |     |     |     |     |     |     |     |
-| U+2B1x  |     |     |     |     |     |     |     |     |     |     |     | ⬛️ | ⬜️ |     |     |     |
-| U+2B5x  | ⭐️ |     |     |     |     | ⭕️ |     |     |     |     |     |     |     |     |     |     |
-| U+303x  | 〰️ |     |     |     |     |     |     |     |     |     |     |     |     | 〽️ |     |     |
-| U+329x  |     |     |     |     |     |     |     | ㊗️ |     | ㊙️ |     |     |     |     |     |     |
-| U+1F00x |     |     |     |     | 🀄  |     |     |     |     |     |     |     |     |     |     |     |
-| U+1F0Cx |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | 🃏  |
-| U+1F17x | 🅰️  | 🅱️  |     |     |     |     |     |     |     |     |     |     |     |     | 🅾️  | 🅿️  |
-| U+1F18x |     |     |     |     |     |     |     |     |     |     |     |     |     |     | 🆎  |     |
-| U+1F19x |     | 🆑  | 🆒  | 🆓  | 🆔  | 🆕  | 🆖  | 🆗  | 🆘  | 🆙  | 🆚  |     |     |     |     |     |
-| U+1F20x |     | 🈁  | 🈂️ |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| U+1F21x |     |     |     |     |     |     |     |     |     |     | 🈚  |     |     |     |     |     |
-| U+1F22x |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | 🈯  |
-| U+1F23x |     |     | 🈲  | 🈳  | 🈴  | 🈵  | 🈶  | 🈷️ | 🈸  | 🈹  | 🈺  |     |     |     |     |     |
-| U+1F25x | 🉐  | 🉑  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+    https://support.microsoft.com/en-us/windows/windows-keyboard-tips-and-tricks-588e0b72-0fff-6d3f-aeee-6e5116097942
 
----
+  * MacOS, use the shortcut <kbd>Command</kbd> + <kbd>Control</kbd> + <kbd>Spacebar</kbd> to open up the emoji picker:
 
-|        |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
-| ------ |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| U+00Ax |     |     |     |     |     |     |     |     |     | ©️  |     |     |     |     | ®️  |     |
-| U+203x |     |     |     |     |     |     |     |     |     |     |     |     | ‼️  |     |     |     |
-| U+204x |     |     |     |     |     |     |     |     |     | ⁉️  |     |     |     |     |     |     |
-| U+212x |     |     | ™️  |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| U+213x |     |     |     |     |     |     |     |     |     | ℹ️  |     |     |     |     |     |     |
-| U+219x |     |     |     |     | ↔️  | ↕️  | ↖️  | ↗️  | ↘️  | ↙️  |     |     |     |     |     |     |
-| U+21Ax |     |     |     |     |     |     |     |     |     | ↩️  | ↪️  |     |     |     |     |     |
-| U+231x |     |     |     |     |     |     |     |     |     |     | ⌚️ | ⌛️ |     |     |     |     |
-| U+232x |     |     |     |     |     |     |     |     | ⌨️  |     |     |     |     |     |     |     |
-| U+23Cx |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏏️  |
-| U+23Ex |     |     |     |     |     |     |     |     |     | ⏩️ | ⏪️ | ⏫️ | ⏬️ | ⏭️  | ⏮️  | ⏯️  |
-| U+23Fx | ⏰️ | ⏱️  | ⏲️  | ⏳️ |     |     |     |     | ⏸️  | ⏹️  | ⏺️  |     |     |     |     |     |
-| U+24Cx |     |     | Ⓜ️  |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| U+25Ax |     |     |     |     |     |     |     |     |     |     | ▪️  | ▫️  |     |     |     |     |
-| U+25Bx |     |     |     |     |     |     | ▶️  |     |     |     |     |     |     |     |     |     |
-| U+25Cx | ◀️  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| U+25Fx |     |     |     |     |     |     |     |     |     |     |     | ◻️  | ◼️  | ◽️ | ◾️ |     |
-| U+260x |  ☀  |  ☁  |  ☂  |  ☃  |  ☄  |  ★  |  ☆  |  ☇  |  ☈  |  ☉  |  ☊  |  ☋  |  ☌  |  ☍  |  ☎  |  ☏  |
-| U+261x |  ☐  |  ☑  |  ☒  |  ☓  | ☔  | ☕  |  ☖  |  ☗  |  ☘  |  ☙  |  ☚  |  ☛  |  ☜  |  ☝  |  ☞  |  ☟  |
-| U+262x |  ☠  |  ☡  |  ☢  |  ☣  |  ☤  |  ☥  |  ☦  |  ☧  |  ☨  |  ☩  |  ☪  |  ☫  |  ☬  |  ☭  |  ☮  |  ☯  |
-| U+263x |  ☰  |  ☱  |  ☲  |  ☳  |  ☴  |  ☵  |  ☶  |  ☷  |  ☸  |  ☹  |  ☺  |  ☻  |  ☼  |  ☽  |  ☾  |  ☿  |
-| U+264x |  ♀  |  ♁  |  ♂  |  ♃  |  ♄  |  ♅  |  ♆  |  ♇  | ♈  | ♉  | ♊  | ♋  | ♌  | ♍  | ♎  | ♏  |
-| U+265x | ♐  | ♑  | ♒  | ♓  |  ♔  |  ♕  |  ♖  |  ♗  |  ♘  |  ♙  |  ♚  |  ♛  |  ♜  |  ♝  |  ♞  |  ♟  |
-| U+266x |  ♠  |  ♡  |  ♢  |  ♣  |  ♤  |  ♥  |  ♦  |  ♧  |  ♨  |  ♩  |  ♪  |  ♫  |  ♬  |  ♭  |  ♮  |  ♯  |
-| U+267x |  ♰  |  ♱  |  ♲  |  ♳  |  ♴  |  ♵  |  ♶  |  ♷  |  ♸  |  ♹  |  ♺  |  ♻  |  ♼  |  ♽  |  ♾  | ♿  |
-| U+268x |  ⚀  |  ⚁  |  ⚂  |  ⚃  |  ⚄  |  ⚅  |  ⚆  |  ⚇  |  ⚈  |  ⚉  |  ⚊  |  ⚋  |  ⚌  |  ⚍  |  ⚎  |  ⚏  |
-| U+269x |  ⚐  |  ⚑  |  ⚒  | ⚓  |  ⚔  |  ⚕  |  ⚖  |  ⚗  |  ⚘  |  ⚙  |  ⚚  |  ⚛  |  ⚜  |  ⚝  |  ⚞  |  ⚟  |
-| U+26Ax |  ⚠  | ⚡  |  ⚢  |  ⚣  |  ⚤  |  ⚥  |  ⚦  |  ⚧  |  ⚨  |  ⚩  | ⚪  | ⚫  |  ⚬  |  ⚭  |  ⚮  |  ⚯  |
-| U+26Bx |  ⚰  |  ⚱  |  ⚲  |  ⚳  |  ⚴  |  ⚵  |  ⚶  |  ⚷  |  ⚸  |  ⚹  |  ⚺  |  ⚻  |  ⚼  | ⚽  | ⚾  |     |
-| U+26Cx |  ⛀  |  ⛁  |  ⛂  |  ⛃  | ⛄  | ⛅  |     |     |  ⛈  |     |     |     |     |     | ⛎  |  ⛏  |
-| U+26Dx |     |  ⛑  |     |  ⛓  | ⛔  |     |     |     |     |     |     |     |     |     |     |     |
-| U+26Ex |     |     |  ⛢  |     |     |     |     |     |     |  ⛩  | ⛪  |     |     |     |     |     |
-| U+26Fx |  ⛰  |  ⛱  | ⛲  | ⛳  |  ⛴  | ⛵  |     |  ⛷  |  ⛸  |  ⛹  | ⛺  |  ⛻  |  ⛼  | ⛽  |     |     |
-
+    https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac
 </section>
 
 ### Styling ASCII
@@ -7925,6 +7782,74 @@ else {
   @input
 </script>
 
+### Default `@output`
+
+    --{{0}}--
+The idea of `@output` is similar to `@input`, and you can use this predefined marker only within the header of the last code block.
+
+```` markdown
+``` js     -EvalScript.js
+let who = data.first_name + " " + data.last_name;
+
+if(data.online) {
+  who + " is online"; }
+else {
+  who + " is NOT online"; }
+```
+``` json    +Data.json
+{
+  "first_name" :  "Sammy",
+  "last_name"  :  "Shark",
+  "online"     :  true
+}
+```
+``` text @output
+Is Sammy Shark is really online?
+```
+<script>
+  // insert the JSON dataset into the local variable data
+  let data = @input(1);
+
+  // eval the script that uses this dataset
+  @input
+</script>
+````
+
+    --{{1}}--
+This code block, marked with `@output`, defines the default output and will be shown directly after loading, even if it is not the result of the script evaluation.
+
+
+      {{1}}
+``` js     -EvalScript.js
+let who = data.first_name + " " + data.last_name;
+
+if(data.online) {
+  who + " is online"; }
+else {
+  who + " is NOT online"; }
+```
+``` json    +Data.json
+{
+  "first_name" :  "Sammy",
+  "last_name"  :  "Shark",
+  "online"     :  true
+}
+```
+``` text @output
+Is Sammy Shark is really online?
+```
+<script>
+  // insert the JSON dataset into the local variable data
+  let data = @input(1);
+
+  // eval the script that uses this dataset
+  @input
+</script>
+
+    --{{2}}--
+This is especially handy if you are using an external service for executing code, and your students are running your course offline at the moment.
+It's also useful if you want to see this output on other Markdown viewers or on GitHub and refer to the result.
+
 
 ### Loading external Resources
 <!--
@@ -8603,7 +8528,7 @@ You can define simpler macros that call the complex one by setting default value
 <!--
 @highlight: <b style="color: @0">@1</b>
 
-@highlight_green: @highlight(greeen,@0)
+@highlight_green: @highlight(green,@0)
 -->
 
 @highlight_green(`simply, simply, green`)
@@ -8623,13 +8548,14 @@ this in production...
 ```)
 `````
 
-    --{{3}}--
-As mentioned in the code, it is advised to avoid this approach because it generates unattractive Markdown code on platforms like GitHub or other Markdown interpreters/editors.
+##### Code-Blocks as Parameters
+
+    --{{0}}--
+As mentioned previously, it is advised to avoid the approach of passing multi-line parameters into single-line macros, as it can result in unattractive Markdown code on platforms like GitHub or other Markdown interpreters/editors.
 However, you can utilize a code block that includes information about syntax highlighting along with a macro defining the title.
-The content within the code block is then passed to the macro as the last multi-line parameter.
+The content within the code block is then passed to the macro as the __last__ multi-line parameter.
 
 
-      {{3}}
 ````` markdown
 <!--
 link:   https://pannellum.org/css/style.css
@@ -8668,6 +8594,104 @@ script: https://cdn.pannellum.org/2.4/pannellum.js
 }
 ```
 `````
+
+##### Links as Parameters
+<!--
+@load.java: @load(java,@0)
+
+@load
+<script style="display: block" modify="false" run-once="true">
+    fetch("@1")
+    .then((response) => {
+        if (response.ok) {
+            response.text()
+            .then((text) => {
+                send.lia("LIASCRIPT:\n``` @0\n" + text + "\n```")
+            })
+        } else {
+            send.lia("HTML: <span style='color: red'>Something went wrong, could not load <a href='@1'>@1</a></span>")
+        }
+    })
+    "loading: @1"
+</script>
+@end
+-->
+
+    --{{0}}--
+There is a third option, which was added to support links.
+This means that when LiaScript is executed and you refer to a local reference, this reference needs to be translated into a global one, starting with `https://something.something`.
+Another benefit of applying such link parameters is that what you are referencing is still treated as a link by other Markdown interpreters.
+
+`@[macro-call(with,parameters)](AndURLs "ignored")`
+
+    --{{1}}--
+As with code-block parameters, the URL is passed as the last parameter, and if this is a relative one, the required protocol and origin are added automatically.
+
+    --{{2}}--
+The following example implements a `load` macro that fetches some code examples from the internet and dynamically integrates them into the LiaScript document.
+For more information on how to integrate scripts into your document, see section [JavaScript or JS-Components](#JavaScript-or-JS-Components).
+
+      {{2}}
+```` md
+<!--
+@load.java: @load(java,@0)
+
+@load
+<script style="display: block" modify="false" run-once="true">
+    fetch("@1")
+    .then((response) => {
+        if (response.ok) {
+            response.text()
+            .then((text) => {
+                send.lia("LIASCRIPT:\n``` @0\n" + text + "\n```")
+            })
+        } else {
+            send.lia("HTML: <span style='color: red'>Something went wrong, could not load <a href='@1'>@1</a></span>")
+        }
+    })
+    "loading: @1"
+</script>
+@end
+-->
+
+# Loading
+
+@load.java(App.java) --> might not work
+
+@[load.java](App.java)
+
+@[load(java)](App.java)
+
+will return an error message
+
+@[load.java](DoesNotExist.java)
+````
+
+    --{{3}}--
+The result looks as follows.
+The link-parameters shall be loaded as expected, the first one probably not and the last one will fail definitely.
+
+      {{3}}
+<section>
+
+@load.java(example/App.java) --> might not work
+
+@[load.java](example/App.java)
+
+@[load(java)](example/App.java)
+
+will return an error message
+
+@[load.java](example/DoesNotExist.java)
+
+</section>
+
+
+    --{{4}}--
+You can find this example with more explanation at the following URL:
+
+      {{4}}
+https://github.com/LiaPlayground/Custom-code-imports
 
 #### Escaping
 
@@ -8714,13 +8738,13 @@ However, you can escape a macro by adding an additional `@`, which outputs a gra
 The following macros are special ones that are used by the LiaScript to deal with a couple of convenience functions.
 
 
-#### Base settings
+#### __Base settings__
 
 ##### `author`
 
     --{{0}}--
 The author information is visible within the information panel as well as on the course-card on the home-screen.
-Use a semicolon to separate multiple authors.
+__Use a semicolon to separate multiple authors.__
 
 
 ```md
@@ -8728,6 +8752,8 @@ Use a semicolon to separate multiple authors.
 author: Your name; Another Author
 -->
 ```
+
+![Author information](img/author.png)
 
 ##### `comment`
 
@@ -8745,6 +8771,8 @@ comment: Learn something about ...
 -->
 ```
 
+![Comment information](img/comment.png)
+
 ##### `date`
 
     --{{0}}--
@@ -8757,24 +8785,11 @@ date: 08/03/2020
 -->
 ```
 
-
-##### `logo`
-
-The logo definition requires a URL of an image, weather absolute or relative.
-It is used to define a background image for the course-card at the home-screen.
-
-```md
-<!--
-logo: ./pics/logo.png
--->
-```
-
-##### `icon`
-
-
+![Date information](img/date.png)
 
 ##### `email`
 
+    --{{0}}--
 To add contact information that will be displayed in the information panel, you can include it in your LiaScript document.
 This contact information can also be overridden for specific sections if needed.
 
@@ -8784,11 +8799,49 @@ email: contact@web.de
 -->
 ```
 
+![Email information](img/email.png)
+
+##### `logo`
+
+    --{{0}}--
+The logo definition requires a URL of an image, whether absolute or relative.
+It is used to define a background image for the course-card at the home-screen.
+Additionally, all base information is passed to this visualization too.
+
+```md
+<!--
+logo: ./pics/logo.png
+-->
+```
+
+![Home-Screen](img/home-screen.png)
+
+
+##### `icon`
+<!--
+icon: https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Logo_TU_Freiberg.svg/487px-Logo_TU_Freiberg.svg.png
+-->
+
+    --{{0}}--
+If you want to get rid of our humming-bird icon and insert your own, use this to refer to a relative or absolute image URL.
+This can also be used for styling purposes to add to every slide its own icon.
+
+```md
+<!--
+icon: ./pics/icon.png
+-->
+```
+
+---
+
+![Changed icon](img/icon.png)
 
 ##### `attribute`
 
     --{{0}}--
-Attribution is an important issue. Using the `attribute` command, you can define the attribution that is shown within the info field within the navigation panel.
+Attribution is an important issue.
+By using the `attribute` command, you can define the attribution that is shown within the info field within the navigation panel.
+Therefore, this macro is the appropriate way to say thank you or to add license information.
 These elements also get imported if you import the functionality from another course.
 A good attribution might look like the following examples:
 
@@ -8806,33 +8859,37 @@ attribute: [PapaParse](https://www.papaparse.com)
 -->
 ```
 
+![Attribution](img/attribute.png)
+
+##### `repository`
+
+    --{{0}}--
+When you package your course into a SCORM project and upload it to an LMS, the information about the original repository is lost.
+However, if you want to attract contributors, you can preserve this source information by adding it to your document's head.
+Additionally, LiaScript will automatically attempt to infer the base project from resources on GitHub, GitLab, and previously Dropbox.
+
+```md
+<!--
+repository: https://github.com/LiaScript/docs
+-->
+```
+
+![Repository information](img/repository.png)
+
 #### __Internationalization__
 
 
-##### `translation`
-
-If you already have some translated versions of your course or know where they can be found, then use this macro.
-Simply add the name and the URL.
-This links will be also visible within the information panel of your course.
-
-``` md
-<!--
-translation: Deutsch  translations/German.md
-translation: Français translations/French.md
-translation: Русский  translations/Russian.md
--->
-```
 
 
 ##### `language`
 
+    --{{0}}--
 Set the internationalization of the course.
-This will set basic button information
-The currently available languages are defined in:
+This will configure basic button information, titles, hints, etc.
+This information is also utilized if a user changes the language with the [Google Translator](#Translations).
+The currently available languages are defined here:
 
 https://github.com/liaScript/lia-localization
-
-
 
 ``` md
 <!--
@@ -8852,7 +8909,10 @@ language: de
 -->
 ```
 
+    --{{1}}--
+We use language codes for internationalization, similar to top-level domains.
 
+      {{1}}
 | language   | code |                                                                              translation |
 | ---------- |:----:| ----------------------------------------------------------------------------------------:|
 | Amharic    |  am  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.am.yaml) |
@@ -8880,16 +8940,17 @@ language: de
 
 ##### `narrator`
 
-Set the narrator-voice of your course-speaker.
-The voice is a service of https://responsivevoice.org that is free for non-commercial educational content.
+    --{{0}}--
+Set the narrator voice for your course speaker.
+The voice is provided by[responsivevoice.org](https://responsivevoice.org), which is free for non-commercial educational content, or directly by your browser.
 The list below shows all currently available voices and languages.
+As defined in section [Comments: Text to Speech](#Comments:-Text-to-Speech), this value can be set globally, defaults to English, and can be changed per slide and text-to-speech output as well.
 
 ```md
 <!--
 narrator: Afrikaans Male
 -->
 ```
-
 
 | Female                        | Male                        |
 | ----------------------------- | --------------------------- |
@@ -8954,23 +9015,113 @@ narrator: Afrikaans Male
 |                               | Welsh Male                  |
 
 
-#### Versioning: `version`
+    --{{1}}--
+LiaScript will attempt to utilize the default browser text-to-speech support, and if your browser does not support it, it will switch to [responsivevoice.org](https://responsivevoice.org).
+You can manually switch between these two variants.
+__Note that not all voices are supported equally, and the quality may vary between different operating systems and browsers.__
 
-A very important information is the `version`, it follows the major.minor.patch
-notion. If you start to develop a course, you can leave this out, and you will
-be in some kind of development-version or as long as you are in major-version 0
-the course should be parsed, every time it is loaded. This is fine for small
-courses and no persistent content. But, if you include executable code or
-quizzes, this content is stored persistently at IndexedDB directly within your
-browser.
+    {{1}}
+![Browser TTS](img/tts.png)
 
-If your course is ready or very large, it might make sense to define a major
-version, such as `1.0.12`. The benefit of this is, that every time, the user
-loads the course, the app tries to download the raw Markdown file and then it
-checks the version information, if the version is the same as the one that is
-currently stored within IndexedDB, then it does not require to preprocess the
-entire document again, instead it directly loads the preprocessed version
-directly. This is especially useful for smart phones.
+##### `translation`
+
+    --{{0}}--
+If you already have translated versions of your course or know where they can be found, use this macro. Simply add the name and the URL.
+These links will also be visible within the information panel of your course.
+
+``` md
+<!--
+translation: Deutsch  translations/German.md
+translation: Français translations/French.md
+translation: Русский  translations/Russian.md
+-->
+```
+
+---
+
+![Show Translations](img/translate.png)
+
+
+##### `font`
+
+    --{{0}}--
+The `font` macro allows you to integrate various fonts for any kind of language, whether dead or alive.
+To do this, you need to load the CSS font with the [`link`](#link) command and then insert the font by separating all font names with commas.
+
+
+
+```` markdown
+<!--
+link:     https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs
+          https://fonts.googleapis.com/css2?family=Noto+Sans+Ogham
+
+font:     Noto Sans Egyptian Hieroglyphs, Noto Sans Ogham
+-->
+
+# Hieroglyphs
+
+> url: https://fonts.google.com/noto/specimen/Noto+Sans+Egyptian+Hieroglyphs
+
+𓁷 𓏤 𓎟 𓀀 𓁐 𓏥 𓃀 𓈖 𓌱 𓅓 𓎛 𓅱 𓀔 𓈖 𓌱 𓅓 𓎛 𓇋 𓇋 𓏏 𓁐 𓐍 𓂋 𓋴 𓂝 𓎛 𓋩 𓉔 𓊪 𓏛
+𓋴 𓐠 𓄿 𓂋 𓏏 𓌗 𓀁 𓌷 𓂝 𓏏 𓏭 𓏛 𓇾 𓏏 𓅓 𓅱 𓀀 𓁐 𓏪 𓃀 𓌢 𓌢 𓈖 𓈖 𓁷 𓏤 𓎟 𓀀 𓁐 𓏥
+...
+
+# Ogham
+
+> url: https://fonts.google.com/noto/specimen/Noto+Sans+Ogham
+
+<!-- style="writing-mode: vertical-lr; height: 40vh" -->
+᚛ᚌᚔᚚ ᚓ ᚈᚔᚄᚓᚇ ᚔᚅ ᚃᚐᚔᚇᚉᚆᚓ᚜
+᚛ᚇᚘᚐ ᚋᚁᚐ ᚌᚐᚄᚉᚓᚇᚐᚉᚆ᚜
+...
+````
+
+    --{{1}}--
+Even if the font is not installed on your system, the browser will correctly load and display it.
+
+      {{1}}
+<section>
+
+# Hieroglyphs
+
+𓁷 𓏤 𓎟 𓀀 𓁐 𓏥 𓃀 𓈖 𓌱 𓅓 𓎛 𓅱 𓀔 𓈖 𓌱 𓅓 𓎛 𓇋 𓇋 𓏏 𓁐 𓐍 𓂋 𓋴 𓂝 𓎛 𓋩 𓉔 𓊪 𓏛
+𓋴 𓐠 𓄿 𓂋 𓏏 𓌗 𓀁 𓌷 𓂝 𓏏 𓏭 𓏛 𓇾 𓏏 𓅓 𓅱 𓀀 𓁐 𓏪 𓃀 𓌢 𓌢 𓈖 𓈖 𓁷 𓏤 𓎟 𓀀 𓁐 𓏥
+
+# Ogham
+
+<!-- style="writing-mode: vertical-lr; height: 40vh" -->
+᚛ᚌᚔᚚ ᚓ ᚈᚔᚄᚓᚇ ᚔᚅ ᚃᚐᚔᚇᚉᚆᚓ᚜
+᚛ᚇᚘᚐ ᚋᚁᚐ ᚌᚐᚄᚉᚓᚇᚐᚉᚆ᚜
+᚛ᚌᚓᚔᚄ ᚃᚐᚔᚏ ᚐᚏ ᚈᚆᚓᚉᚆᚈ ᚇᚔᚅᚇ ᚃᚐᚔᚇᚉᚆᚔ᚜
+᚛ᚉᚓᚅ ᚉᚆᚑᚋᚏᚐᚉ ᚅᚑᚓᚅᚃᚆᚔᚏ ᚇᚑ ᚃᚆᚒᚐᚉᚏᚐ᚜
+᚛ᚌᚔᚚ ᚓ ᚈᚔᚄᚓᚇ ᚔᚅ ᚃᚐᚔᚇᚉᚆᚓ᚜
+᚛ᚇᚘᚐ ᚋᚁᚐ ᚌᚐᚄᚉᚓᚇᚐᚉᚆ᚜
+᚛ᚌᚓᚔᚄ ᚃᚐᚔᚏ ᚐᚏ ᚈᚆᚓᚉᚆᚈ ᚇᚔᚅᚇ ᚃᚐᚔᚇᚉᚆᚔ᚜
+᚛ᚉᚓᚅ ᚉᚆᚑᚋᚏᚐᚉ ᚅᚑᚓᚅᚃᚆᚔᚏ ᚇᚑ ᚃᚆᚒᚐᚉᚏᚐ᚜
+᚛ᚌᚔᚚ ᚓ ᚈᚔᚄᚓᚇ ᚔᚅ ᚃᚐᚔᚇᚉᚆᚓ᚜
+᚛ᚇᚘᚐ ᚋᚁᚐ ᚌᚐᚄᚉᚓᚇᚐᚉᚆ᚜
+᚛ᚌᚓᚔᚄ ᚃᚐᚔᚏ ᚐᚏ ᚈᚆᚓᚉᚆᚈ ᚇᚔᚅᚇ ᚃᚐᚔᚇᚉᚆᚔ᚜
+᚛ᚉᚓᚅ ᚉᚆᚑᚋᚏᚐᚉ ᚅᚑᚓᚅᚃᚆᚔᚏ ᚇᚑ ᚃᚆᚒᚐᚉᚏᚐ᚜
+
+</section>
+
+    --{{2}}--
+Here is a complete guide on loading and experimenting with external fonts in the browser:
+
+
+      {{2}}
+https://liascript.github.io/LiveEditor/?/show/file/https://raw.githubusercontent.com/LiaPlayground/Fonts/main/README.md
+
+#### __`version`__
+
+    --{{0}}--
+A very important piece of information is the `version`.
+It follows the major.minor.patch notion.
+If you are just starting to develop a course, you can leave this out, and you will be in some kind of development version.
+As long as you are in major version 0, the course should be parsed every time it is loaded, or if your user is offline, the content will be loaded from the cache.
+
+
+__Debug Version:__
 
 ``` markdown
 <!--
@@ -8981,42 +9132,89 @@ version: 0.0.1
 # Main Title
 ```
 
+---
 
+![Version information](img/version.png)
+
+    --{{1}}--
+This setup is suitable for small courses without persistent content.
+However, if you include executable code or quizzes and want to store this state within the browser's IndexedDB, you will need to switch to a major version of 1.
+Therefore, if your course is ready or very large, it might make sense to define a major version, such as `1.0.12`.
+The benefit of this is that every time the user loads the course, the app tries to download the raw Markdown file and then checks the version information.
+If the version is the same as the one currently stored within IndexedDB, then it does not require preprocessing the entire document again.
+Instead, it directly loads the preprocessed version. This is especially useful for smartphones.
+
+      {{1}}
+<section>
+Release:
+
+
+``` markdown
+<!--
+version: 1.0.12
+...
+-->
+
+# Main Title
+```
+
+</section>
+
+    --{{2}}--
 __So how to change the version information?__
 
-If you only fix typos or add or change static content, it is sufficient enough
-to increase the patch element and thus for example `1.0.14` to `1.0.15`.
-
-If you add slides to the end of your document, it is okay to increase the minor
-version number, eg. going from `1.0.15` to `1.1.0`.
-
-Major versions changes are required, if you change the structure of your
-document, especially quizzes and code. As already mentioned these persistent
-state information are stored within IndexedDB, but moving code or quizzes from
-one slide to another will might destroy previous states. For this purpose major
-version changes are required (`1.1.0` -> `2.0.0`), which will result in a new
-version also in IndexedDB. The old code/state is still available and can be
-restored.
 
 
-#### Loading External Resources
+        {{3}}
+* __patch:__ from `1.0.14` to `1.0.15`
+
+      --{{3}}--
+  If you're making minor adjustments like fixing typos or updating static content, simply increase the patch element.
+
+        {{4}}
+* __minor:__ going from `1.0.15` to `1.1.0`
+
+      --{{4}}--
+  If you're adding slides to the end of your document, you can increase the minor version number.
+
+        {{5}}
+* __major:__ from `1.1.0` to `2.0.0`
+
+      --{{5}}--
+  Major version changes are necessary if you alter the structure of your document, especially by moving quizzes or code.
+  Persistent state information is stored within IndexedDB, so moving code or quizzes from one slide to another could potentially disrupt previous states.
+  In such cases, major version changes are required, which will result in a new version being stored in IndexedDB, while the old code/state remains available and can be restored.
+
+
+#### __Loading External Resources__
 
 ##### `link`
 
-If you need to load additional CSS files, use `link` followed by the URL of your stylesheet.
-Similar to `import` or `script`, you can load multiple files.
-See https://github.com/liaScript/custom-style for more information on how to define custom styling.
+    --{{0}}--
+If you need to load additional CSS files, use the `link` command followed by the URL of your stylesheet.
+Some JavaScript imports might also require additional CSS definitions.
+Similar to [`import`](#import) or [`script`](#script), you can load multiple files. If you are creating a template and need to pass this information to all other courses that import yours, use `link`.
+If you only want to change the appearance of some of your elements, use [`style`](#style).
+
 
 ```md
 <!--
 link: https://some.css
-  https://another.css
+      ./another.css
 -->
 ```
 
+    --{{1}}--
+For more information on how to define custom styles, checkout the following link:
+
+      {{2}}
+https://github.com/liaScript/custom-style
+
 ##### `script`
 
-Load all required JavaScript files/libraries with this command.
+    --{{0}}--
+Script tags cannot load external JavaScript resources. Instead, use the `script` command in the main header to load external resources.
+This works for relative references too.
 
 ``` md
 <!--
@@ -9024,82 +9222,90 @@ script: https://some.js
   https://another.js
   ...
 -->
+
+# Main title
+
+<script>alert("Hello Mom")</script>
 ```
 
+    --{{1}}--
+The execution of [`@onload`](#onload) and all script tags is delayed until all external references have been loaded.
 
 ##### `import`
 
-You can import the main macros of other courses, simply by using the `import` command, which is followed by the raw URL of the foreign course.
-You can also import various different courses, every URL will be loaded before the course is loaded.
-Only the definitions in the main header are loaded, this includes, scripts, css, macros, attribution, and onload.
-Our basic templates are currently hosted at https://github.com/LiaTemplates .
-Every course basically describes its macros and how to apply them.
-Only the content of this course is loaded for speed-reasons, it is currently not possible to load a course, that requires macros of another course and so on.
+You can import the main macros of other courses simply by using the `import` command, followed by the raw URL of the foreign course.
+You can import various different courses, and every URL will be loaded before the course is finally rendered.
+Only the definitions in the main header are loaded, including `script`, `link`, macros, `attribute`, and `onload`.
 
 ```` md
 <!--
-import: https://raw.githubusercontent.com/liaTemplates/rextester_template/master/README.md
-    https://other_url
+import: https://raw.githubusercontent.com/liaTemplates/ABCjs/main/README.md
 
 import: this will import a third url
 -->
 
-``` python
-print("Hello World")
+# Music course
+
+``` abc  @ABCJS.render
+X: 1
+T: Shche ne Vmerla Ukrayiny ni Slava, ni volya
+T: Ukrainian National Anthem
+C: trad.
+R: march
+S: https://www.8notes.com/scores/34640.asp
+Z: 2022 John Chambers <jc:trillian.mit.edu>
+M: C
+L: 1/8
+K: F
+[|\
+"F"[A3F3][AF] ([AF][GE][AF])[BG] | [c3A3][BG] "A7"[A2F2][G2E2^C2] | "Dm"[F2D2][A2F2] "A"[E2^C2][A2C2] | "Dm"[D3D3][E^C] [F2D2]"C"[G2E2] |
+...
 ```
-@Rextester.eval(@Python)
 ````
 
+---
 
-
-
-
-
-
-
-
-#### `dark`
-
-You can change the default appearance of your document, either to prefer dark mode or light mode.
-Please note that this will not alter the user's preferences.
-The default mode is determined by the user settings.
-
-```md
-<!--
-dark: true
-
-@@ or ...
-
-dark: false
--->
+``` abc  @ABCJS.render
+X: 1
+T: Shche ne Vmerla Ukrayiny ni Slava, ni volya
+T: Ukrainian National Anthem
+C: trad.
+R: march
+S: https://www.8notes.com/scores/34640.asp
+Z: 2022 John Chambers <jc:trillian.mit.edu>
+M: C
+L: 1/8
+K: F
+[|\
+"F"[A3F3][AF] ([AF][GE][AF])[BG] | [c3A3][BG] "A7"[A2F2][G2E2^C2] | "Dm"[F2D2][A2F2] "A"[E2^C2][A2C2] | "Dm"[D3D3][E^C] [F2D2]"C"[G2E2] |
+"F"[A3F3][AF] ([AF][GE][AF])[BG] | [c3A3][BG] "A7"[A2F2][G2E2^C2] | "Dm"[F2D2][A2F2] "A"[E2^C2][A2C2] | "Dm"[D4D4] D2z2 |
+"A"[E2^C2][E2C2] ([AC][GE][FD])[EC] | ("Dm"[DD3-]EF)[DD] "A"[E2^C2][E2C2] | "Dm"[F2D2][F2D2] "C"[G2E2][G2E2] | "F"[A4F4] [A2F2]z2 |
+"A"[E2^C2][E2C2] ([AC][GE][FD])[EC] | ("Dm"[DD3-]EF)[DD] "A"[E2^C2][E2C2] | "Dm"[F2D2][A2F2] "A"[E2^C2][A2C2] | "Dm"[D3D3][E^C] ([FD][GE][AF])[BG] |
+|:\
+"F"[c3A3][=B^G] [c2A2][A2F2] | "C"[G2E2][G2E2] ([cE][BG]"^A7/C#"[AF])[GE] | "Dm"[F2D2][F2D2] "C"[G2E2][G2C2] | ("F"[A3F3][GE][A2F2])"C7"[B2G2] |
+"F"[c3A3][=B^G] [c2A2][A2F2] | "C"[G2E2][G2E2] ([cE][BG]"^A7/C#"[AF])[GE] | "Dm"[F2D2][A2F2] "A"[E2^C2][A2C2] | "Dm"[D4D4] [D2D2]z2 :|
 ```
 
+---
 
 
+    --{{1}}--
+You can see an overview of all currently supported templates hosted on GitHub.
+Each course describes its macros and how to apply them.
+Currently, only the content of the imported course gets loaded, so it's not possible to load a course correctly if it references other courses.
+
+     {{1}}
+https://github.com/topics/liascript-template
 
 
+#### __Configuration__
 
+##### `mode`
 
-#### `input`
-
-Use this only in conjunction with executable code and projects or with quizzes.
-This macro can only be used in a script tag and gets replaced by the current user input.
-
-To refer to the inputs in a project, use the parameterized macro:
-
-``` md
-@input(0)   <== equal to @input
-@input(1)
-```
-
-
-
-
-
-#### `mode`
-
-You can change the default style of your document, either if you do not have any effects you can set mode to `Textbook` or start with and interactive `Presentation`.
-The three modes a the same as defined within the document at the upper right button. The default mode is defined by the user settings.
+    --{{0}}--
+You can change the default style of your document.
+If you prefer a traditional layout without interactive elements, you can set the mode to `Textbook`.
+Alternatively, you can opt for an interactive `Presentation` or `Slides` with comments included, to engage your audience with animations.
 
 ```md
 <!--
@@ -9111,14 +9317,94 @@ mode: Textbook
 -->
 ```
 
+    --{{1}}--
+The three modes are accessible via the mode selector button located at the upper right corner of the document.
+The default mode is determined by the user settings.
+
+      {{1}}
+![User modes](img/modes.png)
+
+##### `dark`
+
+    --{{0}}--
+You can adjust the default appearance of your document, opting for either dark mode or light mode.
+It's important to note that this customization will not override the user's preferences.
+The default mode is determined by the user settings.
+
+
+```md
+<!--
+dark: true
+
+@@ or ...
+
+dark: false
+-->
+```
+
+---
+
+![dark and light](img/dark.png)
+
+
+##### `classroom`
+
+If you want to disable the classroom functionality for your course or within your SCORM export.
+Then turn the `classroom` feature of, by default it is activated.
+For more information on how to open classrooms see section [Classroom Experience](#Classroom-Experience).
+
+```md
+<!--
+classroom: false
+-->
+```
+
+---
+
+![classroom settings](img/classroom.png)
+
+
+##### `sharing`
+
+    --{{0}}--
+To disable sharing, if your browser supports it and to remove the presented QR code, you can turn off this feature with the following command.
+By default, it is activated.
+
+```md
+<!--
+sharing: false
+-->
+```
+
+---
+
+![sharing options](img/sharing.png)
+
+##### `translateWithGoogle`
+
+If you are giving a language course and want to prevent cheating by disabling the auto-translation function offered by Google, then set `translateWithGoogle` to `false`.
+
+
+```md
+<!--
+translateWithGoogle: false
+-->
+```
+
+---
+
+![translate with google](img/translateWithGoogle.png)
+
+
+#### __Functional__
 
 
 
-#### `onload`
+##### `onload`
 
-Sometimes it might be necessary to preload some JavaScript code that is gets executed before the course is loaded.
-Or you want to define some global functions that can be used afterwards everywhere.
-`onload` actually does the same as its HTML counterpart and is used to accomplish this task.
+    --{{0}}--
+Sometimes it might be necessary to preload some JavaScript code that gets executed before the course is loaded, or you want to define some global functions that can be used everywhere afterward.
+`onload` functions similarly to its HTML counterpart and is used to accomplish this task.
 
 ``` md
 <!--
@@ -9131,42 +9417,155 @@ alert("Hello World")
 -->
 ```
 
-#### `persistend`
+##### `style`
+
+    --{{0}}--
+In contrast to [`link`](#link) where you refer to external CSS resources, you can also directly insert CSS settings.
+These are loaded faster, directly during the parsing process, which reduces glitches, and they are not shared if the document gets imported.
+The example adds an animated transition to every slide.
+
+```
+<!--
+@style
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+        border: 5px solid black;
+    }
+    to {
+        transform: scale(1);
+        border: 1px solid black;
+        opacity: 1;
+    }
+}
+
+/* Apply the animation to the main element */
+main {
+    animation: zoomIn 0.75s ease-in-out;
+}
+
+@end
+-->
+
+# Course Main Title
+```
+
+    --{{1}}--
+Headers, colors, and everything LiaScript-related can be modified as well. Try out this example:
+
+      {{1}}
+[LiveEditor](https://liascript.github.io/LiveEditor/?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)
+
+##### `persistent`
+
+    --{{0}}--
+LiaScript will destroy all elements when a new slide is opened. As a result, videos and sound stop playing, iframes are purged, etc.
+However, some external functionality, such as scripts that modify the DOM, create certain elements, and adapt their behavior, will require their content to persist across slides.
+This is why the preservation macro was introduced: to maintain all DOM elements on a slide, even though they are hidden when another slide is opened.
+
+``` markdown
+<!--
+persistent: true
+-->
+
+# No slide will be deleted
+```
+
+    --{{1}}--
+This can be set globally, but you can also adjust the global setting on a per-slide basis.
+By default, this persistence feature is turned off.
 
 
+      {{1}}
+``` markdown
+...
 
-#### `style`
+## Only this slide will be persistent
+<!--
+persistent: true
+-->
+
+...
+
+# Not this
+```
+
+    --{{2}}--
+If your extension behaves oddly when you leave and re-enter a slide, trying out this option might be the right choice.
 
 
-#### `uid`
+#### __Helper__
 
-This macro can only be used within the document, not within the header.
-Sometimes it is necessary to define unique identifiers if you want to access some HTML nodes and do not want to name every manually.
-In this case it might be useful to define hidden macros, that make use of `@uid` which generates a unique identifier, whenever it is called.
-See for example https://github.com/liaTemplates/Rextester to see the application of this pattern for creating macros.
+
+##### `uid`
+
+    --{{0}}--
+This macro is limited to use within the document and cannot be used within the header.
+There are occasions when it becomes necessary to assign unique identifiers for accessing specific HTML nodes without manually naming each one.
+In such situations, hidden macros utilizing `@uid` can be quite useful.
+When invoked, `@uid` generates a unique identifier each time it is called.
 
 
 ```md
 <!--
-@eval: @hidden_eval(@uid,@input)
+@eval: @hidden_eval(@uid,@0)
 
 @hidden_eval
 <script>
-// eval @input
-...
-// and do somethint with the content of "name_.."
-document.getElementByName("name_@0")
+document.getElementById("id_@0").innerHTML = "@1"
 </script>
-
 
 <div id="id_@0"></div>
 
 @end
 -->
+
+# Main course
+
+@eval(Hello Mom)
+
+@eval(Hello World)
 ```
 
+    --{{1}}--
+In this example, `@eval` invokes another macro and passes the result of `@uid` as the first parameter.
+The input of `@0` serves as the second parameter.
+Consequently, `@1` in the second macro call will be replaced with this input.
+
+##### `formula`
+
+    --{{0}}--
+This is a helper function that enables the definition of custom macros for [KaTeX](https://katex.org) formulas on both a global and local scale.
+
+> For a comprehensive overview, refer to the section:
+>
+> [Formula-Macros](#Formula-Macros).
+
+##### `input`
+
+    --{{0}}--
+This macro should only be used within script-tags, typically associated with executable code blocks, projects, quizzes, surveys, tasks, and standalone scripts.
+It serves as a placeholder for the current user input and may yield different results based on the context.
 
 
+* __Tasks:__ [Tasks and Scripting](#Tasks-and-Scripting)
+* __Quizzes:__ [Quizzes and Scripting](#Quizzes-and-Scripting)
+* __Surveys:__ [Surveys and Scripting](#Surveys-and-Scripting)
+* __Executable Code:__ [Interactive Code-Blocks](#Starting-simple)
+* __Stand alone Scripts:__ [JavaScript or JS-Components](#JavaScript-or-JS-Components)
+
+
+##### `output`
+
+    --{{0}}--
+This macro is specifically intended for use in executable code blocks.
+It should be added to the last code block in a project's head section to designate a textual output as the default output for execution.
+
+> For further details, please refer to the section titled:
+>
+> [Default `@output`](#Default-@output).
 
 ## JavaScript
 
@@ -10451,4 +10850,184 @@ Embedded systems developer, creator or arduinoview, and Markdown evangelist ...
 CSS & SASS crack and friendly face behind new face of LiaScript ...
 
 
-# Appendix
+## Appendix
+
+
+### Unicode Symbols
+
+
+|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+1F60x | 😀  | 😁  | 😂  | 😃  | 😄  | 😅  | 😆  | 😇  | 😈  | 😉  | 😊  | 😋  | 😌  | 😍  | 😎  | 😏  |
+| U+1F61x | 😐  | 😑  | 😒  | 😓  | 😔  | 😕  | 😖  | 😗  | 😘  | 😙  | 😚  | 😛  | 😜  | 😝  | 😞  | 😟  |
+| U+1F62x | 😠  | 😡  | 😢  | 😣  | 😤  | 😥  | 😦  | 😧  | 😨  | 😩  | 😪  | 😫  | 😬  | 😭  | 😮  | 😯  |
+| U+1F63x | 😰  | 😱  | 😲  | 😳  | 😴  | 😵  | 😶  | 😷  | 😸  | 😹  | 😺  | 😻  | 😼  | 😽  | 😾  | 😿  |
+| U+1F64x | 🙀  | 🙁  | 🙂  | 🙃  | 🙄  | 🙅  | 🙆  | 🙇  | 🙈  | 🙉  | 🙊  | 🙋  | 🙌  | 🙍  | 🙎  | 🙏  |
+
+---
+
+|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+1F4Dx | 📐  | 📑  | 📒  | 📓  | 📔  | 📕  | 📖  | 📗  | 📘  | 📙  | 📚  | 📛  | 📜  | 📝  | 📞  | 📟  |
+| U+1F4Ex | 📠  | 📡  | 📢  | 📣  | 📤  | 📥  | 📦  | 📧  | 📨  | 📩  | 📪  | 📫  | 📬  | 📭  | 📮  | 📯  |
+| U+1F4Fx | 📰  | 📱  | 📲  | 📳  | 📴  | 📵  | 📶  | 📷  | 📸  | 📹  | 📺  | 📻  | 📼  | 📽️  |     | 📿  |
+| U+1F50x | 🔀  | 🔁  | 🔂  | 🔃  | 🔄  | 🔅  | 🔆  | 🔇  | 🔈  | 🔉  | 🔊  | 🔋  | 🔌  | 🔍  | 🔎  | 🔏  |
+| U+1F51x | 🔐  | 🔑  | 🔒  | 🔓  | 🔔  | 🔕  | 🔖  | 🔗  | 🔘  | 🔙  | 🔚  | 🔛  | 🔜  | 🔝  | 🔞  | 🔟  |
+| U+1F52x | 🔠  | 🔡  | 🔢  | 🔣  | 🔤  | 🔥  | 🔦  | 🔧  | 🔨  | 🔩  | 🔪  | 🔫  | 🔬  | 🔭  | 🔮  | 🔯  |
+| U+1F53x | 🔰  | 🔱  | 🔲  | 🔳  | 🔴  | 🔵  | 🔶  | 🔷  | 🔸  | 🔹  | 🔺  | 🔻  | 🔼  | 🔽  |     |     |
+| U+1F54x |     |     |     |     |     |     |     |     |     | 🕉️  | 🕊️  | 🕋  | 🕌  | 🕍  | 🕎  |     |
+| U+1F55x | 🕐  | 🕑  | 🕒  | 🕓  | 🕔  | 🕕  | 🕖  | 🕗  | 🕘  | 🕙  | 🕚  | 🕛  | 🕜  | 🕝  | 🕞  | 🕟  |
+| U+1F56x | 🕠  | 🕡  | 🕢  | 🕣  | 🕤  | 🕥  | 🕦  | 🕧  |     |     |     |     |     |     |     | 🕯️  |
+| U+1F57x | 🕰️  |     |     | 🕳️  | 🕴️  | 🕵️  | 🕶️  | 🕷️  | 🕸️  | 🕹️  | 🕺  |     |     |     |     |     |
+| U+1F58x |     |     |     |     |     |     |     | 🖇️  |     |     | 🖊️  | 🖋️  | 🖌️  | 🖍️  |     |     |
+| U+1F59x | 🖐️  |     |     |     |     | 🖕  | 🖖  |     |     |     |     |     |     |     |     |     |
+| U+1F5Ax |     |     |     |     | 🖤  | 🖥️  |     |     | 🖨️  |     |     |     |     |     |     |     |
+| U+1F5Bx |     | 🖱️  | 🖲️  |     |     |     |     |     |     |     |     |     | 🖼️  |     |     |     |
+| U+1F5Cx |     |     | 🗂️  | 🗃️  | 🗄️  |     |     |     |     |     |     |     |     |     |     |     |
+| U+1F5Dx |     | 🗑️  | 🗒️  | 🗓️  |     |     |     |     |     |     |     |     | 🗜️  | 🗝️  | 🗞️  |     |
+| U+1F5Ex |     | 🗡️  |     | 🗣️  |     |     |     |     | 🗨️  |     |     |     |     |     |     | 🗯️  |
+| U+1F5Fx |     |     |     | 🗳️  |     |     |     |     |     |     | 🗺️  | 🗻  | 🗼  | 🗽  | 🗾  | 🗿  |
+| U+1F60x | 😀  | 😁  | 😂  | 😃  | 😄  | 😅  | 😆  | 😇  | 😈  | 😉  | 😊  | 😋  | 😌  | 😍  | 😎  | 😏  |
+| U+1F61x | 😐  | 😑  | 😒  | 😓  | 😔  | 😕  | 😖  | 😗  | 😘  | 😙  | 😚  | 😛  | 😜  | 😝  | 😞  | 😟  |
+| U+1F62x | 😠  | 😡  | 😢  | 😣  | 😤  | 😥  | 😦  | 😧  | 😨  | 😩  | 😪  | 😫  | 😬  | 😭  | 😮  | 😯  |
+| U+1F63x | 😰  | 😱  | 😲  | 😳  | 😴  | 😵  | 😶  | 😷  | 😸  | 😹  | 😺  | 😻  | 😼  | 😽  | 😾  | 😿  |
+| U+1F64x | 🙀  | 🙁  | 🙂  | 🙃  | 🙄  | 🙅  | 🙆  | 🙇  | 🙈  | 🙉  | 🙊  | 🙋  | 🙌  | 🙍  | 🙎  | 🙏  |
+| U+1F68x | 🚀  | 🚁  | 🚂  | 🚃  | 🚄  | 🚅  | 🚆  | 🚇  | 🚈  | 🚉  | 🚊  | 🚋  | 🚌  | 🚍  | 🚎  | 🚏  |
+| U+1F69x | 🚐  | 🚑  | 🚒  | 🚓  | 🚔  | 🚕  | 🚖  | 🚗  | 🚘  | 🚙  | 🚚  | 🚛  | 🚜  | 🚝  | 🚞  | 🚟  |
+| U+1F6Ax | 🚠  | 🚡  | 🚢  | 🚣  | 🚤  | 🚥  | 🚦  | 🚧  | 🚨  | 🚩  | 🚪  | 🚫  | 🚬  | 🚭  | 🚮  | 🚯  |
+| U+1F6Bx | 🚰  | 🚱  | 🚲  | 🚳  | 🚴  | 🚵  | 🚶  | 🚷  | 🚸  | 🚹  | 🚺  | 🚻  | 🚼  | 🚽  | 🚾  | 🚿  |
+| U+1F6Cx | 🛀  | 🛁  | 🛂  | 🛃  | 🛄  | 🛅  |     |     |     |     |     | 🛋️  | 🛌  | 🛍️  | 🛎️  | 🛏️  |
+
+---
+
+|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+1F6Dx | 🛐  | 🛑  | 🛒  |     |     | 🛕  | 🛖  | 🛗  |     |     |     |     |     |     |     |     |
+| U+1F6Ex | 🛠️  | 🛡️  | 🛢️  | 🛣️  | 🛤️  | 🛥️  |     |     |     | 🛩️  |     | 🛫  | 🛬  |     |     |     |
+| U+1F6Fx | 🛰️  |     |     | 🛳️  | 🛴  | 🛵  | 🛶  | 🛷  | 🛸  | 🛹  | 🛺  | 🛻  | 🛼  |     |     |     |
+| U+1F7Ex | 🟠  | 🟡  | 🟢  | 🟣  | 🟤  | 🟥  | 🟦  | 🟧  | 🟨  | 🟩  | 🟪  | 🟫  |     |     |     |     |
+| U+1F90x |     |     |     |     |     |     |     |     |     |     |     |     | 🤌  | 🤍  | 🤎  | 🤏  |
+| U+1F91x | 🤐  | 🤑  | 🤒  | 🤓  | 🤔  | 🤕  | 🤖  | 🤗  | 🤘  | 🤙  | 🤚  | 🤛  | 🤜  | 🤝  | 🤞  | 🤟  |
+| U+1F92x | 🤠  | 🤡  | 🤢  | 🤣  | 🤤  | 🤥  | 🤦  | 🤧  | 🤨  | 🤩  | 🤪  | 🤫  | 🤬  | 🤭  | 🤮  | 🤯  |
+| U+1F93x | 🤰  | 🤱  | 🤲  | 🤳  | 🤴  | 🤵  | 🤶  | 🤷  | 🤸  | 🤹  | 🤺  |     | 🤼  | 🤽  | 🤾  | 🤿  |
+| U+1F94x | 🥀  | 🥁  | 🥂  | 🥃  | 🥄  | 🥅  |     | 🥇  | 🥈  | 🥉  | 🥊  | 🥋  | 🥌  | 🥍  | 🥎  | 🥏  |
+| U+1F95x | 🥐  | 🥑  | 🥒  | 🥓  | 🥔  | 🥕  | 🥖  | 🥗  | 🥘  | 🥙  | 🥚  | 🥛  | 🥜  | 🥝  | 🥞  | 🥟  |
+| U+1F96x | 🥠  | 🥡  | 🥢  | 🥣  | 🥤  | 🥥  | 🥦  | 🥧  | 🥨  | 🥩  | 🥪  | 🥫  | 🥬  | 🥭  | 🥮  | 🥯  |
+| U+1F97x | 🥰  | 🥱  | 🥲  | 🥳  | 🥴  | 🥵  | 🥶  |     |     |     | 🥺  | 🥻  | 🥼  | 🥽  | 🥾  | 🥿  |
+| U+1F98x | 🦀  | 🦁  | 🦂  | 🦃  | 🦄  | 🦅  | 🦆  | 🦇  | 🦈  | 🦉  | 🦊  | 🦋  | 🦌  | 🦍  | 🦎  | 🦏  |
+| U+1F99x | 🦐  | 🦑  | 🦒  | 🦓  | 🦔  | 🦕  | 🦖  | 🦗  | 🦘  | 🦙  | 🦚  | 🦛  | 🦜  | 🦝  | 🦞  | 🦟  |
+| U+1F9Ax | 🦠  | 🦡  | 🦢  |     |     | 🦥  | 🦦  | 🦧  | 🦨  | 🦩  | 🦪  |     |     |     | 🦮  | 🦯  |
+| U+1F9Bx | 🦰  | 🦱  | 🦲  | 🦳  | 🦴  | 🦵  | 🦶  | 🦷  | 🦸  | 🦹  | 🦺  | 🦻  | 🦼  | 🦽  | 🦾  | 🦿  |
+| U+1F9Cx | 🧀  | 🧁  | 🧂  | 🧃  | 🧄  | 🧅  | 🧆  | 🧇  | 🧈  | 🧉  | 🧊  | 🧋  |     | 🧍  | 🧎  | 🧏  |
+| U+1F9Dx | 🧐  | 🧑  | 🧒  | 🧓  | 🧔  | 🧕  | 🧖  | 🧗  | 🧘  | 🧙  | 🧚  | 🧛  | 🧜  | 🧝  | 🧞  | 🧟  |
+| U+1F9Ex | 🧠  | 🧡  | 🧢  | 🧣  | 🧤  | 🧥  | 🧦  | 🧧  | 🧨  | 🧩  | 🧪  | 🧫  | 🧬  | 🧭  | 🧮  | 🧯  |
+| U+1F9Fx | 🧰  | 🧱  | 🧲  | 🧳  | 🧴  | 🧵  | 🧶  | 🧷  | 🧸  | 🧹  | 🧺  | 🧻  | 🧼  | 🧽  | 🧾  | 🧿  |
+| U+1FA7x | 🩰  | 🩱  | 🩲  | 🩳  |     |     |     |     | 🩸  | 🩹  | 🩺  |     |     |     |     |     |
+| U+1FA8x | 🪀  | 🪁  | 🪂  |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+1FA9x | 🪐  | 🪑  | 🪒  | 🪓  | 🪔  | 🪕  |     |     |     |     |     |     |     |     |     |     |
+
+---
+
+|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+1F30x | 🌀  | 🌁  | 🌂  | 🌃  | 🌄  | 🌅  | 🌆  | 🌇  | 🌈  | 🌉  | 🌊  | 🌋  | 🌌  | 🌍  | 🌎  | 🌏  |
+| U+1F31x | 🌐  | 🌑  | 🌒  | 🌓  | 🌔  | 🌕  | 🌖  | 🌗  | 🌘  | 🌙  | 🌚  | 🌛  | 🌜  | 🌝  | 🌞  | 🌟  |
+| U+1F32x | 🌠  | 🌡️  |     |     | 🌤️  | 🌥️  | 🌦️  | 🌧️  | 🌨️  | 🌩️  | 🌪️  | 🌫️  | 🌬️  | 🌭  | 🌮  | 🌯  |
+| U+1F33x | 🌰  | 🌱  | 🌲  | 🌳  | 🌴  | 🌵  | 🌶️  | 🌷  | 🌸  | 🌹  | 🌺  | 🌻  | 🌼  | 🌽  | 🌾  | 🌿  |
+| U+1F34x | 🍀  | 🍁  | 🍂  | 🍃  | 🍄  | 🍅  | 🍆  | 🍇  | 🍈  | 🍉  | 🍊  | 🍋  | 🍌  | 🍍  | 🍎  | 🍏  |
+| U+1F35x | 🍐  | 🍑  | 🍒  | 🍓  | 🍔  | 🍕  | 🍖  | 🍗  | 🍘  | 🍙  | 🍚  | 🍛  | 🍜  | 🍝  | 🍞  | 🍟  |
+| U+1F36x | 🍠  | 🍡  | 🍢  | 🍣  | 🍤  | 🍥  | 🍦  | 🍧  | 🍨  | 🍩  | 🍪  | 🍫  | 🍬  | 🍭  | 🍮  | 🍯  |
+| U+1F37x | 🍰  | 🍱  | 🍲  | 🍳  | 🍴  | 🍵  | 🍶  | 🍷  | 🍸  | 🍹  | 🍺  | 🍻  | 🍼  | 🍽️  | 🍾  | 🍿  |
+| U+1F38x | 🎀  | 🎁  | 🎂  | 🎃  | 🎄  | 🎅  | 🎆  | 🎇  | 🎈  | 🎉  | 🎊  | 🎋  | 🎌  | 🎍  | 🎎  | 🎏  |
+| U+1F39x | 🎐  | 🎑  | 🎒  | 🎓  |     |     | 🎖️  | 🎗️  |     | 🎙️  | 🎚️  | 🎛️  |     |     | 🎞️  | 🎟️  |
+| U+1F3Ax | 🎠  | 🎡  | 🎢  | 🎣  | 🎤  | 🎥  | 🎦  | 🎧  | 🎨  | 🎩  | 🎪  | 🎫  | 🎬  | 🎭  | 🎮  | 🎯  |
+| U+1F3Bx | 🎰  | 🎱  | 🎲  | 🎳  | 🎴  | 🎵  | 🎶  | 🎷  | 🎸  | 🎹  | 🎺  | 🎻  | 🎼  | 🎽  | 🎾  | 🎿  |
+| U+1F3Cx | 🏀  | 🏁  | 🏂  | 🏃  | 🏄  | 🏅  | 🏆  | 🏇  | 🏈  | 🏉  | 🏊  | 🏋️  | 🏌️  | 🏍️  | 🏎️  | 🏏  |
+| U+1F3Dx | 🏐  | 🏑  | 🏒  | 🏓  | 🏔️  | 🏕️  | 🏖️  | 🏗️  | 🏘️  | 🏙️  | 🏚️  | 🏛️  | 🏜️  | 🏝️  | 🏞️  | 🏟️  |
+| U+1F3Ex | 🏠  | 🏡  | 🏢  | 🏣  | 🏤  | 🏥  | 🏦  | 🏧  | 🏨  | 🏩  | 🏪  | 🏫  | 🏬  | 🏭  | 🏮  | 🏯  |
+| U+1F3Fx | 🏰  |     |     | 🏳️  | 🏴  | 🏵️  |     | 🏷️  | 🏸  | 🏹  | 🏺  | 🏻  | 🏼  | 🏽  | 🏾  | 🏿  |
+| U+1F40x | 🐀  | 🐁  | 🐂  | 🐃  | 🐄  | 🐅  | 🐆  | 🐇  | 🐈  | 🐉  | 🐊  | 🐋  | 🐌  | 🐍  | 🐎  | 🐏  |
+| U+1F41x | 🐐  | 🐑  | 🐒  | 🐓  | 🐔  | 🐕  | 🐖  | 🐗  | 🐘  | 🐙  | 🐚  | 🐛  | 🐜  | 🐝  | 🐞  | 🐟  |
+| U+1F42x | 🐠  | 🐡  | 🐢  | 🐣  | 🐤  | 🐥  | 🐦  | 🐧  | 🐨  | 🐩  | 🐪  | 🐫  | 🐬  | 🐭  | 🐮  | 🐯  |
+| U+1F43x | 🐰  | 🐱  | 🐲  | 🐳  | 🐴  | 🐵  | 🐶  | 🐷  | 🐸  | 🐹  | 🐺  | 🐻  | 🐼  | 🐽  | 🐾  | 🐿️  |
+| U+1F44x | 👀  | 👁️  | 👂  | 👃  | 👄  | 👅  | 👆  | 👇  | 👈  | 👉  | 👊  | 👋  | 👌  | 👍  | 👎  | 👏  |
+| U+1F45x | 👐  | 👑  | 👒  | 👓  | 👔  | 👕  | 👖  | 👗  | 👘  | 👙  | 👚  | 👛  | 👜  | 👝  | 👞  | 👟  |
+| U+1F46x | 👠  | 👡  | 👢  | 👣  | 👤  | 👥  | 👦  | 👧  | 👨  | 👩  | 👪  | 👫  | 👬  | 👭  | 👮  | 👯  |
+| U+1F47x | 👰  | 👱  | 👲  | 👳  | 👴  | 👵  | 👶  | 👷  | 👸  | 👹  | 👺  | 👻  | 👼  | 👽  | 👾  | 👿  |
+| U+1F48x | 💀  | 💁  | 💂  | 💃  | 💄  | 💅  | 💆  | 💇  | 💈  | 💉  | 💊  | 💋  | 💌  | 💍  | 💎  | 💏  |
+| U+1F4Ax | 💠  | 💡  | 💢  | 💣  | 💤  | 💥  | 💦  | 💧  | 💨  | 💩  | 💪  | 💫  | 💬  | 💭  | 💮  | 💯  |
+| U+1F4Bx | 💰  | 💱  | 💲  | 💳  | 💴  | 💵  | 💶  | 💷  | 💸  | 💹  | 💺  | 💻  | 💼  | 💽  | 💾  | 💿  |
+| U+1F49x | 💐  | 💑  | 💒  | 💓  | 💔  | 💕  | 💖  | 💗  | 💘  | 💙  | 💚  | 💛  | 💜  | 💝  | 💞  | 💟  |
+| U+1F4Cx | 📀  | 📁  | 📂  | 📃  | 📄  | 📅  | 📆  | 📇  | 📈  | 📉  | 📊  | 📋  | 📌  | 📍  | 📎  | 📏  |
+
+---
+
+|         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+26Dx  |     | ⛑️  |     | ⛓️  | ⛔️ |     |     |     |     |     |     |     |     |     |     |     |
+| U+26Ex  |     |     |     |     |     |     |     |     |     | ⛩️  | ⛪️ |     |     |     |     |     |
+| U+26Fx  | ⛰️  | ⛱️  | ⛲️ | ⛳️ | ⛴️  | ⛵️ |     | ⛷️  | ⛸️  | ⛹️  | ⛺️ |     |     | ⛽️ |     |     |
+| U+270x  |     |     | ✂️  |     |     | ✅️ |     |     | ✈️  | ✉️  | ✊️ | ✋️ | ✌️  | ✍️  |     | ✏️  |
+| U+271x  |     |     | ✒️  |     | ✔️  |     | ✖️  |     |     |     |     |     |     | ✝️  |     |     |
+| U+272x  |     | ✡️  |     |     |     |     |     |     | ✨️ |     |     |     |     |     |     |     |
+| U+273x  |     |     |     | ✳️  | ✴️  |     |     |     |     |     |     |     |     |     |     |     |
+| U+274x  |     |     |     |     | ❄️  |     |     | ❇️  |     |     |     |     | ❌️ |     | ❎️ |     |
+| U+275x  |     |     |     | ❓️ | ❔️ | ❕️ |     | ❗️ |     |     |     |     |     |     |     |     |
+| U+276x  |     |     |     | ❣️  | ❤️  |     |     |     |     |     |     |     |     |     |     |     |
+| U+279x  |     |     |     |     |     | ➕️ | ➖️ | ➗️ |     |     |     |     |     |     |     |     |
+| U+27Ax  |     | ➡️  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+27Bx  | ➰️ |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ➿️ |
+| U+293x  |     |     |     |     | ⤴️  | ⤵️  |     |     |     |     |     |     |     |     |     |     |
+| U+2B0x  |     |     |     |     |     | ⬅️  | ⬆️  | ⬇️  |     |     |     |     |     |     |     |     |
+| U+2B1x  |     |     |     |     |     |     |     |     |     |     |     | ⬛️ | ⬜️ |     |     |     |
+| U+2B5x  | ⭐️ |     |     |     |     | ⭕️ |     |     |     |     |     |     |     |     |     |     |
+| U+303x  | 〰️ |     |     |     |     |     |     |     |     |     |     |     |     | 〽️ |     |     |
+| U+329x  |     |     |     |     |     |     |     | ㊗️ |     | ㊙️ |     |     |     |     |     |     |
+| U+1F00x |     |     |     |     | 🀄  |     |     |     |     |     |     |     |     |     |     |     |
+| U+1F0Cx |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | 🃏  |
+| U+1F17x | 🅰️  | 🅱️  |     |     |     |     |     |     |     |     |     |     |     |     | 🅾️  | 🅿️  |
+| U+1F18x |     |     |     |     |     |     |     |     |     |     |     |     |     |     | 🆎  |     |
+| U+1F19x |     | 🆑  | 🆒  | 🆓  | 🆔  | 🆕  | 🆖  | 🆗  | 🆘  | 🆙  | 🆚  |     |     |     |     |     |
+| U+1F20x |     | 🈁  | 🈂️ |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+1F21x |     |     |     |     |     |     |     |     |     |     | 🈚  |     |     |     |     |     |
+| U+1F22x |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | 🈯  |
+| U+1F23x |     |     | 🈲  | 🈳  | 🈴  | 🈵  | 🈶  | 🈷️ | 🈸  | 🈹  | 🈺  |     |     |     |     |     |
+| U+1F25x | 🉐  | 🉑  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+
+---
+
+|        |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |
+| ------ |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| U+00Ax |     |     |     |     |     |     |     |     |     | ©️  |     |     |     |     | ®️  |     |
+| U+203x |     |     |     |     |     |     |     |     |     |     |     |     | ‼️  |     |     |     |
+| U+204x |     |     |     |     |     |     |     |     |     | ⁉️  |     |     |     |     |     |     |
+| U+212x |     |     | ™️  |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+213x |     |     |     |     |     |     |     |     |     | ℹ️  |     |     |     |     |     |     |
+| U+219x |     |     |     |     | ↔️  | ↕️  | ↖️  | ↗️  | ↘️  | ↙️  |     |     |     |     |     |     |
+| U+21Ax |     |     |     |     |     |     |     |     |     | ↩️  | ↪️  |     |     |     |     |     |
+| U+231x |     |     |     |     |     |     |     |     |     |     | ⌚️ | ⌛️ |     |     |     |     |
+| U+232x |     |     |     |     |     |     |     |     | ⌨️  |     |     |     |     |     |     |     |
+| U+23Cx |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏏️  |
+| U+23Ex |     |     |     |     |     |     |     |     |     | ⏩️ | ⏪️ | ⏫️ | ⏬️ | ⏭️  | ⏮️  | ⏯️  |
+| U+23Fx | ⏰️ | ⏱️  | ⏲️  | ⏳️ |     |     |     |     | ⏸️  | ⏹️  | ⏺️  |     |     |     |     |     |
+| U+24Cx |     |     | Ⓜ️  |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+25Ax |     |     |     |     |     |     |     |     |     |     | ▪️  | ▫️  |     |     |     |     |
+| U+25Bx |     |     |     |     |     |     | ▶️  |     |     |     |     |     |     |     |     |     |
+| U+25Cx | ◀️  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| U+25Fx |     |     |     |     |     |     |     |     |     |     |     | ◻️  | ◼️  | ◽️ | ◾️ |     |
+| U+260x |  ☀  |  ☁  |  ☂  |  ☃  |  ☄  |  ★  |  ☆  |  ☇  |  ☈  |  ☉  |  ☊  |  ☋  |  ☌  |  ☍  |  ☎  |  ☏  |
+| U+261x |  ☐  |  ☑  |  ☒  |  ☓  | ☔  | ☕  |  ☖  |  ☗  |  ☘  |  ☙  |  ☚  |  ☛  |  ☜  |  ☝  |  ☞  |  ☟  |
+| U+262x |  ☠  |  ☡  |  ☢  |  ☣  |  ☤  |  ☥  |  ☦  |  ☧  |  ☨  |  ☩  |  ☪  |  ☫  |  ☬  |  ☭  |  ☮  |  ☯  |
+| U+263x |  ☰  |  ☱  |  ☲  |  ☳  |  ☴  |  ☵  |  ☶  |  ☷  |  ☸  |  ☹  |  ☺  |  ☻  |  ☼  |  ☽  |  ☾  |  ☿  |
+| U+264x |  ♀  |  ♁  |  ♂  |  ♃  |  ♄  |  ♅  |  ♆  |  ♇  | ♈  | ♉  | ♊  | ♋  | ♌  | ♍  | ♎  | ♏  |
+| U+265x | ♐  | ♑  | ♒  | ♓  |  ♔  |  ♕  |  ♖  |  ♗  |  ♘  |  ♙  |  ♚  |  ♛  |  ♜  |  ♝  |  ♞  |  ♟  |
+| U+266x |  ♠  |  ♡  |  ♢  |  ♣  |  ♤  |  ♥  |  ♦  |  ♧  |  ♨  |  ♩  |  ♪  |  ♫  |  ♬  |  ♭  |  ♮  |  ♯  |
+| U+267x |  ♰  |  ♱  |  ♲  |  ♳  |  ♴  |  ♵  |  ♶  |  ♷  |  ♸  |  ♹  |  ♺  |  ♻  |  ♼  |  ♽  |  ♾  | ♿  |
+| U+268x |  ⚀  |  ⚁  |  ⚂  |  ⚃  |  ⚄  |  ⚅  |  ⚆  |  ⚇  |  ⚈  |  ⚉  |  ⚊  |  ⚋  |  ⚌  |  ⚍  |  ⚎  |  ⚏  |
+| U+269x |  ⚐  |  ⚑  |  ⚒  | ⚓  |  ⚔  |  ⚕  |  ⚖  |  ⚗  |  ⚘  |  ⚙  |  ⚚  |  ⚛  |  ⚜  |  ⚝  |  ⚞  |  ⚟  |
+| U+26Ax |  ⚠  | ⚡  |  ⚢  |  ⚣  |  ⚤  |  ⚥  |  ⚦  |  ⚧  |  ⚨  |  ⚩  | ⚪  | ⚫  |  ⚬  |  ⚭  |  ⚮  |  ⚯  |
+| U+26Bx |  ⚰  |  ⚱  |  ⚲  |  ⚳  |  ⚴  |  ⚵  |  ⚶  |  ⚷  |  ⚸  |  ⚹  |  ⚺  |  ⚻  |  ⚼  | ⚽  | ⚾  |     |
+| U+26Cx |  ⛀  |  ⛁  |  ⛂  |  ⛃  | ⛄  | ⛅  |     |     |  ⛈  |     |     |     |     |     | ⛎  |  ⛏  |
+| U+26Dx |     |  ⛑  |     |  ⛓  | ⛔  |     |     |     |     |     |     |     |     |     |     |     |
+| U+26Ex |     |     |  ⛢  |     |     |     |     |     |     |  ⛩  | ⛪  |     |     |     |     |     |
+| U+26Fx |  ⛰  |  ⛱  | ⛲  | ⛳  |  ⛴  | ⛵  |     |  ⛷  |  ⛸  |  ⛹  | ⛺  |  ⛻  |  ⛼  | ⛽  |     |     |
