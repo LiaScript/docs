@@ -770,6 +770,35 @@ be used as a subtitle and displayed accordingly.
   [qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog at heroku](https://aizac.herokuapp.com)__")
 
 
+##### eMail & Telephone 💫
+
+      --{{0}}--
+These are two additional link types that you can also use within the `<a>` tag, but LiaScript supports them natively.
+
+        {{1}}
+* __mailto:__
+
+  `[Write me a Mail](mailto:LiaScript@web.de)` --> [Write me a Mail](mailto:LiaScript@web.de)
+
+  `[LiaScript\@web.de](mailto:LiaScript@web.de)` --> [LiaScript\@web.de](mailto:LiaScript@web.de)
+
+      --{{1}}--
+  The `mailto` link type does not need to be explained.
+  On most modern systems, clicking on such a link will open your email client and insert the email address after the colon directly into the recipient address field.
+  Since the __\@__ symbol is used for [macro](#macro) calls, this has to be escaped at the moment.
+
+        {{2}}
+* __tel:__
+
+  `[Call me](tel:+49-12345-67890)` --> [Call me](tel:+49-12345-67890)
+
+  `[+49-12345-67890](tel:+49-12345-67890)` --> [+49-12345-67890](tel:+49-12345-67890)
+
+      --{{2}}--
+  The `tel` link type is lesser known and has been introduced for mobile phones.
+  Clicking on such a link will trigger the dial dialog, allowing you to call the pre-set number without any need for copy and paste.
+
+
 #### Images 💫
 
                           --{{0}}--
@@ -7669,6 +7698,11 @@ In this part, we will introduce how such code can be made executable and editabl
 Any code snippet can be made interactive by attaching a script tag to the end. The idea is the same as for tasks, quizzes, and surveys.
 The `@input` is simply a placeholder that gets replaced by the current user input.
 
+<!--
+data-marker="
+14 0 14 200 debug;
+14 8 14 14 rgba(55,255,100,0.5) text;"
+-->
 ```` markdown
 ``` javascript
 var i=0;
@@ -7727,6 +7761,15 @@ Add a `+` or `-` to the front of your filename to indicate whether it should be 
                 --{{1}}--
 As previously mentioned, the `@input` macro gets substituted by the input of the editor, but you can also pass a number to indicate which macro should be substituted by which code block (`@input(0)` is equivalent to `@input`).
 
+<!--
+data-marker="
+0 0 0 200 debug;
+0 11 0 33 log text;
+8 0 8 200 debug;
+8 11 8 33 log text;
+17 13 17 22 rgba(55,255,100,0.5) text;
+22 8 22 17 rgba(55,255,100,0.5) text;"
+-->
 ```` markdown
 ``` js     -EvalScript.js
 let who = data.first_name + " " + data.last_name;
@@ -7736,7 +7779,7 @@ if(data.online) {
 else {
   who + " is NOT online"; }
 ```
-``` json    +Data.json
+``` json   +Data.json
 {
   "first_name" :  "Sammy",
   "last_name"  :  "Shark",
@@ -7787,6 +7830,10 @@ else {
     --{{0}}--
 The idea of `@output` is similar to `@input`, and you can use this predefined marker only within the header of the last code block.
 
+<!--
+data-marker="
+15 0 17 200 debug;
+15 9 15 16 rgba(55,255,100,0.5) text" -->
 ```` markdown
 ``` js     -EvalScript.js
 let who = data.first_name + " " + data.last_name;
@@ -9579,7 +9626,7 @@ The last statement of your script defines also the result, that will be shown,
 if and only if it is not `undefined`, or simply use `console.log` to log the
 script activities. As the examples below show, you can combine your scripts with
 LiaScript animations. Thus, they will only be execute in the right
-fragment/context. But. you can do much much more with scripts.
+fragment/context. But, you can do much much more with scripts.
 
                                   {{1}}
 > Checkout Section [JavaScript](#JavaScript-or-JS-Components) for more information!
