@@ -1781,6 +1781,222 @@ systems. We therefor apply a mapping, so that you can still use all
 Overview: https://github.com/LiaScript/docs/blob/master/Code.md
 
 
+### JavaScript 💫
+
+                                 --{{0}}--
+In contrast to common Markdown parsers or viewers, LiaScript allows you to include and execute JavaScript code.
+When combined with HTML elements, you are free to integrate whatever functionality you desire.
+
+                                 --{{1}}--
+The last statement of your script also defines the result that will be shown, but only if it is not `undefined`.
+You can also use `console.log` to log the script activities.
+As the examples below show, you can combine your scripts with LiaScript animations, so they will only be executed in the right fragment/context.
+However, you can do much more with scripts.
+
+                                  {{1}}
+> Checkout Section [JavaScript](#JavaScript-or-JS-Components) for more information!
+
+``` html
+Do some internal calculation <script> 99 * 88  </script>, the next script
+contains an error <script> 99 * a </script>.
+
+                                  {{1}}
+<div class="ct-chart ct-golden-section" id="chart"></div>
+<script>
+    // Initialize a Line chart in the container with the ID chart
+    new Chartist.Line('#chart', {
+        labels: [1, 2, 3, 4],
+        series: [[100, 120, 180, 200]]
+    });
+
+    console.debug("loaded #chart") // or undefined
+</script>
+```
+
+Do some internal calculation <script> 99 * 88  </script>, the next script
+contains an error: <script> 99 * a </script>.
+
+                                {{2-3}}
+<div class="ct-chart ct-golden-section" id="chart1"></div>
+<script>
+// Initialize a Line chart in the container with the ID chart1
+new Chartist.Line('#chart1', {
+  labels: [1, 2, 3, 4],
+  series: [[100, 120, 180, 200]]
+});
+
+console.debug("loaded #chart1")
+</script>
+
+
+                                {{3}}
+<div class="ct-chart ct-golden-section" id="chart2"></div>
+<script>
+// Initialize a Line chart in the container with the ID chart2
+new Chartist.Line('#chart2', {
+  labels: [1, 2, 3, 4],
+  series: [[-100, 120, 180, 20]]
+});
+
+console.debug("loaded #chart2")
+</script>
+
+
+    --{{4}}--
+When discussing events, whether past, present, or future, your course may quickly become outdated.
+This is where scripts, as an initial building block, can shine. Using basic datetime calculations ensures precise determination of when events have occurred or will occur.
+Rather than relying solely on your calculations, users have the opportunity to inspect and validate your code by double-clicking on the highlighted script result.
+Even more, it is possible to modify the code, enabling them to double-check your findings and experiment with the results.
+
+
+      {{4}}
+``` markdown
+Russia started its invasion of Ukraine
+<script format="relativetime" unit="day">
+// Define the start date of the invasion
+const invasionStartDate = new Date('2022-02-24');
+
+// Get the current date
+const currentDate = new Date();
+
+// Calculate the difference in milliseconds
+const differenceInMs = currentDate - invasionStartDate;
+
+// Convert milliseconds to days
+const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
+
+// Calculate the number of full days
+const daysSinceInvasion = Math.floor(differenceInDays);
+
+-daysSinceInvasion
+</script>.
+```
+
+Russia started its invasion of Ukraine
+<script format="relativetime" unit="day" run-once>
+// Define the start date of the invasion
+const invasionStartDate = new Date('2022-02-24');
+
+// Get the current date
+const currentDate = new Date();
+
+// Calculate the difference in milliseconds
+const differenceInMs = currentDate - invasionStartDate;
+
+// Convert milliseconds to days
+const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
+
+// Calculate the number of full days
+const daysSinceInvasion = Math.floor(differenceInDays);
+
+-daysSinceInvasion
+</script>.
+
+     --{{5}}--
+We combined scripts with the [Internationalization API](#Internationalization-API), which enables appropriate formatting of outputs.
+The days output is not hardcoded in our code.
+If we change the locale to another language, such as in the following example, the result will be optimized for the Russian language.
+Furthermore, by using the embedded Google Translator functions, the locale will be automatically set according to the selected language.
+
+
+     {{5}}
+<section>
+
+```` markdown
+Россия начала вторжение в Украину
+<script format="relativetime" unit="day" locale="ru">
+// Define the start date of the invasion
+const invasionStartDate = new Date('2022-02-24');
+...
+````
+
+Россия начала вторжение в Украину
+<script format="relativetime" unit="day" locale="ru">
+// Define the start date of the invasion
+const invasionStartDate = new Date('2022-02-24');
+
+// Get the current date
+const currentDate = new Date();
+
+// Calculate the difference in milliseconds
+const differenceInMs = currentDate - invasionStartDate;
+
+// Convert milliseconds to days
+const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
+
+// Calculate the number of full days
+const daysSinceInvasion = Math.floor(differenceInDays);
+
+-daysSinceInvasion
+</script>.
+
+</section>
+
+    --{{6}}--
+Now, imagine that instead of performing simple calculations, a script could access any kind of real-world data and output it as either HTML or LiaScript.
+What's more, picture scripts being directly combined with input fields, and a change in one script triggering the execution of another.
+All of this is possible in LiaScript.
+We have reimagined the usage of scripts as interactive powerhouses, and we will delve into the details in chapter [JavaScript or JS-Components](#JavaScript-or-JS-Components).
+
+      {{6}}
+<section>
+
+``` markdown
+longitude: <script default="13.33125" input="range" output="longitude">@input</script>
+
+latitude: <script default="50.92558" input="range" output="latitude">@input</script>
+
+<script run-once="true" style="display: block">
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
+    .then(response => response.json())
+    .then(data => {
+      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
+
+      table += "| Time | Temperature |\n"
+      table += "| ---- | ----------- |\n"
+
+      for (let i=0; i < data.hourly.time.length; i++) {
+        table += "| " + data.hourly.time[i] + " | " + data.hourly.temperature_2m[i] + " |\n"
+      }
+      send.lia("LIASCRIPT: "+table) }
+    )
+    .catch(e => {
+      send.lia("ups, something went wrong")
+    })
+  "waiting for the weather"
+</script>
+```
+
+---
+
+longitude: <script default="13.33125" input="range" output="longitude">@input</script>
+
+latitude: <script default="50.92558" input="range" output="latitude">@input</script>
+
+<script run-once="true" style="display: block">
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
+    .then(response => response.json())
+    .then(data => {
+      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
+
+      table += "| Time | Temperature |\n"
+      table += "| ---- | ----------- |\n"
+
+      for (let i=0; i < data.hourly.time.length; i++) {
+        table += "| " + data.hourly.time[i] + " | " + data.hourly.temperature_2m[i] + " |\n"
+      }
+      send.lia("LIASCRIPT: "+table) }
+    )
+    .catch(e => {
+      send.lia("ups, something went wrong")
+    })
+  "LIA: wait"
+</script>
+
+</section>
+
+
+
 ### Horizontal rules 💫
 
                           --{{0}}--
@@ -9614,222 +9830,8 @@ It should be added to the last code block in a project's head section to designa
 >
 > [Default `@output`](#Default-@output).
 
-## JavaScript
 
-                                 --{{0}}--
-In contrast to common Markdown parsers or viewers, LiaScript allows you to include and execute JavaScript code.
-When combined with HTML elements, you are free to integrate whatever functionality you desire.
-
-                                 --{{1}}--
-The last statement of your script also defines the result that will be shown, but only if it is not `undefined`.
-You can also use `console.log` to log the script activities.
-As the examples below show, you can combine your scripts with LiaScript animations, so they will only be executed in the right fragment/context.
-However, you can do much more with scripts.
-
-                                  {{1}}
-> Checkout Section [JavaScript](#JavaScript-or-JS-Components) for more information!
-
-``` html
-Do some internal calculation <script> 99 * 88  </script>, the next script
-contains an error <script> 99 * a </script>.
-
-                                  {{1}}
-<div class="ct-chart ct-golden-section" id="chart"></div>
-<script>
-    // Initialize a Line chart in the container with the ID chart
-    new Chartist.Line('#chart', {
-        labels: [1, 2, 3, 4],
-        series: [[100, 120, 180, 200]]
-    });
-
-    console.debug("loaded #chart") // or undefined
-</script>
-```
-
-Do some internal calculation <script> 99 * 88  </script>, the next script
-contains an error: <script> 99 * a </script>.
-
-                                {{2-3}}
-<div class="ct-chart ct-golden-section" id="chart1"></div>
-<script>
-// Initialize a Line chart in the container with the ID chart1
-new Chartist.Line('#chart1', {
-  labels: [1, 2, 3, 4],
-  series: [[100, 120, 180, 200]]
-});
-
-console.debug("loaded #chart1")
-</script>
-
-
-                                {{3}}
-<div class="ct-chart ct-golden-section" id="chart2"></div>
-<script>
-// Initialize a Line chart in the container with the ID chart2
-new Chartist.Line('#chart2', {
-  labels: [1, 2, 3, 4],
-  series: [[-100, 120, 180, 20]]
-});
-
-console.debug("loaded #chart2")
-</script>
-
-
-    --{{4}}--
-When discussing events, whether past, present, or future, your course may quickly become outdated.
-This is where scripts, as an initial building block, can shine. Using basic datetime calculations ensures precise determination of when events have occurred or will occur.
-Rather than relying solely on your calculations, users have the opportunity to inspect and validate your code by double-clicking on the highlighted script result.
-Even more, it is possible to modify the code, enabling them to double-check your findings and experiment with the results.
-
-
-      {{4}}
-``` markdown
-Russia started its invasion of Ukraine
-<script format="relativetime" unit="day">
-// Define the start date of the invasion
-const invasionStartDate = new Date('2022-02-24');
-
-// Get the current date
-const currentDate = new Date();
-
-// Calculate the difference in milliseconds
-const differenceInMs = currentDate - invasionStartDate;
-
-// Convert milliseconds to days
-const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
-
-// Calculate the number of full days
-const daysSinceInvasion = Math.floor(differenceInDays);
-
--daysSinceInvasion
-</script>.
-```
-
-Russia started its invasion of Ukraine
-<script format="relativetime" unit="day" run-once>
-// Define the start date of the invasion
-const invasionStartDate = new Date('2022-02-24');
-
-// Get the current date
-const currentDate = new Date();
-
-// Calculate the difference in milliseconds
-const differenceInMs = currentDate - invasionStartDate;
-
-// Convert milliseconds to days
-const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
-
-// Calculate the number of full days
-const daysSinceInvasion = Math.floor(differenceInDays);
-
--daysSinceInvasion
-</script>.
-
-     --{{5}}--
-We combined scripts with the [Internationalization API](#Internationalization-API), which enables appropriate formatting of outputs.
-The days output is not hardcoded in our code.
-If we change the locale to another language, such as in the following example, the result will be optimized for the Russian language.
-Furthermore, by using the embedded Google Translator functions, the locale will be automatically set according to the selected language.
-
-
-     {{5}}
-<section>
-
-```` markdown
-Россия начала вторжение в Украину
-<script format="relativetime" unit="day" locale="ru">
-// Define the start date of the invasion
-const invasionStartDate = new Date('2022-02-24');
-...
-````
-
-Россия начала вторжение в Украину
-<script format="relativetime" unit="day" locale="ru">
-// Define the start date of the invasion
-const invasionStartDate = new Date('2022-02-24');
-
-// Get the current date
-const currentDate = new Date();
-
-// Calculate the difference in milliseconds
-const differenceInMs = currentDate - invasionStartDate;
-
-// Convert milliseconds to days
-const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
-
-// Calculate the number of full days
-const daysSinceInvasion = Math.floor(differenceInDays);
-
--daysSinceInvasion
-</script>.
-
-</section>
-
-    --{{6}}--
-Now, imagine that instead of performing simple calculations, a script could access any kind of real-world data and output it as either HTML or LiaScript.
-What's more, picture scripts being directly combined with input fields, and a change in one script triggering the execution of another.
-All of this is possible in LiaScript.
-We have reimagined the usage of scripts as interactive powerhouses, and we will delve into the details in the following chapter.
-
-      {{6}}
-<section>
-
-``` markdown
-longitude: <script default="13.33125" input="range" output="longitude">@input</script>
-
-latitude: <script default="50.92558" input="range" output="latitude">@input</script>
-
-<script run-once="true" style="display: block">
-  fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
-    .then(response => response.json())
-    .then(data => {
-      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
-
-      table += "| Time | Temperature |\n"
-      table += "| ---- | ----------- |\n"
-
-      for (let i=0; i < data.hourly.time.length; i++) {
-        table += "| " + data.hourly.time[i] + " | " + data.hourly.temperature_2m[i] + " |\n"
-      }
-      send.lia("LIASCRIPT: "+table) }
-    )
-    .catch(e => {
-      send.lia("ups, something went wrong")
-    })
-  "waiting for the weather"
-</script>
-```
-
----
-
-longitude: <script default="13.33125" input="range" output="longitude">@input</script>
-
-latitude: <script default="50.92558" input="range" output="latitude">@input</script>
-
-<script run-once="true" style="display: block">
-  fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
-    .then(response => response.json())
-    .then(data => {
-      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
-
-      table += "| Time | Temperature |\n"
-      table += "| ---- | ----------- |\n"
-
-      for (let i=0; i < data.hourly.time.length; i++) {
-        table += "| " + data.hourly.time[i] + " | " + data.hourly.temperature_2m[i] + " |\n"
-      }
-      send.lia("LIASCRIPT: "+table) }
-    )
-    .catch(e => {
-      send.lia("ups, something went wrong")
-    })
-  "LIA: wait"
-</script>
-
-</section>
-
-
-### JavaScript or JS-Components
+## JavaScript or JS-Components
 
       {{|>}}
 > As of the time of writing, I strongly believe that the script tag, introduced by Netscape in 1995 (cf. [Wikipedia](https://en.wikipedia.org/wiki/JavaScript#History)), is often misused.
@@ -9842,7 +9844,7 @@ This allows us to create even more interactive books and courses. You can add ad
 This can be viewed as an inverse approach to Jupyter or R Notebooks, where content is structured around code for documentation purposes. Instead, we aim to integrate code as a native element within the content itself.
 
 
-#### Script-Evaluation
+### Script-Evaluation
 
 
     --{{0}}--
@@ -10440,54 +10442,57 @@ latitude: <script default="50.92558" input="range" output="latitude">@input</scr
     --{{5}}--
 Thus, in the next section, we will introduce the combination of scripts and different input types, and afterwards, the "pub-sub" mechanism used to trigger a reevaluation.
 
+
 ### Input Types
 
-Using only static scripts is actually boring, we want to interact with the
-scripts and pass input values. In LiaScript this is achieved through a
-combination of script-tags with input-tags. Simply add the parameter `input`
-to with an additional type information to the script tag.
+    --{{0}}--
+Using only static scripts can be boring. We want to interact with the scripts and pass input values.
+In LiaScript, this is achieved through a combination of script tags with input tags.
+Simply add the parameter `input` with additional type information to the script tag.
 
-> All possible types that are defined by the HTML5 standard can be used, as well
-> as their specific parameters. These are automatically passed to the generated
-> input:
+``` html
+<script input value="reverse">
+let str = "@input"
+// the input string gets reversed
+str.split("").reverse().join("")
+</script>
+```
+
+
+    --{{1}}--
+Scripts that are combined with an input are marked by a thin frame.
+You can click on them and change the input.
+Different inputs produce different outputs and might trigger the execution slightly differently.
+
+      {{1}}
+<script input value="reverse">
+let str = "@input"
+// the input string gets reversed
+str.split("").reverse().join("")
+</script>
+
+    --{{2}}--
+Text inputs are evaluated immediately on every change.
+As you can see, after changing the input, such scripts store two states: the input value and the output of the calculation.
+Both values might be completely different.
+
+
+        {{3}}
+>     --{{3}}--
+> All possible types defined by the HTML5 standard can be used, along with their specific parameters.
+> These are automatically passed to the generated input:
 >
 > https://www.w3schools.com/tags/tag_input.asp
 
 
-Scripts that are combined with an input are marked by a thin frame, you can
-click on them and change the input. And, different inputs pruduce different
-result and might trigger the execution slightly differently 😏
-
-#### `button`
-
-The code as depicted below, will implement a simple clickable button. The script
-is loaded once, when the slide is rendered and then every time you click on it.
-
-
-``` html
-<script input="button">
-alert("click")
-
-"click me"
-</script>
-```
-
-<script input="button">
-alert("click")
-
-"click me"
-</script>
-
-
 #### `text`
 
-This is also the default input. It shows also the usage of the `@input` macro.
-It defines the place, where the current the input value should be placed. Since
-with the same input, text, numbers, code, etc. could be defined, you have to
-decide if it is interpreted as a string in `""` or used as part of your code.
-The attribute `value` is used as the default initial input to your script, for
-the first execution. If no `value` is defined, then the default input is an
-empty string.
+    --{{0}}--
+This is also the default input.
+It demonstrates the usage of the `@input` macro, which defines the location where the current input value should be placed.
+Since the input could be interpreted as a string in `""` or used as part of your code, you have to decide how to treat it.
+The attribute `value` is used as the default initial input for your script during the first execution.
+If no `value` is defined, then the default input is an empty string.
 
 ``` html
 <script input="text" value="reverse">
@@ -10497,25 +10502,78 @@ str.split("").reverse().join("")
 </script>
 ```
 
-
-Text inputs are evaluted emediately on every change.
-
-
 <script input="text" value="reverse">
 let str = "@input"
-
 str.split("").reverse().join("")
 </script>
 
-
+      {{1}}
 > For more information about text inputs see:
 >
 > https://www.w3schools.com/tags/att_input_type_text.asp
 
+
+#### `button`
+
+    --{{0}}--
+The code depicted below will implement a simple clickable button.
+As for all other script input combinations, except `submit`, the script execution will also be triggered when the script is loaded, to generate an output and afterwards on every click.
+
+
+``` html
+<script input="button">
+alert("click")
+
+"click me"
+</script>
+```
+
+---
+
+<script input="button">
+alert("click")
+
+"click me"
+</script>
+
+
+      {{1}}
+> For more information about the button input see:
+>
+> https://www.w3schools.com/tags/att_input_type_button.asp
+
+#### `submit`
+
+    --{{0}}--
+Similar to a `button` input, as described in section [button](#button), but with one intentional difference.
+The script of a `submit` input will not be executed when it initially appears; instead, it will only be executed if the user clicks on the button.
+Like `button`, `submit` does not have an internal value, only an output, and can be used to activate other scripts.
+Therefore, a default value must be defined initially, which also serves as the default output.
+This default value is used during parsing; for example, if a table is parsed with some scripts within the cells, then this value is used as a hint to identify the appropriate visualization.
+
+
+
+``` html
+<script input="submit" default="click me">
+alert("click")
+Math.random()
+</script>
+```
+
+<script input="submit" default="click me">
+alert("click")
+Math.random()
+</script>
+
+      {{1}}
+> For more information about the submit input see:
+>
+> https://www.w3schools.com/tags/att_input_type_submit.asp
+
 #### `number`
 
-The number input is similar to text, but only numbers are allowed as input and
-you can set additional parameters such aus `min`, `max`, and `step`.
+    --{{0}}--
+The number input is similar to text, but only numbers are allowed as input, and you can set additional parameters such as `min`, `max`, and `step`.
 
 ``` markdown
 <script input="number" value="1" min="0" max="1000000">
@@ -10525,22 +10583,23 @@ let i = @input // direct usage as a number
 </script>
 ```
 
-As for texts, the input is evaluted on every change.
-
 <script input="number" value="1" min="0" max="1000000">
 let i = @input
 
 "Square of " + i + " = " + i * i
 </script>
 
+
+      {{1}}
 > For more information about number inputs see:
 >
 > https://www.w3schools.com/tags/att_input_type_number.asp
 
+
 #### `range`
 
-The range is actually a slider, that generates numbers as input and you can set
-additional parameters such aus `min`, `max`, and `step`.
+    --{{0}}--
+The range input is actually a slider that generates numbers as input, and you can set additional parameters such as `min`, `max`, and `step`.
 
 ``` markdown
 <script input="number" value="1" min="0" max="1000" step="0.1">
@@ -10550,23 +10609,23 @@ let i = @input // direct usage as a number
 </script>
 ```
 
-The input is evaluted on every change.
-
 <script input="range" value="0" min="0" max="360" step="0.1">
 let i = @input
 
 "Sinus of " + i + " = " + Math.sin(i)
 </script>
 
+      {{1}}
 > For more information about range inputs see:
 >
 > https://www.w3schools.com/tags/att_input_type_range.asp
 
 
+
 #### `search`
 
-The search input is actually text input, but in contrast to text, the script is
-only executed after the input field looses its context.
+    --{{0}}--
+The search input is actually a text input, but unlike regular text inputs, the script associated with it is only executed after the input field loses focus.
 
 ``` markdown
 <script input="search" value="abcdefg">
@@ -10576,14 +10635,13 @@ let str = "@input"
 </script>
 ```
 
----
-
 <script input="search" value="abcdefg">
 let str = "@input"
 
 "reverse of \"" + str + "\" -> " + str.split("").reverse().join("")
 </script>
 
+      {{1}}
 > For more information about search inputs see:
 >
 > https://www.w3schools.com/tags/att_input_type_search.asp
@@ -10591,10 +10649,9 @@ let str = "@input"
 
 #### `password`
 
-
-The password input is actually text input, but in contrast to text the input is
-not directly visible and the script is only executed after the input field
-looses its context.
+    --{{0}}--
+The password input is also a text input, but unlike regular text inputs, the input characters are not directly visible.
+Similar to the search input, the script associated with it is only executed after the input field loses focus.
 
 ``` markdown
 <script input="password">
@@ -10608,8 +10665,6 @@ if (password == "LiaScript") {
 </script>
 ```
 
----
-
 <script input="password">
 let password = "@input"
 
@@ -10620,6 +10675,7 @@ if (password == "LiaScript") {
 }
 </script>
 
+      {{1}}
 > For more information about password inputs see:
 >
 > https://www.w3schools.com/tags/att_input_type_password.asp
@@ -10627,24 +10683,25 @@ if (password == "LiaScript") {
 
 #### `radio`
 
-In contrast to the commonly usage of radio buttons, which requires the
-definition of multiple radio inputs, LiaScript achieves the same with input
-`radio` and the definition of the `options` parameter. All possible options are
-separated by `|`. Thus, the user can only select one of the defined options.
-
+    --{{0}}--
+In contrast to the common usage of radio buttons, which requires the definition of multiple radio inputs, LiaScript achieves the same with the `radio` input type and the definition of the `options` parameter.
+All possible options are separated by `|`.
+Thus, the user can only select one of the defined options.
 
 ``` html
-<script input="radio" value="1" options="1|2|3|Hello World|true">
+<script
+input="radio" value="1"
+options="1|2|3|Hello World|true"
+>
 "Selected option: @input"
 </script>
 ```
 
-Changes will trigger an immediate execution of the script.
-
 <script input="radio" value="1" options="1|2|3|Hello World|true">
 "Selected option: @input"
 </script>
 
+      {{1}}
 > `options` is not a standard HTML parameter, for more information on radio
 > inputs see:
 >
@@ -10652,35 +10709,35 @@ Changes will trigger an immediate execution of the script.
 
 #### `select`
 
-`select` is actually not an input type, but we added it, since it allows to
-perform the same task as radio-buttons, but the representation is a drop-down
-list. The usage of `options` and their separation by `|` is equal to radio
-buttons.
+
+    --{{0}}--
+`select` is not actually an input type, but we added it since it allows performing the same task as radio buttons, but with a representation as a drop-down list.
+The usage of `options` and their separation by `|` is similar to radio buttons.
 
 ``` html
-<script input="select" value="1" options="1|2|3|Hello World|true">
+<script
+input="select" value="1"
+options="1|2|3|Hello World|true"
+>
 "Selected option: @input"
 </script>
 ```
 
-Changes will trigger an immediate execution of the script.
-
 <script input="select" value="1" options="1|2|3|Hello World|true">
 "Selected option: @input"
 </script>
 
-> `options` is not a standard HTML parameter, for more information on radio
-> inputs see:
+    {{1}}
+> `options` is not a standard HTML parameter, for more information on the select tag see:
 >
 > https://www.w3schools.com/tags/tag_select.asp
 
 
 #### `checkbox`
 
-Checkboxes in contrast to radio-buttons or select allow you to select multiple
-elements at once or none.
-
-If no options are defined, a checkbox is treated as a single input that switches between true and false, wheather, the checkbox is checked or not:
+    --{{0}}--
+Checkboxes, unlike radio buttons or select, allow you to select multiple elements at once or none.
+If no options are defined, a checkbox is treated as a single input that switches between true and false, depending on whether the checkbox is checked or not.
 
 ``` html
 <script input="checkbox" value="true">
@@ -10692,10 +10749,12 @@ If no options are defined, a checkbox is treated as a single input that switches
 "@input"
 </script>
 
----
 
-If you define `options` the current value as well as the result is treated
-as a list of strings in JSON format:
+    --{{1}}--
+If you define `options`, the current value as well as the result are treated as a list of strings in JSON format.
+
+      {{1}}
+<section>
 
 ``` html
 <script input="checkbox" value='["Ben"]' options="Ben|Jerry|Tom|Hardy" >
@@ -10707,13 +10766,16 @@ as a list of strings in JSON format:
 @input
 </script>
 
----
+</section>
 
-This might not be a sufficient and readable, therefor it is also possible to
-define formats for outputs (see section
-[Formatting with Intl](#Formatting-with-Intl)). The `list` format for example
-allows to add language specific textual formatting for list. If you do not add
-locale information the document language is used as a default.
+
+    --{{2}}--
+This might not be sufficient or readable; therefore, it is also possible to define formats for outputs (see section [Formatting with Intl](#Internationalization-API)).
+The `list` format, for example, allows you to add language-specific textual formatting for lists.
+If you do not specify locale information, the document language is used as a default.
+
+      {{2}}
+<section>
 
 ``` html
 <script
@@ -10747,40 +10809,70 @@ locale information the document language is used as a default.
     list
 </script>
 
+</section>
 
+    {{3}}
 > For more information about checkbox inputs see:
 >
 > https://www.w3schools.com/tags/att_input_type_checkbox.asp
 
 
-#### `date`
+#### __Date & Time__
 
-Date allows offers a datepicker. The normal return value is a string of the
-format `YYYY-MM-DD` (Year-Month-Day), but it is also possible to tweak this
-output according to some language specific formats.
+
+##### `date`
+
+    --{{0}}--
+Date offers a datepicker. The normal return value is a string in the format `YYYY-MM-DD` (Year-Month-Day), but it is also possible to customize this output according to language-specific formats.
 
 ``` html
-<script input="date" value="2020-10-10" format="datetime" locale="en">
+<script input="date" value="2020-10-10"
+        format="datetime" locale="de">
 "@input"
 </script>
 ```
 
-The execution is triggered on every change.
-
-<script input="date" value="2020-10-10" format="datetime" locale="en">
+<script input="date" value="2020-10-10" format="datetime" locale="de">
 "@input"
 </script>
 
+
+    --{{1}}--
+Well, this does not look as good as we would expect it in a nicely written text, so let's change it by using the Internationalization API to a nicely formatted French date:
+
+      {{1}}
+<section>
+
+``` html
+<script input="date" value="2020-10-10"
+        format="datetime" locale="fr"
+        dateStyle="full"  timeZone="Australia/Sydney"
+>
+"@input"
+</script>
+```
+
+<script input="date" value="2020-10-10"
+        format="datetime" locale="fr"
+        dateStyle="full"  timeZone="Australia/Sydney"
+>
+"@input"
+</script>
+
+</section>
+
+      {{2}}
 > For more information about date inputs see:
 >
 > https://www.w3schools.com/tags/att_input_type_date.asp
 
 
-#### `datetime-local`
+##### `datetime-local`
 
-Datetime-local includes the date and time. The standard return format is
-`YYYY-MM-DDTHH:MM` (Year-Month-DayTHour:Minutes). The execution is triggered on
-every change.
+    --{{0}}--
+Datetime-local includes both the date and time.
+The standard return format is `YYYY-MM-DDTHH:MM` (Year-Month-DayTHour:Minutes).
+The execution is triggered on every change.
 
 ``` html
 <script input="datetime-local" value="2020-11-20T12:30">
@@ -10792,7 +10884,11 @@ every change.
 "@input"
 </script>
 
-But of course, it is also possible to format time and date:
+    --{{1}}--
+And, of course, it is also possible to format time and date in various ways:
+
+      {{1}}
+<section>
 
 ``` html
 <script input="datetime-local"
@@ -10813,12 +10909,19 @@ But of course, it is also possible to format time and date:
 "@input"
 </script>
 
+</section>
+
+      {{2}}
 > For more information about datetime-local inputs see:
 >
 > https://www.w3schools.com/tags/att_input_type_datetime-local.asp
 
 
-#### `time`
+##### `time`
+
+    --{{0}}--
+Last but not least, a time picker, which could also be formatted in various ways, not only as a timestamp, but also as a difference in seconds, minutes, or hours.
+I leave this to the interested reader to try to find a solution.
 
 ``` html
 <script input="time" value="11:30">
@@ -10830,94 +10933,13 @@ But of course, it is also possible to format time and date:
 "@input"
 </script>
 
+      {{1}}
 > For more information about time inputs see:
 >
 > https://www.w3schools.com/tags/att_input_type_time.asp
 
 
-
-#### `email`
-
-
-``` html
-<script input="email" placeholder="please your Email">
-let email = "@input"
-
-if (email) {
-  email
-} else {
-  "email"
-}
-</script>
-```
-
-<script input="email" placeholder="please your Email">
-let email = "@input"
-
-if (email) {
-  email
-} else {
-  "email"
-}
-</script>
-
-> For more information about time inputs see:
->
-> https://www.w3schools.com/tags/att_input_type_email.asp
-
-
-#### `url`
-
-
-``` html
-<script input="url" value="url">
-"@input"
-</script>
-```
-
-<script input="url" value="url">
-"@input"
-</script>
-
-> For more information about url inputs see:
->
-> https://www.w3schools.com/tags/att_input_type_url.asp
-
-
-#### `tel`
-
-``` html
-<script input="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="123-45-678">
-let tel = "@input"
-
-if (tel) {
-  tel
-} else {
-  "tel"
-}
-</script>
-```
-
-<script input="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="123-45-678">
-let tel = "@input"
-
-if (tel) {
-  tel
-} else {
-  "tel"
-}
-</script>
-
-> For more information about tel inputs see:
->
-> https://www.w3schools.com/tags/att_input_type_tel.asp
-
-
-#### `submit`
-
-I qually used as the `button` input, see therefor section [button](#button)
-
-#### `month`
+##### `month`
 
 ``` html
 <script input="month" value="1999-12">
@@ -10933,7 +10955,7 @@ I qually used as the `button` input, see therefor section [button](#button)
 >
 > https://www.w3schools.com/tags/att_input_type_month.asp
 
-#### `week`
+##### `week`
 
 
 ``` html
@@ -10950,20 +10972,107 @@ I qually used as the `button` input, see therefor section [button](#button)
 >
 > https://www.w3schools.com/tags/att_input_type_week.asp
 
-#### `file`
 
-not working yet ...
 
-> For more information about file inputs see:
+#### `email`
+
+    --{{0}}--
+It defines a field for an email address.
+The input value is checked, and an info message is presented to ensure a properly formatted email address.
+
+``` html
+<script input="email" placeholder="please your Email">
+let email = "@input"
+
+if (email) {
+  email
+} else {
+  "email"
+}
+</script>
+```
+
+<script input="email" placeholder="please your Email">
+let email = "@input"
+
+if (email) {
+  email
+} else {
+  "email"
+}
+</script>
+
+      {{1}}
+> For more information about email inputs see:
 >
-> https://www.w3schools.com/tags/att_input_type_file.asp
+> https://www.w3schools.com/tags/att_input_type_email.asp
+
+
+#### `url`
+
+    --{{0}}--
+This input is similar to a search input, as the script execution is triggered only after pressing enter or when the input loses focus.
+
+``` html
+<script input="url" value="url">
+"@input"
+</script>
+```
+
+<script input="url" value="url">
+"@input"
+</script>
+
+      {{1}}
+> For more information about url inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_url.asp
+
+
+#### `tel`
+
+    --{{0}}--
+An input field for telephone numbers. The script is also only executed after the input, not on every change.
+
+``` html
+<script input="tel"
+    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+    placeholder="123-45-678"
+>
+let tel = "@input"
+
+if (tel) {
+  tel
+} else {
+  "tel"
+}
+</script>
+```
+
+<script input="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="123-45-678">
+let tel = "@input"
+
+if (tel) {
+  tel
+} else {
+  "tel"
+}
+</script>
+
+      {{1}}
+> For more information about tel inputs see:
+>
+> https://www.w3schools.com/tags/att_input_type_tel.asp
+
+
+
 
 
 #### `hidden`
 
-This type is special, as it does not produce any visible output, but as shown in
-section [output](#output), this can be used to hide complex calculation, that
-might be used by various different elements as input.
+    --{{0}}--
+This type is special, as it does not produce any visible output.
+However, as shown in section [Connecting Scripts with `output`](#Connecting-Scripts-with-output), it can be used to hide complex intermediate calculations that might be used by various different elements as input.
 
 ``` html
 <script input="hidden">
@@ -10973,8 +11082,10 @@ might be used by various different elements as input.
 
 #### `color`
 
-Defines a color picker. The normal return value has the format `#RRGGBB` (red
-green blue). The number values are defined in hex ranging from 00 to FF.
+    --{{0}}--
+Defines a color picker.
+The normal return value has the format `#RRGGBB` (red, green, blue).
+The numeric values are defined in hexadecimal ranging from `00` to `FF`.
 
 ```html
 <script input="color" value="#FF0000">
@@ -10986,20 +11097,19 @@ green blue). The number values are defined in hex ranging from 00 to FF.
 "HTML: <b style='color:@input'>@input</b>"
 </script>
 
+      {{1}}
 > For more information about color inputs see:
 >
 > https://www.w3schools.com/tags/att_input_type_color.asp
 
 
-#### `image`
 
-Not used atm.
 
 #### `textarea`
 
-This is also not a input type, but instead the application of the textarea HTML
-element. This can be used to edit more complex multiline strings. The script is
-only executed after the element has lost its context.
+    --{{0}}--
+This is not an input type, but instead the application of the textarea HTML element. This can be used to edit more complex multiline strings.
+The script is only executed after the element has lost focus.
 
 ``` html
 <script input="textarea" value="<span style='font-size: 32px'>hallo</span>" style="width:100%">
@@ -11011,12 +11121,21 @@ only executed after the element has lost its context.
 `HTML: @input`
 </script>
 
+      {{1}}
 > For more information about textareas see:
 >
 > https://www.w3schools.com/tags/tag_textarea.asp
 
 
-### `output`
+#### __Not supported__
+
+Currently not supported input types:
+
+* `file`
+* `image`
+
+
+### Connecting Scripts with `output`
 <!--
 boolean: <script input="checkbox" value="true" output="@0" modify="false">
          @input
@@ -11461,13 +11580,6 @@ Interim calculation @calc(22*12345.98726) or @calc(`Math.pow(3.141592, 12)`)...
 
 Interim calculation @calc(22*12345.98726) or @calc(`Math.pow(3.141592, 12)`)...
 
-
-## Future Work
-
-* Better integration with github/gitlab and the versioning of courses
-* Automagically analyzed surveys
-* Integration of WebGl and a 3D navigation
-* Better Inline function-plotter
 
 ## Contributors and Credit
 
