@@ -9617,16 +9617,14 @@ It should be added to the last code block in a project's head section to designa
 ## JavaScript
 
                                  --{{0}}--
-In contrast to common Markdown-Parsers it is also possible to include and
-execute javascript code. If you combine it with your HTML elements, you are free
-to integrate whatever you want.
+In contrast to common Markdown parsers or viewers, LiaScript allows you to include and execute JavaScript code.
+When combined with HTML elements, you are free to integrate whatever functionality you desire.
 
                                  --{{1}}--
-The last statement of your script defines also the result, that will be shown,
-if and only if it is not `undefined`, or simply use `console.log` to log the
-script activities. As the examples below show, you can combine your scripts with
-LiaScript animations. Thus, they will only be execute in the right
-fragment/context. But, you can do much much more with scripts.
+The last statement of your script also defines the result that will be shown, but only if it is not `undefined`.
+You can also use `console.log` to log the script activities.
+As the examples below show, you can combine your scripts with LiaScript animations, so they will only be executed in the right fragment/context.
+However, you can do much more with scripts.
 
                                   {{1}}
 > Checkout Section [JavaScript](#JavaScript-or-JS-Components) for more information!
@@ -9676,174 +9674,341 @@ new Chartist.Line('#chart2', {
 console.debug("loaded #chart2")
 </script>
 
-                                --{{3}}--
-Note, you have to include all required JavaScript-resourses in the initial
-comment after the script definition. And by combining this feature with
-LiaScript effects, you can build even more sophisticated courses.
+
+    --{{4}}--
+When discussing events, whether past, present, or future, your course may quickly become outdated.
+This is where scripts, as an initial building block, can shine. Using basic datetime calculations ensures precise determination of when events have occurred or will occur.
+Rather than relying solely on your calculations, users have the opportunity to inspect and validate your code by double-clicking on the highlighted script result.
+Even more, it is possible to modify the code, enabling them to double-check your findings and experiment with the results.
 
 
+      {{4}}
+``` markdown
+Russia started its invasion of Ukraine
+<script format="relativetime" unit="day">
+// Define the start date of the invasion
+const invasionStartDate = new Date('2022-02-24');
+
+// Get the current date
+const currentDate = new Date();
+
+// Calculate the difference in milliseconds
+const differenceInMs = currentDate - invasionStartDate;
+
+// Convert milliseconds to days
+const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
+
+// Calculate the number of full days
+const daysSinceInvasion = Math.floor(differenceInDays);
+
+-daysSinceInvasion
+</script>.
+```
+
+Russia started its invasion of Ukraine
+<script format="relativetime" unit="day" run-once>
+// Define the start date of the invasion
+const invasionStartDate = new Date('2022-02-24');
+
+// Get the current date
+const currentDate = new Date();
+
+// Calculate the difference in milliseconds
+const differenceInMs = currentDate - invasionStartDate;
+
+// Convert milliseconds to days
+const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
+
+// Calculate the number of full days
+const daysSinceInvasion = Math.floor(differenceInDays);
+
+-daysSinceInvasion
+</script>.
+
+     --{{5}}--
+We combined scripts with the [Internationalization API](#Internationalization-API), which enables appropriate formatting of outputs.
+The days output is not hardcoded in our code.
+If we change the locale to another language, such as in the following example, the result will be optimized for the Russian language.
+Furthermore, by using the embedded Google Translator functions, the locale will be automatically set according to the selected language.
 
 
-## JavaScript or JS-Components
+     {{5}}
+<section>
 
-> By the time of writing this, I do strongly believe that the script-tag, that
-> was introduced by Netscape in 1995 (cf.
-> [Wikipedia](https://en.wikipedia.org/wiki/JavaScript#History)), is used in the
-> wrong way. It is still somehow outside of HTML, although, if it could embedded
-> as part of the DOM, we would not have to search the DOM for IDs and try to
-> manimpulate the content of a certain node. Much of the work, that we try to
-> put into the development of Web-Components could be easily achieved by using
-> only the script-tag slightly different.
+```` markdown
+Россия начала вторжение в Украину
+<script format="relativetime" unit="day" locale="ru">
+// Define the start date of the invasion
+const invasionStartDate = new Date('2022-02-24');
+...
+````
 
-In LiaScript we now have the power to insert script everywhere and to connect
-them with a simple publish-subscribe mechanism, in order to create even more
-interactive books and courses. Thus you can add additional calculations
-everywhere within your document and the internal LiaScript- event-system handles
-their execution. This can be seen as an inverse attempt to Jupyther- or
-R-Notebooks, where content is placed around code for documentation. We try to
-integrate code as a native element into content.
+Россия начала вторжение в Украину
+<script format="relativetime" unit="day" locale="ru">
+// Define the start date of the invasion
+const invasionStartDate = new Date('2022-02-24');
 
-> All scripts are executed only after all external javascript-files have been
-> imported.
+// Get the current date
+const currentDate = new Date();
 
-### Basics
+// Calculate the difference in milliseconds
+const differenceInMs = currentDate - invasionStartDate;
 
-Simply use the well-know `<script> ... </script>` (nearly) everywhere within
-your document to perform any kind of calculation 10 percent from 99 \$ is equal
-to <script>99 * 0.1</script>. Or, you can also query any kind of external
-service such as https://www.wikidata.org, weather forecasting from
-https://openweathermap.org or random gifs of cats from https://giphy.com, as it
-is depicted below.
+// Convert milliseconds to days
+const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
 
-    <script run-once>
-    fetch('https://api.giphy.com/v1/gifs/random?api_key=XuS4MlQmIR6WQpMA8Zpxv4shNfJW8Aci&tag=cat')
-      .then(response => response.json())
-      .then(data => send.html(`<img height="250px" src="${data.data["image_url"]}">`))
+// Calculate the number of full days
+const daysSinceInvasion = Math.floor(differenceInDays);
 
-    "loading"
-    </script>
+-daysSinceInvasion
+</script>.
 
+</section>
 
-> If you are "reading" this course in LiaScript, you will have noticed, that the
-> background of those script-results is actually gray. You can double-click on
-> them to see what is actually inside and edit the code. If you click somewhere
-> else, so that the object loses its focus, the script gets reevaluted.
+    --{{6}}--
+Now, imagine that instead of performing simple calculations, a script could access any kind of real-world data and output it as either HTML or LiaScript.
+What's more, picture scripts being directly combined with input fields, and a change in one script triggering the execution of another.
+All of this is possible in LiaScript.
+We have reimagined the usage of scripts as interactive powerhouses, and we will delve into the details in the following chapter.
 
-Usage
-=====
-
-The snippet below depicts how such scripts can be defined. The result of a
-script is directly used as the content of the cell and placed exactly there
-where the script-tag was originaly defined. The result of the first cell is
-obvious, it is a number. The larger second script actually has two different
-results, the first result is the string `loading`, the second one is generated
-by the promise of the JavaScript fetch-API, it triggers a download process for
-the given url and if this is successful, the send-object is used to send back a
-string that is internally interpreted as a new HTML-image.
-
+      {{6}}
+<section>
 
 ``` markdown
-Some inline calculation: <script>99 * 0.1</script>
+longitude: <script default="13.33125" input="range" output="longitude">@input</script>
 
-<script run-once>
-fetch('https://api.giphy.com/v1/gifs/random?api_key=...tag=cat')
-  .then(response => response.json())
-  .then(data => send.html(`<img height="250px" src="${data.data["image_url"]}">`))
+latitude: <script default="50.92558" input="range" output="latitude">@input</script>
 
-"loading"
+<script run-once="true" style="display: block">
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
+    .then(response => response.json())
+    .then(data => {
+      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
+
+      table += "| Time | Temperature |\n"
+      table += "| ---- | ----------- |\n"
+
+      for (let i=0; i < data.hourly.time.length; i++) {
+        table += "| " + data.hourly.time[i] + " | " + data.hourly.temperature_2m[i] + " |\n"
+      }
+      send.lia("LIASCRIPT: "+table) }
+    )
+    .catch(e => {
+      send.lia("ups, something went wrong")
+    })
+  "waiting for the weather"
 </script>
 ```
 
-The following code snippet shows a more obvious example, the script generates  a
-timeout that triggers the execution of the function after 5 seconds. Which
-means, that the first result is the string `waiting for 5 seconds` and after
-this time a new result is generated: `I am ready!`.
+---
 
-``` markdown
-<script run-once>
-setTimeout(function(){
-  send.lia("I am ready!")
-}, 5000)
+longitude: <script default="13.33125" input="range" output="longitude">@input</script>
 
-"waiting for 5 seconds"
+latitude: <script default="50.92558" input="range" output="latitude">@input</script>
+
+<script run-once="true" style="display: block">
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
+    .then(response => response.json())
+    .then(data => {
+      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
+
+      table += "| Time | Temperature |\n"
+      table += "| ---- | ----------- |\n"
+
+      for (let i=0; i < data.hourly.time.length; i++) {
+        table += "| " + data.hourly.time[i] + " | " + data.hourly.temperature_2m[i] + " |\n"
+      }
+      send.lia("LIASCRIPT: "+table) }
+    )
+    .catch(e => {
+      send.lia("ups, something went wrong")
+    })
+  "LIA: wait"
 </script>
+
+</section>
+
+
+### JavaScript or JS-Components
+
+      {{|>}}
+> As of the time of writing, I strongly believe that the script tag, introduced by Netscape in 1995 (cf. [Wikipedia](https://en.wikipedia.org/wiki/JavaScript#History)), is often misused.
+> It remains somewhat outside of HTML, but if it could be embedded as part of the DOM, we wouldn't have to search the DOM for IDs and attempt to manipulate the content of a specific node.
+> Much of the work we currently put into the development of Web Components could be achieved more easily by using the script tag in a slightly different manner.
+
+    --{{1}}--
+In LiaScript, we now have the capability to insert scripts anywhere and connect them using a simple publish-subscribe mechanism.
+This allows us to create even more interactive books and courses. You can add additional calculations throughout your document, and the internal LiaScript event system handles their execution.
+This can be viewed as an inverse approach to Jupyter or R Notebooks, where content is structured around code for documentation purposes. Instead, we aim to integrate code as a native element within the content itself.
+
+
+#### Script-Evaluation
+
+
+    --{{0}}--
+To clarify some internals and how LiaScript handles the execution of scripts, let's describe the execution order:
+
+
+<!--
+style="
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  fill: red;
+  stroke: green;" -->
+``` ascii
+ +-------------------+
+ |     README.md     |
+ |                   |
+ | ...               |
+ |  <script>     +---+
+ |    22*22      |  /
+ |  </script>    | /
+ | ...           |/
+ +---------------+
+          |
+          |" {1}{(parse)} "
+          V
+ +-------------------+    "{3}{`22*22`}"   +------------------+
+ |   "{2}{(ports)}"  +-------------------->|   "JavaScript "  |
+ |                   |                     |                  |
+ | " LiaScript/Elm " |<--------------------+   "{4}{(eval)}"  |
+ +-------------------+    "{5}{`484`}"     +------------------+
 ```
 
-However, there is a better way of doing this. Within the example above, the
-script is marked by LiaScript that is not running anymore, since a first valid
-result was already generated, which means, that this script is triggerd also for
-the next time, if you go to the next slide and return. One way of dealing with
-this issue, is to used the attribute `run-once` or `run-once="true"` to
-indicate, that the code should only be executed once. The result of the script
-is stored and the script is never again executed. But, you can also use the same
-methids as they were introduced in section [Communication](#communication).
 
-That means, you can use the two return strings, but you can use also the two
-functions:
+    --{{1}}--
+After parsing the script tag, LiaScript does not execute it directly.
+Instead, it is stored internally along with any possible output and connections to other scripts within an execution graph.
 
-* `"LIA: wait"` --> `send.wait()`
-* `"LIA: stop"` --> `send.stop()`
+    --{{2}}--
+Since LiaScript is implemented in Elm and Elm cannot directly execute JavaScript code, LiaScript uses a specific port to communicate with the outside world.
+
+    --{{3}}--
+When a script is ready, its code is sent as a string to the outside JavaScript world.
+LiaScript controls when and which code gets executed.
+
+    --{{4}}--
+The code is then evaluated.
+
+    --{{5}}--
+The result is sent back as a string to LiaScript.
+This string can be a certain value, HTML code, or even in LiaScript notation, which is then parsed internally again and displayed.
+
+
+#### Simple scripts & scope
+
+    --{{0}}--
+In its essence, a script is an inline element of LiaScript, similar to **bold**, _italic_ text, or inline formulas.
+It performs simple calculations and prints its result exactly where the script is defined:
 
 ``` markdown
+$ \sin(\frac{\pi}{2}) = $ <script>Math.sin(Math.PI / 2)</script>
+```
+
+$ \sin(\frac{\pi}{2}) = $ <script>Math.sin(Math.PI / 2)</script>
+
+
+      {{1}}
+<section>
+
+    --{{1}}--
+That is the basic idea, nothing more and nothing less.
+The final "result" or expression of a script defines its output.
+Thus, the script with the alert gets executed, but it does not appear within the document, since `alert` evaluates to `undefined`.
+In this case, the script is expected to be hidden, without any visualization within the document.
+
+``` html
 <script>
-setTimeout(function(){
-  send.lia("I am ready!")
-}, 5000)
+var a = 22**3
 
-"LIA: wait" // or send.wait()
+alert("Hello Mom")
 </script>
 ```
 
-The function `send.lia` marks the execution of the script to be finished, but in
-the case that your produce continous results, you can use the following:
-
-``` markdown
 <script>
-function counter(i) {
-  if (i > 0) {
-    send.output("HTML: <h"+i+" style='display: inline-block'>hallo " + i +"</h"+i+">")
-    setTimeout(() => counter(i-1), 1000)
-  } else {
-    send.stop()
-  }
-}
+var a = 22**3
 
-counter(6)
-
-send.wait() // or "LIA: wait"
+alert("Hello Mom")
 </script>
-```
 
-Actually only two functions, `send.lia` and `send.output`. The functions
-`send.wait` and `send.stop` are actually only shortcuts for
-`send.lia("LIA: wait")` and `send.lia("LIA: stop")`. In the same way `send.html`
-is only a shortcut for `send.lia("HTML: " + ...)`, as it is depicted below.
+</section>
 
-``` markdown
+      {{2}}
+<section>
+
+Such hidden scripts can be useful to trigger only an execution or to perform a certain action for manipulating the DOM or simply some maintenance work.
+
+``` html
 <script>
-let html_string = "<h2>Markdown</h2>"
-send.html(html_string)
-send.lia("HTML: " + html_string)
-"HTML: " + html_string
+document.getElementById("example").innerHTML = "Did execute"
+console.log("executed script")
 </script>
+
+<h1 id="example">Not executed</h1>
 ```
 
-Errors
-======
+---
 
-Every script can contain errors, and so does the follow script <script> a * 33
-</script>. The error message is printed in red, even if you only wanted to
-execute a script, that does not produce any outputs. You can double-click onto
-the error message to edit the code and define the variable `a`.
+<script>
+document.getElementById("example").innerHTML = "Did execute"
+console.log("executed script")
+</script>
+
+<h1 id="example">Not executed</h1>
+
+</section>
+
+      {{3}}
+<section>
+
+    --{{3}}--
+Every script is executed in its own local scope, which means that the variable `a` defined in the "Hello Mom" example cannot be accessed in another script.
+Thus, if an error occurs, the error message is shown as a result of the evaluation.
+
+``` html
+<script> a * 33 </script>
+```
+
+---
+
+<script> a * 33 </script>
+
+</section>
+
+      {{4}}
+<section>
+
+    --{{4}}--
+If you wish to exchange information between scripts using variables, you must define them globally.
+
+``` html
+<script> window.a = 22 ** 3 </script>
+
+<script> window.a / 2 </script>
+```
+
+<script> window.a = 22 ** 3 </script>
+
+<script> window.a / 2 </script>
 
 
-### Execution & Animations
+    --{{5}}--
+If you were to reverse the order of the two scripts, dividing `a` by two would still result in the same error message, as scripts are executed sequentially and `a` must be defined first.
+Only after revisiting this slide, when both scripts are executed again, will the result of both scripts be correct.
+However, LiaScript sends all scripts to JavaScript in order, and while some scripts may execute faster than others, this can lead to race conditions.
+Therefore, there is a better approach to updating scripts, as described in section [todo](#todo).
 
-You can combine scripts with LiaScript animations and thus trigger their
-execution. If you are in textbook mode all scripts will be executed. If a script
-does not belong to an animation, it will be executed immediately when you open a
-slide on every time you visit the slide, if you do not set the parameter
-`run-once` or if the the slide is not marked as running.
+</section>
+
+
+#### Combination with Animations
+
+    --{{0}}--
+You can combine scripts with LiaScript animations to trigger their execution.
+In textbook mode, all scripts will be executed after the slide has been loaded.
+In other modes, if a script does not belong to an animation, it will be executed immediately when you open the slide or whenever you visit the slide.
 
 ``` html
 <script>alert("0")</script>
@@ -9855,7 +10020,7 @@ slide on every time you visit the slide, if you do not set the parameter
 {{3}} <script>alert("3")</script>
 ```
 
-<script run-once>alert("0")</script>
+<script>alert("0")</script>
 
 {{1}} <script>alert("1")</script>
 
@@ -9863,12 +10028,419 @@ slide on every time you visit the slide, if you do not set the parameter
 
 {{3}} <script>alert("3")</script>
 
-A script is only executed within the local scope of a slide. It is not possible
-to trigger the execution of scripts from slides that have not been visited. But
-scripts can remain active, even if you go to another slide.
 
 
-### `input`
+### Asynchronous Execution & API
+
+    --{{0}}--
+A script gets executed, but you need to make an asynchronous call to an external API.
+How could you handle this?
+Well, in this case, LiaScript provides a `send` object for every execution, which can be used to directly communicate with the script state in the Elm world.
+By using `send.lia`, you can directly send strings back from every asynchronous execution path.
+
+
+
+``` markdown
+<script>
+setTimeout(function(){
+  send.lia("I am ready!")
+}, 5000)
+
+"will wait for 5 seconds"
+</script>
+```
+
+<script>
+setTimeout(function(){
+  send.lia("I am ready!")
+}, 5000)
+
+"will wait for 5 seconds"
+</script>
+
+
+#### Execution State
+
+    --{{0}}--
+Every script maintains an internal state.
+LiaScript is aware of which scripts have already been executed and which are still in the process of a long calculation.
+If a script returns a result or if `send.lia` is called, then the internal execution state is marked as inactive, which will trigger a new execution when the slide is revisited.
+Hence, a long-running script will not be restarted until it is finished.
+Thus, the previous example was not fully correct.
+
+
+    --{{1}}--
+If you would like to create, for example, a clock or a running counter, every revisit would create a new script that might run forever, and all of these would communicate with the Elm part, resulting in glitches.
+However, like in the case of [executable code blocks](#send-object), there are different options that can be used to communicate with the internal representation.
+By returning `"LIA: wait"`, the LiaScript script state is informed that although the execution has finished, the process is still running.
+Since `send.lia` would mark an internal stop, you can use `send.output` to change the output asynchronously.
+
+
+      {{1}}
+``` markdown
+<script>
+setInterval(function(){
+  i++
+  send.output("counting " + i)
+}, 1000)
+
+var i = 0
+
+"LIA: wait"
+</script>
+```
+
+    --{{2}}--
+That's it.
+This script will run indefinitely, and it will not trigger a new evaluation because LiaScript keeps its internal state marked as active.
+
+      {{2}}
+<script>
+setInterval(function(){
+  i++
+  send.output("counting " + i)
+}, 1000)
+
+var i = 0
+send.wait()
+</script>
+
+      {{3}}
+<section>
+
+    --{{3}}--
+However, you can trigger a stop after a long run by either calling `send.lia` again, which will also alter the result of the script representation, or you can send it a stop command, which is equivalent to sending `"LIA: stop"`.
+This stop command does not affect the last representation but only the state.
+This script will be started again when the user revisits the slide.
+
+``` html
+<script>
+var timerId = setInterval(function(){
+  i++
+  send.output("counting " + i)
+
+  if (i > 10) {
+    clearInterval(timerId);
+    send.stop()
+    // shortcut for send.lia("LIA: stop")
+  }
+}, 1000)
+
+var i = 0
+send.wait() // equal to send.lia("LIA: wait")
+</script>
+```
+
+<script>
+var timerId = setInterval(function(){
+  i++
+  send.output("counting " + i)
+
+  if (i > 10) {
+    clearInterval(timerId);
+    send.stop()
+    // shortcut for send.lia("LIA: stop")
+  }
+}, 1000)
+
+var i = 0
+send.wait() // equal to send.lia("LIA: wait")
+</script>
+
+</section>
+
+    --{{4}}--
+In summary, you have three possibilities to send updates from your script: `send.lia` and `send.output`, while the second is used asynchronously and won't stop the active state.
+The three additional helper functions are simple shortcuts to inform LiaScript about state changes.
+
+
+      {{4}}
+* `send.lia`
+* `send.output`
+* `send.wait` --> `"LIA: wait"`
+* `send.stop` --> `"LIA: stop"`
+* `send.clear` --> `LIA: clear`
+
+
+### Different Representations
+
+    --{{0}}--
+But it is not only possible to send back strings; well, technically it is still the case, but the strings might be represented differently.
+LiaScript allows the display of HTML and LiaScript code as well, which is then reparsed and thus allows for the recreation of nested structures as well.
+
+<div style="width:100%;height:0;padding-bottom:71%;position:relative;"><iframe src="https://giphy.com/embed/fwbZnTftCXVocKzfxR" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/PLCnext-plcnext-phoenixcontact-plcnexttechnology-fwbZnTftCXVocKzfxR">via GIPHY</a></p>
+
+#### `HTML:`
+
+This first approach does obviously not work.
+LiaScript does not parse and interprete the return value on demand, instead, everything is interpreted and displayed as a string:
+
+``` markdown
+<script>"<marquee>This text will scroll from right to left</marquee>"</script>
+```
+
+<script>"<marquee>This text will scroll from right to left</marquee>"</script>
+
+    --{{1}}--
+Instead, we have to start the return string with `HTML:`, followed by whatever HTML code there is.
+Yes, we can style a script tag in our case, since it is commonly displayed only as an inline parameter.
+Thus, we can change its appearance to let the marquee tag use the full line width, and by using `modify`, we can prevent the user from inspecting the code, which also gets rid of the background.
+
+      {{1}}
+<section>
+
+``` markdown
+<script
+  style="display: block"
+  modify="false"
+>
+"HTML: <marquee>This text will scroll from right to left</marquee>"
+</script>
+```
+
+<script style="display: block" modify="false">"HTML: <marquee>This text will scroll from right to left</marquee>"</script>
+
+</section>
+
+
+    --{{2}}--
+Of course, the following example could be optimized, but it is used to showcase the fact that it is also possible to mark strings as `HTML` by using `send.lia` or `send.output` for asynchronous tasks as well.
+In this case, not only the time is updated, but also the color is set to a random value.
+
+
+      {{2}}
+<section>
+
+``` html
+<script>
+function randomColor() {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
+
+function getTime() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
+
+  send.output(`HTML:
+  <div style="font-size: 6rem;
+    letter-spacing: 1rem;
+    font-weight: bold;">
+    <span style="color: ${randomColor()}; background: white; border-radius: 5px;">${hours}</span> :
+    <span style="color: ${randomColor()}; background: white; border-radius: 5px;">${minutes}</span> :
+    <span style="color: ${randomColor()}; background: white; border-radius: 5px;">${seconds}</span>
+  </div>`)
+}
+
+setInterval(getTime, 1000)
+
+send.wait()
+</script>
+```
+
+<script>
+function randomColor() {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
+
+function getTime() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
+
+  send.output(`HTML:
+  <div style="font-size: 6rem;
+    letter-spacing: 1rem;
+    font-weight: bold;">
+    <span style="color: ${randomColor()}; background: white; border-radius: 5px;">${hours}</span> :
+    <span style="color: ${randomColor()}; background: white; border-radius: 5px;">${minutes}</span> :
+    <span style="color: ${randomColor()}; background: white; border-radius: 5px;">${seconds}</span>
+  </div>`)
+}
+
+setInterval(getTime, 1000)
+
+send.wait()
+</script>
+
+</section>
+
+
+#### `LIASCRIPT:`
+
+    --{{0}}--
+Similar to `HTML`, it is also possible to return LiaScript content as a simple string, which is then parsed and its result gets displayed.
+In this example, for the formula, the backslash has to be escaped instead of escaping the `\f`, which does not make sense.
+The `run-once` option can be set to prevent the script from recalculating and thus reparsing the result again and again. When this option is set, the execution is done only once, and the result is statically stored within LiaScript.
+
+``` html
+<script run-once>"LIASCRIPT: $$\\frac{1}{x} = 0$$"</script>
+```
+
+<script run-once>"LIASCRIPT: $$\\frac{1}{x} = 0$$"</script>
+
+
+    --{{1}}--
+On the other hand, this can also contain more complex elements, such as tables, which can be modified and inspected interactively.
+
+      {{1}}
+<section>
+
+``` html
+<script style="display: block" run-once>
+`LIASCRIPT:
+<!-- data-show -->
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |              2 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+| Sheep           |           90 |             12 |      95 |
+| Human           |           68 |             70 |      10 |`
+</script>
+```
+
+<script style="display: block" run-once>
+`LIASCRIPT:
+<!-- data-show -->
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |              2 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+| Sheep           |           90 |             12 |      95 |
+| Human           |           68 |             70 |      10 |`
+</script>
+
+</section>
+
+
+    --{{2}}--
+This way, you could also generate new quizzes randomly, add executable code snippets, and even generate scripts dynamically.
+However, in the case of dynamically created LiaScript content, the state of quizzes, code, etc. is not stored permanently within the browser's IndexedDB.
+This is only possible for elements that are defined explicitly within the markdown document.
+
+      {{2}}
+<section>
+
+``` html
+<script style="display: block" modify="false">
+// Generate two random numbers between 0 and 40
+var a = Math.floor(Math.random() * 41);
+var b = Math.floor(Math.random() * 41);
+
+// Ensure b is not greater than a
+if (b > a) {
+  const temp = a;
+  a = b;
+  b = temp;
+}
+
+`LIASCRIPT: __What is ${a} - ${b} ?__
+
+[[ ${ a - b } ]]`
+</script>
+```
+
+<script style="display: block" modify="false">
+// Generate two random numbers between 0 and 40
+var a = Math.floor(Math.random() * 41);
+var b = Math.floor(Math.random() * 41);
+
+// Ensure b is not greater than a
+if (b > a) {
+  const temp = a;
+  a = b;
+  b = temp;
+}
+
+`LIASCRIPT: __What is ${a} - ${b} ?__
+
+[[ ${ a - b } ]]`
+</script>
+
+</section>
+
+    --{{3}}--
+Just think about the possibilities.
+We can not only create courses using AI, as described in the article, but we could also dynamically generate new quizzes, programming tasks, or discuss topics directly in LiaScript.
+
+      {{3}}
+> __Act as a Learning Designer — Getting ChatGPT to Generate an Online Module__
+>
+> Source: https://aneesha.medium.com/act-as-a-learning-designer-getting-chatgpt-to-generate-an-online-module-8a16a2813bd6
+>
+> -- by Aneesha Bakharia
+
+
+    --{{4}}--
+What is missing too is to interconnect scripts and utilize different input methods to generate different interactive scenarios, as it was done in the initial weather API example.
+Here we had also applied the simple `send` object, but the two scripts at the head are connected with an input range and publish their results on a topic defined within the `output` parameter.
+On every change, the evaluation of the third script is triggered, and the two `@input` markers are replaced accordingly.
+
+      {{4}}
+<section>
+
+``` markdown
+longitude: <script default="13.33125" input="range" output="longitude">@input</script>
+
+latitude: <script default="50.92558" input="range" output="latitude">@input</script>
+
+<script run-once="true" style="display: block">
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
+    .then(response => response.json())
+    .then(data => {
+      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
+
+      table += "| Time | Temperature |\n"
+      table += "| ---- | ----------- |\n"
+
+      for (let i=0; i < data.hourly.time.length; i++) {
+        table += "| " + data.hourly.time[i] + " | " + data.hourly.temperature_2m[i] + " |\n"
+      }
+      send.lia("LIASCRIPT: "+table) }
+    )
+    .catch(e => {
+      send.lia("ups, something went wrong")
+    })
+  "waiting for the weather"
+</script>
+```
+
+---
+
+longitude: <script default="13.33125" input="range" output="longitude">@input</script>
+
+latitude: <script default="50.92558" input="range" output="latitude">@input</script>
+
+<script run-once="true" style="display: block">
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
+    .then(response => response.json())
+    .then(data => {
+      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
+
+      table += "| Time | Temperature |\n"
+      table += "| ---- | ----------- |\n"
+
+      for (let i=0; i < data.hourly.time.length; i++) {
+        table += "| " + data.hourly.time[i] + " | " + data.hourly.temperature_2m[i] + " |\n"
+      }
+      send.lia("LIASCRIPT: "+table) }
+    )
+    .catch(e => {
+      send.lia("ups, something went wrong")
+    })
+  "LIA: wait"
+</script>
+
+</section>
+
+    --{{5}}--
+Thus, in the next section, we will introduce the combination of scripts and different input types, and afterwards, the "pub-sub" mechanism used to trigger a reevaluation.
+
+### Input Types
 
 Using only static scripts is actually boring, we want to interact with the
 scripts and pass input values. In LiaScript this is achieved through a
@@ -10615,7 +11187,7 @@ This is a script: <script modify="false">12</script>
 
 
 
-### Formatting with Intl
+### Internationalization API
 
 By using the `format` parameter you can set a specific kind of visual
 formatting. This will be visible to the user, but if you connect different
@@ -10650,6 +11222,34 @@ such a value, then the default document language setting is used as default.
 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules
 
+
+### LIA - global object
+
+
+#### Publish subscribe API
+
+https://www.youtube.com/watch?v=Kjk6OblugXI
+
+
+``` js
+LIA.classroom.connected
+
+LIA.classroom.on("connected", () => {
+    console.log("connected")
+})
+
+LIA.classroom.on("disconnected", () => {
+    console.log("disconnected")
+})
+
+LIA.classroom.publish("topic", { data: "Hello World" })
+
+const subID = LIA.classroom.subscribe("topic", (message) => {
+    console.log("received", message)
+})
+
+LIA.classroom.unsubscribe(subID)
+```
 
 
 ### Further Examples
