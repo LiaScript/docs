@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     28/02/2024
-version:  25.0.0
+date:     02/03/2024
+version:  26.0.0
 language: en
 narrator: UK English Female
 
@@ -132,15 +132,16 @@ need for memorizing complex point and click sequences.
 
 ### Editing
 
-**Atom:**
 
                            --{{0}}--
 There are currently 2 plugins for the [Atom Editor](https://atom.io) and
 [Visual-Studio-Code](https://code.visualstudio.com/Download) available, which
 are intended to ease and simplify the development of online courses with
-LiaScript.
+LiaScript. Additionally you can use the LiveEditor, an entirely browser based application.
 
 ![Atom with liascript-plugins](https://raw.githubusercontent.com/andre-dietrich/liascript-preview/master/preview.gif "Screencast of the Atom-editor with the liascript-preview and liascript-snippts installed.")
+
+0. [LiveEditor](https://liascript.github.io/LiveEditor): Fully functional online editor, that looks like CodiMD, but is entirely browser based. With support for uploading images and videos and collaborative editing.
 
 1. [Atom](https://atom.io): This is the free and open and official
    [GitHub](https://github.com) editor, with lots of plugins for various use
@@ -167,6 +168,13 @@ LiaScript.
 
    Detailed installation instructions can be found [here](https://aizac.herokuapp.com/install-visual-studio-code-with-liascript/).
 
+3. [Visual-Studio-Web](https://github.dev):
+
+   !?[GitHub Webbased Editor](https://www.youtube.com/watch?v=-VBolTxLSeU)
+
+   Using the GitHub builtin Web editor, you can install the following extension to preview your course while editing:
+
+   [liascript-preview-web](https://marketplace.visualstudio.com/items?itemName=LiaScript.liascript-preview-web)
 
 
                              {{1}}
@@ -11136,111 +11144,273 @@ Currently not supported input types:
 
 
 ### Connecting Scripts with `output`
-<!--
-boolean: <script input="checkbox" value="true" output="@0" modify="false">
-         @input
-         </script>
 
-and:     <script modify="false">@input(`@0`) && @input(`@1`) </script>
--->
+    --{{0}}--
+You can use the `output="channel-name"` parameter to define a dedicated channel on which the script publishes its changed outputs.
+Other scripts can subscribe to these changes via `input(`channel-name`)`, but the channel name has to be enclosed in Markdown-style backticks, as depicted below.
 
-
-You can use the `output="channel-name"` parameter to define a dedicated channel,
-on which the script publishes its changed outputs and other scripts can
-subscribe to these changes via `input(channel-name)`, but the channel name has
-to be in markdownish style backtics, as depicted below:
 
 ``` html
-publishing node P
-<script input="checkbox" value="true" output="P">
+<script input="checkbox" value="true" output="P" default="true">
 @input
 </script>
-AND Q
-<script input="checkbox" value="true" output="Q">
+AND
+<script input="checkbox" value="false" output="Q" default="false">
 @input
 </script>
-result in:
-<script output="AND">
-@input(`P`) && @input(`Q`)
-</script>
-```
-
-publishing node P
-<script input="checkbox" value="true" output="P">
-@input
-</script>
-AND publishing node Q
-<script input="checkbox" value="true" output="Q">
-@input
-</script>
-result in:
-<script output="AND">
-@input(`P`) && @input(`Q`)
-</script>
-
-Within the example above you can also see the difference between scripts with
-and without associated inputs. Scripts with inputs do have a frame, while
-scripts without inputs do only have grey backgound.
-
-
-Combining scripts with macros
-=============================
-
-Such scripts are of course complicated to read and require a lot of boilerplate
-code, which could and should be hidden behind macros, to make the text event
-more readable. The example below, shows how two macros can be defined that could
-be used everywhere within your code, also with changing parameters.
-
-
-``` markdown
-### `output`
-<!--
-boolean: <script input="checkbox" value="true" output="@0" modify="false">
-         @input
-         </script>
-
-and:     <script modify="false">@input(`@0`) && @input(`@1`) </script>
 -->
-
-@boolean(p), @boolean(q) --> @and(p,q)
+<script>
+@input(`P`) && @input(`Q`)
+</script>
 ```
 
-@boolean(p), @boolean(q) --> @and(p,q)
+    --{{1}}--
+When a script is executed, `@input` gets replaced by the current value of the script, while input markers with topics are replaced by the actual displayed output from other scripts. Every change in the result of one script causes an update of the script that uses the foreign output.
 
+      {{1}}
+<script input="checkbox" value="true" output="P" default="true">
+@input
+</script>
+AND
+<script input="checkbox" value="false" output="Q" default="false">
+@input
+</script>
+-->
+<script>
+@input(`P`) && @input(`Q`)
+</script>
 
-> The parameter **`modify="false"`** removes the the gray backgound, so that
-> scripts without any input become indistinguishable from the rest of the
-> content. This gray backgound also indicates, that the code behind the script
-> is **editable**. You can switch to the edit mode via a double-click on the
-> script element. Thus you can inspect every script and also edit it, the code
-> will only be executed after the textinput has lost the focus.
+    --{{2}}--
+Note that formatting is only performed on the displayed representation and does not affect the actual input and output values.
 
 #### `default` & Execution-Graphs
 
-If you connect scripts, this connection should actually form a directed graph,
-without cycles. But of course, if you want to, can produce also cycles, that
-stop only if the results do not change anymore.
+If you connect scripts, ideally the connections should form a directed graph without cycles. However, if desired, you can create cycles that continue until the results no longer change.
 
 ``` html
 <script input="range" value="1" default="1" output="x">
-@input * @input(`y`)
+setTimeout(function(){
+  send.lia( @input * @input(`y`) )
+}, 1000)
+
+send.wait()
 </script>
+<-->
 <script input="number" value="1" default="1" output="y">
-@input + @input(`x`)
+setTimeout(function(){
+  send.lia( @input - @input(`x`) )
+}, 1000)
+
+send.wait()
 </script>
 ```
 
-The `default` parameter is used to define a the default output of this script.
-Otherwise the initial calculation will result in an error, since the scripts do
-require the outputs of the other script that can never be calculated, due to the
-circular dependency.
+    --{{1}}--
+The `default` parameter is used to define the default output of this script. Without it, the initial calculation would result in an error due to the circular dependency, as the scripts require the outputs of each other, which cannot be calculated initially.
 
+      {{1}}
 <script input="range" value="1" default="1" output="x">
-@input * @input(`y`)
+setTimeout(function(){
+  send.lia( @input * @input(`y`) )
+}, 1000)
+
+send.wait()
 </script>
+<-->
 <script input="number" value="1" default="1" output="y">
-@input + @input(`x`)
+setTimeout(function(){
+  send.lia( @input - @input(`x`) )
+}, 1000)
+
+send.wait()
 </script>
+
+      --{{2}}--
+To prevent errors, try to define a default output value for your scripts.
+
+#### Simplification with Macros
+<!--
+sin: <script format="number"
+             localeStyle="currency"
+             currency="EUR"
+             locale="de-DE"
+             modify="false"
+    > Math.sin(@input(`param1`) + @0) + @input(`param2`) </script>
+-->
+
+    --{{0}}--
+The following example does not really make sense; it is only used to illustrate some aspects of this approach. There is a recurring and parameterized calculation within the table.
+Instead of using multiple scripts, we only had to define one macro that performs some calculation and formatting.
+The two other scripts are simple input parameters that have a certain effect on these cells.
+
+
+``` markdown
+#### Simplification with Macros
+<!--
+sin: <script format="number"
+             localeStyle="currency"
+             currency="EUR"
+             locale="de-DE"
+             modify="false"
+    > Math.sin(@input(`param1`) + @0) + @input(`param2`) </script>
+-->
+
+<script run-once default="0"  output="param1"
+input="range" value="2" min="0" max="25" step="0.1" >
+@input
+</script>
+
+<script run-once default="0" output="param2"
+input="range" value="2" min="0" max="25" step="0.1">
+@input
+</script>
+
+<!-- data-type="barchart" -->
+| Header 1 | <script>@input(`param`)</script> |
+|:-------- | -------------------------------: |
+| 1        |                         @sin(1)  |
+| 2        |                         @sin(2)  |
+| ...      |                            ....  |
+```
+
+    --{{1}}--
+Combining scripts with macros reduces a lot of boilerplate and allows for handling complexity more efficiently.
+Additionally, these scripts work seamlessly with all other LiaScript elements previously presented, such that updates even affect the diagram representation of the table.
+Sorting of columns also works seamlessly.
+
+      {{1}}
+<section>
+
+Parameters: <script run-once
+        default="0"
+        output="param1"
+        input="range" value="2" min="0" max="25" step="0.1"
+        >
+@input
+</script>
+/
+<script run-once
+        default="0"
+        output="param2"
+        input="range" value="1" min="0" max="2" step="0.1"
+        >
+@input
+</script>
+
+
+<!-- data-type="barchart" -->
+| Header  | Some Calculation <script>@input(`param1`)</script> |
+|:-------- |--------: |
+| 1        | @sin(1)  |
+| 2        | @sin(2)  |
+| 3        | @sin(3)  |
+| 4        | @sin(4)  |
+| 5        | @sin(5)  |
+| 6        | @sin(6)  |
+| 7        | @sin(7)  |
+| 8        | @sin(8)  |
+| 9        | @sin(9)  |
+
+</section>
+
+
+      {{2}}
+<section>
+
+And of course, we can also directly create and manipulate diagrams with different parameters a:
+<script input="range" value="2" output="range">@input</script>
+, directly from the document b:
+<script input="range" value="50" output="amplitude">@input</script>.
+You can double-click on the highlighted elements to inspect and edit its JavaScript code.
+
+
+<script run-once style="display: inline-block; width: 100%">
+function func(x) {
+    x /= 10;
+    return Math.sin(x) * Math.cos(x * @input(`range`) + 1) * Math.sin(x * 3 + 2) * @input(`amplitude`);
+}
+
+function generateData() {
+    let data = [];
+    for (let i = -200; i <= 200; i += 0.1) {
+        data.push([i, func(i)]);
+    }
+    return data;
+}
+
+let option = {
+    animation: false,
+    grid: {
+        top: 40,
+        left: 50,
+        right: 40,
+        bottom: 50
+    },
+    xAxis: {
+        name: 'x',
+        minorTick: {
+            show: true
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#999'
+            }
+        },
+        minorSplitLine: {
+            show: true,
+            lineStyle: {
+                color: '#ddd'
+            }
+        }
+    },
+    yAxis: {
+        name: 'y',
+        min: -100,
+        max: 100,
+        minorTick: {
+            show: true
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#999'
+            }
+        },
+        minorSplitLine: {
+            show: true,
+            lineStyle: {
+                color: '#ddd'
+            }
+        }
+    },
+    dataZoom: [{
+        show: true,
+        type: 'inside',
+        filterMode: 'none',
+        xAxisIndex: [0],
+        startValue: -20,
+        endValue: 20
+    }, {
+        show: true,
+        type: 'inside',
+        filterMode: 'none',
+        yAxisIndex: [0],
+        startValue: -20,
+        endValue: 20
+    }],
+    series: [
+        {
+            type: 'line',
+            showSymbol: false,
+            clip: true,
+            data: generateData()
+        }
+    ]
+}
+
+"HTML: <lia-chart option='" + JSON.stringify(option) + "'></lia-chart>"
+</script>
+
+</section>
 
 ### Further settings
 
@@ -11344,241 +11514,117 @@ such a value, then the default document language setting is used as default.
 
 ### LIA - global object
 
+Todo
+
 
 #### Publish subscribe API
 
-https://www.youtube.com/watch?v=Kjk6OblugXI
+    --{{0}}--
+Since LiaScript allows for opening Classrooms with a chat that supports LiaScript syntax and synchronizes the states of quizzes and surveys between users, along with support for collaborative editing, we have decided to add a new experimental API.
+
+!?[LiaScript Classroom](https://www.youtube.com/watch?v=Kjk6OblugXI)
 
 
+    --{{1}}--
+This API allows anyone to create new collaborative LiaScript extensions by combining scripts with anything that might be interesting, such as collaborative painting, marking positions on a map, and more.
+
+
+      {{1}}
 ``` js
+// true if connection to a classroom has been established
 LIA.classroom.connected
 
+// creates a callback on a connection
 LIA.classroom.on("connected", () => {
     console.log("connected")
 })
 
+// callback for the disconnection
 LIA.classroom.on("disconnected", () => {
     console.log("disconnected")
 })
 
+// publish some data on a topic
 LIA.classroom.publish("topic", { data: "Hello World" })
 
+// subscribe to all messages of a topic
 const subID = LIA.classroom.subscribe("topic", (message) => {
     console.log("received", message)
 })
 
+// do not receive messages anymore
 LIA.classroom.unsubscribe(subID)
 ```
 
+    --{{2}}--
+The following code creates an entire waving app, where students can send little raining icons to vote, for example, for a topic. This functionality can be easily put into a template that can be imported into different courses.
 
-### Further Examples
-
-
-#### Tables
+      {{2}}
+```
 <!--
-sin: <script format="number"
-             localeStyle="currency"
-             currency="EUR"
-             locale="de-DE"
-             modify="false"
-    > Math.sin(@input(`result`) + @input(`amp`) * @0) </script>
+@style
+.fall {
+  position: absolute;
+  top: 0;
+  animation: fall 4s linear;
+}
+@keyframes fall {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+@end
+
+@wave
+<script input="button" run-once="true" modify="false">
+if (LIA.classroom.connected){
+    LIA.classroom.publish("wave", "@0")
+}
+"@0"
+</script>
+@end
 -->
 
-``` markdown
-#### Tables
-<!--
-sin: <script format="number"
-             localeStyle="currency"
-             currency="EUR"
-             locale="de-DE"
-             modify="false"
-    > Math.sin(@input(`result`) + 0.5 * @0) </script>
--->
+# Waving App
 
-<script run-once
-        default="0"
-        output="result"
-        input="range" value="2" min="0" max="25" step="0.1"
-        >
-@input
+Share your feelings:
+
+<script run-once="true">
+LIA.classroom.subscribe("wave", (msg) => {
+    const icon = document.createElement("span")
+    icon.innerHTML = msg
+    icon.classList.add("fall")
+    icon.style.left=(Math.random() * 100) + "%"
+    icon.style.zIndex = 10000
+    document.body.appendChild(icon)
+    icon.addEventListener('animationend', function() {
+        icon.remove();
+    });
+})
+console.log("subscription")
 </script>
 
+<script input="button" run-once="true" modify="false">
+if (LIA.classroom.connected){
+    LIA.classroom.publish("wave", "👋")
+}
 
-<script run-once
-        default="0"
-        output="amp"
-        input="range" value="2" min="0" max="25" step="0.1"
-        >
-@input
+"👋"
 </script>
-
-
-<!-- data-type="barchart" id="tabelle" -->
-| Header 1 | <script>@input(`result`)</script> |
-|:-------- |--------: |
-| 1        | @sin(1)  |
-| 2        | @sin(2)  |
-| ...      | ....     |
+@wave(❤️) @wave(👎) @wave(👍) @wave(💀) @wave(❓)
 ```
 
-Pos: <script run-once
-        default="0"
-        output="result"
-        input="range" value="2" min="0" max="25" step="0.1"
-        >
-@input
-</script>
-and amplitude:
-<script run-once
-        default="0"
-        output="amp"
-        input="range" value="1" min="0" max="2" step="0.1"
-        >
-@input
-</script>
+    --{{3}}--
+Try it out by opening a classroom on multiple browsers!
 
+      {{3}}
+[Try it out](https://liascript.github.io/course/?data:text/plain;charset=utf-8;Content-Encoding=gzip;base64,H4sIAAAAAAAAA8VSQW7UMBTd+xQfo6oJdEKQWM1MRlOhSlRqVyCxdpKfGQvHtmxnYKhGYo8oAtYVGw7BeXoBOALfiZqZ9gKs/P39nt/z858/mkzY0oetQpY1Qim4YgDWeBmk0VMQpTeqCzijbjB2CnmshJatGAA954UHJTUKN2M7tnyH28aJFj2MF+ZHcHXHhx01nuf7Vqxjl6ioa8aW78UG2dxXTtoAUtsuFLzsQjCag+v0xOgKCx5chxxaU8tmW3CS8sgXTDaQXJyfZpUS3jtj2qwyWmMVsE6jE4D7p7YrlfTrhEdRfgJ8mfOUrMSVzZ8NJhaDs8lkwdhjeCs2Uq/g1FrGXq+FQ9iazkGDSCGs/JSN3h+YXbD72r4rI7DEUT1p/SqFYgGDVbLuKQFaoIDaVF2LOmSVQxHwTGHcJdxboclyxEdkJum57tWbywvi0HX7g174QvqQibpOYmLqkNcPQaawCUVyKcI6c0LXpk1SeBK/KIWnwI/4Q/zHc13jB5IiSJ73p6PR0tTbTFhL2b1cS1UnkXegSDbONgSMnpBMJ8fjYBHl+ASaTldxRx6GQEaqw9ZsMElnfXtH6y5lMS4T32BWFMsQro18eub+K//bZP39+e1zP1tsKA/HK2KS25tff35/TWHYEeb6oP6yr79/uqtvb36k/wAY2UbHwwMAAA==#1)
 
-<!-- data-type="barchart" id="tabelle" -->
-| Header 1 | <script>@input(`result`)</script> |
-|:-------- |--------: |
-| 1        | @sin(1)  |
-| 2        | @sin(2)  |
-| 3        | @sin(3)  |
-| 4        | @sin(4)  |
-| 5        | @sin(5)  |
-| 6        | @sin(6)  |
-| 7        | @sin(7)  |
-| 8        | @sin(8)  |
-| 9        | @sin(9)  |
+    --{{4}}--
+Here is the base code that you can try out and modify.
+Afterwards, share your course via the DAT-URI options, which allows to encode short courses within the URL.
 
-#### Search
-
-To change the current search subject
-<script input="search" output="search" value=cats default="cats">"@input"</script>
-to something else, simply click on the search and start to type...
-If you click on the image below, a new random search will be triggerd.
-
-
-<script input="button" run-once style="display: inline-block">
-fetch('https://api.giphy.com/v1/gifs/random?api_key=XuS4MlQmIR6WQpMA8Zpxv4shNfJW8Aci&tag=' + encodeURI("@input(`search`)"))
-  .then(response => response.json())
-  .then(data => send.html(`<img height="350px" src="${data.data["image_url"]}">`))
-
-"loading"
-</script>
-
-#### Diagrams
-
-The first value defines some kind of range:
-<script input="range" value="2" output="range">@input</script>
-, while the second can be interpreted as range
-<script input="range" value="50" output="amplitude">@input</script>.
-You can double-click on any gray element to inspect and edit its javascript code.
-
-
-<script run-once style="display: inline-block; width: 100%">
-function func(x) {
-    x /= 10;
-    return Math.sin(x) * Math.cos(x * @input(`range`) + 1) * Math.sin(x * 3 + 2) * @input(`amplitude`);
-}
-
-function generateData() {
-    let data = [];
-    for (let i = -200; i <= 200; i += 0.1) {
-        data.push([i, func(i)]);
-    }
-    return data;
-}
-
-let option = {
-    animation: false,
-    grid: {
-        top: 40,
-        left: 50,
-        right: 40,
-        bottom: 50
-    },
-    xAxis: {
-        name: 'x',
-        minorTick: {
-            show: true
-        },
-        splitLine: {
-            lineStyle: {
-                color: '#999'
-            }
-        },
-        minorSplitLine: {
-            show: true,
-            lineStyle: {
-                color: '#ddd'
-            }
-        }
-    },
-    yAxis: {
-        name: 'y',
-        min: -100,
-        max: 100,
-        minorTick: {
-            show: true
-        },
-        splitLine: {
-            lineStyle: {
-                color: '#999'
-            }
-        },
-        minorSplitLine: {
-            show: true,
-            lineStyle: {
-                color: '#ddd'
-            }
-        }
-    },
-    dataZoom: [{
-        show: true,
-        type: 'inside',
-        filterMode: 'none',
-        xAxisIndex: [0],
-        startValue: -20,
-        endValue: 20
-    }, {
-        show: true,
-        type: 'inside',
-        filterMode: 'none',
-        yAxisIndex: [0],
-        startValue: -20,
-        endValue: 20
-    }],
-    series: [
-        {
-            type: 'line',
-            showSymbol: false,
-            clip: true,
-            data: generateData()
-        }
-    ]
-}
-
-"HTML: <lia-chart option='" + JSON.stringify(option) + "'></lia-chart>"
-
-</script>
-
-#### Calculator
-<!--
-calc: <script run-once format="number" locale="en" notation="compact">@0</script>
--->
-
-
-``` markdown
-#### Calculator
-<!--
-calc: <script run-once format="number" locale="de" notation="compact">@0</script>
--->
-
-Interim calculation @calc(22*12345.98726) or @calc(`Math.pow(3.141592, 12)`)...
-```
-
-Interim calculation @calc(22*12345.98726) or @calc(`Math.pow(3.141592, 12)`)...
+      {{4}}
+[Live Editor Example](https://liascript.github.io/LiveEditor/?/show/code/H4sIAAAAAAAAA8VSQW7UMBTd+xQfo6oJdEKQWM1MRlOhSlRqVyCxdpKfGQvHtmxnYKhGYo8oAtYVGw7BeXoBOALfiZqZ9gKs/P39nt/z858/mkzY0oetQpY1Qim4YgDWeBmk0VMQpTeqCzijbjB2CnmshJatGAA954UHJTUKN2M7tnyH28aJFj2MF+ZHcHXHhx01nuf7Vqxjl6ioa8aW78UG2dxXTtoAUtsuFLzsQjCag+v0xOgKCx5chxxaU8tmW3CS8sgXTDaQXJyfZpUS3jtj2qwyWmMVsE6jE4D7p7YrlfTrhEdRfgJ8mfOUrMSVzZ8NJhaDs8lkwdhjeCs2Uq/g1FrGXq+FQ9iazkGDSCGs/JSN3h+YXbD72r4rI7DEUT1p/SqFYgGDVbLuKQFaoIDaVF2LOmSVQxHwTGHcJdxboclyxEdkJum57tWbywvi0HX7g174QvqQibpOYmLqkNcPQaawCUVyKcI6c0LXpk1SeBK/KIWnwI/4Q/zHc13jB5IiSJ73p6PR0tTbTFhL2b1cS1UnkXegSDbONgSMnpBMJ8fjYBHl+ASaTldxRx6GQEaqw9ZsMElnfXtH6y5lMS4T32BWFMsQro18eub+K//bZP39+e1zP1tsKA/HK2KS25tff35/TWHYEeb6oP6yr79/uqtvb36k/wAY2UbHwwMAAA==)
 
 
 ## Contributors and Credit
@@ -11610,6 +11656,18 @@ CSS & SASS crack and friendly face behind new face of LiaScript ...
 
 
 ## Appendix
+
+### Supported Protocols for Sharing courses
+
+todo
+
+#### IPFS
+
+#### Onion Share
+
+#### Dat - URIs
+
+#### QR-Codes
 
 
 ### Unicode Symbols
