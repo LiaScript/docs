@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     02/03/2024
-version:  26.0.0
+date:     05/03/2024
+version:  26.0.1
 language: en
 narrator: UK English Female
 
@@ -5325,7 +5325,7 @@ https://github.com/LiaScript/LiaScript/tree/development/src/typescript/sync
 ## Effects
 
                                --{{0}}--
-There are currently three types of what we call effects, these are:
+There are currently three types of effects that we call:
 
 <!-- --{{0}}--
 animations, comments, and playback functions
@@ -5336,7 +5336,7 @@ animations, comments, and playback functions
 3. and Playback functions
 
                                --{{1}}--
-All of these elements can be used inline and on block-level.
+All of these elements can be used inline and as block-level elements.
 Every effect is defined by two braces:
 
                                  {{1}}
@@ -5354,19 +5354,19 @@ the on the play button...
 ```
 
                                --{{2}}--
-Animations are only visible and comments are read out aloud in "Presentation" or in "Slides" mode.
-If you set the mode to "Textbook", then all animations and comments will be displayed on one slide, where you have placed them within the document.
-Within the other two modes, they are revealed step by step on every click.
+Animations are only visible, and comments are read aloud in "Presentation" or "Slides" mode.
+If you set the mode to "Textbook", then all animations and comments will be displayed on one slide where you have placed them within the document.
+In the other two modes, they are revealed step by step with each click.
 
                                 {{3 |>}}
-> __You need to balance these features properly, so that your course can be read in Textbook mode, used for presentations, and more.__
+> __You need to balance these features properly so that your course can be read in Textbook mode and used for presentations and more.__
 
 
 ### Animations
 
                                    --{{0}}--
-Animations are defined by two curly braces and one starting and one optional ending number.
-Animations can be associated to single blocks, multiple blocks and also inlined.
+Animations are defined by two curly braces: one starting and one optional ending number.
+They can be associated with single blocks, multiple blocks, and also inline elements.
 
 `{{start-stop?}} | {start-stop?}{inline}`
 
@@ -5374,10 +5374,11 @@ Animations can be associated to single blocks, multiple blocks and also inlined.
 
 
                                    --{{0}}--
-Animations can be associated to blocks, simply by adding two curly braces on top of a block.
-We recommend applying indentation of at least spaces to an animations definitions.
-Other Markdown renderer will highlight this as code, such that it is easier to read.
+Animations can be associated with blocks by adding two curly braces above the block.
+We recommend indenting the animation definition by at least 4 spaces.
+Other Markdown renderers will highlight this as code, making it easier to read.
 
+<!--  -->
 ``` markdown
      {{1}}
 This is an example for a *single* block animations.
@@ -5407,10 +5408,10 @@ This one will appear on animation step 2 and disappear on 3.
 #### Multi-Block Animations
 
                                --{{0}}--
-Similarly, as it was done for quizzes, as described in section [Quiz-Solution](#solution), you can group multiple markdown blocks by lines of asterisks.
+Similarly to quizzes, as described in section [Quiz-Solution](#solution), you can group multiple markdown blocks by lines of asterisks.
 Simply add the curly braces with the animation definition above the upper line.
 
-
+<!-- class="translate" translate="yes" -->
 ``` markdown
             {{1-2}}
 ************************************
@@ -5440,8 +5441,8 @@ HTML-tags ...
 Blocks can also have a starting and disappearing number.
 
                                --{{2}}--
-Depending on your preferred style, you can also use HTML-tags to group blocks.
-These will then be displayed slightly different on [GitHub](https://github.com).
+Depending on your preferred style, you can also use HTML tags to group blocks.
+These will then be displayed slightly differently on [GitHub](https://github.com).
 
 __Result:__
 
@@ -5473,7 +5474,10 @@ HTML-tags ...
 
                                    --{{0}}--
 Inline effects can be used in nearly all LiaScript elements.
-In this you will have to unpack the curly braces, the first pair surrounds the animation definition, while the second pair contains all inline elements that should appear and or disappear.
+In this case, you will have to unpack the curly braces:
+the first pair surrounds the animation definition,
+while the second pair contains all inline elements that should appear and/or disappear.
+
 
 ``` markdown
 * no effect here
@@ -5497,7 +5501,7 @@ Goto animation step 2.
 #### Combinations & Styling
 
                                --{{0}}--
-Animations can also be grouped freely, such that one multi-block animation can contain multiple block animations and one block can also contain further inline animations:
+Animations can also be grouped freely, allowing one multi-block animation to contain multiple block animations, and one block can also contain further inline animations:
 
 ``` markdown
 <!--
@@ -5540,14 +5544,14 @@ elements as well.
 
 
                                --{{4}}--
-Any kind of CSS can also be added to an animation, as it was already described in section [Custom Styling](#custom-styling).
-Additionally, we had added an additional CSS stylesheet to the main HTML-comment of this document.
+Any kind of CSS can also be added to an animation, as described in the section on [Custom Styling](#custom-styling).
+Additionally, we have included an additional CSS stylesheet in the main HTML comment of this document.
 This will load [Animate CSS](https://animate.style/#documentation), but you can use any other CSS library or custom styling as well.
 
                                  {{4}}
 *******************************************************************************
 
-__Animate.css documentation:__ https://animate.style/
+__Animate.css documentation:__ https://animate.style
 
 
 ``` markdown
@@ -5564,11 +5568,12 @@ link:   https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css
 ### Comments: Text 2 Speech
 
                                --{{0}}--
-The idea of a comment is that they should be associated to witch animations.
+The idea of a comment is that they should be associated with animations.
 When animation $x$ is revealed, then the comment $x$ is read aloud.
-Like in a PowerPoint presentations, when one element appears and the presenter says something, clicks the next element appears and is also commented.
-Thus, a comment is a paragraph that is marked by two curly braces, which contain a number, and two dashes around the braces.
+Similar to a PowerPoint presentation, when one element appears and the presenter says something, then clicks and the next element appears and is also commented.
+Thus, a comment is a paragraph that is marked by two sets of curly braces, which contain a number, and two dashes around the braces.
 If multiple comments have the same number, then they will be replayed in the order of appearance.
+
 
 ``` markdown
           --{{1}}--
@@ -5581,7 +5586,7 @@ but at animation step 2.
           --{{2}}--
 Don't forget me.
 
-       {{1}}
+            {{1}}
 __I am animation 1 {2}{and 2 too}.__
 ```
 
@@ -5595,14 +5600,14 @@ but at animation step 2.
           --{{2}}--
 Don' forget me.
 
-       {{1}}
+            {{1}}
 __I am animation 1 {2}{and 2 too}.__
 
 
                                --{{3}}--
-If you change the presentation mode, then you will see that these comments will be displayed in place in "Textbook" mode.
-In "Slides" mode they will also be presented to the user, while they will be hidden in "Presentation" mode.
-If you switch off the sound, then this is the mode that can be used for presenting content, while the others can be used for self studying.
+If you change the presentation mode, you will notice that these comments will be displayed in place in "Textbook" mode.
+In "Slides" mode, they will also be presented to the user, while they will be hidden in "Presentation" mode.
+If you switch off the sound, then this is the mode that can be used for presenting content, while the others can be used for self-studying.
 
 #### Voices & Language
 <!--
@@ -5611,13 +5616,15 @@ narrator: UK English Male
 -->
 
                                --{{0}}--
-But where does the voice come from?
-In LiaScript within the initial comment, you can use the `lang` macro to define the document translation and `narrator` to define the default voice.
-Currently, we are using [responsivevoice](https://responsivevoice.org) to offer the same language capabilities in all browsers and devices.
-It is possible to change the `narrator` on different layers, globally within the main comment tag, per slide, and also per comment, by inserting the voice into the comment definition.
+__But where does the voice come from?__
+In LiaScript, within the initial comment, you can use the `language` macro to define the document translation and `narrator` to define the default voice.
+Currently, we are using [responsivevoice](https://responsivevoice.org) as a backup solution if your browser does not support text-to-speech.
+Otherwise, your default browser and operating system text-to-speech is utilized, which can vary across browsers and systems.
+Within the settings, it is possible to switch between the browser and backup TTS.
+It is possible to change the `narrator` on different layers: globally within the main comment tag, per slide, and also per comment, by inserting the voice into the comment definition.
 
 
-1. Speech-Engine: https://responsivevoice.org
+1. Backup Speech-Engine: https://responsivevoice.org
 2. Default `narrator` must be defined within the initial comment, otherwise `US English Male` is used
 3. You can overwrite the default `narrator` per slide, by attaching a comment to the title tag
 4. Use `--{{number}}--` to indicate what is spoken and when
@@ -5631,7 +5638,7 @@ It is possible to change the `narrator` on different layers, globally within the
 ``` markdown
 <!--
 author:   ...
-lang:     en
+language: en
 narrator: US English Male
 -->
 
@@ -5676,9 +5683,9 @@ Aaron Swartz entworfen und im Dezember 2004 mit Version 1.0.1 spezifiziert ...
 #### Hidden Comments
 
                                --{{0}}--
-Sometimes, it might be necessary to add a comment or to read a part aloud to underline a certain point, which might be necessary in the narrated mode, but not in the Textbook.
-Therefor, it is possible to put your TTS output into simple HTML comments.
-This won't be shown to anyone and also not visible on most other Markdown parsers and renderer.
+Sometimes, it might be necessary to add a comment or to read a part aloud to underline a certain point, which might be necessary in the narrated mode but not in the Textbook.
+Therefore, it is possible to put your TTS output into simple HTML comments.
+This won't be shown to anyone and also not visible on most other Markdown parsers and renderers.
 
 ```html
 <!-- --{{1}}--
@@ -5692,7 +5699,7 @@ Speak this out, but do not show it to anyone.
 
 
                                  {{1}}
-The associated hidden comment to this point will not be visble in Textbook mode!
+The associated hidden comment to this point will not be visible in Textbook mode!
 
 
 #### Translations
@@ -5737,9 +5744,9 @@ Note that code environments and foreign language comments will be tagged automat
 ### Playback
 
                                --{{0}}--
-Since Text2Speech output is baked into the LiaScript notation, why not using it on purpose for language learners.
-Simply add a stylized play-button to the effect definition to indicate, what should be spoken out loud.
-You can of also use different voices.
+Since Text2Speech output is integrated into the LiaScript notation, it can be intentionally used for language learners.
+Simply add a stylized play button to the effect definition to indicate what should be spoken out loud.
+You can also use different voices.
 
 ```Markdown
     {{|>}}
@@ -5767,8 +5774,8 @@ This entire paragraph will be spoken out __LOUD__.
 #### Playback-Blocks
 
                                --{{0}}--
-And like it was introduced for animations, you can also group multiple block.
-Simply add as many Markdown-blocks between two lines of asterisks, and they will be interpreted as one larger block.
+And, as introduced for animations, you can also group multiple blocks together.
+Simply add as many Markdown blocks between two lines of asterisks, and they will be interpreted as one larger block.
 
 
 ```markdown
@@ -5799,12 +5806,14 @@ This entire paragraph will be spoken out __LOUD__.
 **************************************************
 
                                --{{1}}--
-As an __alternative__, you can also use an HTML-tag like __`<section>`__ or __`<div>`__ to group blocks, the LiaScript result will stay the same, but it will be rendered differently on other Markdown interpreters.
+As an __alternative__, you can also use an HTML tag like __`<section>`__ or __`<div>`__ to group blocks.
+The LiaScript result will remain the same, but it will be rendered differently on other Markdown interpreters.
 
 #### Playback-Inlines
 
                                --{{0}}--
-And as presented before, you can also use inlining for Playback elements, as it was used for animations by simply using two pairs of braces.
+Like in the presented example, the exclamation will not interfere with the table definition.
+And as presented before, you can also use inlining for Playback elements, as it was used for animations, by simply using two pairs of braces.
 Depending on your preferences and the current context, it is also possible to define the stylized play-button with a vertical line or an exclamation mark.
 Like in the presented example, the exclamation will not interfere with the table definition.
 
@@ -5821,7 +5830,7 @@ Like in the presented example, the exclamation will not interfere with the table
 ```
 
                                --{{1}}--
-The result is displayed within the table, all elements can be played on demand.
+The result is displayed within the table; all elements can be played on demand.
 
                                  {{1}}
 | English              | German                            | Russian                                 | Arabic male               | Arabic female               |
@@ -5845,13 +5854,14 @@ The result is displayed within the table, all elements can be played on demand.
 
                                --{{0}}--
 If you only want to show the play buttons but not the text, it is possible to use some HTML tricks.
-The easiest way is to put your text into an HTML element and to remove it from the screen by using a `span` whose content is shifted from the screen.
-Simply styling the element with `display: none` will not work, since the TTS function requires the text to be rendered within the DOM and the translation via Google will not work, if the element is not visible.
+The easiest way is to put your text into an HTML element and to remove it from the screen by using a `span` whose content is shifted off the screen.
+Simply styling the element with `display: none` will not work, since the TTS function requires the text to be rendered within the DOM, and the translation via Google will not work if the element is not visible.
+
 
                                --{{1}}--
 But, since it is possible to define custom [Macros](#macros), we can also apply a more elegant way.
 We define a set of local macros directly within a comment attached to the current heading.
-The `@play` macro has two parameters, one for the voice and the other for the text, the other macros are simply shortcuts for the voice that pass the text as the second parameter to the `@play` macro.
+The `@play` macro has two parameters, one for the voice and the other for the text; the other macros are simply shortcuts for the voice that pass the text as the second parameter to the `@play` macro.
 Within the Arabic macro, it is also possible to define the gender of the narrator.
 
                                  {{1}}
@@ -5877,7 +5887,7 @@ Within the Arabic macro, it is also possible to define the gender of the narrato
 ```
 
                                --{{3}}--
-The result is a table with playback buttons only, where the text is hidden and where the main language will be translated while the other languages remain.
+The outcome is a table with playback buttons only, where the text is concealed, and the primary language will be translated while the other languages remain unchanged.
 
 
                                  {{3}}
@@ -5893,9 +5903,9 @@ The result is a table with playback buttons only, where the text is hidden and w
 #### Animations to Playback
 
                                --{{0}}--
-Since we are using the double braces notation for playback elements, this can also be used in combination with animations.
-Simply by adding an appearance number, or an appearance and disappearance number.
+Since we are utilizing the double braces notation for playback elements, this can also be combined with animations by adding appearance and disappearance numbers.
 Depending on the current state of the animation, this will result in different sentences.
+
 
 
 ```Markdown
@@ -5904,8 +5914,8 @@ This is an example where {|> 1-2}{I go} _{|> 2}{I am going}_ to work.
 ```
 
                                --{{1}}--
-You have to keep in mind, that this will work as intended if the user is not in Textbook mode.
-Otherwise, all elements will be read out loud and nothing is hidden.
+You need to keep in mind that this will function as intended only if the user is not in Textbook mode.
+Otherwise, all elements will be read out loud, and nothing will be hidden.
 
     {{1 |>}}
 This is an example where {|> 1-2}{I go} _{|> 2}{I am going}_ to work.
