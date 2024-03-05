@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     05/03/2024
-version:  26.0.1
+version:  26.0.2
 language: en
 narrator: UK English Female
 
@@ -6035,7 +6035,6 @@ Additionally, if you change the order of the table, the order of categories in t
 
       {{3}}
 ``` md
-<!-- data-type="line" -->
 | Animal          | weight in kg | Lifespan years | Mitogen |
 | --------------- | ------------:| --------------:| -------:|
 | Mouse           |        0.028 |              2 |      95 |
@@ -6046,7 +6045,6 @@ Additionally, if you change the order of the table, the order of categories in t
 ```
 
       {{3}}
-<!-- data-type="line" -->
 | Animal          | weight in kg | Lifespan years | Mitogen |
 | --------------- | ------------:| --------------:| -------:|
 | Mouse           |        0.028 |              2 |      95 |
