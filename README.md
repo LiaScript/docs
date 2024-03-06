@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     05/03/2024
-version:  26.0.5
+version:  26.0.6
 language: en
 narrator: UK English Female
 
@@ -8400,7 +8400,7 @@ This feature enables you to streamline your code and make your Markdown files mo
 
 #### Error Handling
 
-    --{{1}}--
+    --{{0}}--
 As mentioned earlier, `send.lia` can do more than just passing messages to the terminal output.
 The editor currently used by LiaScript is [Ace](https://ace.c9.io), which allows marking lines with warnings and errors.
 Since there is no name associated with a file (like with the `@input(0)` macro), you have to use a list of lists containing all the necessary information that you want to pass to the editor.
@@ -8509,6 +8509,47 @@ These attributes need to be applied per code block, as demonstrated in the examp
 </script>
 `````
 
+
+      {{1}}
+```` markdown
+<!-- data-marker="
+0 0 0 100 error screenline;
+2 0 4 200 log;
+6 12 6 33 rgba(55,255,100,0.5) text"
+data-showGutter="true"
+data-theme="chaos"
+data-readOnly="false" -->
+```
+this will be red
+
+this is blue ...
+until the next
+line
+
+and this is rgba(55,255,100,0.5)
+```
+````
+
+      {{1}}
+<!-- data-marker="
+0 0 0 100 error screenline;
+2 0 4 200 log;
+6 12 6 33 rgba(55,255,100,0.5) text"
+data-showGutter="true"
+data-theme="chaos"
+data-readOnly="false" -->
+```
+this will be red
+
+this is blue ...
+until the next
+line
+
+and this is rgba(55,255,100,0.5)
+```
+
+
+
     {{1}}
 __Attributes:__
 
@@ -8586,43 +8627,7 @@ __Attributes:__
   ace-marker types: `text`, (default `fullLine`), `screenLine`
 
 
-    {{1}}
-```` markdown
-<!-- data-marker="
-0 0 0 100 error screenline;
-2 0 4 200 log;
-6 12 6 33 rgba(55,255,100,0.5) text"
-data-showGutter="true"
-data-theme="chaos"
-data-readOnly="false" -->
-```
-this will be red
 
-this is blue ...
-until the next
-line
-
-and this is rgba(55,255,100,0.5)
-```
-````
-
-    {{1}}
-<!-- data-marker="
-0 0 0 100 error screenline;
-2 0 4 200 log;
-6 12 6 33 rgba(55,255,100,0.5) text"
-data-showGutter="true"
-data-theme="chaos"
-data-readOnly="false" -->
-```
-this will be red
-
-this is blue ...
-until the next
-line
-
-and this is rgba(55,255,100,0.5)
-```
 
 
 ### More Examples
