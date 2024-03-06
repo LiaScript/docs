@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     05/03/2024
-version:  26.0.12
+version:  26.0.14
 language: en
 narrator: UK English Female
 
@@ -9034,6 +9034,7 @@ However, you can escape a macro by adding an additional `@`, which outputs a gra
 
 ### 2. Basic Macros
 
+    --{{0}}--
 The following macros are special ones that are used by the LiaScript to deal with a couple of convenience functions.
 
 
@@ -9506,7 +9507,7 @@ link: https://some.css
     --{{1}}--
 For more information on how to define custom styles, checkout the following link:
 
-      {{2}}
+      {{1}}
 https://github.com/liaScript/custom-style
 
 ##### `script`
@@ -9532,6 +9533,7 @@ The execution of [`@onload`](#onload) and all script tags is delayed until all e
 
 ##### `import`
 
+    --{{0}}--
 You can import the main macros of other courses simply by using the `import` command, followed by the raw URL of the foreign course.
 You can import various different courses, and every URL will be loaded before the course is finally rendered.
 Only the definitions in the main header are loaded, including `script`, `link`, macros, `attribute`, and `onload`.
@@ -9648,6 +9650,7 @@ dark: false
 
 ##### `classroom`
 
+    --{{0}}--
 If you want to disable the classroom functionality for your course or within your SCORM export.
 Then turn the `classroom` feature of, by default it is activated.
 For more information on how to open classrooms see section [Classroom Experience](#Classroom-Experience).
@@ -9681,6 +9684,7 @@ sharing: false
 
 ##### `translateWithGoogle`
 
+    --{{0}}--
 If you are giving a language course and want to prevent cheating by disabling the auto-translation function offered by Google, then set `translateWithGoogle` to `false`.
 
 
