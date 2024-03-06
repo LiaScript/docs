@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     05/03/2024
-version:  26.0.9
+version:  26.0.10
 language: en
 narrator: UK English Female
 
@@ -10211,6 +10211,7 @@ LiaScript allows the display of HTML and LiaScript code as well, which is then r
 
 #### `HTML:`
 
+    --{{0}}--
 This first approach does obviously not work.
 LiaScript does not parse and interprete the return value on demand, instead, everything is interpreted and displayed as a string:
 
