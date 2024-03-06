@@ -1808,7 +1808,7 @@ However, you can do much more with scripts.
 Do some internal calculation <script> 99 * 88  </script>, the next script
 contains an error <script> 99 * a </script>.
 
-                                  {{1}}
+                                  {{2}}
 <script>
     // Initialize a Line chart in the container with the ID chart
     new Chartist.Line('#chart', {
