@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     05/03/2024
-version:  26.0.2
+version:  26.0.3
 language: en
 narrator: UK English Female
 
@@ -6591,7 +6591,7 @@ Simply set `data-type="none"` to prevent any kind of visualization for the corre
         {{5}}
 * __`data-ylabel`__:
 
-      --{{5}}
+      --{{5}}--
   Or, in this case label for the y-axis.
 
   `<!-- data-ylabel="Distance in meters" -->`
