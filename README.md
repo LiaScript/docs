@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     05/03/2024
-version:  26.0.8
+version:  26.0.9
 language: en
 narrator: UK English Female
 
@@ -9976,6 +9976,7 @@ alert("Hello Mom")
       {{2}}
 <section>
 
+    --{{2}}--
 Such hidden scripts can be useful to trigger only an execution or to perform a certain action for manipulating the DOM or simply some maintenance work.
 
 ``` html
