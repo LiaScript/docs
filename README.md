@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     05/03/2024
-version:  26.0.4
+version:  26.0.5
 language: en
 narrator: UK English Female
 
@@ -8143,6 +8143,11 @@ script:   https://cdn.rawgit.com/davidedc/Algebrite/master/dist/algebrite.bundle
 If you want to make use of some external functionality, you can also load additional JavaScript modules into LiaScript.
 Simply add the `script` command to the main definition of your LiaScript header. For more information on this, take a look at section [`script`](#script) in the [Macros](#macros) chapter.
 
+<!--
+data-marker="
+3 0 3 200 debug;
+3 8 3 93 rgba(55,255,100,0.5) text;"
+-->
 ``` markdown
 <!--
 author: ...
@@ -8160,6 +8165,11 @@ If this library has been loaded, it can be used also directly within the script-
 In this case we made use of the Computer-Algebra-System ([Algebrit](http://algebrite.org)), which is used to solve some algebraic equations.
 
                                  {{1}}
+<!--
+data-marker="
+7 0 7 200 debug;
+7 9 7 22 rgba(55,255,100,0.5) text;"
+-->
 ```` markdown
 ``` matlab
 f=sin(t)^4-2*cos(t/2)^3*sin(t)
