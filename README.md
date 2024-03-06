@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     05/03/2024
-version:  26.0.3
+version:  26.0.4
 language: en
 narrator: UK English Female
 
@@ -7171,6 +7171,7 @@ If you need shadows or different kinds of shadings, you can use some of the foll
 
 #### 5. Emojis
 
+    --{{0}}--
 Emojis are defined in the Unicode standard as well, which is why you can use any kind of symbols that you use in your day-to-day chat messages.
 
 
@@ -7212,6 +7213,7 @@ Bob            Alice
 You can either install a plugin to your editor for emojis or you can search the net for emojis.
 Check out the following links or see section [Unicode Symbols](#Unicode-Symbols) in the [Appendix](#Appendix).
 
+      {{1}}
 <section>
 
 * __Sites__
@@ -7286,6 +7288,8 @@ style="
 
 ### Adding Titles
 
+
+    --{{0}}--
 As shown in section [Code - Projects 💫](#Projects-💫), you can add a title after the language indicator.
 This "title" can be a one-liner of Markdown-LiaScript and is displayed directly below the ASCII art image, similar to how it is done for images.
 
