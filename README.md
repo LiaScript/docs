@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     05/03/2024
-version:  26.0.11
+version:  26.0.12
 language: en
 narrator: UK English Female
 
@@ -10037,7 +10037,7 @@ If you wish to exchange information between scripts using variables, you must de
 If you were to reverse the order of the two scripts, dividing `a` by two would still result in the same error message, as scripts are executed sequentially and `a` must be defined first.
 Only after revisiting this slide, when both scripts are executed again, will the result of both scripts be correct.
 However, LiaScript sends all scripts to JavaScript in order, and while some scripts may execute faster than others, this can lead to race conditions.
-Therefore, there is a better approach to updating scripts, as described in section [todo](#todo).
+Therefore, there is a better approach to updating scripts, as described in section [Connecting Scripts with output](#Connecting-Scripts-with-output).
 
 </section>
 
@@ -11215,6 +11215,7 @@ Note that formatting is only performed on the displayed representation and does 
 
 #### `default` & Execution-Graphs
 
+    --{{0}}--
 If you connect scripts, ideally the connections should form a directed graph without cycles. However, if desired, you can create cycles that continue until the results no longer change.
 
 ``` html
@@ -11444,78 +11445,83 @@ let option = {
 
 ### Further settings
 
-`value`
-=======
+__`value`__
 
+    --{{0}}--
 Set the default input value, if it is a number or a string or something else,
 depends on the usage of the `@input` macro within the script.
 
----
 
-`update-on-change`
-==================
+      {{1}}
+__`update-on-change`__
 
+    --{{1}}--
 As mentioned earlier, every input-field has a specific update handling, `range`,
 `number`, `text`, `radio`, `checkbox`, trigger the execution of the script on
 every change, while the others are triggered only after the user hits enter or
 if the input field loses the focus. However, by using the parameter
 `update-on-change` you can change this behavior. It can be switched off or on by passing true or false, if you only pass `update-on-change` true is used as the default:
 
+      {{1}}
 * `update-on-change`
 * `update-on-change="true"`
 * `update-on-change="false"`
 
----
 
-`input-active`
-==============
+      {{2}}
+__`input-active`__
 
+    --{{2}}--
 Inputs are only visible, if the user clicks on the script representation. If you
 pass the parameter `input-active`, then the input will be visible on the first
 appearance, but it will be closed if the element loses the focus again.
 
----
 
-`input-always-active`
-=====================
+      {{3}}
+__`input-always-active`__
 
+    --{{3}}--
 Using this parameter, it is possible to switch on the input-field for ever, it
 will not be closed if the focus is lost.
 
----
 
-`run-once`
-==========
+      {{4}}
+__`run-once`__
 
+    --{{4}}--
 A script will be executed multiple times, if the site is rendered, or if it is
 associated to a certain effect number. If the calculation should be executed
 only once use this parameter. The result is preserved and displayed on every
 appearance.
 
----
 
-`modify`
-========
+      {{5}}
+__`modify`__
 
+    --{{5}}--
 By double-clicking onto a script, you get into edit-mode. The code is displayed
 to the user and can be edited and it is executed again if the code-input field
 loses the context. By setting `modify="false"` to false, this editing function
 is switched of furthermore there is **no gray background** displayed.
 
+      {{5}}
 This is a script: <script modify="false">12</script>
 
 
 
 ### Internationalization API
 
+    --{{0}}--
 By using the `format` parameter you can set a specific kind of visual
 formatting. This will be visible to the user, but if you connect different
 script with input/output then the original result of an execution will be passed
 to the subsequent scripts. The links below show contain all information to the associated formatting all params are directly passed to the formatting function.
 
+    --{{1}}--
 Use `locale` to change the type of language/localization. If you do not pass
 such a value, then the default document language setting is used as default.
 
+      {{1}}
 > There is one difference by using the `style` parameter. `style` is used format
 > the output with inline CSS. But some formattings also contain a `style`
 > parameter. In order to don't mess up with styles you have to use `localeStyle`
