@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     05/03/2024
-version:  26.0.14
+version:  27.0.0
 language: en
 narrator: UK English Female
 
@@ -2616,6 +2616,7 @@ Documentation: [KaTeX-Macros](https://katex.org/docs/supported.html#macros)
 
 #### Global
 
+    --{{2}}--
 However, if you want to define a custom set of macros and reuse them within all of your formulas, you will have to define them within the main comment of your document.
 Use the `formula` macro, whereby the first word defines the macro name (the starting backslash is optional) and the remainder is used as the body.
 All of these macros are then passed to every formula while rendering, see therefor the comments at:
