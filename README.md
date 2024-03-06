@@ -6845,7 +6845,7 @@ __borders:__
 
 * straight: `-`, `_`, `|`
 * rounded: `(`, `)`
-* diagonal: `\`, `/`
+* diagonal: \, /
 
       {{1}}
 <section>
