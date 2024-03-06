@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     05/03/2024
-version:  26.0.6
+version:  26.0.8
 language: en
 narrator: UK English Female
 
@@ -1809,7 +1809,6 @@ Do some internal calculation <script> 99 * 88  </script>, the next script
 contains an error <script> 99 * a </script>.
 
                                   {{1}}
-<div class="ct-chart ct-golden-section" id="chart"></div>
 <script>
     // Initialize a Line chart in the container with the ID chart
     new Chartist.Line('#chart', {
@@ -1819,13 +1818,13 @@ contains an error <script> 99 * a </script>.
 
     console.debug("loaded #chart") // or undefined
 </script>
+<div class="ct-chart ct-golden-section" id="chart"></div>
 ```
 
 Do some internal calculation <script> 99 * 88  </script>, the next script
 contains an error: <script> 99 * a </script>.
 
                                 {{2-3}}
-<div class="ct-chart ct-golden-section" id="chart1"></div>
 <script>
 // Initialize a Line chart in the container with the ID chart1
 new Chartist.Line('#chart1', {
@@ -1835,10 +1834,10 @@ new Chartist.Line('#chart1', {
 
 console.debug("loaded #chart1")
 </script>
+<div class="ct-chart ct-golden-section" id="chart1"></div>
 
 
                                 {{3}}
-<div class="ct-chart ct-golden-section" id="chart2"></div>
 <script>
 // Initialize a Line chart in the container with the ID chart2
 new Chartist.Line('#chart2', {
@@ -1848,6 +1847,7 @@ new Chartist.Line('#chart2', {
 
 console.debug("loaded #chart2")
 </script>
+<div class="ct-chart ct-golden-section" id="chart2"></div>
 
 
     --{{4}}--
@@ -1880,6 +1880,7 @@ const daysSinceInvasion = Math.floor(differenceInDays);
 </script>.
 ```
 
+      {{4}}
 Russia started its invasion of Ukraine
 <script format="relativetime" unit="day" run-once>
 // Define the start date of the invasion
@@ -9868,7 +9869,7 @@ It should be added to the last code block in a project's head section to designa
 
 ## JavaScript or JS-Components
 
-      {{|>}}
+      {{|> UK English Male}}
 > As of the time of writing, I strongly believe that the script tag, introduced by Netscape in 1995 (cf. [Wikipedia](https://en.wikipedia.org/wiki/JavaScript#History)), is often misused.
 > It remains somewhat outside of HTML, but if it could be embedded as part of the DOM, we wouldn't have to search the DOM for IDs and attempt to manipulate the content of a specific node.
 > Much of the work we currently put into the development of Web Components could be achieved more easily by using the script tag in a slightly different manner.
