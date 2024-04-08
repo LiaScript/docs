@@ -157,7 +157,7 @@ LiaScript. Additionally you can use the LiveEditor, an entirely browser based ap
    Detailed installation instructions can be found [here](https://aizac.herokuapp.com/install-atom-with-liascript/).
 
 2. [Visual-Studio-Code](https://code.visualstudio.com/Download): This is
-   Microsofts new flagship with various plugins and extensions.
+   Microsoft's free popular editor with various plugins and extensions.
 
    1. [liascript-preview](https://marketplace.visualstudio.com/items?itemName=LiaScript.liascript-preview):
       Is a tiny previewer that, if it was toggled ( `Alt+L` ), updates the view
