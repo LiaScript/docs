@@ -6675,20 +6675,34 @@ Simply set `data-type="none"` to prevent any kind of visualization for the corre
   `<!-- data-ylabel="Distance in meters" -->`
 
         {{6}}
-* __`data-src`__:
+* __`data-xlim`__ & __`data-ylim`__:
 
       --{{6}}--
+  The limits are automatically determined, but you can also overwrite them with the following command.
+
+  `<!-- data-xlim="0,12.3" -->`
+
+      --{{6}}--
+  The first value is used as the minimum, the second as the maximum value.
+  If you skip a number, then the automatically determined value is used.
+
+  `<!-- data-ylim=",12" -->`
+
+        {{7}}
+* __`data-src`__:
+
+      --{{7}}--
   Currently, this attribute is used to refer to your GeoJSON data if you use the map representation.
   However, this functionality might change in the future to allow for the loading and visualization of data directly, such as CSV files.
   See sections [Fun with Tables - Map](#map)
 
   `<!-- data-type="map" data-src="https://..." -->`
 
-      --{{7}}--
+      --{{8}}--
   Be careful when utilizing GeoJSON files from external websites, as this may result in CORS (Cross-Origin Resource Sharing) problems.
   It's better to store these files in your own projects and refer to them directly to avoid such issues.
 
-        {{7}}
+        {{8}}
   https://code.highcharts.com/mapdata/
 
 
