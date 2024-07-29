@@ -11602,7 +11602,13 @@ is switched of furthermore there is **no gray background** displayed.
       {{5}}
 This is a script: <script modify="false">12</script>
 
+      {{6}}
+__`worker`__
 
+    --{{6}}--
+If your script involves heavy computation that might impact the overall performance of the course, set this attribute to true.
+This will ensure the script is executed in a worker thread.
+__Note that when using a worker thread, modifying the DOM is not possible.__
 
 ### Internationalization API
 
