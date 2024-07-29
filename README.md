@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     05/03/2024
-version:  27.0.0
+date:     29/07/2024
+version:  28.0.0
 language: en
 narrator: UK English Female
 
@@ -5742,6 +5742,82 @@ I will not be translated!
                                --{{4}}--
 You can attach these language attributes to any kind of Markdown block or inline element to control the translation.
 Note that code environments and foreign language comments will be tagged automatically with no-translate.
+
+
+### Comments: Multimedia
+
+    {{|>}}
+> At the recent [eLearning Africa Conference 2024 in Kigali, Rwanda](https://liascript.github.io/blog/elearning-africa-2024/), we recognized that relying solely on browser-based text-to-speech output is insufficient for supporting all spoken languages and dialects.
+> To enhance personalization and diversify language and content, we have introduced two highly requested types of comments, which complement the existing format. Since LiaScript version 0.15.7, you can now add audio or video recordings to your comments.
+
+#### Audio
+
+    --{{0}}--
+To play an audio file during your animation step,
+simply attach the multimedia link at the end of
+your comment.
+?[⏯](recording/audio_1.mp3)
+
+``` markdown
+    --{{0}}--
+To play an audio file during your animation step,
+simply attach the multimedia link at the end of
+your comment.
+?[⏯](recording/audio_1.mp3)
+```
+
+    --{{1}}--
+?[⏯](recording/audio_2.mp3)
+Or, add it to the front.
+
+      {{1}}
+``` markdown
+    --{{1}}--
+?[⏯](recording/audio_2.mp3)
+Or, add it to the front.
+
+    --{{1}}--
+?[⏯](recording/audio_3.mp3)
+Of course, you can also combine multiple comments.
+The playback will occur in the order they appear
+in the document.
+```
+
+    --{{1}}--
+?[⏯](recording/audio_3.mp3)
+Of course, you can also combine multiple comments.
+The playback will occur in the order they appear
+in the document.
+
+
+#### Video
+
+    --{{0}}--
+!?[⏯](recording/video1.webm)
+We had a lengthy discussion and brainstorming session on where to add video content so it remains visible without affecting the user experience.
+Our solution: let the user decide.
+The user can choose where to place the overlaid video and adjust its size based on their screen size, orientation, and resolution.
+
+    --{{1}}--
+!?[⏯](recording/video2.webm)
+To add short video content, simply include a video link at the beginning or the end of your comment.
+
+      {{1}}
+``` markdown
+    --{{1}}--
+!?[⏯](recording/video2.webm)
+To add short video content, simply include a video
+link at the beginning or the end of your comment.
+
+    --{{1}}--
+As before, you can combine multiple comments, which
+will be replayed in sequence.
+!?[⏯](recording/video3.webm)
+```
+
+    --{{1}}--
+As before, you can combine multiple comments, which will be replayed in sequence.
+!?[⏯](recording/video3.webm)
 
 ### Playback
 
