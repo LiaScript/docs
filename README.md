@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     29/07/2024
-version:  28.0.0
+date:     05/08/2024
+version:  28.0.1
 language: en
 narrator: UK English Female
 
@@ -11672,13 +11672,13 @@ This API allows anyone to create new collaborative LiaScript extensions by combi
 LIA.classroom.connected
 
 // creates a callback on a connection
-LIA.classroom.on("connected", () => {
-    console.log("connected")
+LIA.classroom.on("connect", () => {
+    console.log("you are now connected")
 })
 
 // callback for the disconnection
-LIA.classroom.on("disconnected", () => {
-    console.log("disconnected")
+LIA.classroom.on("disconnect", () => {
+    console.log("you are now disconnected")
 })
 
 // publish some data on a topic
