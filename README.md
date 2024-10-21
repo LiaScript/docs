@@ -2,14 +2,14 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     05/08/2024
-version:  28.0.2
+date:     21/10/2024
+version:  29.0.0
 language: en
 narrator: UK English Female
 
 repository: https://github.com/LiaScript/docs
 
-logo:     https://liascript.github.io/img/bg-showcase-1.jpg
+logo:     img/logo.png
 
 comment:  This document shall provide an entire compendium and course on the
           development of Open-courSes with [LiaScript](https://LiaScript.github.io).
@@ -649,6 +649,66 @@ As you can see from the examples, you can combine and nest all elements freely.
 * `**~bold strike~ ~~bold underline~~**` -> **~bold strike~ ~~bold underline~~**<!-- class="notranslate"-->
 * `*~italic strike~ ~~italic underline~~*` -> *~italic strike~ ~~italic underline~~*<!-- class="notranslate"-->
 
+#### Typography
+
+                          --{{0}}--
+It is now possible within a LiaScript Markdown to apply sequences of dashes for typography. A sequence of dashes is now translated into:
+
+1. single dash `-` --> Hyphen or minus sign -
+2. double dash `--` --> En dash --
+3. triple dash `---` --> Em dash ---
+
+                          --{{1}}--
+An Ellipsis is indicated by a sequence of three dots:
+
+                            {{1}}
+`...` will be translated to the Unicode symbol ...
+
+##### Quotes
+
+                          --{{0}}--
+Additionally single and double quotes are translated into their typographical counterparts, based on the defined [`language`](#language) in the header of the course.
+German, French, English or Welsh will be translated into different Unicode symbols.
+
+<!-- style="font-size: 20px" -->
+`"That's a 'magic' shoe."` --> “That’s a ‘magic’ shoe.”
+
+Applied quote translation as defined here: https://en.wikipedia.org/wiki/Quotation_mark
+
+                          --{{1}}--
+If you want o use the original characters, you will have to escape them, as shown also in the [next section](#escape-characters):
+
+      {{1}}
+`\"` --> \"\
+`\'` --> \'
+
+                            {{2}}
+<section>
+
+                          --{{2}}--
+As an alternative you can still use the quote tag `<q>` for double quotations.
+This will still use the language definition for that document, but you can also overwrite this per markdown block or quote:
+
+``` markdown
+<q>That's a 'magic' shoe.</q>\
+<q lang="de">Das ist ein magischer Schuh.</q>
+
+---
+
+<!-- lang="fr" -->
+Et voici un autre exemple: <q>C'est une chaussure magique.</q>
+```
+
+<q>That's a 'magic' shoe.</q>\
+<q lang="de">Das ist ein magischer Schuh.</q>
+
+---
+
+<!-- lang="fr" -->
+Et voici un autre exemple: <q>C'est une chaussure magique.</q>
+
+</section>
+
 #### Escape Characters
 
                           --{{0}}--
@@ -662,10 +722,10 @@ escaping only to prevent misunderstandings between you and the interpreter.
 
 
 ``` markdown
-\*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@, \\, \<, \>
+\*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@, \\, \<, \>, \", \'
 ```
 
-**Result:** \*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@, \\, \<, \>
+**Result:** \*, \~, \_, \#, \{, \}, \[, \], \|, \`, \$, \@, \\, \<, \>, \", \'
 
 ### Symbols & Unicode 💫
 
@@ -6632,6 +6692,9 @@ Simply set `data-type="none"` to prevent any kind of visualization for the corre
   * `data-type="sankey"`
   * `data-type="scatter|scatterplot"`
 
+  > __Note:__ The `none` datasets will turn of the first fixed column.
+  > For the other cases the table is treated as a dataset and the header and the first column will be fixed while scrolling.
+
         {{1}}
 * __`data-show`__
 
@@ -6705,6 +6768,23 @@ Simply set `data-type="none"` to prevent any kind of visualization for the corre
         {{8}}
   https://code.highcharts.com/mapdata/
 
+        {{9}}
+* __`data-sortable`__:
+
+  By default a table is sortable by each column.
+  This behavior can be turned off or on by using the `data-sortable` parameter.
+  Use it as a global parameter per table by placing it into the main comment or turn it on or of within every column.
+  The local column parameter will overwrite the global one.
+
+  ```markdown
+  <!-- data-sortable="false" -->
+  | Header 1 | <!-- data-sortable="true" --> Header 2 |
+  | :------- | :------------------------------------- |
+  | Item 1   | Item 2                                 |
+  | Item 5   | Item 6                                 |
+  | Item 9   | Item 10                                |
+  | Item 13  | Item 14                                |
+  ```
 
 ### Custom Diagrams with ECharts
 
