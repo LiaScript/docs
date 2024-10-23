@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     21/10/2024
-version:  29.0.0
+date:     23/10/2024
+version:  29.0.1
 language: en
 narrator: UK English Female
 
@@ -154,7 +154,7 @@ LiaScript. Additionally you can use the LiveEditor, an entirely browser based ap
       If you start typing `lia` in your Markdown document you switch on a fuzzy
       search, that contains a lot of LiaScript help, examples, and snippets.
 
-   Detailed installation instructions can be found [here](https://aizac.herokuapp.com/install-atom-with-liascript/).
+   Detailed installation instructions can be found [here](https://liascript.github.io/blog/install-atom-with-liascript/).
 
 2. [Visual-Studio-Code](https://code.visualstudio.com/Download): This is
    Microsoft's free popular editor with various plugins and extensions.
@@ -166,7 +166,7 @@ LiaScript. Additionally you can use the LiveEditor, an entirely browser based ap
       If you start typing `lia` in your Markdown document you switch on a fuzzy
       search, that contains a lot of LiaScript help, examples, and snippets.
 
-   Detailed installation instructions can be found [here](https://aizac.herokuapp.com/install-visual-studio-code-with-liascript/).
+   Detailed installation instructions can be found [here](https://liascript.github.io/blog/install-visual-studio-code-with-liascript/).
 
 3. [Visual-Studio-Web](https://github.dev):
 
@@ -285,7 +285,7 @@ via the tag `preview-lia`.
 ```
 
 > For more information visit the blog entry:
-> [Markdown just got a new preview tag](https://aizac.herokuapp.com/markdown-just-got-a-new-preview-tag)
+> [Markdown just got a new preview tag](https://liascript.github.io/blog/markdown-just-got-a-new-preview-tag)
 >
 > _However, you can also use this to refer to your personal GitHub projects._
 
@@ -810,7 +810,7 @@ You can use this technique also to create previews for other courses on your
 personal website or for other GitHub projects, as it was described in section
 [Projects](#projects). For more information follow the link:
 
-{{1}} https://aizac.herokuapp.com/markdown-just-got-a-new-preview-tag/
+{{1}} https://liascript.github.io/blog/markdown-just-got-a-new-preview-tag/
 
 
 ##### QR-Codes 💫
@@ -832,10 +832,10 @@ allowed within the link title. In case of an image or media link, the title will
 be used as a subtitle and displayed accordingly.
 
                             {{1}}
-* Syntax: `[qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog at heroku](https://aizac.herokuapp.com)__")`
+* Syntax: `[qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog](https://liascript.github.io/blog/)__")`
 * Example:
 
-  [qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog at heroku](https://aizac.herokuapp.com)__")
+  [qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog](https://liascript.github.io/blog/)__")
 
 
 ##### eMail & Telephone 💫
@@ -7396,7 +7396,7 @@ Check out the following links or see section [Unicode Symbols](#Unicode-Symbols)
 * __Plugins__
 
   * VSCode - Ultimate Emoji: https://marketplace.visualstudio.com/items?itemName=rohit-chouhan.ultimate-emoji
-  * Atom - autocomplete-emojis: https://aizac.herokuapp.com/setting-up-atom/
+  * Atom - autocomplete-emojis: https://liascript.github.io/blog/setting-up-atom/
 
   * LiaScript-LiveEditor: start typing a colon <kbd>:</kbd> to open the emoji search
 
