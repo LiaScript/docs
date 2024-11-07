@@ -1,0 +1,46 @@
+name: Generate and Release PDF
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run_exporter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up dependencies
+        run: |
+          sudo npm install -g @liascript/exporter
+          cd /usr/local/lib/node_modules/@liascript/exporter/node_modules/puppeteer
+          node install.mjs
+
+      - name: Check out current repository
+        uses: actions/checkout@v4
+
+      - name: Generate PDF
+        run: |
+          liaex -i README.md --format pdf --output Document --pdf-timeout 300000
+          ls -all Document.pdf
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: 'latest'
+          release_name: 'Latest PDF Release'
+          draft: false
+          prerelease: false
+
+      - name: Upload PDF as release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./Document.pdf
+          asset_name: Document.pdf
+          asset_content_type: application/pdf
