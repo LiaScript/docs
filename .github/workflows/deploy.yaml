@@ -1,0 +1,57 @@
+name: Generate and Release PDF
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run_exporter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up dependencies
+        run: |
+          npm install -g @liascript/exporter
+
+      - name: Check out current repository
+        uses: actions/checkout@v4
+
+      - name: Generate PDF
+        run: |
+          liaex -i README.md --format pdf --output Documentation --pdf-timeout 500000
+
+      - name: Delete Previous Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          latest_release_id=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            https://api.github.com/repos/${{ github.repository }}/releases/tags/latest | jq -r .id)
+          if [ "$latest_release_id" != "null" ]; then
+            echo "Deleting previous release with ID: $latest_release_id"
+            curl -X DELETE -H "Authorization: token $GITHUB_TOKEN" \
+              https://api.github.com/repos/${{ github.repository }}/releases/$latest_release_id
+          else
+            echo "No previous release found."
+          fi
+
+      - name: Create New Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: 'latest'
+          release_name: 'Latest LiaScript Documentation'
+          draft: false
+          prerelease: false
+
+      - name: Upload PDF as release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./Documentation.pdf
+          asset_name: Documentation.pdf
+          asset_content_type: application/pdf
