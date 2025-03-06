@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     23/10/2024
-version:  29.0.1
+date:     06/03/2025
+version:  30.0.0
 language: en
 narrator: UK English Female
 
@@ -2747,6 +2747,30 @@ Passing macros as rendering options and defining local ones currently result in 
 `$ \def\foo{x^2} \bar{\foo} + \bar{\foo} $` $ --> \def\foo{x^2} \bar{\foo} + \bar{\foo} $
 
 </section>
+
+
+### Chemical Formulas
+
+    --{{0}}--
+LiaScript now supports rendering chemical formulas using KaTeX!
+With this update, you can include chemical equations in your slides using the `mhchem` macros.
+
+    --{{1}}--
+To display chemical equations, simply wrap your formula using the `\ce{...}` command. For example:
+
+      {{1}}
+``` latex
+$\ce{CO2 + C -> 2 CO}$
+```
+
+    --{{2}}--
+This will render as:
+
+      {{2}}
+$\ce{CO2 + C -> 2 CO}$
+
+      {{3}}
+> For further details on the syntax and additional features provided by `mhchem`, please refer to the [official mhchem documentation](https://mhchem.github.io/MathJax-mhchem/).
 
 
 ## Footnotes
@@ -6785,6 +6809,31 @@ Simply set `data-type="none"` to prevent any kind of visualization for the corre
   | Item 9   | Item 10                                |
   | Item 13  | Item 14                                |
   ```
+
+        {{10}}
+* __`data-orientation`__:
+
+  Depending on the default setting for a diagram it is possible to switch between `vertical` and `horizontal` orientation.
+
+  ```markdown
+  <!-- data-orientation="horizontal" -->
+  | Animal          | weight in kg | Lifespan years | Mitogen |
+  | --------------- | ------------:| --------------:| -------:|
+  | Mouse           |        0.028 |              2 |      95 |
+  | Flying squirrel |        0.085 |             15 |      50 |
+  | Brown bat       |        0.020 |             30 |      10 |
+  | Sheep           |           90 |             12 |      95 |
+  | Human           |           68 |             70 |      10 |
+  ```
+
+  <!-- data-orientation="horizontal" -->
+  | Animal          | weight in kg | Lifespan years | Mitogen |
+  | --------------- | ------------:| --------------:| -------:|
+  | Mouse           |        0.028 |              2 |      95 |
+  | Flying squirrel |        0.085 |             15 |      50 |
+  | Brown bat       |        0.020 |             30 |      10 |
+  | Sheep           |           90 |             12 |      95 |
+  | Human           |           68 |             70 |      10 |
 
 ### Custom Diagrams with ECharts
 
@@ -11682,6 +11731,39 @@ is switched of furthermore there is **no gray background** displayed.
       {{5}}
 This is a script: <script modify="false">12</script>
 
+     --{{6}}--
+Additionally you can use the `modify` parameter reveal only a certain part of your code.
+By double-clicking the user can still modify this part, but the rest of the code is hidden.
+This feat is especially usefull when executing another programming language from a string.
+
+      {{5}}
+``` html
+<script modify="// pattern\n" type="text/python">
+console.log("some hidden functionality")
+var a = 12
+
+// pattern
+console.log("not hidden functionality", a)
+// pattern
+
+console.warn("hidden again")
+a
+</script>
+```
+
+      {{5}}
+<script modify="// pattern\n" type="text/python">
+console.log("some hidden functionality")
+var a = 12
+
+// pattern
+console.log("not hidden functionality", a)
+// pattern
+
+console.warn("hidden again")
+a
+</script>
+
       {{6}}
 __`worker`__
 
@@ -11689,6 +11771,15 @@ __`worker`__
 If your script involves heavy computation that might impact the overall performance of the course, set this attribute to true.
 This will ensure the script is executed in a worker thread.
 __Note that when using a worker thread, modifying the DOM is not possible.__
+
+      {{7}}
+__`type`__
+
+    --{{7}}--
+This parameter is used to define the type of the script, which is used to determine the syntax highlighting and the execution environment.
+The default value is `text/javascript`, but you can also use `text/python` or `text/ruby` to execute code in different languages.
+Thereby `text/` is optional and can be omitted.
+This parameter makes only sense in combination with partial `modify`.
 
 ### Internationalization API
 
@@ -11797,7 +11888,7 @@ if (LIA.classroom.connected){
     LIA.classroom.publish("wave", "@0")
 }
 "@0"
-</script>
+</>
 @end
 -->
 
