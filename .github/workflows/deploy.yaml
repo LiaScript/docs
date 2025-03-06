@@ -19,7 +19,7 @@ jobs:
 
       - name: Generate PDF
         run: |
-          liaex -i README.md --format pdf --output Documentation --pdf-timeout 500000
+          liaex -i README.md --format pdf --output Documentation --pdf-timeout 1500000
 
       - name: Delete Previous Release
         env:
