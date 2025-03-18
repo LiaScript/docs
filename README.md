@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     06/03/2025
-version:  30.0.0
+date:     18/03/2025
+version:  30.0.1
 language: en
 narrator: UK English Female
 
@@ -1041,9 +1041,9 @@ embed the website via an `iframe`.
 
 Examples:
 
-* [SketchFab](https://sketchfab.com): `??[ear model](https://sketchfab.com/3d-models/ear-anatomy-468e2039bde34a3fabb9e90bff9cd56b)`
+* [SketchFab](https://sketchfab.com): `??[ear model](https://sketchfab.com/3d-models/ear-cross-section-4f5438fc9337454587ec4a2c30c8c42f)`
 
-  ??[ear model](https://sketchfab.com/3d-models/ear-anatomy-468e2039bde34a3fabb9e90bff9cd56b)
+  ??[ear model](https://sketchfab.com/3d-models/ear-cross-section-4f5438fc9337454587ec4a2c30c8c42f)
 
 * [StoryMaps](https://storymaps.arcgis.com): `??[presentation](https://storymaps.arcgis.com/stories/583f8b48a857442cb8d27411c93a9664)`
 
