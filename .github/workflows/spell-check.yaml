@@ -72,3 +72,15 @@ jobs:
 
       - name: Run proselint on Markdown files
         run: npx proselint *.md
+
+  vale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install vale
+        run: snap install vale
+
+      - name: Run vale on Markdown files
+        run: vale *.md
