@@ -1,0 +1,24 @@
+name: Spell Check
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  markdown-spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install markdown-spellcheck
+        run: npm install -g markdown-spellcheck
+
+      - name: Run markdown-spellcheck on Markdown files
+        run: npx markdown-spellcheck --en-US --report "**/*.md"
