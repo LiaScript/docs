@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     06/03/2025
-version:  30.0.0
+version:  30.0.1
 language: en
 narrator: UK English Female
 
@@ -123,7 +123,7 @@ simple text-editor and a web-browser.
 
                            --{{0}}--
 As already mentioned all you need to work with LiaScript is an text-editor, but
-it can be usefull to apply one of the following tools. At least we apply them to
+it can be useful to apply one of the following tools. At least we apply them to
 see the result of a change within the course document immediately. You will see,
 that the development of online-courses will speed up, especially if there is no
 need for memorizing complex point and click sequences.
@@ -139,7 +139,7 @@ There are currently 2 plugins for the [Atom Editor](https://atom.io) and
 are intended to ease and simplify the development of online courses with
 LiaScript. Additionally you can use the LiveEditor, an entirely browser based application.
 
-![Atom with liascript-plugins](https://raw.githubusercontent.com/andre-dietrich/liascript-preview/master/preview.gif "Screencast of the Atom-editor with the liascript-preview and liascript-snippts installed.")
+![Atom with liascript-plugins](https://raw.githubusercontent.com/andre-dietrich/liascript-preview/master/preview.gif "Screencast of the Atom-editor with the liascript-preview and liascript-snippets installed.")
 
 0. [LiveEditor](https://liascript.github.io/LiveEditor): Fully functional online editor, that looks like CodiMD, but is entirely browser based. With support for uploading images and videos and collaborative editing.
 
@@ -170,7 +170,7 @@ LiaScript. Additionally you can use the LiveEditor, an entirely browser based ap
 
 3. [Visual-Studio-Web](https://github.dev):
 
-   !?[GitHub Webbased Editor](https://www.youtube.com/watch?v=-VBolTxLSeU)
+   !?[GitHub web-based Editor](https://www.youtube.com/watch?v=-VBolTxLSeU)
 
    Using the GitHub builtin Web editor, you can install the following extension to preview your course while editing:
 
@@ -189,7 +189,7 @@ your browser on every save, but this can also be used to monitor multiple
 projects. And you can also use it for testing purposes, as if you would deploy
 your projects.
 
-![liascript-devserver](https://raw.githubusercontent.com/liascript/liascript-devserver/main/pics/navigation.gif "Screencast of the liascript-devserver while navigating through a folder-structure.")
+![liascript-development-server](https://raw.githubusercontent.com/liascript/liascript-devserver/main/pics/navigation.gif "Screencast of the liascript-development-server while navigating through a folder-structure.")
 
 Get the project from:
 
@@ -208,7 +208,7 @@ Get the project from:
 If you prefer to work with multiple authors simultaneously, then you should give
 [CodiLIA](https://github.com/liascript/codilia) a try. It is a fork of the
 collaborative editor
-[CodiMD/Hedgehoc](https://github.com/hedgedoc/hedgedoc/tree/master), but instead
+[CodiMD/HedgeDoc](https://github.com/hedgedoc/hedgedoc/tree/master), but instead
 of a Markdown preview, you will have a LiaScript preview, and you can
 immediately publish your courses.
 
@@ -344,7 +344,7 @@ the name of the specific slide as well.
 
                            --{{3}}--
 You can also add additional tags to your project to make it discoverable. We
-currently use three distict categories: `liascript` to mark it to be related to
+currently use three distinct categories: `liascript` to mark it to be related to
 the projects, while the others `liascript-course` and `liascript-template` are
 used to distinguish the projects into courses or extension, which can be added
 to courses.
@@ -354,8 +354,8 @@ The same way you can also refer to courses that you have put into your
 [DropBox](https://en.wikipedia.org/wiki/Dropbox_%28service%29),
 [ownCloud](https://en.wikipedia.org/wiki/OwnCloud),
 [NextCloud](https://en.wikipedia.org/wiki/Nextcloud), or if you have access to
-some old-fashioned webspace then you can also store all of your files there. You
-only have to make them publically available and to refer to the raw or in other
+some old-fashioned web-space then you can also store all of your files there. You
+only have to make them publicly available and to refer to the raw or in other
 words, the text document. All other sources are loaded relative to this URL.
 
 0. Create a free account at https://github.com
@@ -537,7 +537,7 @@ However, there might be cases where you want to have multiple different sections
 
                           --{{1}}--
 LiaScript will identify these HTML-tags and the content, such that the content within cannot be used as a separator.
-If you use these two semantic tags, your content is grouped in semanic correct way, which improves the readability if screen-readers are used or keyboard navigation is used.
+If you use these two semantic tags, your content is grouped in semantic correct way, which improves the readability if screen-readers are used or keyboard navigation is used.
 
                           --{{2}}--
 When to use which tag might be philosophical question.
@@ -696,7 +696,7 @@ This will still use the language definition for that document, but you can also 
 ---
 
 <!-- lang="fr" -->
-Et voici un autre exemple: <q>C'est une chaussure magique.</q>
+Et voici un autre example: <q>C'est une chaussure magique.</q>
 ```
 
 <q>That's a 'magic' shoe.</q>\
@@ -705,7 +705,7 @@ Et voici un autre exemple: <q>C'est une chaussure magique.</q>
 ---
 
 <!-- lang="fr" -->
-Et voici un autre exemple: <q>C'est une chaussure magique.</q>
+Et voici un autre example: <q>C'est une chaussure magique.</q>
 
 </section>
 
@@ -897,7 +897,7 @@ it is used as a real sub-title for all media links.
 
 * absolute URL: `![Annunciation of ...](https://upload.wiki...jpg)`
 
-  ![Annunciation of the brith of Christ](https://upload.wikimedia.org/wikipedia/commons/5/51/Leonardo_da_Vinci_Annunciation.jpg "{3}{*Annunciation c. 1472–1476*: is thought to be Leonardo's earliest complete work}")
+  ![Annunciation of the birth of Christ](https://upload.wikimedia.org/wikipedia/commons/5/51/Leonardo_da_Vinci_Annunciation.jpg "{3}{*Annunciation c. 1472–1476*: is thought to be Leonardo's earliest complete work}")
 
 
                           --{{4}}--
@@ -1049,9 +1049,9 @@ Examples:
 
   ??[presentation](https://storymaps.arcgis.com/stories/583f8b48a857442cb8d27411c93a9664)
 
-* [CirquitJS](https://www.falstad.com/circuit): `  ??[Simulation: Noninverting Amplifier](https://www.falstad.com/circuit/circuitjs.html?startCircuit=amp-noninvert.txt)`
+* [CircuitJS](https://www.falstad.com/circuit): `  ??[Simulation: Non-inverting Amplifier](https://www.falstad.com/circuit/circuitjs.html?startCircuit=amp-noninvert.txt)`
 
-  ??[Simulation: Noninverting Amplifier](https://www.falstad.com/circuit/circuitjs.html?startCircuit=amp-noninvert.txt)
+  ??[Simulation: Non-inverting Amplifier](https://www.falstad.com/circuit/circuitjs.html?startCircuit=amp-noninvert.txt)
 
 
 ##### Galleries \#2 💫
@@ -1494,7 +1494,7 @@ some even allow sorting.
 
 * Atom: [markdown-table-editor](https://atom.io/packages/markdown-table-editor)
 * VS-Code: [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable)
-* Obsidion: [Advanced Tables](https://github.com/tgrosinger/advanced-tables-obsidian)
+* Obsidian: [Advanced Tables](https://github.com/tgrosinger/advanced-tables-obsidian)
 
 
 ### HTML
@@ -1690,7 +1690,7 @@ checked.
 This way, you could for example also import even more complex HTML-tables,
 pictures with multiple sources for different screen-sizes, and more.
 _With great power comes great responsibility._  Thus, you will also be
-responsibile for your styling.
+responsible for your styling.
 
 
 ### Code
@@ -2005,7 +2005,7 @@ const daysSinceInvasion = Math.floor(differenceInDays);
 Now, imagine that instead of performing simple calculations, a script could access any kind of real-world data and output it as either HTML or LiaScript.
 What's more, picture scripts being directly combined with input fields, and a change in one script triggering the execution of another.
 All of this is possible in LiaScript.
-We have reimagined the usage of scripts as interactive powerhouses, and we will delve into the details in chapter [JavaScript or JS-Components](#JavaScript-or-JS-Components).
+We have re-imagined the usage of scripts as interactive powerhouses, and we will delve into the details in chapter [JavaScript or JS-Components](#JavaScript-or-JS-Components).
 
       {{6}}
 <section>
@@ -2019,7 +2019,7 @@ latitude: <script default="50.92558" input="range" output="latitude">@input</scr
   fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
     .then(response => response.json())
     .then(data => {
-      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
+      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Weather API' -->\n"
 
       table += "| Time | Temperature |\n"
       table += "| ---- | ----------- |\n"
@@ -2046,7 +2046,7 @@ latitude: <script default="50.92558" input="range" output="latitude">@input</scr
   fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
     .then(response => response.json())
     .then(data => {
-      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
+      let table = "<!-- data-show data-type='line' data-title='Open-Meteo weather API' -->\n"
 
       table += "| Time | Temperature |\n"
       table += "| ---- | ----------- |\n"
@@ -2132,7 +2132,7 @@ The following resources will give you a full overview onto the most common HTML
 attributes and onto styling elements. It might be pretty overwhelming at first
 glance, what is possible, but you will see, that with some basic elements you
 can already achieve a lot. And when it comes to HTML and styling, you can find
-examples for pretty much everything on your prefered search-engine, e.g.
+examples for pretty much everything on your preferred search-engine, e.g.
 [ecosia](https://www.ecosia.org).
 
 
@@ -2375,7 +2375,7 @@ image  is in charge of it, which handles click-events differently.
 ![Workplace](https://www.w3schools.com/htmL/workplace.jpg "with attribute are added")<!-- usemap="#workmap" -->
 
 <map name="workmap">
-  <area shape="rect" coords="34,44,270,350" title="Computer" onclick="alert('Cmputer')" >
+  <area shape="rect" coords="34,44,270,350" title="Computer" onclick="alert('Computer')" >
   <area shape="rect" coords="290,172,333,250" title="Phone" href="#12">
   <area shape="circle" coords="337,300,44" title="Cup of coffee" href="#Projects">
 </map>
@@ -2434,7 +2434,7 @@ special point or to play it automatically, when it appears.
 
 
                           --{{1}}--
-If the video is yours, then you can use the following attributes `àutoplay` and
+If the video is yours, then you can use the following attributes `autoplay` and
 `muted` to control the behavior and the additional fragment `#t=4,12` attached
 to the URL of the video, will tell the browser where to start and where to stop
 the video. The stop-parameter should be optional.
@@ -2854,7 +2854,7 @@ at least 2 spaces.
 [^🦶]: Actually you are not forced to use numbers, you can use any kind of
        symbol or even words too.
 
-       _But, please be consise._
+       _But, please be concise._
 ```
 
                           --{{2}}--
@@ -2965,7 +2965,7 @@ which can be uploaded to an LMS, or create self-containing websites.
    for the live-server and editors. If you are a developer and want to extend
    the LiaScript support to store state within your backend, then this is the
    right place to look at. This module provides an abstract class, to which all
-   statefull data is sent. You can simply inherit from this class and implement
+   stateful data is sent. You can simply inherit from this class and implement
    the access to your system.
 
    - Where: https://github.com/LiaScript/LiaScript-Exporter#web
@@ -3763,7 +3763,7 @@ Well, if this is the case, this can be used to contain also input fields, such t
 
 ---
 
-![Self portrain](https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Self-portrait_as_the_Allegory_of_Painting_%28La_Pittura%29_-_Artemisia_Gentileschi.jpg/767px-Self-portrait_as_the_Allegory_of_Painting_%28La_Pittura%29_-_Artemisia_Gentileschi.jpg "Self-Portrait as the Allegory of Painting: [[(1638 - 1639)|1641|1641-1642]]")
+![Self portrait](https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Self-portrait_as_the_Allegory_of_Painting_%28La_Pittura%29_-_Artemisia_Gentileschi.jpg/767px-Self-portrait_as_the_Allegory_of_Painting_%28La_Pittura%29_-_Artemisia_Gentileschi.jpg "Self-Portrait as the Allegory of Painting: [[(1638 - 1639)|1641|1641-1642]]")
 ![Samson and Delilah](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Samson_und_delilah.jpg/1221px-Samson_und_delilah.jpg "Samson and Delilah: [[1628|(1630 - 1638)|1633 - 1637]]")
 ![Virgin with the Child](https://upload.wikimedia.org/wikipedia/commons/e/e0/Artemisia_Gentileschi_-_Madonna_con_Bambino_%281609-1610%29.jpg "Virgin with the Child: [[(1609–1610)|1618|1622-1623]]")
 !?[BBC Documentary](https://www.youtube.com/watch?v=WcSRtdg9FyM "BBC Documentary: Michael Palin's Quest for Artemisia")
@@ -4075,7 +4075,7 @@ Next to randomization you can also use the following configuration options and a
   What happens if you check 3 times the wrong answer?
 
   <!-- data-max-trials="3"-->
-  [( )] Absolutelly nothing?
+  [( )] Absolutely nothing?
   [(X)] The quiz will be solved!
   ```
 
@@ -4084,7 +4084,7 @@ Next to randomization you can also use the following configuration options and a
   What happens if you check 3 times the wrong answer?
 
   <!-- data-max-trials="3"-->
-  [( )] Absolutelly nothing?
+  [( )] Absolutely nothing?
   [(X)] The quiz will be solved!
 
                 {{2}}
@@ -4092,7 +4092,7 @@ Next to randomization you can also use the following configuration options and a
 
               --{{2}}--
   You can either use values such as `on|off`, `true|false`, `disable|enable` to show or hide the solution button.
-  By default it is always `on`, but it is also possible to pass an integer value to reveal this button at a certein user trial.
+  By default it is always `on`, but it is also possible to pass an integer value to reveal this button at a certain user trial.
   In this case `0` is not interpreted as false, but that it should be immediately visible and `1` only after the first wrong trial.
 
   ``` markdown
@@ -5205,7 +5205,7 @@ Please enter some spaces at first:
   } else if (input.length == 0) {
     send.lia("Please enter some text", [], false)
   } else {
-    send.lia("Please provide some meaningfull input", [], false)
+    send.lia("Please provide some meaningful input", [], false)
   }
 </script>
 ```
@@ -5223,7 +5223,7 @@ __Result:__
   } else if (input.length == 0) {
     send.lia("Please enter some text", [], false)
   } else {
-    send.lia("Please provide some meaningfull input", [], false)
+    send.lia("Please provide some meaningful input", [], false)
   }
 </script>
 
@@ -5386,7 +5386,7 @@ __All the roommates have to enter exactly the same name for the classroom.__
 That's it!
 
                                  {{2}}
-**Room name:** `"This has to be a truely unique name 129281715#123"`
+**Room name:** `"This has to be a truly unique name 129281715#123"`
 
 
 #### Future Classrooms
@@ -6573,7 +6573,7 @@ A Parallel representation is employed when there are simply too many categories,
 | Albania                |               7.5 |            1.858 |                 76.6337073170732 |            9.3330694913874 |    66.4522208535245 |  24.2147096550882 |     3143291 |
 | Andorra                |  3.57073718591123 |            1.260 |                              NaN |                        NaN |                 NaN |               NaN |     83810.5 |
 | Austria                |  2.17880778069679 |            1.414 |                 80.4475609756098 |           17.0078802490015 |    67.7942859199021 |  15.1978338310964 |     8336926 |
-| Byelarus               | 11.29603925282670 |            1.420 |                 70.6328780487805 |           13.8161084682917 |    71.3440867491758 |  14.8398047825325 |     9680850 |
+| Belarus               | 11.29603925282670 |            1.420 |                 70.6328780487805 |           13.8161084682917 |    71.3440867491758 |  14.8398047825325 |     9680850 |
 | Belgium                |  1.00416891576425 |            1.820 |                 80.1095609756098 |           17.2425951179457 |    65.9073170003941 |  16.8500878816601 |    10708433 |
 | Bosnia and Herzegovina |  5.41999999999929 |            1.209 |                 75.1063170731708 |           13.7875788575916 |    70.5586044787057 |  15.6538166637027 |     3773100 |
 | Bulgaria               |  6.21712220063873 |            1.478 |                 73.3165853658537 |           17.3328904412356 |    69.2610054713067 |  13.4061040874577 |     7623395 |
@@ -8383,7 +8383,7 @@ script: https://cdn.rawgit.com/davidedc/Algebrite/master/dist/algebrite.bundle-f
 
                                --{{1}}--
 If this library has been loaded, it can be used also directly within the script-tag.
-In this case we made use of the Computer-Algebra-System ([Algebrit](http://algebrite.org)), which is used to solve some algebraic equations.
+In this case we made use of the Computer-Algebra-System ([Algebrite](http://algebrite.org)), which is used to solve some algebraic equations.
 
                                  {{1}}
 <!--
@@ -8515,7 +8515,7 @@ This will show arrows that loop forever or until they receive a `"LIA: stop"` si
 setTimeout(function(){
   console.warn("end of execution")
 
-  send.lia("some other ouput")
+  send.lia("some other output")
 
   send.lia("LIA: stop") // this stops the execution
 }, 3000)
@@ -10429,7 +10429,7 @@ The three additional helper functions are simple shortcuts to inform LiaScript a
 
     --{{0}}--
 But it is not only possible to send back strings; well, technically it is still the case, but the strings might be represented differently.
-LiaScript allows the display of HTML and LiaScript code as well, which is then reparsed and thus allows for the recreation of nested structures as well.
+LiaScript allows the display of HTML and LiaScript code as well, which is then re-parsed and thus allows for the recreation of nested structures as well.
 
 <div style="width:100%;height:0;padding-bottom:71%;position:relative;"><iframe src="https://giphy.com/embed/fwbZnTftCXVocKzfxR" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/PLCnext-plcnext-phoenixcontact-plcnexttechnology-fwbZnTftCXVocKzfxR">via GIPHY</a></p>
 
@@ -10437,7 +10437,7 @@ LiaScript allows the display of HTML and LiaScript code as well, which is then r
 
     --{{0}}--
 This first approach does obviously not work.
-LiaScript does not parse and interprete the return value on demand, instead, everything is interpreted and displayed as a string:
+LiaScript does not parse and interpret the return value on demand, instead, everything is interpreted and displayed as a string:
 
 ``` markdown
 <script>"<marquee>This text will scroll from right to left</marquee>"</script>
@@ -10537,7 +10537,7 @@ send.wait()
     --{{0}}--
 Similar to `HTML`, it is also possible to return LiaScript content as a simple string, which is then parsed and its result gets displayed.
 In this example, for the formula, the backslash has to be escaped instead of escaping the `\f`, which does not make sense.
-The `run-once` option can be set to prevent the script from recalculating and thus reparsing the result again and again. When this option is set, the execution is done only once, and the result is statically stored within LiaScript.
+The `run-once` option can be set to prevent the script from recalculating and thus re-parsing the result again and again. When this option is set, the execution is done only once, and the result is statically stored within LiaScript.
 
 ``` html
 <script run-once>"LIASCRIPT: $$\\frac{1}{x} = 0$$"</script>
@@ -10656,7 +10656,7 @@ latitude: <script default="50.92558" input="range" output="latitude">@input</scr
   fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
     .then(response => response.json())
     .then(data => {
-      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
+      let table = "<!-- data-show data-type='line' data-title='Open-Meteo weather API' -->\n"
 
       table += "| Time | Temperature |\n"
       table += "| ---- | ----------- |\n"
@@ -10683,7 +10683,7 @@ latitude: <script default="50.92558" input="range" output="latitude">@input</scr
   fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
     .then(response => response.json())
     .then(data => {
-      let table = "<!-- data-show data-type='line' data-title='Open-Meteo Wheather API' -->\n"
+      let table = "<!-- data-show data-type='line' data-title='Open-Meteo weather API' -->\n"
 
       table += "| Time | Temperature |\n"
       table += "| ---- | ----------- |\n"
@@ -11734,7 +11734,7 @@ This is a script: <script modify="false">12</script>
      --{{6}}--
 Additionally you can use the `modify` parameter reveal only a certain part of your code.
 By double-clicking the user can still modify this part, but the rest of the code is hidden.
-This feat is especially usefull when executing another programming language from a string.
+This feat is especially useful when executing another programming language from a string.
 
       {{5}}
 ``` html
@@ -11795,7 +11795,7 @@ such a value, then the default document language setting is used as default.
 
       {{1}}
 > There is one difference by using the `style` parameter. `style` is used format
-> the output with inline CSS. But some formattings also contain a `style`
+> the output with inline CSS. But some formatting also contain a `style`
 > parameter. In order to don't mess up with styles you have to use `localeStyle`
 > to set the locale language formatting style ;)
 
