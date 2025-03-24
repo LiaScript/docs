@@ -30,4 +30,4 @@ jobs:
       - name: Install cspell
         run: npm install -g cspell
       - name: Run cspell on markdown files
-        run: npx cspell --locale en-US --show-suggestions --ignoreWords .spelling "**/*.md"
+        run: npx cspell --locale en-US --show-suggestions "**/*.md"
