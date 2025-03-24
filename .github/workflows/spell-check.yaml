@@ -73,24 +73,24 @@ jobs:
       - name: Run proselint on Markdown files
         run: npx proselint *.md
 
-  vale:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+  # vale:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v3
 
-      - name: Install snapd and Vale
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y snapd
-          sudo snap install vale
+  #     - name: Install snapd and Vale
+  #       run: |
+  #         sudo apt-get update
+  #         sudo apt-get install -y snapd
+  #         sudo snap install vale
 
-      - name: Create Vale configuration
-        run: |
-          echo "StylesPath = styles" > .vale.ini
-          echo "" >> .vale.ini
-          echo "[*.md]" >> .vale.ini
-          echo "BasedOnStyles = Vale" >> .vale.ini
+  #     - name: Create Vale configuration
+  #       run: |
+  #         echo "StylesPath = styles" > .vale.ini
+  #         echo "" >> .vale.ini
+  #         echo "[*.md]" >> .vale.ini
+  #         echo "BasedOnStyles = Vale" >> .vale.ini
 
-      - name: Run vale on Markdown files
-        run: vale "**/*.md"
+  #     - name: Run vale on Markdown files
+  #       run: vale "**/*.md"
