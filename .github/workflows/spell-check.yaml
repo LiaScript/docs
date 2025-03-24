@@ -65,10 +65,10 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install proselint on node
-        run: npm install -g proselint
-      - name: Install proselint on python
-        run: pip install proselint
+      - name: Install proselint
+        run: |
+          npm install -g proselint
+          pip install proselint
 
       - name: Run proselint on Markdown files
         run: npx proselint *.md
@@ -79,8 +79,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install vale
-        run: snap install vale
+      - name: Install snapd and Vale
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y snapd
+          sudo snap install vale
+
+      - name: Create Vale configuration
+        run: |
+          echo "StylesPath = styles" > .vale.ini
+          echo "" >> .vale.ini
+          echo "[*.md]" >> .vale.ini
+          echo "BasedOnStyles = Vale" >> .vale.ini
 
       - name: Run vale on Markdown files
-        run: vale *.md
+        run: vale "**/*.md"
