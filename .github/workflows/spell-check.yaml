@@ -22,3 +22,12 @@ jobs:
 
       - name: Run markdown-spellcheck on Markdown files
         run: npx markdown-spellcheck --en-US --report "**/*.md"
+
+  cspell-spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install cspell
+        run: npm install -g cspell
+      - name: Run cspell on markdown files
+        run: npx cspell --locale en-US --show-suggestions "**/*.md"
