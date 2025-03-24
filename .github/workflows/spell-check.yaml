@@ -6,7 +6,16 @@ on:
     branches: [master]
 
 jobs:
-  markdown-spellcheck:
+  cspell-spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install cspell
+        run: npm install -g cspell
+      - name: Run cspell on markdown files
+        run: npx cspell --locale en-US --show-suggestions "**/*.md"
+
+  write-good:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -17,17 +26,49 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install markdown-spellcheck
-        run: npm install -g markdown-spellcheck
+      - name: Install write-good
+        run: npm install -g write-good
 
-      - name: Run markdown-spellcheck on Markdown files
-        run: npx markdown-spellcheck --en-US --report "**/*.md"
+      - name: Run write-good on Markdown files
+        run: npx write-good *.md
 
-  cspell-spellcheck:
+  alex:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Install cspell
-        run: npm install -g cspell
-      - name: Run cspell on markdown files
-        run: npx cspell --locale en-US --show-suggestions "**/*.md"
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install alex
+        run: npm install -g alex
+
+      - name: Run alex on Markdown files
+        run: npx alex *.md
+
+  proselint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install proselint on node
+        run: npm install -g proselint
+      - name: Install proselint on python
+        run: pip install proselint
+
+      - name: Run proselint on Markdown files
+        run: npx proselint *.md

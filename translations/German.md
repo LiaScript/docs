@@ -15,7 +15,7 @@ translation: Русский   Russian.md
 
 -->
 
-# Lia-Script **Deutsch**
+# LiaScript **Deutsch**
 
 
                                --{{0}}--

@@ -51,7 +51,7 @@ With LiaScript, we tried to implement an extended
 everyone to create, share, adapt, translate or correct online courses without
 the need of being a web-developer. We believe that a language-based approach,
 instead of a tooling-centered one, provides more flexibility, freedom of
-creativity, and sustainability. Therefor we tried to develop a simplistic syntax
+creativity, and sustainability. Therefore we tried to develop a simplistic syntax
 that extends the static Markdown with quizzes, animations, spoken text,
 automated visualization [ASCII-art](https://en.wikipedia.org/wiki/ASCII_art) and
 much more. Everything has been woven around Markdown, so that the content can
@@ -76,7 +76,7 @@ still be read and interpreted with any kind of editor or Markdown-interpreter.
 There are a couple of problems that we currently see in the creation of
 [Open educational resources (OER)](https://en.wikipedia.org/wiki/Open_educational_resources).
 One of them is isolation, that means people, who want to create content, are
-seldomly connected via the applied technologies, instead, they are separated by
+seldom connected via the applied technologies, instead, they are separated by
 platforms, authoring tools and used core technologies (programming languages).
 Furthermore, it is not possible to simply grab an educational website/project
 and to adapt its content for another audience. Additionally, it seems to be
@@ -240,7 +240,7 @@ an external website or if possible via an
 
                            --{{1}}--
 However, there might be cases where you want to store the progress within the
-LMS. We therefor have developed an experimental exporter, which allows to bundle
+LMS. We therefore have developed an experimental exporter, which allows to bundle
 your entire project as an
 [SCORM](https://en.wikipedia.org/wiki/Sharable_Content_Object_Reference_Model)
 compliant zip-file that can be imported into most common LMS. Other formats than
@@ -570,7 +570,7 @@ use a `<div>` to structure your content.
 #### Sub-Titles 💫
 
                           --{{0}}--
-There might be some cases, where you want to add further headings quickly. We therefor
+There might be some cases, where you want to add further headings quickly. We therefore
 apply the following syntax with underlining "equal signs" or "dashes". In
 common Markdown, this alternative syntax is applied to define level-1 and
 level-2 headings. We use it to create headings that are one level `=` or two
@@ -1842,7 +1842,7 @@ ending into the head of a code snippet. Most Markdown interpreters will use
 [highlight.js](https://highlightjs.org) for language rendering, since we require
 also an editor with syntax highlighting capabilities, we use
 [ace](https://ace.c9.io). Thus, the language support might differ to other
-systems. We therefor apply a mapping, so that you can still use all
+systems. We therefore apply a mapping, so that you can still use all
 [highlight.js](https://highlightjs.org) short-codes but also those of
 [ace](https://ace.c9.io).
 
@@ -2231,7 +2231,7 @@ your document.
 > font-color (dark/light mode). Try to use  pastel
 > colors, or overwrite the color manually with:
 >
->  `color: white;`
+> `color: white;`
 ```
 
 <!-- style="background-color: tomato;"-->
@@ -2241,7 +2241,7 @@ your document.
 > font-color (dark/light mode). Try to use  pastel
 > colors, or overwrite the color manually with:
 >
->  `color: white;`
+> `color: white;`
 
 ********************************************************************************
 
@@ -2679,7 +2679,7 @@ Documentation: [KaTeX-Macros](https://katex.org/docs/supported.html#macros)
     --{{2}}--
 However, if you want to define a custom set of macros and reuse them within all of your formulas, you will have to define them within the main comment of your document.
 Use the `formula` macro, whereby the first word defines the macro name (the starting backslash is optional) and the remainder is used as the body.
-All of these macros are then passed to every formula while rendering, see therefor the comments at:
+All of these macros are then passed to every formula while rendering, see therefore the comments at:
 
 [KaTeX rendering options](https://katex.org/docs/options.html)
 
@@ -3438,7 +3438,7 @@ The user input will be compared with your solution-string, and if and only if
 they are equal the quiz will be labelled as solved. For different reasons it
 might  be necessary to clean up the input, in order to deal with different types
 of spelling, uppercase and lowercase, etc. Fort this purpose scripts can be
-associated to a quiz, see therefor section
+associated to a quiz, see therefore section
 [Quizzes and Scripting](#Quizzes-and-Scripting).
 
 
@@ -3951,7 +3951,7 @@ What is $37 + 15$?
 
                                    --{{0}}--
 And finally, some quizzes might require some more explanations, if they are
-solved or not. Therefor, simply use two "lines" that are defined by at least
+solved or not. Therefore, simply use two "lines" that are defined by at least
 three asterisks to group your solution. The solution explanation can contain
 an arbitrary number of LiaScript elements.
 
@@ -4695,7 +4695,7 @@ What is $37 + 15$?
 
                            --{{4}}--
 By defining macros it is furthermore possible to create LiaScript libraries that
-can imported into other courses, see therefor also section [Macros](#macros).
+can imported into other courses, see therefore also section [Macros](#macros).
 
 
 ##### Final thoughts on wrong solution
@@ -5263,7 +5263,7 @@ What are your favorite colors?
 ### Classroom Experience
 
 We try to develop a simple classroom experience, light without any centralized authority or server.
-Therefor, we currently apply distributed [Web3.0](https://en.wikipedia.org/wiki/Web3) technologies, which synchronize the state of a classroom across multiple connected users/browsers.
+Therefore, we currently apply distributed [Web3.0](https://en.wikipedia.org/wiki/Web3) technologies, which synchronize the state of a classroom across multiple connected users/browsers.
 At the moment, we can synchronize and visualize quizzes and surveys and display an anonymous overview onto the results.
 Additionally every executable code can also be edited in collaborative mode.
 Last but not least, the current implementation of a LiaScript classroom offers a chat, that interprets the inputs as LiaScript.

@@ -4,7 +4,7 @@ This document contains a list of mappings for language identifiers for
 [`highlight.js`](https://highlightjs.org), which is mostly used in Markdown
 parsers, and [`ace`](https://ace.c9.io), which is applied by LiaScript. Since
 both projects do not contain all languages and the names of the language
-identfiers might vary, we provide a mapping.
+identifiers might vary, we provide a mapping.
 
 
 > All language identifiers and alias marked as `code` can be used within
@@ -15,7 +15,7 @@ This mapping is applied by LiaScript at:
 
 https://github.com/LiaScript/LiaScript/blob/development/src/typescript/webcomponents/editor-modes.ts
 
-... and will be updated in accordace with this document. Feel free to make
+... and will be updated in accordance with this document. Feel free to make
 comments/issues or to add other mappings.
 
 
@@ -101,7 +101,7 @@ comments/issues or to add other mappings.
 | ebnf                |                                                                     | [Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)           |            |                      |
 |                     |                                                                     | [UN/EDIFACT](https://en.wikipedia.org/wiki/EDIFACT)                                            | protocol   | `edifact`            |
 |                     |                                                                     | [Eiffel](https://www.eiffel.org)                                                               |            | `eiffel`             |
-|                     |                                                                     | [EJS (Embedded JavaScript teplating)](https://ejs.co)                                          | template   | `ejs`                |
+|                     |                                                                     | [EJS (Embedded JavaScript templating)](https://ejs.co)                                         | template   | `ejs`                |
 | `elixir`            | `ex`, `exs`                                                         | [Elixir](https://elixir-lang.org)                                                              | functional | `elixir`             |
 | `elm`               |                                                                     | [Elm](https://elm-lang.org)                                                                    | functional | `elm`                |
 | erb                 |                                                                     | [ERB (Embedded Ruby)](https://ruby-doc.org/stdlib-2.6.5/libdoc/erb/rdoc/ERB.html)              | template   |                      |
@@ -200,7 +200,7 @@ comments/issues or to add other mappings.
 | `nix`               | `nixos`                                                             | [Nix](http://nixos.org/nix)                                                                    |            | `nix`                |
 | node-repl           |                                                                     | Node REPL                                                                                      | scripting  |                      |
 | `nsis`              |                                                                     | [NSIS (Nullsoft Scriptable Install System)](https://nsis.sourceforge.io/Main_Page)             |            | `nsis`               |
-|                     |                                                                     |                                                                                                |            | `nunjucks`, nunjs`   |
+|                     |                                                                     |                                                                                                |            | `nunjucks`, `nunjs`  |
 | `objectivec`        | `mm`, `objc`, `obj-c`, `obj-c++`, `objective-c++`                   | [Objective-C](https://developer.apple.com/documentation/objectivec)                            | common     | `objectivec`         |
 | `ocaml`             | `ml`                                                                | [OCaml]( https://ocaml.org)                                                                    | functional | `ocaml`              |
 | `openscad`          | `scad`                                                              | [OpenSCAD](https://www.openscad.org)                                                           | scientific | `scad`               |
@@ -292,7 +292,7 @@ comments/issues or to add other mappings.
 |                     |                                                                     |                                                                                                |            | `turtle`             |
 | `twig`              | `craftcms`                                                          | [Twig](https://twig.symfony.com)                                                               | template   | `twig`               |
 | `typescript`        | `ts`, `tsx`                                                         | [TypeScript](https://www.typescriptlang.org)                                                   | common     | `typescript`, `tsx`  |
-| `unicorn-rails-log` |                                                                     | Unicorn Rails log                                                                              |            | `                    |
+| `unicorn-rails-log` |                                                                     | Unicorn Rails log                                                                              |            |                      |
 | `vala`              |                                                                     | [Vala](https://wiki.gnome.org/Projects/Vala)                                                   |            | `vala`               |
 | `vbnet`             | `vb`                                                                | [Visual Basic .NET](https://docs.microsoft.com/dotnet/visual-basic/getting-started)            | common     | `vbscript`           |
 | vbscript-html       |                                                                     | [VBScript in HTML](https://en.wikipedia.org/wiki/VBScript)                                     | scripting  |                      |
