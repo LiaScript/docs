@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     06/03/2025
-version:  30.0.1
+date:     14/04/2025
+version:  31.0.0
 language: en
 narrator: UK English Female
 
@@ -2497,6 +2497,41 @@ of the different possible settings. For [PeerTube](https://peertube.tv) and
 
 ********************************************************************************
 
+## Ignoreable Comments
+
+                          --{{0}}--
+As you have seen in the previous examples, you can use HTML comments to define certain settings within your course or to change the styling of elements.
+
+                          --{{1}}--
+However, since it is pretty difficult to separate ordinary comments from comments with HTML-parameters within, we have now added a special comment type, which is defined by at least three dashes.
+
+    {{1}}
+``` markdown
+<!---
+  This is a comment, which will be ignored by the parser.
+  It will not be rendered in the final document.
+  It is only visible in the source code.
+--->
+```
+
+                          --{{2}}--
+At least means, that you can use more than three dashes...
+
+    {{2}}
+``` markdown
+<!---------------------------------------------------------
+This style of comment might be visually more appealing ...
+---------------------------------------------------------->
+```
+
+                          --{{3}}--
+And of course this can be used to comment out content or settings.
+
+    {{3}}
+``` markdown
+<!--- style="color: red" class="to be ignored" --->
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+```
 
 ## Math & Formulas
 
