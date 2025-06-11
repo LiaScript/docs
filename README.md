@@ -7855,6 +7855,561 @@ Name the elements in the following image:
 ```
 </section>
 
+## Scaleable Vector Graphics
+
+    --{{0}}--
+The latest version of LiaScript now supports tight integration with SVG images, enabling you to embed and manipulate vector graphics directly within your slides and notes.
+SVG (Scalable Vector Graphics) is an XML-based format for defining two-dimensional vector graphics.
+Unlike bitmap images (e.g., PNG or JPEG), SVG graphics are resolution-independent and can scale without loss of quality.
+They can be styled and animated using CSS and JavaScript, making them ideal for diagrams, charts, icons, and interactive visualizations.
+
+* __Specification & Tutorials__
+
+  * [W3C SVG Specification](https://www.w3.org/TR/SVG2/)
+  * [MDN Web Docs - SVG](https://developer.mozilla.org/en-US/docs/Web/SVG)
+  * [SVG Tutorial by W3Schools](https://www.w3schools.com/graphics/svg_intro.asp)
+
+* __Why Use SVG?__
+
+  * __Scalability:__ Perfect display on high-DPI and retina screens.
+  * __Styling:__ Apply CSS rules for fills, strokes, gradients, and animations.
+  * __Interactivity:__ Bind events and manipulate elements via JavaScript.
+  * __Accessibility:__ SVG elements can be made accessible with ARIA attributes.
+
+    --{{1}}--
+To embed SVG images in your LiaScript document, you can use the standard `<svg>` container and include any valid SVG elements.
+
+
+      {{1}}
+``` svg
+<svg viewBox="0 0 200 100">
+  <circle cx="50" cy="50" r="40" fill="lightblue" stroke="blue" stroke-width="2"/>
+  <text x="50" y="55" font-size="10" text-anchor="middle">SVG Circle</text>
+
+  <rect x="110" y="10" width="80" height="80" fill="lightgreen" stroke="green" stroke-width="2"/>
+  <text x="150" y="55" font-size="10" text-anchor="middle">SVG Rectangle</text>
+</svg>
+```
+
+    --{{2}}--
+This example draws a circle and a rectangle, with labels centered on each shape.
+You can adjust coordinates, colors, and text as needed.
+
+      {{2}}
+<svg viewBox="0 0 200 100">
+  <circle cx="50" cy="50" r="40" fill="lightblue" stroke="blue" stroke-width="2"/>
+  <text x="50" y="55" font-size="10" text-anchor="middle">SVG Circle</text>
+
+  <rect x="110" y="10" width="80" height="80" fill="lightgreen" stroke="green" stroke-width="2"/>
+  <text x="150" y="55" font-size="10" text-anchor="middle">SVG Rectangle</text>
+</svg>
+
+
+### `foreignObject`
+
+    --{{0}}--
+The `<foreignObject>` element lets you include HTML or other XML content inside an SVG.
+LiaScript leverages this to inject Markdown-rendered math or interactive elements directly into graphics.
+Using `<foreignObject>` you will always have to define the `x`, `y`, `width`, and `height` attributes, which define the position and size of the element.
+
+<!-- data-marker="
+3 0 7 200 log;
+19 0 19 200 log;
+22 0 26 200 log
+" -->
+```` svg
+<svg viewBox="0 0 280 200">
+
+<!-- place the circumference formula around the top of the circle -->
+<foreignObject x="130" y="0" width="200" height="80">
+Circumference:
+
+$$C = 2 \pi r$$
+</foreignObject>
+
+<!-- the circle -->
+<circle id="circle" cx="100" cy="100" r="80" fill="lightblue" stroke="blue" stroke-width="2"/>
+
+<!-- radius line -->
+<line x1="100" y1="100" x2="180" y2="100" stroke="red" stroke-width="2"/>
+
+<!-- center dot -->
+<circle cx="100" cy="100" r="2" fill="black"/>
+
+<!-- label "r" at the midpoint of the radius -->
+<foreignObject x="110" y="78" width="100" height="30"> Radius: $r$ </foreignObject>
+
+<!-- place the area formula inside, bottom-centered -->
+<foreignObject x="55" y="100" width="100" height="100">
+Area:
+
+$$A = \pi r^2$$
+</foreignObject>
+</svg>
+````
+
+    --{{1}}--
+The resulting SVG image will look like this, where the mathematical expressions are rendered as LiaScript math elements.
+It will always apply the full width and scale embedded elements accordingly.
+
+
+      {{1}}
+<svg viewBox="0 0 280 200">
+
+<!-- place the circumference formula around the top of the circle -->
+<foreignObject x="130" y="0" width="200" height="80">
+Circumference:
+
+$$C = 2 \pi r$$
+</foreignObject>
+
+<!-- the circle -->
+<circle id="circle" cx="100" cy="100" r="80" fill="lightblue" stroke="blue" stroke-width="2"/>
+
+<!-- radius line -->
+<line x1="100" y1="100" x2="180" y2="100" stroke="red" stroke-width="2"/>
+
+<!-- center dot -->
+<circle cx="100" cy="100" r="2" fill="black"/>
+
+<!-- label "r" at the midpoint of the radius -->
+<foreignObject x="110" y="78" width="100" height="30"> Radius: $r$ </foreignObject>
+
+<!-- place the area formula inside, bottom-centered -->
+<foreignObject x="55" y="100" width="100" height="100">
+Area:
+
+$$A = \pi r^2$$
+</foreignObject>
+</svg>
+
+
+
+      {{2}}
+<section>
+
+    --{{2}}--
+Apply custom styling within the `<svg>` or `<foreignObject>` elements to control the appearance of the SVG graphics.
+Keep in mind that there is also a dark mode, in this case it is always a good idea to overwrite the default colors of the SVG elements.
+And as mentioned earlier, you can include any kind of LiaScript or HTML within the `<foreignObject>`, including animations, quizzes, or even other SVGs.
+The following schema demonstrates a simple PID controller diagram, where the mathematical expressions are rendered as animations steps.
+
+<!-- data-marker="0 27 0 85 rgba(0,225,255,0.5) text" -->
+``` svg
+<svg viewBox="0 0 780 300" style="width: 80%; background-color: white; color: black;">
+
+<!-- Define arrow marker -->
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="3" orient="auto" markerUnits="strokeWidth">
+<path d="M0,0 L0,6 L9,3 z" fill="#333" />
+</marker>
+</defs>
+
+<text x="35" y="20">Setpoint</text>
+<text x="38" y="40">Voltage</text>
+
+<!-- Summing junction -->
+<circle cx="60" cy="130" r="20" fill="#eee" stroke="#333"/>
+<text x="35" y="100">+</text>
+<text x="35" y="170">-</text>
+<foreignObject x="50" y="118" width="100" height="100">
+$ \sum $
+</foreignObject>
+
+<text x="140" y="135" width="20" height="20">Error</text>
+
+<!-- PID Controller block -->
+<rect x="250" y="0" width="120" height="60" fill="yellow" stroke="#333"/>
+<foreignObject x="260" y="5" width="100" height="60">
+{{1}}
+$$ K_p e(t) $$
+</foreignObject>
+
+<rect x="250" y="100" width="120" height="60" fill="magenta" stroke="#333"/>
+<foreignObject x="260" y="95" width="100" height="60">
+{{2}}
+$$ K_i \int_{0}^{t} e(t) dt $$
+</foreignObject>
+
+<rect x="250" y="200" width="120" height="60" fill="cyan" stroke="#333"/>
+<foreignObject x="260" y="198" width="100" height="60">
+{{3}}
+$$ K_d \frac{\Delta e(t)}{dt} $$
+</foreignObject>
+
+<!-- Summing junction -->
+<circle cx="450" cy="130" r="20" fill="#eee" stroke="#333"/>
+<foreignObject x="440" y="118" width="100" height="100">
+$\sum$
+</foreignObject>
+
+<text x="505" y="125">Control</text>
+<text x="505" y="145">Voltage</text>
+
+<rect x="600" y="110" width="100" height="40" fill="#f9f9f9" stroke="#333"/>
+<text x="625" y="135">Process</text>
+<text x="625" y="240">Output</text>
+
+<!-- Arrows between elements -->
+<!-- From setpoint to left summing junction -->
+<line x1="60" y1="50" x2="60" y2="110" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From measurement (feedback) to left summing junction -->
+<path d="M650,250 L650,290 L60,290 L60,150" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From Error to P -- to summing -->
+<path d="M155,115 L155,30 L250,30" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<path d="M370,30 L450,30 L450,109" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From Error to I -- to summing-->
+<line x1="80" y1="130" x2="130" y2="130" stroke="#333" stroke-width="2" />
+<line x1="180" y1="130" x2="250" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="370" y1="130" x2="430" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From Error to D -- to summing -->
+<path d="M155,145 L155,230 L250,230" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<path d="M370,230 L450,230 L450,150" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From right summing to process -->
+<line x1="470" y1="130" x2="600" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From process down to output -- to world -->
+<line x1="650" y1="150" x2="650" y2="220" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="680" y1="235" x2="750" y2="235" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+</svg>
+```
+
+<svg viewBox="0 0 780 300" style="width: 80%; background-color: white; color: black;">
+
+<!-- Define arrow marker -->
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="3" orient="auto" markerUnits="strokeWidth">
+<path d="M0,0 L0,6 L9,3 z" fill="#333" />
+</marker>
+</defs>
+
+<text x="35" y="20">Setpoint</text>
+<text x="38" y="40">Voltage</text>
+
+<!-- Summing junction -->
+<circle cx="60" cy="130" r="20" fill="#eee" stroke="#333"/>
+<text x="35" y="100">+</text>
+<text x="35" y="170">-</text>
+<foreignObject x="50" y="118" width="100" height="100">
+$ \sum $
+</foreignObject>
+
+<text x="140" y="135" width="20" height="20">Error</text>
+
+<!-- PID Controller block -->
+<rect x="250" y="0" width="120" height="60" fill="yellow" stroke="#333"/>
+<foreignObject x="260" y="5" width="100" height="60">
+{{4}}
+$$ K_p e(t) $$
+</foreignObject>
+
+<rect x="250" y="100" width="120" height="60" fill="magenta" stroke="#333"/>
+<foreignObject x="260" y="95" width="100" height="60">
+{{5}}
+$$ K_i \int_{0}^{t} e(t) dt $$
+</foreignObject>
+
+<rect x="250" y="200" width="120" height="60" fill="cyan" stroke="#333"/>
+<foreignObject x="260" y="198" width="100" height="60">
+{{6}}
+$$ K_d \frac{\Delta e(t)}{dt} $$
+</foreignObject>
+
+<!-- Summing junction -->
+<circle cx="450" cy="130" r="20" fill="#eee" stroke="#333"/>
+<foreignObject x="440" y="118" width="100" height="100">
+$\sum$
+</foreignObject>
+
+<text x="505" y="125">Control</text>
+<text x="505" y="145">Voltage</text>
+
+<rect x="600" y="110" width="100" height="40" fill="#f9f9f9" stroke="#333"/>
+<text x="625" y="135">Process</text>
+<text x="625" y="240">Output</text>
+
+<!-- Arrows between elements -->
+<!-- From setpoint to left summing junction -->
+<line x1="60" y1="50" x2="60" y2="110" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From measurement (feedback) to left summing junction -->
+<path d="M650,250 L650,290 L60,290 L60,150" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From Error to P -- to summing -->
+<path d="M155,115 L155,30 L250,30" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<path d="M370,30 L450,30 L450,109" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From Error to I -- to summing-->
+<line x1="80" y1="130" x2="130" y2="130" stroke="#333" stroke-width="2" />
+<line x1="180" y1="130" x2="250" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="370" y1="130" x2="430" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From Error to D -- to summing -->
+<path d="M155,145 L155,230 L250,230" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<path d="M370,230 L450,230 L450,150" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From right summing to process -->
+<line x1="470" y1="130" x2="600" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<!-- From process down to output -- to world -->
+<line x1="650" y1="150" x2="650" y2="220" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="680" y1="235" x2="750" y2="235" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+</svg>
+
+</section>
+
+### Experimenting with SVG
+
+    --{{0}}--
+SVG has a wide range of features, including gradients, patterns, and advanced shapes, but also animations and interactivity.
+We are more than happy to see your experiments with SVG in LiaScript.
+
+<svg width="600" height="300">
+
+<!-- 1) draw axes -->
+<line x1="50" y1="150" x2="550" y2="150" stroke="#ccc"/>
+<line x1="50" y1="20"  x2="50"  y2="280" stroke="#ccc"/>
+
+<!-- 2) sine‐wave path -->
+<path id="sine" 
+      d="M 50,150"
+      fill="none" stroke="steelblue" stroke-width="2"/>
+
+<!-- 3) animated dot -->
+<circle r="6" fill="tomato">
+  <animateMotion dur="5s" repeatCount="indefinite">
+    <mpath xlink:href="#sine"/>
+  </animateMotion>
+</circle>
+
+<!-- 4) LiaScript slide inside foreignObject -->
+<foreignObject x="100" y="0" width="500" height="50">
+
+## <script min="-100" max="100" input="range" default="1" value="1" input-always-active>
+const sine = document.getElementById("sine")
+sine.setAttribute("d",  `M 50,150
+  ${Array.from({length:361}, (_, i) => {
+    const x = 50 + (i/360)*500;
+    const y = 150 - 80 * Math.sin(i * @input * Math.PI/180);
+    return `L ${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ')}`)
+"@input"
+</script>
+
+</foreignObject>
+</svg>
+
+    --{{1}}--
+The following example was generated by ChatGPT and implements an ant colony optimization algorithm to find the shortest path.
+
+      {{1}}
+<section>
+<svg id="swarm" width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+  <!-- bounding box -->
+  <rect x="50" y="20" width="500" height="700" fill="none" stroke="#ccc"/>
+
+  <!-- control panel -->
+  <foreignObject x="580" y="20" width="200" height="700">
+    <div xmlns="http://www.w3.org/1999/xhtml"
+         style="font-family:sans-serif;
+                background:#f9f9f9;
+                padding:12px;
+                border:1px solid #ccc;
+                border-radius:4px;
+                width:180px;
+                box-sizing:border-box;">
+      <h3 style="margin-top:0">ACO Settings</h3>
+      <div style="text-align:center; margin-top:10px;">
+        <button id="toggleBtn" style="width:80px;">Start</button>
+      </div>
+      <div id="status" style="margin-top:12px; font-weight:bold; text-align:center;"></div>
+      <label>Nodes:<br>
+        <input type="number" id="nodesInput" min="10" max="500" value="250" style="width:100%"/>
+      </label>
+      <label>Ants:<br>
+        <input type="number" id="antsInput" min="5" max="200" value="100" style="width:100%"/>
+      </label>
+      <label>Iterations:<br>
+        <input type="number" id="itersInput" min="100" max="20000" value="10000" style="width:100%"/>
+      </label>
+      <label>α (alpha):<br>
+        <input type="number" id="alphaInput" min="0" max="5" step="0.1" value="1" style="width:100%"/>
+      </label>
+      <label>β (beta):<br>
+        <input type="number" id="betaInput" min="0" max="10" step="0.1" value="5" style="width:100%"/>
+      </label>
+      <label>ρ (rho):<br>
+        <input type="number" id="rhoInput" min="0" max="1" step="0.05" value="0.3" style="width:100%"/>
+      </label>
+      <label>Q:<br>
+        <input type="number" id="qInput" min="0.1" max="10" step="0.1" value="1" style="width:100%"/>
+      </label>
+      <label>Delay (ms):<br>
+        <input type="number" id="delayInput" min="0" max="1000" step="10" value="0" style="width:100%"/>
+      </label>
+    </div>
+  </foreignObject>
+</svg>
+
+
+<script>
+const svg = document.getElementById("swarm");
+const toggleBtn = document.getElementById("toggleBtn");
+const statusEl = document.getElementById("status");
+let acoInterval, running = false;
+
+// core ACO state holders
+let nodes, dist, eta, tau, bestTour, bestLen, iter;
+let settings = {};
+
+function init() {
+  // clear previous graph
+  svg.querySelectorAll('.node,.edge').forEach(e => e.remove());
+  clearInterval(acoInterval);
+
+  // load settings
+  settings = {
+    N_NODES: +nodesInput.value,
+    N_ANTS:  +antsInput.value,
+    N_ITER:  +itersInput.value,
+    ALPHA:   +alphaInput.value,
+    BETA:    +betaInput.value,
+    RHO:     +rhoInput.value,
+    Q:       +qInput.value,
+    DELAY:   +delayInput.value
+  };
+
+  // generate nodes
+  nodes = [];
+  for (let i = 0; i < settings.N_NODES; i++) {
+    const x = 50 + Math.random() * 500;
+    const y = 20  + Math.random() * 700;
+    nodes.push({x,y});
+    const c = document.createElementNS(svg.namespaceURI,'circle');
+    c.setAttribute('cx',x);
+    c.setAttribute('cy',y);
+    c.setAttribute('r',4);
+    c.setAttribute('fill','darkgreen');
+    c.classList.add('node');
+    svg.appendChild(c);
+  }
+
+  // distances & heuristic
+  dist = Array.from({length:settings.N_NODES}, () => Array(settings.N_NODES).fill(0));
+  eta  = Array.from({length:settings.N_NODES}, () => Array(settings.N_NODES).fill(0));
+  for (let i = 0; i < settings.N_NODES; i++) {
+    for (let j = 0; j < settings.N_NODES; j++) {
+      if (i===j) continue;
+      const dx = nodes[i].x - nodes[j].x;
+      const dy = nodes[i].y - nodes[j].y;
+      dist[i][j] = Math.hypot(dx,dy);
+      eta[i][j]  = 1 / dist[i][j];
+    }
+  }
+
+  // pheromones
+  tau = Array.from({length:settings.N_NODES}, () => Array(settings.N_NODES).fill(1));
+
+  // best-tracker
+  bestTour = null;
+  bestLen = Infinity;
+  iter = 0;
+
+  statusEl.textContent = `Ready: ${settings.N_ANTS} ants, ${settings.N_ITER} its`;
+}
+
+function step() {
+  iter++;
+  const tours = [];
+  const {N_NODES,N_ANTS,ALPHA,BETA,RHO,Q} = settings;
+
+  // build tours
+  for (let k=0; k<N_ANTS; k++){
+    const visited = new Set();
+    const tour = [Math.floor(Math.random()*N_NODES)];
+    visited.add(tour[0]);
+    while (tour.length < N_NODES) {
+      const i = tour[tour.length-1];
+      let sum = 0, probs = [];
+      for (let j=0; j<N_NODES; j++){
+        if (visited.has(j)) continue;
+        const p = Math.pow(tau[i][j],ALPHA) * Math.pow(eta[i][j],BETA);
+        probs.push({j,p}); sum += p;
+      }
+      let r = Math.random()*sum;
+      for (const {j,p} of probs) {
+        r -= p;
+        if (r <= 0) {
+          tour.push(j);
+          visited.add(j);
+          break;
+        }
+      }
+    }
+    tour.push(tour[0]);
+    let L=0;
+    for (let m=0; m<tour.length-1; m++){
+      L += dist[tour[m]][tour[m+1]];
+    }
+    tours.push({tour,L});
+    if (L < bestLen) {
+      bestLen = L;
+      bestTour = [...tour];
+    }
+  }
+
+  // evaporate
+  for (let i=0; i<settings.N_NODES; i++){
+    for (let j=0; j<settings.N_NODES; j++){
+      tau[i][j] *= (1 - settings.RHO);
+    }
+  }
+  // deposit
+  for (const {tour,L} of tours){
+    const d = Q/L;
+    for (let m=0; m<tour.length-1; m++){
+      const [i,j] = [tour[m], tour[m+1]];
+      tau[i][j] += d;
+      tau[j][i] += d;
+    }
+  }
+
+  // redraw best path
+  svg.querySelectorAll('.edge').forEach(e=>e.remove());
+  for (let m=0; m<bestTour.length-1; m++){
+    const [i,j] = [bestTour[m], bestTour[m+1]];
+    const line = document.createElementNS(svg.namespaceURI,'line');
+    line.setAttribute('x1',nodes[i].x);
+    line.setAttribute('y1',nodes[i].y);
+    line.setAttribute('x2',nodes[j].x);
+    line.setAttribute('y2',nodes[j].y);
+    line.setAttribute('stroke','crimson');
+    line.setAttribute('stroke-width','2');
+    line.classList.add('edge');
+    svg.appendChild(line);
+  }
+
+  statusEl.textContent = `Iter ${iter}/${settings.N_ITER} — best ${bestLen.toFixed(1)}`;
+
+  if (iter >= settings.N_ITER) {
+    clearInterval(acoInterval);
+    running = false;
+    toggleBtn.textContent = 'Start';
+    statusEl.textContent += ' — DONE';
+  }
+}
+
+toggleBtn.addEventListener('click', () => {
+  if (!running) {
+    init();
+    running = true;
+    toggleBtn.textContent = 'Stop';
+    // first immediate step
+    step();
+    acoInterval = setInterval(step, settings.DELAY);
+  } else {
+    clearInterval(acoInterval);
+    running = false;
+    toggleBtn.textContent = 'Start';
+    statusEl.textContent += ' — PAUSED';
+  }
+});
+</script>
+
+</section>
 
 ## Charts
 
