@@ -2,10 +2,12 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     14/04/2025
-version:  31.0.0
+date:     11/06/2025
+version:  32.0.0
 language: en
 narrator: UK English Female
+
+edit:     true
 
 repository: https://github.com/LiaScript/docs
 
@@ -33,7 +35,6 @@ font:     Noto Sans Egyptian Hieroglyphs, Noto Sans Ogham
 
 
 # LiaScript
-
 
 > To see this document as an interactive LiaScript rendered version, click on the
 > following link/badge:
@@ -9355,6 +9356,30 @@ email: contact@web.de
 ```
 
 ![Email information](img/email.png)
+
+##### `edit`
+
+    --{{0}}--
+This macro allows you to define an edit link for your course.
+It can be used to point to a specific location in your repository where users can suggest changes or improvements.
+
+```md
+<!--
+edit: https://github.dev/LiaScript/docs/main/README.md
+-->
+```
+![Edit information](img/edit.png)
+
+    --{{1}}--
+Or if you set this to `true`, it will automatically link to the current document to the [live editor](https://liascript.github.io/LiveEditor).
+This comes especially handy if you want user to inspect the code, such as it is, if you have developed a template.
+
+      {{1}}
+```md
+<!--
+edit: true
+-->
+```
 
 ##### `logo`
 
