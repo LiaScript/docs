@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     11/06/2025
-version:  32.0.0
+date:     01/12/2025
+version:  33.0.0
 language: en
 narrator: UK English Female
 
@@ -4261,6 +4261,34 @@ Next to randomization you can also use the following configuration options and a
   -->
   [( )] Wrong
   [(X)] Right
+
+                {{7}}
+- ##### Custom Texts
+
+              --{{7}}--
+  Finally, you can also customize the texts that are shown to the user, when a quiz is solved, failed or resolved after reaching the maximum number of trials. 
+
+  ``` markdown
+  How is this project called?
+
+  <!--
+  data-text-solved="This was a __Very__ hard quiz"
+  data-text-failed="Try again!"
+  data-text-resolved="Next time it will be better"
+  -->
+  [[LiaScript]]
+  ```
+
+  ---
+
+  How is this project called?
+
+  <!--
+  data-text-solved="This was a __Very__ hard quiz"
+  data-text-failed="Try again!"
+  data-text-resolved="Next time it will be better"
+  -->
+  [[LiaScript]]
 
 #### Associated Scripts
 
