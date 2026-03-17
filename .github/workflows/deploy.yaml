@@ -1,26 +1,30 @@
-name: Generate and Release PDF
-
+name: Generate and Release PDF and APK
 on:
   push:
     branches:
       - master
-
 jobs:
   run_exporter:
     runs-on: ubuntu-latest
-
     steps:
       - name: Set up dependencies
         run: |
           npm install -g @liascript/exporter
-
       - name: Check out current repository
         uses: actions/checkout@v4
-
       - name: Generate PDF
         run: |
           liaex -i README.md --format pdf --output Documentation --pdf-timeout 1500000
-
+      - name: Generate APK
+        run: |
+          mkdir -p output
+          docker run --rm \
+            -v "${{ github.workspace }}:/input" \
+            liascript/exporter \
+            --format android \
+            --input /input/README.md \
+            --output /input/output \
+            --android-appId io.github.${{ github.repository_owner }}.${{ github.event.repository.name }}
       - name: Delete Previous Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -34,7 +38,6 @@ jobs:
           else
             echo "No previous release found."
           fi
-
       - name: Create New Release
         id: create_release
         uses: actions/create-release@v1
@@ -45,7 +48,6 @@ jobs:
           release_name: 'Latest LiaScript Documentation'
           draft: false
           prerelease: false
-
       - name: Upload PDF as release asset
         uses: actions/upload-release-asset@v1
         env:
@@ -55,3 +57,12 @@ jobs:
           asset_path: ./Documentation.pdf
           asset_name: Documentation.pdf
           asset_content_type: application/pdf
+      - name: Upload APK as release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: output/app.apk
+          asset_name: app.apk
+          asset_content_type: application/vnd.android.package-archive
