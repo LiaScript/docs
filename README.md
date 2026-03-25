@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     01/12/2025
-version:  33.0.0
+date:     25/3/2025
+version:  33.0.1
 language: en
 narrator: UK English Female
 
@@ -141,7 +141,7 @@ There are currently 2 plugins for the [Atom Editor](https://atom.io) and
 are intended to ease and simplify the development of online courses with
 LiaScript. Additionally you can use the LiveEditor, an entirely browser based application.
 
-![Atom with liascript-plugins](https://raw.githubusercontent.com/andre-dietrich/liascript-preview/master/preview.gif "Screencast of the Atom-editor with the liascript-preview and liascript-snippets installed.")
+![Atom with liascript-plugins](https://raw.githubusercontent.com/andre-dietrich/liascript-preview/master/preview.gif "Screencast of the Atom-editor with the liascript-preview and liascript-snippets installed.")<!-- style="width:100%"-->
 
 0. [LiveEditor](https://liascript.github.io/LiveEditor): Fully functional online editor, that looks like CodiMD, but is entirely browser based. With support for uploading images and videos and collaborative editing.
 
@@ -191,7 +191,7 @@ your browser on every save, but this can also be used to monitor multiple
 projects. And you can also use it for testing purposes, as if you would deploy
 your projects.
 
-![liascript-development-server](https://raw.githubusercontent.com/liascript/liascript-devserver/main/pics/navigation.gif "Screencast of the liascript-development-server while navigating through a folder-structure.")
+![liascript-development-server](https://raw.githubusercontent.com/liascript/liascript-devserver/main/pics/navigation.gif "Screencast of the liascript-development-server while navigating through a folder-structure.")<!-- style="width:100%"-->
 
 Get the project from:
 
@@ -465,7 +465,7 @@ The meta-information from your document is later shown within the
 information-section as well as within the home-section.
 
                             {{1}}
-![Screencast of meta-information usage](img/meta-information.gif)
+![Screencast of meta-information usage](img/meta-information.gif)<!-- style="width:100%"-->
 
 
 
@@ -957,11 +957,12 @@ And we like this idea... You can click on every image and inspect it also with
 the zooming feature.
 
                             {{1}}
-![Portrait of a lady](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg/723px-Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg "La Belle Ferronnière, c. 1490–1498")
-![Lady with an Ermine](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg/761px-Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg "Lady with an Ermine, c. 1489–1491, Czartoryski Museum, Kraków, Poland")
-![Mona Lisa](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg "Mona Lisa or La Gioconda c. 1503–1516, Louvre, Paris")
-![Virgin and Child ](https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Leonardo_da_Vinci_-_Virgin_and_Child_with_St_Anne_C2RMF_retouched.jpg/764px-Leonardo_da_Vinci_-_Virgin_and_Child_with_St_Anne_C2RMF_retouched.jpg "The Virgin and Child with Saint Anne, c. 1501–1519, Louvre, Paris")
-![The Death of Leonardo da Vinci](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Francois_Ier_Leonard_de_Vinci-Jean_Auguste_Dominique_Ingres.jpg/1276px-Francois_Ier_Leonard_de_Vinci-Jean_Auguste_Dominique_Ingres.jpg "The Death of Leonardo da Vinci, by Ingres, 1818")
+![Portrait of a lady](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg/960px-Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg "La Belle Ferronnière, c. 1490–1498 ([Source: Wikipedia](https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg))")
+![Lady with an Ermine](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg/1920px-Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg "Lady with an Ermine, c. 1489–1491, Czartoryski Museum, Kraków, Poland ([Source: Wikipedia](https://commons.wikimedia.org/wiki/File:Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg))")
+![Mona Lisa](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1920px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg "Mona Lisa or La Gioconda c. 1503–1516, Louvre, Paris ([Source: Wikipedia](https://commons.wikimedia.org/wiki/File:Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg))")
+![Virgin and Child ](https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Leonardo_da_Vinci_-_Virgin_and_Child_with_St_Anne_C2RMF_retouched.jpg/960px-Leonardo_da_Vinci_-_Virgin_and_Child_with_St_Anne_C2RMF_retouched.jpg "The Virgin and Child with Saint Anne, c. 1501–1519, Louvre, Paris ([Source: Wikipedia](https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_Virgin_and_Child_with_St_Anne_C2RMF_retouched.jpg))")
+![The Death of Leonardo da Vinci](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Francois_Ier_Leonard_de_Vinci-Jean_Auguste_Dominique_Ingres.jpg/3840px-Francois_Ier_Leonard_de_Vinci-Jean_Auguste_Dominique_Ingres.jpg "The Death of Leonardo da Vinci, by Ingres, 1818 ([Source: Wikipedia](https://commons.wikimedia.org/wiki/File:Francois_Ier_Leonard_de_Vinci-Jean_Auguste_Dominique_Ingres.jpg))")
+
 
 
 #### Audio 💫
@@ -1047,13 +1048,17 @@ Examples:
 
   ??[3D triceratops](https://sketchfab.com/3d-models/animated-triceratops-skeleton-06cb55f941d94dc8b95ac46f92d89e7c)
 
-* [StoryMaps](https://storymaps.arcgis.com): `??[presentation](https://storymaps.arcgis.com/stories/583f8b48a857442cb8d27411c93a9664)`
+* [StoryMaps](https://storymaps.arcgis.com): `??[presentation](https://storymaps.arcgis.com/stories/d550dc4997e94b18a829fd68dba26602)`
 
-  ??[presentation](https://storymaps.arcgis.com/stories/583f8b48a857442cb8d27411c93a9664)
+  ??[presentation](https://storymaps.arcgis.com/stories/d550dc4997e94b18a829fd68dba26602)
 
 * [CircuitJS](https://www.falstad.com/circuit): `  ??[Simulation: Non-inverting Amplifier](https://www.falstad.com/circuit/circuitjs.html?startCircuit=amp-noninvert.txt)`
 
   ??[Simulation: Non-inverting Amplifier](https://www.falstad.com/circuit/circuitjs.html?startCircuit=amp-noninvert.txt)
+
+* [Phet](https://phet.colorado.edu): `??[Phet Simulation: Molecule Polarity](https://phet.colorado.edu/sims/html/molecule-polarity/latest/molecule-polarity_all.html)`
+
+  ??[Phet Simulation: Molecule Polarity](https://phet.colorado.edu/sims/html/molecule-polarity/latest/molecule-polarity_all.html)
 
 
 ##### Galleries \#2 💫
@@ -1490,7 +1495,7 @@ number of plugins for different editors that you can use, which do the
 formatting for you. You can use them to quickly navigate through your cells, and
 some even allow sorting.
 
-![Demo of a table editor](img/table-editing.gif)
+![Demo of a table editor](img/table-editing.gif)<!-- style="width: 100%" -->
 
 **Editors: Plugins**
 
