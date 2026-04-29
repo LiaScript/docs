@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     25/3/2025
-version:  33.0.1
+date:     29/04/2026
+version:  34.0.0
 language: en
 narrator: UK English Female
 
@@ -1315,6 +1315,129 @@ combined, it could also be a gallery or an embedded object...
 > * beth
 
 ********************************************************************************
+
+#### Alerts
+
+                          --{{0}}--
+Many Markdown readers — including GitHub and LiaScript — support a special alert
+syntax built on top of blockquotes. An alert is simply a blockquote whose first
+line contains a keyword in square brackets, prefixed with an exclamation mark.
+Five types are defined by the GitHub flavored Markdown specification, each
+carrying a different semantic meaning and visual style.
+
+**Syntax:**
+
+<!-- class="translate"-->
+``` markdown
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
+
+> [!TIP]
+> Optional information to help a user be more successful.
+
+> [!IMPORTANT]
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]
+> Critical content demanding immediate user attention due to potential risks.
+
+> Nesting is of course also possible:
+>
+>> [!CAUTION]
+>> Negative potential consequences of an action.
+>>
+>> - due to
+>> - some reasons
+```
+
+    {{1}}
+<section>
+
+                          --{{1}}--
+The GitHub-flavoured icons were used as an inspiration for this type of alerts.
+
+**Result:**
+
+
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
+
+> [!TIP]
+> Optional information to help a user be more successful.
+
+> [!IMPORTANT]
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]
+> Critical content demanding immediate user attention due to potential risks.
+
+> Nesting is of course also possible:
+>
+>> [!CAUTION]
+>> Negative potential consequences of an action.
+>>
+>> - due to
+>> - some reasons
+
+</section>
+
+                            {{2}}
+<section>
+
+**GitLab-style with custom titles and icons:**
+
+                          --{{2}}--
+GitLab extends this syntax by allowing a custom title directly after the keyword,
+separated by a space. LiaScript supports this style too, so you can use it
+regardless of where your document is hosted. When you provide a custom title,
+you can also embed an emoji or icon of your choice — the default icon associated
+with the alert type will then be replaced by whatever you put in the title.
+
+<!-- class="translate"-->
+``` markdown
+> [!NOTE] 📝 Keep this in mind
+> Both GitHub and GitLab will render this, though the visual style differs
+> between platforms.
+
+> [!TIP] 💡 Pro tip
+> Use custom titles to give your alerts more context at a glance.
+
+> [!IMPORTANT] ❗ Don't skip this
+> Custom titles replace the default icon with whatever emoji you choose.
+
+> [!WARNING] ⚠️ Proceed with caution
+> This action cannot be undone once confirmed.
+
+> [!CAUTION] 🔥 Danger zone
+> Misusing this feature may lead to data loss.
+```
+
+</section>
+
+
+                      {{3}}
+<section>
+
+                       --{{3}}--
+The results are now more personalized, and the alert titles can be translated this way to support other languages too.
+
+> [!NOTE] 📝 Keep this in mind
+> Both GitHub and GitLab will render this, though the visual style differs
+> between platforms.
+
+> [!TIP] 💡 Pro tip
+> Use custom titles to give your alerts more context at a glance.
+
+> [!IMPORTANT] ❗ Don't skip this
+> Custom titles replace the default icon with whatever emoji you choose.
+
+> [!WARNING] ⚠️ Proceed with caution
+> This action cannot be undone once confirmed.
+
+> [!CAUTION] 🔥 Danger zone
+> Misusing this feature may lead to data loss.
+
+</section>
 
 #### Citations 💫
 
