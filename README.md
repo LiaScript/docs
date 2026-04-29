@@ -792,6 +792,40 @@ title attribute, and it is shown, when the user hovers the link with the mouse.
      For more information visit:
      https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding
 
+##### Autolinks & Escaping
+
+                          --{{0}}--
+URLs containing parentheses, brackets, or quotation marks can confuse Markdown
+parsers, which may misinterpret these characters as part of the link syntax.
+The safest solution is to wrap the URL in angle brackets — a feature known as
+**autolinks**, supported by most Markdown readers and by LiaScript since
+[Version 1.0.5](https://github.com/LiaScript/LiaScript/issues/281).
+
+- Plain autolink: `<https://en.wikipedia.org/wiki/Gymnasium_(Germany)>`
+
+  Result: <https://en.wikipedia.org/wiki/Gymnasium_(Germany)>
+
+- Named link with autolink URL: `[Gymnasium (Germany)](<https://en.wikipedia.org/wiki/Gymnasium_(Germany)>)`
+
+  Result: [Gymnasium (Germany)](<https://en.wikipedia.org/wiki/Gymnasium_(Germany)>)
+
+
+                          --{{1}}--
+As an alternative to angle brackets, you can also escape individual parentheses
+or brackets with a backslash. This avoids the need for percent-encoding
+(e.g., `%28` and `%29`) while keeping the URL readable.
+The result looks like follows:
+
+                            {{1}}
+- Escaped URL: `https://en.wikipedia.org/wiki/Gymnasium_\(Germany\)`
+
+  Result: https://en.wikipedia.org/wiki/Gymnasium_\(Germany\)
+
+- Named link with escaped URL: `[Gymnasium (Germany)](https://en.wikipedia.org/wiki/Gymnasium_\(Germany\))`
+
+  Result: [Gymnasium (Germany)](https://en.wikipedia.org/wiki/Gymnasium_\(Germany\))
+
+
 ##### Preview-Lia 💫
 
                           --{{0}}--
