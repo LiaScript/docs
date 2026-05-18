@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     29/04/2026
-version:  34.0.0
+version:  34.0.1
 language: en
 narrator: UK English Female
 
@@ -933,7 +933,7 @@ it is used as a real sub-title for all media links.
 
 * absolute URL: `![Annunciation of ...](https://upload.wiki...jpg)`
 
-  ![Annunciation of the birth of Christ](https://upload.wikimedia.org/wikipedia/commons/5/51/Leonardo_da_Vinci_Annunciation.jpg "{3}{*Annunciation c. 1472–1476*: is thought to be Leonardo's earliest complete work}")
+  ![Annunciation of the birth of Christ](https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Leonardo_da_Vinci_-_Annunciazione_-_Google_Art_Project.jpg/3840px-Leonardo_da_Vinci_-_Annunciazione_-_Google_Art_Project.jpg "{3}{*Annunciation c. 1472–1476*: is thought to be Leonardo's earliest complete work}")
 
 
                           --{{4}}--
@@ -2534,7 +2534,7 @@ image  is in charge of it, which handles click-events differently.
 
 **Result**
 
-![Workplace](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/1952.343_-_Under_the_Wave_off_Kanagawa_%28Kanagawa_oki_nami.jpg/2560px-1952.343_-_Under_the_Wave_off_Kanagawa_%28Kanagawa_oki_nami.jpg "without attribute injection")
+![Workplace](https://upload.wikimedia.org/wikipedia/commons/3/33/1952.343_-_Under_the_Wave_off_Kanagawa_%28Kanagawa_oki_nami.jpg "without attribute injection")
 
 ![Workplace](https://www.w3schools.com/htmL/workplace.jpg "with attribute are added")<!-- usemap="#workmap" -->
 
@@ -3962,8 +3962,8 @@ Well, if this is the case, this can be used to contain also input fields, such t
 
 ---
 
-![Self portrait](https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Self-portrait_as_the_Allegory_of_Painting_%28La_Pittura%29_-_Artemisia_Gentileschi.jpg/767px-Self-portrait_as_the_Allegory_of_Painting_%28La_Pittura%29_-_Artemisia_Gentileschi.jpg "Self-Portrait as the Allegory of Painting: [[(1638 - 1639)|1641|1641-1642]]")
-![Samson and Delilah](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Samson_und_delilah.jpg/1221px-Samson_und_delilah.jpg "Samson and Delilah: [[1628|(1630 - 1638)|1633 - 1637]]")
+![Self portrait](https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Self-portrait_as_the_Allegory_of_Painting_%28La_Pittura%29_-_Artemisia_Gentileschi.jpg/960px-Self-portrait_as_the_Allegory_of_Painting_%28La_Pittura%29_-_Artemisia_Gentileschi.jpg "Self-Portrait as the Allegory of Painting: [[(1638 - 1639)|1641|1641-1642]]")
+![Samson and Delilah](https://upload.wikimedia.org/wikipedia/commons/7/73/Samson_und_delilah.jpg "Samson and Delilah: [[1628|(1630 - 1638)|1633 - 1637]]")
 ![Virgin with the Child](https://upload.wikimedia.org/wikipedia/commons/e/e0/Artemisia_Gentileschi_-_Madonna_con_Bambino_%281609-1610%29.jpg "Virgin with the Child: [[(1609–1610)|1618|1622-1623]]")
 !?[BBC Documentary](https://www.youtube.com/watch?v=WcSRtdg9FyM "BBC Documentary: Michael Palin's Quest for Artemisia")
 
@@ -7968,7 +7968,7 @@ If you try out the following example, correct and incorrect inputs will be highl
 
 #### 4. Working with Macros
 <!--
-@image: ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Human_Eye_Transverse_Cut_Unlabeled.jpg/1024px-Human_Eye_Transverse_Cut_Unlabeled.jpg)
+@image: ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Human_Eye_Transverse_Cut_Unlabeled.jpg/1280px-Human_Eye_Transverse_Cut_Unlabeled.jpg)
 -->
 
     --{{0}}--
@@ -7981,7 +7981,7 @@ For more information on this topic, check out the section [Macros](#macros).
 ```` markdown
 #### 4. Working with Macros
 <!--
-@image: ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Human_Eye_Transverse_Cut_Unlabeled.jpg/1024px-Human_Eye_Transverse_Cut_Unlabeled.jpg)
+@image: ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Human_Eye_Transverse_Cut_Unlabeled.jpg/1280px-Human_Eye_Transverse_Cut_Unlabeled.jpg)
 -->
 
 Name the elements in the following image:
@@ -10145,7 +10145,7 @@ logo: ./pics/logo.png
 
 ##### `icon`
 <!--
-icon: https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Logo_TU_Freiberg.svg/487px-Logo_TU_Freiberg.svg.png
+icon: https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Logo_TU_Freiberg.svg/500px-Logo_TU_Freiberg.svg.png
 -->
 
     --{{0}}--
