@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     29/04/2026
-version:  34.0.2
+date:     09/07/2026
+version:  34.0.4
 language: en
 narrator: UK English Female
 
@@ -1216,47 +1216,62 @@ etc.
 ********************************************************************************
 
                            {{2}}
-> __Note:__
-> At the moment it is required to separate blocks by at least one empty line.
-> The following example will be interpreted as a single paragraph:
+> [!NOTE]
+> Since LiaScript version 1.0, the following syntax is also supported and is
+> easier for AI tools to generate correctly.
 >
-> ``` markdown
-> * this is one single
->   - paragraph with a dash.
+> The interpreter can distinguish between a continuation of the current list
+> item and a nested sublist. In earlier versions, the structure had to be
+> indicated more explicitly.
+>
+> Although both forms are valid, adding a blank line before a nested list makes
+> the document easier to read and clearly communicates that a new sublist begins.
+>
+> ```markdown
+> * This belongs to a single list item
+>   - and is interpreted as a continuation introduced by a dash.
+>
+> ---
+>
+> * This is a separate list item.
+>
+>   - This is a nested sublist.
 > ```
 >
-> Whereby the following will result in a bullet point with another one nested
+> * This belongs to a single list item
 >
-> ``` markdown
-> * separate paragraph
+>   * and is interpreted as a continuation introduced by a dash.
 >
->   - and this is a separate sub listing
-> ```
+> ---
+>
+> * This is a separate list item.
+>
+>   * This is a nested sublist.
 
 
 #### Ordered Lists 💫
 
-                          --{{0}}--
+                      --{{0}}--
+Ordered lists are created by placing a number followed by a period in front of
+each item. In LiaScript, the numbers you specify are preserved and therefore
+become part of the list's structure.
+This differs from standard Markdown and GitHub Flavored Markdown, which usually
+ignore the numbers written in the source and automatically number each list
+starting from `1`.
+Because LiaScript preserves the explicit numbering, you can interrupt a list
+with additional content, continue it later, or use animations to show and hide
+individual parts without losing the intended numbering.
 
-Ordered lists start with a number and a dot. As you can see from the example,
-the numbering is important. In contrast to the GitHub flavored Markdown or the
-original Markdown, where the list below would result in **two** separate lists,
-and the numbering for every list would start at 1, ignoring your numbering
-order. With the LiaScript interpretation you can separate your lists, add more
-explanations in between, or use animations to make certain parts appear or
-disappear.
-
-
-**Markdown-Syntax:**
+**Markdown syntax:**
 
 <!-- class="translate"-->
-``` markdown
+```markdown
 0. alpha
 1. **beta**
 
 Something else ...
 
-3. * gamma
+3. *gamma*
    * delta
    * and epsilon
 2. probably zeta
@@ -1269,10 +1284,116 @@ Something else ...
 
 Something else ...
 
-3. * gamma
+3. *gamma*
+
    * delta
    * and epsilon
-2. probably zeta
+4. probably zeta
+
+   {{1}}
+<section>
+
+##### Changing the numbering format with `type`
+
+    --{{1}}--
+By default, ordered lists use decimal numbers such as `1`, `2`, and `3`.
+The HTML-compatible `type` attribute allows you to select a different numbering
+format.
+
+The following values are supported:
+
+| Value | Numbering format         | Example    |
+|:-----:|--------------------------|------------|
+|  `1`  | Decimal numbers          | 1, 2, 3    |
+|  `a`  | Lowercase Latin letters  | a, b, c    |
+|  `A`  | Uppercase Latin letters  | A, B, C    |
+|  `i`  | Lowercase Roman numerals | i, ii, iii |
+|  `I`  | Uppercase Roman numerals | I, II, III |
+
+Add the attribute as an HTML comment directly before the list:
+
+``` markdown
+<!-- type="a" -->
+1. one
+2. two
+12. twelve
+99. risk
+```
+
+###### Lowercase Latin letters `type="a"`
+
+<!-- type="a" -->
+1. one
+2. two
+12. twelve
+99. risk
+
+###### Uppercase Latin letters `type="A"`
+
+<!-- type="A" -->
+1. one
+2. two
+12. twelve
+99. risk
+
+###### Lowercase Roman numerals `type="i"`
+
+<!-- type="i" -->
+1. one
+2. two
+12. twelve
+99. risk
+
+###### Uppercase Roman numerals `type="I"`
+
+<!-- type="I" -->
+1. one
+2. two
+12. twelve
+99. risk
+
+</section>
+
+
+    {{2}}
+<section>
+
+##### Using CSS with `list-style-type`
+
+
+   --{{2}}--
+For additional numbering formats, you can apply the CSS property
+`list-style-type` through LiaScript's inline block styling.
+This provides access to formats that are not available through the `type`
+attribute, such as Greek letters or numbers with leading zeros.
+
+```markdown
+<!-- style="list-style-type: lower-greek" -->
+1. alpha
+2. beta
+3. gamma
+```
+
+**Result:**
+
+<!-- style="list-style-type: lower-greek" -->
+1. alpha
+2. beta
+3. gamma
+
+Other useful values include:
+
+```text
+decimal
+decimal-leading-zero
+lower-alpha
+upper-alpha
+lower-roman
+upper-roman
+lower-greek
+```
+
+</section>
 
 
 ### Blockquotes
