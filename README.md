@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     09/07/2026
-version:  34.0.4
+version:  34.0.5
 language: en
 narrator: UK English Female
 
