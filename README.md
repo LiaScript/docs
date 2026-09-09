@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     09/07/2026
-version:  34.0.5
+date:     09/09/2026
+version:  35.0.0
 language: en
 narrator: UK English Female
 
@@ -3334,6 +3334,68 @@ and they will be preserved if your document is in version 1 or greater.
 
 ********************************************************************************
 
+                          {{2}}
+<section>
+
+                        --{{2}}--
+Since version 2, LiaScript also supports more complex tasks, quizzes, and
+surveys, by letting you attach an **indented block** to any list-item. This
+works exactly like a normal Markdown list: simply indent the following lines so
+that they line up with the text right after the checkbox, and you can add
+almost anything to it, additional paragraphs, images, code, or even a nested
+task-list to track finer-grained sub-goals.
+
+<!-- class="translate" -->
+```` markdown
+**Which topics did you master so far?**
+
+- [ ] __Biology__
+
+      Photosynthesis, cell division, genetics, ... check this box once you feel
+      confident, no matter how many details you still mix up.
+
+- [ ] __Chemistry__
+
+      Split into a few sub-goals:
+
+      - [ ] Balancing equations
+      - [ ] The periodic table
+      - [X] Acids and bases
+
+- [X] __Computer Science__
+
+      ``` js
+      console.log("Hello, LiaScript!")
+      ```
+
+      Already ticked off, since you are reading this in a LiaScript course ;-)
+````
+
+**Which topics did you master so far?**
+
+- [ ] __Biology__
+
+      Photosynthesis, cell division, genetics, ... check this box once you feel
+      confident, no matter how many details you still mix up.
+
+- [ ] __Chemistry__
+
+      Split into a few sub-goals:
+
+      - [ ] Balancing equations
+      - [ ] The periodic table
+      - [X] Acids and bases
+
+- [X] __Computer Science__
+
+      ``` js
+      console.log("Hello, LiaScript!")
+      ```
+
+      Already ticked off, since you are reading this in a LiaScript course ;-)
+
+</section>
+
 ### Tasks and Scripting
 
                           --{{0}}--
@@ -3578,6 +3640,90 @@ With indentation of at least 4 spaces (code):
     [[ ]] **as defined in the first line** ...
 ```
 
+##### 1.1 Multiple-Choice Blocks
+
+                          --{{0}}--
+Exactly as with [tasks](#tasks), every option of a multiple-choice quiz can
+also carry an **indented block**. This comes in handy whenever an option needs
+more than a single line, for example to let the user compare different
+snippets of code and decide which of them is written in valid LiaScript syntax.
+
+<!-- class="translate" -->
+```` markdown
+**Which of the following snippets define a valid multiple-choice quiz?**
+
+- [[X]] Using dashes, this is correct syntax
+
+        ``` markdown
+        - [[X]] Yes
+        - [[ ]] No
+        ```
+
+- [[ ]] Mixing brackets and parentheses
+
+        ``` markdown
+        - [[X)] Yes
+        - [[ )] No
+        ```
+
+- [[X]] Omitting the dashes and indenting the block as code instead
+
+        ``` markdown
+            [[X]] Yes
+            [[ ]] No
+        ```
+
+- [[ ]] Forgetting the outer, double brackets
+
+        ``` markdown
+        - (X) Yes
+        - ( ) No
+        ```
+````
+
+                          --{{1}}--
+Each option now consists of a short label, followed by its own indented
+code-block, exactly the same way as a paragraph or a nested list would be
+attached to a task. Just keep in mind that the marker `- [[X]] ` is two
+characters longer than a task's `- [ ] `, so here the block has to be indented
+by 8 spaces instead of 6, always line it up with the text right after the
+checkbox.
+
+                            {{1}}
+********************************************************************************
+
+**Which of the following snippets define a valid multiple-choice quiz?**
+
+- [[X]] Using dashes, this is correct syntax
+
+        ``` markdown
+        - [[X]] Yes
+        - [[ ]] No
+        ```
+
+- [[ ]] Mixing brackets and parentheses
+
+        ``` markdown
+        - [[X)] Yes
+        - [[ )] No
+        ```
+
+- [[X]] Omitting the dashes and indenting the block as code instead
+
+        ``` markdown
+            [[X]] Yes
+            [[ ]] No
+        ```
+
+- [[ ]] Forgetting the outer, double brackets
+
+        ``` markdown
+        - (X) Yes
+        - ( ) No
+        ```
+
+********************************************************************************
+
 #### 2. Single-Choice
 
                           --{{0}}--
@@ -3641,11 +3787,92 @@ as solved, or if the user clicks onto the "show solution" button, both options
 will be presented.
 
 
+##### 2.1 Single-Choice Blocks
 
-                            {{4}}
+                          --{{0}}--
+Just like [multiple-choice quizzes](#11-multiple-choice-blocks), every option
+of a single-choice quiz can carry its own indented block. Since only one
+option can ever be the solution, this is a good place to attach a code-snippet
+per option and let the user spot the single correct one, everything else in
+the list still has to obey the "only one `X`" rule of a radio-button quiz.
+
+<!-- class="translate" -->
+```` markdown
+**Which of the following snippets defines a valid single-choice quiz?**
+
+- [(X)] Using dashes together with parentheses
+
+        ``` markdown
+        - [(X)] Yes
+        - [( )] No
+        ```
+
+- [( )] Using square brackets instead of parentheses
+
+        ``` markdown
+        - [X] Yes
+        - [ ] No
+        ```
+
+- [( )] Mixing brackets and parentheses
+
+        ``` markdown
+        - [(X]] Yes
+        - [( ]] No
+        ```
+
+- [( )] Forgetting the closing parenthesis
+
+        ``` markdown
+        - [(X] Yes
+        - [( ] No
+        ```
+````
+
+                            {{1}}
+********************************************************************************
+
+**Which of the following snippets defines a valid single-choice quiz?**
+
+- [(X)] Using dashes together with parentheses
+
+        ``` markdown
+        - [(X)] Yes
+        - [( )] No
+        ```
+
+- [( )] Using square brackets instead of parentheses
+
+        ``` markdown
+        - [X] Yes
+        - [ ] No
+        ```
+
+- [( )] Mixing brackets and parentheses
+
+        ``` markdown
+        - [(X]] Yes
+        - [( ]] No
+        ```
+
+- [( )] Forgetting the closing parenthesis
+
+        ``` markdown
+        - [(X] Yes
+        - [( ] No
+        ```
+
+********************************************************************************
+
+                          --{{1}}--
+As with multiple-choice blocks, the marker `- [(X)] ` is 8 characters wide, so
+the indented block always has to line up with 8 spaces, exactly the same rule,
+just applied to a single-choice radio-button list.
+
+                            {{2}}
 > ## How to create a true/false quiz?
 >
->                        --{{4}}--
+>                        --{{2}}--
 > Using single-choice quizzes, it is also possible to define something simple as
 > a True or False quiz.
 >
