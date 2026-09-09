@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    LiaScript@web.de
 date:     09/09/2026
-version:  35.0.0
+version:  36.0.0
 language: en
 narrator: UK English Female
 
@@ -5612,6 +5612,64 @@ Select one option:
 *******************************************************************************
 
 
+#### Single-Choice Vector Blocks
+
+                               --{{0}}--
+Exactly as with tasks and quizzes, every option of a survey vector can carry
+its own indented block. This lets you explain what a rating actually means
+before someone picks it, which is especially useful for anything more nuanced
+than a plain number.
+
+<!-- class="translate"-->
+```markdown
+How was the pacing of this chapter?
+
+- [(fast)] Too fast
+
+           I had to pause and re-read things to keep up.
+
+- [(slow)] Too slow
+
+           I found myself waiting for new content to show up.
+
+- [(good)] Just right
+
+           The speed felt natural, I could follow along easily.
+
+- [(okay)] Okay-ish
+
+           Not perfect, but I got through it just fine.
+```
+
+                               --{{1}}--
+Note that the required indentation now depends on the length of your own
+identifier. Here `- [(good)] ` is 11 characters wide, so every continuation
+line has to line up with 11 spaces, exactly the same rule as with tasks and
+quizzes, just applied to whatever label you choose.
+
+                                 {{1}}
+*******************************************************************************
+
+How was the pacing of this chapter?
+
+- [(fast)] Too fast
+
+           I had to pause and re-read things to keep up.
+
+- [(slow)] Too slow
+
+           I found myself waiting for new content to show up.
+
+- [(good)] Just right
+
+           The speed felt natural, I could follow along easily.
+
+- [(okay)] Okay-ish
+
+           Not perfect, but I got through it just fine.
+
+*******************************************************************************
+
 ### Multi-Choice Vector
 
                                --{{0}}--
@@ -5667,6 +5725,69 @@ What are your favorite colors?
 - [[2 green]]       green
 - [[3 blue]]        or blue
 - [[4 dark purple]] last chance ;-)
+
+*******************************************************************************
+
+#### Multi-Choice Vector Blocks
+
+                               --{{0}}--
+The same idea applies to multi-choice survey vectors: attach an indented block
+to any option to add more context, a nested list, or even a snippet of code.
+
+<!-- class="translate"-->
+```` markdown
+Which parts of this documentation helped you the most?
+
+- [[text]] Written explanations
+
+           Reading through the prose and examples at your own pace.
+
+- [[code]] Ready-made snippets
+
+           Copy-pasting blocks like this one straight into your course:
+
+           ``` markdown
+           - [[X]] just like this
+           ```
+
+- [[demo]] Live "Result" previews
+
+           Seeing immediately how a block renders inside the document.
+
+- [[link]] Links to further reading
+
+           Following the references to GitHub, MDN, or Wikipedia.
+````
+
+                               --{{1}}--
+As before, everything lines up with 11 spaces, since `- [[text]] ` and its
+siblings are all exactly that wide. Feel free to mix option-label lengths, just
+remember that each option's own block only has to align with its own marker.
+
+                                 {{1}}
+*******************************************************************************
+
+Which parts of this documentation helped you the most?
+
+- [[text]] Written explanations
+
+           Reading through the prose and examples at your own pace.
+
+- [[code]] Ready-made snippets
+
+           Copy-pasting blocks like this one straight into your course:
+
+           ``` markdown
+           - [[X]] just like this
+           ```
+
+- [[demo]] Live "Result" previews
+
+           Seeing immediately how a block renders inside the document.
+
+- [[link]] Links to further reading
+
+           Following the references to GitHub, MDN, or Wikipedia.
 
 *******************************************************************************
 
