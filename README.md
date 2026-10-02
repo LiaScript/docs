@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     09/09/2026
-version:  36.0.0
+date:     02/10/2026
+version:  37.0.0
 language: en
 narrator: UK English Female
 
@@ -3535,7 +3535,7 @@ combination of brackets with brackets or parentheses.
 - `[(   )]`
 
                           --{{2}}--
-LiaScript currently supports 6 different types of quizzes and one, so-called
+LiaScript currently supports 7 different types of quizzes and one, so-called
 generic type, which can be used to created custom quizzes of any kind.
 
 
@@ -3543,9 +3543,11 @@ generic type, which can be used to created custom quizzes of any kind.
 1. Multiple-Choice: `[[X|x| ]] ...`
 2. Single-Choice:   `[(X|x| )] ...`
 3. Matrix: as a combination of multiple- and single-choice quizzes
-3. Text-Quiz: `[[solution]]`
-4. Selection-Quiz: `[[ opt. 1 | opt. 2 | (solution opt.) ]]`
-5. Gap-Text everything: Use selection- and text-quizzes within Markdown-blocks
+4. Text-Quiz: `[[solution]]`
+5. Selection-Quiz: `[[ opt. 1 | opt. 2 | (solution opt.) ]]`
+6. Drag & Drop-Quiz: `[->[ opt. 1 | opt. 2 | (solution opt.) ]]`
+7. Gap-Text everything: Use text-, selection-, and drag & drop-quizzes within
+   Markdown-blocks
 0. "Generic": `[[!]]`
 
 
@@ -3565,7 +3567,7 @@ sophisticated quizzes or simply to log the output.
 ### Quiz Types
 
                           --{{0}}--
-Within the following section we will introduce the 6 types of quizzes, which are
+Within the following section we will introduce the 7 types of quizzes, which are
 currently supported by LiaScript. Additionally, you have to know that users
 cannot fail, by default it is possible to retry a quiz until it is solved, or
 the user clicks onto the resolve button. The only thing that is counted is the
@@ -4042,10 +4044,83 @@ Can be also written as:
 ********************************************************************************
 
 
-#### 6. Gap-Text Extreme
+#### 6. Drag & Drop-Quiz
+
+                          --{{0}}--
+Selections are nice, but sometimes you want your learners to actually grab
+something and put it into the right place. A drag & drop quiz uses exactly the
+same notation as a selection-quiz, the only difference is the little arrow `->`
+within the opening brackets `[->[`, which indicates that something has to be
+moved.
+
+<!-- class="translate"-->
+``` markdown
+What is the capital of Germany?
+
+[->[ Paris | ( Berlin ) | Madrid ]]
+```
+
+                          --{{1}}--
+All options are presented as little cards beneath a drop zone. Simply drag the
+correct card onto the drop zone and click onto check. If you are not a fan of
+dragging, you can also click onto the drop zone (or press Enter or Space) and
+then onto a card. On touch devices, a long press onto a card starts the
+dragging.
+
+                            {{1}}
+********************************************************************************
+
+**Result:**
+
+What is the capital of Germany?
+
+[->[ Paris | ( Berlin ) | Madrid ]]
+
+********************************************************************************
+
+                          --{{2}}--
+Same as with selections, the options can contain any LiaScript inline element,
+they can be spread over multiple lines, and you can define more than one correct
+option. And if you define only one option without any parentheses, then this
+one is automatically the correct one, which makes more sense within gap-texts,
+as you will see in the next section.
+
+                            {{2}}
+********************************************************************************
+
+<!-- class="translate"-->
+``` markdown
+Which of the following is equal to $4$?
+
+    [->[   $\sqrt{8}$
+       | ( $2^2$ )
+       | ( $\frac{8}{2}$ )
+       |   $4^2$
+       ]]
+```
+
+**Result:**
+
+Which of the following is equal to $4$?
+
+    [->[   $\sqrt{8}$<!-- class="notranslate"-->
+       | ( $2^2$<!-- class="notranslate"--> )
+       | ( $\frac{8}{2}$<!-- class="notranslate"--> )
+       |   $4^2$<!-- class="notranslate"-->
+       ]]
+
+********************************************************************************
+
+                          --{{3}}--
+__Be careful__, if you do not mark any option with parentheses and if you have
+defined at least two options, then your quiz turns into a survey. Have a look at
+section [Drag and Drop Survey](#drag-and-drop-survey) for more information.
+
+
+#### 7. Gap-Text Extreme
 
                      --{{0}}--
-Internally we call this type a multi-quiz, it allows to freely use text- and selection quizzes within all other kinds of Markdown-blocks to generate more complex test situations.
+Internally we call this type a multi-quiz, it allows to freely use text-, selection-, and drag & drop-quizzes within all other kinds of Markdown-blocks to generate more complex test situations.
 
      {{1}}
 <section>
@@ -4103,6 +4178,58 @@ __4,500,000,000 [[ (US Dollar 💵) | Euro 💶 | _Rubel 💸_ | Pound 💷 ]]__
 
 ****************************************************
 
+
+</section>
+
+
+     {{3}}
+<section>
+
+                    --{{3}}--
+And of course, you can also drag & drop within a text.
+All cards of all drop-gaps are collected within one common pool beneath the text, from where they can be dragged into the gaps.
+If you want to add some distractors, simply add them as additional options to one of the gaps.
+A card always remembers where it came from, thus it is only counted as correct within its own gap, even if another card has the same text.
+And as you can see, it is no problem to combine drop-gaps with text-inputs and selections.
+
+``` markdown
+<!-- data-randomize -->
+The [->[ Sun ]] is a star, the [->[ (Moon) | Mars ]] is orbiting the
+Earth, and [->[ Jupiter ]] is the largest planet in our solar system.
+Pluto is a [[ (dwarf planet) | planet | comet ]] and its moon is called
+[[ Charon ]].
+```
+
+---
+
+<!-- data-randomize -->
+The [->[ Sun ]] is a star, the [->[ (Moon) | Mars ]] is orbiting the
+Earth, and [->[ Jupiter ]] is the largest planet in our solar system.
+Pluto is a [[ (dwarf planet) | planet | comet ]] and its moon is called
+[[ Charon ]].
+
+</section>
+
+
+     {{4}}
+<section>
+
+                    --{{4}}--
+`data-randomize` shuffles the cards within the pool, otherwise they would be listed in the order of their definition.
+If you add `data-show-partial-solution`, every gap will show a green or red border after checking, such that your learners can see which of their drops were correct.
+And since a drop-gap is a LiaScript element, you can also attach a style to it, for example to make the gaps wider than their content.
+
+``` markdown
+<!-- data-show-partial-solution -->
+The [->[ Sun ]]<!-- style="min-width: 10rem" --> is a star, the
+[->[ (Moon) | Mars ]]<!-- style="min-width: 10rem" --> is orbiting the Earth.
+```
+
+---
+
+<!-- data-show-partial-solution -->
+The [->[ Sun ]]<!-- style="min-width: 10rem" --> is a star, the
+[->[ (Moon) | Mars ]]<!-- style="min-width: 10rem" --> is orbiting the Earth.
 
 </section>
 
@@ -4363,6 +4490,61 @@ To trick the interpreter from applying a single line text-input, we need to add 
 </section>
 
 
+##### Lists, Headers & HTML
+
+                          --{{0}}--
+Gaps are not limited to paragraphs, tables, quotes, galleries, and ASCII-art.
+You can also put them into headers, into ordered and unordered lists, and even
+into HTML blocks. By default, every paragraph within a list (or within an HTML
+block) that contains a gap is treated as a quiz of its own, with its own
+check-button.
+
+<!-- class="translate"-->
+``` markdown
+- Berlin is the capital of [[ (Germany) | France | Spain ]].
+- Paris is the capital of [->[ (France) | Italy ]].
+- Madrid is the capital of [[ Spain ]].
+```
+
+                            {{0-1}}
+********************************************************************************
+
+**Result:**
+
+- Berlin is the capital of [[ (Germany) | France | Spain ]].
+- Paris is the capital of [->[ (France) | Italy ]].
+- Madrid is the capital of [[ Spain ]].
+
+********************************************************************************
+
+                          --{{1}}--
+If you would rather like to check the entire list at once, then simply add
+`data-group` to the comment in front of the list. Now, all gaps belong to one
+single quiz with one check-button, and all drag & drop cards are collected
+within one common pool. This works the same way for HTML blocks. Quotes and
+ASCII-art are always grouped, since they cannot be split into separate quizzes.
+
+                            {{1}}
+********************************************************************************
+
+<!-- class="translate"-->
+``` markdown
+<!-- data-group -->
+- Berlin is the capital of [[ (Germany) | France | Spain ]].
+- Paris is the capital of [->[ (France) | Italy ]].
+- Madrid is the capital of [[ Spain ]].
+```
+
+**Result:**
+
+<!-- data-group -->
+- Berlin is the capital of [[ (Germany) | France | Spain ]].
+- Paris is the capital of [->[ (France) | Italy ]].
+- Madrid is the capital of [[ Spain ]].
+
+********************************************************************************
+
+
 #### 0. Generic Quizzes
 
                           --{{0}}--
@@ -4575,10 +4757,10 @@ What is $37 + 15$?
 #### Randomization
 
                        --{{0}}--
-Currently it is only possible to randomize vector and matrix quizzes, that means that the order of rows can be shuffled.
-This happens only ones, when the slide is loaded for the first time, this includes also page reloads.
-Just by adding the option `data-randomize` to the comment attached to the head of the quiz.
-Other options might be added in the future.
+You can randomize the order of options of nearly all quiz types, just by adding the option `data-randomize` to the comment attached to the head of the quiz.
+For single- and multiple-choice quizzes as well as for matrix quizzes, this means that the order of rows is shuffled.
+For selections and drag & drop quizzes the order of options gets shuffled, and within gap-texts the options of every gap as well as the common pool of drag & drop cards are mixed.
+This happens only once, when the slide is loaded for the first time, this includes also page reloads.
 
 ``` markdown
 Are the options of the quiz in order?
@@ -4588,6 +4770,11 @@ Are the options of the quiz in order?
 - [( )] option 2 (no)
 - [(X)] option 3 (maybe)
 - [( )] option 4 (I don't care)
+
+Which word is a verb?
+
+<!-- data-randomize -->
+[->[ house | tree | (run) | blue ]]
 ```
 
                        --{{1}}--
@@ -4604,6 +4791,13 @@ Are the options of the quiz in order?
 - [( )] option 2 (no)
 - [(X)] option 3 (maybe)
 - [( )] option 4 (I don't care)
+
+---
+
+Which word is a verb?
+
+<!-- data-randomize -->
+[->[ house | tree | (run) | blue ]]
 
 </div>
 
@@ -4702,7 +4896,7 @@ Next to randomization you can also use the following configuration options and a
 
                --{{4}}--
   If a quiz might have to many input options and you require a way to separate partially correct answers from wrong ones, then you need to use this attribute.
-  It can be applied onto [gap-texts](#6.-gap-text-extreme) and [matrix-quizzes](#3.-matrix-quiz).
+  It can be applied onto [gap-texts](#7.-gap-text-extreme) and [matrix-quizzes](#3.-matrix-quiz).
   In contrast to a gap-text, which can also contain single selections, in a matrix the entire row will be highlighted as correct or wrong.
 
   ```` md
@@ -4899,7 +5093,9 @@ of code.
 A selection quiz is defined by a number that represents the current input,
 starting from `0`. The initial state is marked with `-1` to indicate that
 nothing has been selected so far. In this example `A` would be represented by
-`0`, `B` by `1`, `C` by `2` and so on.
+`0`, `B` by `1`, `C` by `2` and so on. The same applies to drag & drop quizzes
+`[->[A|B|C|(D)]]`, here the number represents the option that has been dropped
+into the drop zone.
 
 
 ``` markdown
@@ -5472,7 +5668,7 @@ if ("@input" !== "true") {
 ```
 
 
-## Surveys & Classrooms
+## Surveys
 
                                --{{0}}--
 A survey or questionnaire from our perspective is a quiz without a predefined solution.
@@ -5483,7 +5679,7 @@ If you use the [LiaScript-Exporter](https://www.npmjs.com/package/@liascript/exp
 
                                --{{1}}--
 But, if you are also using [LiaScript](https://LiaScript.github.io) for your live presentations, you can also open a classroom directly from your Browser and create a shared experience, where all the connected peers will get the same and anonymous view.
-We will explain the classroom-idea in more detail at the end of this section.
+We will explain the classroom-idea in more detail in section [Classrooms](#Classrooms).
 
 ### Text-Inputs
 
@@ -5878,6 +6074,119 @@ __Result:__
     [                     ] question 3 ?
 
 
+### Select Survey
+
+                               --{{0}}--
+Do you remember the selection-quiz? If you remove all parentheses, then there
+is no correct option anymore, and the selection turns into a survey. Your users
+can pick exactly one option from a dropdown menu.
+
+<!-- class="translate"-->
+```markdown
+Which fruit do you like the most?
+
+    [[ Apple 🍎 | Banana 🍌 | Cherry 🍒 | __None of them__ ]]
+```
+
+                               --{{1}}--
+The difference between a quiz and a survey is only defined by the existence of
+a solution. Thus, `[[ Apple | (Banana) ]]` is a selection-quiz, while a single
+word `[[ Banana ]]` without any vertical bars is a text-quiz. A survey requires
+at least two options without any parentheses.
+
+                                 {{1}}
+*******************************************************************************
+
+__Result:__
+
+Which fruit do you like the most?
+
+    [[ Apple 🍎 | Banana 🍌 | Cherry 🍒 | __None of them__ ]]
+
+*******************************************************************************
+
+
+### Drag and Drop Survey
+
+                               --{{0}}--
+The same trick works for drag & drop. If you omit all parentheses, your users
+can choose their option by dragging a card into the drop zone, or by clicking
+onto the drop zone and then onto a card. Again, you have to define at least two
+options.
+
+<!-- class="translate"-->
+```markdown
+Which fruit do you like the most?
+
+    [->[ Apple 🍎 | Banana 🍌 | Cherry 🍒 | __None of them__ ]]
+```
+
+                                 {{1}}
+*******************************************************************************
+
+__Result:__
+
+Which fruit do you like the most?
+
+    [->[ Apple 🍎 | Banana 🍌 | Cherry 🍒 | __None of them__ ]]
+
+*******************************************************************************
+
+
+### Survey Options
+
+                               --{{0}}--
+Similar to quizzes, surveys can be configured by adding some attributes to the
+comment in front of them. By default, a survey has to be filled out completely
+before it can be submitted, and once it is submitted, it is locked. The
+following options allow you to change this behavior:
+
+* `data-randomize`: Shuffles the order of options for vectors, selections, and
+  drag & drop surveys, and the order of rows for matrix surveys. The order is
+  kept until the next page reload. It has no effect on text-surveys.
+* `data-updates-allowed` (or shorter `data-updates`): After submitting, the
+  submit-button turns into an update-button, which allows your users to change
+  their minds and resubmit their answers.
+* `data-incompleteness-allowed` (or shorter `data-incomplete`): Skips the
+  check for completeness, thus it is possible to submit an empty text, a matrix
+  where not all rows have been answered, or even nothing at all.
+
+<!-- class="translate"-->
+```markdown
+<!--
+data-randomize
+data-updates
+data-incomplete
+-->
+[(1 totally)(2 agree)(3 unsure)(4 maybe not)(5 disagree)]
+[                                                       ] Surveys are fun?
+[                                                       ] I like to change my mind?
+[                                                       ] I never answer all questions?
+```
+
+                               --{{1}}--
+Try to submit the survey below without answering all questions, and afterwards
+use the update-button to change your answers. If you reload the page, the order
+of rows will also change.
+
+                                 {{1}}
+*******************************************************************************
+
+__Result:__
+
+<!--
+data-randomize
+data-updates
+data-incomplete
+-->
+[(1 totally)(2 agree)(3 unsure)(4 maybe not)(5 disagree)]
+[                                                       ] Surveys are fun?
+[                                                       ] I like to change my mind?
+[                                                       ] I never answer all questions?
+
+*******************************************************************************
+
+
 ### Surveys and Scripting
 
                                --{{0}}--
@@ -5956,31 +6265,36 @@ What are your favorite colors?
 
 *******************************************************************************
 
-### Classroom Experience
+## Classrooms
 
-We try to develop a simple classroom experience, light without any centralized authority or server.
-Therefore, we currently apply distributed [Web3.0](https://en.wikipedia.org/wiki/Web3) technologies, which synchronize the state of a classroom across multiple connected users/browsers.
-At the moment, we can synchronize and visualize quizzes and surveys and display an anonymous overview onto the results.
-Additionally every executable code can also be edited in collaborative mode.
-Last but not least, the current implementation of a LiaScript classroom offers a chat, that interprets the inputs as LiaScript.
-Thus, it is possible to add quizzes, surveys and even code into the chat.
+                               --{{0}}--
+A LiaScript classroom is a lightweight way to work together with your class in
+real time, without accounts and without any central authority or server that
+stores your data. All connected browsers synchronize their state directly, the
+servers that are used, are only relays that pass on messages. Thus, everyone who
+has opened the same course can join a room and you will instantly see what the
+others are doing.
 
 > # What is Synced?
 >
-> * Quizzes
-> * Surveys
-> * Executable code
+> * __Quizzes & Surveys:__ an anonymous overview of the results of all participants
+> * __Executable code:__ can be switched into a collaborative editor
+> * __Chat:__ every message is interpreted as LiaScript, thus you can post
+>   quizzes, surveys, code, or media to the chat on the fly
 
-The basic idea is, if you join a room, you bring your data with you, if you leave the room then all of your data will be removed from the global state.
-Thus, nothing is stored nothing is logged, and you have the control over your data.
-All associated servers run only as relays.
-But, chat messages and collaborative changes to a code snippet will remain within the classroom as long as on user is within the room.
-If all leave the room, the chat and the collaborative changes are lost...
+                               --{{1}}--
+The basic idea is, if you join a room, you bring your data with you, if you
+leave the room, then all of your data will be removed from the global state.
+Thus, nothing is logged and you have the control over your data. Chat messages
+and collaborative changes to a code snippet will remain within the classroom as
+long as one user is within the room. If all leave the room, the chat and the
+collaborative changes are lost, unless you have decided to save your classroom.
 
-#### I don't want Classrooms
+### I don't want Classrooms
 
                                --{{0}}--
-You can also disable this feature for your course, simply by adding the command `classroom: disable` or `classroom: false` to your main definition.
+You can also disable this feature for your course, simply by adding the command
+`classroom: disable` or `classroom: false` to your main definition.
 
 ``` markdown
 <!--
@@ -5993,59 +6307,235 @@ classroom: disable
 
 ```
 
-#### Working with Classrooms
+### Opening a Classroom
 
                                --{{0}}--
-If you are on the LiaScript website and if you have a course started, you can directly switch to the classroom settings by clicking onto the share button.
+If you are on the LiaScript website and if you have a course started, you can
+directly switch to the classroom by clicking onto the share button in the top
+right corner and then onto "Classroom".
 
           {{0-1}}
-![Open Classroom](img/classroom1.png)
+![Open the classroom via the share menu](img/classroom-share-button.png)
 
 
                                --{{1}}--
-When you click onto the classroom button, you should be presented with the classroom settings, where you have to choose one backend service.
-We would prefer to use [GunDB](https://gun.eco).
-Some services like [Beaker](https://beakerbrowser.com) require you to run your course from another browser, or you will have different settings.
+This opens the classroom overview. You can either start a private notebook just
+for yourself with the pencil button, choose a backend to connect to, or open
+"What can a classroom do?" to get a longer explanation about all features.
 
           {{1-2}}
-![Classroom Settings](img/classroom2.png)
+![The classroom overview](img/classroom-overview.png)
 
 
                                --{{2}}--
-We provide different information for the different services that can be applied.
-However, what is similar to all is that you have to define a room name that must be unique.
-To help you, you can click onto the circle arrow symbol and a name will be generated randomly for you.
-The passwords are optional.
+There are many different backends that can be used to connect the browsers of
+your class. Each entry shows how many users it can roughly handle and what kind
+of infrastructure it uses. If you are not sure, simply take one of the public
+ones, such as Nostr. More details on this are presented in the next section.
 
           {{2-3}}
-![Classroom with GunDB](img/classroom3.png)
+![Choosing a backend](img/classroom-backend-select.png)
 
 
                                --{{3}}--
-If you then click onto connect and a connection could be established, the classroom settings will be closed automatically.
-Otherwise, an error message should be provided.
-If everything worked fine, you will see, at least one user within the classroom and the URL of your course will have changed.
-You can now either share the new URL, which contains all required configurations, or you can send the room name and the password and the course-URL separately to your peers.
-In this case, they will have to repeat these steps.
+After choosing a backend, you have to define a room name, which must be unique.
+To help you, you can click onto the circle arrow symbol and a name will be
+generated randomly for you. Your name and the password are optional, the name
+is shown to the others in the chat and within the details view of quizzes. On
+the right side you will find information about the selected backend, the
+"Infrastructure settings" allow you to change the servers to be used.
 
           {{3-4}}
-![Open Classroom](img/classroom4.png)
+![The classroom settings](img/classroom-form.png)
 
 
                                --{{4}}--
-In order to disconnect, you will have to go to the classroom settings again and click onto the disconnect button.
-Again, the URL of the course will change back to the original representation.
+If you then click onto connect and a connection could be established, the
+classroom settings will be closed automatically. Otherwise, an error message
+will be shown. If everything worked fine, the classroom button will show the
+number of users within the room, a chat button will appear in the top bar, and
+the URL of your course will have changed. You can share this new URL, it
+contains all required settings, except for the password. If you have defined
+one, your peers have to type it in by themselves.
 
-           {{4}}
-![Open Classroom](img/classroom5.png)
+          {{4-5}}
+![A connected classroom with two users](img/classroom-connected.png)
 
-                                 {{3}}
+
+                               --{{5}}--
+From now on, all participants will see the anonymous summary of all quizzes
+and surveys. In order to disconnect, you have to open the classroom settings
+again and click onto the disconnect button. The URL of the course will change
+back to the original representation.
+
+           {{5}}
+![Summary of a survey shared by all participants](img/classroom-shared-results.png)
+
+                                 {{5}}
 > __Note:__
-> You can try this out, if you open LiaScript on different browsers and go back to the quizzes and surveys sections.
-> You should experiment a bit with the resulting presentations.
-> Additionally, try to disconnect and observe the effect on the connected instances.
+> You can try this out, if you open LiaScript on different browsers and go back
+> to the quizzes and surveys sections. You should experiment a bit with the
+> resulting presentations. Additionally, try to disconnect and observe the
+> effect on the connected instances.
 
-#### Classroom Experience
+### Choosing a Backend
+
+                               --{{0}}--
+LiaScript tries to be as backend-agnostic as possible. All backends offer the
+same features, they differ only in the way how browsers find each other and how
+messages are passed on. Some of them require no setup at all, some use public
+and decentralized relays, and for some you can (or have to) run your own
+servers. If you choose a password, the communication is additionally
+encrypted.
+
+<!-- data-type="none" -->
+| Backend                                    | Users             | Infrastructure                                | Can save on server |
+| ------------------------------------------ | ----------------- | --------------------------------------------- | :----------------: |
+| [SimplePeer](https://github.com/feross/simple-peer) | ≈50 (≈300 in conference mode) | WebRTC, own signaling server | |
+| [WebSocket](https://github.com/yjs/y-websocket) | 100+         | own server (experimental)                     |                    |
+| [PeerJS](https://peerjs.com)               | ≈40               | WebRTC, public PeerJS cloud or own server     |                    |
+| [Nostr](https://nostr.com)                 | 25                | public relays (open protocol)                 |         ✓          |
+| [GUN](https://gun.eco)                     | 25                | public relays (decentralized)                 |         ✓          |
+| Torrent                                    | ≈45               | WebRTC, public BitTorrent trackers            |                    |
+| [MQTT](https://mqtt.org)                   | ≈45               | WebRTC, public MQTT brokers                   |                    |
+| [IPFS](https://ipfs.tech)                  | ≈45               | WebRTC, peer-to-peer                          |                    |
+| [Ably](https://ably.com)                   | < 25 (free tier)  | managed service, own API key optional         |         ✓          |
+| [PubNub](https://www.pubnub.com)           | 25                | managed service, own keys optional            |                    |
+| [Edrys](https://edrys-labs.github.io)      | –                 | only within an Edrys classroom                |                    |
+
+                               --{{1}}--
+Every backend comes with a set of default servers, thus you can directly start
+without any configuration. But, if you want to use your own infrastructure, you
+can change this within the "Infrastructure settings" at the bottom of the
+right side. In the case of Nostr, you can define your own list of relays, and
+by checking "save class data on server", snapshots of your classroom are stored
+on these relays, such that the room survives, even if everyone has
+disconnected. This way you can come back later and find the chat and the
+results again.
+
+                                 {{1}}
+![Infrastructure settings of the Nostr backend](img/classroom-infrastructure.png)
+
+                               --{{2}}--
+Be aware that the default relays are publicly hosted servers, so only use the
+saving option for data that may be stored there. If you want to keep your class
+data under your own control, configure your own servers. The "Infrastructure
+settings" are locked while you are connected, and if you open a classroom via a
+shared link, they are hidden, since the link already defines which servers have
+to be used.
+
+                                 {{2}}
+> __Thank you!__ The relay `wss://relay.edufeed.org` is kindly provided by the
+> [Edufeed](https://edufeed.org) project, which builds decentralized
+> communities for education on top of Nostr, and we have their permission to
+> use it. All other default relays and servers are public community services.
+
+### Classroom Modes
+
+                               --{{0}}--
+By default, a classroom runs in "Shared" mode, where all participants are equal
+and everyone sees the summary of all quizzes and surveys. But sometimes, for
+example in an exam-like situation or for a live poll, you might not want your
+students to see the answers of the others. Therefore, you can choose between
+three modes:
+
+* __☮️ Shared:__ All are equal and see the summary of quizzes and surveys.
+* __🛂 Summary:__ Only the initiator of the classroom can see the summaries.
+* __🛰️ Details:__ The initiator can additionally see the details per
+  participant, that is, who has answered what and how many trials were
+  required.
+
+---
+
+          {{0-1}}
+![Selecting the Details mode](img/classroom-mode-select.png)
+
+
+                               --{{1}}--
+The modes "Summary" and "Details" require an owner, who has created the room.
+Thus, before you can connect, you have to click onto the "generate owner token"
+button. The token stays within your browser and only a hash of it is shared,
+this way you can prove later that you are the initiator of this classroom, for
+example if you reconnect. Within the share menu, the owner gets a little ✨ next
+to the number of users.
+
+          {{1-2}}
+![Generating an owner token](img/classroom-owner-token.png)
+
+
+                               --{{2}}--
+Your students join as usual via the shared link, but in these modes they will
+only see a "Thank you for your feedback!" after submitting, without any summary
+of the others.
+
+          {{2-3}}
+![What a student sees in Summary or Details mode](img/classroom-student-view.png)
+
+
+                               --{{3}}--
+As the initiator, you will see the summary, and in "Details" mode you can
+additionally open the details table beneath every quiz and survey. It shows,
+for every participant, whether they are online, whether they have answered,
+how many trials were required, and the resulting score.
+
+           {{3}}
+![The details table for the owner](img/classroom-details-table.png)
+
+### Chat and Collaborative Code
+
+                               --{{0}}--
+As soon as you are connected, a chat button appears in the top bar, which opens
+the chat next to your course. Every message is interpreted as LiaScript, thus
+you can not only write text, but also post formulas, tables, images, or even a
+spontaneous survey or quiz, which will be synchronized like any other quiz or
+survey within the course. If you also want to allow scripts within chat
+messages, you have to check "Allow scripts to be executed in the chat" in the
+classroom settings.
+
+          {{0-1}}
+![The classroom chat with a spontaneous survey](img/classroom-chat.png)
+
+
+                               --{{1}}--
+Every executable code block gets an additional button beneath the editor, which
+allows you to switch to a collaborative editor. Now all participants are editing
+the same code and you can see the cursors and names of the others. Click onto
+the same button again to switch back to your own version.
+
+           {{1}}
+![Editing code together](img/classroom-collab-code.png)
+
+### Saving Classrooms
+
+                               --{{0}}--
+If you want to meet again with the same class, check "Remember this classroom"
+before connecting. Then the settings of the classroom are saved within your
+browser and its content (chat, results, collaborative code) is cached locally.
+You can additionally give it a local name and a note, which are only visible to
+you. Opening a shared link of a saved classroom also reuses its local cache.
+
+                               --{{1}}--
+All saved classrooms are listed on the classroom overview under "Your
+classrooms". You can rename them, add comments, delete them, or simply
+reconnect with a single click. The colored dot indicates the mode and
+"Initiator" marks the rooms you have created.
+
+           {{1}}
+![Saved classrooms](img/classroom-saved-rooms.png)
+
+### Own Notes
+
+                               --{{0}}--
+And finally, a classroom can also be a room just for yourself. If you click
+onto the pencil button on the overview, a local classroom is opened, which does
+not require any network connection. You can use the chat as a notebook for the
+current course, with all the features of LiaScript, for example to write down
+some notes or to create your own little quiz for later. Everything is stored
+only within your browser.
+
+![Notes, just for yourself](img/classroom-local-notes.png)
+
+### Classroom Experience in Action
 
                                --{{0}}--
 The following video shows how to open, share, and close a LiaScript classroom.
@@ -6053,7 +6543,7 @@ The following video shows how to open, share, and close a LiaScript classroom.
 !?[LiaScript classroom demo](https://www.youtube.com/watch?v=Kjk6OblugXI&autoplay=true)
 
 
-#### Enabling the Classrooms in any LMS
+### Enabling the Classrooms in any LMS
 
                                --{{0}}--
 If you have exported your course to a [SCORM](https://en.wikipedia.org/wiki/Sharable_Content_Object_Reference_Model) or [IMS](https://www.imsglobal.org/activity/learning-tools-interoperability) package with the [LiaScript-Exporter](https://www.npmjs.com/package/@liascript/exporter) you can also establish classrooms between different users of the same course within a single [LMS](https://en.wikipedia.org/wiki/Learning_management_system) or between different ones, such as [Moodle](https://en.wikipedia.org/wiki/Moodle) or [ILIAS](https://en.wikipedia.org/wiki/ILIAS).
@@ -6085,21 +6575,14 @@ That's it!
 **Room name:** `"This has to be a truly unique name 129281715#123"`
 
 
-#### Future Classrooms
+### Under the Hood
 
                                --{{0}}--
-As already mentioned, we currently only synchronize quizzes and surveys.
-Other elements will be added in the future, such as distributed pair-programming, user roles, asking questions, etc.
+If you are interested in the implementation stuff, we build classrooms with the
+help of [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
+and try to make LiaScript as backend-agnostic as possible. You can add support
+for your own systems within the LiaScript repository.
 
-                                {{0-1}}
-<div style="width:100%;height:0;padding-bottom:62%;position:relative;"><iframe src="https://giphy.com/embed/3otO6zntMrmhpvaYX6" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/online-education-learning-3otO6zntMrmhpvaYX6">via GIPHY</a></p>
-
-
-                               --{{1}}--
-If you are interested in the implementation stuff, we build classrooms with the help of [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) and try to make LiaScript as backend-agnostic as possible.
-You can add support for your own systems [here](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/sync).
-
-                                 {{1}}
 __Implementation:__
 https://github.com/LiaScript/LiaScript/tree/development/src/typescript/sync
 
@@ -11146,9 +11629,9 @@ dark: false
 ##### `classroom`
 
     --{{0}}--
-If you want to disable the classroom functionality for your course or within your SCORM export.
-Then turn the `classroom` feature of, by default it is activated.
-For more information on how to open classrooms see section [Classroom Experience](#Classroom-Experience).
+On the LiaScript website, the classroom functionality is activated by default, within exports (such as SCORM or IMS) it is deactivated by default.
+Use `classroom: false` (or `disable`, `off`, `0`) to remove the classroom button from your course, or `classroom: enable` to activate it within your exports.
+For more information on how to open classrooms see section [Classrooms](#Classrooms).
 
 ```md
 <!--
@@ -11158,7 +11641,7 @@ classroom: false
 
 ---
 
-![classroom settings](img/classroom.png)
+![classroom button](img/classroom-share-button.png)
 
 
 ##### `sharing`
