@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     02/10/2026
-version:  37.0.0
+date:     13/10/2026
+version:  38.0.0
 language: en
 narrator: UK English Female
 
@@ -31,11 +31,17 @@ link:     https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyph
           https://fonts.googleapis.com/css2?family=Noto+Sans+Ogham
 
 font:     Noto Sans Egyptian Hieroglyphs, Noto Sans Ogham
+
+@style
+svg.ascii-demo text { fill: royalblue; font-weight: bold; }
+svg.ascii-demo polygon,
+svg.ascii-demo circle { fill: crimson; }
+@end
 -->
 
 https://github.com/user-attachments/assets/7cab2d61-5858-4b62-87bf-0598e44af2e7
 
-# LiaScript
+# LiaScript 2.2.2
 
 > To see this document as an interactive LiaScript rendered version, click on the
 > following link/badge:
@@ -189,7 +195,9 @@ If you are used to another editor, you can also start a LiaScript development
 server locally. It works like the plugin for Atom and updates your course within
 your browser on every save, but this can also be used to monitor multiple
 projects. And you can also use it for testing purposes, as if you would deploy
-your projects.
+your projects. Started with `--mcp`, it also connects AI agents such as Claude
+Code or Codex to your course preview, with a chat and with
+[agent links](#experimental-agent-links) that send commands to the agent.
 
 ![liascript-development-server](https://raw.githubusercontent.com/liascript/liascript-devserver/main/pics/navigation.gif "Screencast of the liascript-development-server while navigating through a folder-structure.")<!-- style="width:100%"-->
 
@@ -874,10 +882,10 @@ be used as a subtitle and displayed accordingly.
   [qr-code](https://LiaScript.github.io "Checkout the LiaScript website or the __[blog](https://liascript.github.io/blog/)__")
 
 
-##### eMail & Telephone 💫
+##### eMail, Telephone & other Protocols 💫
 
       --{{0}}--
-These are two additional link types that you can also use within the `<a>` tag, but LiaScript supports them natively.
+These are additional link types that you can also use within the `<a>` tag, but LiaScript supports them natively.
 
         {{1}}
 * __mailto:__
@@ -901,6 +909,53 @@ These are two additional link types that you can also use within the `<a>` tag, 
       --{{2}}--
   The `tel` link type is lesser known and has been introduced for mobile phones.
   Clicking on such a link will trigger the dial dialog, allowing you to call the pre-set number without any need for copy and paste.
+
+        {{3}}
+<section>
+
+| Protocol           | Example                                                                     | What happens on a click                       |
+| ------------------ | --------------------------------------------------------------------------- | --------------------------------------------- |
+| `sms:`             | [`[Text me](sms:+49-12345-67890?body=Hello)`](sms:+49-12345-67890?body=Hello) | opens the messaging app with a prefilled text |
+| `geo:`             | [`[Meet here](geo:50.92558,13.33125)`](geo:50.92558,13.33125)               | opens a map app at the given coordinates      |
+| `webcal:`          | `[Subscribe](webcal://example.com/lecture.ics)`                             | subscribes to a calendar                      |
+| `sip:` / `sips:`   | `[Call via VoIP](sip:alice@example.com)`                                    | starts a VoIP call                            |
+| `matrix:`          | `[Join the room](matrix:r/liascript:matrix.org)`                            | opens a room or user in a Matrix client       |
+| `magnet:`          | `[Download](magnet:?xt=urn:btih:...)`                                       | opens a torrent client                        |
+| `bitcoin:`         | `[Donate](bitcoin:<address>?amount=0.001)`                                  | opens a wallet                                |
+| `ftp:` / `ftps:`   | `[Files](ftp://ftp.example.com/pub/)`                                       | opens an FTP resource                         |
+
+</section>
+
+      --{{3}}--
+There are a couple more protocols that are less common on the web, but useful in education, from sending a prefilled SMS to opening a map at a meeting point.
+For content, LiaScript additionally accepts `ipfs:`, `ipns:`, `dat:`, `hyper:`, `data:`, `blob:`, and `file:` as sources for links, images, and other media, see also the [appendix](#supported-protocols-for-sharing-courses).
+Any other protocol, such as `javascript:`, is dropped for security reasons.
+
+##### Experimental Agent Links
+
+      --{{0}}--
+LiaScript courses can also be used together with AI agents.
+A link with the scheme `agent:` does not open a page; instead, it sends a command to an agent that is connected to your course.
+It has the form `agent:<agent>/<command>?<parameters>`, and the agent receives the agent name, the command, and the parameters, together with what the user is currently looking at: the file, the slide, its title, and the selected text.
+
+``` markdown
+[Explain this simpler](agent:tutor/explain?level=easy)
+
+<button data-agent="agent:author/rewrite?tone=short">Shorten this section</button>
+
+[Give me an exercise](#)<!-- data-agent="agent:tutor/exercise?n=3" -->
+```
+
+      --{{1}}--
+What `tutor` or `explain` mean is up to you: define them as sub-agents, skills, or simply within the instructions of your agent.
+An empty agent name, as in `agent:/explain`, addresses the main agent.
+
+      --{{2}}--
+At the moment, these links are only handled by the [LiaScript-DevServer](https://github.com/LiaScript/LiaScript-DevServer), if it is started with `--mcp`, and by the embeddable LiaScript chat.
+In every other context, such a link leads nowhere and the `data-agent` forms are inert, which is why the examples above are not rendered as links.
+
+        {{2}}
+> __Note:__ This protocol is experimental, its parameters and behavior might still change.
 
 
 #### Images 💫
@@ -3093,6 +3148,49 @@ $\ce{CO2 + C -> 2 CO}$
 > For further details on the syntax and additional features provided by `mhchem`, please refer to the [official mhchem documentation](https://mhchem.github.io/MathJax-mhchem/).
 
 
+### Reading Formulas Aloud
+
+    --{{0}}--
+Formulas are not only rendered, they are also read aloud, the way people speak maths.
+LiaScript generates a spoken description for every formula, which is used by screen readers, by the narrator comments, and by the playback buttons.
+It is generated in English or in German, depending on the language of the voice, other languages fall back to English.
+Decimal marks, fractions, roots, units, matrices, cases, and chemical formulas are covered as well.
+
+<!-- class="notranslate" -->
+| Formula                 | English                                    | German                            |
+| ----------------------- | ------------------------------------------ | --------------------------------- |
+| $\frac{1}{2}$           | one half                                   | ein halb                          |
+| $e^{i\pi}+1=0$          | e to the power of i pi, plus 1, equals, 0  | e hoch i pi, plus 1, gleich, 0    |
+| $\frac{dy}{dx}$         | d y by d x                                 | d y nach d x                      |
+| $\ce{H2O}$              | H 2 O                                      | H 2 O                             |
+
+    --{{1}}--
+If you want to define your own text, simply attach an `aria-label` as an annotation directly to the formula.
+It replaces the generated description everywhere, for screen readers, as well as for the narrator and the playback buttons.
+This works for inline and block formulas.
+
+      {{1}}
+<section>
+
+``` markdown
+    {{|>}}
+Generated: $\sin(x)$, and with an own text: $\sin(x)$<!-- aria-label="to sine or not to sine" -->
+
+    {{|>}}
+$$\int_0^\pi \sin(x)\,dx = 2$$<!-- aria-label="the area below one arc of the sine is two" -->
+```
+
+__Result:__ Press the play buttons to compare.
+
+    {{|>}}
+Generated: $\sin(x)$, and with an own text: $\sin(x)$<!-- aria-label="to sine or not to sine" -->
+
+    {{|>}}
+$$\int_0^\pi \sin(x)\,dx = 2$$<!-- aria-label="the area below one arc of the sine is two" -->
+
+</section>
+
+
 ## Footnotes
 
                             --{{0}}--
@@ -4718,7 +4816,11 @@ What is $37 + 15$?
 
                           --{{1}}--
 In this case the solution contains an ASCII-art drawing, but it can be anything,
-such as a an image, a video, or even something like a small game
+such as a an image, a video, or even something like a small game.
+Narrator comments within a solution stay hidden and are only read aloud once
+the quiz has been solved, and scripts within a solution are only executed once
+it becomes visible. Surveys can also have such a block, see
+[Survey Solutions](#survey-solutions).
 
                             {{1}}
 ********************************************************************************
@@ -6187,6 +6289,94 @@ data-incomplete
 *******************************************************************************
 
 
+### Survey Solutions
+
+                               --{{0}}--
+Surveys have no right or wrong answers, but sometimes you want to reveal something after the users have committed to their answers: the actual result of an estimation, a sample solution for a free-text question, some background information, or simply a "thank you".
+Therefore, you can attach a solution block to every type of survey, in the same way as with [quiz solutions](#solution): just add two lines of at least three asterisks directly below the survey.
+
+<!-- class="translate"-->
+````markdown
+How many people live on earth today?
+
+[(1)] about 2 billion
+[(2)] about 5 billion
+[(3)] about 8 billion
+[(4)] about 12 billion
+*********************************************************
+
+The world population passed __8 billion__ in November 2022.
+
+*********************************************************
+````
+
+                               --{{1}}--
+The solution is revealed and scrolled into view once the survey has been submitted.
+Like all other blocks, it can contain any LiaScript content, also narrator comments, which are read aloud at this moment, and scripts, which are only executed once the solution becomes visible.
+
+                                 {{1}}
+<section>
+
+__Result:__
+
+How many people live on earth today?
+
+[(1)] about 2 billion
+[(2)] about 5 billion
+[(3)] about 8 billion
+[(4)] about 12 billion
+*********************************************************
+
+The world population passed __8 billion__ in November 2022.
+
+*********************************************************
+
+</section>
+
+                               --{{2}}--
+This also works with free-text surveys, for example, to present a sample solution, after your users have tried to answer the question on their own.
+
+                                 {{2}}
+<section>
+
+<!-- class="translate"-->
+````markdown
+Explain in one sentence, why the sky is blue.
+
+[[___ ___ ___]]
+*********************************************************
+
+        --{{2}}--
+Sunlight is scattered by the molecules of the air, and
+short, blue wavelengths are scattered much more than red.
+
+__Sample solution:__ Sunlight is scattered by the molecules
+of the air, and short (blue) wavelengths are scattered much
+more strongly than long (red) ones (Rayleigh scattering).
+
+*********************************************************
+````
+
+__Result:__
+
+Explain in one sentence, why the sky is blue.
+
+[[___ ___ ___]]
+*********************************************************
+
+        --{{2}}--
+Sunlight is scattered by the molecules of the air, and
+short, blue wavelengths are scattered much more than red.
+
+__Sample solution:__ Sunlight is scattered by the molecules
+of the air, and short (blue) wavelengths are scattered much
+more strongly than long (red) ones (Rayleigh scattering).
+
+*********************************************************
+
+</section>
+
+
 ### Surveys and Scripting
 
                                --{{0}}--
@@ -7007,6 +7197,58 @@ You can attach these language attributes to any kind of Markdown block or inline
 Note that code environments and foreign language comments will be tagged automatically with no-translate.
 
 
+#### Speaker Annotations and Avatars
+
+                               --{{0}}--
+In the same way, you can attach any `data-*` annotation to a comment, for example, to mark who is speaking.
+On its own, such an annotation does not change anything, but it is passed on to an avatar, if your course imports a template that provides one.
+
+``` markdown
+<!-- data-speaker="anna" -->
+                    --{{1 UK English Female}}--
+Hi, I am Anna, and I will guide you through this chapter.
+```
+
+                               --{{1}}--
+An avatar is shown within the same draggable and resizable overlay as the video comments, for every animation step that has comments but no video, videos always take precedence.
+While the comment is read aloud, either by text-to-speech or from an audio recording, the avatar can move its lips, and it can be switched off in the settings, like the video comments.
+
+                                 {{1}}
+<section>
+
+The [virtual-speaker](https://github.com/LiaTemplates/virtual-speaker) template provides animated [DiceBear](https://www.dicebear.com) avatars and two macros, which simply generate such annotations:
+
+``` markdown
+<!--
+import: https://raw.githubusercontent.com/LiaTemplates/virtual-speaker/0.1.1/README.md
+
+@onload
+window.VirtualSpeakerConfig = {
+  default:  { style: 'lorelei', seed: 'Mika', name: 'Mika' },
+  speakers: { anna: { style: 'micah', seed: 'Anna', name: 'Anna' } }
+}
+@end
+-->
+
+# My Course
+
+    @VirtualSpeaker.speaker(anna)
+    --{{0 UK English Female}}--
+Hi, I am Anna.
+
+    @VirtualSpeaker.dicebear(bottts,R2)
+    --{{1 US English Male}}--
+Beep. I am a robot, created on the fly.
+```
+
+[See it in action](https://liascript.github.io/course/?https://raw.githubusercontent.com/LiaTemplates/virtual-speaker/main/README.md)
+
+</section>
+
+                               --{{2}}--
+If you want to build your own avatar, see the [narrator API](#narrator-api-and-avatars) of the global `LIA` object.
+
+
 ### Comments: Multimedia
 
     {{|>}}
@@ -7110,6 +7352,9 @@ This entire paragraph will be spoken out __LOUD__.
 * - different
   - Markdown elements
   - whether it makes sense or not.
+
+> __Tip:__ Formulas are read aloud as maths, and you can define your own text
+> for them, see [Reading Formulas Aloud](#reading-formulas-aloud).
 
 
 #### Playback-Blocks
@@ -7847,6 +8092,64 @@ A Sankey diagram is a special type of directed graph that is used to visualize t
 
 https://en.wikipedia.org/wiki/Sankey_diagram
 
+### `WordCloud`
+
+    --{{0}}--
+Word clouds are never guessed automatically, you have to set `data-type="wordcloud"`.
+The header cells define the words, and every row defines one cloud, where the cell values are the weights of the words.
+If the first column is not numeric, it is used as the name of the cloud.
+All clouds share one font scale, thus equal values result in equal font sizes.
+
+``` markdown
+<!-- data-type="wordcloud" data-show data-title="Favorite programming languages" -->
+| Class | Python | JavaScript | C  | Rust | Elm | Haskell | Java | Lua |
+| ----- | ------:| ----------:| --:| ----:| ---:| -------:| ----:| ---:|
+| 10a   |     12 |          8 |  3 |    2 |   1 |       1 |    5 |   2 |
+| 10b   |      7 |         11 |  1 |    4 |   3 |       0 |    6 |   1 |
+```
+
+<!-- data-type="wordcloud" data-show data-title="Favorite programming languages" -->
+| Class | Python | JavaScript | C  | Rust | Elm | Haskell | Java | Lua |
+| ----- | ------:| ----------:| --:| ----:| ---:| -------:| ----:| ---:|
+| 10a   |     12 |          8 |  3 |    2 |   1 |       1 |    5 |   2 |
+| 10b   |      7 |         11 |  1 |    4 |   3 |       0 |    6 |   1 |
+
+    --{{1}}--
+Long lists of words are easier to write and to read downwards.
+Use `data-transpose` in this case, so that the first column defines the words and every further column one cloud.
+
+      {{1}}
+<section>
+
+``` markdown
+<!-- data-type="wordcloud" data-show data-transpose data-title="Good learning in one word" -->
+| Word        | Mentions |
+| ----------- | --------:|
+| curiosity   |       14 |
+| patience    |        9 |
+| creativity  |       11 |
+| teamwork    |        7 |
+| feedback    |        6 |
+| failure     |        3 |
+| practice    |       10 |
+| motivation  |        8 |
+```
+
+<!-- data-type="wordcloud" data-show data-transpose data-title="Good learning in one word" -->
+| Word        | Mentions |
+| ----------- | --------:|
+| curiosity   |       14 |
+| patience    |        9 |
+| creativity  |       11 |
+| teamwork    |        7 |
+| feedback    |        6 |
+| failure     |        3 |
+| practice    |       10 |
+| motivation  |        8 |
+
+</section>
+
+
 ### `None`
 
     --{{0}}--
@@ -7894,6 +8197,7 @@ Simply set `data-type="none"` to prevent any kind of visualization for the corre
   * `data-type="radar"`
   * `data-type="sankey"`
   * `data-type="scatter|scatterplot"`
+  * `data-type="wordcloud"`
 
   > __Note:__ The `none` datasets will turn of the first fixed column.
   > For the other cases the table is treated as a dataset and the header and the first column will be fixed while scrolling.
@@ -8192,7 +8496,7 @@ The project can be found here:
 https://github.com/andre-dietrich/elm-svgbob/
 
     --{{2}}--
-If you want to use it, simply create a new Markdown code block with at least 10 backticks, or use `ascii` as the language indicator.
+If you want to use it, simply create a new Markdown code block with at least 9 backticks, or use `ascii` (or shorter `art`) as the language indicator.
 
       {{2}}
 ```` markdown
@@ -8246,6 +8550,8 @@ __borders:__
 * straight: `-`, `_`, `|`
 * rounded: `(`, `)`
 * diagonal: \, /
+* dashed: `~` horizontal, `:` or `!` vertical
+* double: `=` horizontal, `||` vertical
 
       {{1}}
 <section>
@@ -8310,18 +8616,56 @@ o------o    *------*    #------#    O------O    +-----'
  `----+     +----´      `-----´   /____\   /______/
 ```
 
+    --{{4}}--
+Dashed and double lines are drawn with `~`, `:`, `!`, and `=`.
+Since these characters are also common in normal text, a run of them is only turned into a line if it continues a line, a corner, or an arrow at one of its ends and does not touch any text.
+That is why `Note:`, `a == b`, or `~~strike~~` remain text.
+
+      {{4}}
+<section>
+
+```` md
+<!-- style="max-width: 600px" -->
+``` ascii
+ .~~~~~~~~~~~~.          +==========+          +~~~~~~~~~~~+
+ ! optional   !  ~~~~~~> |  stored  |=========>: cached    :
+ '~~~~~~~~~~~~'          +==========+          +~~~~~~~~~~~+
+
+ Note: a == b, x = 1, ~~strike~~ and ( : ) stay text
+```
+````
+
+<!-- style="max-width: 600px" -->
+``` ascii
+ .~~~~~~~~~~~~.          +==========+          +~~~~~~~~~~~+
+ ! optional   !  ~~~~~~> |  stored  |=========>: cached    :
+ '~~~~~~~~~~~~'          +==========+          +~~~~~~~~~~~+
+
+ Note: a == b, x = 1, ~~strike~~ and ( : ) stay text
+```
+
+> __Note:__ Dashed and double lines require LiaScript 2.2.0 or newer, older
+> versions render these characters as text. A `+` within a run of `=` breaks
+> the double line, thus branch off with a `|` directly below or above a `=`.
+
+</section>
+
 #### 2. Arrows & Connectors
 
     --{{0}}--
 Depending on the direction of your arrow, you can use `<` or `>` for left and right, `v` or `V` for down, and `^` or `A` for up.
 The other endings (`*`, `#`, `o`, `O`) are direction independent.
+Arrows can also be dashed (`~~~~>`, `- - ->`) or double (`====>`), and double arrowheads such as `>>` only work in the middle of a line, at the end, the second `>` remains text.
+On vertical lines, `v` and `V` require a `|` directly above them, and `^` and `A` a `|` directly below, a `+` does not work here.
 
 
 ```` md
 ``` ascii
----->   ---->>   ----o   ----O   ----*   ----#
+---->   -->>--   ----o   ----O   ----*   ----#
 
-<--->   <<-->>   o---o   O---O   *---*   #---#
+<--->   -<<-->>-  o---o   O---O   *---*   #---#
+
+~~~~>   ====>    - - ->  <~~~~   <====   <- - -
 _______________________________________
  |     |     |     |     |     |     |
  v     V     #     o     O     *
@@ -8344,9 +8688,11 @@ Similar to "toki pona," sometimes a reduced set of features allows you to get di
 
       {{1}}
 ``` ascii
- ---->   ---->>   ----o   ----O   ----*   ----#
+ ---->   -->>--   ----o   ----O   ----*   ----#
 
- <--->   <<-->>   o---o   O---O   *---*   #---#
+ <--->   -<<-->>-  o---o   O---O   *---*   #---#
+
+ ~~~~>   ====>    - - ->  <~~~~   <====   <- - -
  _______________________________________
   |     |     |     |     |     |     |
   v     V     #     o     O     *
@@ -8519,6 +8865,8 @@ You can use these symbols individually or in combination with the symbols and sh
 
     --{{1}}--
 These Unicode images can also be combined with the previous ASCII art examples, or you can use these box drawing elements to add shadows and more detail to your drawings.
+But note that box drawing characters are drawn as text and not as lines: they keep the text color, ignore `stroke`, and do not connect to ASCII lines, thus do not mix both within one outline.
+If you need double lines within an ASCII drawing, use `=` and `||` instead of `═` and `║`.
 
       {{1}}
 ``` ascii
@@ -8584,7 +8932,7 @@ Bob            Alice
 +-------------->|
 |               |
 |  Is it ok?    |
-|<- - - - - - - |
+|<~~~~~~~~~~~~~~+
 Bob            Alice
 
 😎             👩
@@ -8601,7 +8949,7 @@ Bob            Alice
 +-------------->|
 |               |
 |  Is it ok?    |
-|<- - - - - - - |
+|<~~~~~~~~~~~~~~+
 Bob            Alice
 
 😎             👩
@@ -8642,11 +8990,37 @@ Check out the following links or see section [Unicode Symbols](#Unicode-Symbols)
     https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac
 </section>
 
+#### 6. Pitfalls
+
+    --{{0}}--
+Whether a character becomes a line or remains text depends on its neighbors.
+Most of the time this works as expected, but some letters and symbols within labels can turn into shapes.
+If something looks strange, replace the character with a similar Unicode symbol:
+
+| Written                   | Turns into                                 | Write instead              |
+| ------------------------- | ------------------------------------------ | -------------------------- |
+| `Volvo`, `foo`, `video`   | `o` or `v` next to a line become shapes    | rename, or add a space     |
+| a label `A` above a line | an arrowhead                               | another letter or a space  |
+| `x >= y`, `a ==> b`       | arrowheads and double lines                | `≥`, `⟹`                   |
+| `- item`                  | a short dash                               | `• item` or `– item`       |
+| `...`                     | a dotted line                              | `…`                        |
+| `src/`, `I/O`             | a slash stroke                             | `I∕O` (U+2215)             |
+| `"quotes"`                | the start of embedded LiaScript            | `“quotes”`                 |
+| `login():` next to a line | a dashed line                              | `login()` or a space       |
+| tabs                      | misaligned rows                            | spaces only                |
+
+    --{{1}}--
+Emojis and CJK characters take up two cells, so a box with an emoji needs one space less for every wide character to keep its right border in place.
+Some symbols, such as `⚙ ❤ ⚠ ☁`, are only displayed as emoji with an additional variation selector (U+FE0F), thus copy them from an emoji picker.
+
 ### Styling ASCII
 
     --{{0}}--
 As explained in section [Custom Styling](#custom-styling), it is also possible to add custom styles here by attaching an HTML comment to the beginning of an ASCII art image.
-This enables you, for example, to center the image, define a maximum width, or change the color of some base SVG elements.
+This enables you, for example, to center the image, define a maximum width, or change the color of some base SVG elements:
+`stroke` and `stroke-width` change the lines, `fill` the arrowheads and dots, and `background` the background.
+Note that any `style` replaces the default style of the drawing, thus its background becomes transparent.
+Without a width, a drawing is scaled to the full width of the page, a good `max-width` is about 10 pixels per column.
 
 ```` md
 <!--
@@ -8685,6 +9059,46 @@ style="
             v          /   '--->  G
              B --> C -'
 ```
+
+    --{{1}}--
+The text within a drawing, the arrowheads, and the dots can only be changed via CSS.
+Therefore, attach a `class` to the drawing and define the styles within the `@style` section of your course header.
+The elements of the SVG are `line` and `path` for lines, `polygon` for arrowheads, `circle` for dots, `rect` for squares, and `text` for all characters, including box drawing and emojis.
+
+      {{1}}
+<section>
+
+```` md
+<!--
+@style
+svg.ascii-demo text { fill: royalblue; font-weight: bold; }
+svg.ascii-demo polygon,
+svg.ascii-demo circle { fill: crimson; }
+@end
+-->
+
+...
+
+<!-- class="ascii-demo" style="max-width: 400px" stroke-width="2" -->
+``` ascii
++--------+       +---------+       +--------+
+| Input  +------>| Process +------>| Output |
++--------+       +----+----+       +--------+
+                      |
+                      o  log
+```
+````
+
+<!-- class="ascii-demo" style="max-width: 400px" stroke-width="2" -->
+``` ascii
++--------+       +---------+       +--------+
+| Input  +------>| Process +------>| Output |
++--------+       +----+----+       +--------+
+                      |
+                      o  log
+```
+
+</section>
 
 ### Adding Titles
 
@@ -10312,7 +10726,7 @@ In the next section, you will learn how to use the custom-built event system to 
 All previous functions were executed only within the scope of a single code block, but sometimes it is necessary to connect with other external events.
 For this purpose, the `send` object also contains two further generic functions: `register` and `dispatch`.
 Simply use a unique identifier to name an event, followed by a callback function that does whatever you want.
-Both callbacks are defined in local scope, but by using `register` and `dispatch`, you can send messages to any code block.
+Both callbacks are defined in local scope, but by using `register` and `dispatch`, you can send messages to any code block, and also to any `<script>` tag (see "Events: `send.register` & `send.dispatch`" in the section on JavaScript).
 The example below demonstrates how messages are successfully delivered, even if both code blocks are defined on different slides:
 
 
@@ -12463,6 +12877,41 @@ latitude: <script default="50.92558" input="range" output="latitude">@input</scr
 Thus, in the next section, we will introduce the combination of scripts and different input types, and afterwards, the "pub-sub" mechanism used to trigger a reevaluation.
 
 
+#### Nested LiaScript Results
+
+    --{{0}}--
+The LiaScript that is returned by a script can contain scripts again, which return LiaScript again, and so on, at any depth.
+Every result is a small LiaScript document of its own: quizzes, surveys, tasks, and code blocks within a result belong to the scripts of this result.
+This way, you can generate exercises that build upon each other, or content that unfolds depending on the input of your users.
+
+``` html
+<script run-once style="display: block">
+`LIASCRIPT:
+**Level 1:** What is $2 + 3$?
+
+[[5]]
+
+<script run-once style="display: block">
+"LIASCRIPT:\\n**Level 2:** What is $2^3$?\\n\\n[[8]]\\n\\n<script run-once>'LIASCRIPT: **Level 3:** deep enough 🎉'<\\/script>"
+<\/script>`
+</script>
+```
+
+    --{{1}}--
+Note the escaping: every level is a JavaScript string within the string of the level above, thus line breaks are written as `\\n` and closing script tags as `<\/script>`, one backslash more for every level.
+
+<script run-once style="display: block">
+`LIASCRIPT:
+**Level 1:** What is $2 + 3$?
+
+[[5]]
+
+<script run-once style="display: block">
+"LIASCRIPT:\\n**Level 2:** What is $2^3$?\\n\\n[[8]]\\n\\n<script run-once>'LIASCRIPT: **Level 3:** deep enough 🎉'<\\/script>"
+<\/script>`
+</script>
+
+
 ### Input Types
 
     --{{0}}--
@@ -13241,6 +13690,84 @@ send.wait()
       --{{2}}--
 To prevent errors, try to define a default output value for your scripts.
 
+#### Events: `send.register` & `send.dispatch`
+
+    --{{0}}--
+With `output` and `@input(...)`, scripts are connected via their displayed results.
+But sometimes the displayed result is something completely different from the value you want to pass on, for example, a formula, a table, or a diagram.
+In these cases, you can use events, which are not bound to any output and thus allow you to build arbitrary execution graphs.
+
+* `send.dispatch("name", value)` sends a value to the event `name`.
+* `send.register("name", function(value) { ... })` reacts on it.
+
+    --{{1}}--
+The slider below displays a formula, but it dispatches its value as the amplitude to a second script.
+This script has registered a handler for this event, which plots the function again with every new value.
+The script itself is not executed again, the handler simply updates its output with `send.lia`, `send.html`, or `send.liascript`.
+Thus, everything defined within the script, such as functions or variables, is kept.
+
+      {{1}}
+<section>
+
+``` html
+a = <script input="range" min="0" max="5" step="0.5" value="1" default="1">
+send.dispatch("amplitude", @input)
+
+"LIASCRIPT: $f(x) = @input \\cdot \\sin(x)$"
+</script>
+
+<script style="display: block">
+function plot(a) {
+  let table = "<!-- data-type='line' data-show data-ylim='-5,5' data-title='a · sin(x)' -->\n"
+  table += "| x | f(x) |\n| --- | --- |\n"
+
+  for (let x = 0; x <= 6.3; x += 0.3) {
+    table += `| ${x.toFixed(1)} | ${(a * Math.sin(x)).toFixed(2)} |\n`
+  }
+  return table
+}
+
+send.register("amplitude", (a) => send.liascript(plot(a)))
+
+"LIASCRIPT: " + plot(1)
+</script>
+```
+
+__Result:__
+
+a = <script input="range" min="0" max="5" step="0.5" value="1" default="1">
+send.dispatch("amplitude", @input)
+
+"LIASCRIPT: $f(x) = @input \\cdot \\sin(x)$"
+</script>
+
+<script style="display: block">
+function plot(a) {
+  let table = "<!-- data-type='line' data-show data-ylim='-5,5' data-title='a · sin(x)' -->\n"
+  table += "| x | f(x) |\n| --- | --- |\n"
+
+  for (let x = 0; x <= 6.3; x += 0.3) {
+    table += `| ${x.toFixed(1)} | ${(a * Math.sin(x)).toFixed(2)} |\n`
+  }
+  return table
+}
+
+send.register("amplitude", (a) => send.liascript(plot(a)))
+
+"LIASCRIPT: " + plot(1)
+</script>
+
+</section>
+
+    --{{2}}--
+There is only one handler per event name, the last registration wins, and the events are shared with the code blocks (see "Ping Pong" in the Code API), thus scripts and code blocks can also talk to each other.
+Scripts that are executed as a `worker` cannot use events, since they run in their own thread.
+
+      {{2}}
+> __Note:__ A `dispatch` on an event without a handler is simply ignored.
+> If the dispatching script is executed before the listening one, the listener
+> should therefore start with its own default value, as `plot(1)` above.
+
 #### Simplification with Macros
 <!--
 sin: <script format="number"
@@ -13580,7 +14107,236 @@ such a value, then the default document language setting is used as default.
 
 ### LIA - global object
 
-Todo
+    --{{0}}--
+Every LiaScript course provides a global object `window.LIA`, which can be used by scripts and templates to interact with the course.
+The following sections describe the APIs that are intended to be used for building your own extensions.
+Everything else within this object is used internally and might change without notice.
+
+
+#### Navigation, Settings & Version
+
+    --{{0}}--
+Scripts can switch slides on their own, for example, to build your own navigation, a quiz that leads to different slides, or a game.
+
+``` js
+LIA.gotoNext()      // next animation step, or the next slide if there is none
+LIA.gotoPrevious()  // previous animation step, or the previous slide
+LIA.goto(0)         // jump to a slide, counted from 0
+```
+
+    --{{1}}--
+Note that `LIA.goto` counts the slides from 0, while the slide numbers within the URL start at 1, thus `LIA.goto(0)` opens `#1`.
+In Textbook mode there are no animation steps, thus `gotoNext` and `gotoPrevious` always switch slides.
+
+      {{1}}
+<section>
+
+Use `submit` buttons for this, since their scripts are only executed on a click, a `button` would also be executed when the slide is loaded.
+
+``` html
+<script input="submit" default="Back to the first slide" modify="false">
+LIA.goto(0)
+"Back to the first slide"
+</script>
+```
+
+<script input="submit" default="Back to the first slide" modify="false">
+LIA.goto(0)
+"Back to the first slide"
+</script>
+<script input="submit" default="Previous" modify="false">
+LIA.gotoPrevious()
+"Previous"
+</script>
+<script input="submit" default="Next" modify="false">
+LIA.gotoNext()
+"Next"
+</script>
+
+</section>
+
+    --{{2}}--
+The current settings of the user are stored in `LIA.settings.data`.
+Templates can use them to adapt, for example, the colors of a diagram to the dark mode, or to use the language of the course.
+Treat these values as read-only, they are changed by the user via the settings menu.
+
+      {{2}}
+<section>
+
+| Field         | Content                                                |
+| ------------- | ------------------------------------------------------ |
+| `mode`        | `"Textbook"`, `"Presentation"`, or `"Slides"`          |
+| `light`       | `true` in light mode, `false` in dark mode             |
+| `theme`       | the color theme, e.g. `"default"`, `"turquoise"`       |
+| `lang`        | the language of the user interface, e.g. `"en"`        |
+| `dir`         | the text direction, `"ltr"` or `"rtl"`                 |
+| `font_size`   | `1`, `2`, or `3`                                       |
+| `sound`       | `true`, if the narrator is switched on                 |
+| `audio`       | `rate` and `pitch` of the narrator                     |
+
+``` html
+<script>
+const s = LIA.settings.data;
+`${s.mode} mode, ${s.light ? "light" : "dark"}, language: ${s.lang}`
+</script>
+```
+
+<script>
+const s = LIA.settings.data;
+`${s.mode} mode, ${s.light ? "light" : "dark"}, language: ${s.lang}`
+</script>
+
+</section>
+
+    --{{3}}--
+`LIA.version` contains the version of LiaScript, which can be used by templates to check whether a feature is available, for example, the narrator API, which requires version 2.2.0.
+Some builds add a prefix of their own, separated by two dashes, therefore use only the last part.
+
+      {{3}}
+``` js
+const [major, minor] = LIA.version.split("--").pop().split(".").map(Number)
+
+if (major > 2 || (major == 2 && minor >= 2)) {
+  LIA.narrator.registerAvatar("my-avatar")
+}
+```
+
+
+#### Loading Files with `fetch`
+
+    --{{0}}--
+Within scripts and code blocks, `fetch` is a slightly modified version of the browser's `fetch`.
+Relative paths are resolved relative to the location of your course and not to the LiaScript website, thus you can store data files, such as CSV or JSON, next to your README and load them like images.
+A path that starts with `/` refers to the root of the website that hosts LiaScript.
+
+``` html
+<script run-once style="display: block">
+fetch("example/App.java")
+  .then(response => response.text())
+  .then(code => send.liascript("``` java\n" + code + "\n```"))
+  .catch(e => send.lia("could not load the file: " + e.message))
+
+"LIA: wait"
+</script>
+```
+
+    --{{1}}--
+The example loads the file `App.java` from the `example` folder of this course and presents it as a highlighted code block.
+
+      {{1}}
+<script run-once style="display: block">
+fetch("example/App.java")
+  .then(response => response.text())
+  .then(code => send.liascript("``` java\n" + code + "\n```"))
+  .catch(e => send.lia("could not load the file: " + e.message))
+
+"LIA: wait"
+</script>
+
+
+#### Debugging
+
+    --{{0}}--
+If you develop your own templates, it can be helpful to see what is going on internally.
+Set `LIA.debug = true`, for example within the console of your browser, and LiaScript will print all of its internal messages.
+If you want to collect these messages yourself, for example, to show them within your editor, define a function `LIA.log`, which receives the type (`"log"`, `"warn"`, or `"error"`) and the messages.
+
+``` js
+LIA.debug = true
+
+LIA.log = (type, messages) => {
+  // errors are always passed, logs and warnings only in debug mode
+  myOwnConsole[type](...messages)
+}
+```
+
+
+#### Narrator API and Avatars
+
+    --{{0}}--
+The narrator reads the comments aloud, either via text-to-speech or by playing audio or video recordings.
+Everything it does is reported as a `lia-narrator` event on `window`, thus templates can react to it, for example, by highlighting the spoken text or by animating an avatar.
+
+``` js
+window.addEventListener("lia-narrator", (e) => {
+  console.log(e.detail.type, e.detail.status, e.detail.text)
+})
+
+// the current state as a snapshot
+LIA.narrator.state
+```
+
+    --{{1}}--
+The `type` of an event is one of the following, and every event additionally contains the complete current state:
+
+      {{1}}
+<section>
+
+| `type`     | When                                                 | Additional fields          |
+| ---------- | ---------------------------------------------------- | -------------------------- |
+| `start`    | reading starts                                       |                            |
+| `stop`     | reading has finished or was cancelled                |                            |
+| `pause`    | reading was paused                                   |                            |
+| `resume`   | reading continues after a pause                      |                            |
+| `boundary` | the speech synthesis reaches the next word           | `charIndex`, `charLength`  |
+| `progress` | an audio or video recording advances (in seconds)    | `current`, `total`         |
+| `media`    | another audio or video element starts playing        |                            |
+| `error`    | something went wrong                                 | `error`                    |
+
+| State field  | Content                                                               |
+| ------------ | --------------------------------------------------------------------- |
+| `status`     | `"idle"`, `"speaking"`, or `"paused"`                                 |
+| `source`     | `"tts"`, `"audio"`, `"video"`, or `null`                              |
+| `id`         | class of the comments, e.g. `"lia-tts-3"`, `null` for playback blocks |
+| `elements`   | the comment elements that are read aloud                              |
+| `text`       | the text that is read aloud                                           |
+| `voice`      | the narrator voice, e.g. `"UK English Female"`                        |
+| `lang`       | the language of the voice                                             |
+| `translated` | `true`, if the course is translated and read in another language      |
+| `media`      | the audio or video element that is currently playing, or `null`       |
+
+</section>
+
+    --{{2}}--
+Additionally, a template can register a custom element as an avatar.
+LiaScript renders it within the draggable overlay of the video comments, for every animation step that has comments but no video recordings.
+The element receives the narrator voice as `data-voice`, the animation step as `data-step`, and all `data-*` annotations of the current comments as attributes, see [Speaker Annotations & Avatars](#speaker-annotations-and-avatars).
+
+      {{2}}
+``` js
+customElements.define("emoji-avatar", class extends HTMLElement {
+  connectedCallback() {
+    this.style.cssText = "display: grid; place-items: center; height: 100%; font-size: 5rem"
+    this.listener = (e) => this.render(e.detail)
+    window.addEventListener("lia-narrator", this.listener)
+    this.render(LIA.narrator.state)
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener("lia-narrator", this.listener)
+  }
+
+  render(detail) {
+    // open and close the mouth with every word or progress of a recording
+    if (detail.type === "boundary" || detail.type === "progress") {
+      this.open = !this.open
+    } else if (detail.status !== "speaking") {
+      this.open = false
+    }
+
+    const face = this.dataset.speaker === "robot" ? "🤖" : "🙂"
+    this.textContent = this.open ? "😮" : face
+    this.title = this.dataset.speaker || this.dataset.voice
+  }
+})
+
+// a valid custom element name with a dash, null unregisters the avatar
+LIA.narrator.registerAvatar("emoji-avatar")
+```
+
+    --{{3}}--
+`registerAvatar` can also be called before LiaScript has been initialized, the name is kept until it is needed.
+For a complete example, have a look at the [virtual-speaker](https://github.com/LiaTemplates/virtual-speaker) template.
 
 
 #### Publish subscribe API
@@ -13734,6 +14490,21 @@ todo
 #### Dat - URIs
 
 #### QR-Codes
+
+
+### KaiOS Keypad Navigation
+
+LiaScript also runs on feature phones with [KaiOS](https://www.kaiostech.com), which have a numeric keypad instead of a touch screen.
+On these devices, courses can be navigated with the following keys, as long as the focus is not within an input field:
+
+| Key | Action                                  |
+|:---:| --------------------------------------- |
+| `4` | previous slide                          |
+| `6` | next slide                              |
+| `2` | scroll up                               |
+| `8` | scroll down                             |
+| `*` | open or close the table of contents     |
+| `#` | go to the home screen                   |
 
 
 ### Unicode Symbols
