@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     13/10/2026
-version:  38.0.0
+date:     21/10/2026
+version:  39.0.0
 language: en
 narrator: UK English Female
 
@@ -41,7 +41,7 @@ svg.ascii-demo circle { fill: crimson; }
 
 https://github.com/user-attachments/assets/7cab2d61-5858-4b62-87bf-0598e44af2e7
 
-# LiaScript 2.2.2
+# LiaScript 2.4.0
 
 > To see this document as an interactive LiaScript rendered version, click on the
 > following link/badge:
@@ -427,6 +427,144 @@ https://github.com/LiaTemplates
 > __Full overview on extensions via the topic `liascript-template`:__
 >
 > https://github.com/topics/liascript-template
+
+## Using LiaScript
+
+                           --{{0}}--
+Before we dive into the syntax, a short tour through the LiaScript app itself.
+Everything in this chapter is available in every course, authors do not have to write anything for it.
+It is the part you might want to explain to your learners.
+
+
+### Home Screen & Kanban Board
+
+                           --{{0}}--
+Every course you open is stored in your browser and shows up as a card on the home screen.
+By default the cards are shown as a list, but you can also sort them into your own columns, like on a kanban board.
+
+* __Switch the layout:__ use the "Layout" button on the left of the header and choose "List" or "Kanban".
+  It is only shown if there is at least one course.
+* __Columns:__ the board starts with one column named "Courses".
+  New columns are added via the field "new column" at the end of the board (press Enter or click "Add column").
+  The actions of a column appear on hover or focus (on touch devices they are always shown): rename, move to the left or right, and delete.
+  If you delete a column, its courses move to the first column.
+* __Move courses:__ drag a card with the mouse, or press and hold it on a touch screen, and drop it into another column.
+  The board shows where the card will land.
+  Alternatively, expand a card via "Show details" and choose a column in "Move to column".
+* __Compact cards:__ on the board, a card only shows its image, title and the open button.
+  "Show details" expands the description and all actions.
+  Courses without a logo get the LiaScript bird, colored per course.
+
+                           --{{1}}--
+The layout and the columns are stored only within this browser.
+New courses always end up in the first column.
+
+
+### Offline Use
+
+                           --{{0}}--
+LiaScript is a progressive web app, once loaded, the app and the courses you visited also work without a network connection.
+Images, audio and video files are normally loaded from their original location.
+If you want to take a course with you, for example on a train or into a classroom with a bad connection, you can download its media files in advance.
+
+* __Information menu__ of a course: "Download media for offline use"
+* __Course card__ on the home screen: the download icon (on the kanban board within "Show details")
+
+                           --{{1}}--
+This stores the logo, all images, audio and video files of the course, including the recordings of narrator comments.
+Streams like YouTube or Vimeo cannot be downloaded and are skipped.
+A small box at the bottom right shows the progress and how many files could not be loaded.
+
+      {{1}}
+> __Note:__ The download is not available in SCORM, xAPI and other LMS packages, they bring their own files.
+> The stored files can only be removed by deleting the site data of LiaScript within your browser settings.
+
+
+### Hiding the Navigation
+
+                           --{{0}}--
+If you want more space for the content, for example on a small screen or while presenting, you can hide the navigation.
+Open the menu where you choose between Textbook, Presentation and Slides mode, and click on "Hide navigation".
+
+                           --{{1}}--
+The table of contents and the header disappear.
+What remains is a slim column of floating buttons for the menus, the button for the table of contents, two arrows for the previous and next slide, and the bar for text-to-speech.
+Click on "Hide navigation" again to bring everything back.
+This setting is not stored, after a reload the navigation is visible again.
+
+
+### Accessibility Settings
+
+                           --{{0}}--
+LiaScript tries to be usable with a keyboard, a screen reader and in all color settings.
+Two settings are worth knowing:
+
+* __Do not rely on color alone__ (settings menu): adds patterns to the series of charts, and checked quiz answers get a solid border if they are correct and a dashed one if they are wrong.
+  Thus, the result can be seen without distinguishing red and green.
+* __Reduce motion__ (a setting of your operating system or browser): LiaScript stops all animations and transitions, also those defined by course authors.
+
+                           --{{1}}--
+For authors this means, the content of a slide should also be understandable without its animations.
+
+
+### Keyboard Navigation
+
+                           --{{0}}--
+All parts of LiaScript can be used with the keyboard.
+The arrow keys switch slides only, if no other element needs them, while you are within a text field, a slider, a dropdown, a radio group, the table of contents or a matrix quiz, they belong to that element.
+
+**General**
+
+| Key                               | Action                                                         |
+| --------------------------------- | -------------------------------------------------------------- |
+| `→` or `Alt+Shift+N`              | next animation step or slide                                   |
+| `←` or `Alt+Shift+P`              | previous animation step or slide                               |
+| `Alt+Shift+C`                     | open or close the table of contents                            |
+| `Tab` at the start of the page    | "Skip navigation" link, jumps directly to the content          |
+| `↓` on a menu button              | opens the menu                                                 |
+| `Escape`                          | closes menus, popups, dialogs and dropdowns                    |
+
+**Table of contents**
+
+| Key                 | Action                                                                     |
+| ------------------- | -------------------------------------------------------------------------- |
+| `↑` / `↓`           | previous or next entry                                                     |
+| `Home` / `End`      | first or last entry                                                        |
+| `→`                 | opens a section, or moves to its first subsection if it is already open    |
+| `←`                 | closes a section, or moves to its parent                                   |
+
+The search in the table of contents tolerates one typo per word (for words with 4 or more characters).
+In right-to-left languages, `→` and `←` are mirrored.
+
+**Content**
+
+| Element                       | Keys                                                                         |
+| ----------------------------- | ---------------------------------------------------------------------------- |
+| dropdowns (gaps, selections)  | `↑` `↓` `Home` `End` choose, `Enter` or `Space` select, `Escape` close       |
+| matrix quizzes and surveys    | `↑` `↓` move between rows, `←` `→` between cells (in single-choice rows they select) |
+| drag & drop quizzes           | `Enter` on a drop zone selects it, then `Enter` on a card places it there    |
+| images with an alt text       | `Enter` or `Space` zooms the image                                           |
+| galleries                     | `←` `→` switch the media while a gallery is open                             |
+| code editors                  | `Ctrl+Enter` (`Cmd+Enter` on Mac) executes the code                          |
+| terminals                     | `Enter` sends, `↑` `↓` browse the history                                    |
+| classroom chat                | `Ctrl+Enter` (`Cmd+Enter` on Mac) sends a message                            |
+| splitter between course & chat| `←` `→` move it, `Home` `End` set it to 10% or 90%                           |
+
+#### KaiOS Keypad
+
+                           --{{0}}--
+LiaScript also runs on feature phones with [KaiOS](https://www.kaiostech.com), which have a numeric keypad instead of a touch screen.
+On these devices, courses can be navigated with the following keys, as long as the focus is not within an input field:
+
+| Key | Action                                  |
+|:---:| --------------------------------------- |
+| `4` | previous slide                          |
+| `6` | next slide                              |
+| `2` | scroll up                               |
+| `8` | scroll down                             |
+| `*` | open or close the table of contents     |
+| `#` | go to the home screen                   |
+
 
 ## Markdown-Syntax
 
@@ -2351,9 +2489,9 @@ We have re-imagined the usage of scripts as interactive powerhouses, and we will
 <section>
 
 ``` markdown
-longitude: <script default="13.33125" input="range" output="longitude">@input</script>
+longitude: <script default="13.33125" input="range" aria-label="longitude" output="longitude">@input</script>
 
-latitude: <script default="50.92558" input="range" output="latitude">@input</script>
+latitude: <script default="50.92558" input="range" aria-label="latitude" output="latitude">@input</script>
 
 <script run-once="true" style="display: block">
   fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
@@ -2378,9 +2516,9 @@ latitude: <script default="50.92558" input="range" output="latitude">@input</scr
 
 ---
 
-longitude: <script default="13.33125" input="range" output="longitude">@input</script>
+longitude: <script default="13.33125" input="range" aria-label="longitude" output="longitude">@input</script>
 
-latitude: <script default="50.92558" input="range" output="latitude">@input</script>
+latitude: <script default="50.92558" input="range" aria-label="latitude" output="latitude">@input</script>
 
 <script run-once="true" style="display: block">
   fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
@@ -5470,11 +5608,11 @@ does the opposite. You can try out to the following two scripts to encode and
 decode different strings.
 
                             {{1}}
-* `btoa`: <script input="text" value="solution" input-always-active modify="false">btoa(`@input`)</script>
+* `btoa`: <script input="text" aria-label="text to encode" value="solution" input-always-active modify="false">btoa(`@input`)</script>
 
   (Beautiful TO Awful)
 
-* `atob`: <script input="text" value="c29sdXRpb24=" input-always-active modify="false">atob(`@input`)</script>
+* `atob`: <script input="text" aria-label="text to decode" value="c29sdXRpb24=" input-always-active modify="false">atob(`@input`)</script>
 
   (Awful TO Beautiful)
 
@@ -5694,7 +5832,7 @@ if ("@input(`quiz:37+15`)" == "412") {
 
 ##### Generic++
 <!--
-@article: <script output="@0" value="select" input="select" options="der|die|das|dem|den|des">
+@article: <script output="@0" value="select" input="select" aria-label="article" options="der|die|das|dem|den|des">
             if("@input(`articles`)" == "true") {
               "@1"
             } else {
@@ -5735,7 +5873,7 @@ The following code-block shows how this quiz was actually implemented.
 ``` markdown
 ##### Generic++
 <!--
-@article: <script output="@0" value="select" input="select" options="der|die|das|dem|den|des">
+@article: <script output="@0" value="select" input="select" aria-label="article" options="der|die|das|dem|den|des">
             if("@input(`articles`)" == "true") {
               "@1"
             } else {
@@ -7324,6 +7462,48 @@ will be replayed in sequence.
 As before, you can combine multiple comments, which will be replayed in sequence.
 !?[⏯](recording/video3.webm)
 
+#### Videos from YouTube, Vimeo & Co.
+
+    --{{0}}--
+!?[⏯](https://www.youtube.com/watch?v=8pTEmbeENF4&start=60&end=75)
+Your recordings do not have to be stored next to your course.
+Videos from YouTube, Vimeo and other platforms can be attached to a comment in the same way, and they are shown in the same overlay.
+
+``` markdown
+    --{{0}}--
+!?[⏯](https://www.youtube.com/watch?v=8pTEmbeENF4&start=60&end=75)
+Your recordings do not have to be stored next to your
+course. Videos from YouTube, Vimeo and other platforms
+can be attached to a comment in the same way, and they
+are shown in the same overlay.
+
+    --{{1}}--
+Vimeo videos are cut with a time fragment.
+!?[⏯](https://vimeo.com/76979871#t=10,25)
+```
+
+    --{{1}}--
+The rules are the same as for your own videos: one link at the beginning or the end of a comment, multiple comments are played in sequence.
+The text of the comment is shown, but it is not read out loud, the video replaces the voice.
+
+      {{1}}
+<section>
+
+* __Supported platforms:__ YouTube, Vimeo, Dailymotion, PeerTube, TeacherTube, and the video portal of the TU Bergakademie Freiberg.
+* __Play only a part:__ use `start` and `end` in seconds for YouTube (`&start=60&end=75`), or a time fragment like `#t=60,75` for YouTube and Vimeo.
+* __YouTube and Vimeo__ are controlled by LiaScript: they can be paused and seeked via the bar at the bottom, and the next comment starts when the video ends.
+* __Other platforms__ are shown as they are.
+  They cannot be paused and do not end on their own, the learner has to stop them or move on to the next step.
+  Some of them also require a click on their own play button.
+
+</section>
+
+    --{{2}}--
+Videos are only shown if the sound is turned on and the course is not in Textbook mode.
+They require an internet connection, they cannot be downloaded for offline use.
+If a course is translated, the translated comment is read out loud and YouTube and Vimeo videos are muted.
+
+
 ### Playback
 
                                --{{0}}--
@@ -7554,11 +7734,55 @@ The following sections aim to provide a brief overview of various visualization 
 Additionally, you have the flexibility to enforce your preferred visualization style.
 
 
+### Guessing the Type
+
+    --{{0}}--
+If a table has no `data-type`, LiaScript looks at its numbers and checks the following rules in this order.
+The first rule that matches defines the type of the diagram.
+You do not have to remember them, the following sections show an example for every type, and you can always set the type on your own.
+
+1. __Text or numbers?__ Only the columns after the first one are counted.
+   A column is numeric if more than half of its filled cells are numbers.
+   If there are not more numeric than text columns, the table is not visualized.
+2. __Adjacency matrix:__ if the header (after the first cell) and the first column contain the same names in the same order, the table is a [`Graph`](#graph).
+   If there are values on the diagonal (self-references), it becomes a [`HeatMap`](#heatmap).
+3. __Truth table:__ if all values are 0 or 1, the table is not visualized.
+4. __One row:__ a table with a header and a single row of values greater than zero becomes a [`PieChart`](#piechart).
+5. __Numbers in the first column__ (x-values):
+   * if the header also contains only numbers (and the x-values are unique), it is a [`HeatMap`](#heatmap),
+   * if the x-values are strictly rising or falling, it is a [`LinePlot`](#lineplot),
+   * otherwise it is a [`ScatterPlot`](#scatterplot).
+6. __Categories in the first column:__
+   * if all of them start with a digit, like dates or times (`2024-03-01`, `01.05.2024`, `08:00`), it is a [`LinePlot`](#lineplot),
+   * if there are at least three numeric columns and the table has 50 or more cells, it is a [`Parallel`](#parallel) plot,
+   * if the maximum of one column is more than ten times larger than the maximum of another, it is a [`Radar`](#radar) chart (three or more numeric columns) or a [`Parallel`](#parallel) plot,
+   * otherwise it is a [`BarChart`](#barchart).
+
+    --{{1}}--
+Numbers are written with a decimal point, optionally followed by a unit, which is separated by a space.
+
+      {{1}}
+<section>
+
+| Cell content       | Number? |
+| ------------------ | ------- |
+| `12.5`             | yes     |
+| `12.5 kg`, `44 %`  | yes     |
+| `1,5`, `44%`       | no      |
+| `5.`               | no      |
+
+`BoxPlot`, `Sankey`, `Funnel` and `WordCloud` are never guessed, use `data-type` for them, and a `Map` requires `data-src`.
+
+</section>
+
+
 ### `LinePlot`
 
     --{{0}}--
 The following dataset, sourced from https://ourworldindata.org, illustrates government expenditure on education as a percentage of GDP.
 The first column represents the x-values, while the subsequent columns denote different categories.
+Since the years are strictly rising, the values are connected as lines.
+This also works with dates or times in the first column, like `2024-03-01` or `08:00`.
 
     --{{1}}--
 If you click on the image icon again, you'll encounter a more elaborate representation complete with a title and labels.
@@ -7643,7 +7867,7 @@ Additionally, if you change the order of the table, the order of categories in t
 ### `ScatterPlot`
 
     --{{0}}--
-If your table resembles that of a LinePlot, but the first column contains numbers that appear twice or more times, then this data cannot be interpreted as a "function" in a mathematical sense.
+If your table resembles that of a LinePlot, but the numbers in the first column are not strictly rising or falling, for example because some of them appear twice, then this data cannot be interpreted as a "function" in a mathematical sense.
 In this case, the data is simply visualized as a ScatterPlot, displaying only the dots without connecting lines.
 
 ```
@@ -7709,8 +7933,8 @@ Each column is then treated as a dataset and visualized accordingly.
 In contrast to a Line or ScatterPlot, if the first column contains at least one entry that cannot be parsed as a number, it might be represented as a BarChart.
 This concept works well with the following example.
 If the maximum values of the columns do not differ too much, then the dataset is represented as a BarChart.
-However, if the maximum values vary significantly, you might end up seeing only one huge bar, making the other bars indistinguishable from each other.
-In such cases, alternative visualizations are chosen.
+However, if the maximum values vary significantly (more than ten times), you might end up seeing only one huge bar, making the other bars indistinguishable from each other.
+In such cases, a Radar or Parallel plot is chosen instead.
 
 ``` markdown
 | Animal          | weight in kg | Lifespan years | Mitogen |
@@ -7734,7 +7958,7 @@ In such cases, alternative visualizations are chosen.
 ### `Radar`
 
     --{{0}}--
-If, for example, humans and sheep are removed from the dataset, then weight in kilograms would not be visible in a BarChart at all. In such a case, a RadarChart is selected.
+If, for example, humans and sheep are removed from the dataset, then weight in kilograms would not be visible in a BarChart at all. In such a case, a RadarChart is selected, if there are at least three numeric columns.
 This type of visualization allows for the analysis of data visually with different "y"-axes, accommodating for the diverse nature of the dataset.
 
 | Animal          | weight in kg | Lifespan years | Mitogen |
@@ -7747,7 +7971,7 @@ This type of visualization allows for the analysis of data visually with differe
 ### `PieChart`
 
     --{{0}}--
-If you have a table with only one row filled with numbers, it will be automatically presented as a pie chart.
+If you have a table with a header and only one row filled with numbers greater than zero, it will be automatically presented as a pie chart.
 In this representation, the header represents the categories, while the body denotes the quantities associated with each category.
 
 
@@ -7944,6 +8168,7 @@ The first column of your table must match the names of the objects in your GeoJS
 
     --{{0}}--
 Another type of visualization is a HeatMap, which is utilized when the table header and the first column exclusively contain numerical values, essentially representing coordinates.
+An adjacency matrix (see [Graph](#graph)) with values on its diagonal is also shown as a HeatMap.
 However, if you prefer to use categories instead of numerical coordinates, you can enforce the usage of a HeatMap by adding the following comment:
 
 ``` markdown
@@ -7990,6 +8215,8 @@ https://datavizpyr.com/heatmaps-with-seaborn-in-python/
 
     --{{0}}--
 A Parallel representation is employed when there are simply too many categories, making a BarChart impractical due to the resulting thin lines.
+This is the case for tables with at least three numeric columns and 50 or more cells.
+It is also used, if the values of only one or two columns differ too much for a BarChart.
 
 <!-- data-show -->
 | Country                |    GDP growth (%) | Births per woman | Life expectancy at birth (years) | Population ages >= 65 (%) | Pop. ages 15-64 (%) | Pop ages 0-14 (%) | Pop (total) |
@@ -8074,6 +8301,7 @@ In contrast to this, if those values differ, then the result is simply a __direc
 
       {{1}}
 > Unfortunately, self-referencing or multigraphs are currently not supported.
+> If there are values on the diagonal, the table is shown as a HeatMap instead.
 
 
 #### `Sankey`
@@ -8154,6 +8382,8 @@ Use `data-transpose` in this case, so that the first column defines the words an
 
     --{{0}}--
 Simply set `data-type="none"` to prevent any kind of visualization for the corresponding table.
+Tables that contain mostly text, as well as truth tables with only 0 and 1, are not visualized anyway.
+The following adjacency matrix would otherwise be shown as a graph.
 
 ``` markdown
 <!-- data-type="none" -->
@@ -8396,9 +8626,9 @@ This approach allows you to rebuild nearly every example directly, providing fle
 If you require the execution of JavaScript or need more interaction with the diagram, you can also apply `script` tags. For more information on this, refer to section [JavaScript or JS-Components](#JavaScript-or-JS-Components).
 
 
-$a =$ <script input="range" step="1" min="-1" max="6" value="2"  output="a">@input</script>,
-$b =$ <script input="range" step="0.1" min="-10" max="10" value="0"  output="b">@input</script>,
-$c =$ <script modify="false" input="range" step="0.1" min="-10" max="10" value="0"  output="c">@input</script>
+$a =$ <script input="range" aria-label="a" step="1" min="-1" max="6" value="2"  output="a">@input</script>,
+$b =$ <script input="range" aria-label="b" step="0.1" min="-10" max="10" value="0"  output="b">@input</script>,
+$c =$ <script modify="false" input="range" aria-label="c" step="0.1" min="-10" max="10" value="0"  output="c">@input</script>
 
 <script modify="false" run-once style="display: inline-block; width: 100%">
 "LIASCRIPT: ### $$f(x) = x^{@input(`a`)} + x * @input(`b`) + @input(`c`)$$"
@@ -9735,7 +9965,7 @@ We are more than happy to see your experiments with SVG in LiaScript.
 <!-- 4) LiaScript slide inside foreignObject -->
 <foreignObject x="100" y="0" width="500" height="50">
 
-## <script min="-100" max="100" input="range" default="1" value="1" input-always-active>
+## <script min="-100" max="100" input="range" aria-label="amplitude of the sine" default="1" value="1" input-always-active>
 const sine = document.getElementById("sine")
 sine.setAttribute("d",  `M 50,150
   ${Array.from({length:361}, (_, i) => {
@@ -12820,9 +13050,9 @@ On every change, the evaluation of the third script is triggered, and the two `@
 <section>
 
 ``` markdown
-longitude: <script default="13.33125" input="range" output="longitude">@input</script>
+longitude: <script default="13.33125" input="range" aria-label="longitude" output="longitude">@input</script>
 
-latitude: <script default="50.92558" input="range" output="latitude">@input</script>
+latitude: <script default="50.92558" input="range" aria-label="latitude" output="latitude">@input</script>
 
 <script run-once="true" style="display: block">
   fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
@@ -12847,9 +13077,9 @@ latitude: <script default="50.92558" input="range" output="latitude">@input</scr
 
 ---
 
-longitude: <script default="13.33125" input="range" output="longitude">@input</script>
+longitude: <script default="13.33125" input="range" aria-label="longitude" output="longitude">@input</script>
 
-latitude: <script default="50.92558" input="range" output="latitude">@input</script>
+latitude: <script default="50.92558" input="range" aria-label="latitude" output="latitude">@input</script>
 
 <script run-once="true" style="display: block">
   fetch("https://api.open-meteo.com/v1/forecast?latitude=@input(`latitude`)&longitude=@input(`longitude`)&hourly=temperature_2m")
@@ -12920,7 +13150,7 @@ In LiaScript, this is achieved through a combination of script tags with input t
 Simply add the parameter `input` with additional type information to the script tag.
 
 ``` html
-<script input value="reverse">
+<script input aria-label="text to reverse" value="reverse">
 let str = "@input"
 // the input string gets reversed
 str.split("").reverse().join("")
@@ -12934,7 +13164,7 @@ You can click on them and change the input.
 Different inputs produce different outputs and might trigger the execution slightly differently.
 
       {{1}}
-<script input value="reverse">
+<script input aria-label="text to reverse" value="reverse">
 let str = "@input"
 // the input string gets reversed
 str.split("").reverse().join("")
@@ -12954,6 +13184,35 @@ Both values might be completely different.
 > https://www.w3schools.com/tags/tag_input.asp
 
 
+#### Naming your Inputs
+
+    --{{0}}--
+A slider or a checkbox without a name is only announced as "slider" or "checkbox" by a screen reader.
+Since all attributes of the script tag are passed to the generated input, you can simply give it a name with `aria-label`, or point to a visible text with `aria-labelledby`.
+
+``` html
+<script input="range" min="0" max="100" value="50" aria-label="volume">
+"Volume: @input %"
+</script>
+
+<script input="checkbox" value='["Ben"]' options="Ben|Jerry|Tom" aria-label="Who is coming?">
+@input
+</script>
+```
+
+<script input="range" min="0" max="100" value="50" aria-label="volume">
+"Volume: @input %"
+</script>
+
+<script input="checkbox" value='["Ben"]' options="Ben|Jerry|Tom" aria-label="Who is coming?">
+@input
+</script>
+
+    --{{1}}--
+For `radio` and `checkbox` inputs with `options`, the label names the whole group, every option is named by its own text.
+Buttons and submits are already named by their text, all other inputs should get a label.
+
+
 #### `text`
 
     --{{0}}--
@@ -12964,14 +13223,14 @@ The attribute `value` is used as the default initial input for your script durin
 If no `value` is defined, then the default input is an empty string.
 
 ``` html
-<script input="text" value="reverse">
+<script input="text" aria-label="text to reverse" value="reverse">
 let str = "@input"
 // the input string gets reversed
 str.split("").reverse().join("")
 </script>
 ```
 
-<script input="text" value="reverse">
+<script input="text" aria-label="text to reverse" value="reverse">
 let str = "@input"
 str.split("").reverse().join("")
 </script>
@@ -13045,14 +13304,14 @@ Math.random()
 The number input is similar to text, but only numbers are allowed as input, and you can set additional parameters such as `min`, `max`, and `step`.
 
 ``` markdown
-<script input="number" value="1" min="0" max="1000000">
+<script input="number" aria-label="number to square" value="1" min="0" max="1000000">
 let i = @input // direct usage as a number
 
 "Square of " + i + " = " + i * i
 </script>
 ```
 
-<script input="number" value="1" min="0" max="1000000">
+<script input="number" aria-label="number to square" value="1" min="0" max="1000000">
 let i = @input
 
 "Square of " + i + " = " + i * i
@@ -13071,14 +13330,14 @@ let i = @input
 The range input is actually a slider that generates numbers as input, and you can set additional parameters such as `min`, `max`, and `step`.
 
 ``` markdown
-<script input="number" value="1" min="0" max="1000" step="0.1">
+<script input="number" aria-label="number to square" value="1" min="0" max="1000" step="0.1">
 let i = @input // direct usage as a number
 
 "Square of " + i + " = " + i * i
 </script>
 ```
 
-<script input="range" value="0" min="0" max="360" step="0.1">
+<script input="range" aria-label="angle" value="0" min="0" max="360" step="0.1">
 let i = @input
 
 "Sinus of " + i + " = " + Math.sin(i)
@@ -13097,14 +13356,14 @@ let i = @input
 The search input is actually a text input, but unlike regular text inputs, the script associated with it is only executed after the input field loses focus.
 
 ``` markdown
-<script input="search" value="abcdefg">
+<script input="search" aria-label="search" value="abcdefg">
 let str = "@input"
 
 "reverse of \"" + str + "\" -> " + str.split("").reverse().join("")
 </script>
 ```
 
-<script input="search" value="abcdefg">
+<script input="search" aria-label="search" value="abcdefg">
 let str = "@input"
 
 "reverse of \"" + str + "\" -> " + str.split("").reverse().join("")
@@ -13123,7 +13382,7 @@ The password input is also a text input, but unlike regular text inputs, the inp
 Similar to the search input, the script associated with it is only executed after the input field loses focus.
 
 ``` markdown
-<script input="password">
+<script input="password" aria-label="password">
 let password = "@input"
 
 if (password == "LiaScript") {
@@ -13134,7 +13393,7 @@ if (password == "LiaScript") {
 </script>
 ```
 
-<script input="password">
+<script input="password" aria-label="password">
 let password = "@input"
 
 if (password == "LiaScript") {
@@ -13159,14 +13418,14 @@ Thus, the user can only select one of the defined options.
 
 ``` html
 <script
-input="radio" value="1"
+input="radio" aria-label="choose an option" value="1"
 options="1|2|3|Hello World|true"
 >
 "Selected option: @input"
 </script>
 ```
 
-<script input="radio" value="1" options="1|2|3|Hello World|true">
+<script input="radio" aria-label="choose an option" value="1" options="1|2|3|Hello World|true">
 "Selected option: @input"
 </script>
 
@@ -13185,14 +13444,14 @@ The usage of `options` and their separation by `|` is similar to radio buttons.
 
 ``` html
 <script
-input="select" value="1"
+input="select" aria-label="choose an option" value="1"
 options="1|2|3|Hello World|true"
 >
 "Selected option: @input"
 </script>
 ```
 
-<script input="select" value="1" options="1|2|3|Hello World|true">
+<script input="select" aria-label="choose an option" value="1" options="1|2|3|Hello World|true">
 "Selected option: @input"
 </script>
 
@@ -13209,12 +13468,12 @@ Checkboxes, unlike radio buttons or select, allow you to select multiple element
 If no options are defined, a checkbox is treated as a single input that switches between true and false, depending on whether the checkbox is checked or not.
 
 ``` html
-<script input="checkbox" value="true">
+<script input="checkbox" aria-label="true or false" value="true">
 "@input"
 </script>
 ```
 
-<script input="checkbox" value="true">
+<script input="checkbox" aria-label="true or false" value="true">
 "@input"
 </script>
 
@@ -13226,12 +13485,12 @@ If you define `options`, the current value as well as the result are treated as 
 <section>
 
 ``` html
-<script input="checkbox" value='["Ben"]' options="Ben|Jerry|Tom|Hardy" >
+<script input="checkbox" aria-label="Who is coming?" value='["Ben"]' options="Ben|Jerry|Tom|Hardy" >
 @input
 </script>
 ```
 
-<script input="checkbox" value='["Ben"]' options="Ben|Jerry|Tom|Hardy" >
+<script input="checkbox" aria-label="Who is coming?" value='["Ben"]' options="Ben|Jerry|Tom|Hardy" >
 @input
 </script>
 
@@ -13248,7 +13507,7 @@ If you do not specify locale information, the document language is used as a def
 
 ``` html
 <script
-  input="checkbox"
+  input="checkbox" aria-label="Who is coming?"
   value='["Ben", "Jerry", "Tom"]'
   options=" Ben | Jerry | Tom | Hardy "
 
@@ -13264,7 +13523,7 @@ If you do not specify locale information, the document language is used as a def
 ```
 
 <script
-  input="checkbox"
+  input="checkbox" aria-label="Who is coming?"
   value='["Ben", "Jerry", "Tom"]'
   options=" Ben | Jerry | Tom | Hardy "
 
@@ -13295,13 +13554,13 @@ If you do not specify locale information, the document language is used as a def
 Date offers a datepicker. The normal return value is a string in the format `YYYY-MM-DD` (Year-Month-Day), but it is also possible to customize this output according to language-specific formats.
 
 ``` html
-<script input="date" value="2020-10-10"
+<script input="date" aria-label="date" value="2020-10-10"
         format="datetime" locale="de">
 "@input"
 </script>
 ```
 
-<script input="date" value="2020-10-10" format="datetime" locale="de">
+<script input="date" aria-label="date" value="2020-10-10" format="datetime" locale="de">
 "@input"
 </script>
 
@@ -13313,7 +13572,7 @@ Well, this does not look as good as we would expect it in a nicely written text,
 <section>
 
 ``` html
-<script input="date" value="2020-10-10"
+<script input="date" aria-label="date" value="2020-10-10"
         format="datetime" locale="fr"
         dateStyle="full"  timeZone="Australia/Sydney"
 >
@@ -13321,7 +13580,7 @@ Well, this does not look as good as we would expect it in a nicely written text,
 </script>
 ```
 
-<script input="date" value="2020-10-10"
+<script input="date" aria-label="date" value="2020-10-10"
         format="datetime" locale="fr"
         dateStyle="full"  timeZone="Australia/Sydney"
 >
@@ -13344,12 +13603,12 @@ The standard return format is `YYYY-MM-DDTHH:MM` (Year-Month-DayTHour:Minutes).
 The execution is triggered on every change.
 
 ``` html
-<script input="datetime-local" value="2020-11-20T12:30">
+<script input="datetime-local" aria-label="date and time" value="2020-11-20T12:30">
 "@input"
 </script>
 ```
 
-<script input="datetime-local" value="2020-11-20T12:30">
+<script input="datetime-local" aria-label="date and time" value="2020-11-20T12:30">
 "@input"
 </script>
 
@@ -13360,7 +13619,7 @@ And, of course, it is also possible to format time and date in various ways:
 <section>
 
 ``` html
-<script input="datetime-local"
+<script input="datetime-local" aria-label="date and time"
         value="2020-11-20T12:30"
         format="datetime"
         locale="en"
@@ -13370,7 +13629,7 @@ And, of course, it is also possible to format time and date in various ways:
 </script>
 ```
 
-<script input="datetime-local"
+<script input="datetime-local" aria-label="date and time"
         value="2020-11-20T12:30"
         format="datetime"
         dateStyle='full'
@@ -13393,12 +13652,12 @@ Last but not least, a time picker, which could also be formatted in various ways
 I leave this to the interested reader to try to find a solution.
 
 ``` html
-<script input="time" value="11:30">
+<script input="time" aria-label="time" value="11:30">
 "@input"
 </script>
 ```
 
-<script input="time" value="11:30">
+<script input="time" aria-label="time" value="11:30">
 "@input"
 </script>
 
@@ -13411,12 +13670,12 @@ I leave this to the interested reader to try to find a solution.
 ##### `month`
 
 ``` html
-<script input="month" value="1999-12">
+<script input="month" aria-label="month" value="1999-12">
 "@input"
 </script>
 ```
 
-<script input="month" value="1999-12">
+<script input="month" aria-label="month" value="1999-12">
 "@input"
 </script>
 
@@ -13428,12 +13687,12 @@ I leave this to the interested reader to try to find a solution.
 
 
 ``` html
-<script input="week" value="2020-W40">
+<script input="week" aria-label="week" value="2020-W40">
 "@input"
 </script>
 ```
 
-<script input="week" value="2020-W40">
+<script input="week" aria-label="week" value="2020-W40">
 "@input"
 </script>
 
@@ -13450,7 +13709,7 @@ It defines a field for an email address.
 The input value is checked, and an info message is presented to ensure a properly formatted email address.
 
 ``` html
-<script input="email" placeholder="please your Email">
+<script input="email" aria-label="email" placeholder="please your Email">
 let email = "@input"
 
 if (email) {
@@ -13461,7 +13720,7 @@ if (email) {
 </script>
 ```
 
-<script input="email" placeholder="please your Email">
+<script input="email" aria-label="email" placeholder="please your Email">
 let email = "@input"
 
 if (email) {
@@ -13483,12 +13742,12 @@ if (email) {
 This input is similar to a search input, as the script execution is triggered only after pressing enter or when the input loses focus.
 
 ``` html
-<script input="url" value="url">
+<script input="url" aria-label="url" value="url">
 "@input"
 </script>
 ```
 
-<script input="url" value="url">
+<script input="url" aria-label="url" value="url">
 "@input"
 </script>
 
@@ -13504,7 +13763,7 @@ This input is similar to a search input, as the script execution is triggered on
 An input field for telephone numbers. The script is also only executed after the input, not on every change.
 
 ``` html
-<script input="tel"
+<script input="tel" aria-label="telephone number"
     pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
     placeholder="123-45-678"
 >
@@ -13518,7 +13777,7 @@ if (tel) {
 </script>
 ```
 
-<script input="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="123-45-678">
+<script input="tel" aria-label="telephone number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="123-45-678">
 let tel = "@input"
 
 if (tel) {
@@ -13557,12 +13816,12 @@ The normal return value has the format `#RRGGBB` (red, green, blue).
 The numeric values are defined in hexadecimal ranging from `00` to `FF`.
 
 ```html
-<script input="color" value="#FF0000">
+<script input="color" aria-label="color" value="#FF0000">
 "HTML: <b style='color:@input'>@input</b>"
 </script>
 ```
 
-<script input="color" value="#FF0000">
+<script input="color" aria-label="color" value="#FF0000">
 "HTML: <b style='color:@input'>@input</b>"
 </script>
 
@@ -13581,12 +13840,12 @@ This is not an input type, but instead the application of the textarea HTML elem
 The script is only executed after the element has lost focus.
 
 ``` html
-<script input="textarea" value="<span style='font-size: 32px'>hallo</span>" style="width:100%">
+<script input="textarea" aria-label="HTML code" value="<span style='font-size: 32px'>hallo</span>" style="width:100%">
 `HTML: @input`
 </script>
 ```
 
-<script input="textarea" value="<span style='font-size: 32px'>hallo</span>" style="width:100%">
+<script input="textarea" aria-label="HTML code" value="<span style='font-size: 32px'>hallo</span>" style="width:100%">
 `HTML: @input`
 </script>
 
@@ -13612,11 +13871,11 @@ Other scripts can subscribe to these changes via `input(`channel-name`)`, but th
 
 
 ``` html
-<script input="checkbox" value="true" output="P" default="true">
+<script input="checkbox" aria-label="P" value="true" output="P" default="true">
 @input
 </script>
 AND
-<script input="checkbox" value="false" output="Q" default="false">
+<script input="checkbox" aria-label="Q" value="false" output="Q" default="false">
 @input
 </script>
 -->
@@ -13629,11 +13888,11 @@ AND
 When a script is executed, `@input` gets replaced by the current value of the script, while input markers with topics are replaced by the actual displayed output from other scripts. Every change in the result of one script causes an update of the script that uses the foreign output.
 
       {{1}}
-<script input="checkbox" value="true" output="P" default="true">
+<script input="checkbox" aria-label="P" value="true" output="P" default="true">
 @input
 </script>
 AND
-<script input="checkbox" value="false" output="Q" default="false">
+<script input="checkbox" aria-label="Q" value="false" output="Q" default="false">
 @input
 </script>
 -->
@@ -13650,7 +13909,7 @@ Note that formatting is only performed on the displayed representation and does 
 If you connect scripts, ideally the connections should form a directed graph without cycles. However, if desired, you can create cycles that continue until the results no longer change.
 
 ``` html
-<script input="range" value="1" default="1" output="x">
+<script input="range" aria-label="x" value="1" default="1" output="x">
 setTimeout(function(){
   send.lia( @input * @input(`y`) )
 }, 1000)
@@ -13658,7 +13917,7 @@ setTimeout(function(){
 send.wait()
 </script>
 <-->
-<script input="number" value="1" default="1" output="y">
+<script input="number" aria-label="y" value="1" default="1" output="y">
 setTimeout(function(){
   send.lia( @input - @input(`x`) )
 }, 1000)
@@ -13671,7 +13930,7 @@ send.wait()
 The `default` parameter is used to define the default output of this script. Without it, the initial calculation would result in an error due to the circular dependency, as the scripts require the outputs of each other, which cannot be calculated initially.
 
       {{1}}
-<script input="range" value="1" default="1" output="x">
+<script input="range" aria-label="x" value="1" default="1" output="x">
 setTimeout(function(){
   send.lia( @input * @input(`y`) )
 }, 1000)
@@ -13679,7 +13938,7 @@ setTimeout(function(){
 send.wait()
 </script>
 <-->
-<script input="number" value="1" default="1" output="y">
+<script input="number" aria-label="y" value="1" default="1" output="y">
 setTimeout(function(){
   send.lia( @input - @input(`x`) )
 }, 1000)
@@ -13710,7 +13969,7 @@ Thus, everything defined within the script, such as functions or variables, is k
 <section>
 
 ``` html
-a = <script input="range" min="0" max="5" step="0.5" value="1" default="1">
+a = <script input="range" aria-label="a" min="0" max="5" step="0.5" value="1" default="1">
 send.dispatch("amplitude", @input)
 
 "LIASCRIPT: $f(x) = @input \\cdot \\sin(x)$"
@@ -13735,7 +13994,7 @@ send.register("amplitude", (a) => send.liascript(plot(a)))
 
 __Result:__
 
-a = <script input="range" min="0" max="5" step="0.5" value="1" default="1">
+a = <script input="range" aria-label="a" min="0" max="5" step="0.5" value="1" default="1">
 send.dispatch("amplitude", @input)
 
 "LIASCRIPT: $f(x) = @input \\cdot \\sin(x)$"
@@ -13858,9 +14117,9 @@ Parameters: <script run-once
 <section>
 
 And of course, we can also directly create and manipulate diagrams with different parameters a:
-<script input="range" value="2" output="range">@input</script>
+<script input="range" aria-label="a" value="2" output="range">@input</script>
 , directly from the document b:
-<script input="range" value="50" output="amplitude">@input</script>.
+<script input="range" aria-label="b" value="50" output="amplitude">@input</script>.
 You can double-click on the highlighted elements to inspect and edit its JavaScript code.
 
 
@@ -14490,21 +14749,6 @@ todo
 #### Dat - URIs
 
 #### QR-Codes
-
-
-### KaiOS Keypad Navigation
-
-LiaScript also runs on feature phones with [KaiOS](https://www.kaiostech.com), which have a numeric keypad instead of a touch screen.
-On these devices, courses can be navigated with the following keys, as long as the focus is not within an input field:
-
-| Key | Action                                  |
-|:---:| --------------------------------------- |
-| `4` | previous slide                          |
-| `6` | next slide                              |
-| `2` | scroll up                               |
-| `8` | scroll down                             |
-| `*` | open or close the table of contents     |
-| `#` | go to the home screen                   |
 
 
 ### Unicode Symbols
