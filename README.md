@@ -6869,7 +6869,7 @@ only within your browser.
 
                                --{{0}}--
 Templates can also use the classroom for their own collaborative features. The
-[CollaborativeLayers](https://github.com/LiaTemplates/CollaborativeLayers)
+[CollaborativeDrawing](https://github.com/LiaTemplates/CollaborativeDrawing)
 template, for example, offers a canvas, on which everyone draws on an own layer.
 Without a classroom you only see your own drawing, which is stored within your
 browser. If you join a classroom, it is synchronized with the others and the
@@ -14970,10 +14970,10 @@ Some details, which are good to know, if you build your own template:
 </section>
 
     --{{4}}--
-A complete example is the [CollaborativeLayers](https://github.com/LiaTemplates/CollaborativeLayers) template, a drawing canvas for classrooms with tools for drawing, moving, erasing, undo, and redo, which only uses layers.
+A complete example is the [CollaborativeDrawing](https://github.com/LiaTemplates/CollaborativeDrawing) template, a drawing canvas for classrooms with tools for drawing, moving, erasing, undo, and redo, which only uses layers.
 
       {{4}}
-[Try CollaborativeLayers](https://liascript.github.io/course/?https://raw.githubusercontent.com/LiaTemplates/CollaborativeLayers/main/README.md)
+[Try CollaborativeDrawing](https://liascript.github.io/course/?https://raw.githubusercontent.com/LiaTemplates/CollaborativeDrawing/main/README.md)
 
 ##### Shared Yjs Types
 
