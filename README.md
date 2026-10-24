@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     21/10/2026
-version:  39.0.0
+date:     24/10/2026
+version:  40.0.0
 language: en
 narrator: UK English Female
 
@@ -41,7 +41,7 @@ svg.ascii-demo circle { fill: crimson; }
 
 https://github.com/user-attachments/assets/7cab2d61-5858-4b62-87bf-0598e44af2e7
 
-# LiaScript 2.4.0
+# LiaScript 2.5.0
 
 > To see this document as an interactive LiaScript rendered version, click on the
 > following link/badge:
@@ -6609,6 +6609,8 @@ others are doing.
 > * __Executable code:__ can be switched into a collaborative editor
 > * __Chat:__ every message is interpreted as LiaScript, thus you can post
 >   quizzes, surveys, code, or media to the chat on the fly
+> * __Templates:__ can bring their own collaborative features, such as a
+>   shared drawing canvas, see [Classroom API](#classroom-api)
 
                                --{{1}}--
 The basic idea is, if you join a room, you bring your data with you, if you
@@ -6862,6 +6864,22 @@ some notes or to create your own little quiz for later. Everything is stored
 only within your browser.
 
 ![Notes, just for yourself](img/classroom-local-notes.png)
+
+### Collaborative Templates
+
+                               --{{0}}--
+Templates can also use the classroom for their own collaborative features. The
+[CollaborativeLayers](https://github.com/LiaTemplates/CollaborativeLayers)
+template, for example, offers a canvas, on which everyone draws on an own layer.
+Without a classroom you only see your own drawing, which is stored within your
+browser. If you join a classroom, it is synchronized with the others and the
+classroom mode decides, who sees which drawings, in the same way as for quizzes.
+Thus, in "Details" mode, only you as the owner see the drawings of all your
+students with their names.
+
+                               --{{1}}--
+If you want to build such a template on your own, have a look at the
+[Classroom API](#classroom-api).
 
 ### Classroom Experience in Action
 
@@ -11835,30 +11853,57 @@ language: de
 We use language codes for internationalization, similar to top-level domains.
 
       {{1}}
-| language   | code |                                                                              translation |
-| ---------- |:----:| ----------------------------------------------------------------------------------------:|
-| Amharic    |  am  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.am.yaml) |
-| Arabic     |  ar  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ar.yaml) |
-| Armenian   |  hy  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hy.yaml) |
-| Bengali    |  bn  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.bn.yaml) |
-| Bulgarian  |  bg  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.bg.yaml) |
-| Chinese    |  zh  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.zh.yaml) |
-| English    |  en  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.en.yaml) |
-| Dutch      |  nl  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.nl.yaml) |
-| French     |  fr  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fr.yaml) |
-| German     |  de  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.de.yaml) |
-| Hindi      |  hi  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hi.yaml) |
-| Italian    |  it  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.it.yaml) |
-| Japanese   |  ja  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ja.yaml) |
-| Korean     |  ko  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ko.yaml) |
-| Panjabi    |  pa  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.pa.yaml) |
-| Persian    |  fa  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fa.yaml) |
-| Portuguese |  pt  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.pt.yaml) |
-| Russian    |  ru  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ru.yaml) |
-| Spanish    |  es  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.es.yaml) |
-| Suaheli    |  sw  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.sw.yaml) |
-| Taiwanese  |  tw  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.tw.yaml) |
-| Ukrainian  |  ua  | [url](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ua.yaml) |
+| language              | native       | code | translation |
+| --------------------- | ------------ |:----:| ----------- |
+| Albanian              | Shqip        |  sq  | [sq.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.sq.yaml) |
+| Amharic               | አማርኛ         |  am  | [am.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.am.yaml) |
+| Arabic                | العربية      |  ar  | [ar.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ar.yaml) |
+| Armenian              | հայերեն      |  hy  | [hy.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hy.yaml) |
+| Basque                | Euskara      |  eu  | [eu.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.eu.yaml) |
+| Bengali               | বাংলা        |  bn  | [bn.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.bn.yaml) |
+| Bulgarian             | български    |  bg  | [bg.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.bg.yaml) |
+| Catalan               | Català       |  ca  | [ca.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ca.yaml) |
+| Chinese (Simplified)  | 简体中文         |  zh  | [zh.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.zh.yaml) |
+| Chinese (Traditional) | 繁體中文         |  tw  | [tw.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.tw.yaml) |
+| Croatian              | Hrvatski     |  hr  | [hr.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hr.yaml) |
+| Czech                 | Čeština      |  cs  | [cs.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.cs.yaml) |
+| Danish                | Dansk        |  da  | [da.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.da.yaml) |
+| Dutch                 | Nederlands   |  nl  | [nl.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.nl.yaml) |
+| English               | English      |  en  | [en.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.en.yaml) |
+| Estonian              | Eesti        |  et  | [et.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.et.yaml) |
+| Finnish               | Suomi        |  fi  | [fi.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fi.yaml) |
+| French                | Français     |  fr  | [fr.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fr.yaml) |
+| Georgian              | ქართული      |  ka  | [ka.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ka.yaml) |
+| German                | Deutsch      |  de  | [de.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.de.yaml) |
+| Greek                 | Ελληνικά     |  el  | [el.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.el.yaml) |
+| Hindi                 | हिन्दी       |  hi  | [hi.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hi.yaml) |
+| Hungarian             | Magyar       |  hu  | [hu.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.hu.yaml) |
+| Irish                 | Gaeilge      |  ga  | [ga.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ga.yaml) |
+| Italian               | Italiano     |  it  | [it.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.it.yaml) |
+| Japanese              | 日本語          |  ja  | [ja.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ja.yaml) |
+| Korean                | 한국어          |  ko  | [ko.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ko.yaml) |
+| Latvian               | Latviešu     |  lv  | [lv.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.lv.yaml) |
+| Lithuanian            | Lietuvių     |  lt  | [lt.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.lt.yaml) |
+| Norwegian Bokmål      | Norsk bokmål |  nb  | [nb.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.nb.yaml) |
+| Panjabi               | ਪੰਜਾਬੀ       |  pa  | [pa.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.pa.yaml) |
+| Persian               | فارسی        |  fa  | [fa.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fa.yaml) |
+| Polish                | Polski       |  pl  | [pl.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.pl.yaml) |
+| Portuguese            | Português    |  pt  | [pt.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.pt.yaml) |
+| Romanian              | Română       |  ro  | [ro.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ro.yaml) |
+| Russian               | русский      |  ru  | [ru.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ru.yaml) |
+| Slovak                | Slovenčina   |  sk  | [sk.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.sk.yaml) |
+| Slovenian             | Slovenščina  |  sl  | [sl.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.sl.yaml) |
+| Spanish               | Español      |  es  | [es.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.es.yaml) |
+| Swahili               | Kiswahili    |  sw  | [sw.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.sw.yaml) |
+| Swedish               | Svenska      |  sv  | [sv.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.sv.yaml) |
+| Turkish               | Türkçe       |  tr  | [tr.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.tr.yaml) |
+| Ukrainian             | Українська   |  uk  | [uk.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.uk.yaml) |
+| Urdu                  | اردو         |  ur  | [ur.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ur.yaml) |
+
+    --{{2}}--
+Ukrainian has changed its code from `ua` to `uk`, according to the standard, with `ua` the menus remain in English.
+Other language codes, such as `he` for Hebrew, can be used as well, they define the language of the document and of the voices, only the menus remain in English.
+For Arabic, Persian, Urdu, Hebrew, and other languages that are written from right to left, the whole layout is mirrored.
 
 ##### `narrator`
 
@@ -14598,44 +14643,127 @@ LIA.narrator.registerAvatar("emoji-avatar")
 For a complete example, have a look at the [virtual-speaker](https://github.com/LiaTemplates/virtual-speaker) template.
 
 
-#### Publish subscribe API
+#### Classroom API
 
     --{{0}}--
-Since LiaScript allows for opening Classrooms with a chat that supports LiaScript syntax and synchronizes the states of quizzes and surveys between users, along with support for collaborative editing, we have decided to add a new experimental API.
+LiaScript classrooms synchronize quizzes, surveys, code, and the chat between all participants, see [Classrooms](#classrooms).
+With `LIA.classroom`, scripts and templates can use the same infrastructure for their own collaborative extensions, such as painting together, marking positions on a map, voting, or little games.
 
 !?[LiaScript Classroom](https://www.youtube.com/watch?v=Kjk6OblugXI)
 
+    --{{1}}--
+The API consists of four parts.
+Which one fits best depends on how long your data shall live and who shall see it.
+
+      {{1}}
+<section>
+
+| Part                                                  | Use it for                                                         | Stored                                                           |
+| ----------------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| `connected`, `me`, `owner`, `mode`, `peers()`, `on()` | who is in the classroom and how it is configured                   | --                                                               |
+| `publish()`, `subscribe()`                            | short messages, such as reactions or signals                       | not stored, a new subscriber only gets the last message of a topic |
+| `layer(name)`                                         | an own state per participant, such as drawings, votes, or markers  | locally in the browser and within the classroom                  |
+| `array(name)`, `map(name)`, `text(name)`              | one shared state that everyone can change (experimental)           | only within the classroom                                        |
+
+</section>
+
+    --{{2}}--
+All functions can be called at any time, also if there is no classroom.
+Thus, a template works in the same way in a single browser and within a classroom.
+
+##### Who is in the Classroom?
+
+    --{{0}}--
+These properties tell a script who it is running for and whether there is a classroom at all.
+Every person is described by an id, a name, and the same color and emoji that is used for them in the chat.
+
+``` js
+// true if a connection to a classroom has been established
+LIA.classroom.connected
+
+// me, also without a classroom (then the name is empty)
+LIA.classroom.me      // { id, name, color, symbol, me: true, owner }
+
+// true, if I am the owner of the classroom
+LIA.classroom.owner
+
+// "shared", "summary", "details", or null without a classroom
+LIA.classroom.mode
+
+// everybody who is in the classroom right now, including me
+LIA.classroom.peers() // [{ id, name, color, symbol, me, owner }, ...]
+```
 
     --{{1}}--
-This API allows anyone to create new collaborative LiaScript extensions by combining scripts with anything that might be interesting, such as collaborative painting, marking positions on a map, and more.
-
+With `on` you can register callbacks for changes.
+`"connect"` and `"peers"` are also called at once, if the state already holds, thus you do not have to check it on your own.
+Every `on` returns a function that removes the callback again.
 
       {{1}}
 ``` js
-// true if connection to a classroom has been established
-LIA.classroom.connected
+LIA.classroom.on("connect", () => console.log("you are now connected"))
+LIA.classroom.on("disconnect", () => console.log("you are now disconnected"))
 
-// creates a callback on a connection
-LIA.classroom.on("connect", () => {
-    console.log("you are now connected")
+// somebody joined, left, was renamed, or the owner changed
+const off = LIA.classroom.on("peers", (peers) => {
+  console.log(peers.map((p) => p.symbol + " " + p.name).join(", "))
 })
 
-// callback for the disconnection
-LIA.classroom.on("disconnect", () => {
-    console.log("you are now disconnected")
+// remove the callback again
+off()
+```
+
+      {{2}}
+<section>
+
+    --{{2}}--
+Here is the classroom from the point of view of a script.
+Open a classroom and let some others join, the list will be updated automatically.
+
+<script run-once style="display: block">
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => "&#" + c.charCodeAt(0) + ";")
+
+LIA.classroom.on("peers", (peers) => {
+  if (!LIA.classroom.connected) {
+    send.output("HTML: " + LIA.classroom.me.symbol + " you are not in a classroom")
+    return
+  }
+
+  send.output("HTML: <b>mode:</b> " + LIA.classroom.mode + "<br>" +
+    peers.map((p) =>
+      `<span style="color: ${p.color}">${p.symbol} ${p.me ? "you" : esc(p.name) || "anonymous"}</span>` +
+      (p.owner ? " (owner)" : "")
+    ).join("<br>"))
 })
 
+send.wait()
+</script>
+
+</section>
+
+##### Publish & Subscribe
+
+    --{{0}}--
+The simplest way to communicate is to publish messages on a topic.
+Everyone who has subscribed to this topic receives the message together with the sender.
+Messages are not stored, only the last message of every topic is passed to scripts that subscribe later on, for example, when a slide is visited for the first time.
+
+``` js
 // publish some data on a topic
 LIA.classroom.publish("topic", { data: "Hello World" })
 
-// subscribe to all messages of a topic
-const subID = LIA.classroom.subscribe("topic", (message) => {
-    console.log("received", message)
+// subscribe to all messages of a topic, from is the sender
+const subID = LIA.classroom.subscribe("topic", (message, from) => {
+  console.log(from?.name, "sent", message)
 })
 
 // do not receive messages anymore
 LIA.classroom.unsubscribe(subID)
 ```
+
+    --{{1}}--
+Please note, the sender is only claimed by the browser that has sent the message, it is not verified.
+And messages from LiaScript versions older than 2.5.0 arrive without a sender.
 
     --{{2}}--
 The following code creates an entire waving app, where students can send little raining icons to vote, for example, for a topic. This functionality can be easily put into a template that can be imported into different courses.
@@ -14702,10 +14830,175 @@ Try it out by opening a classroom on multiple browsers!
 
     --{{4}}--
 Here is the base code that you can try out and modify.
-Afterwards, share your course via the DAT-URI options, which allows to encode short courses within the URL.
+Afterwards, share your course via the data-URI option of the LiveEditor, which encodes short courses directly within the URL, see [Data URIs](#data-uris).
 
       {{4}}
 [Live Editor Example](https://liascript.github.io/LiveEditor/?/show/code/H4sIAAAAAAAAA8VSQW7UMBTd+xQfo6oJdEKQWM1MRlOhSlRqVyCxdpKfGQvHtmxnYKhGYo8oAtYVGw7BeXoBOALfiZqZ9gKs/P39nt/z858/mkzY0oetQpY1Qim4YgDWeBmk0VMQpTeqCzijbjB2CnmshJatGAA954UHJTUKN2M7tnyH28aJFj2MF+ZHcHXHhx01nuf7Vqxjl6ioa8aW78UG2dxXTtoAUtsuFLzsQjCag+v0xOgKCx5chxxaU8tmW3CS8sgXTDaQXJyfZpUS3jtj2qwyWmMVsE6jE4D7p7YrlfTrhEdRfgJ8mfOUrMSVzZ8NJhaDs8lkwdhjeCs2Uq/g1FrGXq+FQ9iazkGDSCGs/JSN3h+YXbD72r4rI7DEUT1p/SqFYgGDVbLuKQFaoIDaVF2LOmSVQxHwTGHcJdxboclyxEdkJum57tWbywvi0HX7g174QvqQibpOYmLqkNcPQaawCUVyKcI6c0LXpk1SeBK/KIWnwI/4Q/zHc13jB5IiSJ73p6PR0tTbTFhL2b1cS1UnkXegSDbONgSMnpBMJ8fjYBHl+ASaTldxRx6GQEaqw9ZsMElnfXtH6y5lMS4T32BWFMsQro18eub+K//bZP39+e1zP1tsKA/HK2KS25tff35/TWHYEeb6oP6yr79/uqtvb36k/wAY2UbHwwMAAA==)
+
+##### Layers
+
+    --{{0}}--
+Messages are gone once they have been sent.
+If your template has to remember something, for example, a drawing, then use a layer.
+Every participant writes into an own layer, which is stored locally within the browser, also without a classroom.
+As soon as you join a classroom, your layer is synchronized with the others, and after leaving it, your own layer stays with you, including what you have done within the classroom.
+
+``` js
+// an own layer per participant, the name is shared by all templates of a course
+const layer = LIA.classroom.layer("MyTemplate:canvas-1")
+
+// called with all visible layers, at once and whenever one of them changes
+layer.on((layers, info) => {
+  // layers = [{ id, name, me, editable, color, symbol, values: [...] }, ...]
+  // info.remote = true, if the own layer was changed by somebody else
+})
+
+// add a value to the own layer
+layer.push({ x: 10, y: 20 })
+
+// a copy of the values of the own layer
+const values = layer.get()
+
+// replace the own layer, for example for undo, erase, or move
+layer.set(values.slice(0, -1))
+```
+
+    --{{1}}--
+Who sees which layers is defined by the classroom mode, in the same way as for the answers of quizzes and surveys, see [Classroom Modes](#classroom-modes).
+Every layer carries the color and emoji of its author, as within the chat, thus templates can show who did what, without an own color scheme.
+
+      {{1}}
+| Situation             | You see                                                     |
+| --------------------- | ----------------------------------------------------------- |
+| no classroom          | your own layer                                              |
+| classroom, Shared     | all layers                                                  |
+| classroom, Summary    | your own layer, the owner sees all layers                   |
+| classroom, Details    | your own layer, the owner sees all layers with their names  |
+| after leaving         | your own layer, including what you did in the classroom     |
+
+    --{{2}}--
+Here is a little mood barometer.
+Every participant has exactly one mood, which is stored as the only value of the own layer.
+Try it out alone, reload the page, and open a classroom with others afterwards.
+
+      {{2}}
+``` html
+<script input="submit" default="😀" input-always-active modify="false">
+LIA.classroom.layer("docs:mood").set(["😀"])
+"😀"
+</script>
+<script input="submit" default="😐" input-always-active modify="false">
+LIA.classroom.layer("docs:mood").set(["😐"])
+"😐"
+</script>
+<script input="submit" default="😟" input-always-active modify="false">
+LIA.classroom.layer("docs:mood").set(["😟"])
+"😟"
+</script>
+
+<script run-once style="display: block">
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => "&#" + c.charCodeAt(0) + ";")
+
+LIA.classroom.layer("docs:mood").on((layers) => {
+  const moods = layers
+    .filter((l) => l.values.length > 0)
+    .map((l) =>
+      `<span style="color: ${l.color}">${l.symbol} ${l.me ? "you" : esc(l.name) || "anonymous"}: ${l.values[0]}</span>`
+    )
+
+  send.output("HTML: " + (moods.join("<br>") || "nobody has voted yet"))
+})
+
+send.wait()
+</script>
+```
+
+      {{2}}
+<section>
+
+How do you feel today?
+<script input="submit" default="😀" input-always-active modify="false">
+LIA.classroom.layer("docs:mood").set(["😀"])
+"😀"
+</script>
+<script input="submit" default="😐" input-always-active modify="false">
+LIA.classroom.layer("docs:mood").set(["😐"])
+"😐"
+</script>
+<script input="submit" default="😟" input-always-active modify="false">
+LIA.classroom.layer("docs:mood").set(["😟"])
+"😟"
+</script>
+
+<script run-once style="display: block">
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => "&#" + c.charCodeAt(0) + ";")
+
+LIA.classroom.layer("docs:mood").on((layers) => {
+  const moods = layers
+    .filter((l) => l.values.length > 0)
+    .map((l) =>
+      `<span style="color: ${l.color}">${l.symbol} ${l.me ? "you" : esc(l.name) || "anonymous"}: ${l.values[0]}</span>`
+    )
+
+  send.output("HTML: " + (moods.join("<br>") || "nobody has voted yet"))
+})
+
+send.wait()
+</script>
+
+</section>
+
+    --{{3}}--
+Some details, which are good to know, if you build your own template:
+
+      {{3}}
+<section>
+
+* __Values__ have to be JSON, they are stored as frozen copies.
+  Changing a value in place throws an error, and values that do not survive JSON, such as dates, maps, or functions, show up at once.
+* __Promises:__ `push` and `set` return a promise that resolves once the change is stored (and written into the classroom) and that rejects with the reason otherwise.
+* __Owner:__ The owner of a classroom may also change the layers of others with `layer.set(values, id)`, `editable` tells which layers you may change.
+  The other participant gets this change into the own layer, `info.remote` is then `true`, which is a good moment to clear an undo history.
+* __Efficiency:__ `set` only sends what has actually changed, removing the last stroke of a drawing is a single delete for the others.
+  Many `push`es within a short time, such as a stroke, are stored locally at most every 300 ms.
+* __Offline changes:__ If you have changed your layer offline, the newer copy wins when you connect again.
+* __Names__ are shared by all templates of a course, thus prefix them with the name of your template, for example, `"MyTemplate:" + id`.
+  Use `@uid` within a macro to get a different name for every usage, which stays the same for everyone using the same version of the course.
+  But if you reorder your template calls, previously stored layers are not found anymore.
+* __Persistence:__ Set `persistent: true` for slides with templates that render into the DOM, see [persistent](#persistent), otherwise the drawing is gone when you come back to a slide and the callback writes into elements that no longer exist.
+
+</section>
+
+    --{{4}}--
+A complete example is the [CollaborativeLayers](https://github.com/LiaTemplates/CollaborativeLayers) template, a drawing canvas for classrooms with tools for drawing, moving, erasing, undo, and redo, which only uses layers.
+
+      {{4}}
+[Try CollaborativeLayers](https://liascript.github.io/course/?https://raw.githubusercontent.com/LiaTemplates/CollaborativeLayers/main/README.md)
+
+##### Shared Yjs Types
+
+    --{{0}}--
+Layers belong to one person.
+If you need a state that everyone can change, such as a shared list or a collaborative text, you can directly use the shared [Yjs](https://docs.yjs.dev) types of the classroom.
+This part is still experimental.
+
+``` js
+LIA.classroom.on("connect", () => {
+  // undefined if there is no classroom
+  const list  = LIA.classroom.array("MyTemplate:list") // Y.Array
+  const dict  = LIA.classroom.map("MyTemplate:dict")   // Y.Map
+  const notes = LIA.classroom.text("MyTemplate:notes") // Y.Text
+
+  list.observe(() => console.log(list.toArray()))
+  list.push(["one more item"])
+})
+```
+
+    --{{1}}--
+These types only exist within a classroom, and every room has its own, thus request them again after every `connect`.
+They are readable and writable by all participants in every mode, there is no authorship and no local copy, but saved classrooms keep them within their cache.
+For everything else, see the documentation of [Yjs](https://docs.yjs.dev/api/shared-types).
+
 
 
 ## Contributors and Credit
@@ -14740,15 +15033,124 @@ CSS & SASS crack and friendly face behind new face of LiaScript ...
 
 ### Supported Protocols for Sharing courses
 
-todo
+    --{{0}}--
+A course is opened by appending its address to the LiaScript URL, as described in [Publishing](#publishing).
+Next to ordinary web addresses, LiaScript understands a couple of protocols, which allow you to share courses without a web server, without a URL that has to be hosted somewhere, or directly from your own web page.
+
+``` text
+https://liascript.github.io/course/?<course address>
+```
+
+    --{{1}}--
+The same addresses can also be used for templates with `import:`.
+
+#### Web Addresses & Cloud Storage
+
+    --{{0}}--
+Any web server that allows other pages to load its files (CORS) can host a course.
+For the following services, you can simply paste the address that you see in your browser, LiaScript translates it into the address of the raw file.
+If a server does not allow it, LiaScript tries again via a proxy.
+
+| Service                                  | Address                                                    | Note                                                         |
+| ---------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
+| [GitHub](https://github.com)             | `https://github.com/user/repo`                             | a repository or folder opens its `README.md`                 |
+| [GitLab](https://gitlab.com)             | `https://gitlab.com/group/subgroup/repo/-/blob/main/README.md` | also sub-groups                                          |
+| self-hosted GitLab                       | `gitlab://gitlab.example.org/group/repo/-/blob/main/README.md` | `gitlab://` instead of `https://`, gitlab.com and gitlab.opencode.de are detected automatically |
+| [Codeberg](https://codeberg.org)         | `https://codeberg.org/user/repo/src/branch/main/README.md` |                                                              |
+| [Dropbox](https://www.dropbox.com)       | `https://www.dropbox.com/s/.../README.md`                  | a shared link                                                |
+| [OneDrive](https://onedrive.live.com)    | `https://onedrive.live.com/...`                            | a shared link                                                |
+| [Nextcloud](https://nextcloud.com)       | `nextcloud://cloud.example.org/s/<token>`                  | `nextcloud://` instead of `https://` for a shared link       |
+
+    --{{1}}--
+A course can also be packed into a zip file, together with all of its images, videos, and other files.
+If the address points to a zip file, LiaScript extracts it within the browser and opens the `README.md` of the topmost folder, or any other Markdown file, if there is no `README.md`.
+
+#### Data URIs
+
+    --{{0}}--
+Short courses do not need any hosting at all, the whole course can be put into the address itself.
+The [LiveEditor](https://liascript.github.io/LiveEditor/) offers this as a sharing option, which compresses the course before.
+
+``` text
+https://liascript.github.io/course/?data:text/plain;charset=utf-8,%23%20Hello%0A%0AWorld
+
+https://liascript.github.io/course/?data:text/plain;charset=utf-8;Content-Encoding=gzip;base64,H4sIAAAA...
+```
+
+    --{{1}}--
+Please note, servers reject addresses that are longer than a few kilobytes, thus this works only for short courses, such as the waving app in the [Classroom API](#classroom-api).
 
 #### IPFS
 
-#### Onion Share
+    --{{0}}--
+Courses that are stored within the [InterPlanetary File System](https://ipfs.tech) are addressed by their content identifier.
+LiaScript loads them via the public gateway `https://ipfs.io/ipfs/`, and relative paths of images and other files are resolved in the same way.
 
-#### Dat - URIs
+``` text
+https://liascript.github.io/course/?ipfs://<CID>/README.md
+```
+
+#### WebTorrent
+
+    --{{0}}--
+A course can also be shared as a torrent, directly between the browsers of your users.
+The torrent has to contain a Markdown file or a zip file with the course, all other files, such as images, are loaded from the torrent as well.
+It has to be seeded by a client that supports [WebTorrent](https://webtorrent.io), since browsers can only connect to such peers, and it is only available as long as somebody seeds it.
+
+``` text
+https://liascript.github.io/course/?magnet:?xt=urn:btih:...
+```
+
+#### Nostr
+
+    --{{0}}--
+[Nostr](https://nostr.com) is an open protocol, where content is stored on relays that anyone can run.
+The LiveEditor can publish a course to Nostr, the result is an address that starts with `nostr:` followed by an event (`nevent1...`) or an addressable event (`naddr1...`).
+If the address contains relays, the course is loaded from them, otherwise from the relays of your classroom settings.
+
+``` text
+https://liascript.github.io/course/?nostr:nevent1...
+
+https://liascript.github.io/course/?nostr:naddr1...
+```
+
+#### From the Embedding Page
+
+    --{{0}}--
+If you embed LiaScript within your own web page, for example, within an `iframe`, then your page can directly pass the course to LiaScript.
+Use `parent:` followed by an id of your choice.
+LiaScript then asks the embedding page for the course, which gets around the size limit of data URIs.
+
+``` html
+<iframe id="lia" src="https://liascript.github.io/course/?parent:abc123"></iframe>
+
+<script>
+window.addEventListener("message", (e) => {
+  const { cmd, param } = e.data || {}
+  if (cmd !== "lia-course") return
+
+  // param.uri is "parent:abc123"
+  e.source.postMessage({
+    cmd: "lia-course",
+    param: { uri: param.uri, ok: true, body: "# My Course\n\nHello World" }
+  }, "*")
+})
+</script>
+```
+
+    --{{1}}--
+If the course cannot be provided, answer with `ok: false` and a reason as `body`.
+LiaScript waits 10 seconds for an answer.
+Since LiaScript stores the state of quizzes, surveys, and code for every course address, the id should identify the content, for example, a hash of the course text.
+Opened on its own, without an embedding page, such an address shows an error.
 
 #### QR-Codes
+
+    --{{0}}--
+To bring a course quickly onto the devices of your students, open the share menu in the top bar.
+It shows a QR code of the course address, which can be enlarged to fill the screen, for example, on a projector.
+On devices that support it, the share menu additionally offers to share the address via the apps of your system.
+If you want to put a QR code into your course, have a look at the `qr-code` links in the section [Simple Links](#simple-links).
 
 
 ### Unicode Symbols
