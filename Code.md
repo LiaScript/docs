@@ -35,10 +35,10 @@ add other mappings.
 | `ada`               |                                                                     | Ada                                                                                            |            | `ada`                |
 | alan                | i, ln                                                               | Alan IF                                                                                        |            |                      |
 |                     | `alda`                                                              | [Alda](https://alda.io)                                                                        | music      | `alda`               |
-| angelscript         | asc                                                                 | [AngelScript](https://www.angelcode.com/angelscript)                                           | scripting  |                      |
+| `angelscript`       | `asc`                                                               | [AngelScript](https://www.angelcode.com/angelscript)                                           | scripting  | `c_cpp`              |
 | `apache`            | `apacheconf`                                                        | [Apache config](https://httpd.apache.org)                                                      | config     | `apache_conf`        |
 |                     | `apex`, `cls`, `trigger`, `tgr`                                     | [APEX](https://www.guru99.com/apex-tutorial.html)                                              | enterprise | `apex`               |
-| `applescript`       | osascript                                                           | [AppleScript](https://en.wikipedia.org/wiki/AppleScript)                                       | scripting  | `applescript`        |
+| `applescript`       | `osascript`                                                         | [AppleScript](https://en.wikipedia.org/wiki/AppleScript)                                       | scripting  | `applescript`        |
 |                     | `aql`                                                               | [AQL (ArangoDB Query Language)](https://www.arangodb.com/docs/stable/aql)                      |            | `aql`                |
 | arcade              |                                                                     | [ArcGIS Arcade](https://developers.arcgis.com/arcade)                                          | scripting  |                      |
 | `arduino`           | `ino`                                                               | [Arduino](https://www.arduino.cc)                                                              |            | `c_cpp`              |
@@ -52,7 +52,7 @@ add other mappings.
 | `avrasm`            | `asm`                                                               | AVR Assembly                                                                                   | assembler  | `assembly_x86`       |
 | awk                 | mawk, nawk, gawk                                                    | [Awk](https://www.gnu.org/software/gawk/manual/gawk.html)                                      |            |                      |
 | axapta              |                                                                     | [Microsoft X++](https://dynamics.microsoft.com/en-us/ax-overview/)                             | enterprise |                      |
-| `bash`              | `sh`, zsh                                                           | [Bash](https://www.gnu.org/software/bash)                                                      | common     | `sh`                 |
+| `bash`              | `sh`, `zsh`                                                         | [Bash](https://www.gnu.org/software/bash)                                                      | common     | `sh`                 |
 | `basic`             | `bas`                                                               | [BASIC](https://en.wikipedia.org/wiki/Tandy_1000)                                              |            | `basic`              |
 | bbcode              |                                                                     | BBCode                                                                                         |            |                      |
 |                     | `bibtex`, `bib`                                                     | [BibTeX](http://www.bibtex.org)                                                                | markup     | `bibtex`             |
@@ -369,7 +369,9 @@ scheme of `ace`.
 | `trigger`           | `apex`              |
 | `tgr`               | `apex`              |
 | `applescript`       | `applescript`       |
-| `oascript`          | `applescript`       |
+| `osascript`         | `applescript`       |
+| `angelscript`       | `c_cpp`             |
+| `asc`               | `c_cpp`             |
 | `astro`             | `astro`             |
 | `aql`               | `aql`               |
 | `arduino`           | `c_cpp`             |
@@ -391,6 +393,7 @@ scheme of `ace`.
 | `a`                 | `assembly_x86`      |
 | `bash`              | `sh`                |
 | `sh`                | `sh`                |
+| `zsh`               | `sh`                |
 | `basic`             | `basic`             |
 | `bas`               | `basic`             |
 | `bibtex`            | `bibtex`            |
