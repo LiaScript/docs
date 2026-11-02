@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     24/10/2026
-version:  40.0.0
+date:     02/11/2026
+version:  41.0.0
 language: en
 narrator: UK English Female
 
@@ -41,7 +41,7 @@ svg.ascii-demo circle { fill: crimson; }
 
 https://github.com/user-attachments/assets/7cab2d61-5858-4b62-87bf-0598e44af2e7
 
-# LiaScript 2.5.0
+# LiaScript 2.6.0
 
 > To see this document as an interactive LiaScript rendered version, click on the
 > following link/badge:
@@ -3495,21 +3495,43 @@ which can be uploaded to an LMS, or create self-containing websites.
    - Where: https://LiaScript.github.io/course/
    - Source: [liascript/src/typescript/connectors/Browser](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/connectors/Browser)
 
-2. **SCORM 1.2**
+2. **SCORM 1.2 & 2004, xAPI & H5P**
 
                           --{{3}}--
    [SCORM](https://en.wikipedia.org/wiki/Sharable_Content_Object_Reference_Model)
    stands for Sharable Content Object Reference Model and allows you to store
-   the course state directly within every LMS that has support for SCORM 1.2.
-   For this case you have to use our
+   the course state directly within every LMS that has support for SCORM 1.2 or
+   2004. For this case you have to use our
    [exporter](https://github.com/LiaScript/LiaScript-Exporter), which translates
    your course into a "SCORM-compliant" zip-file. You can check if your LMS has
    support for SCORM, by visiting our LMS-overview.
 
    - Where: https://github.com/LiaScript/LiaScript-Exporter#scorm12
    - Source: [liascript/src/typescript/connectors/SCORM1.2](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/connectors/SCORM1.2)
+     and [SCORM2004](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/connectors/SCORM2004)
    - Does your LMS support SCORM 1.2:
      [LMS-Overview](https://github.com/LiaScript/LiaScript-Exporter#lms-support-list)
+
+   By default, a SCORM package stores only the settings and, depending on the
+   version, the quiz states.
+   If you export it with the option `--scorm-storage suspend`, the whole
+   learner state (quizzes, surveys, tasks, code, settings, and the last slide)
+   is kept compressed in `cmi.suspend_data`, even in SCORM 1.2. Additionally,
+   every answer is reported readably to the LMS, such that teachers can check
+   them in the reports of their LMS.
+
+   - Where: https://github.com/LiaScript/LiaScript-Exporter#scorm-learner-data---scorm-storage
+   - Source: [liascript/src/typescript/connectors/SCORMSuspend](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/connectors/SCORMSuspend)
+
+   [xAPI](https://xapi.com) packages send all answers and code runs as
+   statements to a Learning Record Store (LRS) and restore them, if a learner
+   opens the course again. [H5P](https://h5p.org) packages use the same engine
+   as the suspend mode of SCORM.
+
+   - Where: https://github.com/LiaScript/LiaScript-Exporter#xapi
+     and https://github.com/LiaScript/LiaScript-Exporter#h5p
+   - Source: [liascript/src/typescript/connectors/XAPI](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/connectors/XAPI)
+     and [H5P](https://github.com/LiaScript/LiaScript/tree/development/src/typescript/connectors/H5P)
 
 3. **Base**
 
@@ -6726,12 +6748,20 @@ encrypted.
 | [PeerJS](https://peerjs.com)               | ≈40               | WebRTC, public PeerJS cloud or own server     |                    |
 | [Nostr](https://nostr.com)                 | 25                | public relays (open protocol)                 |         ✓          |
 | [GUN](https://gun.eco)                     | 25                | public relays (decentralized)                 |         ✓          |
-| Torrent                                    | ≈45               | WebRTC, public BitTorrent trackers            |                    |
-| [MQTT](https://mqtt.org)                   | ≈45               | WebRTC, public MQTT brokers                   |                    |
-| [IPFS](https://ipfs.tech)                  | ≈45               | WebRTC, peer-to-peer                          |                    |
+| [Trystero](https://github.com/dmotz/trystero)-Nostr | ≈45      | WebRTC, public Nostr relays                   |                    |
+| Trystero-Torrent                           | ≈45               | WebRTC, public BitTorrent trackers            |                    |
+| Trystero-[MQTT](https://mqtt.org)          | ≈45               | WebRTC, public MQTT brokers                   |                    |
+| Trystero-[IPFS](https://ipfs.tech)         | ≈45               | WebRTC, peer-to-peer                          |                    |
 | [Ably](https://ably.com)                   | < 25 (free tier)  | managed service, own API key optional         |         ✓          |
 | [PubNub](https://www.pubnub.com)           | 25                | managed service, own keys optional            |                    |
 | [Edrys](https://edrys-labs.github.io)      | –                 | only within an Edrys classroom                |                    |
+
+> __Note:__ All backends that start with "Trystero-" use the relays or
+> trackers only to find each other, afterwards the browsers talk directly via
+> WebRTC. Since LiaScript 2.6.0 the former backends "Torrent", "MQTT" and "IPFS"
+> are called "Trystero-Torrent", "Trystero-MQTT" and "Trystero-IPFS". Shared
+> links and saved classrooms that still use the old names are no longer
+> recognized, thus you have to open and share these rooms again.
 
                                --{{1}}--
 Every backend comes with a set of default servers, thus you can directly start
@@ -7352,6 +7382,14 @@ I will not be translated!
 You can attach these language attributes to any kind of Markdown block or inline element to control the translation.
 Note that code environments and foreign language comments will be tagged automatically with no-translate.
 
+                               --{{5}}--
+Diagrams are translated as well, this includes all [tables that are visualized](#fun-with-tables) as charts and your own [ECharts diagrams](#custom-diagrams-with-echarts).
+Titles, axis names, legends, categories, and node names follow the selected language, and the built-in texts of the charts, such as tooltips or the toolbox, use the locale of the new language.
+This works with the Google Translator as well as with the built-in translators of Chrome and Firefox.
+
+> __Note:__ Texts that are added to a diagram later on, for example by a script
+> or by loading data, are only translated after you change the language again.
+
 
 #### Speaker Annotations and Avatars
 
@@ -7750,6 +7788,10 @@ Leveraging the structural settings of tables or data, we can __automatically vis
 It's rather surprising that Markdown tables have not been treated as datasets before.
 The following sections aim to provide a brief overview of various visualization options and how the system determines which one to apply.
 Additionally, you have the flexibility to enforce your preferred visualization style.
+
+> __Note:__ If a course is [translated](#translations), the texts within the
+> diagrams are translated too, and the charts use the locale of the selected
+> language.
 
 
 ### Guessing the Type
@@ -8673,34 +8715,14 @@ let option = {
         minorTick: {
             show: true
         },
-        splitLine: {
-            lineStyle: {
-                color: '#999'
-            }
-        },
-        minorSplitLine: {
-            show: true,
-            lineStyle: {
-                color: '#ddd'
-            }
-        }
+        minorSplitLine: { show: true }
     },
     yAxis: {
         name: 'y', min: -10, max: 10,
         minorTick: {
             show: true
         },
-        splitLine: {
-            lineStyle: {
-                color: '#999'
-            }
-        },
-        minorSplitLine: {
-            show: true,
-            lineStyle: {
-                color: '#ddd'
-            }
-        }
+        minorSplitLine: { show: true }
     },
     dataZoom: [{
         show: true,
@@ -14195,17 +14217,7 @@ let option = {
         minorTick: {
             show: true
         },
-        splitLine: {
-            lineStyle: {
-                color: '#999'
-            }
-        },
-        minorSplitLine: {
-            show: true,
-            lineStyle: {
-                color: '#ddd'
-            }
-        }
+        minorSplitLine: { show: true }
     },
     yAxis: {
         name: 'y',
@@ -14214,17 +14226,7 @@ let option = {
         minorTick: {
             show: true
         },
-        splitLine: {
-            lineStyle: {
-                color: '#999'
-            }
-        },
-        minorSplitLine: {
-            show: true,
-            lineStyle: {
-                color: '#ddd'
-            }
-        }
+        minorSplitLine: { show: true }
     },
     dataZoom: [{
         show: true,
