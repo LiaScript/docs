@@ -2,8 +2,8 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-date:     02/11/2026
-version:  41.0.0
+date:     17/11/2026
+version:  42.0.0
 language: en
 narrator: UK English Female
 
@@ -41,7 +41,7 @@ svg.ascii-demo circle { fill: crimson; }
 
 https://github.com/user-attachments/assets/7cab2d61-5858-4b62-87bf-0598e44af2e7
 
-# LiaScript 2.6.0
+# LiaScript 2.7.0
 
 > To see this document as an interactive LiaScript rendered version, click on the
 > following link/badge:
@@ -533,7 +533,8 @@ The arrow keys switch slides only, if no other element needs them, while you are
 | `→`                 | opens a section, or moves to its first subsection if it is already open    |
 | `←`                 | closes a section, or moves to its parent                                   |
 
-The search in the table of contents tolerates one typo per word (for words with 4 or more characters).
+The search in the table of contents tolerates one typo per word (for words with 4 or more characters), but only for words that do not appear in the course, thus a longer word never finds more sections than a shorter one.
+How many levels of the table of contents are expanded can be set in the settings menu under "Table of contents depth" (see also [`tocDepth`](#tocdepth)).
 In right-to-left languages, `→` and `←` are mirrored.
 
 **Content**
@@ -5198,6 +5199,8 @@ Next to randomization you can also use the following configuration options and a
   The result of this setting will not be visible at all, instead it is used to score a quiz, if the course is exported into a SCORM package and uploaded to an LMS.
   Within an export every quiz is rated equally with a value of 1.
   It is possible to pass an integer or float value, e.g. `2`, `2.0`, `2.12345`.
+  SCORM 1.2 and 2004 report the score to the LMS in percent (maximum 100).
+  If the LMS defines a passing score, SCORM 2004 reports the score only once the course is passed or all quizzes are done, so learners with open quizzes do not fail.
 
                 {{6}}
 - ##### Combinations
@@ -11669,6 +11672,11 @@ However, you can escape a macro by adding an additional `@`, which outputs a gra
 <lia-keep>
 <pre style="background:#CCCCCC"><code><b style="color: red">red</b> <i style="color: green">simply, simply, green</i></code></pre></lia-keep>
 
+> __Note:__ A macro that calls itself does not run forever, the expansion stops
+> after 1,000,000 characters per section. Likewise, links, emphasis, effects,
+> HTML, quotes and lists can be nested up to 64 levels, deeper content is
+> shown as plain text.
+
 
 ### 2. Basic Macros
 
@@ -11906,6 +11914,7 @@ We use language codes for internationalization, similar to top-level domains.
 | Korean                | 한국어          |  ko  | [ko.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ko.yaml) |
 | Latvian               | Latviešu     |  lv  | [lv.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.lv.yaml) |
 | Lithuanian            | Lietuvių     |  lt  | [lt.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.lt.yaml) |
+| Malay                 | Bahasa Melayu |  ms  | [ms.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.ms.yaml) |
 | Norwegian Bokmål      | Norsk bokmål |  nb  | [nb.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.nb.yaml) |
 | Panjabi               | ਪੰਜਾਬੀ       |  pa  | [pa.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.pa.yaml) |
 | Persian               | فارسی        |  fa  | [fa.yaml](https://github.com/LiaScript/lia-localization/blob/master/locale/commands.fa.yaml) |
@@ -12335,6 +12344,23 @@ dark: false
 ---
 
 ![dark and light](img/dark.png)
+
+##### `tocDepth`
+
+    --{{0}}--
+You can define how many levels of the table of contents are expanded by default, counted from the top level of your course.
+Possible values are 1 to 6, the default is 2.
+
+```md
+<!--
+tocDepth: 3
+-->
+```
+
+    --{{1}}--
+Like `mode` and `dark`, this value overwrites the user setting when the course is loaded.
+Afterwards, users can change it again in the settings menu under "Table of contents depth".
+Choosing a new depth collapses the table of contents again.
 
 
 ##### `classroom`
@@ -14479,6 +14505,9 @@ Treat these values as read-only, they are changed by the user via the settings m
 | `font_size`   | `1`, `2`, or `3`                                       |
 | `sound`       | `true`, if the narrator is switched on                 |
 | `audio`       | `rate` and `pitch` of the narrator                     |
+| `tocDepth`    | expanded levels of the table of contents, `1` to `6`   |
+
+The only exception is `tocDepth`, a template can set it with `LIA.settings.tocDepth = 3`.
 
 ``` html
 <script>
